@@ -16,11 +16,13 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 		    String[] lines = tempOutputArea.getText().split("\n");
 		    StringBuilder sb = new StringBuilder();
 		    for (String line : lines) {
+		        line = line.replace(":c", "hypercholesterolemia");
+		        line = line.replace(":t", "hypertension");
+
 		      if (!line.trim().isEmpty() && sb.indexOf(line) == -1) {
 		        sb.append(line).append("\n");
 		      }
 		    }
-		    
 		    // Set the text of the JTextArea to the filtered text
 		    tempOutputArea.setText(sb.toString());
 		    
