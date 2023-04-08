@@ -15,7 +15,7 @@ public class GDSEMR_frame extends JFrame {
     public GDSEMR_frame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("My Frame");
-        setSize(1000, 800);
+        setSize(1600, 1200);
 
         // Create West panel with tempOutputArea
         JTextArea tempOutputArea = new JTextArea();
@@ -23,7 +23,7 @@ public class GDSEMR_frame extends JFrame {
         add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 
         // Create Center panel with 9 text areas
-        JPanel centerPanel = new JPanel(new GridLayout(9, 1));
+        JPanel centerPanel = new JPanel(new GridLayout(5, 2));
         JTextArea[] textAreas = new JTextArea[9];
         String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "A>", "P>", "Co>" };
         for (int i = 0; i < textAreas.length; i++) {
