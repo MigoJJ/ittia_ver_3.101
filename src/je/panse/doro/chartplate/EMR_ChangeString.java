@@ -5,13 +5,16 @@ import java.io.IOException;
 public class EMR_ChangeString {
 	public static String code_select(String line) throws IOException {
 		    String replacedText = "";
-		    replacedText = line.replaceAll(":d ", "diabetes mellitus")
-		    		.replaceAll(":dr ", "DM with retinopathy")
-		    		.replaceAll(":dn ", "DM with Nephropathy")
-		    		.replaceAll(":dnp ", "DM with Peripheral Neuropathy")
-		    		.replaceAll(":dna ", "DM with Autonomic Neuropathy")
-		    		.replaceAll(":dp ", "Prediabetes")
-		    		.replaceAll(":dg ", "Gestational Diabetes Mellitus")
+		    replacedText = line
+		    		.replaceAll(":d ","diabetes mellitus")
+		    		.replaceAll(":dr ","DM with retinopathy")
+		    		.replaceAll(":dn ","DM with Nephropathy")
+		    		.replaceAll(":dnp ","DM with Peripheral Neuropathy")
+		    		.replaceAll(":dna ","DM with Autonomic Neuropathy")
+		    		.replaceAll(":dp ","Prediabetes")
+		    		.replaceAll(":dg ","Gestational Diabetes Mellitus")
+		    		
+		    		.replaceAll(":c ","Hypercholesterolemia F/U")
 		    		;
 		    System.out.println(replacedText);
 

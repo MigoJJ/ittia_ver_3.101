@@ -41,7 +41,7 @@ public class GDSEMR_frame extends JFrame {
 					TextAreaChangeListener listener = new TextAreaChangeListener(textArea, tempOutputArea);
 					textArea.getDocument().addDocumentListener(listener);
 					// Create background colors
-					BlendColors.blendColors(textArea, i);
+					BlendColors.blendColors(textArea,tempOutputArea, i);
 		        }
 			// Create button panel
 			ButtonPanel buttonPanel = new ButtonPanel();
