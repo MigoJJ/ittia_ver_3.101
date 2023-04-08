@@ -24,8 +24,8 @@ public class GDSEMR_frame extends JFrame {
 
         // Create Center panel with 9 text areas
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
-        JTextArea[] textAreas = new JTextArea[9];
-        String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "A>", "P>", "Co>" };
+        JTextArea[] textAreas = new JTextArea[10];
+        String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam","A>", "P>", "Co>" };
         for (int i = 0; i < textAreas.length; i++) {
             textAreas[i] = new JTextArea();
             String inputData = titles[i];
