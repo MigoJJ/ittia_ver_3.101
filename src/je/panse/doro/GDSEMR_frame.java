@@ -11,14 +11,14 @@ import javax.swing.JTextArea;
 
 import je.panse.doro.listner.BlendColors;
 import je.panse.doro.listner.ButtonPanel;
+import je.panse.doro.listner.IndentedTextArea;
 import je.panse.doro.listner.TextAreaChangeListener;
 	
 public class GDSEMR_frame extends JFrame {
-
     public GDSEMR_frame() throws Exception {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("My Frame");
-        setSize(1100, 1000/12*9);
+        setSize(1200, 1200/12*9);
 
         // Create West panel with tempOutputArea
         JTextArea tempOutputArea = new JTextArea();
@@ -27,11 +27,13 @@ public class GDSEMR_frame extends JFrame {
 
         // Create Center panel with 9 text areas
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
-        JTextArea[] textAreas = new JTextArea[10];
+        IndentedTextArea[] textAreas = new IndentedTextArea[10];
+//        JTextArea[] textAreas = new JTextArea[10];
         String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 		        for (int i = 0; i < textAreas.length; i++) {
-					textAreas[i] = new JTextArea();
-					String inputData = titles[i];
+		        	textAreas[i] = new IndentedTextArea();
+//					textAreas[i] = new JTextArea();
+					String inputData = titles[i] + "\t";
 					textAreas[i].setText(inputData);
 					centerPanel.add(textAreas[i]);
 		
@@ -51,7 +53,7 @@ public class GDSEMR_frame extends JFrame {
 			add(scrollPane, BorderLayout.CENTER);
 			setVisible(true);
     }
-
+    
     public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
     }

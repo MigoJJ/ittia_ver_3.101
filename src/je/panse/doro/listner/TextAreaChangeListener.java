@@ -1,12 +1,14 @@
 package je.panse.doro.listner;
 
-import java.awt.Component;	
+import java.awt.Component;
+import java.io.IOException;
+
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 
-public class TextAreaChangeListener implements DocumentListener {
+public class TextAreaChangeListener implements DocumentListener  {
     private JTextArea textArea;
     private JTextArea tempOutputArea;
     private boolean updatingTextArea = false;
@@ -19,21 +21,36 @@ public class TextAreaChangeListener implements DocumentListener {
     @Override
     public void insertUpdate(DocumentEvent e) {
         if (!updatingTextArea) {
-            updateTempOutputArea();
+            try {
+				updateTempOutputArea();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
         }
     }
 
     @Override
     public void removeUpdate(DocumentEvent e) {
-            updateTempOutputArea();
+            try {
+				updateTempOutputArea();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     }
 
     @Override
     public void changedUpdate(DocumentEvent e) {
-            updateTempOutputArea();
+            try {
+				updateTempOutputArea();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
     }
 
-    public void updateTempOutputArea() {
+    public void updateTempOutputArea() throws IOException {
         String inputText = textArea.getText();
         tempOutputArea.setText(inputText);
         // Append the text from all text areas to the output area
