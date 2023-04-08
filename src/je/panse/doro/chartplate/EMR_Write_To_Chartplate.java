@@ -21,16 +21,12 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 		    String[] lines = tempOutputArea.getText().split("\n");
 		    StringBuilder sb = new StringBuilder();
 		    for (String line : lines) {
-//	    		 line = EMR_ChangeString.code_select(line);
-		    	
-				line.replace(":d", "Diabetes mellitus");
-				line.replace(":dr","DM without Retinopathy");
-				line.replace(":dn","DM with Nephropathy");
-				line.replace(":dp","Diabetes mellitus");
-		    	
-	    		 if (!line.trim().isEmpty() && sb.indexOf(line) == -1) {
+
+//		    	line = EMR_ChangeString.code_select(line);
+	    		
+		    	if (!line.trim().isEmpty() && sb.indexOf(line) == -1) {
 			    	  sb.append(line).append("\n");
-			      }
+			    }
 		    }
 		    // Set the text of the JTextArea to the filtered text
 		    tempOutputArea.setText(sb.toString());
