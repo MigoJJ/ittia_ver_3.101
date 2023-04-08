@@ -5,29 +5,13 @@ import java.io.IOException;
 
 public class EMR_ChangeString {
 	public static String code_select(String line) throws IOException {
-	    String schanged = "";
-	    String extracted = line.replace(":", "");
-	    
-//	    if (extracted.startsWith("d")) {
-//	        schanged = extracted.replace("d", "Diabetes mellitus");
-//	    } else if (extracted.startsWith("dr")) {
-//	        schanged = extracted.replace("dr", "DM without Retinopathy");
-//	    } else if (extracted.startsWith("dn")) {
-//	        schanged = extracted.replace("dn", "DM with Nephropathy");
-//	    } else if (extracted.startsWith("dp")) {
-//	        schanged = extracted.replace("dp", "Diabetes mellitus");
-//	    } else if (extracted.startsWith("pd")) {
-//	        schanged = extracted.replace("pd", "Prediabetes");
-//	    } else if (extracted.startsWith("gd")) {
-//	        schanged = extracted.replace("gd", "Gestational Diabetes Mellitus");
-//	    }
-//	    
-	    return schanged;
-	}
+		    String replacedText = "";
+		    replacedText = line.replaceAll(":d ", "diabetes mellitus").replaceAll(":dr ", "diabetic retinopathy");
+		    System.out.println(replacedText);
 
+			return replacedText;
+		}
 }
-
-
 	    
 //	    switch (dcode) {
 //		

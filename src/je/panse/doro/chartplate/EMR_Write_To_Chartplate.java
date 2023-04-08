@@ -22,8 +22,12 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 		    StringBuilder sb = new StringBuilder();
 		    for (String line : lines) {
 
-//		    	line = EMR_ChangeString.code_select(line);
-	    		
+		    	if (line.contains(":")) {
+			    	line = EMR_ChangeString.code_select(line);
+		    	} else {
+		    		
+		    	}
+
 		    	if (!line.trim().isEmpty() && sb.indexOf(line) == -1) {
 			    	  sb.append(line).append("\n");
 			    }
