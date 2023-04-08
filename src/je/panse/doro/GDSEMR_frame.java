@@ -38,7 +38,7 @@ public class GDSEMR_frame extends JFrame {
 
             // Set background color
             float factor = (float) i / centerPanel.getComponentCount();
-            Color color = Color.getHSBColor(0.16f, factor, 1.0f);
+            Color color = Color.getHSBColor(0.16f, factor, 3.0f);
             textArea.setBackground(color);
         }
 
