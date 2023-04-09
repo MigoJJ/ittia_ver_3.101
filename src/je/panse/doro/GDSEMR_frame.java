@@ -9,10 +9,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import je.panse.doro.listner.BlendColors;
-import je.panse.doro.listner.ButtonPanel;
 import je.panse.doro.listner.IndentedTextArea;
 import je.panse.doro.listner.TextAreaChangeListener;
+import je.panse.doro.listner.buttons.BlendColors;
+import je.panse.doro.listner.buttons.ButtonPanel;
 	
 public class GDSEMR_frame extends JFrame {
     public GDSEMR_frame() throws Exception {

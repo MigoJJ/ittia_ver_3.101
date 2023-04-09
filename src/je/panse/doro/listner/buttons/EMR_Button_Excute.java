@@ -1,4 +1,4 @@
-package je.panse.doro.chartplate;
+package je.panse.doro.listner.buttons;
 
 	import javax.swing.JPanel;
 	import javax.swing.JTextArea;

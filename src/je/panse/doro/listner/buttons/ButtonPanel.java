@@ -1,4 +1,4 @@
-package je.panse.doro.listner;
+package je.panse.doro.listner.buttons;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
