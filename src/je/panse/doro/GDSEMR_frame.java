@@ -18,11 +18,11 @@ public class GDSEMR_frame extends JFrame {
     public GDSEMR_frame() throws Exception {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("My Frame");
-        setSize(1200, 1200/12*9);
+        setSize(1500, 1500/12*9);
 
         // Create West panel with tempOutputArea
         JTextArea tempOutputArea = new JTextArea();
-        tempOutputArea.setPreferredSize(new Dimension(350, 300));
+        tempOutputArea.setPreferredSize(new Dimension(500, 400));
         add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 
         // Create Center panel with 9 text areas
