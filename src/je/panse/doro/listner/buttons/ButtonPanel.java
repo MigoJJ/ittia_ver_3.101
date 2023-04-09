@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class ButtonPanel extends JPanel {
     public ButtonPanel(String panelLocation) {
         // Create 11 buttons
@@ -20,7 +22,12 @@ public class ButtonPanel extends JPanel {
             buttons[i].addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    executeMethod(buttonNumber,panelLocation);
+                    try {
+						executeMethod(buttonNumber,panelLocation);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
                 }
             });
         }
@@ -36,8 +43,9 @@ public class ButtonPanel extends JPanel {
         }
     }
     
-    public static void executeMethod(int buttonNumber ,String panelLocation) {
+    public static void executeMethod(int buttonNumber ,String panelLocation) throws Exception {
         // Add code to execute the desired method here
-        System.out.println("Method executed for button " + buttonNumber + ">>>" + panelLocation);
+        GDSEMR_frame.callbutton(buttonNumber, panelLocation);
+        
     }
 }
