@@ -65,7 +65,7 @@ public class GDSEMR_frame extends JFrame {
         public static void callbutton(int noButton, String panelLocation) throws Exception {
     		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
 
-    		
+
     		EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
 
 

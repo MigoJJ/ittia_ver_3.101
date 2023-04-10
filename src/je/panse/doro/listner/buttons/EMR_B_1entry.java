@@ -20,12 +20,13 @@ public class EMR_B_1entry extends GDSEMR_frame {
             case 1:
                 if (panelLocation.equals("north")) {
 
-        	        for (int i = 0; i < textAreas.length; i++) {
-    					textAreas[i] = new IndentedTextArea();
-    						String inputData = titles[i] + "\t";
-    						textAreas[i].setText(inputData);
-        	        }
-        	        tempOutputArea.setText("");
+                    // When the clear button is clicked, clear all the input text areas
+                    for (int i = 0; i < textAreas.length; i++) {
+                    	textAreas[i].setText("");
+        				String inputData = titles[i] + "\t";
+        				textAreas[i].setText(inputData);
+                    }
+                    tempOutputArea.setText("");
                    System.out.println("clear~~~ this button");
                 }
                 break;
