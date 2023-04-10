@@ -19,6 +19,9 @@ public class EMR_B_1entry extends GDSEMR_frame {
         switch (noButton) {
             case 1:
                 if (panelLocation.equals("north")) {
+                	
+                	
+                	
 
                     // When the clear button is clicked, clear all the input text areas
                     for (int i = 0; i < textAreas.length; i++) {
