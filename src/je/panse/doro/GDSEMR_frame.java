@@ -18,12 +18,10 @@ import je.panse.doro.listner.buttons.EMR_B_clear;
 import je.panse.doro.listner.buttons.EMR_Buttons;
 
 public class GDSEMR_frame extends JFrame {
-	
     static JTextArea tempOutputArea = new JTextArea();
     static IndentedTextArea[] textAreas = new IndentedTextArea[10];
     static String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 
-    
     public GDSEMR_frame() throws Exception {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("My Frame");
@@ -67,7 +65,6 @@ public class GDSEMR_frame extends JFrame {
     			    String inputData = titles[i] + "\t";
     			    textAreas[i].setText(inputData);
     			}
-     
     }
 
 	public static void main(String[] args) throws Exception {

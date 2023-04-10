@@ -15,15 +15,8 @@ public class ButtonPanel extends JPanel {
         JButton[] buttons = new JButton[11];
         for (int i = 0; i < buttons.length; i++) {
             buttons[i] = new JButton("Button " + (i+1));
-            
-            if (i==1) {
-//            	"Button " + (i+1) = ("clear");
-            	add(buttons[1]);
-            }else {
-            	add(buttons[i]);
-
-            }
-            
+            add(buttons[i]);
+                        
             // Add ActionListener to button
             int buttonNumber = i+1;
             buttons[i].addActionListener(new ActionListener() {
@@ -40,6 +33,7 @@ public class ButtonPanel extends JPanel {
         }
         
         if (panelLocation.equals("north")) {
+        	 buttons[0].setText("Clear");;
             // Add the button panel to the north of the frame
             setLayout(new FlowLayout(FlowLayout.LEFT));
             setBackground(Color.GRAY);
