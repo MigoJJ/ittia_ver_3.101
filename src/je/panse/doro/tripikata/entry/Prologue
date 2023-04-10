@@ -1,0 +1,17 @@
+    private void ButtonPress(String buttonText) throws IOException {
+		try {
+			if (buttonText.equals("Prologue")) {
+			    Runtime.getRuntime().exec("gedit " + EntryDir.homeDir + "/datatext/singlebeam/Prologue");
+				} else if (buttonText.equals("Version Information")) {
+				    Runtime.getRuntime().exec("gedit " + EntryDir.homeDir + "/datatext/singlebeam/Version_Information");
+				} else if (buttonText.equals("Ittia Start")) {
+				    Runtime.getRuntime().exec("java -cp "+ EntryDir.currentUsersDir +"/bin je.panse.doro.singlebeam.EntryDir");
+				} else if (buttonText.equals("Rescue")) {
+				    Runtime.getRuntime().exec("java -cp "+ EntryDir.currentUsersDir +"/bin je.panse.doro.ittia2.FPF");
+			} else {
+				dispose();
+			}
+		} catch (IOException ex) {
+		    ex.printStackTrace();
+		}
+    }
