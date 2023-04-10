@@ -44,8 +44,8 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 	    
 	    public static void callsaveTextToFile(JTextArea textArea) {
 	    	String textToSave = textArea.getText();
-//	    	String filePath = "/home/migowj/git/ittia_Version_2.1/src/je/panse/doro/tripikata/rescue/backup";
-	    	String filePath = "/home/woon/git/ittia_Version_2.1/src/je/panse/doro/tripikata/rescue/backup";
+	    	String filePath = "/home/migowj/git/ittia_Version_2.1/src/je/panse/doro/tripikata/rescue/backup";
+//	    	String filePath = "/home/woon/git/ittia_Version_2.1/src/je/panse/doro/tripikata/rescue/backup";
 	    	try {
 		        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
 		        writer.write(textToSave);

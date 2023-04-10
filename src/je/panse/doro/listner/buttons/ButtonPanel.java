@@ -17,7 +17,7 @@ public class ButtonPanel extends JPanel {
             buttons[i] = new JButton("Button " + (i+1));
             
             if (i==1) {
-            	"Button " + (i+1) = ("clear");
+//            	"Button " + (i+1) = ("clear");
             	add(buttons[1]);
             }else {
             	add(buttons[i]);
