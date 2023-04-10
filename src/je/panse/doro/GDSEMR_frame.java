@@ -29,6 +29,7 @@ public class GDSEMR_frame extends JFrame {
 	    setSize(1200, 1200/12*9);
 
         // Create West panel with tempOutputArea
+	    tempOutputArea.setText("");
         tempOutputArea.setPreferredSize(new Dimension(450, 500));
         add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 

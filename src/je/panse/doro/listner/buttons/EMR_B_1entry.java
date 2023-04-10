@@ -5,6 +5,7 @@ import java.io.IOException;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.entry.IttiaEntry;
+import je.panse.doro.listner.IndentedTextArea;
 
 public class EMR_B_1entry extends GDSEMR_frame {
     public EMR_B_1entry() throws Exception {
@@ -18,24 +19,23 @@ public class EMR_B_1entry extends GDSEMR_frame {
         switch (noButton) {
             case 1:
                 if (panelLocation.equals("north")) {
-//
-//        	        for (int i = 0; i < textAreas.length; i++) {
-//    					textAreas[i] = new IndentedTextArea();
-//    						String inputData = titles[i] + "\t";
-//    						textAreas[i].setText(inputData);
-//        	        }
+
+        	        for (int i = 0; i < textAreas.length; i++) {
+    					textAreas[i] = new IndentedTextArea();
+    						String inputData = titles[i] + "\t";
+    						textAreas[i].setText(inputData);
+        	        }
         	        tempOutputArea.setText("");
                    System.out.println("clear~~~ this button");
                 }
                 break;
                 
             case 2:
-            		System.exit(0);
                 break;
 
             case 3:
-        			System.exit(0);
-
+            	IttiaEntry.main(null);
+//        			System.exit(0);
                 break;
             case 4:
                 if (panelLocation.equals("north")) {
