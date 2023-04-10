@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JTextArea;
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.entry.EntryDir;
+import je.panse.doro.samsara.File_copy;
 
 public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 		public EMR_Write_To_Chartplate() throws Exception {
@@ -44,8 +46,9 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 	    
 	    public static void callsaveTextToFile(JTextArea textArea) {
 	    	String textToSave = textArea.getText();
-	    	String filePath = "/home/migowj/git/ittia_Version_2.1/src/je/panse/doro/tripikata/rescue/backup";
-//	    	String filePath = "/home/woon/git/ittia_Version_2.1/src/je/panse/doro/tripikata/rescue/backup";
+	    	String filePath = EntryDir.homeDir + "/tripikata/rescue/backup";
+			String newFilePath = EntryDir.homeDir + "/tripikata/rescue/backuptemp";
+
 	    	try {
 		        BufferedWriter writer = new BufferedWriter(new FileWriter(filePath));
 		        writer.write(textToSave);
@@ -53,5 +56,6 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 	    	} catch (IOException e) {
 	    	    e.printStackTrace();
 	    	}
+          File_copy.main(filePath, newFilePath);
 	    }
 	}

@@ -33,11 +33,19 @@ public class ButtonPanel extends JPanel {
         }
         
         if (panelLocation.equals("north")) {
-        	 buttons[0].setText("Clear");;
-            // Add the button panel to the north of the frame
+        	 buttons[0].setText("Clear");
+        	 buttons[1].setText("Recue");
+        	 buttons[2].setText("Exit");
+        	 buttons[3].setText("Reset");
+        	 // Add the button panel to the north of the frame
             setLayout(new FlowLayout(FlowLayout.LEFT));
             setBackground(Color.GRAY);
         } else if (panelLocation.equals("south")) {
+       	 buttons[0].setText("F/U DM");
+       	 buttons[1].setText("F/U HTN");
+       	 buttons[2].setText("F/U Chol");
+       	 buttons[3].setText("F/U Thyroid");
+
             // Add the button panel to the south of the frame
             setLayout(new FlowLayout(FlowLayout.RIGHT));
             setBackground(Color.LIGHT_GRAY);
