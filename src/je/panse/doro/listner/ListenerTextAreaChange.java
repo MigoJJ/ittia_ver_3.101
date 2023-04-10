@@ -8,12 +8,12 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 
-public class TextAreaChangeListener implements DocumentListener  {
+public class ListenerTextAreaChange implements DocumentListener  {
     private JTextArea textArea;
     private JTextArea tempOutputArea;
     private boolean updatingTextArea = false;
 
-    public TextAreaChangeListener(JTextArea textArea, JTextArea tempOutputArea) {
+    public ListenerTextAreaChange(JTextArea textArea, JTextArea tempOutputArea) {
         this.textArea = textArea;
         this.tempOutputArea = tempOutputArea;
     }
