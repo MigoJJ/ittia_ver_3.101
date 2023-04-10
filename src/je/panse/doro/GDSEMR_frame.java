@@ -15,6 +15,7 @@ import je.panse.doro.listner.ListenerTextAreaChange;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.listner.buttons.ButtonPanel;
 import je.panse.doro.listner.buttons.EMR_B_clear;
+import je.panse.doro.listner.buttons.EMR_Buttons;
 
 public class GDSEMR_frame extends JFrame {
 	
@@ -35,18 +36,18 @@ public class GDSEMR_frame extends JFrame {
         // Create Center panel with 9 textAreas
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
 	        for (int i = 0; i < textAreas.length; i++) {
-	            textAreas[i] = new IndentedTextArea();
-	            String inputData = titles[i] + "\t";
-	            textAreas[i].setText(inputData);
-
-        centerPanel.add(textAreas[i]);
-            
-            JTextArea textArea = textAreas[i];
-            ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
-            textArea.getDocument().addDocumentListener(listener);
-            // Create background colors
-            BlendColors.blendColors(textArea,tempOutputArea, i);
-        }
+					textAreas[i] = new IndentedTextArea();
+					String inputData = titles[i] + "\t";
+					textAreas[i].setText(inputData);
+					
+					centerPanel.add(textAreas[i]);
+					
+					JTextArea textArea = textAreas[i];
+					ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
+					textArea.getDocument().addDocumentListener(listener);
+					// Create background colors
+					BlendColors.blendColors(textArea,tempOutputArea, i);
+	        }
         // Create button panel
         ButtonPanel buttonPanel = new ButtonPanel("north");
         add(buttonPanel, BorderLayout.NORTH);
@@ -57,17 +58,18 @@ public class GDSEMR_frame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(centerPanel);
         add(scrollPane, BorderLayout.CENTER);
         setVisible(true);
+    	}
+        //	call button number
+        public static void callbutton(int noButton, String panelLocation) throws Exception {
+    		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
+    		EMR_B_clear.EMR_B_clear(textAreas, tempOutputArea );
+    			for (int i = 0; i < textAreas.length; i++) {
+    			    String inputData = titles[i] + "\t";
+    			    textAreas[i].setText(inputData);
+    			}
+     
     }
-    
-    public static void callbutton(int noButton, String panelLocation) throws Exception {
-		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
-		EMR_B_clear.EMR_B_clear(textAreas, tempOutputArea );
-			for (int i = 0; i < textAreas.length; i++) {
-			    String inputData = titles[i] + "\t";
-			    textAreas[i].setText(inputData);
-			}
-    }
-    
+
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
     }
