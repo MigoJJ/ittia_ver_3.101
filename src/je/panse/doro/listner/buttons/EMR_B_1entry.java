@@ -1,11 +1,13 @@
 		package je.panse.doro.listner.buttons;
 
-import java.io.BufferedReader;	
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.entry.EntryDir;
+import je.panse.doro.entry.IttiaEntry;
 import je.panse.doro.fourgate.EMR_FU_hypertension;
 
 public class EMR_B_1entry extends GDSEMR_frame {
@@ -52,6 +54,8 @@ public class EMR_B_1entry extends GDSEMR_frame {
 				    }  	
 				    break;
 				case 4:
+					IttiaEntry.main(null);
+					System.exit(0);
 				    break;
 				
 				default:
