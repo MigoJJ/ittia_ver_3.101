@@ -1,4 +1,4 @@
-package je.panse.doro.listner.buttons;
+		package je.panse.doro.listner.buttons;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -57,11 +57,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 break;
             case 4:
                 if (panelLocation.equals("north")) {
-                    // dispose the previous JFrame
-                    GDSEMR_frame frame = new GDSEMR_frame();
-                    // display the new JFrame
-                    frame.setVisible(true);
-
+                	System.exit(0);
                 }
                 break;
        	
