@@ -13,20 +13,21 @@ public class EMR_ChangeString {
 		    		.replaceAll(":dna ","DM with Autonomic Neuropathy")
 		    		.replaceAll(":dp ","Prediabetes")
 		    		.replaceAll(":dg ","Gestational Diabetes Mellitus")
-		    		
 		    		.replaceAll(":c ","Hypercholesterolemia F/U")
+		    		.replaceAll(":fd ","Diabetes mellitus  F/U")
+		    		.replaceAll(":ft ","Hypertension F/U")
+		    		.replaceAll(":fc ","Hypercholesterolemia F/U")
+
 		    		;
 		    System.out.println(replacedText);
 
 			return replacedText;
 		}
 }
-	    
+
 //	    switch (dcode) {
 //		
-//			case "fd" : cresult =("#  Diabetes mellitus  F/U");break;
-//			case "ft" : cresult =("#  Hypertension F/U")	;break;
-//			case "fc" : cresult =("#  Hypercholesterolemia F/U");break;
+
 //			case "fctg" : cresult =("#  HyperTriGlyceridemia F/U");break;
 //			case "fte" : cresult =("#  Hyperthyroidism F/U");break;
 //			case "fto" : cresult =("#  Hypothyroidism F/U");break;

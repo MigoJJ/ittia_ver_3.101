@@ -63,9 +63,8 @@ public class IttiaEntry  extends JFrame implements ActionListener {
 		dispose();
     }
     
-    
-    
     public static void main(String[] args) {
     	IttiaEntry myFrame = new IttiaEntry();
     }
+
 }
