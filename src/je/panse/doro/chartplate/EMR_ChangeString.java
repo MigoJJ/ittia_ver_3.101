@@ -21,7 +21,29 @@ public class EMR_ChangeString {
 			return replacedText;
 		}
 }
-	    
+
+
+//HashMap<String, String> codesMap = new HashMap<String, String>();
+//codesMap.put("fd", "# Diabetes mellitus F/U");
+//codesMap.put("ft", "# Hypertension F/U");
+//codesMap.put("fc", "# Hypercholesterolemia F/U");
+//codesMap.put("fctg", "# HyperTriGlyceridemia F/U");
+//codesMap.put("fte", "# Hyperthyroidism F/U");
+//codesMap.put("fto", "# Hypothyroidism F/U");
+//codesMap.put("fnti", "# Non-Thyroidal Illness F/U");
+//codesMap.put("ftep", "# Hyperthyroidism with Pregnancy [ ] weeks F/U");
+//codesMap.put("ftop", "# Hypothyroidism with Pregnancy [ ] weeks F/U");
+//codesMap.put("do", "# DM without complications");
+//codesMap.put("d", "# Diabetes Mellitus");
+//
+//if (codesMap.containsKey(dcode)) {
+//    cresult = codesMap.get(dcode);
+//} else {
+//    System.out.println("Reinsert disease code please...");
+//}
+
+
+//	    
 //	    switch (dcode) {
 //		
 //			case "fd" : cresult =("#  Diabetes mellitus  F/U");break;
