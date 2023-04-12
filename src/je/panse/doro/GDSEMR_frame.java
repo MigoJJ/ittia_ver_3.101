@@ -1,11 +1,8 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;		
+import java.awt.BorderLayout;			
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,7 +12,6 @@ import je.panse.doro.listner.ListenerTextAreaChange;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.listner.buttons.ButtonPanel;
 import je.panse.doro.listner.buttons.EMR_B_1entry;
-import je.panse.doro.listner.buttons.EMR_Buttons;
 
 public class GDSEMR_frame extends JFrame {
     protected static JTextArea tempOutputArea = new JTextArea();
@@ -62,14 +58,10 @@ public class GDSEMR_frame extends JFrame {
         setVisible(true);
     	}
         //	call button number
-        public static void callbutton(int noButton, String panelLocation) throws Exception {
-    		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
-
-
-    		EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
-
-
-    }
+	public static void callbutton(int noButton, String panelLocation) throws Exception {
+		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
+			EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
+	}
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
