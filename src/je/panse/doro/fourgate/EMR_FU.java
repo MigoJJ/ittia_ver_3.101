@@ -23,9 +23,9 @@ public class EMR_FU {
 		        JTextArea textArea1 = new JTextArea();
 		        textArea1.setEditable(true);
 		        
-		        String changedtextArea = "";
-		        changedtextArea = EMR_FU_hypertension.getString(i);
-		        textArea1.setText(changedtextArea);
+				        String changedtextArea = "";
+				        changedtextArea = EMR_FU_hypertension.getString(i);
+				        textArea1.setText(changedtextArea);
 		        
 		        
 		        panel1.add(textArea1);

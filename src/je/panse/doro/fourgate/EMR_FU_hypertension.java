@@ -2,47 +2,16 @@ package je.panse.doro.fourgate;
 
 public class EMR_FU_hypertension {
     public static String getString(int i) {
-        String A1 = "hypertension 001";
-        switch (i) {
-            case 1:
-                return A1;
-            case 2:
-                A1 = "hypertension 00111112222222";
-                return A1;
-            case 3:
-                A1 = "hypertension 00111112222222";
-                return A1;
-            	
-            case 4:
-                A1 = "hypertension 00111112222222";
-                return A1;
+        String[] arr = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"};
 
-            case 5:
-                A1 = "hypertension 00111112222222";
-                return A1;
-
-            case 6:
-                A1 = "hypertension 00111112222222";
-                return A1;
-
-            case 7:
-                A1 = "hypertension 00111112222222";
-                return A1;
-
-            case 8:
-                A1 = "hypertension 00111112222222";
-                return A1;
-
-            case 9:
-                A1 = "hypertension 00111112222222";
-                return A1;
-
-            case 10:
-                A1 = "hypertension 00111112222222";
-                return A1;
-
-            default:
-                return "";
+        String result = "";
+        for (int j = 0; j < arr.length; j++) {
+            if (i == j + 1) {
+                result = arr[j];
+                break;
+            }
         }
+        System.out.println(result);
+        return result;
     }
 }
