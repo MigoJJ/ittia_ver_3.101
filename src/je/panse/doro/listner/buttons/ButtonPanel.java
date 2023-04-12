@@ -34,9 +34,9 @@ public class ButtonPanel extends JPanel {
         
         if (panelLocation.equals("north")) {
         	 buttons[0].setText("Clear");
-        	 buttons[1].setText("Recue");
-        	 buttons[2].setText("Exit");
-        	 buttons[3].setText("Reset");
+        	 buttons[1].setText("Copy");
+        	 buttons[2].setText("Rescue");
+        	 buttons[3].setText("Exit");
         	 // Add the button panel to the north of the frame
             setLayout(new FlowLayout(FlowLayout.LEFT));
             setBackground(Color.GRAY);

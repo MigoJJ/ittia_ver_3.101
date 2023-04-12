@@ -13,12 +13,12 @@ import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.listner.buttons.ButtonPanel;
 import je.panse.doro.listner.buttons.EMR_B_1entry;
 
-public class GDSEMR_frame extends JFrame {
+public class GDSEMR_frame2 extends JFrame {
     protected static JTextArea tempOutputArea = new JTextArea();
     protected static IndentedTextArea[] textAreas = new IndentedTextArea[10];
     protected static String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 
-    public GDSEMR_frame() throws Exception {
+    public GDSEMR_frame2() throws Exception {
 	    setVisible(true);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("My Frame");
@@ -64,6 +64,6 @@ public class GDSEMR_frame extends JFrame {
 	}
 
 	public static void main(String[] args) throws Exception {
-        new GDSEMR_frame();
+        new GDSEMR_frame2();
     }
 }
