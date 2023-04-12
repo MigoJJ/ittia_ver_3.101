@@ -13,8 +13,11 @@ public class EMR_ChangeString {
 		    		.replaceAll(":dna ","DM with Autonomic Neuropathy")
 		    		.replaceAll(":dp ","Prediabetes")
 		    		.replaceAll(":dg ","Gestational Diabetes Mellitus")
-		    		
 		    		.replaceAll(":c ","Hypercholesterolemia F/U")
+		    		.replaceAll(":fd ","Diabetes mellitus  F/U")
+		    		.replaceAll(":ft ","Hypertension F/U")
+		    		.replaceAll(":fc ","Hypercholesterolemia F/U")
+
 		    		;
 		    System.out.println(replacedText);
 
@@ -22,33 +25,9 @@ public class EMR_ChangeString {
 		}
 }
 
-
-//HashMap<String, String> codesMap = new HashMap<String, String>();
-//codesMap.put("fd", "# Diabetes mellitus F/U");
-//codesMap.put("ft", "# Hypertension F/U");
-//codesMap.put("fc", "# Hypercholesterolemia F/U");
-//codesMap.put("fctg", "# HyperTriGlyceridemia F/U");
-//codesMap.put("fte", "# Hyperthyroidism F/U");
-//codesMap.put("fto", "# Hypothyroidism F/U");
-//codesMap.put("fnti", "# Non-Thyroidal Illness F/U");
-//codesMap.put("ftep", "# Hyperthyroidism with Pregnancy [ ] weeks F/U");
-//codesMap.put("ftop", "# Hypothyroidism with Pregnancy [ ] weeks F/U");
-//codesMap.put("do", "# DM without complications");
-//codesMap.put("d", "# Diabetes Mellitus");
-//
-//if (codesMap.containsKey(dcode)) {
-//    cresult = codesMap.get(dcode);
-//} else {
-//    System.out.println("Reinsert disease code please...");
-//}
-
-
-//	    
 //	    switch (dcode) {
 //		
-//			case "fd" : cresult =("#  Diabetes mellitus  F/U");break;
-//			case "ft" : cresult =("#  Hypertension F/U")	;break;
-//			case "fc" : cresult =("#  Hypercholesterolemia F/U");break;
+
 //			case "fctg" : cresult =("#  HyperTriGlyceridemia F/U");break;
 //			case "fte" : cresult =("#  Hyperthyroidism F/U");break;
 //			case "fto" : cresult =("#  Hypothyroidism F/U");break;
