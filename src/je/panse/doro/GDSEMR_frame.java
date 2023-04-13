@@ -62,6 +62,10 @@ public class GDSEMR_frame extends JFrame {
 		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
 			EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
 	}
+	
+	public static void call_hypertension(int i,String text) throws Exception {
+		textAreas[i].setText(text);	
+	}
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();

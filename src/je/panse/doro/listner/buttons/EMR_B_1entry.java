@@ -8,7 +8,7 @@ import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.entry.IttiaEntry;
-import je.panse.doro.fourgate.EMR_FU_hypertension;
+import je.panse.doro.fourgate.hypertension.EMR_FU_hypertensionEdit;
 
 public class EMR_B_1entry extends GDSEMR_frame {
     public EMR_B_1entry() throws Exception {
@@ -66,7 +66,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
 				case 1:
 						if (panelLocation.equals("south")) {				    
 							System.out.println("southsouthsouth 1 1 1 ~~!!");
-							EMR_FU_hypertension.main(null);
+							EMR_FU_hypertensionEdit.main(null);
 
 						    // 
 							}
