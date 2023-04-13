@@ -1,6 +1,6 @@
 package je.panse.doro.listner;
 
-import javax.swing.*;
+import javax.swing.*;	
 import javax.swing.text.*;
 
 public class IndentedTextArea extends JTextArea {
