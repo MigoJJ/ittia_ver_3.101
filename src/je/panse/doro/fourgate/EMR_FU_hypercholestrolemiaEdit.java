@@ -1,20 +1,10 @@
 package je.panse.doro.fourgate;
 
-import java.awt.BorderLayout;	
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 

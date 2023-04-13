@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate;
 
-import java.io.File;	
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
@@ -9,12 +9,13 @@ import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_FU_hypertensionEdit extends JFrame {
-    public static final int NUM_TEXT_AREAS = 10;
-    public static JTextArea[] textAreas = new JTextArea[NUM_TEXT_AREAS];
+    private static final int NUM_TEXT_AREAS = 10;
+    private JTextArea[] textAreas;
 
     public EMR_FU_hypertensionEdit() {
-		for (int i = 0; i < 10; i++) {
 
+			for (int i = 0; i < 10; i++) {
+				
 			    // Read the contents of the file
 			    String fileName = EntryDir.homeDir + "/fourgate/hypertension/textarea" + (i);
 			    String text = "";
