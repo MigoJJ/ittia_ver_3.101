@@ -19,7 +19,6 @@ public class GDSEMR_frame extends JFrame {
     protected static String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 
     public GDSEMR_frame() throws Exception {
-	    setVisible(true);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("My Frame");
 	    setSize(1200, 1200/12*9);
