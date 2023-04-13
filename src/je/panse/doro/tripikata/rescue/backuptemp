@@ -1,0 +1,8 @@
+    hyprtCCCCCCCCCCCCC
+	public EMR_FU_Edit() {
+		EMR_FU_diabetes.main(null);
+		EMR_FU_hypercholesterolemia.main(null);
+		EMR_FU_hypertension.main(null);
+File copied successfully.
+        edit
+    ile copied successfully.
