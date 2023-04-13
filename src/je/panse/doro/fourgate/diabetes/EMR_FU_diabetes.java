@@ -27,12 +27,12 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
 
     public EMR_FU_diabetes() {
         setTitle("Diabetes Mellitus Preform");
-        setSize(400, 1000);
+        setSize(600, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create JTextAreas with default text and make them scrollable
         textAreas = new ArrayList<JTextArea>();
-//        String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
+        String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
 //        for (int i = 0; i < defaultTexts.length; i++) {
 //            JTextArea textArea = new JTextArea(defaultTexts[i]);
 //            textArea.setLineWrap(true);

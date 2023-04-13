@@ -18,16 +18,16 @@ import javax.swing.JTextArea;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_hypercholestrolemia extends JFrame {
+public class EMR_FU_hypercholestrolemiaEdit extends JFrame {
     private static final int NUM_TEXT_AREAS = 10;
     private JTextArea[] textAreas;
 
-    public EMR_FU_hypercholestrolemia() {
+    public EMR_FU_hypercholestrolemiaEdit() {
 
 			for (int i = 0; i < 10; i++) {
 				
 			    // Read the contents of the file
-			    String fileName = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + (i + 1);
+			    String fileName = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + (i);
 			    String text = "";
 			    try (Scanner scanner = new Scanner(new File(fileName))) {
 			        while (scanner.hasNextLine()) {
@@ -48,6 +48,6 @@ public class EMR_FU_hypercholestrolemia extends JFrame {
     }
                     
     public static void main(String[] args) {
-        new EMR_FU_hypercholestrolemia();
+        new EMR_FU_hypercholestrolemiaEdit();
     }
 }

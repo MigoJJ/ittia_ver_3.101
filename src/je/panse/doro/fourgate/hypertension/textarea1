@@ -1,1 +1,8 @@
-123456 + iEMR_FU_diabetesEditEMR_FU_diabetesEditEMR_FU_diabetesEditEMR_FU_diabetesEdit
+//        String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
+//        for (int i = 0; i < defaultTexts.length; i++) {
+//            JTextArea textArea = new JTextArea(defaultTexts[i]);
+//            textArea.setLineWrap(true);
+//            textArea.setWrapStyleWord(true);
+//            JScrollPane scrollPane = new JScrollPane(textArea);
+//            textAreas.add(textArea);
+//        }

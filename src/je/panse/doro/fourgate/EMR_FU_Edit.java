@@ -9,8 +9,8 @@ public class EMR_FU_Edit extends JFrame {
 
 	public EMR_FU_Edit() {
 		EMR_FU_diabetes.main(null);
-		EMR_FU_hypertension.main(null);
 		EMR_FU_hypercholesterolemia.main(null);
+		EMR_FU_hypertensionEdit.main(null);
 	}
 	
 	public static void main(String[] args) {

@@ -1,33 +1,22 @@
 package je.panse.doro.fourgate;
 
-import java.awt.BorderLayout;	
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.File;	
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_diabetes extends JFrame {
-    private static final int NUM_TEXT_AREAS = 10;
-    private JTextArea[] textAreas;
+public class EMR_FU_hypertensionEdit extends JFrame {
+    public static final int NUM_TEXT_AREAS = 10;
+    public static JTextArea[] textAreas = new JTextArea[NUM_TEXT_AREAS];
 
-    public EMR_FU_diabetes() {
+    public EMR_FU_hypertensionEdit() {
+		for (int i = 0; i < 10; i++) {
 
-			for (int i = 0; i < 10; i++) {
-				
 			    // Read the contents of the file
-			    String fileName = EntryDir.homeDir + "/fourgate/diabetes/textarea" + (i + 1);
+			    String fileName = EntryDir.homeDir + "/fourgate/hypertension/textarea" + (i);
 			    String text = "";
 			    try (Scanner scanner = new Scanner(new File(fileName))) {
 			        while (scanner.hasNextLine()) {
@@ -48,6 +37,6 @@ public class EMR_FU_diabetes extends JFrame {
     }
                     
     public static void main(String[] args) {
-        new EMR_FU_diabetes();
+        new EMR_FU_hypertensionEdit();
     }
 }

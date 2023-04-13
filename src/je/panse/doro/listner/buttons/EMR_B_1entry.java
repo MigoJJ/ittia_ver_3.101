@@ -8,9 +8,9 @@ import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.entry.IttiaEntry;
-import je.panse.doro.fourgate.EMR_FU_diabetes;
-import je.panse.doro.fourgate.EMR_FU_hypercholestrolemia;
-import je.panse.doro.fourgate.EMR_FU_hypertension;
+import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
+import je.panse.doro.fourgate.EMR_FU_hypercholestrolemiaEdit;
+import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 
 public class EMR_B_1entry extends GDSEMR_frame {
     public EMR_B_1entry() throws Exception {
@@ -66,17 +66,17 @@ public class EMR_B_1entry extends GDSEMR_frame {
 			switch (noButton) {
 				case 1:
 							System.out.println("southsouthsouth 1 1 1 ~~!!");
-							EMR_FU_diabetes.main(null);
+							EMR_FU_diabetesEdit.main(null);
 				    break;
 				    
 				case 2:
 						System.out.println("southsouthsouth 1 1 1 ~~!!");
-						EMR_FU_hypertension.main(null);
+						EMR_FU_hypertensionEdit.main(null);
 				    break;
 				
 				case 3:
 						System.out.println("southsouthsouth 1 1 1 ~~!!");
-						EMR_FU_hypercholestrolemia.main(null);
+						EMR_FU_hypercholestrolemiaEdit.main(null);
 				    break;
 				case 4:
 				    break;

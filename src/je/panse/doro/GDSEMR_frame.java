@@ -61,7 +61,6 @@ public class GDSEMR_frame extends JFrame {
 		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
 			EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
 	}
-	
 
 	public static void call_preform(int i, String text) {
 		textAreas[i].setText(text);	
