@@ -19,7 +19,6 @@ public class GDSEMR_frame extends JFrame {
     protected static String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 
     public GDSEMR_frame() throws Exception {
-	    setVisible(true);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("My Frame");
 	    setSize(1200, 1200/12*9);
@@ -61,6 +60,10 @@ public class GDSEMR_frame extends JFrame {
 	public static void callbutton(int noButton, String panelLocation) throws Exception {
 		System.out.println("noButton executed for button " + noButton + ">>>" + panelLocation);
 			EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
+	}
+
+	public static void call_preform(int i, String text) {
+		textAreas[i].setText(text);	
 	}
 
 	public static void main(String[] args) throws Exception {
