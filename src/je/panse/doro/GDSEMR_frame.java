@@ -63,7 +63,8 @@ public class GDSEMR_frame extends JFrame {
 			EMR_B_1entry.EMR_B_selection(noButton,panelLocation);
 	}
 	
-	public static void call_hypertension(int i,String text) throws Exception {
+
+	public static void call_preform(int i, String text) {
 		textAreas[i].setText(text);	
 	}
 

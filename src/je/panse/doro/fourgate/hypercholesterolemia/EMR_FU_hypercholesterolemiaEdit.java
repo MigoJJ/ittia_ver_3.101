@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.hypertension;
+package je.panse.doro.fourgate.hypercholesterolemia;
 
 import java.awt.BorderLayout;	
 import java.awt.FlowLayout;
@@ -18,11 +18,11 @@ import javax.swing.JTextArea;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_hypertensionEdit extends JFrame {
+public class EMR_FU_hypercholesterolemiaEdit extends JFrame {
     private static final int NUM_TEXT_AREAS = 10;
     private JTextArea[] textAreas;
 
-    public EMR_FU_hypertensionEdit() {
+    public EMR_FU_hypercholesterolemiaEdit() {
         // Set up the frame
         setTitle("My App");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,6 +115,6 @@ public class EMR_FU_hypertensionEdit extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_FU_hypertensionEdit();
+        new EMR_FU_hypercholesterolemiaEdit();
     }
 }

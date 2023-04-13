@@ -1,23 +1,33 @@
 package je.panse.doro.fourgate;
 
+import java.awt.BorderLayout;	
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_hypertension extends JFrame {
+public class EMR_FU_hypercholestrolemia extends JFrame {
     private static final int NUM_TEXT_AREAS = 10;
     private JTextArea[] textAreas;
 
-    public EMR_FU_hypertension() {
+    public EMR_FU_hypercholestrolemia() {
 
 			for (int i = 0; i < 10; i++) {
 				
 			    // Read the contents of the file
-			    String fileName = EntryDir.homeDir + "/fourgate/hypertension/textarea" + (i + 1);
+			    String fileName = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + (i + 1);
 			    String text = "";
 			    try (Scanner scanner = new Scanner(new File(fileName))) {
 			        while (scanner.hasNextLine()) {
@@ -38,6 +48,6 @@ public class EMR_FU_hypertension extends JFrame {
     }
                     
     public static void main(String[] args) {
-        new EMR_FU_hypertension();
+        new EMR_FU_hypercholestrolemia();
     }
 }
