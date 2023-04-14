@@ -33,21 +33,21 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
         // Create JTextAreas with default text and make them scrollable
         textAreas = new ArrayList<JTextArea>();
         String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
-//        for (int i = 0; i < defaultTexts.length; i++) {
-//            JTextArea textArea = new JTextArea(defaultTexts[i]);
-//            textArea.setLineWrap(true);
-//            textArea.setWrapStyleWord(true);
-//            JScrollPane scrollPane = new JScrollPane(textArea);
-//            textAreas.add(textArea);
-//        }
 
-	    for (int i = 0; i < 10; i++) {
+        // Create panel for JTextAreas
+        JPanel textAreaPanel = new JPanel();
+        textAreaPanel.setLayout(new GridLayout(textAreas.size(), 1));
+        for (int i = 0; i < textAreas.size(); i++) {
+            textAreaPanel.add(textAreas.get(i));
+        }
+        
+	    for (int i = 0; i < defaultTexts.length; i++) {
 	        JTextArea textArea = new JTextArea();
 	        textArea.setText(getSavedText(i)); // Load saved text from file
 	        textArea.setLineWrap(true);
 	        textArea.setWrapStyleWord(true);
 	        JScrollPane scrollPane = new JScrollPane(textArea);
-//	        textAreaPanel.add(scrollPane);
+	        textAreaPanel.add(scrollPane);
 	        textAreas.add(textArea);
 	    }
         
@@ -64,13 +64,6 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
         buttonPanel.setLayout(new GridLayout(1, 4));
         buttonPanel.add(saveButton);
         buttonPanel.add(exitButton);
-
-        // Create panel for JTextAreas
-        JPanel textAreaPanel = new JPanel();
-        textAreaPanel.setLayout(new GridLayout(textAreas.size(), 1));
-        for (int i = 0; i < textAreas.size(); i++) {
-            textAreaPanel.add(textAreas.get(i));
-        }
 
         // Gradually darken background color using orange
         float hue = 0.13f;

@@ -1,8 +1,13 @@
-    hyprtCCCCCCCCCCCCC
-	public EMR_FU_Edit() {
-		EMR_FU_diabetes.main(null);
-		EMR_FU_hypercholesterolemia.main(null);
-		EMR_FU_hypertension.main(null);
-File copied successfully.
-        edit
-    ile copied successfully.
+    CC>   Hypercholesterolemia F/U
+    PI>
+    ROS>
+    PMH>
+    S >
+    O>
+    PhysicalExam>
+    A>
+    P>
+    Comment>
+-   Reduce sodium intake to less than 2,300 mg per day
+-   Eat a diet rich in fruits, vegetables, whole grains, lean proteins, and low-fat dairy p
+-   Consider the Dietary Approaches to Stop Hypertension (DASH) diet,
