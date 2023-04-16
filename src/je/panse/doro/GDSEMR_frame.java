@@ -29,21 +29,51 @@ public class GDSEMR_frame extends JFrame {
         tempOutputArea.setPreferredSize(new Dimension(550, 1000));
         add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 
-        // Create Center panel with 9 textAreas
+
+     // Create Center panel with 9 textAreas
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
-	        for (int i = 0; i < textAreas.length; i++) {
-					textAreas[i] = new IndentedTextArea();
-					String inputData = titles[i] + "\t";
-						textAreas[i].setPreferredSize(new Dimension(450, 150));
-						textAreas[i].setText(inputData);
-					centerPanel.add(textAreas[i]);
-					
-					JTextArea textArea = textAreas[i];
-						ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
-						textArea.getDocument().addDocumentListener(listener);
-						// Create background colors
-						BlendColors.blendColors(textArea,tempOutputArea, i);
-	        }
+        for (int i = 0; i < textAreas.length; i++) {
+            textAreas[i] = new IndentedTextArea();
+            String inputData = titles[i] + "\t";
+            textAreas[i].setLineWrap(true); // enable line wrapping
+//            textAreas[i].setPreferredSize(new Dimension(450, 200)); // set fixed width and height
+            textAreas[i].setText(inputData);
+            textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
+            
+         // Wrap the JTextArea in a JScrollPane
+            JScrollPane scrollPane = new JScrollPane(textAreas[i]);
+            scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+            centerPanel.add(scrollPane); // Add the scrollPane to the panel
+
+            
+            
+            JTextArea textArea = textAreas[i];
+            ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
+            textArea.getDocument().addDocumentListener(listener);
+            // Create background colors
+            BlendColors.blendColors(textArea, tempOutputArea, i);
+        }
+
+        
+
+        
+        
+        
+        // Create Center panel with 9 textAreas
+//        JPanel centerPanel = new JPanel(new GridLayout(5, 2));
+//	        for (int i = 0; i < textAreas.length; i++) {
+//					textAreas[i] = new IndentedTextArea();
+//					String inputData = titles[i] + "\t";
+//						textAreas[i].setPreferredSize(new Dimension(450, 150));
+//						textAreas[i].setText(inputData);
+//					centerPanel.add(textAreas[i]);
+//					JTextArea textArea = textAreas[i];
+//						ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
+//						textArea.getDocument().addDocumentListener(listener);
+//						// Create background colors
+//						BlendColors.blendColors(textArea,tempOutputArea, i);
+//	        }
 
         // Create button panel
         ButtonPanel buttonPanel = new ButtonPanel("north");
