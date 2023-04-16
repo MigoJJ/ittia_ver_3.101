@@ -12,6 +12,7 @@ import je.panse.doro.listner.ListenerTextAreaChange;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.listner.buttons.ButtonPanel;
 import je.panse.doro.listner.buttons.EMR_B_1entry;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
 
 public class GDSEMR_frame extends JFrame {
     protected static JTextArea tempOutputArea = new JTextArea();
@@ -25,14 +26,15 @@ public class GDSEMR_frame extends JFrame {
 
         // Create West panel with tempOutputArea
 	    tempOutputArea.setText("");
-        tempOutputArea.setPreferredSize(new Dimension(450, 500));
+        tempOutputArea.setPreferredSize(new Dimension(550, 1000));
         add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 
         // Create Center panel with 9 textAreas
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
 	        for (int i = 0; i < textAreas.length; i++) {
 					textAreas[i] = new IndentedTextArea();
-						String inputData = titles[i] + "\t";
+					String inputData = titles[i] + "\t";
+						textAreas[i].setPreferredSize(new Dimension(450, 150));
 						textAreas[i].setText(inputData);
 					centerPanel.add(textAreas[i]);
 					
@@ -49,11 +51,11 @@ public class GDSEMR_frame extends JFrame {
         // Create second button panel
         ButtonPanel buttonPanel2 = new ButtonPanel("south");
         add(buttonPanel2, BorderLayout.SOUTH);
-        
         // Add scroll pane to center panel
         JScrollPane scrollPane = new JScrollPane(centerPanel);
         add(scrollPane, BorderLayout.CENTER);
         
+        pack();
         setVisible(true);
     	}
         //	call button number
@@ -68,5 +70,7 @@ public class GDSEMR_frame extends JFrame {
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
+        EMR_east_buttons_obj.main(null);;
+        
     }
 }

@@ -30,6 +30,7 @@ public class EMR_FU_hypertension extends JFrame implements ActionListener {
     public EMR_FU_hypertension() {
         setTitle("Hypertension Preform");
         setSize(400, 1000);
+        setLocation(200,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create JTextAreas with default text and make them scrollable
