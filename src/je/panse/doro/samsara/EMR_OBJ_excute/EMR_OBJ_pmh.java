@@ -6,7 +6,6 @@ import java.awt.GridLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
-
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -83,6 +82,8 @@ public class EMR_OBJ_pmh extends JFrame {
                         String text = textArea.getText().replace("▸ " + checkBox.getText(), label);
                         textArea.setText(text);
                     }
+                    String textAreaText = textArea.getText();
+                    System.out.println("The text in the text area is: " + textAreaText);
                 }
             });
         }
@@ -90,6 +91,8 @@ public class EMR_OBJ_pmh extends JFrame {
         
         pack();
         setLocationRelativeTo(null);
+        
+
         setVisible(true);
     }
 
