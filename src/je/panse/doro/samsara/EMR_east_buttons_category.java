@@ -46,7 +46,7 @@ public class EMR_east_buttons_category extends JFrame {
         int frameHeight = getHeight();
         int x = screenWidth - frameWidth;
         int y = 0;
-        setLocation(x, y+200);
+        setLocation(x+250, y+200);
  
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();

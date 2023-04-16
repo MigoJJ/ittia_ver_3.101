@@ -24,7 +24,7 @@ public class EMR_east_buttons_obj extends JFrame {
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
             JButton button = new JButton(buttonName);
-            button.setFont(new Font("Arial", Font.PLAIN, 20));
+            button.setFont(new Font("Arial", Font.BOLD, 13));
             buttons.add(button);
             add(button);
         }

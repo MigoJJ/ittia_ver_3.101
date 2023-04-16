@@ -1,10 +1,8 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
-import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,6 +12,7 @@ import je.panse.doro.listner.ListenerTextAreaChange;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.listner.buttons.ButtonPanel;
 import je.panse.doro.listner.buttons.EMR_B_1entry;
+import je.panse.doro.samsara.EMR_east_buttons_category;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 
 public class GDSEMR_frame extends JFrame {
@@ -26,7 +25,7 @@ public class GDSEMR_frame extends JFrame {
     public GDSEMR_frame() throws Exception {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setTitle("My Frame");
-	    setSize(1200, 1200/12*9);
+	    setSize(100, 100);
 	    
 	    // Create Panel	    
 //	    BoxLayout boxLayout = new BoxLayout(centerPanel, BoxLayout.Y_AXIS);
@@ -36,7 +35,7 @@ public class GDSEMR_frame extends JFrame {
 
 	    // Create West panel with tempOutputArea
 	    tempOutputArea.setText("");
-        tempOutputArea.setPreferredSize(new Dimension(550, 1000));
+        tempOutputArea.setPreferredSize(new Dimension(500, 1000));
         add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 
         // Create Center panel with 10 textAreas
@@ -44,6 +43,7 @@ public class GDSEMR_frame extends JFrame {
             // Create each JTextArea and wrap it in a JScrollPane
             String inputData = titles[i] + "\t";
             textAreas[i] = new IndentedTextArea(); // Initialize the JTextArea object
+            textAreas[i].setPreferredSize(new Dimension(400, 100)); // Set preferred size
             textAreas[i].setText(inputData);
             JScrollPane scrollPane = new JScrollPane(textAreas[i]);
 
@@ -81,7 +81,8 @@ public class GDSEMR_frame extends JFrame {
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
-        EMR_east_buttons_obj.main(null);;
+        EMR_east_buttons_obj.main(null);
+        EMR_east_buttons_category.main(null);
         
     }
 }
