@@ -9,17 +9,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class EMR_east_buttons extends JFrame {
+public class EMR_east_buttons_category extends JFrame {
 
     private ArrayList<JButton> buttons = new ArrayList<>();
 
-    public EMR_east_buttons(String position, String title) {
+    public EMR_east_buttons_category(String position, String title) {
         setSize(new Dimension(800, 600));
-        setLayout(new GridLayout(3, 5));
+        setLayout(new GridLayout(10, 1));
         setBackground(new Color(240, 240, 240));
         setTitle(title);
 
-        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "LDL", "Lp(a)", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
+        String[] buttonNames = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
@@ -30,11 +30,15 @@ public class EMR_east_buttons extends JFrame {
         }
 
         // Change background color of buttons gradually
+//            Color color = new Color(240 - i * 12, 240 - i * 12, 240 - i * 12);
+//            Color color = new Color(255, 165, 0); // Create an orange color object
+
         for (int i = 0; i < buttons.size(); i++) {
-            Color color = new Color(240 - i * 12, 240 - i * 12, 240 - i * 12);
+          Color color = new Color(240 - i * 12, 240 - i * 12, 240 - i * 12);
             buttons.get(i).setBackground(color);
         }
-
+        
+        
         setLocationRelativeTo(null);
         int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -42,7 +46,7 @@ public class EMR_east_buttons extends JFrame {
         int frameHeight = getHeight();
         int x = screenWidth - frameWidth;
         int y = 0;
-        setLocation(x, y);
+        setLocation(x, y+200);
  
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
@@ -50,6 +54,6 @@ public class EMR_east_buttons extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_east_buttons("east", "EMR East Buttons");
+        new EMR_east_buttons_category("east", "EMR East Buttons");
     }
 }

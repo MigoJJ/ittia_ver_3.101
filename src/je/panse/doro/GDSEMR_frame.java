@@ -12,7 +12,7 @@ import je.panse.doro.listner.ListenerTextAreaChange;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.listner.buttons.ButtonPanel;
 import je.panse.doro.listner.buttons.EMR_B_1entry;
-import je.panse.doro.samsara.EMR_east_buttons;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
 
 public class GDSEMR_frame extends JFrame {
     protected static JTextArea tempOutputArea = new JTextArea();
@@ -70,7 +70,7 @@ public class GDSEMR_frame extends JFrame {
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
-        EMR_east_buttons.main(null);;
+        EMR_east_buttons_obj.main(null);;
         
     }
 }
