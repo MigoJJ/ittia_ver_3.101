@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
+import je.panse.doro.chartplate.EMR_organize_titles;
 
 public class ListenerTextAreaChange implements DocumentListener  {
     private JTextArea textArea;
@@ -53,6 +54,7 @@ public class ListenerTextAreaChange implements DocumentListener  {
     public void updateTempOutputArea() throws IOException {
         String inputText = textArea.getText();
         tempOutputArea.setText(inputText);
+
         // Append the text from all text areas to the output area
         StringBuilder appendedTextBuilder = new StringBuilder();
         Component[] components = textArea.getParent().getComponents();
@@ -60,11 +62,11 @@ public class ListenerTextAreaChange implements DocumentListener  {
             if (components[i] instanceof JTextArea) {
                 JTextArea textArea = (JTextArea) components[i];
                 String text = textArea.getText();
+                text = EMR_organize_titles.EMR_organize_titles(text);
                 appendedTextBuilder.append(" ").append(text).append("\n");
             }
         }
         tempOutputArea.setText(appendedTextBuilder.toString());
-
         // Call the method to append the output text to the chartplate
         EMR_Write_To_Chartplate.textAreaAppend(tempOutputArea);
     }

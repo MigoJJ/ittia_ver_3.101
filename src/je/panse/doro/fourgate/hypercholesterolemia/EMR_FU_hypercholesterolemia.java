@@ -28,6 +28,7 @@ public class EMR_FU_hypercholesterolemia extends JFrame implements ActionListene
     public EMR_FU_hypercholesterolemia() {
         setTitle("Hypercholesterolemia Preform");
         setSize(400, 1000);
+        setLocation(100,100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create JTextAreas with default text and make them scrollable
