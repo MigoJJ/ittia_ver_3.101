@@ -49,11 +49,11 @@ public class GDSEMR_frame extends JFrame {
         // Create second button panel
         ButtonPanel buttonPanel2 = new ButtonPanel("south");
         add(buttonPanel2, BorderLayout.SOUTH);
-        
         // Add scroll pane to center panel
         JScrollPane scrollPane = new JScrollPane(centerPanel);
         add(scrollPane, BorderLayout.CENTER);
         
+        pack();
         setVisible(true);
     	}
         //	call button number
