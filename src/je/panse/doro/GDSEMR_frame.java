@@ -16,6 +16,7 @@ import je.panse.doro.samsara.EMR_east_buttons_obj;
 
 public class GDSEMR_frame extends JFrame {
     protected static JTextArea tempOutputArea = new JTextArea();
+    protected static JTextArea textArea = new JTextArea();
     protected static IndentedTextArea[] textAreas = new IndentedTextArea[10];
     protected static String[] titles = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
 
@@ -25,13 +26,20 @@ public class GDSEMR_frame extends JFrame {
 	    setSize(1200, 1200/12*9);
 
         // Create West panel with tempOutputArea
-	    tempOutputArea.setText("");
-        tempOutputArea.setPreferredSize(new Dimension(550, 1000));
-        add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
+	      // Create the tempOutputArea and add it to the panel
+		  JTextArea tempOutputArea = new JTextArea();
+				tempOutputArea.setText("");
+				tempOutputArea.setEditable(false); // make the output area read-only
+				JScrollPane outputScrollPane = new JScrollPane(tempOutputArea);
+				outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+				tempOutputArea.setPreferredSize(new Dimension(400, 1000));
+				add(new JScrollPane(tempOutputArea), BorderLayout.WEST);
 
-
-     // Create Center panel with 9 textAreas
+        // Create Center panel with 9 textAreas
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
+        centerPanel.setPreferredSize(new Dimension(1200, centerPanel.getPreferredSize().height));
+        
+        
         for (int i = 0; i < textAreas.length; i++) {
             textAreas[i] = new IndentedTextArea();
             String inputData = titles[i] + "\t";
@@ -43,37 +51,14 @@ public class GDSEMR_frame extends JFrame {
          // Wrap the JTextArea in a JScrollPane
             JScrollPane scrollPane = new JScrollPane(textAreas[i]);
             scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
             centerPanel.add(scrollPane); // Add the scrollPane to the panel
 
-            
-            
-            JTextArea textArea = textAreas[i];
+            textArea = textAreas[i];
             ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
-            textArea.getDocument().addDocumentListener(listener);
+            textAreas[i].getDocument().addDocumentListener(listener);
             // Create background colors
-            BlendColors.blendColors(textArea, tempOutputArea, i);
+            BlendColors.blendColors(textAreas[i], tempOutputArea, i);
         }
-
-        
-
-        
-        
-        
-        // Create Center panel with 9 textAreas
-//        JPanel centerPanel = new JPanel(new GridLayout(5, 2));
-//	        for (int i = 0; i < textAreas.length; i++) {
-//					textAreas[i] = new IndentedTextArea();
-//					String inputData = titles[i] + "\t";
-//						textAreas[i].setPreferredSize(new Dimension(450, 150));
-//						textAreas[i].setText(inputData);
-//					centerPanel.add(textAreas[i]);
-//					JTextArea textArea = textAreas[i];
-//						ListenerTextAreaChange listener = new ListenerTextAreaChange(textArea, tempOutputArea);
-//						textArea.getDocument().addDocumentListener(listener);
-//						// Create background colors
-//						BlendColors.blendColors(textArea,tempOutputArea, i);
-//	        }
 
         // Create button panel
         ButtonPanel buttonPanel = new ButtonPanel("north");

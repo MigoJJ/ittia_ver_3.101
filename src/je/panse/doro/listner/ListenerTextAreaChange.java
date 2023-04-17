@@ -6,17 +6,19 @@ import java.io.IOException;
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.chartplate.EMR_organize_titles;
 
 public class ListenerTextAreaChange implements DocumentListener  {
     private JTextArea textArea;
-    private JTextArea tempOutputArea;
     private boolean updatingTextArea = false;
+    private JTextArea tempOutputArea = new JTextArea();
+
 
     public ListenerTextAreaChange(JTextArea textArea, JTextArea tempOutputArea) {
         this.textArea = textArea;
-        this.tempOutputArea = tempOutputArea;
     }
 
     @Override
@@ -52,8 +54,13 @@ public class ListenerTextAreaChange implements DocumentListener  {
     }
 
     public void updateTempOutputArea() throws IOException {
+
         String inputText = textArea.getText();
-        tempOutputArea.setText(inputText);
+        
+        System.out.println(" String inputText = " + inputText);
+        
+        
+        tempOutputArea.append(inputText);
 
         // Append the text from all text areas to the output area
         StringBuilder appendedTextBuilder = new StringBuilder();

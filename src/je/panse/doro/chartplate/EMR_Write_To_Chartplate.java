@@ -33,6 +33,7 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 		    }
 		    // Set the text of the JTextArea to the filtered text
 		    tempOutputArea.setText(sb.toString());
+		    System.out.println("sb.toString()" +sb.toString());
 
 		    // Copy updated text to clipboard
 		    copyToClipboard(tempOutputArea);
