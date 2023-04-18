@@ -1,11 +1,14 @@
 package je.panse.doro;
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import je.panse.doro.listner.buttons.BlendColors;
 
 public class GDSEMR_frame {
 	   public GDSEMR_frame() throws Exception {
@@ -42,6 +45,8 @@ public class GDSEMR_frame {
 		         textAreas[i].setLineWrap(true); // enable line wrapping
 		         textAreas[i].setText(inputData);
 		         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
+		         // Create background colors
+		         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
 		         
 		         // Wrap the JTextArea in a JScrollPane
 		         JScrollPane scrollPane = new JScrollPane(textAreas[i]);
