@@ -2,7 +2,6 @@ package je.panse.doro;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -52,7 +51,6 @@ public class GDSEMR_frame {
 		         JScrollPane scrollPane = new JScrollPane(textAreas[i]);
 		         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		         centerPanel.add(scrollPane); // Add the scrollPane to the panel
-	         
 	
 		         EMRDocumentListner documentListener = new EMRDocumentListner(textAreas, tempOutputArea);
 						for (int j = 0; j < textAreas.length; j++) {
