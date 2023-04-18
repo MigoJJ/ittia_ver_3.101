@@ -1,13 +1,6 @@
 package je.panse.doro.listner.buttons;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-
-import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
-import je.panse.doro.entry.EntryDir;
-import je.panse.doro.entry.IttiaEntry;
+import je.panse.doro.GDSEMR_frame;	
 import je.panse.doro.fourgate.EMR_FU_Edit;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholestrolemiaEdit;
@@ -19,70 +12,65 @@ public class EMR_B_1entry extends GDSEMR_frame {
         super();
     }
     
-    public static void EMR_B_selection(int noButton, String panelLocation) throws Exception{
+    public static void EMR_B_1entryentry(String noButton, String panelLocation) throws Exception{
         if (panelLocation.equals("north")) {
+              switch (noButton) {
+                    case "Rescue":
+                        break;
+                    case "Copy":
+                        break;
+                    case "Clear":
+	    					for (int i = 0; i < textAreas.length; i++) {
+								 textAreas[i].setText("");
+								 String inputData = titles[i] + "\t";
+								 textAreas[i].setText(inputData);
+	    					}
+                        break;
+                    case "Exit":
+                    		frame.dispose();// Add code block for Button 4 here
+                        break;
+                    case "Button 5":
+                        break;
+                    case "Button 6":
+                        break;
+                    case "Button 7":
+                        break;
+                    case "Button 8":
+                        break;
+                    case "Button 9":
+                        break;
+                    case "Button 10":
+                        break;
+                    case "Button 11":
+                        break;
+                    default:
+                        System.out.println("Invalid Button title");
+                        break;
+              		}
+        		}
+
+    if (panelLocation.equals("south")) {                    
             switch (noButton) {
-                case 1:
-                    // When the clear button is clicked, clear all the input text areas
-                    for (int i = 0; i < textAreas.length; i++) {
-                        textAreas[i].setText("");
-                        String inputData = titles[i] + "\t";
-                        textAreas[i].setText(inputData);
-                    }
-                    tempOutputArea.setText("");
-                    System.out.println("clear~~~ this button");
-                    break;
-                case 2:
-                    EMR_Write_To_Chartplate.copyToClipboard(tempOutputArea);
-                    EMR_Write_To_Chartplate.callsaveTextToFile(tempOutputArea);
-                    break;
-                case 3:
-                    String filepath = EntryDir.homeDir + "/tripikata/rescue/backup";
-                    try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
-                        String line;
-                        StringBuilder fileContents = new StringBuilder();
-                        while ((line = reader.readLine()) != null) {
-                            fileContents.append(line);
-                            fileContents.append(System.lineSeparator());
-                        }
-                        ProcessBuilder pb = new ProcessBuilder("gedit", filepath);
-                        pb.start();
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                    break;
-                case 4:
-                    IttiaEntry.main(null);
-                    System.exit(0);
-                    break;
-                default:
-                    System.out.println("I do not recognize this button");
-            }
-        }
-        
-        if (panelLocation.equals("south")) {                    
-            switch (noButton) {
-                case 1:
-                    System.out.println("southsouthsouth 1 1 1 ~~!!");
+                case "F/U DM":
                     EMR_FU_diabetesEdit.main(null);
                     break;
                     
-                case 2:
-                    System.out.println("southsouthsouth 1 1 1 ~~!!");
+                case "F/U HTN":
                     EMR_FU_hypertensionEdit.main(null);
                     break;
                 
-                case 3:
-                    System.out.println("southsouthsouth 1 1 1 ~~!!");
+                case "F/U Chol":
                     EMR_FU_hypercholestrolemiaEdit.main(null);
                     break;
                     
-                case 11:
-                    System.out.println("southsouthsouth 1 1 1 ~~!!");
+                case "F/U Thyroid":
                     EMR_FU_Edit.main(null);
                     break;
                     
-                    
+                case "F/U Edit":
+                    System.out.println("southsouthsouth 1 1 1 ~~!!");
+                    EMR_FU_Edit.main(null);
+                    break;
                 default:
                     System.out.println("I do not recognize this button");
             }

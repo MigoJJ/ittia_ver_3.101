@@ -1,52 +1,64 @@
 package je.panse.doro.fourgate;
 
-import java.awt.BorderLayout;	
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Scanner;
-import javax.swing.JButton;
+
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.SwingWorker;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_FU_diabetesEdit extends JFrame {
     private static final int NUM_TEXT_AREAS = 10;
-    private JTextArea[] textAreas;
 
     public EMR_FU_diabetesEdit() {
-
-			for (int i = 0; i < 10; i++) {
-				
-			    // Read the contents of the file
-			    String fileName = EntryDir.homeDir + "/fourgate/diabetes/textarea" + (i);
-			    String text = "";
-			    try (Scanner scanner = new Scanner(new File(fileName))) {
-			        while (scanner.hasNextLine()) {
-			            text += scanner.nextLine() + "\n";
-			        }
-			    } catch (FileNotFoundException ex) {
-			        System.err.println("Failed to read file " + fileName + ": " + ex.getMessage());
-			    }
-			    // Set the text of the corresponding JTextArea
-			
-			    try {
-					GDSEMR_frame.call_preform(i,text);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
+        for (int i = 0; i < NUM_TEXT_AREAS; i++) {
+            if (GDSEMR_frame.textAreas[i] != null) {
+                GDSEMR_frame.textAreas[i].setText("");
+            }
+            String fileName = EntryDir.homeDir + "/fourgate/diabetes/textarea" + (i);
+            new FileLoader(fileName, i).execute();
+        }
     }
-                    
+
+    private class FileLoader extends SwingWorker<String, Void> {
+        private final String fileName;
+        private final int index;
+
+        public FileLoader(String fileName, int index) {
+            this.fileName = fileName;
+            this.index = index;
+        }
+
+        @Override
+        protected String doInBackground() throws Exception {
+            String text = "";
+            try (Scanner scanner = new Scanner(new File(fileName))) {
+                while (scanner.hasNextLine()) {
+                    text += scanner.nextLine() + "\n";
+                }
+            } catch (FileNotFoundException ex) {
+                System.err.println("Failed to read file " + fileName + ": " + ex.getMessage());
+            }
+            return text;
+        }
+
+        @Override
+        protected void done() {
+            try {
+                String text = get();
+                if (GDSEMR_frame.textAreas[index] != null) {
+                    GDSEMR_frame.textAreas[index].setText(text);
+                }
+                System.out.println("Loaded text " + text + " from file " + fileName);
+            } catch (Exception ex) {
+                System.err.println("Failed to load file " + fileName + ": " + ex.getMessage());
+            }
+        }
+    }
+
     public static void main(String[] args) {
         new EMR_FU_diabetesEdit();
     }
