@@ -2,8 +2,6 @@ package je.panse.doro;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -11,8 +9,8 @@ import javax.swing.JTextArea;
 
 import je.panse.doro.listner.buttons.BlendColors;
 
-public class GDSEMR_frame {
-	   public GDSEMR_frame() throws Exception {
+public class GDSEMR_frame2 {
+	   public GDSEMR_frame2() throws Exception {
 			      createAndShowGUI();
 			   }
 	
@@ -36,11 +34,7 @@ public class GDSEMR_frame {
 	      JScrollPane outputScrollPane = new JScrollPane(tempOutputArea);
 	      outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 	      westPanel.add(outputScrollPane); // Add the output scrollPane to the west panel
-
-	   // Create the north panel and add the buttons
-	      JPanel northPanel = new GDSEMR_ButtonPanel("north");
-	      JPanel southPanel = new GDSEMR_ButtonPanel("south");
-	      
+	
 	      // Create the textAreas and add them to the panel
 	      JTextArea[] textAreas = new JTextArea[10];
 	      String[] titles =  { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
@@ -66,9 +60,6 @@ public class GDSEMR_frame {
 				  // Add the center and west panels to the main JFrame
 				  frame.add(centerPanel);
 				  frame.add(westPanel, BorderLayout.WEST);
-				  frame.add(northPanel, BorderLayout.NORTH);
-				  frame.add(southPanel, BorderLayout.SOUTH);
-
 				  // Set the JFrame properties
 				  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				  frame.pack();
@@ -78,7 +69,7 @@ public class GDSEMR_frame {
 	   }
 	         
 		public static void main(String[] args) throws Exception {
-	        new GDSEMR_frame();
+	        new GDSEMR_frame2();
 	//        EMR_east_buttons_obj.main(null);
 	   }
 }
