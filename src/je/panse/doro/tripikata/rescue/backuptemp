@@ -1,5 +1,18 @@
-    CC>	ggfh
-hh
-hjsj
-srj
-srtj
+CC>	Hypercholesterolemia F/U
+PI>	diabetes mellitus
+ROS>	Hypercholesterolemia F/U
+PMH>	
+456
+O>	
+123
+A>	      JScrollPane outputScrollPane = new JScrollPane(tempOutputArea);
+      outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+      westPanel.add(outputScrollPane); // Add the output scrollPane to the west panel
+      // Create the textAreas and add them to the panel
+      JTextArea[] textAreas = new JTextArea[10];
+      String[] titles =  { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
+      for (int i = 0; i < textAreas.length; i++) {
+         textAreas[i] = new JTextArea();
+         String inputData = titles[i] + "\t";
+         textAreas[i].setLineWrap(true); // enable line wrapping
+         textAreas[i].setText(inputData);
