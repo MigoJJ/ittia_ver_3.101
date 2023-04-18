@@ -3,7 +3,10 @@ package je.panse.doro.chartplate;
 import java.io.IOException;
 
 public class EMR_ChangeString {
-	public static String code_select(String line) throws IOException {
+	
+//	public static String code_select(String line) throws IOException {
+		public static String EMR_ChangeString(String line) {
+
 		    String replacedText = "";
 		    replacedText = line
 		    		.replaceAll(":d ","diabetes mellitus")
