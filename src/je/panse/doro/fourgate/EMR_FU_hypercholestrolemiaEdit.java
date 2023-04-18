@@ -29,7 +29,7 @@ public class EMR_FU_hypercholestrolemiaEdit extends JFrame {
 			    // Set the text of the corresponding JTextArea
 			
 			    try {
-					GDSEMR_frame.call_preform(i,text);
+//					GDSEMR_frame.call_preform(i,text);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
