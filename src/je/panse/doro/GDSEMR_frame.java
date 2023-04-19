@@ -75,15 +75,11 @@ public class GDSEMR_frame {
    }
 
    public static void saveEachTextAreas(int j, String eText) throws Exception {
-			textAreas[j] = new JTextArea();
 			System.out.println(" saveEachTextAreas  eText >>> " + eText);
 			System.out.println("textAreas[j]: " + textAreas[j].getText());
-			if (textAreas[j] != null) { // add null check
-			textAreas[j].append(eText +"\n");
-			}
-	}
 
-   
+			textAreas[j].append(textAreas[j].getText() +"\n");
+	}
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();

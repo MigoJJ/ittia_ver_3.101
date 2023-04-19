@@ -96,6 +96,7 @@ public class EMRPMH extends JFrame implements ActionListener {
             }
             sb.append("\n---------------------------------\n");
             pmhxTextArea.append(sb.toString());
+//            GDSEMR_frame.textAreas[i].append(pmhxTextArea);
             try {
 				GDSEMR_frame.saveEachTextAreas(3, sb.toString());
 			} catch (Exception e1) {
