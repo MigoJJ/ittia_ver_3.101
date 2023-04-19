@@ -37,9 +37,9 @@ public class GDSEMR_ButtonPanel extends JPanel {
 		add(buttons[i]);
         }
 		if (locations.equals("north")) {
-			 buttons[0].setText("Clear");
-			 buttons[1].setText("Copy");
-			 buttons[2].setText("Rescue");
+			 buttons[0].setText("Rescue");
+			 buttons[1].setText("Save");
+			 buttons[2].setText("Clear");
 			 buttons[3].setText("Exit");
 			 // Add the button panel to the north of the frame
 			 setLayout(new FlowLayout(FlowLayout.LEFT));
