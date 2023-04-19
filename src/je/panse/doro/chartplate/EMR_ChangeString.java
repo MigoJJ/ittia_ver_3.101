@@ -1,210 +1,201 @@
 package je.panse.doro.chartplate;
 
-import java.io.IOException;
-
 public class EMR_ChangeString {
+		
+	public static String EMR_ChangeString(String line) {
+	    String[] parts = line.split(" "); // Splitting the input string at each space character
+	    for (int i = 0; i < parts.length; i++) {
+	        if (parts[i].startsWith(":")) { // Checking if the part starts with ":"
+	            parts[i] = EMR_ChangeString_abr(parts[i]); // Replacing the part with a new string
+	            break; // Exiting the loop as soon as a matching part is found
+	        }
+	    }
+	    String replacedText = String.join(" ", parts); // Joining the modified parts back into a single string
+	    System.out.println("replacedText >>> " + replacedText); // Printing the modified string
+	    return replacedText;
+	}
+
 	
-//	public static String code_select(String line) throws IOException {
-		public static String EMR_ChangeString(String line) {
+	public static String EMR_ChangeString_abr(String replacedText) {
+		replacedText = (replacedText + " ");
 
-		    String replacedText = "";
-		    replacedText = line
-		    		.replaceAll(":d ","diabetes mellitus")
-		    		.replaceAll(":dr ","DM with retinopathy")
-		    		.replaceAll(":dn ","DM with Nephropathy")
-		    		.replaceAll(":dnp ","DM with Peripheral Neuropathy")
-		    		.replaceAll(":dna ","DM with Autonomic Neuropathy")
-		    		.replaceAll(":dp ","Prediabetes")
-		    		.replaceAll(":dg ","Gestational Diabetes Mellitus")
-		    		.replaceAll(":c ","Hypercholesterolemia F/U")
-		    		.replaceAll(":fd ","Diabetes mellitus  F/U")
-		    		.replaceAll(":ft ","Hypertension F/U")
-		    		.replaceAll(":fc ","Hypercholesterolemia F/U")
+	    switch (replacedText) {
+	    		  case ":d " : replacedText =("diabetes mellitus");break;
+                case ":dr " : replacedText =("DM with retinopathy");break;
+                case ":dn " : replacedText =("DM with Nephropathy");break;
+                case ":dnp " : replacedText =("DM with Peripheral Neuropathy");break;
+                case ":dna " : replacedText =("DM with Autonomic Neuropathy");break;
+                case ":dp " : replacedText =("Prediabetes");break;
+                case ":dg " : replacedText =("Gestational Diabetes Mellitus");break;
+                case ":c " : replacedText =("Hypercholesterolemia F/U");break;
+                case ":fd " : replacedText =("Diabetes mellitus  F/U");break;
+                case ":ft " : replacedText =("Hypertension F/U");break;    
+                case ":fc " : replacedText =("Hypercholesterolemia F/U");break;
+                case ":fctg " : replacedText =("HyperTriGlyceridemia F/U");break;
+                case ":fte " : replacedText =("Hyperthyroidism F/U");break;
+                case ":fto " : replacedText =("Hypothyroidism F/U");break;
+                case ":fnti " : replacedText =("Non-Thyroidal Illness F/U");break;
+                case ":ftep " : replacedText =("Hyperthyroidism with Pregnancy [   ]  weeks F/U");break;
+                case ":ftop " : replacedText =("Hypothyroidism with Pregnancy [   ]  weeks F/U");break;
+                case ":do " : replacedText =("DM without complications");break;
+                case ":drn " : replacedText =("DM with Retinopathy \n\t: Non-proliferative diabetic retinopathy");break;
+                case ":drp " : replacedText =("DM with Retinopathy \n\t: Proliferative diabetic retinopathy");break;
+                case ":drm " : replacedText =("DM with Retinopathy \n\t: Macular edema");break;
+                case ":dnm " : replacedText =("DM with Nephropathy with microalbuminuria");break;
+                case ":dnc " : replacedText =("DM with Nephropathywith CRF");break;
+                case ":da " : replacedText =("DM with Autonomic Neuropathy");break;
+                case ":pd " : replacedText =("Prediabetes");break;
+                case ":pg " : replacedText =("Gestational Diabetes Mellitus");break;
+                case ":t " : replacedText =("Hypertension");break;    
+                case ":ctg " : replacedText =("HyperTriGlyceridemia");break;
+                case ":te " : replacedText =("Hyperthyroidism : Graves' disease");break;
+                case ":to " : replacedText =("Hypothyroidism : Hashimoto's thyroiditis");break;
+                case ":ts " : replacedText =("Subacute Thyroiditis");break;
+                case ":tt " : replacedText =("c/w Chronic Thyroiditis on USG");break;
+		               
+				
+				case ":tn " : replacedText =("Thyroid nodule");break;	
+				case ":tc " : replacedText =("Thyroid cyst");break;	
+				case ":tsg " : replacedText =("Simple Goiter");break;	
+				
+				
+				case ":at " : replacedText =("Atypical Chest pain");break;
+				case ":ap " : replacedText =("Angina Pectoris");break;
+				case ":aps " : replacedText =("Angina Pectoris with stent insertion");break;
+				case ":omi " : replacedText =("Old Myocardial Infacttion");break; 
+				case ":ami " : replacedText =("Acute Myocardial Infaction");break;
+				case ":amis " : replacedText =("Acute Myocardial Infaction with stent insertion");break;
+				
+				case ":as " : replacedText =("Artherosclerosis Carotid artery");break;
+				case ":asa " : replacedText =("Artherosclerosis Carotid artery and Aorta");break;
+					
+				case ":af " : replacedText =("Atrial Fibrillation");break;
+				case ":afr " : replacedText =("Atrial Fibrillation with RVR");break;
+				case ":afl " : replacedText =("Atrial Flutter");break;
+				case ":pvc " : replacedText =("PVC  Premature Ventricular Contractions");break;
+				case ":apc " : replacedText =("APC  atrial premature complexes");break;
+					
+				case ":gre " : replacedText =("Reflux esophagitis");break;
+				case ":gcag " : replacedText =("Chonic Atrophic Gastritis");break;
+				case ":gcsg " : replacedText =("Chronic Superficial Gastritis");break;
+				case ":geg " : replacedText =("r/o Erosive Gastritis");break;
+				case ":gibs " : replacedText =("r/o Irritable Bowel Syndrome");break;
+				case ":ggil " : replacedText =("Gilbert's syndrome");break;
+				case ":gcon " : replacedText =("Severe Constipation");break;
+				
+				case ":nti " : replacedText =("Non-Thyroidal Illness");break;
+				case ":tep " : replacedText =("Hyperthyroidism with Pregnancy [ ] weeks");break;
+				case ":top " : replacedText =("Hypothyroidism with Pregnancy [ ] weeks");break;
+				case ":tco " : replacedText =("Papillary Thyroid Cancer OP(+)\n\tHypothyroidism");break;
+				case ":tcor " : replacedText =("Papillary Thyroid Cancer OP(+) RAI Tx(+)\n\tHypothyroidism");break;
+				case ":sos " : replacedText =("Severe Osteoporosis");break;
+				case ":os " : replacedText =("Osteoporosis");break;
+				case ":ospe " : replacedText =("Osteopenia");break;
+				case ":cp " : replacedText =("Colonic Polyp");break;
+				case ":cpm " : replacedText =("Colonic Polyps multiple");break;
+				case ":cps " : replacedText =("Colonic Polyp single");break;
+				case ":cd " : replacedText =("Colonic diverticulum");break;
+				case ":gp " : replacedText =("GB polyp");break;
+				case ":gs " : replacedText =("GB stone");break;
+				case ":ggp " : replacedText =("Gastric Polyp");break;
+				case ":oc " : replacedText =("s/p Cholecystectomy d/t GB stone");break;
+				case ":oa " : replacedText =("s/p Appendectomy");break;
+				case ":occ " : replacedText =("s/p Colon cancer op(+)");break;
+				case ":ogc " : replacedText =("s/p Gastric cancer cancer op(+)");break;
+				case ":oh " : replacedText =("s/p TAH : Total Abdominal Hysterectomy");break;
+				case ":oho " : replacedText =("s/p TAH with BSO");break;
+				case ":bph " : replacedText =("BPH");break;
+				case ":op " : replacedText =("Prostate cancer operation(+)");break;
+				case ":ob " : replacedText =("s/p Breast Cancer Operation");break;
+				case ":ot " : replacedText =("Papillary Thyroid Cancer OP(+)\n\twith Hypothyroidism");break;
+				case ":oca " : replacedText =("Cataract OP(+)");break;
+				case ":hav " : replacedText =("s/p Hepatitis A infection");break;
+				case ":hbv " : replacedText =("HBsAg(+) Carrier");break;
+				case ":hcv " : replacedText =("Hepatitis C virus (HCV) chronic infection");break;
+				
+				case ":hcvp " : replacedText =("HCV-Ab(Pisitive) --> PCR(Negative) confirmed ");break;
+				
+				case ":hh " : replacedText =("Hepatic Hemagioma");break;
+				case ":hc " : replacedText =("Hepatic Cyst");break;
+				case ":hn " : replacedText =("Hepatic Nodule");break;
+				case ":hhn " : replacedText =("Hepatic higher echoic nodule");break;
+				case ":hf " : replacedText =("Fatty Liver");break;
+					case ":hfmi " : replacedText =("Mild Fatty Liver");break;
+					case ":hfmo " : replacedText =("Moderate Fatty Liver");break;
+					case ":hfse " : replacedText =("Severe Fatty Liver");break;
+				
+				case ":rc " : replacedText =("Renal Cyst");break;
+				case ":rs " : replacedText =("Renal Stone");break;
+				case ":rse " : replacedText =("Renal Stone s/p ESWL");break;
+				case ":rn " : replacedText =("Renal Nodule");break;
+				case ":rih " : replacedText =("isolated hematuria");break;
+				case ":rgh " : replacedText =("gross hematuria");break;
+				case ":rip " : replacedText =("isolated proteinuria");break;
+				
+				case ":bc " : replacedText =("Breast Cyst");break;
+				case ":bn " : replacedText =("Breast Nodule");break;
+				case ":bnb " : replacedText =("Breast Nodule with biopsy");break;
+				case ":bco " : replacedText =("s/p Breast Cancer Operation");break;
+				case ":bcoc " : replacedText =("s/p Breast Cancer Operation+ ChemoTx(+)");break;
+				case ":bcor " : replacedText =("s/p Breast Cancer Operation + RT(+)");break;
+				case ":bcocr " : replacedText =("s/p Breast Cancer Operation \n\t:  ChemoTx(+) + RT(+)");break;
+					
+				case ":ins " : replacedText =("Insomnia");break;
+				case ":epi " : replacedText =("Epigastric pain");break;
+				case ":dys " : replacedText =("Dysuria and frequency");break;
+				case ":ind " : replacedText =("Epigastric pain and Indigestion");break;
+				case ":dir " : replacedText =("Diarrhea");break;
+				case ":con " : replacedText =("Constipation");break;
+				case ":cov " : replacedText =("COVID-19 PCR (+)");break;
+					case ":covc " : replacedText =("s/p COVID-19 PCR (+) without complications [   ]");break;
+					case ":covs " : replacedText =("s/p COVID-19 PCR (+) with complications [   ]");break;
+				
+				case ":ver " : replacedText =("Vertigo");break;
+				case ":hea " : replacedText =("Headache");break;
+				case ":wei " : replacedText =("Weight loss [   ] kg");break;
+				case ":weig " : replacedText =("Weight gain [   ] kg");break;
+				case ":eas " : replacedText =("Easy fatigue");break;
+				case ":obe " : replacedText =("Obesity");break;
+				case ":obec " : replacedText =("Central Obesity");break;
+				
+				case ":gla " : replacedText =("Glaucoma(+)");break;
+				case ":cat " : replacedText =("Cataract(+)");break;
+				case ":cato " : replacedText =("Cataract operation (+) [   ]");break;
+				
+				case ":ida " : replacedText =("Iron Deficiency Anemia");break;
+				case ":leu " : replacedText =("Leukocytopenia");break;
+				case ":thr " : replacedText =("Thrombocytopenia");break;
+				case ":got " : replacedText =("GOT/GPT/GGT elevation");break;
+				case ":afp " : replacedText =("AFP elevation");break;
+				case ":ca1 " : replacedText =("CA19-9 elevation");break;
+				case ":her " : replacedText =("Herpes Zoster");break;
+				
+				case ":uti " : replacedText =("Urinary Tract Infection");break;
+				case ":uri " : replacedText =("Upper Respiratory Infection");break;
+				case ":gou " : replacedText =("Gout");break;
+				case ":dis " : replacedText =("HIVD : herniated intervertebral disc");break;
+				
+				case ":dep " : replacedText =("Depression");break;
+				case ":anx " : replacedText =("Anxiety disorder");break;
+				case ":cog " : replacedText =("Cognitive Disorder");break;
+				// ----------------------------------------------이찬주원장님
+				case ":pa " : replacedText =("s/p Bronchial Asthma");break;
+				case ":pc " : replacedText =("Chronic Cough");break;
+				case ":pp " : replacedText =("Pneumonia");break;
+				case ":pn " : replacedText =("s/p Pulmonary Nodule");break;
+				case ":pt " : replacedText =("s/p Pulmonary Tuberculosis");break;
+				case ":ntm " : replacedText =("NTM : Nontuberculous Mycobacterial Pulmonary Disease");break;
+				
+				case ":gr " : replacedText =("GDS RC");break;
+				case ":grr " : replacedText =("GDSRC Result Consultation");break;
+				case ":gg " : replacedText =("공단검진");break;
+				case ":ggr " : replacedText =("공단검진 결과상담");break;
+				case ":go " : replacedText =("Other clinic RC result");break;
+				case ":gor " : replacedText =("Other clinic result consultation");break;
 
-		    		;
-		    System.out.println(replacedText);
-
-			return replacedText;
-		}
+				default: System.out.println(" ReInsert disease code please ...  : ");break;
+				}
+		return replacedText;
+	}
+////------------------------------------------------
 }
-
-//	    switch (dcode) {
-//		
-
-//			case "fctg" : cresult =("#  HyperTriGlyceridemia F/U");break;
-//			case "fte" : cresult =("#  Hyperthyroidism F/U");break;
-//			case "fto" : cresult =("#  Hypothyroidism F/U");break;
-//			case "fnti" : cresult =("#  Non-Thyroidal Illness F/U");break;
-//			case "ftep" : cresult =("#  Hyperthyroidism with Pregnancy [   ]  weeks F/U");break;
-//			case "ftop" : cresult =("#  Hypothyroidism with Pregnancy [   ]  weeks F/U");break;
-//			case "do" : cresult =("#  DM without complications	");break;
-//			case "d" : cresult =("#  Diabetes Mellitus	");break;
-//
-//				case "dr" : cresult =("#  DM without Retinopathy ");break;
-//					case "drn" : cresult =("#  DM with Retinopathy \n\t: Non-proliferative diabetic retinopathy");break;
-//					case "drp" : cresult =("#  DM with Retinopathy \n\t: Proliferative diabetic retinopathy");break;
-//					case "drm" : cresult =("#  DM with Retinopathy \n\t: Macular edema");break;
-//
-//				case "dn" : cresult =("#  DM with Nephropathy");break;
-//					case "dnm" : cresult =("#  DM with Nephropathy with microalbuminuria");break;
-//					case "dnp" : cresult =("#  DM with Nephropathy with proteinuria");break;
-//					case "dnc" : cresult =("#  DM with Nephropathywith CRF");break;
-//				case "dp" : cresult =("#  DM with Peripheral Neuropathy");break;
-//				case "da" : cresult =("#  DM with Autonomic Neuropathy");break;
-//				case "pd" : cresult =("#  Prediabetes");break;
-//				case "pg" : cresult =("#  Gestational Diabetes Mellitus");break;
-//				
-//			case "t" : cresult =("#  Hypertension ")	;break;
-//			case "c" : cresult =("#  Hypercholesterolemia ");break;
-//			case "ctg" : cresult =("#  HyperTriGlyceridemia ");break;
-//	
-//			case "te" : cresult =("#  Hyperthyroidism : Graves' disease");break;
-//				case "to" : cresult =("#  Hypothyroidism : Hashimoto's thyroiditis");break;
-//				case "ts" : cresult =("#  Subacute Thyroiditis ");break;
-//				case "tt" : cresult =("#  c/w Chronic Thyroiditis on USG");break;
-//				case "tn" : cresult =("#  Thyroid nodule ")	;break;
-//				case "tc" : cresult =("#  Thyroid cyst ")	;break;
-//				case "tsg" : cresult =("#  Simple Goiter")	;break;
-//				case "nti" : cresult =("#  Non-Thyroidal Illness ");break;
-//				case "tep" : cresult =("#  Hyperthyroidism with Pregnancy [   ]  weeks");break;
-//				case "top" : cresult =("#  Hypothyroidism with Pregnancy [    ]  weeks ");break;
-//				case "tco" : cresult =("#  Papillary Thyroid Cancer OP(+)"
-//						+ "\n\tHypothyroidism");break;
-//				case "tcor": cresult =("#  Papillary Thyroid Cancer OP(+)  RAI Tx(+)"
-//						+ "\n\tHypothyroidism");break;
-//
-//			case "sos" : cresult =("#  Severe Osteoporosis ");break;
-//				case "os" : cresult =("#  Osteoporosis ");break;
-//				case "ospe" : cresult =("#  Osteopenia ");break;
-//			
-//			case "at": cresult =("#  Atypical Chest pain");break;
-//				case "ap" : cresult =("#  Angina Pectoris");break;
-//				case "aps" : cresult =("#  Angina Pectoris with stent insertion");break;
-//				case "omi": cresult =("#  Old Myocardial Infacttion");break; 
-//				case "ami": cresult =("#  Acute Myocardial Infaction ");break;
-//				case "amis": cresult =("#  Acute Myocardial Infaction with stent insertion");break;
-//				
-//				case "as": cresult =("#  Artherosclerosis Carotid artery");break;
-//				case "asa": cresult =("#  Artherosclerosis Carotid artery and Aorta");break;
-//				
-//			case "af" : cresult =("#  Atrial Fibrillation ");break;
-//				case "afr" : cresult =("#  Atrial Fibrillation with RVR ");break;
-//				case "afl" : cresult =("#  Atrial Flutter ");break;
-//				case "pvc" : cresult =("#  PVC  Premature Ventricular Contractions");break;
-//				case "apc" : cresult =("#  APC  atrial premature complexes");break;
-//				
-//			case "gre": cresult =("#  Reflux esophagitis");break;
-//				case "gcag": cresult =("#  Chonic Atrophic Gastritis");break;
-//				case "gcsg": cresult =("#  Chronic Superficial Gastritis");break;
-//				case "geg": cresult =("#  r/o Erosive Gastritis");break;
-//				case "gibs": cresult =("#  r/o Irritable Bowel Syndrome");break;
-//				case "ggil": cresult =("#  Gilbert's syndrome");break;
-//				case "gcon": cresult =("#  Severe Constipation");break;
-//
-//				case "cp": cresult =("#  Colonic Polyp");break;
-//					case "cpm": cresult =("#  Colonic Polyps multiple");break;
-//					case "cps": cresult =("#  Colonic Polyp single");break;
-//				case "cd": cresult =("#  Colonic diverticulum");break;				
-//				case "gp": cresult =("#  GB polyp");break;
-//				case "gs": cresult =("#  GB stone");break;
-//				case "ggp": cresult =("#  Gastric Polyp");break;
-//			
-//			// ----------------------------------------------진료 보조
-//			case "oc" : cresult =("#  s/p Cholecystectomy d/t GB stone	");break;
-//				case "oa" : cresult =("#  s/p Appendectomy ");break;
-//				case "occ" : cresult =("#  s/p Colon cancer op(+)");break;
-//				case "ogc" : cresult =("#  s/p Gastric cancer cancer op(+)");break;
-//				case "oh" : cresult =("#  s/p TAH : Total Abdominal Hysterectomy ");break;	
-//				case "oho" : cresult =("#  s/p TAH with BSO");break;	
-//				case "bph" : cresult =("#  BPH ");break;
-//				case "op" : cresult =("#  Prostate cancer operation(+)");break;
-//				case "ob" : cresult =("#  s/p Breast Cancer Operation");break;
-//				case "ot" : cresult =("#  Papillary Thyroid Cancer OP(+)"
-//						+ "\n\twith Hypothyroidism");break;
-//				case "oca" : cresult =("#  Cataract OP(+)");
-//						
-//	   		case "hav" :cresult =("#  s/p Hwpatitis A infection");break;
-//	   		case "hbv" :cresult =("#  HBsAg(+) Carrier ");break;
-//	   		case "hcv" :cresult =("#  Hepatitis C virus (HCV) chronic infection");break;
-//	   		case "hcvp" :cresult =("#  HCV-Ab(Pisitive) --> PCR(Negative) confirmed  ");break;
-//	   		
-//	   		case "hh" : cresult =("#  Hepatic Hemagioma");break;
-//	   			case "hc" : cresult =("#  Hepatic Cyst ");break;
-//				case "hn" : cresult =("#  Hepatic Nodule ");break;
-//				case "hhn" : cresult =("#  Hepatic higher echoic nodule ");break;
-//				case "hf" : cresult =("#  Fatty Liver");break;
-//					case "hfmi" : cresult =("#  Mild Fatty Liver");break;
-//					case "hfmo" : cresult =("#  Moderate Fatty Liver");break;
-//					case "hfse" : cresult =("#  Severe Fatty Liver");break;
-//			
-//			case "rc" : cresult =("#  Renal Cyst ");break;
-//				case "rs" : cresult =("#  Renal Stone ");break;
-//				case "rse" : cresult =("#  Renal Stone s/p ESWL");break;
-//				case "rn" : cresult =("#  Renal Nodule ");break;
-//				case "rih" : cresult =("#  isolated hematuria ");break;
-//				case "rgh" : cresult =("#  gross hematuria ");break;
-//				case "rip" : cresult =("#  isolated proteinuria");break;
-//			
-//			case "bc" : cresult =("#  Breast Cyst ");break;
-//				case "bn" : cresult =("#  Breast Nodule ");break;
-//				case "bnb" : cresult =("#  Breast Nodule with biopsy ");break;
-//				case "bco" : cresult =("#  s/p Breast Cancer Operation");break;
-//				case "bcoc" : cresult =("#  s/p Breast Cancer Operation+ ChemoTx(+)");break;
-//				case "bcor" : cresult =("#  s/p Breast Cancer Operation + RT(+) ");break;
-//				case "bcocr" : cresult =("#  s/p Breast Cancer Operation \n\t:  ChemoTx(+) + RT(+)");break;
-//				
-//			case "ins": cresult =("#  Insomnia");break;
-//				case "epi": cresult =("#  Epigastric pain");break;
-//				case "dys": cresult =("#  Dysuria and frequency");break;
-//				case "ind": cresult =("#  Epigastric pain and Indigestion");break;
-//				case "dir": cresult =("#  Diarrhea");break;
-//				case "con": cresult =("#  Constipation");break;
-//				case "cov": cresult =("#  COVID-19 PCR (+)");break;
-//					case "covc": cresult =("#  s/p COVID-19 PCR (+) without complications [   ]");break;
-//					case "covs": cresult =("#  s/p COVID-19 PCR (+) with complications [   ]");break;
-//
-//				case "ver": cresult =("#  Vertigo");break;
-//				case "hea": cresult =("#  Headache");break;
-//				case "wei": cresult =("#  Weight loss [   ] kg");break;
-//					case "weig": cresult =("#  Weight gain [   ] kg");break;
-//				case "eas": cresult =("#  Easy fatigue");break;
-//				case "obe": cresult =("#  Obesity");break;
-//					case "obec": cresult =("#  Central Obesity");break;
-//				
-//				case "gla": cresult =("#  Glaucoma(+)");break;
-//				case "cat": cresult =("#  Cataract(+)");break;
-//				case "cato": cresult =("#  Cataract operation (+) [   ]");break;
-//
-//				case "ida": cresult =("#  Iron Deficiency Anemia");break;
-//				case "leu": cresult =("#  Leukocytopenia");break;
-//				case "thr": cresult =("#  Thrombocytopenia");break;
-//				case "got": cresult =("#  GOT/GPT/GGT elevation");break;
-//				case "afp" : cresult =("#  AFP elevation ");break;
-//				case "ca1" : cresult =("#  CA19-9 elevation ");break;
-//				case "her": cresult =("#  Herpes Zoster");break;
-//				
-//				case "uti": cresult =("#  Urinary Tract Infection");break;
-//				case "uri": cresult =("#  Upper Respiratory Infection");break;
-//				case "gou": cresult =("#  Gout");break;
-//				case "dis": cresult =("#  HIVD : herniated intervertebral disc");break;
-//
-//				case "dep": cresult =("#  Depression");break;
-//				case "anx": cresult =("#  Anxiety disorder");break;
-//				case "cog": cresult =("#  Cognitive Disorder");break;
-//			// ----------------------------------------------이찬주원장님
-//			case "pa" : cresult =("#  s/p Bronchial Asthma ");break;
-//				case "pc" : cresult =("#  Chronic Cough ");break;
-//				case "pp" : cresult =("#  Pneumonia ");break;
-//				case "pn" : cresult =("#  s/p Pulmonary Nodule");break;
-//				case "pt" : cresult =("#  s/p Pulmonary Tuberculosis ");break;
-//				case "ntm" : cresult =("#  NTM : Nontuberculous Mycobacterial Pulmonary Disease ");break;
-//
-//			case "gr" : cresult =("#  GDS RC ");break;
-//				case "grr" : cresult =("#  GDSRC Result Consultation");break;
-//				case "gg" : cresult =("#  공단검진");break;
-//				case "ggr" : cresult =("#  공단검진 결과상담");break;
-//				case "go" : cresult =("#  Other clinic RC result");break;
-//				case "gor" : cresult =("# Other clinic result consultation");break;	
-//				
-//			default: System.out.println(" ReInsert disease code please ...  : ");break;
-//		}
