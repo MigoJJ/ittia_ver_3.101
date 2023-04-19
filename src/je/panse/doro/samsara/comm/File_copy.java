@@ -1,4 +1,4 @@
-package je.panse.doro.samsara;
+package je.panse.doro.samsara.comm;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
