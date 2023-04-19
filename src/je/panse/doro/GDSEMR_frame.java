@@ -46,7 +46,9 @@ public class GDSEMR_frame {
 	         textAreas[i] = new JTextArea();
 	         String inputData = titles[i] + "\t" + " ";
 	   	         textAreas[i].setLineWrap(true); // enable line wrapping
-	   	         textAreas[i].setText(inputData);
+	   	         
+//	   	         textAreas[i].setText(inputData);
+	   	      setThirdTextAreaText(i, inputData);
 	   	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
 	   	         // Create background colors
 	   	         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
@@ -74,12 +76,10 @@ public class GDSEMR_frame {
       }
    }
 
-   public static void saveEachTextAreas(int j, String eText) throws Exception {
-			System.out.println(" saveEachTextAreas  eText >>> " + eText);
-			System.out.println("textAreas[j]: " + textAreas[j].getText());
-
-			textAreas[j].append(textAreas[j].getText() +"\n");
+   public static void setThirdTextAreaText(int i, String text) {
+	    textAreas[i].setText(text);
 	}
+ 
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();

@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_CCPIPMH;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -18,7 +19,7 @@ import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMRPMH extends JFrame implements ActionListener {
+public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
     private JTextArea pmhxTextArea;
     private ArrayList<JCheckBox> checkBoxList;
@@ -84,7 +85,7 @@ public class EMRPMH extends JFrame implements ActionListener {
 			if (e.getActionCommand().equals("Save and Show")) {
 //		    pmhxTextArea.setText("");
 			StringBuilder sb = new StringBuilder();
-			sb.append("Past Medical History:\n\t");
+			sb.append("Past Medical History:>\n    ");
            for (JCheckBox checkbox : checkBoxList) {
                 if (checkbox.isSelected()) {
                     sb.append("▸ ");
@@ -92,13 +93,15 @@ public class EMRPMH extends JFrame implements ActionListener {
                     sb.append("☐ ");
                 }
                 sb.append(checkbox.getText());
-                sb.append("\t");
+                sb.append("    ");
             }
             sb.append("\n---------------------------------\n");
             pmhxTextArea.append(sb.toString());
 //            GDSEMR_frame.textAreas[i].append(pmhxTextArea);
             try {
-				GDSEMR_frame.saveEachTextAreas(3, sb.toString());
+            	String pmhxTextAreaString = pmhxTextArea.getText();
+				GDSEMR_frame gdsemr_frame = new GDSEMR_frame();
+				gdsemr_frame.setThirdTextAreaText(3, pmhxTextAreaString);
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
