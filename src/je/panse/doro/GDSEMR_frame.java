@@ -1,9 +1,7 @@
 package je.panse.doro;
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.GridLayout;
-
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -47,12 +45,12 @@ public class GDSEMR_frame {
       for (int i = 0; i < textAreas.length; i++) {
 	         textAreas[i] = new JTextArea();
 	         String inputData = titles[i] + "\t" + " ";
-	         textAreas[i].setLineWrap(true); // enable line wrapping
-	         textAreas[i].setText(inputData);
-	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
-	         // Create background colors
-	         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
-	         
+	   	         textAreas[i].setLineWrap(true); // enable line wrapping
+	   	         textAreas[i].setText(inputData);
+	   	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
+	   	         // Create background colors
+	   	         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
+
 	         // Wrap the JTextArea in a JScrollPane
 	         JScrollPane scrollPane = new JScrollPane(textAreas[i]);
 	         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -75,7 +73,18 @@ public class GDSEMR_frame {
 			  frame.setVisible(true);
       }
    }
-	   
+
+   public static void saveEachTextAreas(int j, String eText) throws Exception {
+			textAreas[j] = new JTextArea();
+			System.out.println(" saveEachTextAreas  eText >>> " + eText);
+			System.out.println("textAreas[j]: " + textAreas[j].getText());
+			if (textAreas[j] != null) { // add null check
+			textAreas[j].append(eText +"\n");
+			}
+	}
+
+   
+
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
 	//        EMR_east_buttons_obj.main(null);
