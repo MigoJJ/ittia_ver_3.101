@@ -14,44 +14,43 @@ public class EMR_ChangeString {
 	    System.out.println("replacedText >>> " + replacedText); // Printing the modified string
 	    return replacedText;
 	}
-
 	
 	public static String EMR_ChangeString_abr(String replacedText) {
 		replacedText = (replacedText + " ");
 
 	    switch (replacedText) {
-	    		  case ":d " : replacedText =("diabetes mellitus");break;
-                case ":dr " : replacedText =("DM with retinopathy");break;
-                case ":dn " : replacedText =("DM with Nephropathy");break;
-                case ":dnp " : replacedText =("DM with Peripheral Neuropathy");break;
-                case ":dna " : replacedText =("DM with Autonomic Neuropathy");break;
-                case ":dp " : replacedText =("Prediabetes");break;
-                case ":dg " : replacedText =("Gestational Diabetes Mellitus");break;
-                case ":c " : replacedText =("Hypercholesterolemia F/U");break;
-                case ":fd " : replacedText =("Diabetes mellitus  F/U");break;
-                case ":ft " : replacedText =("Hypertension F/U");break;    
-                case ":fc " : replacedText =("Hypercholesterolemia F/U");break;
-                case ":fctg " : replacedText =("HyperTriGlyceridemia F/U");break;
-                case ":fte " : replacedText =("Hyperthyroidism F/U");break;
-                case ":fto " : replacedText =("Hypothyroidism F/U");break;
-                case ":fnti " : replacedText =("Non-Thyroidal Illness F/U");break;
-                case ":ftep " : replacedText =("Hyperthyroidism with Pregnancy [   ]  weeks F/U");break;
-                case ":ftop " : replacedText =("Hypothyroidism with Pregnancy [   ]  weeks F/U");break;
-                case ":do " : replacedText =("DM without complications");break;
-                case ":drn " : replacedText =("DM with Retinopathy \n\t: Non-proliferative diabetic retinopathy");break;
-                case ":drp " : replacedText =("DM with Retinopathy \n\t: Proliferative diabetic retinopathy");break;
-                case ":drm " : replacedText =("DM with Retinopathy \n\t: Macular edema");break;
-                case ":dnm " : replacedText =("DM with Nephropathy with microalbuminuria");break;
-                case ":dnc " : replacedText =("DM with Nephropathywith CRF");break;
-                case ":da " : replacedText =("DM with Autonomic Neuropathy");break;
-                case ":pd " : replacedText =("Prediabetes");break;
-                case ":pg " : replacedText =("Gestational Diabetes Mellitus");break;
-                case ":t " : replacedText =("Hypertension");break;    
-                case ":ctg " : replacedText =("HyperTriGlyceridemia");break;
-                case ":te " : replacedText =("Hyperthyroidism : Graves' disease");break;
-                case ":to " : replacedText =("Hypothyroidism : Hashimoto's thyroiditis");break;
-                case ":ts " : replacedText =("Subacute Thyroiditis");break;
-                case ":tt " : replacedText =("c/w Chronic Thyroiditis on USG");break;
+				case ":d " : replacedText =("diabetes mellitus");break;
+				case ":dr " : replacedText =("DM with retinopathy");break;
+				case ":dn " : replacedText =("DM with Nephropathy");break;
+				case ":dnp " : replacedText =("DM with Peripheral Neuropathy");break;
+				case ":dna " : replacedText =("DM with Autonomic Neuropathy");break;
+				case ":dp " : replacedText =("Prediabetes");break;
+				case ":dg " : replacedText =("Gestational Diabetes Mellitus");break;
+				case ":c " : replacedText =("Hypercholesterolemia F/U");break;
+				case ":fd " : replacedText =("Diabetes mellitus  F/U");break;
+				case ":ft " : replacedText =("Hypertension F/U");break;    
+				case ":fc " : replacedText =("Hypercholesterolemia F/U");break;
+				case ":fctg " : replacedText =("HyperTriGlyceridemia F/U");break;
+				case ":fte " : replacedText =("Hyperthyroidism F/U");break;
+				case ":fto " : replacedText =("Hypothyroidism F/U");break;
+				case ":fnti " : replacedText =("Non-Thyroidal Illness F/U");break;
+				case ":ftep " : replacedText =("Hyperthyroidism with Pregnancy [   ]  weeks F/U");break;
+				case ":ftop " : replacedText =("Hypothyroidism with Pregnancy [   ]  weeks F/U");break;
+				case ":do " : replacedText =("DM without complications");break;
+				case ":drn " : replacedText =("DM with Retinopathy \n\t: Non-proliferative diabetic retinopathy");break;
+				case ":drp " : replacedText =("DM with Retinopathy \n\t: Proliferative diabetic retinopathy");break;
+				case ":drm " : replacedText =("DM with Retinopathy \n\t: Macular edema");break;
+				case ":dnm " : replacedText =("DM with Nephropathy with microalbuminuria");break;
+				case ":dnc " : replacedText =("DM with Nephropathywith CRF");break;
+				case ":da " : replacedText =("DM with Autonomic Neuropathy");break;
+				case ":pd " : replacedText =("Prediabetes");break;
+				case ":pg " : replacedText =("Gestational Diabetes Mellitus");break;
+				case ":t " : replacedText =("Hypertension");break;    
+				case ":ctg " : replacedText =("HyperTriGlyceridemia");break;
+				case ":te " : replacedText =("Hyperthyroidism : Graves' disease");break;
+				case ":to " : replacedText =("Hypothyroidism : Hashimoto's thyroiditis");break;
+				case ":ts " : replacedText =("Subacute Thyroiditis");break;
+				case ":tt " : replacedText =("c/w Chronic Thyroiditis on USG");break;
 		               
 				
 				case ":tn " : replacedText =("Thyroid nodule");break;	
