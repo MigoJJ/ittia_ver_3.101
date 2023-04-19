@@ -46,7 +46,7 @@ public class GDSEMR_frame {
       // Create the textAreas and add them to the panel
       for (int i = 0; i < textAreas.length; i++) {
 	         textAreas[i] = new JTextArea();
-	         String inputData = titles[i] + "\t";
+	         String inputData = titles[i] + "\t" + " ";
 	         textAreas[i].setLineWrap(true); // enable line wrapping
 	         textAreas[i].setText(inputData);
 	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
