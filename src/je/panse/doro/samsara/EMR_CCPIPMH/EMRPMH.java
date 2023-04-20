@@ -116,9 +116,11 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 //            GDSEMR_frame.textAreas[i].append(pmhxTextArea);
             try {
             	String pmhxTextAreaString = pmhxTextArea.getText();
-				GDSEMR_frame gdsemr_frame = new GDSEMR_frame();
-				gdsemr_frame.setThirdTextAreaText(3, "");
-				gdsemr_frame.setThirdTextAreaText(3, pmhxTextAreaString);
+
+            	// Assuming the first class is named MyClass
+            	GDSEMR_frame myClass = new GDSEMR_frame();
+            	myClass.setTextAreaText("This is some text to be inserted into the first JTextArea.");
+            	
 				dispose();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

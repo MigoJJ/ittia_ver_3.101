@@ -1,7 +1,10 @@
 package je.panse.doro;
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -45,14 +48,34 @@ public class GDSEMR_frame {
       
       // Create the textAreas and add them to the panel
       for (int i = 0; i < textAreas.length; i++) {
+    	   	  
+    	  
+    	  
 	         textAreas[i] = new JTextArea();
+	     
+
+	         
+	         
 	         String inputData = titles[i] + "\t" + " ";
 	   	         textAreas[i].setLineWrap(true); // enable line wrapping
+//	   	         textAreas[i].append(inputData);
 	   	         textAreas[i].setText(inputData);
 	   	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
 	   	         // Create background colors
 	   	         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
 
+	   	         
+	   	         textAreas[i].setText("inputData");
+
+		      		textAreas[i].addMouseListener(new MouseAdapter() {
+		        	    @Override
+		        	    public void mouseClicked(MouseEvent e) {
+		        	        System.out.println("// Execute another class method here");
+		        	    }
+		          		});
+	   	         
+	   	         
+	   	         
 	         // Wrap the JTextArea in a JScrollPane
 	         JScrollPane scrollPane = new JScrollPane(textAreas[i]);
 	         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -62,7 +85,9 @@ public class GDSEMR_frame {
 					for (int j = 0; j < textAreas.length; j++) {
 					     textAreas[i].getDocument().addDocumentListener(documentListener);
 					}
+      			}
 
+      
 			  // Add the center and west panels to the main JFrame
 			  frame.add(centerPanel);
 			  frame.add(westPanel, BorderLayout.WEST);
@@ -73,15 +98,16 @@ public class GDSEMR_frame {
 			  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			  frame.pack();
 			  frame.setVisible(true);
-      }
    }
 
-   public static void setThirdTextAreaText(int i, String text) {
-	    textAreas[i].setText(text);
-	}
-
+	public void setTextAreaText(String string) {
+       textAreas[5].setText(string);
+       
+   }
+   
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
 	//        EMR_east_buttons_obj.main(null);
    }
+
 }
