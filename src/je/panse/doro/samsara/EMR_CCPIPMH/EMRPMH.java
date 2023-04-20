@@ -45,7 +45,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
 		// Create a scrollable text area to display the medical history
 		pmhxTextArea = new JTextArea(20, 40);
-		pmhxTextArea.setText("Past Medical History:>\n");
+		pmhxTextArea.setText("Past Medical History:>----------\n");
 		pmhxTextArea.setEditable(true);
 		pmhxTextArea.setFont(font);
 
@@ -111,9 +111,10 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
                 sb.append(checkbox.getText());
                 sb.append("    ");
             }
-            sb.append("\n---------------------------------\n");
+            sb.append("\n--------------------------------------\n");
             pmhxTextArea.append(sb.toString());
-            GDSEMR_frame.setTextAreaText(sb.toString());
+            GDSEMR_frame.setTextAreaText(3,sb.toString());
+            dispose();
 
 		} else if (e.getActionCommand().equals("Clear and Restart")) {
 		    for (JCheckBox checkbox : checkBoxList) {
@@ -126,6 +127,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 			dispose();
 		}
 	}
+
     public static void main(String text) throws IOException {
         EMRPMH gui = new EMRPMH();
 //        gui.actionPerformed(new ActionEvent(gui, 0, "Save and Show"));

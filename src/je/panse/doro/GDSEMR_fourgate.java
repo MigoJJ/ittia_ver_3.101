@@ -15,10 +15,9 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 		System.out.println("Double-clicked on: text >>> " + text);
 		if (text.contains("PMH>")) {
 			EMRPMH.main(text);
-//			textAreas[i].setText(EMRPMH.main(text));
-
+		} else if (text.contains("O>")) {
+			EMRPMH.main(text);
 		}
-
 	}
 
 }

@@ -96,8 +96,8 @@ public class GDSEMR_frame {
 	  frame.setVisible(true);
    }
 
-	public static void setTextAreaText(String string) {
-       textAreas[3].setText(string);
+	public static void setTextAreaText(int i,String string) {
+       textAreas[i].setText(string);
    }
    
 	public static void main(String[] args) throws Exception {
