@@ -5,10 +5,13 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
 
 public class EMR_categoryButtons extends JFrame implements ActionListener {
 	    private static final long serialVersionUID = 1L;
@@ -53,6 +56,15 @@ public class EMR_categoryButtons extends JFrame implements ActionListener {
 	    public void actionPerformed(ActionEvent e) {
 	        // Handle button clicks
 	        System.out.println("Button clicked: " + e.getActionCommand());
+	        if (e.getActionCommand().equals("PMH>")) {
+	            try {
+					EMRPMH.main(null);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	        }
+
 	    }
 
 	    public static void main(String[] args) {

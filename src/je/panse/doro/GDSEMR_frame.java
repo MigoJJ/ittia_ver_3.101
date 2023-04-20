@@ -22,7 +22,7 @@ public class GDSEMR_frame {
    private void createAndShowGUI() throws Exception {
       // Create the JFrame
       frame.setSize(1200, 1000); // Set JFrame size to 800x600
-      frame.setLocation(50, 50);
+      frame.setLocation(100, 50);
 
       // Create the center panel and set its layout
       JPanel centerPanel = new JPanel(new GridLayout(5, 2));
@@ -48,9 +48,7 @@ public class GDSEMR_frame {
 	         textAreas[i] = new JTextArea();
 	         String inputData = titles[i] + "\t" + " ";
 	   	         textAreas[i].setLineWrap(true); // enable line wrapping
-	   	         
-//	   	         textAreas[i].setText(inputData);
-	   	      setThirdTextAreaText(i, inputData);
+	   	         textAreas[i].setText(inputData);
 	   	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
 	   	         // Create background colors
 	   	         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
@@ -81,7 +79,6 @@ public class GDSEMR_frame {
    public static void setThirdTextAreaText(int i, String text) {
 	    textAreas[i].setText(text);
 	}
- 
 
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();

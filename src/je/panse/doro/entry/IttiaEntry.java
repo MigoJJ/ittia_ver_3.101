@@ -3,6 +3,7 @@ package je.panse.doro.entry;
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.EMR_categoryButtons;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -39,6 +40,7 @@ public class IttiaEntry  extends JFrame implements ActionListener {
 				    Runtime.getRuntime().exec("gedit " + EntryDir.homeDir + "/tripikata/entry/Version_Information");
 				} else if (buttonText.equals("Ittia Start")) {
 					GDSEMR_frame.main(null);
+					EMR_categoryButtons.main(null);
 				} else if (buttonText.equals("Rescue")) {
 //				    Runtime.getRuntime().exec("java -cp "+ EntryDir.currentUsersDir +"/bin je.panse.doro.ittia2.FPF");
 				} 
