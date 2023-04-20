@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -40,19 +42,33 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
                 "Thyroid Disease\n", "Asthma", "Tuberculosis", "Pneumonia\n", "Chronic/Acute Hepatitis", "GERD",
                 "Gout\n", "Arthritis", "Hearing Loss", "CVA\n", "Depression", "Cognitive Disorder\n", "Allergy\n",
                 "Food", "Injection", "Medication" };
-        for (String label : checkboxLabels) {
-            JCheckBox checkbox = new JCheckBox(label);
-            checkbox.setFont(font);
-            checkBoxList.add(checkbox);
-            pmhxPanel.add(checkbox);
-        }
 
-        // Create a scrollable text area to display the medical history
-        pmhxTextArea = new JTextArea(20, 40);
-	    pmhxTextArea.setText("");
-        pmhxTextArea.setEditable(true);
-        pmhxTextArea.setFont(font);
+		// Create a scrollable text area to display the medical history
+		pmhxTextArea = new JTextArea(20, 40);
+		pmhxTextArea.setText("Past Medical History:>\n");
+		pmhxTextArea.setEditable(true);
+		pmhxTextArea.setFont(font);
 
+		for (String label : checkboxLabels) {
+		    JCheckBox checkbox = new JCheckBox(label);
+		    checkbox.setFont(font);
+		    checkBoxList.add(checkbox);
+		    pmhxPanel.add(checkbox);
+
+		    checkbox.addItemListener(new ItemListener() {
+		        public void itemStateChanged(ItemEvent e) {
+		            if (e.getStateChange() == ItemEvent.SELECTED) {
+		                // Checkbox is checked, add text to pmhxTextArea
+		                pmhxTextArea.append("        ▸  " + label + "\n");
+		            } else {
+		                // Checkbox is unchecked, remove text from pmhxTextArea
+		                String text = pmhxTextArea.getText().replace(label + "\n", "");
+		                pmhxTextArea.setText(text);
+		            }
+		        }
+		    });
+		}
+		
         JScrollPane pmhxScrollPane = new JScrollPane(pmhxTextArea);
 
         // Create a panel to hold the buttons
@@ -74,7 +90,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
         saveShowButton.addActionListener(this);
         clearButton.addActionListener(this);
         saveQuitButton.addActionListener(this);
-
+        
         // Display the frame
         pack();
         setLocationRelativeTo(null);
@@ -85,7 +101,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 			if (e.getActionCommand().equals("Save and Show")) {
 //		    pmhxTextArea.setText("");
 			StringBuilder sb = new StringBuilder();
-			sb.append("Past Medical History:>\n    ");
+//			sb.append("Past Medical History:>\n    ");
            for (JCheckBox checkbox : checkBoxList) {
                 if (checkbox.isSelected()) {
                     sb.append("▸ ");
@@ -101,7 +117,9 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
             try {
             	String pmhxTextAreaString = pmhxTextArea.getText();
 				GDSEMR_frame gdsemr_frame = new GDSEMR_frame();
+				gdsemr_frame.setThirdTextAreaText(3, "");
 				gdsemr_frame.setThirdTextAreaText(3, pmhxTextAreaString);
+				dispose();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
