@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -48,66 +49,59 @@ public class GDSEMR_frame {
       
       // Create the textAreas and add them to the panel
       for (int i = 0; i < textAreas.length; i++) {
-    	   	  
-    	  
-    	  
-	         textAreas[i] = new JTextArea();
-	     
+			textAreas[i] = new JTextArea();
+			String inputData = titles[i] + "\t" + " ";
+			textAreas[i].setLineWrap(true); // enable line wrapping
+			//	   	         textAreas[i].append(inputData);
+			textAreas[i].setText(inputData);
+			textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
+				 // Create background colors
+			BlendColors.blendColors(textAreas[i],tempOutputArea, i);
 
-	         
-	         
-	         String inputData = titles[i] + "\t" + " ";
-	   	         textAreas[i].setLineWrap(true); // enable line wrapping
-//	   	         textAreas[i].append(inputData);
-	   	         textAreas[i].setText(inputData);
-	   	         textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
-	   	         // Create background colors
-	   	         BlendColors.blendColors(textAreas[i],tempOutputArea, i);
+			// Wrap the JTextArea in a JScrollPane
+			JScrollPane scrollPane = new JScrollPane(textAreas[i]);
+			scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+			centerPanel.add(scrollPane); // Add the scrollPane to the panel
 
-	   	         
-	   	         textAreas[i].setText("inputData");
-
-		      		textAreas[i].addMouseListener(new MouseAdapter() {
-		        	    @Override
-		        	    public void mouseClicked(MouseEvent e) {
-		        	        System.out.println("// Execute another class method here");
-		        	    }
-		          		});
-	   	         
-	   	         
-	   	         
-	         // Wrap the JTextArea in a JScrollPane
-	         JScrollPane scrollPane = new JScrollPane(textAreas[i]);
-	         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-	         centerPanel.add(scrollPane); // Add the scrollPane to the panel
-
-	         GDSEMR_DocumentListner documentListener = new GDSEMR_DocumentListner(textAreas, tempOutputArea);
-					for (int j = 0; j < textAreas.length; j++) {
-					     textAreas[i].getDocument().addDocumentListener(documentListener);
+		GDSEMR_DocumentListner documentListener = new GDSEMR_DocumentListner(textAreas, tempOutputArea);
+			for (int j = 0; j < textAreas.length; j++) {
+				     textAreas[i].getDocument().addDocumentListener(documentListener);
+			}
+		textAreas[i].addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        if (e.getClickCount() == 2) {
+		            JTextArea source = (JTextArea) e.getSource();
+		            String text = source.getText();
+		            System.out.println("Double-clicked on: " + text);
+		            try {
+						GDSEMR_fourgate.main(text);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
-      			}
+		        }
+		    }
+		});
+      }
+	  // Add the center and west panels to the main JFrame
+	  frame.add(centerPanel);
+	  frame.add(westPanel, BorderLayout.WEST);
+	  frame.add(northPanel, BorderLayout.NORTH);
+	  frame.add(southPanel, BorderLayout.SOUTH);
 
-      
-			  // Add the center and west panels to the main JFrame
-			  frame.add(centerPanel);
-			  frame.add(westPanel, BorderLayout.WEST);
-			  frame.add(northPanel, BorderLayout.NORTH);
-			  frame.add(southPanel, BorderLayout.SOUTH);
-
-			  // Set the JFrame properties
-			  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			  frame.pack();
-			  frame.setVisible(true);
+	  // Set the JFrame properties
+	  frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	  frame.pack();
+	  frame.setVisible(true);
    }
 
-	public void setTextAreaText(String string) {
-       textAreas[5].setText(string);
-       
+	public static void setTextAreaText(String string) {
+       textAreas[3].setText(string);
    }
    
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
 	//        EMR_east_buttons_obj.main(null);
    }
-
 }

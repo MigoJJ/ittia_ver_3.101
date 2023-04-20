@@ -97,35 +97,23 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e){
-			if (e.getActionCommand().equals("Save and Show")) {
+    public void actionPerformed(ActionEvent e){			
+    	if (e.getActionCommand().equals("Save and Show")) {
 //		    pmhxTextArea.setText("");
 			StringBuilder sb = new StringBuilder();
-//			sb.append("Past Medical History:>\n    ");
+			sb.append("Past Medical History:>\n    ");
            for (JCheckBox checkbox : checkBoxList) {
                 if (checkbox.isSelected()) {
                     sb.append("▸ ");
                 } else {
                     sb.append("☐ ");
-                }
+                  }
                 sb.append(checkbox.getText());
                 sb.append("    ");
             }
             sb.append("\n---------------------------------\n");
             pmhxTextArea.append(sb.toString());
-//            GDSEMR_frame.textAreas[i].append(pmhxTextArea);
-            try {
-            	String pmhxTextAreaString = pmhxTextArea.getText();
-
-            	// Assuming the first class is named MyClass
-            	GDSEMR_frame myClass = new GDSEMR_frame();
-            	myClass.setTextAreaText("This is some text to be inserted into the first JTextArea.");
-            	
-				dispose();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+            GDSEMR_frame.setTextAreaText(sb.toString());
 
 		} else if (e.getActionCommand().equals("Clear and Restart")) {
 		    for (JCheckBox checkbox : checkBoxList) {
@@ -138,7 +126,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 			dispose();
 		}
 	}
-    public static void main(String[] args) throws IOException {
+    public static void main(String text) throws IOException {
         EMRPMH gui = new EMRPMH();
 //        gui.actionPerformed(new ActionEvent(gui, 0, "Save and Show"));
     }
