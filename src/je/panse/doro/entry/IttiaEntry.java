@@ -1,7 +1,6 @@
 package je.panse.doro.entry;
 
 import javax.swing.*;
-
 import je.panse.doro.GDSEMR_frame;
 
 import java.awt.*;
