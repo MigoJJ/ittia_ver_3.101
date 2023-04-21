@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EB_BMI_calculator extends JFrame implements ActionListener {
     
     private JLabel[] labels = {new JLabel("Height (cm): "), new JLabel("Weight (kg): "), new JLabel("Waist (cm or inch): "), new JLabel("BMI: ")};
@@ -100,6 +102,7 @@ public class EB_BMI_calculator extends JFrame implements ActionListener {
 		                    }
 			                result = String.format(result + "+Waist   >>> "+ "BMI: %.2f\n", bmi);
 			                outputArea.setText(result);
+			                GDSEMR_frame.setTextAreaText(5,result);
 		                }
 		            }
 		        });
