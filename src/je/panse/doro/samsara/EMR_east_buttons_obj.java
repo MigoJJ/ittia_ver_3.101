@@ -1,15 +1,16 @@
 package je.panse.doro.samsara;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import je.panse.doro.samsara.EMR_OBJ_excute.EB_BMI_calculator;
 
-public class EMR_east_buttons_obj extends JFrame {
+public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
     private ArrayList<JButton> buttons = new ArrayList<>();
 
@@ -24,21 +25,19 @@ public class EMR_east_buttons_obj extends JFrame {
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
             JButton button = new JButton(buttonName);
-            button.setFont(new Font("Arial", Font.PLAIN, 20));
+            button.setFont(new Font("Arial", Font.PLAIN, 16));
+            button.addActionListener(this); // Add this as the action listener
             buttons.add(button);
             add(button);
         }
 
         // Change background color of buttons gradually
-//            Color color = new Color(240 - i * 12, 240 - i * 12, 240 - i * 12);
-//            Color color = new Color(255, 165, 0); // Create an orange color object
-
         for (int i = 0; i < buttons.size(); i++) {
             Color color = new Color(135, 206, 235); // Create a sky blue color object
             buttons.get(i).setBackground(color);
         }
-        
-        
+
+//        setLocationRelativeTo();
         setLocationRelativeTo(null);
         int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
         int screenHeight = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
@@ -47,13 +46,22 @@ public class EMR_east_buttons_obj extends JFrame {
         int x = screenWidth - frameWidth;
         int y = 0;
         setLocation(x, y);
- 
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new EMR_east_buttons_obj("east", "EMR East Buttons");
+    public static void main(String text) {
+        new EMR_east_buttons_obj("east", "EMR Object Buttons");
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() instanceof JButton) {
+            JButton clickedButton = (JButton) e.getSource();
+            if (clickedButton.getText().equals("BMI")) {
+                EB_BMI_calculator.main(null); // Call the main method of EB_BMI_calculator
+            }
+        }
     }
 }
