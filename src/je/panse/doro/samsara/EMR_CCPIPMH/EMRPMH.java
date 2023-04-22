@@ -45,7 +45,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
 		// Create a scrollable text area to display the medical history
 		pmhxTextArea = new JTextArea(20, 40);
-		pmhxTextArea.setText("Past Medical History:>----------\n");
+		pmhxTextArea.setText(" ---------------------\n");
 		pmhxTextArea.setEditable(true);
 		pmhxTextArea.setFont(font);
 

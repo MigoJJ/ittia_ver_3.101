@@ -43,7 +43,7 @@ public class GDSEMR_frame {
       outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
       westPanel.add(outputScrollPane); // Add the output scrollPane to the west panel
 
-   // Create the north panel and add the buttons
+      // Create the north panel and add the buttons
       JPanel northPanel = new GDSEMR_ButtonPanel("north");
       JPanel southPanel = new GDSEMR_ButtonPanel("south");
       
@@ -52,10 +52,10 @@ public class GDSEMR_frame {
 			textAreas[i] = new JTextArea();
 			String inputData = ("    " + titles[i] + "\t" + " ");
 			textAreas[i].setLineWrap(true); // enable line wrapping
-			//	   	         textAreas[i].append(inputData);
+			// textAreas[i].append(inputData);
 			textAreas[i].setText(inputData);
 			textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
-				 // Create background colors
+			// Create background colors
 			BlendColors.blendColors(textAreas[i],tempOutputArea, i);
 
 			// Wrap the JTextArea in a JScrollPane
