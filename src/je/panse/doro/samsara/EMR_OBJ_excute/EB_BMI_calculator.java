@@ -57,9 +57,9 @@ public class EB_BMI_calculator extends JFrame implements ActionListener {
 			                }
 			            }
 			        });
-			constraints.gridx = 1;
-	        constraints.gridy = i;
-	        panel.add(fields[i], constraints);
+				constraints.gridx = 1;
+				constraints.gridy = i;
+				panel.add(fields[i], constraints);
 	    	}
         }
 		        fields[2].addKeyListener(new KeyAdapter() {
@@ -70,7 +70,7 @@ public class EB_BMI_calculator extends JFrame implements ActionListener {
 		                    double[] values = new double[2];
 		                    for (int i = 0; i < values.length; i++) {
 		                        values[i] = Double.parseDouble(fields[i].getText());
-		                    }
+		                    	}
 		                    double bmi = values[1] / (values[0] / 100.0 * values[0] / 100.0);
 		                    String result ="";
 		                    if (bmi < 18.5) {
@@ -82,25 +82,7 @@ public class EB_BMI_calculator extends JFrame implements ActionListener {
 		                    } else {
 		                        result += "Obese";
 		                    }
-		                    result = String.format(result + "  "+"BMI: %.2f\n", bmi);
-		                    outputArea.setText(result);
-		                } else {
-			                double[] values = new double[2];
-			                for (int i = 0; i < values.length; i++) {
-			                    values[i] = Double.parseDouble(fields[i].getText());
-			                }
-			                double bmi = values[1] / (values[0] / 100.0 * values[0] / 100.0);
-		                    String result ="";
-		                    if (bmi < 18.5) {
-		                        result += "Underweight";
-		                    } else if (bmi >= 18.5 && bmi < 25) {
-		                        result += "Healthy weight";
-		                    } else if (bmi >= 25 && bmi < 30) {
-		                        result += "Overweight";
-		                    } else {
-		                        result += "Obese";
-		                    }
-			                result = String.format(result + "+Waist   >>> "+ "BMI: %.2f\n", bmi);
+			                result = String.format("\n" + result + " : "+ "BMI: %.2f\n", bmi);
 			                outputArea.setText(result);
 			                GDSEMR_frame.setTextAreaText(5,result);
 		                }

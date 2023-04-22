@@ -50,7 +50,7 @@ public class GDSEMR_frame {
       // Create the textAreas and add them to the panel
       for (int i = 0; i < textAreas.length; i++) {
 			textAreas[i] = new JTextArea();
-			String inputData = titles[i] + "\t" + " ";
+			String inputData = ("    " + titles[i] + "\t" + " ");
 			textAreas[i].setLineWrap(true); // enable line wrapping
 			//	   	         textAreas[i].append(inputData);
 			textAreas[i].setText(inputData);
@@ -97,7 +97,7 @@ public class GDSEMR_frame {
    }
 
 	public static void setTextAreaText(int i,String string) {
-       textAreas[i].setText(string);
+       textAreas[i].append(string);
    }
    
 	public static void main(String[] args) throws Exception {
