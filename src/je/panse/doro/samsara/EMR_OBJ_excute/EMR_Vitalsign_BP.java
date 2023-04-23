@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import je.panse.doro.GDSEMR_frame;
 
 public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListener {
 
@@ -33,12 +36,13 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			inputField.setPreferredSize(new Dimension(30, 30));
 			
 			// Create output area and label
-			
 			outputArea = new JTextArea(10, 40);
 			JScrollPane scrollPane = new JScrollPane(outputArea);
 			JLabel outputLabel = new JLabel("Vital sign: ");
 			
 			// Create save and quit buttons
+			JButton clearButton = new JButton("Clear");
+			clearButton.addActionListener(this);
 			JButton saveButton = new JButton("Save");
 			saveButton.addActionListener(this);
 			JButton quitButton = new JButton("Quit");
@@ -53,6 +57,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			outputPanel.add(scrollPane);
 			JPanel buttonPanel = new JPanel();
 			
+			buttonPanel.add(clearButton);
 			buttonPanel.add(saveButton);
 			buttonPanel.add(quitButton);
 			
@@ -65,21 +70,17 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		}
 		
 		// Handle button clicks
-		
 		public void actionPerformed(ActionEvent e) {
-			if (e.getActionCommand().equals("Save")) {
-			String input = inputField.getText();
-				if (!input.equals("")) {
-					String[] inputs = input.split("\n");
-						for (String i : inputs) {
-						inputList.add(i);
-						}
-					updateOutputArea();
-					inputField.setText("");
-				}
+			if (e.getActionCommand().equals("Clear")) {
+				inputField.setText("");
+				outputArea.setText("");
+			} else if (e.getActionCommand().equals("Save")) {
+				inputField.setText("");
+				dispose();
 			} else if (e.getActionCommand().equals("Quit")) {
-				System.exit(0);
+				dispose();
 			}
+			GDSEMR_frame.setTextAreaText(5,"\n"+outputArea.getText());
 		}
 		
 		// Handle key presses
@@ -89,13 +90,10 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			String input = inputField.getText();
 				if (!input.equals("")) {
 					inputList.add(input);
-
-				inputField.setText("");
-				outputArea.setText("");
-
+					inputField.setText("");
+					outputArea.setText("");
 				updateOutputArea();
 				} else {
-					
 				}
 			}
 		}
@@ -108,8 +106,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 		    String returnBP = changeString(inputList);    
 		    outputArea.append("\n"+returnBP);
-		    
-	}
+		}
 
 		public void keyTyped(KeyEvent e) {}
 		public void keyReleased(KeyEvent e) {}
@@ -131,7 +128,6 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		            bp = bp.replace(bp, "at home by self");
 		        }
 		    }
-
 		    System.out.println(bp);
 		    return bp;
 		}

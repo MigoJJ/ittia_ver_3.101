@@ -1,19 +1,25 @@
-CC>    DM F/U
-Past Medical History:>
-    ☐ Diabetes Mellitus    ▸ HTN    ☐ Dyslipidemia
-    ☐ Cancer    ▸ Operation    ☐ Thyroid Disease
-    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ▸ GERD    ☐ Gout
+    CC>	 Hypercholesterolemia with meds 2015~
+    PMH>	 
+    ☐ Diabetes Mellitus    ☐ HTN    ▸ Dyslipidemia
+    ☐ Cancer    ☐ Operation    ▸ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ▸ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
     ☐ Arthritis    ☐ Hearing Loss    ☐ CVA
     ☐ Depression    ☐ Cognitive Disorder
     ☐ Allergy
     ☐ Food    ☐ Injection    ☐ Medication    
 --------------------------------------
-O>
-Overweight :   BMI: [ 29.39 ]kg/m^2
-Height :  175 cm   Weight : 90 kg   Waist : 100 cm
-Comment>
-Aim for a well-balanced diet
-Limit processed and high-fat foods.
-Reduce your sodium and sugar intake.
-Drink plenty of water and limit sugary drinks and alcohol.
+꽃가루 :   호흡곤란
+    O>	 
+at home by self
+BP [ 125 / 16 ] mmHg  PR [ 66 ] /min
+Body Temperature [ 36.7 ] 'C
+Respiration rate [ 88 ] /min
+   A> 
+#   Hypercholesterolemia     
+#   diabetes mellitus
+#   HyperTriGlyceridemia
+    P>	 : 
+Diabetes mellitus  F/U
+s/p TAH : Total Abdominal Hysterectomy
+s/p Cholecystectomy d/t GB stone
