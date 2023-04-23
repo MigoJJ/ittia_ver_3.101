@@ -36,12 +36,13 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			inputField.setPreferredSize(new Dimension(30, 30));
 			
 			// Create output area and label
-			
 			outputArea = new JTextArea(10, 40);
 			JScrollPane scrollPane = new JScrollPane(outputArea);
 			JLabel outputLabel = new JLabel("Vital sign: ");
 			
 			// Create save and quit buttons
+			JButton clearButton = new JButton("Clear");
+			clearButton.addActionListener(this);
 			JButton saveButton = new JButton("Save");
 			saveButton.addActionListener(this);
 			JButton quitButton = new JButton("Quit");
@@ -56,6 +57,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			outputPanel.add(scrollPane);
 			JPanel buttonPanel = new JPanel();
 			
+			buttonPanel.add(clearButton);
 			buttonPanel.add(saveButton);
 			buttonPanel.add(quitButton);
 			
@@ -69,13 +71,15 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		
 		// Handle button clicks
 		public void actionPerformed(ActionEvent e) {
-			if (e.getActionCommand().equals("Save")) {
-					inputField.setText("");
-					dispose();
-			} 
-			if (e.getActionCommand().equals("Quit")) {
+			if (e.getActionCommand().equals("Clear")) {
+				inputField.setText("");
+				outputArea.setText("");
+			} else if (e.getActionCommand().equals("Save")) {
+				inputField.setText("");
 				dispose();
-				}
+			} else if (e.getActionCommand().equals("Quit")) {
+				dispose();
+			}
 			GDSEMR_frame.setTextAreaText(5,"\n"+outputArea.getText());
 		}
 		
