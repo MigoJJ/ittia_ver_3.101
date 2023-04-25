@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_CCPIPMH;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,7 +10,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -45,7 +44,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
 		// Create a scrollable text area to display the medical history
 		pmhxTextArea = new JTextArea(20, 40);
-		pmhxTextArea.setText("Past Medical History:>----------\n");
+		pmhxTextArea.setText(" ---------------------\n");
 		pmhxTextArea.setEditable(true);
 		pmhxTextArea.setFont(font);
 
@@ -101,7 +100,8 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
     	if (e.getActionCommand().equals("Save and Show")) {
 //		    pmhxTextArea.setText("");
 			StringBuilder sb = new StringBuilder();
-			sb.append("Past Medical History:>\n    ");
+//			sb.append("Past Medical History:>\n    ");
+			sb.append("\n    ");
            for (JCheckBox checkbox : checkBoxList) {
                 if (checkbox.isSelected()) {
                     sb.append("▸ ");

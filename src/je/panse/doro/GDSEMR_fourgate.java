@@ -2,6 +2,7 @@ package je.panse.doro;
 
 import java.io.IOException;
 
+import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
 
 public class GDSEMR_fourgate extends GDSEMR_frame {
@@ -16,7 +17,7 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 		if (text.contains("PMH>")) {
 			EMRPMH.main(text);
 		} else if (text.contains("O>")) {
-			EMRPMH.main(text);
+			EMR_east_buttons_obj.main(text);
 		}
 	}
 
