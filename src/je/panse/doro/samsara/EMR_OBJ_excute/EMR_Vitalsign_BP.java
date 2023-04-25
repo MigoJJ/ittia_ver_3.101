@@ -33,10 +33,10 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			inputField.addKeyListener(this);
 			JLabel inputLabel = new JLabel("Vital sign input : ");
 			inputField.setHorizontalAlignment(JTextField.CENTER);
-			inputField.setPreferredSize(new Dimension(30, 30));
+			inputField.setPreferredSize(new Dimension(20, 30));
 			
 			// Create output area and label
-			outputArea = new JTextArea(10, 40);
+			outputArea = new JTextArea(10, 29);
 			JScrollPane scrollPane = new JScrollPane(outputArea);
 			JLabel outputLabel = new JLabel("Vital sign: ");
 			
