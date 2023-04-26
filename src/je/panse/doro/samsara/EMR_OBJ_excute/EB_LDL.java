@@ -36,7 +36,6 @@ public class EB_LDL extends JFrame implements ActionListener, KeyListener {
         
         add(inputPanel, BorderLayout.CENTER);
     }
-
         
     @Override
     public void keyPressed(KeyEvent e) {
