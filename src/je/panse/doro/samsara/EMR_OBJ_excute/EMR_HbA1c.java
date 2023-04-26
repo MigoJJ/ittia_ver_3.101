@@ -87,29 +87,38 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         } else if (source == quitButton) {
             dispose();
         } else {
-            JTextField textField = (JTextField) source;
-            int index = Arrays.asList(inputFields).indexOf(textField);
-            if (index < inputFields.length - 1) {
-                inputFields[index + 1].requestFocus();
-            } else {
-                double fbs_pp2 = Double.parseDouble(inputFields[0].getText());
-                double glucose_mgdl = Double.parseDouble(inputFields[1].getText());
-                double hba1c_perc = Double.parseDouble(inputFields[2].getText());
-                double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
-                double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
-                double eag_mmoll = eag_mgdl / 18.01559;
-                
-                String outputText = String.format(
-	            	    "\nFBS/PP2: %.2f\t" +
-	            	    "Glucose: %.0f mg/dL   " +
-	            	    "HbA1c: %.1f %%\n" +
-	            	    "\tIFCC HbA1c: %.0f mmol/mol\n" +
-	            	    "\teAG: %.0f mg/dL\n" +
-	            	    "\teAG: %.1f mmol/l\n",
-	            	    fbs_pp2, glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
-               	outputArea.setText(outputText);
-               	GDSEMR_frame.setTextAreaText(5, outputText);
-               	
+        	JTextField textField = (JTextField) source;
+        	int index = Arrays.asList(inputFields).indexOf(textField);
+        	if (index < inputFields.length - 1) {
+        	    inputFields[index + 1].requestFocus();
+        	} else {
+        	    double fbs_pp2 = Double.parseDouble(inputFields[0].getText());
+        	    double glucose_mgdl = Double.parseDouble(inputFields[1].getText());
+        	    String hba1cText = inputFields[2].getText();
+        	    if (!hba1cText.isEmpty()) {
+        	        double hba1c_perc = Double.parseDouble(hba1cText);
+        	        double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
+        	        double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
+        	        double eag_mmoll = eag_mgdl / 18.01559;
+        	                
+        	        String outputText = String.format(
+        	            "\nFBS/PP2: %.2f\t" +
+        	            "Glucose: %.0f mg/dL   " +
+        	            "HbA1c: %.1f %%\n" +
+        	            "\tIFCC HbA1c: %.0f mmol/mol\n" +
+        	            "\teAG: %.0f mg/dL\n" +
+        	            "\teAG: %.1f mmol/l\n",
+        	            fbs_pp2, glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
+        	        outputArea.setText(outputText);
+        	        GDSEMR_frame.setTextAreaText(5, outputText);
+        	    } else {
+        	        String outputText = String.format(
+        	            "\nFBS/PP2: %.2f\t" +
+        	            "Glucose: %.0f mg/dL   ",
+        	            fbs_pp2, glucose_mgdl);
+        	        outputArea.setText(outputText);
+        	        GDSEMR_frame.setTextAreaText(5, outputText);
+        	    }
             }
         }
     }
