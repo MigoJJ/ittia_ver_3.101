@@ -103,8 +103,8 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         	                
         	        String outputText = String.format(
         	            "\nFBS/PP2: %.2f\t" +
-        	            "Glucose: %.0f mg/dL   " +
-        	            "HbA1c: %.1f %%\n" +
+        	            " [ %.0f ] mg/dL   " +
+        	            "HbA1c [ %.1f ]%%\n" +
         	            "\tIFCC HbA1c: %.0f mmol/mol\n" +
         	            "\teAG: %.0f mg/dL\n" +
         	            "\teAG: %.1f mmol/l\n",
