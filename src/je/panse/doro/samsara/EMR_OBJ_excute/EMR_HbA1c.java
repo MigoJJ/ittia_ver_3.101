@@ -85,7 +85,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
             String input = Arrays.toString(inputFields);
             // Save input to file or database
         } else if (source == quitButton) {
-            System.exit(0);
+            dispose();
         } else {
             JTextField textField = (JTextField) source;
             int index = Arrays.asList(inputFields).indexOf(textField);
