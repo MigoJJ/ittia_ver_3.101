@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import je.panse.doro.samsara.EMR_OBJ_Xray.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_Xray.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_excute.EB_BMI_calculator;
+import je.panse.doro.samsara.EMR_OBJ_excute.EB_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
@@ -63,19 +64,29 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() instanceof JButton) {
-			JButton clickedButton = (JButton) e.getSource();
-			if (clickedButton.getText().equals("BMI")) {
-				EB_BMI_calculator.main(null); // Call the main method of EB_BMI_calculator
-			} else if (clickedButton.getText().equals("BP")) {
-				EMR_Vitalsign_BP.main(null); // Call the main method of EB_BMI_calculator
-			} else if (clickedButton.getText().equals("HbA1c")) {
-				EMR_HbA1c.main(null); // Call the main method of EB_BMI_calculator
-			} else if (clickedButton.getText().equals("ChestPA")) {
-				EMR_ChestPA.main(null); // Call the main method of EB_BMI_calculator
-			} else if (clickedButton.getText().equals("EKG")) {
-				EMR_EKG.main(null); // Call the main method of EB_BMI_calculator
-			}
+        String buttonText = ((JButton) e.getSource()).getText();
+        switch (buttonText) {
+            case "BMI":
+                EB_BMI_calculator.main(null);
+                break;
+            case "BP":
+                EMR_Vitalsign_BP.main(null);
+                break;
+            case "HbA1c":
+                EMR_HbA1c.main(null);
+                break;
+            case "ChestPA":
+                EMR_ChestPA.main(null);
+                break;
+            case "EKG":
+                EMR_EKG.main(null);
+                break;
+            case "LDL":
+                EB_LDL.main(null);
+                break;
+            default:
+                break;
         }
     }
+
 }
