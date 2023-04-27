@@ -15,6 +15,7 @@ import je.panse.doro.samsara.EMR_OBJ_Xray.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_excute.EB_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EB_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
@@ -83,6 +84,9 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
                 break;
             case "LDL":
                 EB_LDL.main(null);
+                break;
+            case "LFT":
+                EMR_LFT.main(null);
                 break;
             default:
                 break;
