@@ -1,19 +1,19 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.*;
+import java.awt.*;	
 import java.awt.event.*;
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EB_BMI_calculator extends JFrame implements ActionListener {
+public class EMR_BMI_calculator extends JFrame implements ActionListener {
     
     private JLabel[] labels = {new JLabel("Height (cm): "), new JLabel("Weight (kg): "), new JLabel("Waist (cm or inch): "), new JLabel("BMI: ")};
     private JTextField[] fields = {new JTextField(10), new JTextField(10), new JTextField(10)};
     private JButton SaveandQuit;
     private JTextArea outputArea;
     
-    public EB_BMI_calculator() {
+    public EMR_BMI_calculator() {
         setTitle("BMI Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 300);
@@ -113,7 +113,7 @@ public class EB_BMI_calculator extends JFrame implements ActionListener {
     }
     
     public static void main(String[] args) {
-        new EB_BMI_calculator();
+        new EMR_BMI_calculator();
     }
     @Override
     public void actionPerformed(ActionEvent e) {

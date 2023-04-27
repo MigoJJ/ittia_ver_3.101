@@ -1,17 +1,22 @@
 package je.panse.doro.samsara;
-import java.awt.Color;
+import java.awt.Color;	
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
-import je.panse.doro.samsara.EMR_OBJ_excute.EB_BMI_calculator;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_GFS;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
@@ -24,7 +29,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         setBackground(new Color(240, 240, 240));
         setTitle(title);
 
-        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "LDL", "Lp(a)", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
+        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "...", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
 
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
@@ -61,15 +66,42 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() instanceof JButton) {
-            JButton clickedButton = (JButton) e.getSource();
-            if (clickedButton.getText().equals("BMI")) {
-                EB_BMI_calculator.main(null); // Call the main method of EB_BMI_calculator
-            } else if (clickedButton.getText().equals("BP")) {
-            	EMR_Vitalsign_BP.main(null); // Call the main method of EB_BMI_calculator
-            } else if (clickedButton.getText().equals("HbA1c")) {
-            	EMR_HbA1c.main(null); // Call the main method of EB_BMI_calculator
-            }
+        String buttonText = ((JButton) e.getSource()).getText();
+        switch (buttonText) {
+            case "BMI":
+                EMR_BMI_calculator.main(null);
+                break;
+            case "BP":
+                EMR_Vitalsign_BP.main(null);
+                break;
+            case "HbA1c":
+                EMR_HbA1c.main(null);
+                break;
+            case "ChestPA":
+                EMR_ChestPA.main(null);
+                break;
+            case "EKG":
+                EMR_EKG.main(null);
+                break;
+            case "LDL":
+                EMR_LDL.main(null);
+                break;
+            case "LFT":
+                EMR_LFT.main(null);
+                break;
+            case "GFS":
+            case "CFS":
+                EMR_GFS.main(null);
+                break;
+            case "Lp(a)":
+            	EMR_LpaApoB.main(null);
+                break;
+            case "TFT":
+            	EMR_TFT.main(null);
+                break;
+            default:
+                break;
         }
     }
+
 }
