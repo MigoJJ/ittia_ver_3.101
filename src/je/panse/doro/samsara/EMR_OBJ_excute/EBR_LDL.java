@@ -5,11 +5,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import je.panse.doro.GDSEMR_frame;
 
-public class EB_LDL extends JFrame implements ActionListener, KeyListener {
+public class EBR_LDL extends JFrame implements ActionListener, KeyListener {
     private JTextField[] inputFields = {new JTextField(10), new JTextField(10), new JTextField(10)};
     private int currentInputFieldIndex = 0;
     
-    public EB_LDL() {
+    public EBR_LDL() {
         setTitle("EMR Interface for Lipid Profile");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -36,7 +36,6 @@ public class EB_LDL extends JFrame implements ActionListener, KeyListener {
         
         add(inputPanel, BorderLayout.CENTER);
     }
-
         
     @Override
     public void keyPressed(KeyEvent e) {
@@ -66,7 +65,7 @@ public class EB_LDL extends JFrame implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {}
 
     public static void main(String[] args) {
-        EB_LDL frame = new EB_LDL();
+        EBR_LDL frame = new EBR_LDL();
         frame.setVisible(true);
     }
 
