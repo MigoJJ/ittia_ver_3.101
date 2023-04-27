@@ -98,20 +98,26 @@ public class EMR_GFS {
 
 	    // Create the check boxes and labels
 	    String[] checklistItems2 = {
+	    		"The colon mucosa appeared normal and No polyps ",
+	    		"Colonic polyps",
+	    		"    polyp #1",
+	    		"    polyp #2-5",
+	    		"    polyp #5 or more",
+	    		
 	    		"Inflammatory bowel disease (IBD)",
 	    		"Ulcerative colitis",
 	    		"Crohn's disease",
 	    		"Diverticulitis",
 	    		"Diverticulosis",
 	    		"Colorectal cancer",
-	    		"Colonic polyps",
+
 	    		"Irritable bowel syndrome (IBS)",
 	    		"     Ischemic colitis",
-	    		"      Pseudomembranous colitis",
-	    		"      Infectious colitis",
-	    		"      Lymphocytic colitis",
-	    		"      Collagenous colitis",
-	    		"      Microscopic colitis",
+	    		"     Pseudomembranous colitis",
+	    		"     Infectious colitis",
+	    		"     Lymphocytic colitis",
+	    		"     Collagenous colitis",
+	    		"     Microscopic colitis",
 	    		"Familial adenomatous polyposis (FAP)"
 	    };
 	    
