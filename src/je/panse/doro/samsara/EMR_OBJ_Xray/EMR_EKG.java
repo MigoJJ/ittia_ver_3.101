@@ -47,7 +47,7 @@ public class EMR_EKG {
 			String selectedItems = "\n   EKG : ";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
-				selectedItems += "[+] " + checkboxes[i].getText() + "\n";
+				selectedItems += "\t" + checkboxes[i].getText() + "\n";
 				}
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);

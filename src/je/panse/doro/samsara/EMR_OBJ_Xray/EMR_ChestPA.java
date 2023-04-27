@@ -44,7 +44,7 @@ public class EMR_ChestPA {
 			String selectedItems = "\n   Chest PA  : ";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
-				selectedItems += "[+] " + checkboxes[i].getText() + "\n";
+				selectedItems += "\t" + checkboxes[i].getText() + "\n";
 				}
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
