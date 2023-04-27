@@ -1,22 +1,22 @@
 package je.panse.doro.samsara;
-import java.awt.Color;
+import java.awt.Color;	
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_GFS;
-import je.panse.doro.samsara.EMR_OBJ_excute.EBR_BMI_calculator;
-import je.panse.doro.samsara.EMR_OBJ_excute.EBR_LDL;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
@@ -73,7 +73,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String buttonText = ((JButton) e.getSource()).getText();
         switch (buttonText) {
             case "BMI":
-                EBR_BMI_calculator.main(null);
+                EMR_BMI_calculator.main(null);
                 break;
             case "BP":
                 EMR_Vitalsign_BP.main(null);
@@ -88,7 +88,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
                 EMR_EKG.main(null);
                 break;
             case "LDL":
-                EBR_LDL.main(null);
+                EMR_LDL.main(null);
                 break;
             case "LFT":
                 EMR_LFT.main(null);
@@ -97,8 +97,12 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "CFS":
                 EMR_GFS.main(null);
                 break;
-                
-                
+            case "Lp(a)":
+            	EMR_LpaApoB.main(null);
+                break;
+            case "TFT":
+            	EMR_TFT.main(null);
+                break;
             default:
                 break;
         }
