@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Component;
 import java.awt.GridLayout;
 
@@ -16,7 +16,7 @@ import je.panse.doro.GDSEMR_frame;
 
 public class EMR_GFS {
 	public static void main(String[] args) {
-	    JFrame frame = new JFrame("Chest Pain Checklist");
+	    JFrame frame = new JFrame("GFS CFS Checklist");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setLayout(new GridLayout(1, 3)); // set layout to one row, two columns
 
