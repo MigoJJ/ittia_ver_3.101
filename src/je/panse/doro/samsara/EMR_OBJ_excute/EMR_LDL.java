@@ -1,15 +1,15 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.*;			
+import java.awt.*;				
 import java.awt.event.*;
 import javax.swing.*;
 import je.panse.doro.GDSEMR_frame;
 
-public class EBR_LDL extends JFrame implements ActionListener, KeyListener {
+public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
     private JTextField[] inputFields = {new JTextField(10), new JTextField(10), new JTextField(10)};
     private int currentInputFieldIndex = 0;
     
-    public EBR_LDL() {
+    public EMR_LDL() {
         setTitle("EMR Interface for Lipid Profile");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -65,7 +65,7 @@ public class EBR_LDL extends JFrame implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {}
 
     public static void main(String[] args) {
-        EBR_LDL frame = new EBR_LDL();
+        EMR_LDL frame = new EMR_LDL();
         frame.setVisible(true);
     }
 
