@@ -1,4 +1,4 @@
-package je.panse.doro.samsara.EMR_OBJ_Xray;
+package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_EKG {
+public class EMR_ChestPA {
 
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Chest Pain Checklist");
@@ -17,22 +17,19 @@ public class EMR_EKG {
 		
 	// Create the check boxes and labels
 		String[] checklistItems = {
-				"A normal EKG (electrocardiogram)",
-				"Sinus tachycardia - ",
-				"Sinus bradycardia - ",
-				"Atrial fibrillation - ",
-				"Atrial flutter ",
-				"Premature ventricular contractions (PVCs)",
-				"Ventricular tachycardia ",
-				"Ventricular fibrillation - ",
-				"Supraventricular tachycardia (SVT) ",
-				"First-degree atrioventricular (AV) block ",
-				"Second-degree AV block ",
-				"Third-degree AV block ",
-				"Right bundle branch block ",
-				"Left bundle branch block ",
-				"ST-segment elevation myocardial infarction (STEMI) ",
-				"Non-ST-segment elevation myocardial infarction (NSTEMI)"
+			
+				"A normal Chest PA X-ray ",
+				"Pneumonia",
+				"Pulmonary edema",
+				"Chronic obstructive pulmonary disease (COPD)",
+				"Lung cancer",
+				"Pleural effusion",
+				"Tuberculosis",
+				"Atelectasis",
+				"Bronchitis",
+				"Interstitial lung disease",
+				"Pulmonary embolism."
+		
 		};
 		
 		JCheckBox[] checkboxes = new JCheckBox[checklistItems.length];
@@ -44,7 +41,7 @@ public class EMR_EKG {
 		// Create the submit button
 		JButton submitButton = new JButton("Submit");
 			submitButton.addActionListener(event -> {
-			String selectedItems = "\n   EKG : ";
+			String selectedItems = "\n   Chest PA  : ";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
 				selectedItems += "\t" + checkboxes[i].getText() + "\n";
