@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_GFS;
 import je.panse.doro.samsara.EMR_OBJ_excute.EBR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EBR_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
@@ -88,6 +89,12 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "LFT":
                 EMR_LFT.main(null);
                 break;
+            case "GFS":
+            case "CFS":
+                EMR_GFS.main(null);
+                break;
+                
+                
             default:
                 break;
         }
