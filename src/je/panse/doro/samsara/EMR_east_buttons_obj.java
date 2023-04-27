@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import je.panse.doro.samsara.EMR_OBJ_Xray.EMR_ChestPA;
-import je.panse.doro.samsara.EMR_OBJ_Xray.EMR_EKG;
-import je.panse.doro.samsara.EMR_OBJ_excute.EB_BMI_calculator;
-import je.panse.doro.samsara.EMR_OBJ_excute.EB_LDL;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_GFS;
+import je.panse.doro.samsara.EMR_OBJ_excute.EBR_BMI_calculator;
+import je.panse.doro.samsara.EMR_OBJ_excute.EBR_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
@@ -71,7 +73,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String buttonText = ((JButton) e.getSource()).getText();
         switch (buttonText) {
             case "BMI":
-                EB_BMI_calculator.main(null);
+                EBR_BMI_calculator.main(null);
                 break;
             case "BP":
                 EMR_Vitalsign_BP.main(null);
@@ -86,8 +88,17 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
                 EMR_EKG.main(null);
                 break;
             case "LDL":
-                EB_LDL.main(null);
+                EBR_LDL.main(null);
                 break;
+            case "LFT":
+                EMR_LFT.main(null);
+                break;
+            case "GFS":
+            case "CFS":
+                EMR_GFS.main(null);
+                break;
+                
+                
             default:
                 break;
         }
