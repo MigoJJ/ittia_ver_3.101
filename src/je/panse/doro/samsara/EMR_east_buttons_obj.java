@@ -1,23 +1,27 @@
 package je.panse.doro.samsara;
-import java.awt.Color;	
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_GFS;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_CBC;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
@@ -99,6 +103,13 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "TFT":
             	EMR_TFT.main(null);
                 break;
+            case "CBC":
+            	EMR_CBC.main(null);
+                break;
+            case "eGFR":
+            	EMR_eGFR.main(null);
+                break;
+
             default:
                 break;
         }
