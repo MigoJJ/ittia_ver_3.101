@@ -23,13 +23,12 @@ import javax.swing.SwingConstants;
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_LFT implements ActionListener, KeyListener {
-
-    private JTextField[] inputFields;
-    private JTextArea outputArea;
-    private JButton clearButton, saveButton, quitButton;
+	private JFrame frame = new JFrame("EMR LFT");
+	private JTextField[] inputFields;
+	private JTextArea outputArea;
+	private JButton clearButton, saveButton, quitButton;
 
     public EMR_LFT() {
-        JFrame frame = new JFrame("EMR ChestPA");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame. setSize(400, 300);
         
@@ -90,7 +89,7 @@ public class EMR_LFT implements ActionListener, KeyListener {
         } else if (e.getSource() == saveButton) {
             saveResults();
         } else if (e.getSource() == quitButton) {
-            System.exit(0);
+            frame.dispose();
         }
     }
 
