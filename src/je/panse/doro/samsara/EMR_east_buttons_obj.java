@@ -38,10 +38,6 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
             JButton button = new JButton(buttonName);
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/feature
             button.setFont(new Font("Arial", Font.PLAIN, 16));
             button.addActionListener(this); // Add this as the action listener
             buttons.add(button);
