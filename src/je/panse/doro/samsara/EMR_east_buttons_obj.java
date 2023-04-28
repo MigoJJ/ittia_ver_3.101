@@ -21,6 +21,7 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
@@ -105,6 +106,10 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "CBC":
             	EMR_CBC.main(null);
                 break;
+            case "eGFR":
+            	EMR_eGFR.main(null);
+                break;
+
             default:
                 break;
         }

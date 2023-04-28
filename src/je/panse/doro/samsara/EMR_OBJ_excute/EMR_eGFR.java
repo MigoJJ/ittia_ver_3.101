@@ -14,23 +14,23 @@ import javax.swing.JTextField;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_CBC extends JFrame {
+public class EMR_eGFR extends JFrame {
 
     private JTextField[] inputFields;
     private JButton submitButton;
     private JButton clearButton;
     
-    public EMR_CBC() {
+    public EMR_eGFR() {
         
         // Set up the JFrame
-        super("EMR CBC Interface");
+        super("EMR GFR Interface");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
         setLocationRelativeTo(null);
         
         // Create the input fields
         inputFields = new JTextField[3];
-        String[] labels = {"Hb:", "WBC:", "Platelet:"};
+        String[] labels = {"Creatinie : ", "eGFR : ", "Albumin / Creatinie ratio : "};
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
         for (int i = 0; i < 3; i++) {
             JLabel label = new JLabel(labels[i], JLabel.RIGHT);
@@ -78,14 +78,14 @@ public class EMR_CBC extends JFrame {
                     } else {
                         String result;
                         // Check if WBC is empty or not
-                        String hb = inputFields[0].getText().trim();
-                        String wbc = inputFields[1].getText().trim();
-                        String platelet = inputFields[2].getText().trim();
+                        String cr = inputFields[0].getText().trim();
+                        String eGFR = inputFields[1].getText().trim();
+                        String AC = inputFields[2].getText().trim();
                     	
-                        if (wbc.isEmpty()) {
-                            result = "\nHb " + hb +" (g/dl)  \n";
+                        if (eGFR.isEmpty()) {
+                            result = "\nCreatinie " + cr +" (mg/dl)  \n";
                         } else {
-                            result = "\nHb " + hb +" (g/dl)..." + "WBC " + wbc +" (cells/L)..."+ "Platelet " + platelet + " (billion/L)\n";
+                            result = "\nCreatinie " + cr +" (mg/dl)" + "eGFR " + eGFR +" (cells/L)..."+ "+A/C" + AC +" (billion/L)\n";
                         	}
                         // Clear the text of all input fields
                         for (JTextField inputField : inputFields) {
@@ -105,6 +105,6 @@ public class EMR_CBC extends JFrame {
     }
     
     public static void main(String[] args) {
-        new EMR_CBC();
+        new EMR_eGFR();
     }
 }
