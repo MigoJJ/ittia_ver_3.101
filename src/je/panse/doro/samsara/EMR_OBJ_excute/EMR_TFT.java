@@ -1,18 +1,16 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.Dimension;
+import java.awt.Dimension;	
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Arrays;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -102,30 +100,24 @@ public class EMR_TFT implements ActionListener, KeyListener {
 
         // Check if Enter key is pressed and the source is an input field
         if (keyCode == KeyEvent.VK_ENTER && Arrays.asList(inputFields).contains(source)) {
-            JTextField inputField = (JTextField) source;
-            int inputIndex = Arrays.asList(inputFields).indexOf(inputField);
-
-            // Check if the text field is not empty
-            if (!inputField.getText().isEmpty()) {
-                int nextIndex = inputIndex + 1;
-                if (nextIndex < inputFields.length) {
-                    inputFields[nextIndex].requestFocusInWindow();
-                } 
-            }
-            
-//            if (inputIndex < 3 && !inputField.getText().isEmpty()) {
-//                // do something if input is not empty for first 3 fields
-//                saveResults6();
-            if (inputIndex == 3 && inputField.getText().isEmpty()) {
-                // do something if input is empty for the 4th field
-                saveResults3();
-            } else {
-                saveResults6();
-                // do something else for other input fields
-            }
-        }
+			JTextField inputField = (JTextField) source;
+			int inputIndex = Arrays.asList(inputFields).indexOf(inputField);
+				// Check if the text field is not empty
+			if (!inputField.getText().isEmpty()) {
+			    int nextIndex = inputIndex + 1;
+			    if (nextIndex < inputFields.length) {
+			        inputFields[nextIndex].requestFocusInWindow();
+			    } 
+			}
+			if (inputIndex == 3 && inputField.getText().isEmpty()) {
+			    // do something if input is empty for the 4th field
+			    saveResults3();
+			} else {
+			    saveResults6();
+			    // do something else for other input fields
+			}
+    	}
     }
-
 
     private void saveResults6() {
         for (JTextField field : inputFields) {
@@ -135,12 +127,12 @@ public class EMR_TFT implements ActionListener, KeyListener {
             }
         }
         String outputText = String.format(
-        	    "\nT3 : %.2f mg/dL\n" +
-        	    "free-T4 : %.2f ug/IU\n" +
-        	    "TSH : %.0f mmol/mol\n" +
-        	    "\tAnti-TSH-R-Ab: %.0f mg/dL\n" +
-        	    "\tAnti-TSH-R-Ab: %.1f mmol/l\n"+
-        	    "\tAnti-TSH-R-Ab: %.1f mmol/l\n",
+        	    "\nT3 :\t%.2f (ug/dL)\n" +
+        	    "free-T4 :\t%.2f (ug/dL)\n" +
+        	    "TSH :\t%.2f (mIU/ml)\n" +
+        	    "\tAnti-TSH-R-Ab: %.2f (IU/L)\n" +
+        	    "\tAnti-Thyrogobulin Ab: %.1f (ng/mL)\n"+
+        	    "\tAnti-microsomal Ab: %.1f ( IU/mL)\n",
         	    Float.parseFloat(inputFields[0].getText()),
         	    Float.parseFloat(inputFields[1].getText()),
         	    Float.parseFloat(inputFields[2].getText()),
@@ -149,26 +141,23 @@ public class EMR_TFT implements ActionListener, KeyListener {
         	    Float.parseFloat(inputFields[5].getText()),
         	    0.0f // add one more floating point number for the missing specifier
         	);
-
-                outputArea.setText(outputText);
-                GDSEMR_frame.setTextAreaText(5, outputText);
+				outputArea.setText(outputText);
+				GDSEMR_frame.setTextAreaText(5, outputText);
     }   
 
     private void saveResults3() {
         String outputText = String.format(
-        	    "\nT3 : %.2f mg/dL\n" +
-        	    "free-T4 : %.2f ug/IU\n" +
-        	    "TSH : %.0f mmol/mol\n" ,
+        		"\nT3 :\t%.2f (ug/dL)\n" +
+              "free-T4 :\t%.2f (ug/dL)\n" +
+              "TSH :\t%.2f (mIU/ml)\n" +
         	    Float.parseFloat(inputFields[0].getText()),
         	    Float.parseFloat(inputFields[1].getText()),
         	    Float.parseFloat(inputFields[2].getText()),
         	    0.0f // add one more floating point number for the missing specifier
         	);
-
-                outputArea.setText(outputText);
-                GDSEMR_frame.setTextAreaText(5, outputText);
-                frame.dispose();
-                
+				outputArea.setText(outputText);
+				GDSEMR_frame.setTextAreaText(5, outputText);
+				frame.dispose();
             }
     
     public void keyReleased(KeyEvent e) {}
