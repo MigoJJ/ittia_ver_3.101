@@ -13,13 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class EMR_OBJ_pmh extends JFrame {
+public class EMR_pmh extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private ArrayList<JCheckBox> checkBoxList;
     private JTextArea textArea;
 
-    public EMR_OBJ_pmh() {
+    public EMR_pmh() {
         // Set up the JFrame
         super("My JFrame");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,6 +97,6 @@ public class EMR_OBJ_pmh extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_OBJ_pmh();
+        new EMR_pmh();
     }
 }
