@@ -149,7 +149,7 @@ public class EMR_TFT implements ActionListener, KeyListener {
         String outputText = String.format(
         		"\nT3 :\t%.2f (ug/dL)\n" +
               "free-T4 :\t%.2f (ug/dL)\n" +
-              "TSH :\t%.2f (mIU/ml)\n" +
+              "TSH :\t%.2f (mIU/ml)\n",
         	    Float.parseFloat(inputFields[0].getText()),
         	    Float.parseFloat(inputFields[1].getText()),
         	    Float.parseFloat(inputFields[2].getText())
