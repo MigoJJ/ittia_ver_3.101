@@ -138,8 +138,8 @@ public class EMR_TFT implements ActionListener, KeyListener {
         	    Float.parseFloat(inputFields[2].getText()),
         	    Float.parseFloat(inputFields[3].getText()),
         	    Float.parseFloat(inputFields[4].getText()),
-        	    Float.parseFloat(inputFields[5].getText()),
-        	    0.0f // add one more floating point number for the missing specifier
+        	    Float.parseFloat(inputFields[5].getText())
+        	    // add one more floating point number for the missing specifier
         	);
 				outputArea.setText(outputText);
 				GDSEMR_frame.setTextAreaText(5, outputText);
@@ -152,8 +152,8 @@ public class EMR_TFT implements ActionListener, KeyListener {
               "TSH :\t%.2f (mIU/ml)\n" +
         	    Float.parseFloat(inputFields[0].getText()),
         	    Float.parseFloat(inputFields[1].getText()),
-        	    Float.parseFloat(inputFields[2].getText()),
-        	    0.0f // add one more floating point number for the missing specifier
+        	    Float.parseFloat(inputFields[2].getText())
+        	    // add one more floating point number for the missing specifier
         	);
 				outputArea.setText(outputText);
 				GDSEMR_frame.setTextAreaText(5, outputText);
