@@ -23,7 +23,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		private JTextField inputField;
 		private JTextArea outputArea;
 		private ArrayList<String> inputList;
-	    private String bp = "BP : at GDS left seated position Regular";
+	    private String bp = "at GDS left seated position Regular";
 
 		public EMR_Vitalsign_BP() {
 			super("EMR Interface for BP");
