@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 CC>    Hypertension F/U
 PMH>
     ☐ Diabetes Mellitus    ▸ HTN    ▸ Dyslipidemia
@@ -22,3 +23,13 @@ P>
 ...Follow-up in the clinic in [ 3.0 ]-month
 ...now [ well ] treated with current medication
     continue with current dosages of meds
+=======
+    O>	 Test Results:
+HAV-Ab IgG: Positive
+HBsAg: Positive
+HBsAb: Positive
+HCV Ab: Positive
+first    1 Name Here   :     1
+second2 Name Here   :    2
+third3 Name Here   :    5
+>>>>>>> branch 'GDS230502' of https://github.com/MigoJJ/ittia_Version_2.1.git
