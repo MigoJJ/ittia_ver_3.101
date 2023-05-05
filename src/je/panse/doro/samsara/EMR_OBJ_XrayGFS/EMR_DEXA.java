@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EMR_DEXA extends JFrame implements ActionListener {
     
     // Declare GUI components
@@ -158,6 +160,11 @@ public class EMR_DEXA extends JFrame implements ActionListener {
             String diagnosis = calculateDEXADiagnosis(age,gender,totZScore,fractureHistory,menopauseHistory);
             
             resultTextArea.setText(diagnosis);
+			GDSEMR_frame.setTextAreaText(5, "\n" + diagnosis);
+			GDSEMR_frame.setTextAreaText(7, "\n#  " + diagnosis);
+			dispose();
+            
+            
         } else if (e.getSource() == resetButton) {
         	// Reset input fields and output text area
         	ageTextField.setText("");

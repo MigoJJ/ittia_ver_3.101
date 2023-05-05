@@ -96,6 +96,7 @@ public class EMR_eGFR extends JFrame {
                         // Set focus back to the first input field
                         GDSEMR_frame.setTextAreaText(5, result);
                         GDSEMR_frame.setTextAreaText(5, cresult);
+                        GDSEMR_frame.setTextAreaText(7, "\n#  CKD [ " + cresult + "]");
 
 
                         dispose();
@@ -145,7 +146,7 @@ public class EMR_eGFR extends JFrame {
 				ReGFR = "G5  : Kidney failure";
 			}else {
 			}		
-			return ("\n\t" + RACratio + "\n\t" + ReGFR  + "\n");
+			return ("\t" + RACratio + "\n\t" + ReGFR);
 	}
 
 	public static void main(String[] args) {
