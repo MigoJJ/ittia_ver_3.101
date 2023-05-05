@@ -1,5 +1,5 @@
 package je.panse.doro.samsara;
-import java.awt.Color;	
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -24,6 +24,7 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_positive;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
@@ -83,21 +84,15 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "HbA1c":
                 EMR_HbA1c.main(null);
                 break;
-            case "ChestPA":
-                EMR_ChestPA.main(null);
-                break;
-            case "EKG":
-                EMR_EKG.main(null);
-                break;
+
             case "LDL":
                 EMR_LDL.main(null);
                 break;
             case "LFT":
                 EMR_LFT.main(null);
                 break;
-            case "GFS":
-            case "CFS":
-                EMR_GFS.main(null);
+            case "eGFR":
+            	EMR_eGFR.main(null);  
                 break;
             case "Lp(a)":
             	EMR_LpaApoB.main(null);
@@ -111,6 +106,16 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "Etc.":
             	EMR_Lab_enterresult.main(null);
             	EMR_Lab_positive.main(null);
+                break;
+            case "GFS":
+            case "CFS":
+                EMR_GFS.main(null);
+                break;
+            case "ChestPA":
+                EMR_ChestPA.main(null);
+                break;
+            case "EKG":
+                EMR_EKG.main(null);
                 break;
             case "DEXA":
             	EMR_DEXA.main(null);

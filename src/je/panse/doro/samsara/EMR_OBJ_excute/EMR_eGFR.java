@@ -76,7 +76,8 @@ public class EMR_eGFR extends JFrame {
                     if (i < 2) {
                         inputFields[i+1].requestFocus();
                     } else {
-                        String result;
+                        String result = ""; 
+                        String cresult = "";
                         // Check if WBC is empty or not
                         String cr = inputFields[0].getText().trim();
                         String eGFR = inputFields[1].getText().trim();
@@ -85,14 +86,18 @@ public class EMR_eGFR extends JFrame {
                         if (eGFR.isEmpty()) {
                             result = "\nCreatinie " + cr +" (mg/dl)  \n";
                         } else {
-                            result = "\nCreatinie " + cr +" (mg/dl)" + "eGFR " + eGFR +" (cells/L)..."+ "+A/C" + AC +" (billion/L)\n";
-                        	}
+                            result = "\nCreatinie  " + cr +" (mg/dl)..." + "eGFR  " + eGFR +" (cells/L)..."+ "+A/C  " + AC +" (billion/L)\n";
+                            cresult = EMR_eGFR_Calc(cr, eGFR, AC);
+                       	}
                         // Clear the text of all input fields
                         for (JTextField inputField : inputFields) {
                             inputField.setText("");
-                        	}
+                       	}
                         // Set focus back to the first input field
                         GDSEMR_frame.setTextAreaText(5, result);
+                        GDSEMR_frame.setTextAreaText(5, cresult);
+
+
                         dispose();
                                                 
 //               inputFields[0].requestFocus();
@@ -104,7 +109,46 @@ public class EMR_eGFR extends JFrame {
         }
     }
     
-    public static void main(String[] args) {
+    public String EMR_eGFR_Calc(String cr, String egfr, String ac) {
+	    double C1 = Double.parseDouble(cr.trim());
+	    double eGFR = Double.parseDouble(egfr.trim());
+	    double ACratio = Double.parseDouble(ac.trim());
+		String ReGFR="";
+		String RACratio="";
+			if (ACratio <30){
+				RACratio = "A1  : Normal to mildly increased A/C_ratio";
+			}
+			else if (ACratio >=30 && ACratio <=300) {
+				RACratio = "A2  : Moderately increased A/C_ratio";
+			}
+			else if (ACratio >300) {
+				RACratio = "A3  : Severely increased A/C_ratio";
+			}else {
+			}
+			
+			if (eGFR >=90){
+				ReGFR = "G1  : Normal GFR";
+			}
+			else if (eGFR < 89 && eGFR >=60) {
+				ReGFR = "G2  : Mildly decreased GFR";
+			}
+			else if (eGFR < 60 && eGFR >=45) {
+				ReGFR = "G3a : Mildly to moderately decreased GFR";
+			}
+			else if (eGFR < 45 && eGFR >=30) {
+				ReGFR = "G3b : Moderate to severely decreased GFR";
+			}
+			else if (eGFR < 30 && eGFR >=15) {
+				ReGFR = "G4  : Severely decreased GFR";
+			}
+			else if (eGFR < 15) {
+				ReGFR = "G5  : Kidney failure";
+			}else {
+			}		
+			return ("\n\t" + RACratio + "\n\t" + ReGFR  + "\n");
+	}
+
+	public static void main(String[] args) {
         new EMR_eGFR();
     }
 }
