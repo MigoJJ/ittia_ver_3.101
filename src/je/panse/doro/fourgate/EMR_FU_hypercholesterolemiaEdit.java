@@ -8,15 +8,15 @@ import javax.swing.SwingWorker;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_hypertensionEdit extends JFrame {
+public class EMR_FU_hypercholesterolemiaEdit extends JFrame {
     private static final int NUM_TEXT_AREAS = 10;
 
-    public EMR_FU_hypertensionEdit() {
+    public EMR_FU_hypercholesterolemiaEdit() {
         for (int i = 0; i < NUM_TEXT_AREAS; i++) {
             if (GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            String fileName = EntryDir.homeDir + "/fourgate/hypertension/textarea" + (i);
+            String fileName = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + (i);
             new FileLoader(fileName, i).execute();
         }
     }
@@ -58,6 +58,6 @@ public class EMR_FU_hypertensionEdit extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_FU_hypertensionEdit();
+        new EMR_FU_hypercholesterolemiaEdit();
     }
 }

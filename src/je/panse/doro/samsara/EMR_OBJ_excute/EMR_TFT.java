@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.String_ArrowChange;
 
 public class EMR_TFT implements ActionListener, KeyListener {
 	private JFrame frame = new JFrame("EMR TFT");
@@ -47,7 +48,7 @@ public class EMR_TFT implements ActionListener, KeyListener {
             inputFields[i].setPreferredSize(new Dimension(50, 30));
             inputPanel.add(inputFields[i]);
         }
-
+        
         clearButton = new JButton("Clear");
         clearButton.addActionListener(this);
         saveButton = new JButton("Save");
@@ -126,38 +127,50 @@ public class EMR_TFT implements ActionListener, KeyListener {
                 return;
             }
         }
+        
+        String T3 = inputFields[0].getText(); 
+        T3 = String_ArrowChange.compareOriginAndLrange(T3, 1.23, 3.08);
+        String free_T4 = inputFields[1].getText(); 
+        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10, 19);
+        String TSH = inputFields[2].getText(); 
+        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
+        String Ab_TSH = inputFields[3].getText(); 
+        Ab_TSH = String_ArrowChange.compareOriginAndLrange(Ab_TSH, 0.8);
+        String Ab_Tg = inputFields[4].getText(); 
+        Ab_Tg = String_ArrowChange.compareOriginAndLrange(Ab_Tg, 115);
+        String Ab_Mic = inputFields[5].getText(); 
+        Ab_Mic = String_ArrowChange.compareOriginAndLrange(Ab_Mic, 34);
+        
         String outputText = String.format(
-        	    "\nT3 :\t%.2f (ug/dL)\n" +
-        	    "free-T4 :\t%.2f (ug/dL)\n" +
-        	    "TSH :\t%.2f (mIU/ml)\n" +
-        	    "\tAnti-TSH-R-Ab: %.2f (IU/L)\n" +
-        	    "\tAnti-Thyrogobulin Ab: %.1f (ng/mL)\n"+
-        	    "\tAnti-microsomal Ab: %.1f ( IU/mL)\n",
-        	    Float.parseFloat(inputFields[0].getText()),
-        	    Float.parseFloat(inputFields[1].getText()),
-        	    Float.parseFloat(inputFields[2].getText()),
-        	    Float.parseFloat(inputFields[3].getText()),
-        	    Float.parseFloat(inputFields[4].getText()),
-        	    Float.parseFloat(inputFields[5].getText())
-        	    // add one more floating point number for the missing specifier
-        	);
-				outputArea.setText(outputText);
-				GDSEMR_frame.setTextAreaText(5, outputText);
+          	  "\nT3  " + T3 + "(ug/dL)   " +
+                "free-T4  " + free_T4 +"(ug/dL)   " +
+                "TSH  " + TSH + "(mIU/ml)\n" +
+        	    "\tAnti-TSH-R-Ab   " + Ab_TSH + "(IU/L)\n" +
+        	    "\tAnti-Thyrogobulin Ab   " + Ab_Tg + "(ng/mL)\n"+
+        	    "\tAnti-microsomal Ab    " + Ab_Mic +"(IU/mL)\n"
+                );
+		outputArea.setText(outputText);
+		GDSEMR_frame.setTextAreaText(5, outputText);
     }   
 
     private void saveResults3() {
+
+        String T3 = inputFields[0].getText(); 
+        T3 = String_ArrowChange.compareOriginAndLrange(T3, 1.23, 3.08);
+        String free_T4 = inputFields[1].getText(); 
+        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10, 19);
+        String TSH = inputFields[2].getText(); 
+        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
+    	
         String outputText = String.format(
-        		"\nT3 :\t%.2f (ug/dL)\n" +
-              "free-T4 :\t%.2f (ug/dL)\n" +
-              "TSH :\t%.2f (mIU/ml)\n",
-        	    Float.parseFloat(inputFields[0].getText()),
-        	    Float.parseFloat(inputFields[1].getText()),
-        	    Float.parseFloat(inputFields[2].getText())
-        	    // add one more floating point number for the missing specifier
-        	);
-				outputArea.setText(outputText);
-				GDSEMR_frame.setTextAreaText(5, outputText);
-				frame.dispose();
+        	  "\nT3  " + T3 + "(ug/dL)   " +
+              "free-T4  " + free_T4 +"(ug/dL)   " +
+              "TSH  " + TSH + "(mIU/ml)\n"
+        );
+
+		outputArea.setText(outputText);
+		GDSEMR_frame.setTextAreaText(5, outputText);
+		frame.dispose();
             }
     
     public void keyReleased(KeyEvent e) {}

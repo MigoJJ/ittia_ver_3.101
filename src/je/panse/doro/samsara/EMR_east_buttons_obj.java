@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_GFS;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
@@ -18,6 +19,8 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_CBC;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_enterresult;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_positive;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
@@ -33,7 +36,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         setBackground(new Color(240, 240, 240));
         setTitle(title);
 
-        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "...", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
+        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "Etc.", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
 
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
@@ -81,21 +84,15 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "HbA1c":
                 EMR_HbA1c.main(null);
                 break;
-            case "ChestPA":
-                EMR_ChestPA.main(null);
-                break;
-            case "EKG":
-                EMR_EKG.main(null);
-                break;
+
             case "LDL":
                 EMR_LDL.main(null);
                 break;
             case "LFT":
                 EMR_LFT.main(null);
                 break;
-            case "GFS":
-            case "CFS":
-                EMR_GFS.main(null);
+            case "eGFR":
+            	EMR_eGFR.main(null);  
                 break;
             case "Lp(a)":
             	EMR_LpaApoB.main(null);
@@ -106,10 +103,25 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             case "CBC":
             	EMR_CBC.main(null);
                 break;
-            case "eGFR":
-            	EMR_eGFR.main(null);
+            case "Etc.":
+            	EMR_Lab_enterresult.main(null);
+            	EMR_Lab_positive.main(null);
+                break;
+            case "GFS":
+            case "CFS":
+                EMR_GFS.main(null);
+                break;
+            case "ChestPA":
+                EMR_ChestPA.main(null);
+                break;
+            case "EKG":
+                EMR_EKG.main(null);
+                break;
+            case "DEXA":
+            	EMR_DEXA.main(null);
                 break;
 
+                
             default:
                 break;
         }

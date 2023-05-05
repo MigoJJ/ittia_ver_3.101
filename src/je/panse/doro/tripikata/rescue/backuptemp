@@ -1,8 +1,7 @@
-CC>    DM F/U
-O>
-Healthy weight :   BMI: [ 20.03 ]kg/m^2
-Height :  158 cm   Weight : 50 kg   Waist : 28 cm
-P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...now [ well ] treated with current medication
-    continue with current dosages of meds
+    O>	 
+Creatinie  3 (mg/dl)...eGFR  4 (cells/L)...+A/C  5 (billion/L)
+	A1  :   Normal to mildly increased A/C_ratio
+	G5  :  Kidney failure
+    A>	 
+#  CKD [ 	A1  :   Normal to mildly increased A/C_ratio
+	G5  :  Kidney failure]
