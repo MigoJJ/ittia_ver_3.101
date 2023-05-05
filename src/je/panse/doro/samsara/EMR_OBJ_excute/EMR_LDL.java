@@ -45,14 +45,15 @@ public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
                 inputFields[currentInputFieldIndex].requestFocus(); // set focus to next input field
                 inputFields[currentInputFieldIndex].setCaretPosition(inputFields[currentInputFieldIndex].getText().length()); // set cursor position to end of text
             } else {
-            	String result = ("\n   TC-HDL-Tg-LDL [ " 
+            	String result = ("TC-HDL-Tg-LDL [ " 
                 	    + inputFields[0].getText() + " - " 
                 	    + inputFields[1].getText() + " - " 
                 	    + inputFields[2].getText() + " - " 
                 	    + inputFields[3].getText()+ " ] mg/dL");
 		        System.out.println(" result" + result);
-		        GDSEMR_frame.setTextAreaText(5,result);
-		        dispose();
+		        GDSEMR_frame.setTextAreaText(5,"\n" + result);
+				GDSEMR_frame.setTextAreaText(7, "\n#  " + result);
+				dispose();
             }
         }
     }

@@ -18,7 +18,7 @@ public class BlendColors extends GDSEMR_frame {
 		  Color color = new Color(r, g, b);
 		  textAreas.setBackground(color);
 		  
-	  	  Font font = new Font("Inconsolata", Font.PLAIN, 15);
+	  	  Font font = new Font("Inconsolata", Font.PLAIN, 12);
 		  textAreas.setFont(font);
 		  outputtextAreas.setFont(font);
 
