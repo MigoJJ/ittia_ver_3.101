@@ -25,8 +25,8 @@ public class GDSEMR_frame {
 
    private void createAndShowGUI() throws Exception {
       // Create the JFrame
-      frame.setSize(1200, 1000); // Set JFrame size to 800x600
-      frame.setLocation(100, 50);
+      frame.setSize(1200, 1200); // Set JFrame size to 800x600
+      frame.setLocation(50, 50);
 
       // Create the center panel and set its layout
       JPanel centerPanel = new JPanel(new GridLayout(5, 2));
@@ -37,7 +37,7 @@ public class GDSEMR_frame {
 
       // Create the west panel and set its layout
       JPanel westPanel = new JPanel(new BorderLayout());
-      westPanel.setPreferredSize(new Dimension(400, westPanel.getHeight())); // Set West panel width to 400 pixels
+      westPanel.setPreferredSize(new Dimension(500, westPanel.getHeight())); // Set West panel width to 400 pixels
       westPanel.add(tempOutputArea, BorderLayout.WEST); 
       JScrollPane outputScrollPane = new JScrollPane(tempOutputArea);
       outputScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);

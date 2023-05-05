@@ -1,11 +1,10 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.String_ArrowChange;
 
 public class EMR_CBC extends JFrame {
 
@@ -40,6 +40,7 @@ public class EMR_CBC extends JFrame {
             inputFields[i].addActionListener(new InputFieldActionListener());
             inputPanel.add(inputFields[i]);
         }
+
         // Create the buttons
         submitButton = new JButton("Submit");
         clearButton = new JButton("Clear");
@@ -81,11 +82,15 @@ public class EMR_CBC extends JFrame {
                         String hb = inputFields[0].getText().trim();
                         String wbc = inputFields[1].getText().trim();
                         String platelet = inputFields[2].getText().trim();
-                    	
+                        
+                	    hb = String_ArrowChange.compareOriginAndLrangeH(hb, 12.0);
+                	    wbc = String_ArrowChange.compareOriginAndLrange(wbc, 4000, 10000);
+                	    platelet = String_ArrowChange.compareOriginAndLrange(platelet, 150, 450);
+
                         if (wbc.isEmpty()) {
-                            result = "\nHb " + hb +" (g/dl)  \n";
+                            result = "\nHb (g/dl) " + hb +"\n";
                         } else {
-                            result = "\nHb " + hb +" (g/dl)..." + "WBC " + wbc +" (cells/L)..."+ "Platelet " + platelet + " (billion/L)\n";
+                            result = "\nHb " + hb +" (g/dl) ..." + "WBC " + wbc +" (cells/L)..."+ "Platelet " + platelet + " (billion/L)\n";
                         	}
                         // Clear the text of all input fields
                         for (JTextField inputField : inputFields) {
