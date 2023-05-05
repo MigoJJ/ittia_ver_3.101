@@ -65,7 +65,8 @@ public class EMR_Lab_enterresult extends JFrame {
                         	  	String outputText = textBoxes[i].getText();
                         	  	String labelText = labels[i].getText();
                             if (outputText != null && !outputText.isEmpty()) {
-                                GDSEMR_frame.setTextAreaText(5, labelText + " " + outputText + "\n");
+                                GDSEMR_frame.setTextAreaText(5, "\n  " + outputText + "\t[ " +  labelText+ " ]\n");
+                                dispose();
                             	}
                         	}
                        }
@@ -98,9 +99,6 @@ public class EMR_Lab_enterresult extends JFrame {
                         }
                     });
                 }
-
-                
-                
 
                 // Create the panel for the buttons
                 JPanel panelBottom = new JPanel();
