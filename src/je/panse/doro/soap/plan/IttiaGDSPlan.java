@@ -23,6 +23,7 @@ public class IttiaGDSPlan extends JFrame {
         centerPanel.add(panel1);
         IttiaGDSPlanPanel_2 panel2 = new IttiaGDSPlanPanel_2(this);
         centerPanel.add(panel2);
+        
         IttiaGDSPlanPanel_3 panel3 = new IttiaGDSPlanPanel_3(this);
         centerPanel.add(panel3);
         
@@ -51,12 +52,14 @@ public class IttiaGDSPlan extends JFrame {
 	            	IttiaGDSPlanPanel_1.saveButton();
 	            	dispose();
 	            }
-
 	        });
-
-
+	        quitButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	dispose();
+	            }
+	        });
     	}
-
 
     public static void main(String[] args) {
         IttiaGDSPlan frame = new IttiaGDSPlan();

@@ -1,31 +1,55 @@
 package je.panse.doro.soap.plan;
 
-import javax.swing.*;	
-import java.awt.*;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-public class IttiaGDSPlanPanel_3 extends JPanel {
+public class IttiaGDSPlanPanel_3 extends JPanel implements ActionListener {
+    private String[] plancombo = {"Option 1", "Option 2", "Option 3"};
+    private JTextArea textArea;
 
-	public IttiaGDSPlanPanel_3(IttiaGDSPlan frame) {
-	    setLayout(new GridLayout(12, 2)); // Set layout to a 2x2 grid
-//        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    public IttiaGDSPlanPanel_3(IttiaGDSPlan frame) {
+        setLayout(new GridLayout(30, 1));
 
-	
-	    // Create 10 checkboxes
-	    for (int i = 1; i <= 10; i++) {
-	        add(new JCheckBox("Check Box " + i));
-	    }
-	
-	    // Create 5 radio buttons
-	    ButtonGroup radioGroup = new ButtonGroup(); // Create a group for the radio buttons
-	    for (int i = 1; i <= 6; i++) {
-	        JRadioButton radioButton = new JRadioButton("Radio Button " + i);
-	        radioGroup.add(radioButton); // Add the radio button to the group
-	        add(radioButton);
-	    }
-	
-	    // Create 5 combo boxes
-	    for (int i = 1; i <= 8; i++) {
-	        add(new JComboBox(new String[]{"Option 1", "Option 2", "Option 3"}));
-	    }
-	}
+        String[] checkboxLabels = ittiaGDSPlanPanel_3_String.getCheckboxLabels();
+        for (String label : checkboxLabels) {
+            JCheckBox checkBox = new JCheckBox(label);
+            checkBox.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JCheckBox source = (JCheckBox) e.getSource();
+                    String labelText = source.getText();
+                    IttiaGDSPlanPanel_1.appendTextArea(labelText+"\n");
+                }
+            });
+            add(checkBox);
+        }
+        
+        // Create 5 combo boxes
+        for (int i = 1; i <= 8; i++) {
+
+            String[] comboboxes = ittiaGDSPlanPanel_3_String.getboxs(i);
+            JComboBox<String> comboBox = new JComboBox<>(comboboxes);
+            comboBox.addActionListener(this);
+            add(comboBox);
+        }
+
+        textArea = new JTextArea();
+        add(textArea);
+        textArea.setVisible(false);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JComboBox<String> comboBox = (JComboBox<String>) e.getSource();
+        textArea.setText("");
+        String selectedItem = (String) comboBox.getSelectedItem();
+//        System.out.println("WJ ~!!!" +selectedItem);
+        textArea.append("..."+ selectedItem + "\n"); // Append selected item to the target JTextArea
+        IttiaGDSPlanPanel_1.appendTextArea(selectedItem+"\n");
+    }
 }

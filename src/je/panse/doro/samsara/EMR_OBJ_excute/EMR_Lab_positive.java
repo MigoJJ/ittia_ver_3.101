@@ -55,7 +55,7 @@ public class EMR_Lab_positive extends JFrame implements ActionListener {
         String results = "Laboratory Results : \n";
         for (int i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].isSelected()) {
-                results += checkboxes[i].getText() + "\n";
+                results += checkboxes[i].getText()+ "\n";
             }
         }
         resultsTextArea.setText(results);       

@@ -1,21 +1,30 @@
+    CC>	  Hypertension F/U
+    PMH>	 
+    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
+    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ▸ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ▸ Gout
+    ☐ Arthritis    ☐ Hearing Loss    ▸ CVA
+    ☐ Depression    ☐ Cognitive Disorder
+    ☐ Allergy
+    ☐ Food    ☐ Injection    ☐ Medication    
+--------------------------------------
     O>	 
-Creatinie  1.5 (mg/dl)...eGFR  55 (cells/L)...+A/C  365 (billion/L)
-	A3  :   Severely increased A/C_ratio
-	G3a :  Mildly to moderately decreased GFRLaboratory Results :
+  1	[ Vitamin-D  (20-50 ng/mL) ]
+  2	[ CRP   ]
+  3	[ ESR   ]
+  4	[ URic Acid   ]
+  5	[ CA-19-9 ]
+  678	[ CEA ]
+Laboratory Results : 
 HAV-Ab IgG: Positive
 HBsAg: Positive
 HBsAb: Positive
-RF: Positive
-  1	[ first    1 Name Here   :    ]
-  2	[ second2 Name Here   :    ]
-  3	[ third3 Name Here   :    ]
-  4	[ fourth4 Name Here   :    ]
-  5	[ third5 Name Here   :    ]
-   Chest PA  :  	A normal Chest PA X-ray
-   EKG :  	A normal EKG (electrocardiogram)
-	Sinus tachycardia - 
-Normal bone density [ T-score ] 1.9
-    A>	 
-#  CKD [ 	A3  :   Severely increased A/C_ratio
-	G3a :  Mildly to moderately decreased GFR]
-#  Normal bone density [ T-score ] 1.9
+    P>	 
+Follow up interval: [ 3 ] months
+Prescription :   continue with current dosages of meds
+...Toujeo (Insulin Glargine) [    ]
+...Synthyroxine [ 50 ] ug 1 tab p.o. q.d.
+Ophthalmologist consultation[+]
+The patient Refused dose-adjustment
+NR consult to Univ Hospital
