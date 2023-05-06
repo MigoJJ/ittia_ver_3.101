@@ -24,7 +24,7 @@ public class IttiaGDSPlanPanel_3 extends JPanel {
 	    }
 	
 	    // Create 5 combo boxes
-	    for (int i = 1; i <= 6; i++) {
+	    for (int i = 1; i <= 8; i++) {
 	        add(new JComboBox(new String[]{"Option 1", "Option 2", "Option 3"}));
 	    }
 	}
