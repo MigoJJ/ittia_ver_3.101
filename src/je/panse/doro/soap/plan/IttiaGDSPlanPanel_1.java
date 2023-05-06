@@ -24,7 +24,7 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
     public IttiaGDSPlanPanel_1(IttiaGDSPlan frame) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        add(new JLabel("Follow up interval > "));
+        add(new JLabel("< Follow up interval > "));
         textField1 = new JTextField();
         textField1.setPreferredSize(new Dimension(20, 30));
         textField1.getDocument().addDocumentListener(new DocumentListener() {
@@ -43,7 +43,7 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
         });
         add(textField1);
 
-        add(new JLabel("Change Prescription >"));
+        add(new JLabel("< Change Prescription >"));
         textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(20, 30));
         textField2.getDocument().addDocumentListener(new DocumentListener() {
@@ -64,6 +64,8 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
 		    @Override
 		    public void keyPressed(KeyEvent e) {
 		        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+
+		        	
 		            textField2.requestFocusInWindow();
 		            textField2.setCaretPosition(0);
 		        }
@@ -88,7 +90,36 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
     }
 
     private void updateTextArea() {
-        textArea.setText("Follow up interval: " + textField1.getText() + "\n"
-                + "Change Prescription: " + textField2.getText() + "\n");
+    	
+    	String rtfield2 = returnchangefield2(textField2.getText());
+		textArea.setText("Follow up interval: [ " + textField1.getText() + " ] months\n"
+                + "Prescription :" + rtfield2 + "\n");
     }
+    
+    private String returnchangefield2(String meds) {
+        String returnmeds = "";
+        if (meds.equals("5")) {
+            returnmeds = "...starting new medicine";
+        } else if (meds.equals("55")) {
+            returnmeds = "...Medication discontinuation";
+        } else if (meds.equals("6")) {
+            returnmeds = "   continue with current dosages of meds";
+        } else if (meds.equals("8")) {
+            returnmeds = "...an increase in drug dosage";
+        } else if (meds.equals("2")) {
+            returnmeds = "...a reduction in drug dosage";
+        } else if (meds.equals("4")) {
+            returnmeds = "...Return to previous Prescription";
+        } else if (meds.equals("55")) {
+            returnmeds = "...Medication discontinuation :";
+        } else if (meds.equals("0")) {
+            returnmeds = "...Observation & Follow-up without medication";
+        } else if (meds.equals("1")) {
+            returnmeds = "...With conservative treatment";
+        } else {
+            returnmeds = "";
+        }
+        return returnmeds;
+    }
+
 }
