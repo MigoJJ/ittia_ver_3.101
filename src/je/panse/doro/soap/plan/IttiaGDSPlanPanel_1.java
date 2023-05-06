@@ -13,12 +13,15 @@ import javax.swing.JTextField;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
+import je.panse.doro.GDSEMR_frame;
+
 import java.awt.*;
 
 public class IttiaGDSPlanPanel_1 extends JPanel {
 
-    private JTextField textField1;
-    private JTextField textField2;
+    private static JTextField textField1;
+    private static JTextField textField2;
     private static JTextArea textArea;
 
     public IttiaGDSPlanPanel_1(IttiaGDSPlan frame) {
@@ -89,30 +92,30 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
     private void updateTextArea() {
     	
     	String rtfield2 = returnchangefield2(textField2.getText());
-		textArea.setText("Follow up interval: [ " + textField1.getText() + " ] months\n"
+		textArea.setText("\nFollow up interval: [ " + textField1.getText() + " ] months\n"
                 + "Prescription :" + rtfield2 + "\n");
     }
     
     private String returnchangefield2(String meds) {
         String returnmeds = "";
         if (meds.equals("5")) {
-            returnmeds = "...starting new medicine";
+            returnmeds = " starting new medicine";
         } else if (meds.equals("55")) {
-            returnmeds = "...Medication discontinuation";
+            returnmeds = " Medication discontinuation";
         } else if (meds.equals("6")) {
-            returnmeds = "   continue with current dosages of meds";
+            returnmeds = " continue with current dosages of meds";
         } else if (meds.equals("8")) {
-            returnmeds = "...an increase in drug dosage";
+            returnmeds = " an increase in drug dosage";
         } else if (meds.equals("2")) {
-            returnmeds = "...a reduction in drug dosage";
+            returnmeds = " a reduction in drug dosage";
         } else if (meds.equals("4")) {
-            returnmeds = "...Return to previous Prescription";
+            returnmeds = " Return to previous Prescription";
         } else if (meds.equals("55")) {
-            returnmeds = "...Medication discontinuation :";
+            returnmeds = " Medication discontinuation :";
         } else if (meds.equals("0")) {
-            returnmeds = "...Observation & Follow-up without medication";
+            returnmeds = " Observation & Follow-up without medication";
         } else if (meds.equals("1")) {
-            returnmeds = "...With conservative treatment";
+            returnmeds = " With conservative treatment";
         } else {
             returnmeds = "";
         }
@@ -121,5 +124,17 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
 
 	public static void appendTextArea(String text) {
     	textArea.append(text);    	
+	}
+	
+	public static void clearButton() {
+        textField1.setText("");
+        textField2.setText("");
+        textArea.setText("");	
+
+	}
+	public static void saveButton() {
+	    String text = textArea.getText();
+	    GDSEMR_frame.setTextAreaText(8, text);
+
 	}
 }

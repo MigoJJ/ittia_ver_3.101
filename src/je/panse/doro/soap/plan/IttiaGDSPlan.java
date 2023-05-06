@@ -1,12 +1,20 @@
 package je.panse.doro.soap.plan;
-import javax.swing.*;	
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+import je.panse.doro.GDSEMR_frame;
 
 public class IttiaGDSPlan extends JFrame {
 
     public IttiaGDSPlan() {
         setTitle("My Frame");
-        setSize(1200, 600);
+        setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel centerPanel = new JPanel(new GridLayout(1, 3));
@@ -29,7 +37,26 @@ public class IttiaGDSPlan extends JFrame {
 
         add(centerPanel, BorderLayout.CENTER);
         add(southPanel, BorderLayout.SOUTH);
-    }
+
+	        clearButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	IttiaGDSPlanPanel_1.clearButton();
+	            	IttiaGDSPlanPanel_2.clearButton();
+	            }
+	        });
+	        saveButton.addActionListener(new ActionListener() {
+	            @Override
+	            public void actionPerformed(ActionEvent e) {
+	            	IttiaGDSPlanPanel_1.saveButton();
+	            	dispose();
+	            }
+
+	        });
+
+
+    	}
+
 
     public static void main(String[] args) {
         IttiaGDSPlan frame = new IttiaGDSPlan();

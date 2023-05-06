@@ -12,7 +12,7 @@ import javax.swing.JTextArea;
 
 public class IttiaGDSPlanPanel_2 extends JPanel implements ActionListener {
     private static String label;
-	private JTextArea textArea;
+	private static JTextArea textArea;
 
     public IttiaGDSPlanPanel_2(IttiaGDSPlan frame) {
 
@@ -45,5 +45,8 @@ public class IttiaGDSPlanPanel_2 extends JPanel implements ActionListener {
         textArea.setText("");
         textArea.append("..."+ selectedItem + "\n"); // Append selected item to the target JTextArea
         IttiaGDSPlanPanel_1.appendTextArea(textArea.getText());
+    }
+	public static void clearButton() {
+        textArea.setText("");	
     }
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
+import je.panse.doro.soap.plan.IttiaGDSPlan;
 
 public class GDSEMR_fourgate extends GDSEMR_frame {
 
@@ -18,7 +19,8 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 			EMRPMH.main(text);
 		} else if (text.contains("O>")) {
 			EMR_east_buttons_obj.main(text);
+		} else if (text.contains("P>")) {
+		IttiaGDSPlan.main(null);
 		}
 	}
-
 }
