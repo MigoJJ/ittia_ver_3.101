@@ -19,7 +19,7 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
 
     private JTextField textField1;
     private JTextField textField2;
-    private JTextArea textArea;
+    private static JTextArea textArea;
 
     public IttiaGDSPlanPanel_1(IttiaGDSPlan frame) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -27,6 +27,7 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
         add(new JLabel("< Follow up interval > "));
         textField1 = new JTextField();
         textField1.setPreferredSize(new Dimension(20, 30));
+        textField1.setHorizontalAlignment(JTextField.CENTER);
         textField1.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 updateTextArea();
@@ -46,6 +47,7 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
         add(new JLabel("< Change Prescription >"));
         textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(20, 30));
+        textField2.setHorizontalAlignment(JTextField.CENTER);
         textField2.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 updateTextArea();
@@ -122,4 +124,7 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
         return returnmeds;
     }
 
+	public static void appendTextArea(String text) {
+    	textArea.append(text);    	
+	}
 }
