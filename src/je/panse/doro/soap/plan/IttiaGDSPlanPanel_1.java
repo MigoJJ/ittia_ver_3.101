@@ -23,7 +23,6 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
 
     public IttiaGDSPlanPanel_1(IttiaGDSPlan frame) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
         add(new JLabel("< Follow up interval > "));
         textField1 = new JTextField();
         textField1.setPreferredSize(new Dimension(20, 30));
@@ -43,7 +42,6 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
             }
         });
         add(textField1);
-
         add(new JLabel("< Change Prescription >"));
         textField2 = new JTextField();
         textField2.setPreferredSize(new Dimension(20, 30));
@@ -61,13 +59,10 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
         });
         add(textField2);
         
-        
 		textField1.addKeyListener(new KeyAdapter() {
 		    @Override
 		    public void keyPressed(KeyEvent e) {
 		        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-
-		        	
 		            textField2.requestFocusInWindow();
 		            textField2.setCaretPosition(0);
 		        }
