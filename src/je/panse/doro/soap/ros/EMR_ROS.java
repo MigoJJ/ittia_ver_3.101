@@ -100,7 +100,7 @@ public class EMR_ROS extends JFrame {
                 int columnIndex = table.getSelectedColumn();
 
                     Object cellValue = table.getValueAt(rowIndex, columnIndex);
-                    outputArea.append("Selected cell value: " + cellValue.toString() + "\n");
+                    outputArea.append("   [+] " + cellValue.toString() + "\n");
                 }
         });
 
@@ -108,15 +108,18 @@ public class EMR_ROS extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 int columnIndex = table.columnAtPoint(e.getPoint());
                 String columnTitle = table.getColumnName(columnIndex);
-                outputArea.append("Selected column title: " + columnTitle + "\n");
+                outputArea.append("ROS> " + columnTitle);
 
                 StringBuilder rowData = new StringBuilder();
                 for (int i = 0; i < table.getRowCount(); i++) {
                     Object cellValue = table.getValueAt(i, columnIndex);
-                    rowData.append(cellValue.toString() + "\n");
+                    
+                    if (!((String) cellValue).isEmpty()) {
+                    		outputArea.append("\n   [-]" + cellValue.toString());
+                    }                    
                 }
                 if (rowData.length() > 0) {
-                    outputArea.append("All row values of the clicked column:\n" + rowData.toString());
+                    outputArea.append(rowData.toString());
                 }
             }
         });
