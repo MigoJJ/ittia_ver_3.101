@@ -113,14 +113,13 @@ public class EMR_ROS extends JFrame {
                 StringBuilder rowData = new StringBuilder();
                 for (int i = 0; i < table.getRowCount(); i++) {
                     Object cellValue = table.getValueAt(i, columnIndex);
-                    if (!rowData.equals("")) {
-                    	rowData.append(cellValue.toString() + "\n");
-                    }
+                    rowData.append(cellValue.toString() + "\n");
                 }
-                outputArea.append("All row values of the clicked column:\n" + rowData.toString());
+                if (rowData.length() > 0) {
+                    outputArea.append("All row values of the clicked column:\n" + rowData.toString());
+                }
             }
         });
-
         
         // Add the buttons to the panel and the panel to the frame
         buttonPanel.add(clearButton);
