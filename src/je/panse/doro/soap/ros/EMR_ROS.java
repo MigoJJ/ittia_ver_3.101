@@ -96,17 +96,32 @@ public class EMR_ROS extends JFrame {
 
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                // Get the row and column index of the selected cell
                 int rowIndex = table.getSelectedRow();
-                int colIndex = table.getSelectedColumn();
-                
-                // Get the value of the selected cell
-                Object cellValue = table.getValueAt(rowIndex, colIndex);
-                outputArea.append("   [+] " + cellValue.toString() +"\n");
-//                GDSEMR_frame.setTextAreaText(2, cellValue.toString());
+                int columnIndex = table.getSelectedColumn();
+
+                    Object cellValue = table.getValueAt(rowIndex, columnIndex);
+                    outputArea.append("Selected cell value: " + cellValue.toString() + "\n");
+                }
+        });
+
+        table.getTableHeader().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int columnIndex = table.columnAtPoint(e.getPoint());
+                String columnTitle = table.getColumnName(columnIndex);
+                outputArea.append("Selected column title: " + columnTitle + "\n");
+
+                StringBuilder rowData = new StringBuilder();
+                for (int i = 0; i < table.getRowCount(); i++) {
+                    Object cellValue = table.getValueAt(i, columnIndex);
+                    if (!rowData.equals("")) {
+                    	rowData.append(cellValue.toString() + "\n");
+                    }
+                }
+                outputArea.append("All row values of the clicked column:\n" + rowData.toString());
             }
         });
 
+        
         // Add the buttons to the panel and the panel to the frame
         buttonPanel.add(clearButton);
         buttonPanel.add(saveButton);
