@@ -2,10 +2,8 @@ package je.panse.doro.soap.ros;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -16,11 +14,14 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EMR_ROS extends JFrame {
     private JTextArea outputArea;
     private JTable dataTable;
     private static JFrame f =new JFrame();
 
+    
     public EMR_ROS() {
         // Set the frame size and layout
         f.setSize(1200, 800);
@@ -37,6 +38,7 @@ public class EMR_ROS extends JFrame {
         DefaultTableModel tableModel = new DefaultTableModel(0, columnNames.length);
         tableModel.setColumnIdentifiers(columnNames);
 
+        
         // Create a 2D array to hold the row data
         String[][] rowData = new String[columnNames.length][];
 
@@ -92,6 +94,19 @@ public class EMR_ROS extends JFrame {
         saveButton.addActionListener(new EMR_ROS_ButtonActions(dataTable, outputArea));
         quitButton.addActionListener(new EMR_ROS_ButtonActions(dataTable, outputArea));
 
+        table.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                // Get the row and column index of the selected cell
+                int rowIndex = table.getSelectedRow();
+                int colIndex = table.getSelectedColumn();
+                
+                // Get the value of the selected cell
+                Object cellValue = table.getValueAt(rowIndex, colIndex);
+                outputArea.append("   [+] " + cellValue.toString() +"\n");
+//                GDSEMR_frame.setTextAreaText(2, cellValue.toString());
+            }
+        });
+
         // Add the buttons to the panel and the panel to the frame
         buttonPanel.add(clearButton);
         buttonPanel.add(saveButton);
@@ -110,5 +125,7 @@ public class EMR_ROS extends JFrame {
     public static void disposemain(String[] args) {
         f.dispose();
     }
-
+    public static void listnerAct(String[] args) {
+    }
+    
 }

@@ -8,6 +8,8 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EMR_ROS_ButtonActions  extends JFrame implements ActionListener {
     private JTable dataTable;
     private JTextArea outputArea;
@@ -21,13 +23,12 @@ public class EMR_ROS_ButtonActions  extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
         case "Clear":
-
+        	outputArea.setText("");
             break;
         // handle other button actions here
         case "Save":
-                outputArea.append("Data saved to file: data.txt\n");
-            	System.out.println(" case save:");
-            	EMR_ROS.disposemain(null);
+            GDSEMR_frame.setTextAreaText(2, outputArea.getText());
+            EMR_ROS.disposemain(null);
             	
 //                try {
 //                    FileWriter writer = new FileWriter("/home/woonjungkoh/git/ittia_Version_2.1/src/je/panse/doro/tripikata/backup");
@@ -46,8 +47,10 @@ public class EMR_ROS_ButtonActions  extends JFrame implements ActionListener {
                 break;
             case "Quit":
             	System.out.println(" case quit:");
+            	outputArea.setText("");
             	EMR_ROS.disposemain(null);
                 break;
         }
     }
+    
 }

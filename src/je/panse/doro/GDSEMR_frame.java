@@ -99,7 +99,8 @@ public class GDSEMR_frame {
 	public static void setTextAreaText(int i,String string) {
        textAreas[i].append(string);
    }
-   
+
+	
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
 	//        EMR_east_buttons_obj.main(null);
