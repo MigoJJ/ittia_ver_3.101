@@ -1,14 +1,12 @@
 package je.panse.doro.soap.plan;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import je.panse.doro.GDSEMR_frame;
 
 public class IttiaGDSPlan extends JFrame {
 
@@ -23,7 +21,6 @@ public class IttiaGDSPlan extends JFrame {
         centerPanel.add(panel1);
         IttiaGDSPlanPanel_2 panel2 = new IttiaGDSPlanPanel_2(this);
         centerPanel.add(panel2);
-        
         IttiaGDSPlanPanel_3 panel3 = new IttiaGDSPlanPanel_3(this);
         centerPanel.add(panel3);
         

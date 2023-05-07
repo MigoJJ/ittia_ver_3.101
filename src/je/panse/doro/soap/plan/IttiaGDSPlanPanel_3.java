@@ -3,6 +3,9 @@ package je.panse.doro.soap.plan;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -13,11 +16,12 @@ public class IttiaGDSPlanPanel_3 extends JPanel implements ActionListener {
     private JTextArea textArea;
 
     public IttiaGDSPlanPanel_3(IttiaGDSPlan frame) {
-        setLayout(new GridLayout(30, 1));
+        setLayout(new GridLayout(28, 1));
 
         String[] checkboxLabels = ittiaGDSPlanPanel_3_String.getCheckboxLabels();
         for (String label : checkboxLabels) {
             JCheckBox checkBox = new JCheckBox(label);
+
             checkBox.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -31,7 +35,6 @@ public class IttiaGDSPlanPanel_3 extends JPanel implements ActionListener {
         
         // Create 5 combo boxes
         for (int i = 1; i <= 8; i++) {
-
             String[] comboboxes = ittiaGDSPlanPanel_3_String.getboxs(i);
             JComboBox<String> comboBox = new JComboBox<>(comboboxes);
             comboBox.addActionListener(this);
