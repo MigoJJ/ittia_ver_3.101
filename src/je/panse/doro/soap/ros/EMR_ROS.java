@@ -113,7 +113,6 @@ public class EMR_ROS extends JFrame {
                 StringBuilder rowData = new StringBuilder();
                 for (int i = 0; i < table.getRowCount(); i++) {
                     Object cellValue = table.getValueAt(i, columnIndex);
-                    
                     if (!((String) cellValue).isEmpty()) {
                     		outputArea.append("\n   [-]" + cellValue.toString());
                     }                    
