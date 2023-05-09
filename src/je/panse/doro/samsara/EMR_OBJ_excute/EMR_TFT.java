@@ -129,11 +129,11 @@ public class EMR_TFT implements ActionListener, KeyListener {
         }
         
         String T3 = inputFields[0].getText(); 
-        T3 = String_ArrowChange.compareOriginAndLrange(T3, 1.23, 3.08);
+        T3 = String_ArrowChange.compareOriginAndLrange(T3, 0.90, 2.5);
         String free_T4 = inputFields[1].getText(); 
-        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10, 19);
+        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10.6, 19.4);
         String TSH = inputFields[2].getText(); 
-        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
+        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.25, 5.00);
         String Ab_TSH = inputFields[3].getText(); 
         Ab_TSH = String_ArrowChange.compareOriginAndLrange(Ab_TSH, 0.8);
         String Ab_Tg = inputFields[4].getText(); 

@@ -1,9 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import javax.swing.*;
-
+import javax.swing.*;	
 import je.panse.doro.GDSEMR_frame;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -54,14 +52,15 @@ public class EMR_Lab_positive extends JFrame implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-        String results = "Test Results:\n";
+        String results = "Laboratory Results : \n";
         for (int i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].isSelected()) {
-                results += checkboxes[i].getText() + "\n";
+                results += checkboxes[i].getText()+ "\n";
             }
         }
         resultsTextArea.setText(results);       
         GDSEMR_frame.setTextAreaText(5, results);
+        dispose();
 
     }
     

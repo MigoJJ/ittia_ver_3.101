@@ -22,7 +22,7 @@ public class EMR_Lab_enterresult extends JFrame {
 
     private JTextField[] textBoxes;
     private int numFields = 6;
-    private String[] nameFields = {"first    ", "second", "third","fourth", "third","fourth"};
+    private String[] nameFields = {"Vitamin-D  (20-50 ng/mL)", "CRP  ", "ESR  ","URic Acid  ", "CA-19-9","CEA"};
 
     public EMR_Lab_enterresult() {
         super("Name Prompt Program");
@@ -32,15 +32,14 @@ public class EMR_Lab_enterresult extends JFrame {
         textBoxes = new JTextField[numFields];
         
         for (int i = 0; i < numFields; i++) {
-            labels[i] = new JLabel(nameFields[i] + (i + 1) + " Name Here   :  ");
+            labels[i] = new JLabel(nameFields[i]);
+//      1,000 IU vitamin D equals 0.025 mg
+            
             labels[i].setHorizontalAlignment(SwingConstants.RIGHT);
-
             textBoxes[i] = new JTextField(21);
             textBoxes[i].setHorizontalAlignment(JTextField.CENTER);
             textBoxes[i].setPreferredSize(new Dimension(10, 30)); // Set the preferred size to 100x30
-
         }
-
                 // Create the panel for the labels and text fields
                 JPanel panelTop = new JPanel(new GridLayout(8, 1));
                 for (int i = 0; i < labels.length; i++) {
@@ -65,7 +64,8 @@ public class EMR_Lab_enterresult extends JFrame {
                         	  	String outputText = textBoxes[i].getText();
                         	  	String labelText = labels[i].getText();
                             if (outputText != null && !outputText.isEmpty()) {
-                                GDSEMR_frame.setTextAreaText(5, labelText + " " + outputText + "\n");
+                                GDSEMR_frame.setTextAreaText(5, "\n  " + outputText + "\t[ " +  labelText+ " ]\n");
+                                dispose();
                             	}
                         	}
                        }
@@ -98,9 +98,6 @@ public class EMR_Lab_enterresult extends JFrame {
                         }
                     });
                 }
-
-                
-                
 
                 // Create the panel for the buttons
                 JPanel panelBottom = new JPanel();
