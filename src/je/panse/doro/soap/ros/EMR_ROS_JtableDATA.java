@@ -38,9 +38,6 @@ public class EMR_ROS_JtableDATA {
 	        "Muscle pain or weakness",
 	        "Skin changes or lesions",
 	        "Sleep disturbances",
-	        "History of surgeries or hospitalizations",
-	        "Family medical history",
-	        "Current medications or supplements"
 	    };
 	}
 

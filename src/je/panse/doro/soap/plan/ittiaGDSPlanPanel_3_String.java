@@ -6,8 +6,10 @@ public class ittiaGDSPlanPanel_3_String {
         		"Next Lab F/U with NPO", 
         		"The patient Refused dose-adjustment", 
         		"Ophthalmologist consultation[+]", 
-        		"123", 
-        		"2", "3", "2", "3", "2", "3", "2", "3", "2", "3", "2", "3", "4"};
+    	       "History of surgeries or hospitalizations",
+    	       "Family medical history",
+    	       "Current medications or supplements",
+    	        "2", "3", "2", "3", "2", "3", "2", "3", "2", "3", "4"};
 
 	}
     public static String[] getboxs(int i) {
