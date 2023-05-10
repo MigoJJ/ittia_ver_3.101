@@ -1,10 +1,42 @@
+    ROS>	 ROS> < Cardiovascular >
+   [-]Chest pain or discomfort
+   [-]Shortness of breath or dyspnea
+   [-]Palpitations or irregular heartbeats
+   [-]Dizziness or lightheadedness
+   [-]Edema or swelling of the legs or ankles
+   [-]Fatigue or weakness with exertion
+   [-]History of high blood pressure or hypertension
+   [-]History of heart disease or heart attack
+   [-]Family history of cardiovascular disease
+   [-]Previous cardiac surgeries or interventions
+   [-]Use of tobacco or alcohol
+   [-]Physical inactivity or sedentary lifestyle
+   [-]High cholesterol or triglycerides
+   [-]Diabetes or metabolic syndrome
     PMH>	 
-    ☐ Diabetes Mellitus    ⬛ HTN    ☐ Dyslipidemia
-    ☐ Cancer    ⬛ Operation    ☐ Thyroid Disease
-    ☐ Asthma    ⬛ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ⬛ GERD    ☐ Gout
-    ☐ Arthritis    ☐ Hearing Loss    ☐ CVA
-    ☐ Depression    ☐ Cognitive Disorder
+    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
+    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
+    ☐ Arthritis    ⬛ Hearing Loss    ☐ CVA
+    ☐ Depression    ⬛ Cognitive Disorder
     ☐ Allergy
-    ☐ Food    ☐ Injection    ☐ Medication    
+    ☐ Food    ⬛ Injection    ☐ Medication    
 --------------------------------------
+    O>	 
+   Chest PA  : 
+   Chest PA  :  	Pleural effusion
+Osteoporosis [ T-score ] -2.7
+  12.5	[ Vitamin-D  (20-50 ng/mL) ]
+Laboratory Results : 
+HBsAg: Positive
+HBsAb: Positive
+HCV Ab: Positive
+    A>	 
+#  Osteoporosis [ T-score ] -2.7
+    P>	 
+Follow up interval: [ 3 ] months
+Prescription :   an increase in drug dosage
+...Synthyorid [ 37.5 ] ug 1 tab p.o. q.d.
+History of surgeries or hospitalizations
+Ophthalmologist consultation[+]

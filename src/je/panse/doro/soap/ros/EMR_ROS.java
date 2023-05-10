@@ -110,13 +110,15 @@ public class EMR_ROS extends JFrame {
                 String columnTitle = table.getColumnName(columnIndex);
                 outputArea.append("ROS> " + columnTitle);
 
-                StringBuilder rowData = new StringBuilder();
+
                 for (int i = 0; i < table.getRowCount(); i++) {
                     Object cellValue = table.getValueAt(i, columnIndex);
                     if (!((String) cellValue).isEmpty()) {
                     		outputArea.append("\n   [-]" + cellValue.toString());
-                    }                    
+                    	}
+                    
                 }
+                StringBuilder rowData = new StringBuilder();
                 if (rowData.length() > 0) {
                     outputArea.append(rowData.toString());
                 }
