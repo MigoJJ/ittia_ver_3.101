@@ -26,6 +26,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         setTitle("EMR Interface for HbA1c Input");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setLocation(1450, 300);
         
         inputFields = new JTextField[3]; // initialize inputFields array with size 2
         
@@ -95,31 +96,41 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         	    double fbs_pp2 = Double.parseDouble(inputFields[0].getText());
         	    double glucose_mgdl = Double.parseDouble(inputFields[1].getText());
         	    String hba1cText = inputFields[2].getText();
+    	        String returnFBS = myString(fbs_pp2);
+
         	    if (!hba1cText.isEmpty()) {
         	        double hba1c_perc = Double.parseDouble(hba1cText);
         	        double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
         	        double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
         	        double eag_mmoll = eag_mgdl / 18.01559;
-        	                
+        	        
         	        String outputText = String.format(
-        	            "\nFBS/PP2: %.2f\t" +
-        	            " [ %.0f ] mg/dL   " +
+        	        	  "\n" +returnFBS + " [ %.0f ] mg/dL   " +
         	            "HbA1c [ %.1f ]%%\n" +
         	            "\tIFCC HbA1c: %.0f mmol/mol\n" +
         	            "\teAG: %.0f mg/dL\n" +
         	            "\teAG: %.1f mmol/l\n",
-        	            fbs_pp2, glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
+        	            glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
         	        outputArea.setText(outputText);
         	        GDSEMR_frame.setTextAreaText(5, outputText);
         	    } else {
+        	    	
         	        String outputText = String.format(
-        	            "\nFBS/PP2: %.2f\t" +
-        	            "Glucose: %.0f mg/dL   ",
-        	            fbs_pp2, glucose_mgdl);
+        	        		"\n" + returnFBS +
+        	            ": %.0f mg/dL   ",
+        	            glucose_mgdl);
         	        outputArea.setText(outputText);
         	        GDSEMR_frame.setTextAreaText(5, outputText);
         	    }
             }
         }
     }
+    
+    public String myString(double fbspp2) {
+    	if ( fbspp2 == 0) {
+    		return "FBS!";	
+    	}
+		return "PP" + fbspp2;	
+    }
+    
 }
