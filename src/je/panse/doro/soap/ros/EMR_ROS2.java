@@ -16,15 +16,15 @@ import javax.swing.table.DefaultTableModel;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_ROS extends JFrame {
+public class EMR_ROS2 extends JFrame {
     private JTextArea outputArea;
     private JTable dataTable;
     private static JFrame f =new JFrame();
 
     
-    public EMR_ROS() {
+    public EMR_ROS2() {
         // Set the frame size and layout
-        f.setSize(1600, 900);
+        f.setSize(1200, 800);
         f.setLayout(new BorderLayout());
 
         // Add the output area to the north
@@ -78,7 +78,6 @@ public class EMR_ROS extends JFrame {
         }
 
         JTable table = new JTable(tableModel);
-        table.setRowHeight(30);
         JScrollPane scrollPane = new JScrollPane(table);
 
         // Add the components to the frame
@@ -139,7 +138,7 @@ public class EMR_ROS extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_ROS();
+        new EMR_ROS2();
     }
     public static void disposemain(String[] args) {
         f.dispose();
