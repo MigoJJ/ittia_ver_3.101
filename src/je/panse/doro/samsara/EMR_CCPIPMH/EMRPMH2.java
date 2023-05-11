@@ -16,19 +16,18 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
+public class EMRPMH2<pmhxTextArea> extends JFrame implements ActionListener {
 
-    private JTextArea pmhxTextArea, commentpmh;
+    private JTextArea pmhxTextArea;
     private ArrayList<JCheckBox> checkBoxList;
     private char dsquare = '\u2B1B';
 
 
-    public EMRPMH() {
+    public EMRPMH2() {
         super("Medical History");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -52,11 +51,6 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 		pmhxTextArea.setEditable(true);
 		pmhxTextArea.setFont(font);
 
-		// Create a scrollable text area to add comment
-		commentpmh = new JTextArea(20, 10);
-		commentpmh.setEditable(true);
-		commentpmh.setFont(font);
-		
 		for (String label : checkboxLabels) {
 			JCheckBox checkbox = new JCheckBox(label);
 		    checkbox.setFont(font);
@@ -78,8 +72,6 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 		}
 		
         JScrollPane pmhxScrollPane = new JScrollPane(pmhxTextArea);
-        JScrollPane commentpmhPane = new JScrollPane(commentpmh);
-
 
         // Create a panel to hold the buttons
         JPanel buttonPanel = new JPanel();
@@ -93,8 +85,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
         // Add everything to the main frame
         add(pmhxPanel, BorderLayout.NORTH);
-        JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, pmhxScrollPane, commentpmhPane);
-        add(splitPane, BorderLayout.CENTER);
+        add(pmhxScrollPane, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
 
         // Register action listeners for the buttons
@@ -125,7 +116,6 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
             sb.append("\n--------------------------------------\n");
             pmhxTextArea.append(sb.toString());
             GDSEMR_frame.setTextAreaText(3,sb.toString());
-            GDSEMR_frame.setTextAreaText(3,commentpmh.getText());
             dispose();
 
 		} else if (e.getActionCommand().equals("Clear and Restart")) {
@@ -141,7 +131,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 	}
 
     public static void main(String text) throws IOException {
-        EMRPMH gui = new EMRPMH();
+        EMRPMH2 gui = new EMRPMH2();
 //        gui.actionPerformed(new ActionEvent(gui, 0, "Save and Show"));
     }
 }
