@@ -1,6 +1,7 @@
 package je.panse.doro.samsara.EMR_CCPIPMH;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -10,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -31,6 +33,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
     public EMRPMH() {
         super("Medical History");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(700, 700));
         setLayout(new BorderLayout());
 
         // Create a panel to hold the checkboxes
@@ -47,13 +50,15 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
                 "Food", "Injection", "Medication" };
 
 		// Create a scrollable text area to display the medical history
-		pmhxTextArea = new JTextArea(20, 40);
+		pmhxTextArea = new JTextArea();
+		pmhxTextArea.setPreferredSize(new Dimension(600, 200));
 		pmhxTextArea.setText(" ---------------------\n");
 		pmhxTextArea.setEditable(true);
 		pmhxTextArea.setFont(font);
 
 		// Create a scrollable text area to add comment
-		commentpmh = new JTextArea(20, 10);
+		commentpmh = new JTextArea();
+		commentpmh.setPreferredSize(new Dimension(600, 200));
 		commentpmh.setEditable(true);
 		commentpmh.setFont(font);
 		
