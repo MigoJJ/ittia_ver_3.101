@@ -24,6 +24,8 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
     private JTextArea pmhxTextArea;
     private ArrayList<JCheckBox> checkBoxList;
+    private char dsquare = '\u2B1B';
+
 
     public EMRPMH() {
         super("Medical History");
@@ -31,7 +33,8 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
         setLayout(new BorderLayout());
 
         // Create a panel to hold the checkboxes
-        Font font = new Font("Arial", Font.PLAIN, 16);
+        Font font = new Font("DejaVu Sans", Font.PLAIN, 12);
+//        Font font = new Font("Arial", Font.PLAIN, 12);
         JPanel pmhxPanel = new JPanel();
         pmhxPanel.setLayout(new GridLayout(0, 3)); // Set the layout to a grid with 3 columns
 
@@ -49,7 +52,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 		pmhxTextArea.setFont(font);
 
 		for (String label : checkboxLabels) {
-		    JCheckBox checkbox = new JCheckBox(label);
+			JCheckBox checkbox = new JCheckBox(label);
 		    checkbox.setFont(font);
 		    checkBoxList.add(checkbox);
 		    pmhxPanel.add(checkbox);
@@ -58,7 +61,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 		        public void itemStateChanged(ItemEvent e) {
 		            if (e.getStateChange() == ItemEvent.SELECTED) {
 		                // Checkbox is checked, add text to pmhxTextArea
-		                pmhxTextArea.append("        ▸  " + label + "\n");
+		                pmhxTextArea.append("         " +dsquare+ " " + label + "\n");
 		            } else {
 		                // Checkbox is unchecked, remove text from pmhxTextArea
 		                String text = pmhxTextArea.getText().replace(label + "\n", "");
@@ -104,7 +107,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 			sb.append("\n    ");
            for (JCheckBox checkbox : checkBoxList) {
                 if (checkbox.isSelected()) {
-                    sb.append("▸ ");
+                    sb.append(dsquare + " ");
                 } else {
                     sb.append("☐ ");
                   }

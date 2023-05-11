@@ -4,18 +4,18 @@ package je.panse.doro.soap.ros;
 public class EMR_ROS_JtableDATA {
 	public static String[] columnNames() {
 	    return new String[] {
-	        "General", 
-	        "Vision", 
-	        "Head and Neck",
-	        "Pulmonary", 
-	        "Cardiovascular", 
-	        "Gastrointestinal", 
-	        "Genito-Urinary", 
-	        "Hematology/Oncology",
-	        "Neurological", 
-	        "Endocrine", 
-	        "Mental Health", 
-	        "Skin and Hair", 
+	        "< General >", 
+	        "< Vision >", 
+	        "< Head and Neck>",
+	        "< Pulmonary >", 
+	        "< Cardiovascular >", 
+	        "< Gastrointestinal >", 
+	        "< Genito-Urinary >", 
+	        "< Hematology/Oncology >",
+	        "< Neurological >", 
+	        "< Endocrine >", 
+	        "< Mental Health >", 
+	        "< Skin and Hair >", 
 	    };
 	}
 

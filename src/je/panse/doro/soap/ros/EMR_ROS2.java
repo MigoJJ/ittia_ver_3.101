@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -17,18 +16,15 @@ import javax.swing.table.DefaultTableModel;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_ROS extends JFrame {
+public class EMR_ROS2 extends JFrame {
     private JTextArea outputArea;
     private JTable dataTable;
     private static JFrame f =new JFrame();
-    public static ArrayList<String> selectList = new ArrayList<String>();
-    public static ArrayList<String> allList = new ArrayList<String>();
-    private String saveString="";
 
     
-    public EMR_ROS() {
+    public EMR_ROS2() {
         // Set the frame size and layout
-        f.setSize(1600, 900);
+        f.setSize(1200, 800);
         f.setLayout(new BorderLayout());
 
         // Add the output area to the north
@@ -82,7 +78,6 @@ public class EMR_ROS extends JFrame {
         }
 
         JTable table = new JTable(tableModel);
-        table.setRowHeight(30);
         JScrollPane scrollPane = new JScrollPane(table);
 
         // Add the components to the frame
@@ -103,9 +98,9 @@ public class EMR_ROS extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 int rowIndex = table.getSelectedRow();
                 int columnIndex = table.getSelectedColumn();
+
                     Object cellValue = table.getValueAt(rowIndex, columnIndex);
                     outputArea.append("   [+] " + cellValue.toString() + "\n");
-                    selectList.add(cellValue.toString());
                 }
         });
 
@@ -113,15 +108,15 @@ public class EMR_ROS extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 int columnIndex = table.columnAtPoint(e.getPoint());
                 String columnTitle = table.getColumnName(columnIndex);
-                allList.add(columnTitle);
-                outputArea.append("\n" + columnTitle);
+                outputArea.append("ROS> " + columnTitle);
+
 
                 for (int i = 0; i < table.getRowCount(); i++) {
                     Object cellValue = table.getValueAt(i, columnIndex);
-						if (!((String) cellValue).isEmpty()) {
-							outputArea.append("\n   [-]" + cellValue.toString());
-							allList.add(cellValue.toString());
-						}
+                    if (!((String) cellValue).isEmpty()) {
+                    		outputArea.append("\n   [-]" + cellValue.toString());
+                    	}
+                    
                 }
                 StringBuilder rowData = new StringBuilder();
                 if (rowData.length() > 0) {
@@ -143,7 +138,7 @@ public class EMR_ROS extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_ROS();
+        new EMR_ROS2();
     }
     public static void disposemain(String[] args) {
         f.dispose();
