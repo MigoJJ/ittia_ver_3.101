@@ -115,34 +115,41 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent e){			
     	if (e.getActionCommand().equals("Save and Show")) {
-//		    pmhxTextArea.setText("");
-			StringBuilder sb = new StringBuilder();
-			sb.append("\n    ");
-           for (JCheckBox checkbox : checkBoxList) {
-                if (checkbox.isSelected()) {
-                    sb.append(dsquare + " ");
-                } else {
-                    sb.append("☐ ");
-                  }
-                sb.append(checkbox.getText());
-                sb.append("    ");
-            }
-            sb.append("\n--------------------------------------\n");
-            pmhxTextArea.append(sb.toString());
-            GDSEMR_frame.setTextAreaText(3,sb.toString());
-            GDSEMR_frame.setTextAreaText(3,commentpmh.getText());
-            dispose();
-
-		} else if (e.getActionCommand().equals("Clear and Restart")) {
-		    for (JCheckBox checkbox : checkBoxList) {
-		        checkbox.setSelected(false);
-		    }
-		    
-		} else if (e.getActionCommand().equals("Save and Quit")) {
-			// TODO: Implement save and quit functionality
-		    JOptionPane.showMessageDialog(this, "Save and Quit not yet implemented.");
-			dispose();
-		}
+    	    // build a StringBuilder object for appending the selected checkboxes
+    	    StringBuilder sb = new StringBuilder();
+    	    sb.append("\n    ");
+    	    
+    	    // iterate over the checkBoxList and append selected checkboxes with dsquare and unselected with ☐
+    	    for (JCheckBox checkbox : checkBoxList) {
+    	        if (checkbox.isSelected()) {
+    	            sb.append(dsquare + " ");
+    	        } else {
+    	            sb.append("☐ ");
+    	        }
+    	        sb.append(checkbox.getText());
+    	        sb.append("    ");
+    	    }
+    	    
+    	    // append separator and the StringBuilder object to pmhxTextArea and set text area in GDSEMR_frame
+    	    sb.append("\n--------------------------------------\n");
+    	    pmhxTextArea.append(sb.toString());
+    	    GDSEMR_frame.setTextAreaText(3, sb.toString());
+    	    GDSEMR_frame.setTextAreaText(3, commentpmh.getText());
+    	    
+    	    // close the current window
+    	    dispose();
+    	} else if (e.getActionCommand().equals("Clear and Restart")) {
+    	    // iterate over the checkBoxList and uncheck them
+    	    for (JCheckBox checkbox : checkBoxList) {
+    	        checkbox.setSelected(false);
+    	    }
+    	} else if (e.getActionCommand().equals("Save and Quit")) {
+    	    // show a message dialog box indicating that the functionality is not yet implemented
+    	    JOptionPane.showMessageDialog(this, "Save and Quit not yet implemented.");
+    	    
+    	    // close the current window
+    	    dispose();
+    	}
 	}
 
     public static void main(String text) throws IOException {
