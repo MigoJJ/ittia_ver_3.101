@@ -128,7 +128,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
     
     public String myString(double fbspp2) {
     	if ( fbspp2 == 0) {
-    		return "FBS!";	
+    		return "FBS";	
     	}
 		return "PP" + fbspp2;	
     }
