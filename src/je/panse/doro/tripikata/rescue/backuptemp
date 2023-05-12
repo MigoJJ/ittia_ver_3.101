@@ -1,18 +1,20 @@
-CC>    DM F/U
-PMH>
-    ◆ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
-    ◆ Cancer    ◆ Operation    ☐ Thyroid Disease
-    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
-    ☐ Arthritis    ☐ Hearing Loss    ☐ CVA
-    ☐ Depression    ☐ Cognitive Disorder
-    ☐ Allergy
-    ☐ Food    ☐ Injection    ☐ Medication    
---------------------------------------
-O>
-FBS!: 200 mg/dL
-P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...now [ well ] treated with current medication
-    continue with current dosages of meds
-...Camen [ 5 ] mg 1 tab p.o. q.d.
+    ROS>< Neurological >,
+[◇] Use of corrective lenses or contact lenses< General >,
+[◇] Fever or chills,
+[◇] Fatigue or weakness,
+[◇] Weight changes,
+[◇] Night sweats,
+[◇] Headache,
+[◇] Changes in vision or hearing,
+[◇] Changes in appetite or thirst,
+[◇] Chest pain or discomfort,
+[◇] Shortness of breath or difficulty breathing,
+[◇] Cough or sputum production,
+[◆] Abdominal pain or discomfort,
+[◆] Nausea or vomiting,
+[◇] Changes in bowel habits,
+[◇] Joint pain or stiffness,
+[◆] Muscle pain or weakness,
+[◇] Skin changes or lesions,
+[◆] Sleep disturbances
+    Comment>	 [Palpitations or irregular heartbeats][Dizziness or vertigo, Numbness or tingling][Fatigue or weakness with exertion][Seizures][Eye pain or discomfort][Sleep disturbances, Muscle pain or weakness, Nausea or vomiting, Abdominal pain or discomfort]

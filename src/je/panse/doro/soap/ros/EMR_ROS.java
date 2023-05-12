@@ -30,6 +30,9 @@ public class EMR_ROS extends JFrame {
         // Set the frame size and layout
         f.setSize(1600, 900);
         f.setLayout(new BorderLayout());
+        
+        selectList.clear();
+        allList.clear();
 
         // Add the output area to the north
         outputArea = new JTextArea(15, 0);
