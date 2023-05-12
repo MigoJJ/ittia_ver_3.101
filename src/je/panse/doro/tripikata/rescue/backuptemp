@@ -1,11 +1,18 @@
-PMH>	
-    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
-    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
-    ☐ Asthma    ⬛ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ⬛ GERD    ☐ Gout
-    ☐ Arthritis    ⬛ Hearing Loss    ☐ CVA
-    ☐ Depression    ⬛ Cognitive Disorder
+CC>    DM F/U
+PMH>
+    ◆ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
+    ◆ Cancer    ◆ Operation    ☐ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
+    ☐ Arthritis    ☐ Hearing Loss    ☐ CVA
+    ☐ Depression    ☐ Cognitive Disorder
     ☐ Allergy
     ☐ Food    ☐ Injection    ☐ Medication    
 --------------------------------------
-rwsar regargar
+O>
+FBS!: 200 mg/dL
+P>
+...Follow-up in the clinic in [ 3.0 ]-month
+...now [ well ] treated with current medication
+    continue with current dosages of meds
+...Camen [ 5 ] mg 1 tab p.o. q.d.

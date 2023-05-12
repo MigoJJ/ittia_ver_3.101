@@ -27,8 +27,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
     private JTextArea pmhxTextArea, commentpmh;
     private ArrayList<JCheckBox> checkBoxList;
-    private char dsquare = '\u2B1B';
-
+    private String dsquare = "◆";
 
     public EMRPMH() {
         super("Medical History");
@@ -84,7 +83,6 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 		
         JScrollPane pmhxScrollPane = new JScrollPane(pmhxTextArea);
         JScrollPane commentpmhPane = new JScrollPane(commentpmh);
-
 
         // Create a panel to hold the buttons
         JPanel buttonPanel = new JPanel();
