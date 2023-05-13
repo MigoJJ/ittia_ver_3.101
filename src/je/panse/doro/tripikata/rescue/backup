@@ -1,20 +1,10 @@
-    ROS>< Neurological >,
-[◇] Use of corrective lenses or contact lenses< General >,
-[◇] Fever or chills,
-[◇] Fatigue or weakness,
-[◇] Weight changes,
-[◇] Night sweats,
-[◇] Headache,
-[◇] Changes in vision or hearing,
-[◇] Changes in appetite or thirst,
-[◇] Chest pain or discomfort,
-[◇] Shortness of breath or difficulty breathing,
-[◇] Cough or sputum production,
-[◆] Abdominal pain or discomfort,
-[◆] Nausea or vomiting,
-[◇] Changes in bowel habits,
-[◇] Joint pain or stiffness,
-[◆] Muscle pain or weakness,
-[◇] Skin changes or lesions,
-[◆] Sleep disturbances
-    Comment>	 [Palpitations or irregular heartbeats][Dizziness or vertigo, Numbness or tingling][Fatigue or weakness with exertion][Seizures][Eye pain or discomfort][Sleep disturbances, Muscle pain or weakness, Nausea or vomiting, Abdominal pain or discomfort]
+    PMH>	 
+    ☐ Diabetes Mellitus    ◆ HTN    ◆ Dyslipidemia
+    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
+    ☐ Arthritis    ☐ Hearing Loss    ☐ CVA
+    ☐ Depression    ☐ Cognitive Disorder
+    ☐ Allergy
+    ☐ Food    ☐ Injection    ☐ Medication    
+--------------------------------------
