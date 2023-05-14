@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.util.HashSet;

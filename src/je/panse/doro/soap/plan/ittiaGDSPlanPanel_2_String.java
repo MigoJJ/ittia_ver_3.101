@@ -108,7 +108,7 @@ public class ittiaGDSPlanPanel_2_String {
 	            	break;
 		        case 5:
 		        	retA = "Diabetes F/U";
-		            retB = new String[]{"Fasting plasma glucose (FPG)\n"
+		            retB = new String[]{"\tPlan to Fasting plasma glucose (FPG)\n"
 		            		 + "Glycated hemoglobin (HbA1C)\n"
 		            		 + "Lipid profile (total, LDL, HDL, triglycerides)\n"
 		            		 + "Kidney function tests (serum creatinine\n"
@@ -118,7 +118,16 @@ public class ittiaGDSPlanPanel_2_String {
 		            		 + "Electrolyte panel (sodium, potassium, chloride, bicarbonate)\n"
 		            		 + "Thyroid function tests (TSH, free thyroxine (T4), T3)\n"
 		            		 + "Complete blood count (CBC)\n"
-		            		 + "Vitamin D level"
+		            		 + "Vitamin D level",
+		            		 
+		            		"Fasting plasma glucose (FPG)\n"
+				            	+ "\tGlycated hemoglobin (HbA1C)\n",
+				            		 
+				            "Lipid profile (total, LDL, HDL, triglycerides)\n",
+				            "Thyroid function tests (TSH, free thyroxine (T4), T3)\n",
+				            "Thyroid function tests (TSH, free thyroxine (T4), T3)\n"
+				            	+ "\tAutoantibodies\n" + "\tp.r.n.> TUS"
+				             
 		            };		            
 	            	break;
 		        default:
