@@ -124,6 +124,7 @@ public class ittiaGDSPlanPanel_2_String {
 				            	+ "\tGlycated hemoglobin (HbA1C)\n",
 				            		 
 				            "Lipid profile (total, LDL, HDL, triglycerides)\n",
+				            
 				            "Thyroid function tests (TSH, free thyroxine (T4), T3)\n",
 				            "Thyroid function tests (TSH, free thyroxine (T4), T3)\n"
 				            	+ "\tAutoantibodies\n" + "\tp.r.n.> TUS"
