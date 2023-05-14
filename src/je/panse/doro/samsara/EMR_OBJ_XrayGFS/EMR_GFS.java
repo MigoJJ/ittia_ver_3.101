@@ -29,10 +29,22 @@ public class EMR_GFS {
 	    
 	    // Create the label and set its properties
 	    JLabel label = new JLabel("Esophus : ");
-
 	    label.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    panel.add(label);
 
+        // Create the text area
+        JTextArea textArea = new JTextArea(" < GFS : CFS : > \n");
+        textArea.setEditable(true);
+
+        // Create the buttons and add them to a panel
+        JButton clearButton = new JButton("Clear");
+        JButton saveButton = new JButton("Save");
+        JButton quitButton = new JButton("Quit");
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(clearButton);
+        buttonPanel.add(saveButton);
+        buttonPanel.add(quitButton);
+        
 	    // Create the check boxes and labels
 	    String[] checklistItems = {
 	    		"Gastroesophageal reflux disease (GERD)",
@@ -87,9 +99,8 @@ public class EMR_GFS {
 	    JCheckBox[] checkboxes1 = new JCheckBox[checklistItems1.length];
 	    for (int i = 0; i < checklistItems1.length; i++) {
 	        checkboxes1[i] = new JCheckBox(checklistItems1[i]);
-	        panel1.add(checkboxes1[i]);
+		    panel1.add(checkboxes1[i]);
 	    }
-	    
 	    // Create the label and set its properties
 	    JLabel label2 = new JLabel(" Colon:");
 
@@ -126,20 +137,6 @@ public class EMR_GFS {
 	        checkboxes2[i] = new JCheckBox(checklistItems2[i]);
 	        panel2.add(checkboxes2[i]);
 	    }
-	    
-	    
-        // Create the text area
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-
-        // Create the buttons and add them to a panel
-        JButton clearButton = new JButton("Clear");
-        JButton saveButton = new JButton("Save");
-        JButton quitButton = new JButton("Quit");
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.add(clearButton);
-        buttonPanel.add(saveButton);
-        buttonPanel.add(quitButton);
 
         // Create a new panel for the buttons and text area
         JPanel bottomPanel = new JPanel(new BorderLayout());
@@ -152,19 +149,37 @@ public class EMR_GFS {
         // Add an action listener to the checkboxes to update the text area
         for (JCheckBox[] checkboxeslist : new JCheckBox[][] {checkboxes, checkboxes1, checkboxes2}) {
             for (JCheckBox checkbox : checkboxeslist) {
-                checkbox.addActionListener(e -> {
-                    if (checkbox.isSelected()) {
-                        textArea.append(checkbox.getText() + "\n");
+                checkbox.addChangeListener(e -> {
+                    if (!checkbox.isSelected()) {
+                        String checkboxText = checkbox.getText() + "\n";
+                        int index = textArea.getText().indexOf(checkboxText);
+                        if (index >= 0) {
+                            textArea.replaceRange("", index, index + checkboxText.length());
+                        }
+                    } else {
+                        textArea.append("\t" + checkbox.getText() + "\n");
                         GDSEMR_frame.setTextAreaText(5, checkbox.getText() + "\n");
-
-                        
                     }
                 });
             }
         }
-
-
-	    
+        
+        saveButton.addActionListener(event -> {
+        String selectedItems = textArea.getText();
+		GDSEMR_frame.setTextAreaText(5, selectedItems);
+		frame.dispose();
+        });
+        quitButton.addActionListener(event -> {
+//        String selectedItems = textArea.getText();
+//		GDSEMR_frame.setTextAreaText(5, selectedItems);
+		frame.dispose();
+        });
+        clearButton.addActionListener(event -> {
+          textArea.setText(" < GFS : CFS : > \n");
+//  		GDSEMR_frame.setTextAreaText(5, selectedItems);
+//  		frame.dispose();
+          });
+        
 	    frame.add(panel);
 	    frame.add(panel1);
 	    frame.add(panel2);
