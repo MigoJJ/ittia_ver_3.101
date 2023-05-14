@@ -27,6 +27,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 		public EMR_Vitalsign_BP() {
 			super("EMR Interface for BP");
+	       setLocation(1460, 500);
 			
 			// Create input field and label
 			inputField = new JTextField(20);
@@ -36,7 +37,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			inputField.setPreferredSize(new Dimension(20, 30));
 			
 			// Create output area and label
-			outputArea = new JTextArea(10, 29);
+			outputArea = new JTextArea(5, 25);
 			JScrollPane scrollPane = new JScrollPane(outputArea);
 			JLabel outputLabel = new JLabel("Vital sign: ");
 			
@@ -76,7 +77,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 				outputArea.setText("");
 			} else if (e.getActionCommand().equals("Save")) {
 				inputField.setText("");
-				dispose();
+//				dispose();
 			} else if (e.getActionCommand().equals("Quit")) {
 				dispose();
 			}
@@ -102,7 +103,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		private void updateOutputArea() {
 		    String returnBPdescribe = updateOutputAreaString(inputList); // pass inputList and bp
 		    outputArea.setText(returnBPdescribe);
-		    inputList.removeIf(s -> s.equals("i") || s.equals("r") || s.equals("h"));
+		    inputList.removeIf(s -> s.equals("i") || s.equals("r") || s.equals("h") || s.equals("s"));
 
 		    String returnBP = changeString(inputList);    
 		    outputArea.append("\n"+returnBP);
@@ -114,6 +115,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		public static void main(String[] args) {
 			EMR_Vitalsign_BP emrInterface = new EMR_Vitalsign_BP();
 		    emrInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    emrInterface.setSize(300, 350);
 		    emrInterface.pack();
 		    emrInterface.setVisible(true);
 		}
@@ -125,12 +127,15 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		        } else if (str.trim().equals("i") && bp.contains(str)) {
 		            bp = bp.replace("Regular", "irRegular");
 		        } else if (str.trim().equals("h") && bp.contains(str)) {
-		            bp = bp.replace(bp, "at home by self");
-		        }
+		            bp = "at home by self";
+		        } else if (str.trim().equals("s") && bp.contains(str)) {
+		            bp = "at GDS by self BP machine";
+		        		        }
 		    }
 		    System.out.println(bp);
 		    return bp;
 		}
+
 
 		private String changeString(ArrayList<String> inputList2) {
 		    int length = inputList2.size();
