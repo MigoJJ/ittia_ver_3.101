@@ -106,7 +106,21 @@ public class ittiaGDSPlanPanel_2_String {
 		            		 "Human Insulin Biosimilars [    ]\n"
 		            };		            
 	            	break;
-	            	
+		        case 5:
+		        	retA = "Diabetes F/U";
+		            retB = new String[]{"Fasting plasma glucose (FPG)\n"
+		            		 + "Glycated hemoglobin (HbA1C)\n"
+		            		 + "Lipid profile (total, LDL, HDL, triglycerides)\n"
+		            		 + "Kidney function tests (serum creatinine\n"
+		            		 + "    estimated glomerular filtration rate (eGFR)\n"
+		            		 + "    urine albumin-to-creatinine ratio)\n"
+		            		 + "Liver function tests\n"
+		            		 + "Electrolyte panel (sodium, potassium, chloride, bicarbonate)\n"
+		            		 + "Thyroid function tests (TSH, free thyroxine (T4), T3)\n"
+		            		 + "Complete blood count (CBC)\n"
+		            		 + "Vitamin D level"
+		            };		            
+	            	break;
 		        default:
 		            System.out.println("ReEnter the Number !!!");
 		            break;
