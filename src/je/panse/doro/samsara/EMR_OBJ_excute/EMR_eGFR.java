@@ -84,9 +84,11 @@ public class EMR_eGFR extends JFrame {
                         String AC = inputFields[2].getText().trim();
                     	
                         if (eGFR.isEmpty()) {
-                            result = "\nCreatinie " + cr +" (mg/dl)  \n";
+                            result = "\n\t" + cr + "\tCreatinie (mg/dl)\n";
                         } else {
-                            result = "\nCreatinie  " + cr +" (mg/dl)..." + "eGFR  " + eGFR +" (cells/L)..."+ "+A/C  " + AC +" (billion/L)\n";
+                            result = "\n\t" + cr + "\tCreatinie (mg/dl)\n"
+                            		+"\n\t" + eGFR + "\teGFR ( mL/min/1.73m²)\n"
+                            		+"\n\t" + AC + "\t+A/C ratio (mg/g)\n";
                             cresult = EMR_eGFR_Calc(cr, eGFR, AC);
                        	}
                         // Clear the text of all input fields
@@ -94,15 +96,10 @@ public class EMR_eGFR extends JFrame {
                             inputField.setText("");
                        	}
                         // Set focus back to the first input field
-                        GDSEMR_frame.setTextAreaText(5, result);
+                        GDSEMR_frame.setTextAreaText(5, result + "\n\t..........\n");
                         GDSEMR_frame.setTextAreaText(5, cresult);
                         GDSEMR_frame.setTextAreaText(7, "\n#  CKD [ " + cresult + "]");
-
-
                         dispose();
-                                                
-//               inputFields[0].requestFocus();
-//               	submitButton.requestFocus();
                     }
                     break;
                 }

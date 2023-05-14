@@ -12,6 +12,7 @@ public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
     public EMR_LDL() {
         setTitle("EMR Interface for Lipid Profile");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // center the frame on the screen
         setLayout(new BorderLayout());
         setSize(400, 200);
         

@@ -1,8 +1,10 @@
+    CC>	 Hypertension (onset 7-year ago)
+(onset 4-month ago)
     ROS>	 < Cardiovascular >,
-[◆] Chest pain or discomfort,
-[◇] Shortness of breath or dyspnea,
+[◇] Chest pain or discomfort,
+[◆] Shortness of breath or dyspnea,
 [◆] Palpitations or irregular heartbeats,
-[◇] Dizziness or lightheadedness,
+[◆] Dizziness or lightheadedness,
 [◆] Edema or swelling of the legs or ankles,
 [◇] Fatigue or weakness with exertion,
 [◇] History of high blood pressure or hypertension,
@@ -12,30 +14,55 @@
 [◇] Use of tobacco or alcohol,
 [◇] Physical inactivity or sedentary lifestyle,
 [◇] High cholesterol or triglycerides,
-[◇] Diabetes or metabolic syndrome,
-< Neurological >,
-[◇] Headache,
-[◇] Seizures,
-[◆] Dizziness or vertigo,
-[◆] Changes in vision,
-[◇] Numbness or tingling,
-[◇] Muscle weakness,
-[◆] Tremors or involuntary movements,
-[◇] Memory loss or confusion,
-[◇] Sleep disturbances,
-[◇] Speech difficulties,
-< Vision >,
-[◇] Changes in visual acuity,
-[◇] Blurry or hazy vision,
-[◇] Double vision or diplopia,
-[◆] Eye pain or discomfort,
-[◇] Redness or swelling of the eyes,
-[◆] Excessive tearing or dryness,
-[◇] Flashing lights or floaters,
-[◇] Loss of peripheral vision,
-[◆] Difficulty seeing at night,
-[◇] Sensitivity to light,
-[◇] Previous eye surgeries or injuries,
-[◇] Family history of eye diseases,
-[◇] Use of corrective lenses or contact lenses
-    Comment>	 [Chest pain or discomfort, Palpitations or irregular heartbeats, Edema or swelling of the legs or ankles, Dizziness or vertigo, Changes in vision, Tremors or involuntary movements, Eye pain or discomfort, Excessive tearing or dryness, Difficulty seeing at night]
+[◇] Diabetes or metabolic syndrome
+    PMH>	 
+    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
+    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ◆ Gout
+    ☐ Arthritis    ☐ Hearing Loss    ◆ CVA
+    ☐ Depression    ☐ Cognitive Disorder
+    ☐ Allergy
+    ☐ Food    ☐ Injection    ◆ Medication    
+--------------------------------------
+...  apfhs dkffpfmrl
+    O>	 
+< Chest PA >	A normal Chest PA X-ray 
+< EKG >	A normal EKG (electrocardiogram)
+< GFS :   CFS : >
+	Gastric lymphoma
+	Gastrointestinal stromal tumor (GIST)
+< DEXA >
+	Osteoporosis T-score [ -2.5 ]
+	Age :  [77]  Gender : [Female]
+	1.0	Creatinie (mg/dl)
+	66	eGFR ( mL/min/1.73m²)
+	365	+A/C ratio (mg/g)
+	..........
+	A3  :  Severely increased A/C_ratio
+	G2  :  Mildly decreased GFR
+	11.5 ↓ 	Hb (g/dl)
+	6300	WBC (cells/L)
+	123  ↓ 	Platelet (billion/L)
+FBS [ 125 ] mg/dL   HbA1c [ 6.3 ]%
+	IFCC HbA1c: 45 mmol/mol
+	eAG: 134 mg/dL
+	eAG: 7.4 mmol/l
+[GOT...1, GPT...2, GGT...3, T-bilirubin...4, Albumin...5]
+   1.37	T3 (ug/dL)
+   56.3 ↑ 	free-T4(ug/dL)
+   12.5 ↑ 	TSH(mIU/ml)
+	1.23 ↑ 	Anti-TSH-R-Ab (IU/L)
+	632.1 ↑ 	Anti-Thyrogobulin Ab (ng/mL)
+	56.2 ↑ 	Anti-microsomal Ab (IU/mL)
+at GDS right seated position irRegular
+    BP [ 125 / 65 ] mmHg  PR [ 86 ] /min
+Body Temperature [ 36.7 ] 'C
+Respiration rate [ 14 ] /min
+TC-HDL-Tg-LDL [ 123 - 45 - 456 - 123 ] mg/dL
+    A>	 
+#  Osteoporosis T-score [ -2.5 ]
+#  CKD [ 	A3  :   Severely increased A/C_ratio
+	G2  :  Mildly decreased GFR]
+#  TC-HDL-Tg-LDL [ 123 - 45 - 456 - 123 ] mg/dL
+    Comment>	 [Shortness of breath or dyspnea, Palpitations or irregular heartbeats, Dizziness or lightheadedness, Edema or swelling of the legs or ankles]
