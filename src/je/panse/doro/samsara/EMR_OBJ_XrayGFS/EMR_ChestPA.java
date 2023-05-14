@@ -41,7 +41,7 @@ public class EMR_ChestPA {
 		// Create the submit button
 		JButton submitButton = new JButton("Submit");
 			submitButton.addActionListener(event -> {
-			String selectedItems = "\n   Chest PA  : ";
+			String selectedItems = "\n< Chest PA >";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
 				selectedItems += "\t" + checkboxes[i].getText() + "\n";

@@ -44,7 +44,7 @@ public class EMR_EKG {
 		// Create the submit button
 		JButton submitButton = new JButton("Submit");
 			submitButton.addActionListener(event -> {
-			String selectedItems = "\n   EKG : ";
+			String selectedItems = "\n< EKG >";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
 				selectedItems += "\t" + checkboxes[i].getText() + "\n";

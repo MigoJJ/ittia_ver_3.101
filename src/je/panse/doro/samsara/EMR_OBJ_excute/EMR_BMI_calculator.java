@@ -90,8 +90,10 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
 									String waist = fields[2].getText();
 									result = (result + "   Waist : " + waist + " cm");
 						        	}
+							String selectedItems = "\n< BMI >\n";
+							GDSEMR_frame.setTextAreaText(5, selectedItems);
 					        outputArea.setText(result);
-					        GDSEMR_frame.setTextAreaText(5,result);
+							GDSEMR_frame.setTextAreaText(5,result);
 					    }
 					}
 		        });
