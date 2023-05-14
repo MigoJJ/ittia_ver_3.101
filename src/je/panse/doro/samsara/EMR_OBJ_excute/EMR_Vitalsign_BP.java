@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -103,8 +104,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		private void updateOutputArea() {
 		    String returnBPdescribe = updateOutputAreaString(inputList); // pass inputList and bp
 		    outputArea.setText(returnBPdescribe);
-		    inputList.removeIf(s -> s.equals("i") || s.equals("r") || s.equals("h") || s.equals("s"));
-
+		    inputList.removeAll(Arrays.asList("i", "r", "h", "s", "b"));
 		    String returnBP = changeString(inputList);    
 		    outputArea.append("\n"+returnBP);
 		}
@@ -120,22 +120,25 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		    emrInterface.setVisible(true);
 		}
 
-		private String updateOutputAreaString(ArrayList<String> inputList2) {
+		private String updateOutputAreaString(ArrayList<String> inputList) {
 		    for (String str : inputList) {
-		        if (str.trim().equals("r") && bp.contains(str)) {
-		            bp = bp.replace("left", "right");
-		        } else if (str.trim().equals("i") && bp.contains(str)) {
-		            bp = bp.replace("Regular", "irRegular");
-		        } else if (str.trim().equals("h") && bp.contains(str)) {
-		            bp = "at home by self";
-		        } else if (str.trim().equals("s") && bp.contains(str)) {
-		            bp = "at GDS by self BP machine";
-		        		        }
+		        if (bp.contains(str.trim())) {
+		            if (str.trim().equals("r")) {
+		                bp = bp.replace("left", "right");
+		            } else if (str.trim().equals("i")) {
+		                bp = bp.replace("Regular", "irRegular");
+		            } else if (str.trim().equals("h")) {
+		                bp = "at home by self";
+		            } else if (str.trim().equals("s")) {
+		                bp = "at GDS by self BP machine";
+		            } else if (str.trim().equals("b")) {
+		                bp = "at GDS left seated position Regular";
+		            }
+		        }
 		    }
 		    System.out.println(bp);
 		    return bp;
 		}
-
 
 		private String changeString(ArrayList<String> inputList2) {
 		    int length = inputList2.size();
@@ -168,7 +171,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		            }
 		            break;
 		    }
-		    return B;
+		    return "    " + B;
 		}
 
 
