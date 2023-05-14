@@ -1,8 +1,10 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -147,22 +149,33 @@ public class EMR_GFS {
         frame.add(bottomPanel, BorderLayout.SOUTH);
 
         // Add an action listener to the checkboxes to update the text area
+     // Keep track of selected checkboxes
+        Set<JCheckBox> selectedCheckboxes = new HashSet<>();
+
+        // Add an action listener to the checkboxes to update the text area
         for (JCheckBox[] checkboxeslist : new JCheckBox[][] {checkboxes, checkboxes1, checkboxes2}) {
             for (JCheckBox checkbox : checkboxeslist) {
                 checkbox.addChangeListener(e -> {
-                    if (!checkbox.isSelected()) {
-                        String checkboxText = checkbox.getText() + "\n";
-                        int index = textArea.getText().indexOf(checkboxText);
-                        if (index >= 0) {
-                            textArea.replaceRange("", index, index + checkboxText.length());
+                    if (checkbox.isSelected()) {
+                        if (!selectedCheckboxes.contains(checkbox)) {
+                            textArea.append("    " + checkbox.getText() + "\n");
+//                            GDSEMR_frame.setTextAreaText(5, checkbox.getText() + "\n");
+                            selectedCheckboxes.add(checkbox);
                         }
                     } else {
-                        textArea.append("\t" + checkbox.getText() + "\n");
-                        GDSEMR_frame.setTextAreaText(5, checkbox.getText() + "\n");
+                        if (selectedCheckboxes.contains(checkbox)) {
+                            String checkboxText = checkbox.getText() + "\n";
+                            int index = textArea.getText().indexOf(checkboxText);
+                            if (index >= 0) {
+                                textArea.replaceRange("", index, index + checkboxText.length());
+                            }
+                            selectedCheckboxes.remove(checkbox);
+                        }
                     }
                 });
             }
         }
+
         
         saveButton.addActionListener(event -> {
         String selectedItems = textArea.getText();
