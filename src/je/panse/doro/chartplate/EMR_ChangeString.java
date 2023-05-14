@@ -1,24 +1,31 @@
 package je.panse.doro.chartplate;
 
 public class EMR_ChangeString {
-		
+
 	public static String EMR_ChangeString(String line) {
-	    String[] parts = line.split(" "); // Splitting the input string at each space character
+	    String[] parts = line.split(" ");
+	    
 	    for (int i = 0; i < parts.length; i++) {
-	        if (parts[i].startsWith(":")) { // Checking if the part starts with ":"
-	            parts[i] = EMR_ChangeString_abr(parts[i]); // Replacing the part with a new string
-	            break; // Exiting the loop as soon as a matching part is found
+	        if (parts[i].startsWith(":(")) {
+	            String retstrCC = EMR_ChangeStringCC.EMR_ChangeString_abr(parts[i]);
+	            parts[i] = retstrCC;
+	        }
+	        
+	        if (parts[i].startsWith(":")) {
+	            parts[i] = EMR_ChangeString_abr(parts[i]);
+	            break;
 	        }
 	    }
-	    String replacedText = String.join(" ", parts); // Joining the modified parts back into a single string
-	    System.out.println("replacedText >>> " + replacedText); // Printing the modified string
+	    
+	    String replacedText = String.join(" ", parts);
+	    System.out.println("replacedText >>> " + replacedText);
 	    return replacedText;
 	}
 
 	
 	public static String EMR_ChangeString_abr(String replacedText) {
 		replacedText = (replacedText + " ");
-
+		
 	    switch (replacedText) {
 	    		  case ":d " : replacedText =("diabetes mellitus");break;
                 case ":dr " : replacedText =("DM with retinopathy");break;
@@ -190,8 +197,7 @@ public class EMR_ChangeString {
 				case ":grr " : replacedText =("GDSRC Result Consultation");break;
 				case ":gg " : replacedText =("공단검진");break;
 				case ":ggr " : replacedText =("공단검진 결과상담");break;
-				case ":go " : replacedText =("Other clinic RC result");break;
-				case ":gor " : replacedText =("Other clinic result consultation");break;
+				case ":rr " : replacedText =("Other clinic RC and Lab result consultation");break;
 
 				default: System.out.println(" ReInsert disease code please ...  : ");break;
 				}

@@ -25,6 +25,7 @@ public class EMR_CBC extends JFrame {
         // Set up the JFrame
         super("EMR CBC Interface");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setLocationRelativeTo(null); // center the frame on the screen
         setSize(300, 200);
         setLocationRelativeTo(null);
         
@@ -88,9 +89,11 @@ public class EMR_CBC extends JFrame {
                 	    platelet = String_ArrowChange.compareOriginAndLrange(platelet, 150, 450);
 
                         if (wbc.isEmpty()) {
-                            result = "\nHb (g/dl) " + hb +"\n";
+                            result = "\n\t" + hb + "\tHb(g/dl)\n";
                         } else {
-                            result = "\nHb " + hb +" (g/dl) ..." + "WBC " + wbc +" (cells/L)..."+ "Platelet " + platelet + " (billion/L)\n";
+                            result = "\n\t" + hb + "\tHb (g/dl)\n"
+                            		+"\n\t" + wbc +"\tWBC (cells/L)\n"
+                            		+"\n\t" + platelet + "\tPlatelet (billion/L)\n";
                         	}
                         // Clear the text of all input fields
                         for (JTextField inputField : inputFields) {

@@ -12,6 +12,7 @@ public class EMR_EKG {
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("Chest Pain Checklist");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null); // center the frame on the screen
 		JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		
@@ -44,7 +45,7 @@ public class EMR_EKG {
 		// Create the submit button
 		JButton submitButton = new JButton("Submit");
 			submitButton.addActionListener(event -> {
-			String selectedItems = "\n   EKG : ";
+			String selectedItems = "\n< EKG >";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
 				selectedItems += "\t" + checkboxes[i].getText() + "\n";

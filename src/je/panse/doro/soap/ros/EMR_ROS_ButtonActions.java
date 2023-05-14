@@ -32,7 +32,7 @@ public class EMR_ROS_ButtonActions  extends JFrame implements ActionListener {
 			String retuenedStr = EMR_ROS_ReplaceStringArray.main(allList, selectList);
 			GDSEMR_frame.setTextAreaText(2, retuenedStr);
 			GDSEMR_frame.setTextAreaText(9, selectList.toString());
-
+           outputArea.setText("");
 			EMR_ROS.disposemain(null);
 		    break;
         case "Quit":

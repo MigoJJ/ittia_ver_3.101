@@ -12,6 +12,7 @@ public class EMR_LpaApoB extends JFrame implements ActionListener, KeyListener {
     public EMR_LpaApoB() {
         setTitle("EMR Interface for Lp(a) ApoB Profile");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // center the frame on the screen
         setLayout(new BorderLayout());
         setSize(400, 200);
         
