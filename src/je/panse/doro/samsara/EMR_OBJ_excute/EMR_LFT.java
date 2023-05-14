@@ -30,6 +30,7 @@ public class EMR_LFT implements ActionListener, KeyListener {
 
     public EMR_LFT() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null); // center the frame on the screen
         frame. setSize(400, 300);
         
 

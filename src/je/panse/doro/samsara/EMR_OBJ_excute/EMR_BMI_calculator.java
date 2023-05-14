@@ -16,6 +16,7 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
     public EMR_BMI_calculator() {
         setTitle("BMI Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // center the frame on the screen
         setSize(400, 300);
         
         JPanel panel = new JPanel(new GridBagLayout());
