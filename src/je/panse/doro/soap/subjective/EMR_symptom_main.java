@@ -32,7 +32,8 @@ public class EMR_symptom_main {
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Perform the desired action for each button here
-                    System.out.println("Button '" + name + "' clicked!");
+                    String[] Esrr = EMR_symptom_retStr.returnStr(name);
+                    
                 }
             });
 
