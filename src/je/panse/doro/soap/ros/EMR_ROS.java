@@ -52,16 +52,16 @@ public class EMR_ROS extends JFrame {
         // Add the data for each column to the row data array
         rowData[0] = EMR_ROS_JtableDATA.General();
         rowData[1] = EMR_ROS_JtableDATA.Vision();
-//        rowData[2] = ROS_JtableDATA.HeadAndNeck();
-//        rowData[3] = ROS_JtableDATA.Pulmonary();
+        rowData[2] = EMR_ROS_JtableDATA.Head_and_Neck();
+        rowData[3] = EMR_ROS_JtableDATA.Pulmonary();
         rowData[4] = EMR_ROS_JtableDATA.Cardiovascular();
-//        rowData[5] = ROS_JtableDATA.Gastrointestinal();
-//        rowData[6] = ROS_JtableDATA.GenitoUrinary();
-//        rowData[7] = ROS_JtableDATA.HematologyOncology();
+        rowData[5] = EMR_ROS_JtableDATA.Gastrointestinal();
+        rowData[6] = EMR_ROS_JtableDATA.GenitoUrinary();
+        rowData[7] = EMR_ROS_JtableDATA.HematologyOncology();
         rowData[8] = EMR_ROS_JtableDATA.Neurological();
-//        rowData[9] = ROS_JtableDATA.Endocrine();
-//        rowData[10] = ROS_JtableDATA.MentalHealth();
-//        rowData[11] = ROS_JtableDATA.SkinAndHair();
+        rowData[9] = EMR_ROS_JtableDATA.Endocrine();
+        rowData[10] = EMR_ROS_JtableDATA.MentalHealth();
+        rowData[11] = EMR_ROS_JtableDATA.SkinAndHair();
 
         // Find the maximum row length
         int maxRowLength = 0;
