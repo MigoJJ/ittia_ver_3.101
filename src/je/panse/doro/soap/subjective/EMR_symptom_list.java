@@ -16,13 +16,15 @@ public class EMR_symptom_list extends JPanel {
     private JTextField[] textFields = new JTextField[10];
     private JCheckBox[] checkBoxes = new JCheckBox[10];
     private JTextArea textArea = new JTextArea(10, 30);
-    private String[] uriString = {"Cough", "Sore throat", "Nasal congestion", "Runny nose", "Sneezing", "Headache", "Low-grade fever", "Fatigue", "Body aches", "Difficulty breathing"};
+    private static String[] retString = {};
+    private static int retStringlen = 0;
+
 
     public EMR_symptom_list() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        for (int i = 0; i < 10; i++) {
-            checkBoxes[i] = new JCheckBox(uriString[i]);
+        for (int i = 0; i < retStringlen; i++) {
+            checkBoxes[i] = new JCheckBox(retString[i]);
             checkBoxes[i].setHorizontalAlignment(JTextField.RIGHT);
 
             textFieldLabels[i] = new JTextField(50);
@@ -63,8 +65,8 @@ public class EMR_symptom_list extends JPanel {
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 StringBuilder result = new StringBuilder();
-                for (int i = 0; i < 10; i++) {
-                    String symptom = uriString[i];
+                for (int i = 0; i < retStringlen; i++) {
+                    String symptom = retString[i];
                     String textFieldContent = textFields[i].getText();
                     result.append("    ").append(textFieldContent).append("    ").append(symptom).append("\n");
                 }
@@ -104,7 +106,10 @@ public class EMR_symptom_list extends JPanel {
         add(buttonPanel);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] argsStr) {
+    	retString = argsStr;
+    	retStringlen = argsStr.length;
+    	
     	JFrame frame = new JFrame("EMR Symptom List");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         EMR_symptom_list panel = new EMR_symptom_list();
