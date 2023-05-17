@@ -33,7 +33,7 @@ public class EMR_symptom_main {
                 public void actionPerformed(ActionEvent e) {
                     // Perform the desired action for each button here
                     String[] Esrr = EMR_symptom_retStr.returnStr(name);
-                    
+                    EMR_symptom_list.main(Esrr);
                 }
             });
 
