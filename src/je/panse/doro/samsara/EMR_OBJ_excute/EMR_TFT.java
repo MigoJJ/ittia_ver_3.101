@@ -29,6 +29,7 @@ public class EMR_TFT implements ActionListener, KeyListener {
 	
     public EMR_TFT() {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.setLocationRelativeTo(null); // center the frame on the screen
         frame. setSize(400, 300);
 
         JPanel inputPanel = new JPanel(new GridLayout(6, 1));
@@ -142,12 +143,12 @@ public class EMR_TFT implements ActionListener, KeyListener {
         Ab_Mic = String_ArrowChange.compareOriginAndLrange(Ab_Mic, 34);
         
         String outputText = String.format(
-          	  "\nT3  " + T3 + "(ug/dL)   " +
-                "free-T4  " + free_T4 +"(ug/dL)   " +
-                "TSH  " + TSH + "(mIU/ml)\n" +
-        	    "\tAnti-TSH-R-Ab   " + Ab_TSH + "(IU/L)\n" +
-        	    "\tAnti-Thyrogobulin Ab   " + Ab_Tg + "(ng/mL)\n"+
-        	    "\tAnti-microsomal Ab    " + Ab_Mic +"(IU/mL)\n"
+          	  "\n   " + T3 + "\tT3 (ug/dL)\n" +
+              "\n   " + free_T4 +"\tfree-T4(ug/dL)\n" +
+              "\n   " + TSH + "\tTSH(mIU/ml)\n" +
+        	    "\t" + Ab_TSH + "\tAnti-TSH-R-Ab (IU/L)\n" +
+        	    "\t" + Ab_Tg + "\tAnti-Thyrogobulin Ab (ng/mL)\n"+
+        	    "\t" + Ab_Mic + "\tAnti-microsomal Ab (IU/mL)\n"
                 );
 		outputArea.setText(outputText);
 		GDSEMR_frame.setTextAreaText(5, outputText);
@@ -163,9 +164,9 @@ public class EMR_TFT implements ActionListener, KeyListener {
         TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
     	
         String outputText = String.format(
-        	  "\nT3  " + T3 + "(ug/dL)   " +
-              "free-T4  " + free_T4 +"(ug/dL)   " +
-              "TSH  " + TSH + "(mIU/ml)\n"
+            	  "\n   " + T3 + "\tT3 (ug/dL)\n" +
+                  "\n   " + free_T4 +"\tfree_T4(ug/dL)\n" +
+                  "\n   " + TSH + "\tTSH(mIU/ml)\n" 
         );
 
 		outputArea.setText(outputText);

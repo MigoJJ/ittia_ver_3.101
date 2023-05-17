@@ -26,7 +26,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         setTitle("EMR Interface for HbA1c Input");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setLocation(1450, 300);
+        setLocation(1460, 190);
         
         inputFields = new JTextField[3]; // initialize inputFields array with size 2
         
@@ -47,7 +47,9 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         add(inputPanel, BorderLayout.CENTER);
 
         outputArea = new JTextArea();
-        outputArea.setPreferredSize(new Dimension(400, 100));
+		 outputArea = new JTextArea(5, 24);
+
+//        outputArea.setPreferredSize(new Dimension(100, 100));
         add(outputArea, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
@@ -68,7 +70,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
     
     public static void main(String[] args) {
         EMR_HbA1c emr = new EMR_HbA1c();
-        emr.setSize(400, 300);
+        emr.setSize(350, 300);
         emr.setVisible(true);
     }
     private void clearInputFields() {
@@ -128,7 +130,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
     
     public String myString(double fbspp2) {
     	if ( fbspp2 == 0) {
-    		return "FBS!";	
+    		return "FBS";	
     	}
 		return "PP" + fbspp2;	
     }

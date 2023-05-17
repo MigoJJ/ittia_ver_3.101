@@ -1,12 +1,14 @@
 package je.panse.doro.listner.buttons;
 
-import je.panse.doro.GDSEMR_frame;	
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_Edit;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
+import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
+import je.panse.doro.samsara.comm.OpenOneNotePage;
 
 public class EMR_B_1entry extends GDSEMR_frame {
     
@@ -70,7 +72,12 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "F/U Thyroid":
                     EMR_FU_Edit.main(null);
                     break;
-                    
+                case "URI":
+                    EMR_FU_uriEdit.main(null);
+                    break;
+                case "DM retinopathy":
+                		OpenOneNotePage.main(null);
+                    break;
                 case "F/U Edit":
                     System.out.println("southsouthsouth 1 1 1 ~~!!");
                     EMR_FU_Edit.main(null);

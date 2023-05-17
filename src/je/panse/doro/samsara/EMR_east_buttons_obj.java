@@ -35,6 +35,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         setLayout(new GridLayout(3, 5));
         setBackground(new Color(240, 240, 240));
         setTitle(title);
+        setLocation(1460, 50);
 
         String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "Etc.", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
 
@@ -52,16 +53,6 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
             Color color = new Color(135, 206, 235); // Create a sky blue color object
             buttons.get(i).setBackground(color);
         }
-
-//        setLocationRelativeTo();
-        setLocationRelativeTo(null);
-        int screenWidth = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-        int screenHeight = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-        int frameWidth = getWidth();
-        int frameHeight = getHeight();
-        int x = screenWidth - frameWidth;
-        int y = 0;
-        setLocation(x, y);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pack();

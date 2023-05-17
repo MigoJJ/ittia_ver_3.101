@@ -16,6 +16,7 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
     public EMR_BMI_calculator() {
         setTitle("BMI Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // center the frame on the screen
         setSize(400, 300);
         
         JPanel panel = new JPanel(new GridBagLayout());
@@ -90,8 +91,10 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
 									String waist = fields[2].getText();
 									result = (result + "   Waist : " + waist + " cm");
 						        	}
+							String selectedItems = "\n< BMI >\n";
+							GDSEMR_frame.setTextAreaText(5, selectedItems);
 					        outputArea.setText(result);
-					        GDSEMR_frame.setTextAreaText(5,result);
+							GDSEMR_frame.setTextAreaText(5,result);
 					    }
 					}
 		        });

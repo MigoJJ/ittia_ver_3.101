@@ -16,6 +16,7 @@ public class EMR_Lab_positive extends JFrame implements ActionListener {
         super("EMR Interface");
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // center the frame on the screen
         setLayout(new BorderLayout());
         
         label = new JLabel("Select test results:");

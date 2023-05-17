@@ -160,7 +160,8 @@ public class EMR_DEXA extends JFrame implements ActionListener {
             String diagnosis = calculateDEXADiagnosis(age,gender,totZScore,fractureHistory,menopauseHistory);
             
             resultTextArea.setText(diagnosis);
-			GDSEMR_frame.setTextAreaText(5, "\n" + diagnosis);
+			GDSEMR_frame.setTextAreaText(5, "\n< DEXA >\n\t" + diagnosis);
+			GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]");
 			GDSEMR_frame.setTextAreaText(7, "\n#  " + diagnosis);
 			dispose();
             
@@ -198,7 +199,7 @@ public class EMR_DEXA extends JFrame implements ActionListener {
         } else {
             diagnosis = "Normal bone density";
         }
-        return diagnosis  + " [ T-score ] "+ totZScore;    }
+        return diagnosis  + " T-score [ "+ totZScore +" ]";    }
 
     private String calculateDEXADiagnosisD(double totZScore) {
         String diagnosis = "";
@@ -209,7 +210,7 @@ public class EMR_DEXA extends JFrame implements ActionListener {
         } else {
             diagnosis = "Normal bone density";
         }
-        return diagnosis  + " [ Z-score ] "+ totZScore;
+        return diagnosis  + " Z-score [ "+ totZScore + " ]";
     }
 
     // Main method to launch interface
