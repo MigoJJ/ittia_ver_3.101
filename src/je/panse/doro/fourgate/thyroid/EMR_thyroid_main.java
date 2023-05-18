@@ -20,6 +20,7 @@ public class EMR_thyroid_main {
                 "Hypothyroidism",
                 "Hyperthyroidism with pregnancy",
                 "Hypothyroidism with pregnancy",
+                "Abnormal TFT with pregnancy",
                 "Non thyroidal illness",
                 "Abnormal TFT on Routine check",
                 "Thyroid nodule"
