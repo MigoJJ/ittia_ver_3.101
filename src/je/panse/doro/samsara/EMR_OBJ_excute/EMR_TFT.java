@@ -141,16 +141,22 @@ public class EMR_TFT implements ActionListener, KeyListener {
         Ab_Tg = String_ArrowChange.compareOriginAndLrange(Ab_Tg, 115);
         String Ab_Mic = inputFields[5].getText(); 
         Ab_Mic = String_ArrowChange.compareOriginAndLrange(Ab_Mic, 34);
+
         
         String outputText = String.format(
-          	  "\n   " + T3 + "\tT3 (ug/dL)\n" +
-              "\n   " + free_T4 +"\tfree-T4(ug/dL)\n" +
-              "\n   " + TSH + "\tTSH(mIU/ml)\n" +
-        	    "\t" + Ab_TSH + "\tAnti-TSH-R-Ab (IU/L)\n" +
-        	    "\t" + Ab_Tg + "\tAnti-Thyrogobulin Ab (ng/mL)\n"+
-        	    "\t" + Ab_Mic + "\tAnti-microsomal Ab (IU/mL)\n"
-                );
-		outputArea.setText(outputText);
+        		"\n   "+
+        	    "%-12s\t%-12s\t%-12s\n" +
+        	    "------------------------------------------------------------------\n" +
+        	    "   %-12s\t%-12s\t\t%-12s\n\n" +
+        	    "%-12s\t%-12s\n" +
+        	    "%-12s\t%-12s\n" +
+        	    "%-12s\t%-12s\n",
+        	    "T3 (ug/dL)", "free-T4(ug/dL)", "TSH(mIU/ml)",
+        	    T3, free_T4, TSH,
+        	    "   [ "+Ab_TSH, " ] Anti-TSH-R-Ab (<1.75 IU/L)",
+        	    "   [ "+Ab_Tg, " ] Anti-Thyroglobulin Ab (<115.00 IU/mL)",
+        	    "   [ "+Ab_Mic, " ] Anti-microsomal Ab (<9.0 IU/mL)"
+        	);
 		GDSEMR_frame.setTextAreaText(5, outputText);
     }   
 
@@ -164,9 +170,15 @@ public class EMR_TFT implements ActionListener, KeyListener {
         TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
     	
         String outputText = String.format(
-            	  "\n   " + T3 + "\tT3 (ug/dL)\n" +
-                  "\n   " + free_T4 +"\tfree_T4(ug/dL)\n" +
-                  "\n   " + TSH + "\tTSH(mIU/ml)\n" 
+        		"\n   "+
+                	    "%-12s\t%-12s\t%-12s\n" +
+                	    "------------------------------------------------------------------\n" +
+                	    "   %-12s\t%-12s\t\t%-12s\n\n" +
+                	    "%-12s\t%-12s\n" +
+                	    "%-12s\t%-12s\n" +
+                	    "%-12s\t%-12s\n",
+                	    "T3 (ug/dL)", "free-T4(ug/dL)", "TSH(mIU/ml)",
+                	    T3, free_T4, TSH
         );
 
 		outputArea.setText(outputText);
