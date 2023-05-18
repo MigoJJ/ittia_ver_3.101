@@ -33,10 +33,12 @@ public class EMR_thyroid_main {
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Perform the desired action for each button here
-                	if (name.contains("Hyperthyroidism Symptom") || name.contains("Hypothyroidism Symptom")) {
-                	    String[] Esrr = EMR_thyroid_retStr.returnStr(name);
-                	    EMR_thyroid_list.main(Esrr);
-                	}
+						if (name.contains("Hyperthyroidism Symptom") || name.contains("Hypothyroidism Symptom")) {
+						   String[] Esrr = EMR_thyroid_retStr.returnStr(name);
+						   EMR_thyroid_list.main(Esrr);
+						}else if (name.contains("Thyroid Physical examination")){
+							EMR_thyroid_PE.main(null);
+						}
                 }
             });
 
