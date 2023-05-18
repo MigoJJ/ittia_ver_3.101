@@ -11,17 +11,20 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 public class EMR_thyroid_list extends JPanel {
-	private  JFrame frame;
-	private JTextField[] textFieldLabels = new JTextField[10];
-    private JTextField[] textFields = new JTextField[10];
-    private JCheckBox[] checkBoxes = new JCheckBox[10];
+    private JFrame frame;
+    private JTextField[] textFieldLabels;
+    private JTextField[] textFields;
+    private JCheckBox[] checkBoxes;
     private JTextArea textArea = new JTextArea(10, 30);
     private static String[] retString = {};
     private static int retStringlen = 0;
 
-
     public EMR_thyroid_list() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+
+        textFieldLabels = new JTextField[retStringlen];
+        textFields = new JTextField[retStringlen];
+        checkBoxes = new JCheckBox[retStringlen];
 
         for (int i = 0; i < retStringlen; i++) {
             checkBoxes[i] = new JCheckBox(retString[i]);
@@ -115,7 +118,7 @@ public class EMR_thyroid_list extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         EMR_thyroid_list panel = new EMR_thyroid_list();
         frame.getContentPane().add(panel);
-        frame.setSize(500, 600);
+        frame.setSize(700, 800);
 //        frame.pack();
         frame.setVisible(true);
     }

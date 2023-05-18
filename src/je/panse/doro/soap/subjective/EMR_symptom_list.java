@@ -12,9 +12,9 @@ import java.awt.event.ItemListener;
 
 public class EMR_symptom_list extends JPanel {
 	private  JFrame frame;
-	private JTextField[] textFieldLabels = new JTextField[10];
-    private JTextField[] textFields = new JTextField[10];
-    private JCheckBox[] checkBoxes = new JCheckBox[10];
+	private JTextField[] textFieldLabels = new JTextField[20];
+    private JTextField[] textFields = new JTextField[20];
+    private JCheckBox[] checkBoxes = new JCheckBox[20];
     private JTextArea textArea = new JTextArea(10, 30);
     private static String[] retString = {};
     private static int retStringlen = 0;

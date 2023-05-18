@@ -16,8 +16,8 @@ public class EMR_thyroid_main {
 
         String[] buttonNames = {
         		  "Thyroid Physical examination",
-                "Hyperthyroidism",
-                "Hypothyroidism",
+                "Hyperthyroidism Symptom",
+                "Hypothyroidism Symptom",
                 "Hyperthyroidism with pregnancy",
                 "Hypothyroidism with pregnancy",
                 "Abnormal TFT with pregnancy",
@@ -25,24 +25,24 @@ public class EMR_thyroid_main {
                 "Abnormal TFT on Routine check",
                 "Thyroid nodule"
         };
-
         for (String name : buttonNames) {
             JButton button = new JButton(name);
-            button.setPreferredSize(new Dimension(200, 40)); // Set a fixed size for the button
-            button.setMaximumSize(new Dimension(200, 40)); // Set maximum size to enforce the fixed size
+            button.setPreferredSize(new Dimension(300, 50)); // Set a fixed size for the button
+            button.setMaximumSize(new Dimension(300, 50)); // Set maximum size to enforce the fixed size
             button.setAlignmentX(Box.CENTER_ALIGNMENT); // Align the button to the center horizontally
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     // Perform the desired action for each button here
-                    String[] Esrr = EMR_thyroid_retStr.returnStr(name);
-                    EMR_thyroid_list.main(Esrr);
+                	if (name.contains("Hyperthyroidism Symptom") || name.contains("Hypothyroidism Symptom")) {
+                	    String[] Esrr = EMR_thyroid_retStr.returnStr(name);
+                	    EMR_thyroid_list.main(Esrr);
+                	}
                 }
             });
 
             frame.add(button);
             frame.add(Box.createVerticalStrut(10)); // Add vertical spacing between buttons
         }
-
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null); // center the frame on the screen
         frame.pack();
@@ -53,7 +53,6 @@ public class EMR_thyroid_main {
         // Add your logic to populate the returnargs array
         return returnargs;
     }
-
 }
 
 
