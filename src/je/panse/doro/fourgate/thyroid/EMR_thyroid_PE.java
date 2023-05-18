@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EMR_thyroid_PE extends JFrame {
 	private JTextField goiterSizeField;
 	private JCheckBox[] goiterRuledCheckBoxes;
@@ -153,7 +155,7 @@ public class EMR_thyroid_PE extends JFrame {
             }
         });
 
-        JButton saveButton = new JButton("Save");
+        JButton saveButton = new JButton("Excute");
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -161,11 +163,12 @@ public class EMR_thyroid_PE extends JFrame {
             }
         });
 
-        JButton quitButton = new JButton("Quit");
+        JButton quitButton = new JButton("Save and Quit");
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+        		GDSEMR_frame.setTextAreaText(6, outputTextArea.getText());
+        		dispose();
             }
         });
 
@@ -177,19 +180,18 @@ public class EMR_thyroid_PE extends JFrame {
     }
 
     private void saveOutput() {
-        String output = "<Thyroid Physical Exam>---------------\n";
-        output += "Goiter size  :  [" + goiterSizeField.getText() + "] cc\n";
-        output += "Goiter : " + getSelectedCheckBoxLabels(goiterRuledCheckBoxes) + "\n";
-        output += "Nodules : " + getSelectedCheckBoxLabels(noduleDetectionCheckBoxes) + "\n";
-        output += "Consistency : " + getSelectedCheckBoxLabels(consistencyCheckBoxes) + "\n";
-        output += "Tenderness : " + getSelectedCheckBoxLabels(tendernessCheckBoxes) + "\n";
-        output += "Bruit : " + getSelectedCheckBoxLabels(bruitCheckBoxes) + "\n";
-        output += "DTR : " + getSelectedCheckBoxLabels(dtrCheckBoxes) + "\n";
-        output += "Werner’s Report : " + getSelectedCheckBoxLabels(tedCheckBoxes) + "\n";
+        String output = "<Thyroid Exam>\n";
+        output += "   Goiter size  :\t[ " + goiterSizeField.getText() + "  ] cc\n";
+        output += "   Goiter :\t\t" + getSelectedCheckBoxLabels(goiterRuledCheckBoxes) + "\n";
+        output += "   Nodules :\t\t" + getSelectedCheckBoxLabels(noduleDetectionCheckBoxes) + "\n";
+        output += "   Consistency:\t" + getSelectedCheckBoxLabels(consistencyCheckBoxes) + "\n";
+        output += "   Tenderness:\t" + getSelectedCheckBoxLabels(tendernessCheckBoxes) + "\n";
+        output += "   Bruit :\t\t" + getSelectedCheckBoxLabels(bruitCheckBoxes) + "\n";
+        output += "   DTR :\t\t" + getSelectedCheckBoxLabels(dtrCheckBoxes) + "\n";
+        output += "   Werner’s Report :\n\t " + getSelectedCheckBoxLabels(tedCheckBoxes) + "\n";
 
         outputTextArea.setText(output);
     }
-
 
 	private String getSelectedCheckBoxLabels(JCheckBox[] checkBoxes) {
 	    if (checkBoxes != null) {

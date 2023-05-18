@@ -1,10 +1,13 @@
 package je.panse.doro.fourgate.thyroid;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EMR_thyroid_retStr {
     static String[] returnStr(String nameStr) {
 	    String[] returnargs;
 	    switch (nameStr) {
 		    case "Hyperthyroidism Symptom":
+        		GDSEMR_frame.setTextAreaText(0, "Hyperthyroidism");
 		           returnargs = new String[] {
 	    			    "Weight loss or increased appetite",
 	    			    "Rapid or irregular heartbeat",
@@ -23,6 +26,7 @@ public class EMR_thyroid_retStr {
 	    			};
 		            break;
 		        case "Hypothyroidism Symptom":
+	        		GDSEMR_frame.setTextAreaText(0, "Hypothyroidism");
 		            returnargs = new String[]{
 		            	 "Fatigue or tiredness",
 	        		    "Weight gain or difficulty losing weight",

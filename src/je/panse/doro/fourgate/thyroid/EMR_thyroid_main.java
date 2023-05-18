@@ -9,6 +9,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import je.panse.doro.fourgate.thyroid.prganacy.EMR_Thyroid_Preg_te;
+import je.panse.doro.fourgate.thyroid.prganacy.EMR_Thyroid_Preg_to;
+
 public class EMR_thyroid_main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Select category ...");
@@ -36,8 +39,12 @@ public class EMR_thyroid_main {
 						if (name.contains("Hyperthyroidism Symptom") || name.contains("Hypothyroidism Symptom")) {
 						   String[] Esrr = EMR_thyroid_retStr.returnStr(name);
 						   EMR_thyroid_list.main(Esrr);
-						}else if (name.contains("Thyroid Physical examination")){
+						} else if (name.contains("Thyroid Physical examination")){
 							EMR_thyroid_PE.main(null);
+						} else if (name.contains("Hyperthyroidism with pregnancy")){
+							EMR_Thyroid_Preg_te.main(null);
+						} else if (name.contains("Hypothyroidism with pregnancy")){
+							EMR_Thyroid_Preg_to.main(null);
 						}
                 }
             });
