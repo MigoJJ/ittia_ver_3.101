@@ -44,10 +44,10 @@ public class EMR_thyroid_main {
 							EMR_thyroid_PE.main(null);
 						} else if (name.contains("Hyperthyroidism with pregnancy")){
 							EMR_Preg_CC.main(null);
-							EMR_Thyroid_Preg_te.main(null);
+//							EMR_Thyroid_Preg_te.main(null);
 						} else if (name.contains("Hypothyroidism with pregnancy")){
 							EMR_Preg_CC.main(null);
-							EMR_Thyroid_Preg_to.main(null);
+//							EMR_Thyroid_Preg_to.main(null);
 						}
                 }
             });
