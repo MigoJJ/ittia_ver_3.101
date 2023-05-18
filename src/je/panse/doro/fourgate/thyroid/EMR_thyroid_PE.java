@@ -1,6 +1,15 @@
 package je.panse.doro.fourgate.thyroid;
 
-import javax.swing.*;
+import java.awt.Dimension;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class EMR_thyroid_PE extends JFrame {
     private JTextField goiterSizeField;
@@ -14,7 +23,7 @@ public class EMR_thyroid_PE extends JFrame {
     
     public EMR_thyroid_PE() {
         setTitle("Thyroid Physical Exam");
-        setSize(400, 600);
+        setSize(1300, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         
@@ -32,9 +41,14 @@ public class EMR_thyroid_PE extends JFrame {
     
     private JPanel createGoiterSizePanel() {
         JPanel panel = new JPanel();
-        panel.add(new JLabel("Goiter size"));
+        JLabel label = new JLabel("Goiter size (mL) ");
+        panel.add(label);
+        
         goiterSizeField = new JTextField(10);
+        goiterSizeField.setPreferredSize(new Dimension(100, 35)); // Set preferred size for the text field
+        goiterSizeField.setHorizontalAlignment(JTextField.CENTER); // Center align the text field
         panel.add(goiterSizeField);
+        
         return panel;
     }
     
