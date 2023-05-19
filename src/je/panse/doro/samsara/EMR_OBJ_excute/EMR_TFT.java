@@ -131,7 +131,6 @@ public class EMR_TFT implements ActionListener, KeyListener {
                 return;
             }
         }
-        
         String T3 = inputFields[0].getText(); 
         T3 = String_ArrowChange.compareOriginAndLrange(T3, 0.90, 2.5);
         String free_T4 = inputFields[1].getText(); 
@@ -140,11 +139,10 @@ public class EMR_TFT implements ActionListener, KeyListener {
         TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.25, 5.00);
         String Ab_TSH = inputFields[3].getText(); 
         Ab_TSH = String_ArrowChange.compareOriginAndLrange(Ab_TSH, 0.8);
-        String Ab_Tg = inputFields[4].getText(); 
-        Ab_Tg = String_ArrowChange.compareOriginAndLrange(Ab_Tg, 115);
-        String Ab_Mic = inputFields[5].getText(); 
+        String Ab_Mic = inputFields[4].getText(); 
         Ab_Mic = String_ArrowChange.compareOriginAndLrange(Ab_Mic, 34);
-
+        String Ab_Tg = inputFields[5].getText(); 
+        Ab_Tg = String_ArrowChange.compareOriginAndLrange(Ab_Tg, 115);
         
         String outputText = String.format(
         		"\n   "+
@@ -153,7 +151,7 @@ public class EMR_TFT implements ActionListener, KeyListener {
         	    "   " + T3 +"\t"+free_T4 +"\t"+TSH +"\n"+
         	    "\t[  "+Ab_TSH+ "  ]\tAnti-TSH-R-Ab (<1.75 IU/L)\n"+
         	    "\t[  "+Ab_Tg+  "  ]\t Anti-Thyroglobulin Ab (<115.00 IU/mL)\n"+
-        	    "\t[  "+Ab_Mic+ "  ]\t Anti-microsomal Ab (<9.0 IU/mL)"
+        	    "\t[  "+Ab_Mic+ "  ]\t Anti-microsomal Ab (<34 IU/mL)"
         	);
 		GDSEMR_frame.setTextAreaText(5, outputText);
     }   
@@ -161,11 +159,11 @@ public class EMR_TFT implements ActionListener, KeyListener {
     private void saveResults3() {
 
         String T3 = inputFields[0].getText(); 
-        T3 = String_ArrowChange.compareOriginAndLrange(T3, 1.23, 3.08);
+        T3 = String_ArrowChange.compareOriginAndLrange(T3, 0.90, 2.5);
         String free_T4 = inputFields[1].getText(); 
-        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10, 19);
+        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10.6, 19.4);
         String TSH = inputFields[2].getText(); 
-        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
+        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.25, 5.00);
     	
         String outputText = String.format(
         		"\n   "+
