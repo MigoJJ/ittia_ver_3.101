@@ -29,7 +29,7 @@ public class EMR_Preg_CC extends JFrame {
         JPanel contentPane = new JPanel();
         contentPane.setLayout(new GridLayout(0, 1));
 
-        String[] labels = {"Pregnancy #:", "Weeks:", "Due Date:", "Dx:", "GY:"};
+        String[] labels = {"Pregnancy #:", "Weeks:", "Due Date:", "Diagnosis:", "transferred from GY:"};
         for (int i = 0; i < labels.length; i++) {
             JPanel panel = new JPanel();
             panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -72,6 +72,7 @@ public class EMR_Preg_CC extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 addPregnancyData();
                 printPregnancyData();
+                dispose();
             }
         });
         contentPane.add(addButton);

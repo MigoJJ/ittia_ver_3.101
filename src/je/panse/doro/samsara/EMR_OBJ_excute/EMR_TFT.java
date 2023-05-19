@@ -102,24 +102,27 @@ public class EMR_TFT implements ActionListener, KeyListener {
 
         // Check if Enter key is pressed and the source is an input field
         if (keyCode == KeyEvent.VK_ENTER && Arrays.asList(inputFields).contains(source)) {
-			JTextField inputField = (JTextField) source;
-			int inputIndex = Arrays.asList(inputFields).indexOf(inputField);
-				// Check if the text field is not empty
-			if (!inputField.getText().isEmpty()) {
-			    int nextIndex = inputIndex + 1;
-			    if (nextIndex < inputFields.length) {
-			        inputFields[nextIndex].requestFocusInWindow();
-			    } 
-			}
-			if (inputIndex == 3 && inputField.getText().isEmpty()) {
-			    // do something if input is empty for the 4th field
-			    saveResults3();
-			} else {
-			    saveResults6();
-			    // do something else for other input fields
-			}
-    	}
+            JTextField inputField = (JTextField) source;
+            int inputIndex = Arrays.asList(inputFields).indexOf(inputField);
+            
+            // Check if the text field is not empty
+            if (!inputField.getText().isEmpty()) {
+                int nextIndex = inputIndex + 1;
+                if (nextIndex < inputFields.length) {
+                    inputFields[nextIndex].requestFocusInWindow();
+                } 
+            }
+            
+            if (inputIndex == 3 && inputField.getText().isEmpty()) {
+                // do something if input is empty for the 4th field
+                saveResults3();
+            } else {
+                saveResults6();
+                // do something else for other input fields
+            }
+        }
     }
+
 
     private void saveResults6() {
         for (JTextField field : inputFields) {
@@ -145,17 +148,12 @@ public class EMR_TFT implements ActionListener, KeyListener {
         
         String outputText = String.format(
         		"\n   "+
-        	    "%-12s\t%-12s\t%-12s\n" +
-        	    "------------------------------------------------------------------\n" +
-        	    "   %-12s\t%-12s\t\t%-12s\n\n" +
-        	    "%-12s\t%-12s\n" +
-        	    "%-12s\t%-12s\n" +
-        	    "%-12s\t%-12s\n",
-        	    "T3 (ug/dL)", "free-T4(ug/dL)", "TSH(mIU/ml)",
-        	    T3, free_T4, TSH,
-        	    "   [ "+Ab_TSH, " ] Anti-TSH-R-Ab (<1.75 IU/L)",
-        	    "   [ "+Ab_Tg, " ] Anti-Thyroglobulin Ab (<115.00 IU/mL)",
-        	    "   [ "+Ab_Mic, " ] Anti-microsomal Ab (<9.0 IU/mL)"
+        		"T3 (ug/dL)  free-T4(ug/dL)   TSH(mIU/ml)\n"+
+        	    "---------------------------------------\n" +
+        	    "   " + T3 +"\t"+free_T4 +"\t"+TSH +"\n"+
+        	    "\t[  "+Ab_TSH+ "  ]\tAnti-TSH-R-Ab (<1.75 IU/L)\n"+
+        	    "\t[  "+Ab_Tg+  "  ]\t Anti-Thyroglobulin Ab (<115.00 IU/mL)\n"+
+        	    "\t[  "+Ab_Mic+ "  ]\t Anti-microsomal Ab (<9.0 IU/mL)"
         	);
 		GDSEMR_frame.setTextAreaText(5, outputText);
     }   
@@ -171,14 +169,9 @@ public class EMR_TFT implements ActionListener, KeyListener {
     	
         String outputText = String.format(
         		"\n   "+
-                	    "%-12s\t%-12s\t%-12s\n" +
-                	    "------------------------------------------------------------------\n" +
-                	    "   %-12s\t%-12s\t\t%-12s\n\n" +
-                	    "%-12s\t%-12s\n" +
-                	    "%-12s\t%-12s\n" +
-                	    "%-12s\t%-12s\n",
-                	    "T3 (ug/dL)", "free-T4(ug/dL)", "TSH(mIU/ml)",
-                	    T3, free_T4, TSH
+        		"T3 (ug/dL)  free-T4(ug/dL)   TSH(mIU/ml)\n"+
+        	    "---------------------------------------\n" +
+        	    T3 +"\t"+free_T4 +"\t"+TSH +"\n"
         );
 
 		outputArea.setText(outputText);
