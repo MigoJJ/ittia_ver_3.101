@@ -1,3 +1,4 @@
+
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
 import java.awt.BorderLayout;
@@ -106,45 +107,50 @@ public class EMR_eGFR extends JFrame {
             }
         }
     }
-    
+
+
+
     public String EMR_eGFR_Calc(String cr, String egfr, String ac) {
-	    double C1 = Double.parseDouble(cr.trim());
-	    double eGFR = Double.parseDouble(egfr.trim());
-	    double ACratio = Double.parseDouble(ac.trim());
-		String ReGFR="";
-		String RACratio="";
-			if (ACratio <30){
-				RACratio = "A1  : Normal to mildly increased A/C_ratio";
-			}
-			else if (ACratio >=30 && ACratio <=300) {
-				RACratio = "A2  : Moderately increased A/C_ratio";
-			}
-			else if (ACratio >300) {
-				RACratio = "A3  : Severely increased A/C_ratio";
-			}else {
-			}
-			
-			if (eGFR >=90){
-				ReGFR = "G1  : Normal GFR";
-			}
-			else if (eGFR < 89 && eGFR >=60) {
-				ReGFR = "G2  : Mildly decreased GFR";
-			}
-			else if (eGFR < 60 && eGFR >=45) {
-				ReGFR = "G3a : Mildly to moderately decreased GFR";
-			}
-			else if (eGFR < 45 && eGFR >=30) {
-				ReGFR = "G3b : Moderate to severely decreased GFR";
-			}
-			else if (eGFR < 30 && eGFR >=15) {
-				ReGFR = "G4  : Severely decreased GFR";
-			}
-			else if (eGFR < 15) {
-				ReGFR = "G5  : Kidney failure";
-			}else {
-			}		
-			return ("\t" + RACratio + "\n\t" + ReGFR);
-	}
+        double C1 = Double.parseDouble(cr.trim());
+        double eGFR = Double.parseDouble(egfr.trim());
+        double ACratio = Double.parseDouble(ac.trim());
+        
+        String RACratio = getRACratio(ACratio);
+        String ReGFR = getReGFR(eGFR);
+        
+        return "\t" + RACratio + "\n\t" + ReGFR;
+    }
+
+    private String getRACratio(double ACratio) {
+        if (ACratio < 30) {
+            return "A1  : Normal to mildly increased A/C_ratio";
+        } else if (ACratio >= 30 && ACratio <= 300) {
+            return "A2  : Moderately increased A/C_ratio";
+        } else if (ACratio > 300) {
+            return "A3  : Severely increased A/C_ratio";
+        } else {
+            return "";
+        }
+    }
+
+    private String getReGFR(double eGFR) {
+        if (eGFR >= 90) {
+            return "G1  : Normal GFR";
+        } else if (eGFR < 89 && eGFR >= 60) {
+            return "G2  : Mildly decreased GFR";
+        } else if (eGFR < 60 && eGFR >= 45) {
+            return "G3a : Mildly to moderately decreased GFR";
+        } else if (eGFR < 45 && eGFR >= 30) {
+            return "G3b : Moderate to severely decreased GFR";
+        } else if (eGFR < 30 && eGFR >= 15) {
+            return "G4  : Severely decreased GFR";
+        } else if (eGFR < 15) {
+            return "G5  : Kidney failure";
+        } else {
+            return "";
+        }
+    }
+
 
 	public static void main(String[] args) {
         new EMR_eGFR();

@@ -26,51 +26,51 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		private ArrayList<String> inputList;
 	    private String bp = "at GDS left seated position Regular";
 
-		public EMR_Vitalsign_BP() {
-			super("EMR Interface for BP");
-	       setLocation(1460, 500);
-			
-			// Create input field and label
-			inputField = new JTextField(20);
-			inputField.addKeyListener(this);
-			JLabel inputLabel = new JLabel("Vital sign input : ");
-			inputField.setHorizontalAlignment(JTextField.CENTER);
-			inputField.setPreferredSize(new Dimension(20, 30));
-			
-			// Create output area and label
-			outputArea = new JTextArea(5, 25);
-			JScrollPane scrollPane = new JScrollPane(outputArea);
-			JLabel outputLabel = new JLabel("Vital sign: ");
-			
-			// Create save and quit buttons
-			JButton clearButton = new JButton("Clear");
-			clearButton.addActionListener(this);
-			JButton saveButton = new JButton("Save");
-			saveButton.addActionListener(this);
-			JButton quitButton = new JButton("Quit");
-			quitButton.addActionListener(this);
-			
-			// Add components to the frame
-			JPanel inputPanel = new JPanel();
-			inputPanel.add(inputLabel);
-			inputPanel.add(inputField);
-			JPanel outputPanel = new JPanel();
-			outputPanel.add(outputLabel);
-			outputPanel.add(scrollPane);
-			JPanel buttonPanel = new JPanel();
-			
-			buttonPanel.add(clearButton);
-			buttonPanel.add(saveButton);
-			buttonPanel.add(quitButton);
-			
-			this.add(inputPanel, BorderLayout.NORTH);
-			this.add(outputPanel, BorderLayout.CENTER);
-			this.add(buttonPanel, BorderLayout.SOUTH);
-			
-			// Initialize input list
-			inputList = new ArrayList<String>();
-		}
-		
+	    public EMR_Vitalsign_BP() {
+	        super("EMR Interface for BP");
+	        setLocation(1460, 500);
+
+	        // Create input field and label
+	        inputField = new JTextField(20);
+	        inputField.addKeyListener(this);
+	        JLabel inputLabel = new JLabel("Vital sign input : ");
+	        inputField.setHorizontalAlignment(JTextField.CENTER);
+	        inputField.setPreferredSize(new Dimension(20, 30));
+
+	        // Create output area and label
+	        outputArea = new JTextArea(5, 25);
+	        JScrollPane scrollPane = new JScrollPane(outputArea);
+	        JLabel outputLabel = new JLabel("Vital sign: ");
+
+	        // Create save and quit buttons
+	        String[] buttonLabels = { "Clear", "Save", "Quit" };
+	        JButton[] buttons = new JButton[buttonLabels.length];
+
+	        for (int i = 0; i < buttons.length; i++) {
+	            buttons[i] = new JButton(buttonLabels[i]);
+	            buttons[i].addActionListener(this);
+	        }
+
+	        // Add components to the frame
+	        JPanel inputPanel = new JPanel();
+	        inputPanel.add(inputLabel);
+	        inputPanel.add(inputField);
+	        JPanel outputPanel = new JPanel();
+	        outputPanel.add(outputLabel);
+	        outputPanel.add(scrollPane);
+	        JPanel buttonPanel = new JPanel();
+
+	        for (JButton button : buttons) {
+	            buttonPanel.add(button);
+	        }
+
+	        this.add(inputPanel, BorderLayout.NORTH);
+	        this.add(outputPanel, BorderLayout.CENTER);
+	        this.add(buttonPanel, BorderLayout.SOUTH);
+
+	        // Initialize input list
+	        inputList = new ArrayList<String>();
+	    }
 		// Handle button clicks
 		public void actionPerformed(ActionEvent e) {
 			if (e.getActionCommand().equals("Clear")) {
@@ -123,18 +123,27 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		}
 
 		private String updateOutputAreaString(ArrayList<String> inputList) {
+		    String[] replacements = { 
+		    		"right", 
+		    		"irRegular", 
+		    		"at home by self", 
+		    		"at GDS by self BP machine", 
+		    		"at GDS left seated position Regular" };
+
 		    for (String str : inputList) {
-		        if (bp.contains(str.trim())) {
-		            if (str.trim().equals("r")) {
-		                bp = bp.replace("left", "right");
-		            } else if (str.trim().equals("i")) {
-		                bp = bp.replace("Regular", "irRegular");
-		            } else if (str.trim().equals("h")) {
-		                bp = "at home by self";
-		            } else if (str.trim().equals("s")) {
-		                bp = "at GDS by self BP machine";
-		            } else if (str.trim().equals("b")) {
-		                bp = "at GDS left seated position Regular";
+		        str = str.trim();
+		        int index = bp.indexOf(str);
+		        if (index >= 0) {
+		            if (str.equals("r")) {
+		                bp = bp.replace("left", replacements[0]);
+		            } else if (str.equals("i")) {
+		                bp = bp.replace("Regular", replacements[1]);
+		            } else if (str.equals("h")) {
+		                bp = replacements[2];
+		            } else if (str.equals("s")) {
+		                bp = replacements[3];
+		            } else if (str.equals("b")) {
+		                bp = replacements[4];
 		            }
 		        }
 		    }
@@ -142,39 +151,31 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		    return bp;
 		}
 
-		private String changeString(ArrayList<String> inputList2) {
-		    int length = inputList2.size();
-		    ArrayList<String> list = new ArrayList<String>(inputList2);
-		    String B = "";
+		private String changeString(ArrayList<String> inputList) {
+		    int length = inputList.size();
+		    StringBuilder sb = new StringBuilder("    ");
+		    String[] labels = { "SBP", "DBP", "PR", "\n    Body Temperature", "\n    Respiration rate" };
 
-		    // use the index to determine which string to replace
-		    switch (length) {
-		        case 0:
-		            B = ("reinsert Vital signs ~~~");
-		            break;
-		        case 1:
-		            B = ("SBP [ " + list.get(0) + " ] mmHg");
-		            break;
-		        case 2:
-		            B = ("BP [ " + list.get(0) + " / " + list.get(1) + " ] mmHg");
-		            break;
-		        case 3:
-		            B = "BP [ " + list.get(0) + " / " + list.get(1) + " ] mmHg  PR [ " + list.get(2) + " ] /min";
-		            break;
-		        default:
-		            if (length >= 4) {
-		                B = "BP [ " + list.get(0) + " / " + list.get(1) + " ] mmHg  PR [ " + list.get(2) + " ] /min" 
-		                		+ "\nBody Temperature [ " + list.get(3) + " ] 'C";
-		            }
-		            if (length >= 5) {
-		                B = "BP [ " + list.get(0) + " / " + list.get(1) + " ] mmHg  PR [ " + list.get(2) + " ] /min"
-		                		+ "\nBody Temperature [ " + list.get(3) + " ] 'C"
-		                		+ "\nRespiration rate [ " + list.get(4) + " ] /min";
-		            }
-		            break;
+		    for (int i = 0; i < length; i++) {
+		        String label = labels[i];
+		        String value = inputList.get(i);
+		        sb.append(label).append(" [ ").append(value).append(" ]");
+		        if (i < length - 1) {
+		            sb.append("  ");
+		        }
+		        if (i == 1) {
+		            sb.append(" /mmHg");
+		        } else if (i == 2) {
+		            sb.append("/min");
+		        } else if (i == 3) {
+		            sb.append("'C");
+		        } else if (i == 4) {
+		            sb.append("/min");
+		         }
+		        sb.append("");
 		    }
-		    return "    " + B;
-		}
 
+		    return sb.toString();
+		}
 
 }
