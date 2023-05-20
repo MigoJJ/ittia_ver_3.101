@@ -78,8 +78,10 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 				outputArea.setText("");
 			} else if (e.getActionCommand().equals("Save")) {
 				inputField.setText("");
+//				outputArea.setText("");
 //				dispose();
 			} else if (e.getActionCommand().equals("Quit")) {
+				outputArea.setText("");
 				dispose();
 			}
 			GDSEMR_frame.setTextAreaText(5,"\n"+outputArea.getText());

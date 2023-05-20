@@ -21,7 +21,7 @@ public class EMR_symptom_retStr {
 	            returnargs = new String[]{"Frequent urination", "Burning sensation during urination", "Cloudy or bloody urine", "Strong-smelling urine", "Pelvic pain"};
 	            break;
 	        case "Abdominal pain":
-	            returnargs = new String[]{"Cramp-like pain", "Bloating", "Nausea", "Vomiting", "Diarrhea", "Constipation"};
+	            returnargs = new String[]{"Cramp-like pain", "Bloating", "Nausea", "Vomiting", "Diarrhea", "Constipation","RLQ pain"};
 	            break;
 	        case "Atypical chest pain":
 	            returnargs = new String[]{"Sharp or stabbing pain", "Chest tightness", "Shortness of breath", "Dizziness", "Nausea"};
