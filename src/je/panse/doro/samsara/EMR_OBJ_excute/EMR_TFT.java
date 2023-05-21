@@ -118,7 +118,7 @@ public class EMR_TFT implements ActionListener, KeyListener {
 
     private void saveResults6() {
         String[] labels = { "T3 (ug/dL)", "free-T4 (ug/dL)", "TSH (mIU/ml)", "Ab_TSH", "Ab_Mic", "Ab_Tg" };
-        double[] ranges = { 0.90, 10.6, 0.25, 0.8, 34, 115 };
+        double[] ranges = { 0.90, 10.6, 0.25, 1.75, 34, 115 };
         double[] upperLimits = { 2.5, 19.4, 5.00, Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE };
         String[] units = { "", "", "", "IU/L", "IU/mL", "IU/mL" };
 
