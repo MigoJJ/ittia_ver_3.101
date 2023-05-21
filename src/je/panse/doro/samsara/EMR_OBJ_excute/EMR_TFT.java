@@ -50,7 +50,11 @@ public class EMR_TFT implements ActionListener, KeyListener {
 
 	    JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
 
-	    JButton[] buttons = { new JButton("Clear"), new JButton("Save"), new JButton("Quit") };
+	    clearButton = new JButton("Clear");
+	    saveButton = new JButton("Save");
+	    quitButton = new JButton("Quit");
+
+	    JButton[] buttons = { clearButton, saveButton, quitButton };
 	    String[] buttonActions = { "Clear", "Save", "Quit" };
 
 	    for (int i = 0; i < buttons.length; i++) {
@@ -82,6 +86,7 @@ public class EMR_TFT implements ActionListener, KeyListener {
             }
             outputArea.setText("");
         } else if (e.getSource() == saveButton) {
+        	
         } else if (e.getSource() == quitButton) {
             frame.dispose();
         } else {
@@ -117,54 +122,57 @@ public class EMR_TFT implements ActionListener, KeyListener {
 
 
     private void saveResults6() {
-        String[] labels = { "T3 (ug/dL)", "free-T4 (ug/dL)", "TSH (mIU/ml)", "Ab_TSH", "Ab_Mic", "Ab_Tg" };
-        double[] ranges = { 0.90, 10.6, 0.25, 1.75, 34, 115 };
-        double[] upperLimits = { 2.5, 19.4, 5.00, Double.MAX_VALUE, Double.MAX_VALUE, Double.MAX_VALUE };
-        String[] units = { "", "", "", "IU/L", "IU/mL", "IU/mL" };
-
-        StringBuilder outputText = new StringBuilder("\n   T3 (ug/dL)  free-T4(ug/dL)   TSH(mIU/ml)\n");
-        outputText.append("---------------------------------------\n");
-
-        for (int i = 0; i < inputFields.length; i++) {
-            JTextField field = inputFields[i];
-            String value = field.getText();
-
-            if (value.isEmpty()) {
-                // JOptionPane.showMessageDialog(null, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        for (JTextField field : inputFields) {
+            if (field.getText().isEmpty()) {
+//                JOptionPane.showMessageDialog(null, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-            value = String_ArrowChange.compareOriginAndLrange(value, ranges[i], upperLimits[i]);
-            outputText.append(String.format("   %s\t", value));
-            outputText.append(String.format("[  %s  ]\t%s\n", value, labels[i]));
         }
-
-        GDSEMR_frame.setTextAreaText(5, outputText.toString());
-    }
-
+        
+        String T3 = inputFields[0].getText(); 
+        T3 = String_ArrowChange.compareOriginAndLrange(T3, 0.90, 2.5);
+        String free_T4 = inputFields[1].getText(); 
+        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10.6, 19.4);
+        String TSH = inputFields[2].getText(); 
+        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.25, 5.00);
+        String Ab_TSH = inputFields[3].getText(); 
+        Ab_TSH = String_ArrowChange.compareOriginAndLrange(Ab_TSH, 0.8);
+        String Ab_Tg = inputFields[4].getText(); 
+        Ab_Tg = String_ArrowChange.compareOriginAndLrange(Ab_Tg, 115);
+        String Ab_Mic = inputFields[5].getText(); 
+        Ab_Mic = String_ArrowChange.compareOriginAndLrange(Ab_Mic, 34);
+        
+        String outputText = String.format(
+          	  "\n   " + T3 + "\tT3 (ug/dL)\n" +
+              "\n   " + free_T4 +"\tfree-T4(ug/dL)\n" +
+              "\n   " + TSH + "\tTSH(mIU/ml)\n" +
+        	    "\t" + Ab_TSH + "\tAnti-TSH-R-Ab (IU/L <1.75)\n" +
+        	    "\t" + Ab_Tg + "\tAnti-Thyrogobulin Ab (IU/mL <115)\n"+
+        	    "\t" + Ab_Mic + "\tAnti-microsomal Ab (IU/mL <34)\n"
+                );
+		outputArea.setText(outputText);
+		GDSEMR_frame.setTextAreaText(5, outputText);
+    }   
 
     private void saveResults3() {
-        String[] labels = { "T3 (ug/dL)", "free-T4 (ug/dL)", "TSH (mIU/ml)" };
-        double[] ranges = { 0.90, 10.6, 0.25 };
-        double[] upperLimits = { 2.5, 19.4, 5.00 };
 
-        StringBuilder outputText = new StringBuilder("\n   T3 (ug/dL)  free-T4(ug/dL)   TSH(mIU/ml)\n");
-        outputText.append("---------------------------------------\n");
+        String T3 = inputFields[0].getText(); 
+        T3 = String_ArrowChange.compareOriginAndLrange(T3, 1.23, 3.08);
+        String free_T4 = inputFields[1].getText(); 
+        free_T4 = String_ArrowChange.compareOriginAndLrange(free_T4, 10, 19);
+        String TSH = inputFields[2].getText(); 
+        TSH = String_ArrowChange.compareOriginAndLrange(TSH, 0.4, 4.0);
+    	
+        String outputText = String.format(
+            	  "\n   " + T3 + "\tT3 (ug/dL)\n" +
+                  "\n   " + free_T4 +"\tfree_T4(ug/dL)\n" +
+                  "\n   " + TSH + "\tTSH(mIU/ml)\n" 
+        );
 
-        for (int i = 0; i < inputFields.length; i++) {
-            JTextField field = inputFields[i];
-            String value = field.getText();
-
-            value = String_ArrowChange.compareOriginAndLrange(value, ranges[i], upperLimits[i]);
-            outputText.append(String.format("   %s\t", value));
-        }
-
-        outputText.append("\n");
-
-        outputArea.setText(outputText.toString());
-        GDSEMR_frame.setTextAreaText(5, outputText.toString());
-        frame.dispose();
-    }
+		outputArea.setText(outputText);
+		GDSEMR_frame.setTextAreaText(5, outputText);
+		frame.dispose();
+            }
 
     
     public void keyReleased(KeyEvent e) {}

@@ -1,8 +1,7 @@
     O>	 
-    [ ▼   1   ]	T3 (pg/mL):
-    [ ▼   2   ]	Free T3 (pg/mL):
-    [ ▲   3   ]	Free T4 (ng/dL):
-    [ ▷   4   ]	TSH (mIU/L):
-    [ ▲   5   ]	Anti-TSH-Receptor Antibodies (IU/L):
-    [ ▷   6   ]	Anti-Thyroglobulin Antibodies (IU/mL):
-    [ ▲   78   ]	Anti-Microsomal Antibodies (IU/mL):
+   1	T3 (ug/dL)
+   2  ↓ 	free-T4(ug/dL)
+   3	TSH(mIU/ml)
+	4 ↑ 	Anti-TSH-R-Ab (IU/L <1.75)
+	5	Anti-Thyrogobulin Ab (IU/mL <115)
+	6	Anti-microsomal Ab (IU/mL <34)
