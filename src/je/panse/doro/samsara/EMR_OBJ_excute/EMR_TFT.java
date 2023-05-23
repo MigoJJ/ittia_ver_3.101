@@ -1,6 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -13,7 +14,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -36,7 +36,7 @@ public class EMR_TFT extends JFrame {
     
     public EMR_TFT() {
         // Set JFrame properties
-        setTitle("Input Form");
+        setTitle("GDS TFT Input Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
         setLocationRelativeTo(null);
@@ -97,7 +97,8 @@ public class EMR_TFT extends JFrame {
 
         // Create input text area
         inputTextArea = new JTextArea();
-        inputTextArea.setEditable(false);
+        inputTextArea.setBackground(Color.YELLOW); // Set your desired color here
+        inputTextArea.setEditable(true);
         inputTextArea.setPreferredSize(new Dimension(150, 100));
 
         // Create buttons panel

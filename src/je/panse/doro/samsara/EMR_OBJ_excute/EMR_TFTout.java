@@ -37,7 +37,7 @@ public class EMR_TFTout extends JFrame {
     
     public EMR_TFTout() {
         // Set JFrame properties
-        setTitle("Input Form");
+        setTitle("Outside Clinic TFT Input Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
         setLocationRelativeTo(null);
