@@ -21,19 +21,26 @@ public class EMR_symptom_main {
                 "URI",
                 "UTI",
                 "Abdominal pain",
-                "Atypical chest pain"
+                "Atypical chest pain",
+                "Quit"
         };
-
         for (String name : buttonNames) {
             JButton button = new JButton(name);
             button.setPreferredSize(new Dimension(200, 40)); // Set a fixed size for the button
             button.setMaximumSize(new Dimension(200, 40)); // Set maximum size to enforce the fixed size
             button.setAlignmentX(Box.CENTER_ALIGNMENT); // Align the button to the center horizontally
+
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    // Perform the desired action for each button here
-                    String[] Esrr = EMR_symptom_retStr.returnStr(name);
-                    EMR_symptom_list.main(Esrr);
+                    String actionCommand = e.getActionCommand();
+
+                    // Use the actionCommand String as needed
+                    if (actionCommand.equals("Quit")) {
+                        frame.dispose();
+                    } else {
+                        String[] Esrr = EMR_symptom_retStr.returnStr(actionCommand);
+                        EMR_symptom_list.main(Esrr);
+                    }
                 }
             });
 
@@ -42,7 +49,7 @@ public class EMR_symptom_main {
         }
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null); // center the frame on the screen
+        frame.setLocationRelativeTo(null); // Center the frame on the screen
         frame.pack();
         frame.setVisible(true);
     }

@@ -1,6 +1,5 @@
 package je.panse.doro.soap.ros;
 
-
 public class EMR_ROS_JtableDATA {
 	public static String[] columnNames() {
 	    return new String[] {
