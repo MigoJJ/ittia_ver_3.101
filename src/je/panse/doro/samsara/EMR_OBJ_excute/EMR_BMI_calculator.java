@@ -63,41 +63,49 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
 				panel.add(fields[i], constraints);
 	    	}
         }
-		       fields[2].addKeyListener(new KeyAdapter() {
-					public void keyPressed(KeyEvent e) {
-					    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					        // Call the method that should be executed on Enter key press
-					        // Calculate BMI
-					        double[] values = new double[2];
-					        for (int i = 0; i < values.length; i++) {
-					            values[i] = Double.parseDouble(fields[i].getText());
-					        	}
-					        double bmi = values[1] / (values[0] / 100.0 * values[0] / 100.0);
-					        String result ="";
-								if (bmi < 18.5) {
-								    result += "Underweight";
-								} else if (bmi >= 18.5 && bmi < 25) {
-								    result += "Healthy weight";
-								} else if (bmi >= 25 && bmi < 30) {
-								    result += "Overweight";
-								} else {
-								    result += "Obese";
-								}
-					        String height = fields[0].getText();
-					        String weight = fields[1].getText();
-					        result = String.format("\n" + result + " : "+ "BMI: [ %.2f ]kg/m^2\n", bmi);
-					        result = (result + "Height : " + height + " cm   " + "Weight : " + weight +" kg");
-						        if (!fields[2].getText().isEmpty()) {	
-									String waist = fields[2].getText();
-									result = (result + "   Waist : " + waist + " cm");
-						        	}
-							String selectedItems = "\n< BMI >\n";
-							GDSEMR_frame.setTextAreaText(5, selectedItems);
-					        outputArea.setText(result);
-							GDSEMR_frame.setTextAreaText(5,result);
-					    }
-					}
-		        });
+        fields[2].addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    // Calculate BMI
+                    double[] values = new double[2];
+                    for (int i = 0; i < values.length; i++) {
+                        values[i] = Double.parseDouble(fields[i].getText());
+                    }
+                    double bmi = values[1] / (values[0] / 100.0 * values[0] / 100.0);
+                    
+                    // Determine BMI category
+                    String result;
+                    if (bmi < 18.5) {
+                        result = "Underweight";
+                    } else if (bmi < 25) {
+                        result = "Healthy weight";
+                    } else if (bmi < 30) {
+                        result = "Overweight";
+                    } else {
+                        result = "Obese";
+                    }
+                    
+                    // Build result string
+                    String height = fields[0].getText();
+                    String weight = fields[1].getText();
+                    result = String.format("\n%s : BMI: [ %.2f ]kg/m^2\n", result, bmi);
+                    result += "Height : " + height + " cm   Weight : " + weight + " kg";
+                    
+                    if (!fields[2].getText().isEmpty()) {
+                        String waist = fields[2].getText();
+                        result += "   Waist : " + waist + " cm";
+                    }
+                    
+                    // Update text areas
+                    String selectedItems = "\n< BMI >\n";
+                    GDSEMR_frame.setTextAreaText(5, selectedItems);
+                    outputArea.setText(result);
+                    GDSEMR_frame.setTextAreaText(5, result);
+                }
+            }
+        });
+
+        
         SaveandQuit = new JButton("Save & Quit");
         SaveandQuit.addActionListener(this);
         constraints.gridx = 1;
