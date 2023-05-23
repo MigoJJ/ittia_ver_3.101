@@ -26,6 +26,9 @@ public class EMR_symptom_retStr {
 	        case "Atypical chest pain":
 	            returnargs = new String[]{"Sharp or stabbing pain", "Chest tightness", "Shortness of breath", "Dizziness", "Nausea"};
 	            break;
+	        case "Quit":
+	        	returnargs = new String[]{""};
+	            break;
 	        default:
 	            returnargs = new String[]{};
 	            break;

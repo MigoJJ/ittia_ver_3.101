@@ -27,7 +27,7 @@ public class EMR_thyroid_main {
                 "Abnormal TFT with pregnancy",
                 "Non thyroidal illness",
                 "Abnormal TFT on Routine check",
-                "Thyroid nodule"
+                "Quit"
         };
         for (String name : buttonNames) {
             JButton button = new JButton(name);
@@ -48,6 +48,9 @@ public class EMR_thyroid_main {
 						} else if (name.contains("Hypothyroidism with pregnancy")){
 							EMR_Preg_CC.main(null);
 //							EMR_Thyroid_Preg_to.main(null);
+						} else if (name.contains("Quit")){
+							frame.dispose();
+		//					EMR_Thyroid_Preg_to.main(null);
 						}
                 }
             });
