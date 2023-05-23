@@ -27,12 +27,11 @@ public class EMR_TFT extends JFrame {
     private JTextArea inputTextArea;
     private String[] labels = {
             "T3 (pg/mL):",
-            "Free T3 (pg/mL):",
             "Free T4 (ng/dL):",
             "TSH (mIU/L):",
-            "Anti-TSH-Receptor Antibodies (IU/L):",
-            "Anti-Thyroglobulin Antibodies (IU/mL):",
-            "Anti-Microsomal Antibodies (IU/mL):"
+            "Anti-TSH-Receptor Antibodies (IU/L <1.75):",
+            "Anti-Thyroglobulin Antibodies (IU/mL <115):",
+            "Anti-Microsomal Antibodies (IU/mL <34):"
         };
     
     public EMR_TFT() {
@@ -72,6 +71,12 @@ public class EMR_TFT extends JFrame {
                         int currentIndex = getCurrentIndex(textField);
                         if (currentIndex < textFields.length - 1) {
                             textFields[currentIndex + 1].requestFocus();
+                        }
+                        if (currentIndex == 3 && textFields[3].getText().isEmpty()) {
+                            // do something if input is empty for the 4th field
+                        	saveData();
+                        } else if (currentIndex == 5 && textFields[5].getText().isEmpty()) {
+                        	saveData();
                         }
                     }
                 }
@@ -158,10 +163,9 @@ public class EMR_TFT extends JFrame {
 
     private void saveData() {
         double[] ranges = {
-            80, 200,   // T3 (pg/mL) range
-            2.3, 4.2,  // Free T3 (pg/mL) range
-            0.8, 1.8,  // Free T4 (ng/dL) range
-            0.4, 4.0,  // TSH (mIU/L) range
+            0.9, 2.5,   // T3 (ug/dL) range
+            10.6, 19.4,  // Free T4 (ug/dL) range
+            0.25, 5.0,  // TSH (mIU/L) range
             Double.NEGATIVE_INFINITY, 1.75,  // Anti-TSH-Receptor Antibodies (IU/L) range
             Double.NEGATIVE_INFINITY, 115,   // Anti-Thyroglobulin Antibodies (IU/mL) range
             Double.NEGATIVE_INFINITY, 34    // Anti-Microsomal Antibodies (IU/mL) range
@@ -180,11 +184,13 @@ public class EMR_TFT extends JFrame {
                 double numericValue = Double.parseDouble(value);
 
                 if (numericValue < rangeMin) {
-                    outputText.append("    [ ▼   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append("    [  ▼   ").append(value).append("  ]\t").append(label).append("\n");
                 } else if (numericValue > rangeMax) {
-                    outputText.append("    [ ▲   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append("    [  ▲   ").append(value).append("  ]\t").append(label).append("\n");
                 } else {
-                    outputText.append("    [ ▷   ").append(value).append("   ]\t").append(label).append("\n");
+//                    outputText.append("    [ ▷   ").append(value).append("  ]\t").append(label).append("\n");
+                    outputText.append("    [      ").append(value).append("  ]\t").append(label).append("\n");
+
                 }
             }
 
