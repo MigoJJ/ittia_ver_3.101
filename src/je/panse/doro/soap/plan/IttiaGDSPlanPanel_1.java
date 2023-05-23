@@ -90,36 +90,31 @@ public class IttiaGDSPlanPanel_1 extends JPanel {
     }
 
     private void updateTextArea() {
-    	
     	String rtfield2 = returnchangefield2(textField2.getText());
 		textArea.setText("\nFollow up interval: [ " + textField1.getText() + " ] months\n"
                 + "Prescription :" + rtfield2 + "\n");
     }
-    
-    private String returnchangefield2(String meds) {
-        String returnmeds = "";
-        if (meds.equals("5")) {
-            returnmeds = " starting new medicine";
-        } else if (meds.equals("55")) {
-            returnmeds = " Medication discontinuation";
-        } else if (meds.equals("6")) {
-            returnmeds = " continue with current dosages of meds";
-        } else if (meds.equals("8")) {
-            returnmeds = " an increase in drug dosage";
-        } else if (meds.equals("2")) {
-            returnmeds = " a reduction in drug dosage";
-        } else if (meds.equals("4")) {
-            returnmeds = " Return to previous Prescription";
-        } else if (meds.equals("55")) {
-            returnmeds = " Medication discontinuation :";
-        } else if (meds.equals("0")) {
-            returnmeds = " Observation & Follow-up without medication";
-        } else if (meds.equals("1")) {
-            returnmeds = " With conservative treatment";
-        } else {
-            returnmeds = "";
+
+private String returnchangefield2(String meds) {
+		String[] codes = {"5", "55", "6", "8", "2", "4", "55", "0", "1"};
+       String[] messages = {
+            " starting new medicine",
+            " Medication discontinuation",
+            " continue with current dosages of meds",
+            " an increase in drug dosage",
+            " a reduction in drug dosage",
+            " Return to previous Prescription",
+            " Medication discontinuation :",
+            " Observation & Follow-up without medication",
+            " With conservative treatment"
+        };
+
+        for (int i = 0; i < codes.length; i++) {
+            if (meds.equals(codes[i])) {
+                return messages[i];
+            }
         }
-        return returnmeds;
+        return "";
     }
 
 	public static void appendTextArea(String text) {

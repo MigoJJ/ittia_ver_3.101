@@ -6,6 +6,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +25,7 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_enterresult;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_positive;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 
@@ -32,12 +35,12 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
     public EMR_east_buttons_obj(String position, String title) {
         setSize(new Dimension(800, 600));
-        setLayout(new GridLayout(3, 5));
+        setLayout(new GridLayout(4, 5));
         setBackground(new Color(240, 240, 240));
         setTitle(title);
         setLocation(1460, 50);
 
-        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "Etc.", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
+        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "Etc.", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
 
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
@@ -64,58 +67,43 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        Map<String, Runnable> buttonActions = createButtonActionsMap();
+
+        // Get the button text from the event source
         String buttonText = ((JButton) e.getSource()).getText();
-        switch (buttonText) {
-            case "BMI":
-                EMR_BMI_calculator.main(null);
-                break;
-            case "BP":
-                EMR_Vitalsign_BP.main(null);
-                break;
-            case "HbA1c":
-                EMR_HbA1c.main(null);
-                break;
 
-            case "LDL":
-                EMR_LDL.main(null);
-                break;
-            case "LFT":
-                EMR_LFT.main(null);
-                break;
-            case "eGFR":
-            	EMR_eGFR.main(null);  
-                break;
-            case "Lp(a)":
-            	EMR_LpaApoB.main(null);
-                break;
-            case "TFT":
-            	EMR_TFT.main(null);
-                break;
-            case "CBC":
-            	EMR_CBC.main(null);
-                break;
-            case "Etc.":
-            	EMR_Lab_enterresult.main(null);
-            	EMR_Lab_positive.main(null);
-                break;
-            case "GFS":
-            case "CFS":
-                EMR_GFS.main(null);
-                break;
-            case "ChestPA":
-                EMR_ChestPA.main(null);
-                break;
-            case "EKG":
-                EMR_EKG.main(null);
-                break;
-            case "DEXA":
-            	EMR_DEXA.main(null);
-                break;
-
-                
-            default:
-                break;
+        // Get the corresponding action based on the button text and execute it
+        Runnable action = buttonActions.get(buttonText);
+        if (action != null) {
+            action.run();
         }
     }
 
+    private Map<String, Runnable> createButtonActionsMap() {
+        Map<String, Runnable> buttonActions = new HashMap<>();
+
+        buttonActions.put("BMI", () -> EMR_BMI_calculator.main(new String[0]));
+        buttonActions.put("BP", () -> EMR_Vitalsign_BP.main(new String[0]));
+        buttonActions.put("HbA1c", () -> EMR_HbA1c.main(new String[0]));
+        buttonActions.put("LDL", () -> EMR_LDL.main(new String[0]));
+        buttonActions.put("LFT", () -> EMR_LFT.main(new String[0]));
+        buttonActions.put("eGFR", () -> EMR_eGFR.main(new String[0]));
+        buttonActions.put("Lp(a)", () -> EMR_LpaApoB.main(new String[0]));
+        buttonActions.put("TFT", () -> EMR_TFT.main(new String[0]));
+        buttonActions.put("TFTout", () -> EMR_TFTout.main(new String[0]));
+        buttonActions.put("CBC", () -> EMR_CBC.main(new String[0]));
+        buttonActions.put("Etc.", () -> {
+            EMR_Lab_enterresult.main(new String[0]);
+            EMR_Lab_positive.main(new String[0]);
+        });
+        buttonActions.put("GFS", () -> EMR_GFS.main(new String[0]));
+        buttonActions.put("CFS", () -> EMR_GFS.main(new String[0]));
+        buttonActions.put("ChestPA", () -> EMR_ChestPA.main(new String[0]));
+        buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
+        buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
+
+        return buttonActions;
+    }
+
+    
 }

@@ -67,48 +67,50 @@ public class EMR_CBC extends JFrame {
         // Show the JFrame
         setVisible(true);
     }
-    
     private class InputFieldActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Move the cursor to the next input field when Enter is pressed
             JTextField source = (JTextField) e.getSource();
+            
             for (int i = 0; i < 3; i++) {
                 if (source == inputFields[i]) {
                     if (i < 2) {
                         inputFields[i+1].requestFocus();
                     } else {
-                        String result;
-                        // Check if WBC is empty or not
-                        String hb = inputFields[0].getText().trim();
-                        String wbc = inputFields[1].getText().trim();
-                        String platelet = inputFields[2].getText().trim();
-                        
-                	    hb = String_ArrowChange.compareOriginAndLrangeH(hb, 12.0);
-                	    wbc = String_ArrowChange.compareOriginAndLrange(wbc, 4000, 10000);
-                	    platelet = String_ArrowChange.compareOriginAndLrange(platelet, 150, 450);
-
-                        if (wbc.isEmpty()) {
-                            result = "\n\t" + hb + "\tHb(g/dl)\n";
-                        } else {
-                            result = "\n\t" + hb + "\tHb (g/dl)\n"
-                            		+"\n\t" + wbc +"\tWBC (cells/L)\n"
-                            		+"\n\t" + platelet + "\tPlatelet (billion/L)\n";
-                        	}
-                        // Clear the text of all input fields
-                        for (JTextField inputField : inputFields) {
-                            inputField.setText("");
-                        	}
-                        // Set focus back to the first input field
-                        GDSEMR_frame.setTextAreaText(5, result);
-                        dispose();
-                                                
-//               inputFields[0].requestFocus();
-//               	submitButton.requestFocus();
+                        processFinalInput();
                     }
                     break;
                 }
             }
+        }
+        
+        private void processFinalInput() {
+            String hb = inputFields[0].getText().trim();
+            String wbc = inputFields[1].getText().trim();
+            String platelet = inputFields[2].getText().trim();
+
+            hb = String_ArrowChange.compareOriginAndLrangeH(hb, 12.0);
+            wbc = String_ArrowChange.compareOriginAndLrange(wbc, 4000, 10000);
+            platelet = String_ArrowChange.compareOriginAndLrange(platelet, 150, 450);
+
+            String result;
+            if (wbc.isEmpty()) {
+                result = "\n\t" + hb + "\tHb (g/dl)\n";
+            } else {
+                result = "\n\t" + hb + "\tHb (g/dl)\n"
+                         + "\n\t" + wbc + "\tWBC (cells/L)\n"
+                         + "\n\t" + platelet + "\tPlatelet (billion/L)\n";
+            }
+
+            // Clear the text of all input fields
+            for (JTextField inputField : inputFields) {
+                inputField.setText("");
+            }
+
+            // Set focus back to the first input field
+            GDSEMR_frame.setTextAreaText(5, result);
+            dispose();
         }
     }
     

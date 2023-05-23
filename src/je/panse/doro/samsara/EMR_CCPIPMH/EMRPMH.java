@@ -115,7 +115,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
     	if (e.getActionCommand().equals("Save and Show")) {
     	    // build a StringBuilder object for appending the selected checkboxes
     	    StringBuilder sb = new StringBuilder();
-    	    sb.append("\n    ");
+    	    sb.append("---------------------------------\n");
     	    
     	    // iterate over the checkBoxList and append selected checkboxes with dsquare and unselected with ☐
     	    for (JCheckBox checkbox : checkBoxList) {

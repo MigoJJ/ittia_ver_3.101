@@ -22,7 +22,7 @@ import javax.swing.SwingUtilities;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_TFT extends JFrame {
+public class EMR_TFTout extends JFrame {
     private JTextField[] textFields;
     private JTextArea inputTextArea;
     private String[] labels = {
@@ -35,7 +35,7 @@ public class EMR_TFT extends JFrame {
             "Anti-Microsomal Antibodies (IU/mL):"
         };
     
-    public EMR_TFT() {
+    public EMR_TFTout() {
         // Set JFrame properties
         setTitle("Input Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -196,7 +196,7 @@ public class EMR_TFT extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new EMR_TFT();
+                new EMR_TFTout();
             }
         });
     }
