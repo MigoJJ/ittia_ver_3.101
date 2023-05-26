@@ -1,6 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -13,7 +14,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -27,17 +27,16 @@ public class EMR_TFT extends JFrame {
     private JTextArea inputTextArea;
     private String[] labels = {
             "T3 (pg/mL):",
-            "Free T3 (pg/mL):",
             "Free T4 (ng/dL):",
             "TSH (mIU/L):",
-            "Anti-TSH-Receptor Antibodies (IU/L):",
-            "Anti-Thyroglobulin Antibodies (IU/mL):",
-            "Anti-Microsomal Antibodies (IU/mL):"
+            "Anti-TSH-Receptor Antibodies (IU/L <1.75):",
+            "Anti-Thyroglobulin Antibodies (IU/mL <115):",
+            "Anti-Microsomal Antibodies (IU/mL <34):"
         };
     
     public EMR_TFT() {
         // Set JFrame properties
-        setTitle("Input Form");
+        setTitle("GDS TFT Input Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
         setLocationRelativeTo(null);
@@ -73,6 +72,12 @@ public class EMR_TFT extends JFrame {
                         if (currentIndex < textFields.length - 1) {
                             textFields[currentIndex + 1].requestFocus();
                         }
+                        if (currentIndex == 3 && textFields[3].getText().isEmpty()) {
+                            // do something if input is empty for the 4th field
+                        	saveData();
+                        } else if (currentIndex == 5 && textFields[5].getText().isEmpty()) {
+                        	saveData();
+                        }
                     }
                 }
 
@@ -92,7 +97,8 @@ public class EMR_TFT extends JFrame {
 
         // Create input text area
         inputTextArea = new JTextArea();
-        inputTextArea.setEditable(false);
+        inputTextArea.setBackground(Color.YELLOW); // Set your desired color here
+        inputTextArea.setEditable(true);
         inputTextArea.setPreferredSize(new Dimension(150, 100));
 
         // Create buttons panel
@@ -158,10 +164,9 @@ public class EMR_TFT extends JFrame {
 
     private void saveData() {
         double[] ranges = {
-            80, 200,   // T3 (pg/mL) range
-            2.3, 4.2,  // Free T3 (pg/mL) range
-            0.8, 1.8,  // Free T4 (ng/dL) range
-            0.4, 4.0,  // TSH (mIU/L) range
+            0.9, 2.5,   // T3 (ug/dL) range
+            10.6, 19.4,  // Free T4 (ug/dL) range
+            0.25, 5.0,  // TSH (mIU/L) range
             Double.NEGATIVE_INFINITY, 1.75,  // Anti-TSH-Receptor Antibodies (IU/L) range
             Double.NEGATIVE_INFINITY, 115,   // Anti-Thyroglobulin Antibodies (IU/mL) range
             Double.NEGATIVE_INFINITY, 34    // Anti-Microsomal Antibodies (IU/mL) range
@@ -180,11 +185,13 @@ public class EMR_TFT extends JFrame {
                 double numericValue = Double.parseDouble(value);
 
                 if (numericValue < rangeMin) {
-                    outputText.append("    [ ▼   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append("    [  ▼   ").append(value).append("  ]\t").append(label).append("\n");
                 } else if (numericValue > rangeMax) {
-                    outputText.append("    [ ▲   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append("    [  ▲   ").append(value).append("  ]\t").append(label).append("\n");
                 } else {
-                    outputText.append("    [ ▷   ").append(value).append("   ]\t").append(label).append("\n");
+//                    outputText.append("    [ ▷   ").append(value).append("  ]\t").append(label).append("\n");
+                    outputText.append("    [      ").append(value).append("  ]\t").append(label).append("\n");
+
                 }
             }
 
