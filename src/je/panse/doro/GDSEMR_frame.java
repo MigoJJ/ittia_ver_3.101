@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 import je.panse.doro.listner.buttons.BlendColors;
 
 public class GDSEMR_frame {
-	public static JFrame frame = new JFrame("Multiple TextAreas Example");
+	public static JFrame frame = new JFrame("GDS EMR Interface for Physician");
 	public static JTextArea[] textAreas = new JTextArea[10];
 	public static JTextArea tempOutputArea = new JTextArea();
 	public static String[] titles =  { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
@@ -50,7 +50,7 @@ public class GDSEMR_frame {
       // Create the textAreas and add them to the panel
       for (int i = 0; i < textAreas.length; i++) {
 			textAreas[i] = new JTextArea();
-			String inputData = ("    " + titles[i] + "\t" + " ");
+			String inputData = (titles[i] + "\t" + " ");
 			textAreas[i].setLineWrap(true); // enable line wrapping
 			// textAreas[i].append(inputData);
 			textAreas[i].setText(inputData);
