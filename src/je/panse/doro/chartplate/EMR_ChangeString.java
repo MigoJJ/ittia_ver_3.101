@@ -5,8 +5,7 @@ public class EMR_ChangeString {
 	public static String EMR_ChangeString(String lines) {
 		    if (lines.contains(":(")) {
 		        lines = EMR_ChangeStringCC.EMR_ChangeString_abr(lines); // Call the method from the EMR_ChangeString class to change the string
-		    }
-		    else if (lines.contains(":>")) {
+		    }if (lines.contains(":>")) {
 		        lines = EMR_ChangeStringCC.EMR_ChangeString_Px(lines); // Call the method from the EMR_ChangeString class to change the string
 		    }
 		

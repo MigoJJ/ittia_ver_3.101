@@ -23,21 +23,19 @@ public class EMR_ChangeStringCC {
        return word;
         }
     public static String EMR_ChangeString_Px(String word) {
+    	String retWord ="";
         if (word.contains(":>")) {
         	if (word.contains("1")) {
-				word = word.replace("1", " 1 tab p.o. q.d.");
-				word = word.replace(":>", " mg ");
+        		retWord = word.replace(":>1", " mg 1 tab p.o. q.d.");
         	} else if (word.contains("2")) {
-				word = word.replace("2", " 1 tab p.o. b.i.d");
-				word = word.replace(":>", " mg ");
+        		retWord = word.replace(":>2", " mg 1 tab p.o. b.i.d");
         	} else if (word.contains("3")) {
-				word = word.replace("3", " 1 tab p.o. t.i.d.");
-				word = word.replace(":>", " mg ");
+        		retWord = word.replace(":>3", " mg 1 tab p.o. t.i.d.");
         	}
         	else {
         	}
         }
-   return word;
+   return retWord;
     }
 
 }
