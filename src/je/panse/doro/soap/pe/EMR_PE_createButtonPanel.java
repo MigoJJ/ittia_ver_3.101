@@ -7,6 +7,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class EMR_PE_createButtonPanel extends EMR_PE_general {
 
     public static JPanel createButtonPanel(final JTextArea outputTextArea, final JCheckBox clearCheckbox, final JCheckBox[] checkboxes, JCheckBox[][] subcategories) {
@@ -21,6 +23,9 @@ public class EMR_PE_createButtonPanel extends EMR_PE_general {
                 public void actionPerformed(ActionEvent e) {
                     String buttonText = button.getText();
                     if (buttonText.equals("Clear")) {
+                        clearButtonClicked(outputTextArea, clearCheckbox, checkboxes, subcategories);
+                    } else if (buttonText.equals("Save")) {
+                        GDSEMR_frame.setTextAreaText(6, outputTextArea.getText());
                         clearButtonClicked(outputTextArea, clearCheckbox, checkboxes, subcategories);
                     } else {
                         System.out.println(buttonText + " button clicked");
