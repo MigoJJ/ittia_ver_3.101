@@ -103,10 +103,10 @@ public class EMR_PE_general extends JFrame {
         mainPanel.add(outputScrollPane, BorderLayout.WEST);
 
         // Add button panel
-        JTextArea outputTextArea = new JTextArea();
         JCheckBox clearCheckbox = new JCheckBox();
+        
         // Call the createButtonPanel method with the JTextArea and JCheckBox objects
-        JPanel buttonPanel = EMR_PE_createButtonPanel.createButtonPanel(outputTextArea, clearCheckbox);
+        JPanel buttonPanel = EMR_PE_createButtonPanel.createButtonPanel(outputTextArea, clearCheckbox, checkboxes, subcategories);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
 
         setContentPane(mainPanel);

@@ -1,6 +1,6 @@
 package je.panse.doro.soap.pe;
 
-import java.awt.event.ActionEvent;	
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -9,11 +9,10 @@ import javax.swing.JTextArea;
 
 public class EMR_PE_createButtonPanel extends EMR_PE_general {
 
-    public static JPanel createButtonPanel(final JTextArea outputTextArea, final JCheckBox clearCheckbox) {
+    public static JPanel createButtonPanel(final JTextArea outputTextArea, final JCheckBox clearCheckbox, final JCheckBox[] checkboxes, JCheckBox[][] subcategories) {
         JPanel buttonPanel = new JPanel();
 
         String[] buttonNames = {"Clear", "Save", "Save and Quit"};
-        
 
         for (int i = 0; i < buttonNames.length; i++) {
             JButton button = new JButton(buttonNames[i]);
@@ -22,8 +21,7 @@ public class EMR_PE_createButtonPanel extends EMR_PE_general {
                 public void actionPerformed(ActionEvent e) {
                     String buttonText = button.getText();
                     if (buttonText.equals("Clear")) {
-                        outputTextArea.setText(""); // Set the outputTextArea to an empty string
-                        clearCheckbox.setSelected(false); // Set the clearCheckbox to false
+                        clearButtonClicked(outputTextArea, clearCheckbox, checkboxes, subcategories);
                     } else {
                         System.out.println(buttonText + " button clicked");
                     }
@@ -33,5 +31,18 @@ public class EMR_PE_createButtonPanel extends EMR_PE_general {
         }
 
         return buttonPanel;
+    }
+
+    private static void clearButtonClicked(JTextArea outputTextArea, JCheckBox clearCheckbox, JCheckBox[] checkboxes, JCheckBox[][] subcategories) {
+        outputTextArea.setText(""); // Clear the outputTextArea
+        clearCheckbox.setSelected(false); // Uncheck the clearCheckbox
+        for (JCheckBox checkbox : checkboxes) {
+            checkbox.setSelected(false); // Uncheck all checkboxes
+        }
+        for (JCheckBox[] subcategoryArray : subcategories) {
+            for (JCheckBox subcategory : subcategoryArray) {
+                subcategory.setSelected(false); // Uncheck all subcategory checkboxes
+            }
+        }
     }
 }
