@@ -39,7 +39,6 @@ public class EMR_PE_general extends JFrame {
             {"No signs of peripheral edema in the ankles and legs.","peripheral edema in ankle and foot","peripheral edema in legs"}
     };
 
-
     public EMR_PE_general() {
         setTitle("Weight Loss Checklist");
         setSize(1250, 900);
@@ -148,13 +147,13 @@ public class EMR_PE_general extends JFrame {
         System.out.println("outputTextArea.setText(sb.toString());\n" + sb.toString());
     }
 
-
+    public void dispoaePE() {
+        dispose();
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             new EMR_PE_general();
         });
     }
-
-
 }

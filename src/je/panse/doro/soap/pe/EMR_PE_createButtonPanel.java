@@ -2,10 +2,12 @@ package je.panse.doro.soap.pe;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 import je.panse.doro.GDSEMR_frame;
 
@@ -25,8 +27,13 @@ public class EMR_PE_createButtonPanel extends EMR_PE_general {
                     if (buttonText.equals("Clear")) {
                         clearButtonClicked(outputTextArea, clearCheckbox, checkboxes, subcategories);
                     } else if (buttonText.equals("Save")) {
-                        GDSEMR_frame.setTextAreaText(6, outputTextArea.getText());
+                        GDSEMR_frame.setTextAreaText(6, "\n" + outputTextArea.getText());
                         clearButtonClicked(outputTextArea, clearCheckbox, checkboxes, subcategories);
+                    } else if (buttonText.equals("Save and Quit")) {
+                        GDSEMR_frame.setTextAreaText(6, "\n" + outputTextArea.getText());
+                        clearButtonClicked(outputTextArea, clearCheckbox, checkboxes, subcategories);
+                        EMR_PE_general emrPeGeneral = (EMR_PE_general) SwingUtilities.getWindowAncestor(outputTextArea);
+                        emrPeGeneral.dispose();
                     } else {
                         System.out.println(buttonText + " button clicked");
                     }
