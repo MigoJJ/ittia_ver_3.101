@@ -1,9 +1,10 @@
 package je.panse.doro;
 
-import java.io.IOException;	
+import java.io.IOException;
 
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
+import je.panse.doro.soap.pe.EMR_PE_general;
 import je.panse.doro.soap.plan.IttiaGDSPlan;
 import je.panse.doro.soap.ros.EMR_ROS;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
@@ -20,13 +21,15 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 		if (text.contains("PMH>")) {
 			EMRPMH.main(text);
 		} else if (text.contains("ROS>")) {
-			EMR_ROS.main(null);
+				EMR_ROS.main(null);
+		} else if (text.contains("S>")) {
+			EMR_symptom_main.main(null);
 		} else if (text.contains("O>")) {
 			EMR_east_buttons_obj.main(text);
 		} else if (text.contains("P>")) {
 			IttiaGDSPlan.main(null);
-		} else if (text.contains("S>")) {
-			EMR_symptom_main.main(null);
+		} else if (text.contains("Physical Exam>")) {
+			EMR_PE_general.main(null);
 		}
 	}
 }
