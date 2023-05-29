@@ -21,6 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.alignstring.String_ConvertToArray;
 
 public class EMR_TFTout extends JFrame {
     private JTextField[] textFields;
@@ -180,17 +181,17 @@ public class EMR_TFTout extends JFrame {
                 double numericValue = Double.parseDouble(value);
 
                 if (numericValue < rangeMin) {
-                    outputText.append("    [ ▼   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append("▼\t").append(value).append("\t").append(label).append("\n");
                 } else if (numericValue > rangeMax) {
-                    outputText.append("    [ ▲   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append("▲\t").append(value).append("\t").append(label).append("\n");
                 } else {
-                    outputText.append("    [ ▷   ").append(value).append("   ]\t").append(label).append("\n");
+                    outputText.append(" \t").append(value).append("\t").append(label).append("\n");
                 }
             }
-
         }
 
-        inputTextArea.setText(outputText.toString());
+//        inputTextArea.setText(outputText.toString());
+        String_ConvertToArray.main(outputText.toString());
     }
 
     public static void main(String[] args) {
