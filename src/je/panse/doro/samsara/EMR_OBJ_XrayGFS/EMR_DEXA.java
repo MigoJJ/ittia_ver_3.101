@@ -19,6 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_DEXA extends JFrame implements ActionListener {
     
@@ -156,24 +157,29 @@ public class EMR_DEXA extends JFrame implements ActionListener {
             double totZScore = Double.parseDouble(totTextField.getText());
             boolean fractureHistory = fractureCheckBox.isSelected();
             boolean menopauseHistory = menopauseCheckBox.isSelected();
-            
-            String diagnosis = calculateDEXADiagnosis(age,gender,totZScore,fractureHistory,menopauseHistory);
-            
+
+            String diagnosis = calculateDEXADiagnosis(age, gender, totZScore, fractureHistory, menopauseHistory);
+
             resultTextArea.setText(diagnosis);
-			GDSEMR_frame.setTextAreaText(5, "\n< DEXA >\n\t" + diagnosis);
-			GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]");
-			GDSEMR_frame.setTextAreaText(7, "\n#  " + diagnosis);
-			dispose();
+            GDSEMR_frame.setTextAreaText(5, "\n< DEXA >\n\t" + diagnosis);
+            String cdate = Date_current.main("d");
             
+            if (fractureHistory) {
+                GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]  Fracture : [+]");
+            } else {
+                GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]  Fracture : none");
+            }
             
+            GDSEMR_frame.setTextAreaText(7, "\n#  " + diagnosis + "   " + cdate);
+            dispose();
         } else if (e.getSource() == resetButton) {
-        	// Reset input fields and output text area
-        	ageTextField.setText("");
-        	genderComboBox.setSelectedIndex(0);
-        	totTextField.setText("");
-        	fractureCheckBox.setSelected(false);
-        	menopauseCheckBox.setSelected(false);
-        	resultTextArea.setText("");
+            // Reset input fields and output text area
+            ageTextField.setText("");
+            genderComboBox.setSelectedIndex(0);
+            totTextField.setText("");
+            fractureCheckBox.setSelected(false);
+            menopauseCheckBox.setSelected(false);
+            resultTextArea.setText("");
         }
     }
 
