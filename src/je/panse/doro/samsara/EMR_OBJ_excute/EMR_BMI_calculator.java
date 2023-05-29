@@ -5,6 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_BMI_calculator extends JFrame implements ActionListener {
     
@@ -88,19 +89,21 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
                     // Build result string
                     String height = fields[0].getText();
                     String weight = fields[1].getText();
-                    result = String.format("\n%s : BMI: [ %.2f ]kg/m^2\n", result, bmi);
-                    result += "Height : " + height + " cm   Weight : " + weight + " kg";
+                    result = String.format("%s : BMI: [ %.2f ]kg/m^2", result, bmi);
+                    String result1 = "\n" + result + "\nHeight : " + height + " cm   Weight : " + weight + " kg";
                     
                     if (!fields[2].getText().isEmpty()) {
                         String waist = fields[2].getText();
-                        result += "   Waist : " + waist + " cm";
+                        result1 += "   Waist : " + waist + " cm";
                     }
                     
                     // Update text areas
                     String selectedItems = "\n< BMI >\n";
                     GDSEMR_frame.setTextAreaText(5, selectedItems);
-                    outputArea.setText(result);
-                    GDSEMR_frame.setTextAreaText(5, result);
+                    outputArea.setText(result1);
+                    GDSEMR_frame.setTextAreaText(5, result1);
+                    String cdate = Date_current.main("m");
+                    GDSEMR_frame.setTextAreaText(7, "\n# " + result + "  " + cdate);
                 }
             }
         });
