@@ -73,7 +73,6 @@ public class EMR_Lab_enterresult extends JFrame {
             });
 
         }
-        
 
         // Create the buttons and their action listeners
         JButton clearButton = new JButton("Clear");
@@ -89,7 +88,7 @@ public class EMR_Lab_enterresult extends JFrame {
                 String outputText = textBoxes[i].getText();
                 String labelText = labels[i].getText();
                 if (!outputText.isEmpty()) {
-                    GDSEMR_frame.setTextAreaText(5, "\n  " + outputText + "\t[ " + labelText + " ]\n");
+                    GDSEMR_frame.setTextAreaText(5, "\n\t" + outputText + "\t[ " + labelText + " ]\n");
                     dispose();
                 }
             }
