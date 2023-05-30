@@ -1,7 +1,7 @@
 
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_eGFR extends JFrame {
 
@@ -79,7 +80,6 @@ public class EMR_eGFR extends JFrame {
                     } else {
                         String result = ""; 
                         String cresult = "";
-                        // Check if WBC is empty or not
                         String cr = inputFields[0].getText().trim();
                         String eGFR = inputFields[1].getText().trim();
                         String AC = inputFields[2].getText().trim();
@@ -99,13 +99,28 @@ public class EMR_eGFR extends JFrame {
                         // Set focus back to the first input field
                         GDSEMR_frame.setTextAreaText(5, result + "\n\t..........\n");
                         GDSEMR_frame.setTextAreaText(5, cresult);
-                        GDSEMR_frame.setTextAreaText(7, "\n#  CKD [ " + cresult + "]");
+                        String rresult = EMR_eGFR.EMR_AG(cresult);
+                        GDSEMR_frame.setTextAreaText(7, rresult);
                         dispose();
                     }
                     break;
                 }
             }
         }
+    }
+    public static String EMR_AG(String argsCKD) {
+		 String[] lines = argsCKD.split("\n");
+		 StringBuilder sb = new StringBuilder();
+		 for (String line : lines) {
+		     int colonIndex = line.indexOf(':');
+		     if (colonIndex != -1) {
+		         String code = line.substring(0, colonIndex).trim();
+		         sb.append(code).append(" ");
+		     }
+		 }
+		 String cdate = Date_current.main("m");
+		 String rargsCKD = "# CKD [ " + sb.toString().trim() + " ] " + cdate;
+		 return "\n" + rargsCKD;
     }
 
 
