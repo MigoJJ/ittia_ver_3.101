@@ -12,9 +12,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import je.panse.doro.listner.buttons.BlendColors;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
 public class GDSEMR_frame {
-	public static JFrame frame = new JFrame("Multiple TextAreas Example");
+	public static JFrame frame = new JFrame("GDS EMR Interface for Physician");
 	public static JTextArea[] textAreas = new JTextArea[10];
 	public static JTextArea tempOutputArea = new JTextArea();
 	public static String[] titles =  { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>","A>", "P>", "Comment>" };
@@ -50,7 +54,7 @@ public class GDSEMR_frame {
       // Create the textAreas and add them to the panel
       for (int i = 0; i < textAreas.length; i++) {
 			textAreas[i] = new JTextArea();
-			String inputData = ("    " + titles[i] + "\t" + " ");
+			String inputData = (titles[i] + "\t" + " ");
 			textAreas[i].setLineWrap(true); // enable line wrapping
 			// textAreas[i].append(inputData);
 			textAreas[i].setText(inputData);
@@ -104,5 +108,9 @@ public class GDSEMR_frame {
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
 	//        EMR_east_buttons_obj.main(null);
+        EMR_east_buttons_obj.main(null);
+        EMR_Vitalsign_BP.main(null);
+        EMR_HbA1c.main(null);
+        
    }
 }
