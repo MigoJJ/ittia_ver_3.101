@@ -12,6 +12,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import je.panse.doro.listner.buttons.BlendColors;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 
 public class GDSEMR_frame {
 	public static JFrame frame = new JFrame("GDS EMR Interface for Physician");
@@ -104,5 +108,9 @@ public class GDSEMR_frame {
 	public static void main(String[] args) throws Exception {
         new GDSEMR_frame();
 	//        EMR_east_buttons_obj.main(null);
+        EMR_east_buttons_obj.main(null);
+        EMR_Vitalsign_BP.main(null);
+        EMR_HbA1c.main(null);
+        
    }
 }

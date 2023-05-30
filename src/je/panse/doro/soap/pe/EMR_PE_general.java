@@ -1,11 +1,19 @@
 package je.panse.doro.soap.pe;
 
-import javax.swing.*;		
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
-import java.awt.*;
 
 public class EMR_PE_general extends JFrame {
-
+    public static JTextArea outputTextArea;
     private JCheckBox[] checkboxes;
     private JCheckBox[][] subcategories;
     private String[] checkboxLabels = {
@@ -30,8 +38,6 @@ public class EMR_PE_general extends JFrame {
                     "additional heart sounds", "murmurs","skipped beats or abnormal rhythms"},
             {"No signs of peripheral edema in the ankles and legs.","peripheral edema in ankle and foot","peripheral edema in legs"}
     };
-
-    private JTextArea outputTextArea;
 
     public EMR_PE_general() {
         setTitle("Weight Loss Checklist");
@@ -96,11 +102,11 @@ public class EMR_PE_general extends JFrame {
         mainPanel.add(outputScrollPane, BorderLayout.WEST);
 
         // Add button panel
-     // Add button panel
-        EMR_PE_createButtonPanel otherClass = new EMR_PE_createButtonPanel();
-        JPanel buttonPanel = EMR_PE_createButtonPanel.createButtonPanel();
+        JCheckBox clearCheckbox = new JCheckBox();
+        
+        // Call the createButtonPanel method with the JTextArea and JCheckBox objects
+        JPanel buttonPanel = EMR_PE_createButtonPanel.createButtonPanel(outputTextArea, clearCheckbox, checkboxes, subcategories);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-
 
         setContentPane(mainPanel);
         setVisible(true);
@@ -117,8 +123,6 @@ public class EMR_PE_general extends JFrame {
             subcategory.setEnabled(false);
         }
     }
-
-
 
     private void updateOutputText() {
         StringBuilder sb = new StringBuilder();
@@ -143,7 +147,9 @@ public class EMR_PE_general extends JFrame {
         System.out.println("outputTextArea.setText(sb.toString());\n" + sb.toString());
     }
 
-
+    public void dispoaePE() {
+        dispose();
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
