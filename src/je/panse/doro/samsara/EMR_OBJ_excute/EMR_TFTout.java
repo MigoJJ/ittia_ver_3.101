@@ -113,6 +113,8 @@ public class EMR_TFTout extends JFrame {
 
         saveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                String output = inputTextArea.getText();
+                inputTextArea.setText(output);
                 saveData();
             }
         });
