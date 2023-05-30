@@ -108,26 +108,24 @@ public class ittiaGDSPlanPanel_2_String {
 	            	break;
 		        case 5:
 		        	retA = "Diabetes F/U";
-		            retB = new String[]{"\tPlan to Fasting plasma glucose (FPG)\n"
-		            		 + "Glycated hemoglobin (HbA1C)\n"
-		            		 + "Lipid profile (total, LDL, HDL, triglycerides)\n"
+		            retB = new String[]{"\tPlan to FPG, HbA1C, Lipid profile\n"
 		            		 + "Kidney function tests (serum creatinine\n"
 		            		 + "    estimated glomerular filtration rate (eGFR)\n"
 		            		 + "    urine albumin-to-creatinine ratio)\n"
 		            		 + "Liver function tests\n"
-		            		 + "Electrolyte panel (sodium, potassium, chloride, bicarbonate)\n"
-		            		 + "Thyroid function tests (TSH, free thyroxine (T4), T3)\n"
+		            		 + "Electrolyte panel\n"
+		            		 + "Thyroid function tests\n"
 		            		 + "Complete blood count (CBC)\n"
 		            		 + "Vitamin D level",
 		            		 
-		            		"Fasting plasma glucose (FPG)\n"
+		            		"Obtain to Fasting plasma glucose (FPG)\n"
 				            	+ "\tGlycated hemoglobin (HbA1C)\n",
 				            		 
-				            "Lipid profile (total, LDL, HDL, triglycerides)\n",
+				            "Obtain to Lipid profile (total, LDL, HDL, triglycerides)\n",
 				            
-				            "Thyroid function tests (TSH, free thyroxine (T4), T3)\n",
-				            "Thyroid function tests (TSH, free thyroxine (T4), T3)\n"
-				            	+ "\tAutoantibodies\n" + "\tp.r.n.> TUS"
+				            "Obtain to TSH, free thyroxine (T4), T3\n",
+				            "Obtain to TSH, free thyroxine (T4), T3\n"
+				            	+ "\tAutoantibodies\n" + "\tp.r.n.> TUS, Tg"
 				             
 		            };		            
 	            	break;

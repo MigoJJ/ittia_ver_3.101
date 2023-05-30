@@ -8,11 +8,11 @@ import je.panse.doro.chartplate.EMR_ChangeString;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.chartplate.EMR_organize_titles;
 
-public class GDSEMR_DocumentListner implements DocumentListener {
+public class GDSEMR_DocumentListner2 implements DocumentListener {
     private JTextArea[] textAreas;
     private JTextArea tempOutputArea;
 
-    public GDSEMR_DocumentListner(JTextArea[] textAreas, JTextArea tempOutputArea) {
+    public GDSEMR_DocumentListner2(JTextArea[] textAreas, JTextArea tempOutputArea) {
         this.textAreas = textAreas;
         this.tempOutputArea = tempOutputArea;
     }
@@ -52,5 +52,4 @@ public class GDSEMR_DocumentListner implements DocumentListener {
         tempOutputArea.setText(outputData);
         EMR_Write_To_Chartplate.textAreaAppend(tempOutputArea);
     }
-    
 }

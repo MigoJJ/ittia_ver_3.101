@@ -26,13 +26,13 @@ public class EMR_Lab_positive extends JFrame implements ActionListener {
         
         JPanel checkboxesPanel = new JPanel();
         checkboxesPanel.setLayout(new GridLayout(7, 2));
-        String[] checkboxLabels = {"HAV-Ab IgG: Negative", "HAV-Ab IgG: Positive", 
-        		"HBsAg: Negative","HBsAg: Positive", 
-        		"HBsAb: Negative", "HBsAb: Positive", 
-        		"HCV Ab: Negative","HCV Ab: Positive", 
-        		"RPR : Negative","RPR : Positive", 
-        		"Stool Hb: Negative", "Stool Hb: Positive",
-        		"RF: Negative", "RF: Positive"};
+        String[] checkboxLabels = {"HAV-Ab IgG:    Negative", "HAV-Ab IgG:    Positive", 
+        		"HBsAg:    Negative","HBsAg:    Positive", 
+        		"HBsAb:    Negative", "HBsAb:    Positive", 
+        		"HCV Ab:    Negative","HCV Ab:    Positive", 
+        		"RPR :    Negative","RPR :    Positive", 
+        		"Stool Hb:    Negative", "Stool Hb:    Positive",
+        		"RF:    Negative", "RF:    Positive"};
         checkboxes = new JCheckBox[checkboxLabels.length];
         for (int i = 0; i < checkboxes.length; i++) {
             checkboxes[i] = new JCheckBox(checkboxLabels[i]);
@@ -42,10 +42,12 @@ public class EMR_Lab_positive extends JFrame implements ActionListener {
         
         JPanel resultsPanel = new JPanel();
         resultsPanel.setLayout(new BorderLayout());
+        
         resultsTextArea = new JTextArea(10,30);
         resultsTextArea.setEditable(true);
         JScrollPane scrollPane = new JScrollPane(resultsTextArea);
         resultsPanel.add(scrollPane, BorderLayout.CENTER);
+        
         updateResultsButton = new JButton("Update Results");
         updateResultsButton.addActionListener(this);
         resultsPanel.add(updateResultsButton, BorderLayout.SOUTH);
@@ -53,13 +55,13 @@ public class EMR_Lab_positive extends JFrame implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent e) {
-        String results = "Laboratory Results : \n";
+        String results = "\n";
         for (int i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].isSelected()) {
-                results += checkboxes[i].getText()+ "\n";
+                results += "\n\t" + checkboxes[i].getText()+"\n";
             }
         }
-        resultsTextArea.setText(results);       
+        resultsTextArea.setText(results);  
         GDSEMR_frame.setTextAreaText(5, results);
         dispose();
 
