@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListener {
 
@@ -76,6 +77,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 			if (e.getActionCommand().equals("Clear")) {
 				inputField.setText("");
 				outputArea.setText("");
+		        inputList = new ArrayList<String>();
 			} else if (e.getActionCommand().equals("Save")) {
 				inputField.setText("");
 //				outputArea.setText("");
@@ -108,7 +110,8 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		    outputArea.setText(returnBPdescribe);
 		    inputList.removeAll(Arrays.asList("i", "r", "h", "s", "b"));
 		    String returnBP = changeString(inputList);    
-		    outputArea.append("\n"+returnBP);
+		    String returnTime = Date_current.defineTime("h");
+		    outputArea.append("\n"+ returnTime + "\n" + returnBP);
 		}
 
 		public void keyTyped(KeyEvent e) {}
@@ -163,15 +166,16 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		        if (i < length - 1) {
 		            sb.append("  ");
 		        }
+
 		        if (i == 1) {
-		            sb.append(" /mmHg");
+		            sb.append(" mmHg");
 		        } else if (i == 2) {
 		            sb.append("/min");
 		        } else if (i == 3) {
 		            sb.append("'C");
 		        } else if (i == 4) {
 		            sb.append("/min");
-		         }
+		        }
 		        sb.append("");
 		    }
 
