@@ -1,5 +1,13 @@
-CC>    DM F/U
-P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...now [ well ] treated with current medication
-    continue with current dosages of meds
+O>	 
+	10.5 ↓ 	Hb (g/dl)
+	3000  ↓ 	WBC (cells/L)
+	100  ↓ 	Platelet (billion/L)
+	12.5	Hb (g/dl)
+	12000 ↑ 	WBC (cells/L)
+	500 ↑ 	Platelet (billion/L)
+A>	 
+#  IDA ICA  : Hb 10.5 ↓   2023.05
+#  Leucopenia : 3000  ↓   2023.05
+#  Thrombocytopenia : 100  ↓   2023.05
+#  Leukocytosis : 12000 ↑   2023.05
+#  Thrombocytosis : 500 ↑   2023.05

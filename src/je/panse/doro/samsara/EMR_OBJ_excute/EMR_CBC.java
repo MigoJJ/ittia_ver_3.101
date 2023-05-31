@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;		
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.samsara.comm.String_ArrowChange;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_CBC extends JFrame {
 
@@ -89,27 +90,49 @@ public class EMR_CBC extends JFrame {
             String hb = inputFields[0].getText().trim();
             String wbc = inputFields[1].getText().trim();
             String platelet = inputFields[2].getText().trim();
+            String returnTime = Date_current.defineTime("m");
+
 
             hb = String_ArrowChange.compareOriginAndLrangeH(hb, 12.0);
             wbc = String_ArrowChange.compareOriginAndLrange(wbc, 4000, 10000);
             platelet = String_ArrowChange.compareOriginAndLrange(platelet, 150, 450);
 
             String result;
+            StringBuilder textAreaTextBuilder = new StringBuilder();
+
             if (wbc.isEmpty()) {
                 result = "\n\t" + hb + "\tHb (g/dl)\n";
+                if (hb.contains("↓")) {
+                    textAreaTextBuilder.append("\n#  IDA ICA  : Hb ").append(hb).append("  ").append(returnTime);
+                }
             } else {
                 result = "\n\t" + hb + "\tHb (g/dl)\n"
                          + "\n\t" + wbc + "\tWBC (cells/L)\n"
                          + "\n\t" + platelet + "\tPlatelet (billion/L)\n";
+
+                if (hb.contains("↓")) {
+                    textAreaTextBuilder.append("\n#  IDA ICA  : Hb ").append(hb).append("  ").append(returnTime);
+                }
+                if (wbc.contains("↓")) {
+                    textAreaTextBuilder.append("\n#  Leucopenia : ").append(wbc).append("  ").append(returnTime);
+                }
+                if (wbc.contains("↑")) {
+                    textAreaTextBuilder.append("\n#  Leukocytosis : ").append(wbc).append("  ").append(returnTime);
+                }
+                if (platelet.contains("↓")) {
+                    textAreaTextBuilder.append("\n#  Thrombocytopenia : ").append(platelet).append("  ").append(returnTime);
+                }
+                if (platelet.contains("↑")) {
+                    textAreaTextBuilder.append("\n#  Thrombocytosis : ").append(platelet).append("  ").append(returnTime);
+                }
             }
+            GDSEMR_frame.setTextAreaText(7, textAreaTextBuilder.toString());
+            GDSEMR_frame.setTextAreaText(5, result);
 
             // Clear the text of all input fields
             for (JTextField inputField : inputFields) {
                 inputField.setText("");
             }
-
-            // Set focus back to the first input field
-            GDSEMR_frame.setTextAreaText(5, result);
             dispose();
         }
     }
