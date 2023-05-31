@@ -166,15 +166,16 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		        if (i < length - 1) {
 		            sb.append("  ");
 		        }
+
 		        if (i == 1) {
-		            sb.append(" /mmHg");
+		            sb.append(" mmHg");
 		        } else if (i == 2) {
 		            sb.append("/min");
 		        } else if (i == 3) {
 		            sb.append("'C");
 		        } else if (i == 4) {
 		            sb.append("/min");
-		         }
+		        }
 		        sb.append("");
 		    }
 
