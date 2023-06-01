@@ -20,14 +20,10 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
         setLocationRelativeTo(null); // center the frame on the screen
         setSize(400, 300);
                  
-
-        
         JPanel panel = new JPanel(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.insets = new Insets(5, 5, 5, 5);
-        
-
         
         for (int i = 0; i < labels.length; i++) {
             constraints.gridx = 0;
@@ -39,7 +35,6 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
             	constraints.gridy = i;
                 fields[i].setPreferredSize(new Dimension(30, 30));
                 fields[i].setHorizontalAlignment(SwingConstants.CENTER); // Center align the cursor
-
             	panel.add(fields[i], constraints);
             }
         }
@@ -92,8 +87,6 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
                     } else {
                         result = "Obese";
                     }
-                                   
-                    
                     
                     // Build result string
                     String height = fields[0].getText();
@@ -103,8 +96,18 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
                     
                     if (!fields[2].getText().isEmpty()) {
                         String waist = fields[2].getText();
-                        result1 += "   Waist : " + waist + " cm";
+                        
+                        if (waist.contains("i")) {
+                            waist = waist.replace("i", ""); // Remove the "i" character
+                            double waistValue = Double.parseDouble(waist);
+                            waistValue *= 2.54; // Convert inches to centimeters
+                            waist = String.format("%.1f", waistValue); // Format to one decimal place
+        
+                        }
+                        
+                        result1 += "   Waist: " + waist + " cm";
                     }
+
                     
                     // Update text areas
                     String selectedItems = "\n< BMI >\n";
@@ -112,7 +115,7 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
                     outputArea.setText(result1);
                     GDSEMR_frame.setTextAreaText(5, result1);
                     String cdate = Date_current.main("m");
-                    GDSEMR_frame.setTextAreaText(7, "\n# " + result + "  " + cdate);
+                    GDSEMR_frame.setTextAreaText(9, "\n# " + result + "  " + cdate);
                 }
             }
         });

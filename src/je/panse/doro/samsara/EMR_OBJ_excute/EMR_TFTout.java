@@ -105,28 +105,23 @@ public class EMR_TFTout extends JFrame {
         JButton quitButton = new JButton("Quit");
 
         // Add button actions
-        clearButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                clearFields();
-            }
-        });
-
-        saveButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String output = inputTextArea.getText();
-                inputTextArea.setText(output);
-                saveData();
-            }
-        });
-
-        quitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String output = inputTextArea.getText();
-                GDSEMR_frame.setTextAreaText(5, output);
-                dispose();
-            }
-        });
-
+		        clearButton.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		                clearFields();
+		            }
+		        });
+		        saveButton.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		                String output = inputTextArea.getText();
+		                inputTextArea.setText(output);
+		                saveData();
+		            }
+		        });
+		        quitButton.addActionListener(new ActionListener() {
+		            public void actionPerformed(ActionEvent e) {
+		                dispose();
+		            }
+		        });
 
         // Add buttons to the button panel
         buttonPanel.add(clearButton);
@@ -191,8 +186,7 @@ public class EMR_TFTout extends JFrame {
                 }
             }
         }
-
-//        inputTextArea.setText(outputText.toString());
+        inputTextArea.setText(outputText.toString()); // Update this line with the appropriate UI component
         String_ConvertToArray.main(outputText.toString());
     }
 
