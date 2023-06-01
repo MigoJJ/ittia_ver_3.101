@@ -53,7 +53,7 @@ public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
                 	    + inputFields[3].getText()+ " ] mg/dL");
 		        System.out.println(" result" + result);
 		        GDSEMR_frame.setTextAreaText(5,"\n" + result);
-				GDSEMR_frame.setTextAreaText(7, "\n#  " + result);
+				GDSEMR_frame.setTextAreaText(9, "\n#  " + result);
 				dispose();
             }
         }

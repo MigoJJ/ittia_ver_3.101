@@ -29,7 +29,8 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 	    public EMR_Vitalsign_BP() {
 	        super("EMR Interface for BP");
-	        setLocation(1460, 500);
+	        setLocation(1460, 220);
+//	        setSize(new Dimension(1000, 600));
 
 	        // Create input field and label
 	        inputField = new JTextField(20);

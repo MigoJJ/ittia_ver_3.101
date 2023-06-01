@@ -126,8 +126,8 @@ public class EMR_CBC extends JFrame {
                     textAreaTextBuilder.append("\n#  Thrombocytosis : ").append(platelet).append("  ").append(returnTime);
                 }
             }
-            GDSEMR_frame.setTextAreaText(7, textAreaTextBuilder.toString());
             GDSEMR_frame.setTextAreaText(5, result);
+            GDSEMR_frame.setTextAreaText(9, textAreaTextBuilder.toString());
 
             // Clear the text of all input fields
             for (JTextField inputField : inputFields) {
