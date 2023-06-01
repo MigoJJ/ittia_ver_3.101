@@ -100,7 +100,7 @@ public class EMR_eGFR extends JFrame {
                         GDSEMR_frame.setTextAreaText(5, result + "\n\t..........\n");
                         GDSEMR_frame.setTextAreaText(5, cresult);
                         String rresult = EMR_eGFR.EMR_AG(cresult);
-                        GDSEMR_frame.setTextAreaText(7, rresult);
+                        GDSEMR_frame.setTextAreaText(9, rresult);
                         dispose();
                     }
                     break;
@@ -119,11 +119,9 @@ public class EMR_eGFR extends JFrame {
 		     }
 		 }
 		 String cdate = Date_current.main("m");
-		 String rargsCKD = "# CKD [ " + sb.toString().trim() + " ] " + cdate;
+		 String rargsCKD = "#  CKD [ " + sb.toString().trim() + " ] " + cdate;
 		 return "\n" + rargsCKD;
     }
-
-
 
     public String EMR_eGFR_Calc(String cr, String egfr, String ac) {
         double C1 = Double.parseDouble(cr.trim());
@@ -165,7 +163,6 @@ public class EMR_eGFR extends JFrame {
             return "";
         }
     }
-
 
 	public static void main(String[] args) {
         new EMR_eGFR();

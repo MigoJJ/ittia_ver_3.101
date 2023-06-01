@@ -170,7 +170,7 @@ public class EMR_DEXA extends JFrame implements ActionListener {
                 GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]  Fracture : none");
             }
             
-            GDSEMR_frame.setTextAreaText(7, "\n#  " + diagnosis + "   " + cdate);
+            GDSEMR_frame.setTextAreaText(9, "\n#  " + diagnosis + "   " + cdate);
             dispose();
         } else if (e.getSource() == resetButton) {
             // Reset input fields and output text area

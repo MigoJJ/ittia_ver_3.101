@@ -53,6 +53,8 @@ public class EMR_EKG {
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
 			GDSEMR_frame.setTextAreaText(5, selectedItems);
+			GDSEMR_frame.setTextAreaText(9, selectedItems);
+
 			frame.dispose();
 		
 		});

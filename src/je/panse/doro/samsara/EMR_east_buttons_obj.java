@@ -34,13 +34,17 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
     private ArrayList<JButton> buttons = new ArrayList<>();
 
     public EMR_east_buttons_obj(String position, String title) {
-        setSize(new Dimension(800, 600));
-        setLayout(new GridLayout(4, 5));
+        setSize(new Dimension(1000, 600));
+        setLayout(new GridLayout(0, 5)); // Set 0 rows and 5 columns
         setBackground(new Color(240, 240, 240));
         setTitle(title);
         setLocation(1460, 50);
 
-        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout", "LDL", "LFT", "CBC", "eGFR", "Lp(a)", "Etc.", "ChestPA", "EKG", "GFS", "CFS", "DEXA"};
+        String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout",
+        		"LDL", "LFT", "CBC", "eGFR", "Lp(a)",
+        		"Etc.", "ChestPA", "EKG", "GFS", "CFS",
+        		"DEXA"," "," ","",""
+        };
 
         // Create buttons and add to array list
         for (String buttonName : buttonNames) {
