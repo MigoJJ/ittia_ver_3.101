@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_EKG {
 
@@ -19,21 +20,26 @@ public class EMR_EKG {
 	// Create the check boxes and labels
 		String[] checklistItems = {
 				"A normal EKG (electrocardiogram)",
-				"Sinus tachycardia - ",
-				"Sinus bradycardia - ",
+				"Sinus tachycardia - [   ] /min",
+				"Sinus bradycardia - [   ] /min",
+				"NonSpecific ST-T change",
+				"RBBB : Right bundle branch block ",
+				"iRBBB : Incomplete Right bundle branch block ",
+				"LBBB : Left bundle branch block ",
+				"iLBBB : Incomplete Left bundle branch block ",
 				"Atrial fibrillation - ",
 				"Atrial flutter ",
-				"Premature ventricular contractions (PVCs)",
-				"Ventricular tachycardia ",
-				"Ventricular fibrillation - ",
+				"PVC's : Premature ventricular contractions",
+				"APC's : Premature atrial contractions",
 				"Supraventricular tachycardia (SVT) ",
-				"First-degree atrioventricular (AV) block ",
-				"Second-degree AV block ",
-				"Third-degree AV block ",
-				"Right bundle branch block ",
-				"Left bundle branch block ",
+				"(AV) block : First-degree atrioventricular",
+				"(AV) block : Second-degree",
+				"(AV) block : Third-degree",
+				
 				"ST-segment elevation myocardial infarction (STEMI) ",
-				"Non-ST-segment elevation myocardial infarction (NSTEMI)"
+				"Non-ST-segment elevation myocardial infarction (NSTEMI)",
+				"Ventricular tachycardia ",
+				"Ventricular fibrillation - "
 		};
 		
 		JCheckBox[] checkboxes = new JCheckBox[checklistItems.length];
@@ -48,15 +54,14 @@ public class EMR_EKG {
 			String selectedItems = "\n< EKG >";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
-				selectedItems += "\t" + checkboxes[i].getText() + "\n";
+				selectedItems += "\t" + checkboxes[i].getText()+"\n";
 				}
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
-			GDSEMR_frame.setTextAreaText(5, selectedItems);
-			GDSEMR_frame.setTextAreaText(9, selectedItems);
-
+			String cdate = Date_current.defineTime("d");
+			GDSEMR_frame.setTextAreaText(5,selectedItems);
+			GDSEMR_frame.setTextAreaText(9,"Ⓔ " +selectedItems + "  " +cdate);
 			frame.dispose();
-		
 		});
 		panel.add(submitButton);
 		// Add the panel to the frame
