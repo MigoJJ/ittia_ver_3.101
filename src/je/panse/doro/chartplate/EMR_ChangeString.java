@@ -9,7 +9,6 @@ public class EMR_ChangeString {
 		        lines = EMR_ChangeStringCC.EMR_ChangeString_Px(lines); // Call the method from the EMR_ChangeString class to change the string
 		    }
 		
-		
 		String outputText = lines;
 		outputText = outputText.replace(":d ", "diabetes mellitus");
 		outputText = outputText.replace(":dr ", "DM with retinopathy");
@@ -172,8 +171,8 @@ public class EMR_ChangeString {
                 .replace(":gg ", "공단검진")
                 .replace(":ggr ", "공단검진 결과상담")
                 .replace(":rr ", "Other clinic RC and Lab result consultation");
-		
-		return outputText;
+		    
+		return "  " + outputText;
 	}
 ////------------------------------------------------
 }

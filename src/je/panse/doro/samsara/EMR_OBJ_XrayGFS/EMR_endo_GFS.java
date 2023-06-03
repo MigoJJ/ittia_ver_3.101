@@ -143,10 +143,15 @@ public class EMR_endo_GFS {
 	}
 	public static String[] stomachArray() {
 	    String[] stringArray = {"Gastritis",
-		    	"      Acute gastritisc",
-		    	"      Chronic superficial gastritis",
-		    	"      Chronic erosive gastritis",
-		    	"      Chronic atrophicl gastritis",
+		    	"Acute gastritisc",
+		    	"Chronic superficial gastritis",
+		    	"Chronic erosive gastritis",
+		    	"Chronic atrophic gastritis",
+		    	"Gastric polyp",
+		    	"Gastric submucosal tumor",
+		    	"Helicobacter pylori infection",
+		    	"Helicobacter pylori infection with +Hp4 meds",
+
 		    	"Peptic ulcer disease",
 		    	"Gastroesophageal reflux disease (GERD)",
 		    	"Zollinger-Ellison syndrome",
@@ -155,7 +160,7 @@ public class EMR_endo_GFS {
 		    	"Ménétrier's disease",
 		    	"Acute gastric dilatation",
 		    	"Gastrointestinal stromal tumor (GIST)",
-		    	"Gastric cancer",
+		    	"r/o Gastric cancer",
 		    	"      Linitis plastica",
 		    	"Gastric lymphoma",
 		    	"Eosinophilic gastroenteritis",
