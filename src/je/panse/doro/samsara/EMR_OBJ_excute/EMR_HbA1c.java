@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -30,48 +30,41 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         setSize(new Dimension(1000, 600));
 
         inputFields = new JTextField[3]; // initialize inputFields array with size 2
-        
-        JPanel inputPanel = new JPanel(new GridLayout(4, 2));
-        
+        JPanel inputPanel = new JPanel(new GridLayout(3, 2));
         String[] labels = {"FBS/PP2  ", "Glucose [mg/dL]  ", "HbA1c [ % ]  "};
         for (int i = 0; i < labels.length; i++) {
             JLabel label = new JLabel(labels[i]);
             label.setHorizontalAlignment(SwingConstants.RIGHT);
-
             inputPanel.add(label);
+
             inputFields[i] = new JTextField();
             inputFields[i].setHorizontalAlignment(JTextField.CENTER);
-            inputPanel.add(inputFields[i]);
             inputFields[i].addActionListener(this);
+            inputPanel.add(inputFields[i]);
         }
         
         add(inputPanel, BorderLayout.CENTER);
-
         outputArea = new JTextArea();
-		 outputArea = new JTextArea(4, 20);
+		 outputArea = new JTextArea(4, 30);
 
 //        outputArea.setPreferredSize(new Dimension(100, 100));
         add(outputArea, BorderLayout.NORTH);
-
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
         clearButton = new JButton("Clear");
         clearButton.addActionListener(this);
         buttonPanel.add(clearButton);
-
         saveButton = new JButton("Save");
         saveButton.addActionListener(this);
         buttonPanel.add(saveButton);
-
         quitButton = new JButton("Quit");
         quitButton.addActionListener(this);
         buttonPanel.add(quitButton);
-
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
     public static void main(String[] args) {
         EMR_HbA1c emr = new EMR_HbA1c();
-        emr.setSize(400, 300);
+        emr.setSize(250, 250);
         emr.setVisible(true);
     }
     private void clearInputFields() {
