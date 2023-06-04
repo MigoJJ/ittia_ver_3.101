@@ -54,13 +54,13 @@ public class EMR_EKG {
 			String selectedItems = "\n< EKG >";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
-				selectedItems += "\t" + checkboxes[i].getText()+"\n";
+				selectedItems += "\n\t" + checkboxes[i].getText();
 				}
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
 			String cdate = Date_current.defineTime("d");
 			GDSEMR_frame.setTextAreaText(5,selectedItems);
-			GDSEMR_frame.setTextAreaText(9,"Ⓔ " +selectedItems + "  " +cdate);
+			GDSEMR_frame.setTextAreaText(9,"Ⓔ " + selectedItems + "  " +cdate);
 			frame.dispose();
 		});
 		panel.add(submitButton);
