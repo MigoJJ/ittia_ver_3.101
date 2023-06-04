@@ -190,10 +190,10 @@ public class EMR_TFT extends JFrame {
                     outputText.append(" \t").append(value).append("\t").append(label).append("\n");
                 }
             }
-
         }
         inputTextArea.setText(outputText.toString()); // Update this line with the appropriate UI component
         String_ConvertToArray.main(outputText.toString());
+        
     }
 
     public static void main(String[] args) {

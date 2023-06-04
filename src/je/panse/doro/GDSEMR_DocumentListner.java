@@ -1,10 +1,13 @@
 package je.panse.doro;
 
 import java.io.IOException;
+
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+
 import je.panse.doro.chartplate.EMR_ChangeString;
+import je.panse.doro.chartplate.EMR_ChangeStringCC;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.chartplate.EMR_organize_titles;
 
@@ -45,6 +48,7 @@ public class GDSEMR_DocumentListner implements DocumentListener {
         String outputData = "";
         for (int i = 0; i < textAreas.length; i++) {
             String text = textAreas[i].getText();
+            
             text = EMR_ChangeString.EMR_ChangeString(text);
             text = EMR_organize_titles.EMR_organize_titles(text);
             outputData += ("\n" + text);

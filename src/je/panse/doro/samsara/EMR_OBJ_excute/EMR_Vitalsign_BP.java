@@ -33,17 +33,17 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 //	        setSize(new Dimension(1000, 600));
 
 	        // Create input field and label
-	        inputField = new JTextField(20);
+	        inputField = new JTextField(10);
 	        inputField.addKeyListener(this);
-	        JLabel inputLabel = new JLabel("Vital sign input : ");
+	        JLabel inputLabel = new JLabel("Vital Sign: ");
 	        inputField.setHorizontalAlignment(JTextField.CENTER);
-	        inputField.setPreferredSize(new Dimension(20, 30));
+	        inputField.setPreferredSize(new Dimension(10, 30));
 
 	        // Create output area and label
 	        outputArea = new JTextArea(5, 25);
 	        JScrollPane scrollPane = new JScrollPane(outputArea);
 	        JLabel outputLabel = new JLabel("Vital sign: ");
-
+	        
 	        // Create save and quit buttons
 	        String[] buttonLabels = { "Clear", "Save", "Quit" };
 	        JButton[] buttons = new JButton[buttonLabels.length];
@@ -72,8 +72,18 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 	        // Initialize input list
 	        inputList = new ArrayList<String>();
+
 	    }
-		// Handle button clicks
+
+		public static void main(String[] args) {
+			EMR_Vitalsign_BP emrInterface = new EMR_Vitalsign_BP();
+		    emrInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		    emrInterface.setSize(200, 100);
+		    emrInterface.pack();
+		    emrInterface.setVisible(true);
+		}
+	    
+	    // Handle button clicks
 		public void actionPerformed(ActionEvent e) {
 			if (e.getActionCommand().equals("Clear")) {
 				inputField.setText("");
@@ -88,6 +98,12 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 				dispose();
 			}
 			GDSEMR_frame.setTextAreaText(5,"\n"+outputArea.getText());
+
+            if (inputList.size() >= 2) {
+                int SBP = Integer.parseInt(inputList.get(0));
+                int DBP = Integer.parseInt(inputList.get(1));
+                getHypertensionControlStatus(SBP, DBP);
+            }
 		}
 		
 		// Handle key presses
@@ -99,7 +115,8 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 					inputList.add(input);
 					inputField.setText("");
 					outputArea.setText("");
-				updateOutputArea();
+
+					updateOutputArea();
 				} else {
 				}
 			}
@@ -117,14 +134,6 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 		public void keyTyped(KeyEvent e) {}
 		public void keyReleased(KeyEvent e) {}
-
-		public static void main(String[] args) {
-			EMR_Vitalsign_BP emrInterface = new EMR_Vitalsign_BP();
-		    emrInterface.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		    emrInterface.setSize(300, 350);
-		    emrInterface.pack();
-		    emrInterface.setVisible(true);
-		}
 
 		private String updateOutputAreaString(ArrayList<String> inputList) {
 		    String[] replacements = { 
@@ -164,6 +173,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		        String label = labels[i];
 		        String value = inputList.get(i);
 		        sb.append(label).append(" [ ").append(value).append(" ]");
+					        
 		        if (i < length - 1) {
 		            sb.append("  ");
 		        }
@@ -182,5 +192,26 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 		    return sb.toString();
 		}
+		public static void getHypertensionControlStatus(int SBP, int DBP) {
+		    String status;
+		    
+		    if (SBP < 120 && DBP < 80) {
+		        status = "Well-controlled";
+		    } else if (SBP >= 120 && SBP <= 129 && DBP < 80) {
+		        status = "Borderline controlled";
+		    } else if ((SBP >= 130 && SBP <= 139) || (DBP >= 80 && DBP <= 89)) {
+		        status = "Partially controlled";
+		    } else if (SBP >= 140 || DBP >= 90) {
+		        status = "Poorly controlled";
+		    } else if (SBP > 180 || DBP > 120) {
+		        status = "Hypertensive crisis";
+		    } else {
+		        status = "Unknown status ";
+		    }
 
+		    String message = String.format("\n...now [ %s ] HTN with current medication", status);
+		    GDSEMR_frame.setTextAreaText(8, message);
+		}
+
+		
 }

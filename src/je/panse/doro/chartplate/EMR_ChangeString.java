@@ -172,8 +172,16 @@ public class EMR_ChangeString {
                 .replace(":gg ", "공단검진")
                 .replace(":ggr ", "공단검진 결과상담")
                 .replace(":rr ", "Other clinic RC and Lab result consultation");
-		
-		return outputText;
+                
+                
+    		    if (outputText.contains(":(")) {
+    		    	outputText = EMR_ChangeStringCC.EMR_ChangeString_abr(outputText); // Call the method from the EMR_ChangeString class to change the string
+    		    	
+    		    } else if (outputText.contains(":>")) {
+    		    	outputText = EMR_ChangeStringCC.EMR_ChangeString_Px(outputText); // Call the method from the EMR_ChangeString class to change the string
+    		    }
+		    
+		return "  " + outputText;
 	}
 ////------------------------------------------------
 }
