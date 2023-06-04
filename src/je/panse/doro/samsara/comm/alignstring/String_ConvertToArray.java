@@ -123,7 +123,6 @@ public class String_ConvertToArray extends JFrame {
         outputTextArea.setText(rowsText.toString());
         System.out.println(rowsText.toString());
         GDSEMR_frame.setTextAreaText(5, "\n" + rowsText.toString());
-
     }
 
     public static void main(String inputargs) {

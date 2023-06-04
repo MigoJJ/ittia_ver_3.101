@@ -1,16 +1,12 @@
 package je.panse.doro.chartplate;
 
+import javax.swing.JTextArea;
+
 public class EMR_ChangeString {
 
-	public static String EMR_ChangeString(String lines) {
-		    if (lines.contains(":(")) {
-		        lines = EMR_ChangeStringCC.EMR_ChangeString_abr(lines); // Call the method from the EMR_ChangeString class to change the string
-		    } else if (lines.contains(":>")) {
-		        lines = EMR_ChangeStringCC.EMR_ChangeString_Px(lines); // Call the method from the EMR_ChangeString class to change the string
-		    }
-		
-		
+    public static String EMR_ChangeString(String lines) {
 		String outputText = lines;
+
 		outputText = outputText.replace(":d ", "diabetes mellitus");
 		outputText = outputText.replace(":dr ", "DM with retinopathy");
 		outputText = outputText.replace(":dn ", "DM with Nephropathy");
@@ -172,8 +168,16 @@ public class EMR_ChangeString {
                 .replace(":gg ", "공단검진")
                 .replace(":ggr ", "공단검진 결과상담")
                 .replace(":rr ", "Other clinic RC and Lab result consultation");
-		
-		return outputText;
+                
+                
+    		    if (outputText.contains(":(")) {
+    		    	outputText = EMR_ChangeStringCC.EMR_ChangeString_abr(outputText); // Call the method from the EMR_ChangeString class to change the string
+    		    	
+    		    } else if (outputText.contains(":>")) {
+    		    	outputText = EMR_ChangeStringCC.EMR_ChangeString_Px(outputText); // Call the method from the EMR_ChangeString class to change the string
+    		    }
+		    
+		return "  " + outputText;
 	}
 ////------------------------------------------------
 }
