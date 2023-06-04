@@ -128,17 +128,20 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
 		return "PP" + fbspp2;	
     }
     
-    public static String getGlucoseControlStatus(double HbA1c) {
+    public static void getGlucoseControlStatus(double HbA1c) {
+        String status;
         if (HbA1c > 9.0) {
-            return "[ Poor ]";
+            status = "Poor";
         } else if (HbA1c >= 7.0 && HbA1c <= 9.0) {
-            return "[ Fair ]";
+            status = "Fair";
         } else if (HbA1c >= 6.0 && HbA1c < 7.0) {
-            return "[ Good ]";
+            status = "Good";
         } else {
-            return "[ Excellent ]";
+            status = "Excellent";
         }
+
+        String message = String.format("\n...now [ %s ] treated with current medication", status);
+        GDSEMR_frame.setTextAreaText(8, message);
     }
 
-    
 }
