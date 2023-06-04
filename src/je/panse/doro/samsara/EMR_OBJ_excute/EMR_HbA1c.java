@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;		
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -94,12 +94,12 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         	    String hba1cText = inputFields[2].getText();
     	        String returnFBS = myString(fbs_pp2);
 
-        	    if (!hba1cText.isEmpty()) {
-        	        double hba1c_perc = Double.parseDouble(hba1cText);
-        	        double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
-        	        double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
-        	        double eag_mmoll = eag_mgdl / 18.01559;
-        	        
+    	        double hba1c_perc = Double.parseDouble(hba1cText);
+    	        double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
+    	        double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
+    	        double eag_mmoll = eag_mgdl / 18.01559;
+    	        
+    	        if (!hba1cText.isEmpty()) {
         	        String outputText = String.format(
         	        	  "\n" +returnFBS + " [ %.0f ] mg/dL   " +
         	            "HbA1c [ %.1f ]%%\n" +
@@ -109,11 +109,10 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         	            glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
         	        outputArea.setText(outputText);
         	        GDSEMR_frame.setTextAreaText(5, outputText);
+        	        getGlucoseControlStatus(hba1c_perc);
         	    } else {
-        	    	
         	        String outputText = String.format(
-        	        		"\n" + returnFBS +
-        	            ": %.0f mg/dL   ",
+        	        		"\n" + returnFBS + ": %.0f mg/dL   ",
         	            glucose_mgdl);
         	        outputArea.setText(outputText);
         	        GDSEMR_frame.setTextAreaText(5, outputText);
@@ -129,12 +128,12 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
 		return "PP" + fbspp2;	
     }
     
-    public static String getGlucoseControlStatus(double HBA1c) {
-        if (HBA1c > 9.0) {
+    public static String getGlucoseControlStatus(double HbA1c) {
+        if (HbA1c > 9.0) {
             return "[ Poor ]";
-        } else if (HBA1c >= 7.0 && HBA1c <= 9.0) {
+        } else if (HbA1c >= 7.0 && HbA1c <= 9.0) {
             return "[ Fair ]";
-        } else if (HBA1c >= 6.0 && HBA1c < 7.0) {
+        } else if (HbA1c >= 6.0 && HbA1c < 7.0) {
             return "[ Good ]";
         } else {
             return "[ Excellent ]";
