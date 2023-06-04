@@ -140,7 +140,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
             status = "Excellent";
         }
 
-        String message = String.format("\n...now [ %s ] treated with current medication", status);
+        String message = String.format("\n...now [ %s ] treated DM with current medication", status);
         GDSEMR_frame.setTextAreaText(8, message);
     }
 

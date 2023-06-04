@@ -209,7 +209,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		        status = "Unknown status ";
 		    }
 
-		    String message = String.format("\n...now [ %s ] treated with current medication", status);
+		    String message = String.format("\n...now [ %s ] HTN with current medication", status);
 		    GDSEMR_frame.setTextAreaText(8, message);
 		}
 
