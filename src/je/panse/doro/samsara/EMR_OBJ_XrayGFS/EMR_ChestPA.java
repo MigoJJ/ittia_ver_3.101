@@ -1,4 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -50,7 +53,7 @@ public class EMR_ChestPA {
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
 			GDSEMR_frame.setTextAreaText(5, selectedItems);
-			GDSEMR_frame.setTextAreaText(9, selectedItems);
+			saveComment(selectedItems);
 			frame.dispose();
 		
 		});
@@ -59,5 +62,25 @@ public class EMR_ChestPA {
 		frame.add(panel);
 		frame.pack();
 		frame.setVisible(true);
+	}
+	public static void saveComment(String argscomment) {
+
+		String[] lines = argscomment.split("\n");
+		StringBuilder updatedEkg = new StringBuilder();
+	
+		for (int i = 1; i < lines.length; i++) {
+		    if (i == lines.length - 1) {
+		        LocalDate currentDate = LocalDate.now();
+		        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		        String formattedDate = currentDate.format(formatter);
+		        updatedEkg.append(lines[i]).append(" -> ").append(formattedDate);
+		    } else {
+		        updatedEkg.append("Ⓟ ").append(lines[i]);
+		    }
+		    updatedEkg.append("\n");
+		}
+	
+		String result = updatedEkg.toString();
+		GDSEMR_frame.setTextAreaText(9,result);
 	}
 }

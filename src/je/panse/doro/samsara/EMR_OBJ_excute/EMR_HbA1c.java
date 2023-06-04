@@ -129,4 +129,17 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
 		return "PP" + fbspp2;	
     }
     
+    public static String getGlucoseControlStatus(double HBA1c) {
+        if (HBA1c > 9.0) {
+            return "[ Poor ]";
+        } else if (HBA1c >= 7.0 && HBA1c <= 9.0) {
+            return "[ Fair ]";
+        } else if (HBA1c >= 6.0 && HBA1c < 7.0) {
+            return "[ Good ]";
+        } else {
+            return "[ Excellent ]";
+        }
+    }
+
+    
 }
