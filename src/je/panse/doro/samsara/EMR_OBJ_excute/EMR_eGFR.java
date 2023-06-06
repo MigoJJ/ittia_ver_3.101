@@ -96,9 +96,12 @@ public class EMR_eGFR extends JFrame {
                         for (JTextField inputField : inputFields) {
                             inputField.setText("");
                        	}
-                        // Set focus back to the first input field
-                        GDSEMR_frame.setTextAreaText(5, result + "\n\t..........\n");
-                        GDSEMR_frame.setTextAreaText(5, cresult);
+
+                        GDSEMR_frame.setTextAreaText(5, "\n\t..........\n");
+                        String[] results = {result, cresult};
+	                        for (String res : results) {
+	                            GDSEMR_frame.setTextAreaText(5, res);
+	                        }
                         String rresult = EMR_eGFR.EMR_AG(cresult);
                         GDSEMR_frame.setTextAreaText(9, rresult);
                         dispose();
