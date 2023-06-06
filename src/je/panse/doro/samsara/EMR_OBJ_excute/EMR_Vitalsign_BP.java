@@ -129,7 +129,7 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		    inputList.removeAll(Arrays.asList("i", "r", "h", "s", "b"));
 		    String returnBP = changeString(inputList);    
 		    String returnTime = Date_current.defineTime("h");
-		    outputArea.append("\n"+ returnTime + "\n" + returnBP);
+		    outputArea.append("\n  "+ returnTime + "\n" + returnBP);
 		}
 
 		public void keyTyped(KeyEvent e) {}
@@ -137,11 +137,11 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 
 		private String updateOutputAreaString(ArrayList<String> inputList) {
 		    String[] replacements = { 
-		    		"right", 
-		    		"irRegular", 
-		    		"at home by self", 
-		    		"at GDS by self BP machine", 
-		    		"at GDS left seated position Regular" };
+		        "right", 
+		        "irRegular", 
+		        "at home by self", 
+		        "at GDS by self BP machine", 
+		        "at GDS left seated position Regular" };
 
 		    for (String str : inputList) {
 		        str = str.trim();
@@ -160,9 +160,11 @@ public class EMR_Vitalsign_BP extends JFrame implements ActionListener, KeyListe
 		            }
 		        }
 		    }
+		    
 		    System.out.println(bp);
 		    return bp;
 		}
+
 
 		private String changeString(ArrayList<String> inputList) {
 		    int length = inputList.size();

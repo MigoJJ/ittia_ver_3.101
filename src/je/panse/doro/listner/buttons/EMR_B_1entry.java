@@ -10,6 +10,7 @@ import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
+import je.panse.doro.support.GDS_ittia_support;
 
 public class EMR_B_1entry extends GDSEMR_frame {
 
@@ -36,7 +37,8 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "Exit":
                     frame.dispose();
                     break;
-                case "Button 5":
+                case "ittia_support":
+                	GDS_ittia_support.main(null);
                     break;
                 case "Button 6":
                     break;
