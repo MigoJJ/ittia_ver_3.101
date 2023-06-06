@@ -171,7 +171,8 @@ public class EMR_ChangeString {
                 .replace(":grr ", "GDSRC Result Consultation")
                 .replace(":gg ", "공단검진")
                 .replace(":ggr ", "공단검진 결과상담")
-                .replace(":rr ", "Other clinic RC and Lab result consultation");
+                .replace(":rr ", "Other clinic RC and Lab result consultation")
+                .replace(":SxTx ", "Symptomatic treatment and supportive care ");
                 
                 
     		    if (outputText.contains(":(")) {
