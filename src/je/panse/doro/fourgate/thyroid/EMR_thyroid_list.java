@@ -73,7 +73,7 @@ public class EMR_thyroid_list extends JPanel {
                     String textFieldContent = textFields[i].getText();
                     result.append("    ").append(textFieldContent).append("    ").append(symptom).append("\n");
                 }
-                textArea.setText("The Patient has sufferred from : ▣ \n");
+                textArea.setText("\n  The Patient has suffered from : ▣ \n");
                 textArea.append(result.toString());
             }
         });
