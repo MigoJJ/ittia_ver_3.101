@@ -108,25 +108,37 @@ public class ittiaGDSPlanPanel_2_String {
 	            	break;
 		        case 5:
 		        	retA = "Diabetes F/U";
-		            retB = new String[]{"\tPlan to FPG, HbA1C, Lipid profile\n"
-		            		 + "Kidney function tests (serum creatinine\n"
+		            retB = new String[]{
+		            		"Plan to FPG, HbA1C, Lipid profile\n"
+				            		 + "\tserum creatinine, eGFR, +A/C ratio)\n"
+				            		 + "\tLFT, Electrolyte panel, CBC), Lp(a), ApoB\n"
+				            		 + "\tVitamin D level",
+				            		
+		            		
+		            		"Plan to FPG, HbA1C, Lipid profile\n"
+		            		 + "\tKidney function tests (serum creatinine\n"
 		            		 + "    estimated glomerular filtration rate (eGFR)\n"
 		            		 + "    urine albumin-to-creatinine ratio)\n"
-		            		 + "Liver function tests\n"
-		            		 + "Electrolyte panel\n"
-		            		 + "Thyroid function tests\n"
-		            		 + "Complete blood count (CBC)\n"
-		            		 + "Vitamin D level",
+		            		 + "\tLiver function tests\n"
+		            		 + "\tElectrolyte panel\n"
+		            		 + "\tThyroid function tests\n"
+		            		 + "\tComplete blood count (CBC)\n"
+		            		 + "\tVitamin D level",
 		            		 
 		            		"Obtain to Fasting plasma glucose (FPG)\n"
 				            	+ "\tGlycated hemoglobin (HbA1C)\n",
 				            		 
 				            "Obtain to Lipid profile (total, LDL, HDL, triglycerides)\n",
-				            
-				            "Obtain to TSH, free thyroxine (T4), T3\n",
-				            "Obtain to TSH, free thyroxine (T4), T3\n"
-				            	+ "\tAutoantibodies\n" + "\tp.r.n.> TUS, Tg"
-				             
+			             
+		            };		            
+	            	break;
+		        case 6:
+		        	retA = "Thyroid function test F/U";
+		            retB = new String[]{
+		            		"Plan to TSH, free thyroxine (T4), T3\n",
+				           "Plan to TSH, free thyroxine (T4), T3 + Autoantibodies\n",
+				           "Plan to TSH, free thyroxine (T4), T3 + Autoantibodies\n"
+				           + "\tp.r.n.> TUS"
 		            };		            
 	            	break;
 		        default:
