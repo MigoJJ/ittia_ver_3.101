@@ -43,7 +43,7 @@ public class IttiaGDSPlanPanel_2 extends JPanel implements ActionListener {
          
         String selectedItem = (String) comboBox.getSelectedItem();
         textArea.setText("");
-        textArea.append("..."+ selectedItem + "\n"); // Append selected item to the target JTextArea
+        textArea.append("\n..."+ selectedItem + "\n"); // Append selected item to the target JTextArea
         IttiaGDSPlanPanel_1.appendTextArea(textArea.getText());
     }
 	public static void clearButton() {
