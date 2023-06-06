@@ -1,0 +1,20 @@
+import java.awt.Desktop;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class OpenBrowserExample {
+    public static void main(String[] args) {
+        String directoryUrl = "file:///path/to/directory"; // Replace with the actual directory URL
+        
+        try {
+            URI uri = new URI(directoryUrl);
+            Desktop desktop = Desktop.getDesktop();
+            desktop.browse(uri);
+            System.out.println("Web browser opened successfully.");
+        } catch (IOException | URISyntaxException e) {
+            System.err.println("Error opening web browser: " + e.getMessage());
+        }
+    }
+}
+
