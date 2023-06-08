@@ -10,7 +10,7 @@ public class EMR_vitalsign_array {
         inputArrayList.add(input);
 
         // Remove characters from inputArrayList and get modified ArrayList
-        ArrayList<String> modifiedArrayList = removeCharactersFromArrayList(inputArrayList, 'h', 'i', 'b', 'b', 'r');
+        ArrayList<String> modifiedArrayList = removeCharactersFromArrayList(inputArrayList, 'h', 'i', 'b', 'g', 'r');
         modifiedArrayList.removeIf(String::isEmpty); // Remove empty strings
         System.out.println("Modified ArrayList: " + modifiedArrayList);
 
@@ -22,11 +22,11 @@ public class EMR_vitalsign_array {
 
             // Add appropriate separator based on the index
             if (i == 0) {
-                System.out.print("[" + value + "] mmHg  ");
+                System.out.print("BP [" + value + "] mmHg  ");
             } else if (i == 1) {
                 System.out.print(" [" + value + "] mmHg  ");
             } else if (i == 2) {
-                System.out.print(" [" + value + "] per minute\n");
+                System.out.print("PR [" + value + "] per minute\n");
 	        } else if (i == 3) {
 	            System.out.print("Body temperature [" + value + "] °C\n");
 	        } else if (i == 4) {
