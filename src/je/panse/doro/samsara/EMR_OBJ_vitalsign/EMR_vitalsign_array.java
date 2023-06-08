@@ -19,12 +19,21 @@ public class EMR_vitalsign_array {
         // Print the current contents of the ArrayList
         for (int i = 0; i < modifiedArrayList.size(); i++) {
             String value = modifiedArrayList.get(i);
+            String if1 = "BP [" + value + "] mmHg  ";
+            String if2 = "PR [" + value + "] per minute\n";
+            String if3 = "Body temperature [" + value + "] °C\n";
+            String if4 = "Respiration rate [" + value + "] per minute";
+
+            EMR_vitalsign.addTextArea(" ");
 
             // Add appropriate separator based on the index
             if (i == 0) {
-                System.out.print("BP [" + value + "] mmHg  ");
+                System.out.print(if1);
+                EMR_vitalsign.addTextArea(if1);
             } else if (i == 1) {
-                System.out.print(" [" + value + "] mmHg  ");
+                System.out.print(if1);
+                EMR_vitalsign.addTextArea("BP [" + value + "] mmHg  ");
+
             } else if (i == 2) {
                 System.out.print("PR [" + value + "] per minute\n");
 	        } else if (i == 3) {
