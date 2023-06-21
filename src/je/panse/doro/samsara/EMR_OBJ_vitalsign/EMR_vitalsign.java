@@ -27,7 +27,7 @@ public class EMR_vitalsign extends JFrame {
 
     public EMR_vitalsign() {
         setTitle("GDS Vital Signs");
-        setSize(300,260);
+        setSize(300,400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(4, 1)); // Use GridLayout with 2 rows and 1 column
 
@@ -93,10 +93,9 @@ public class EMR_vitalsign extends JFrame {
 
         // Set the preferred height for the south panel
         JPanel southPanel = new JPanel(new GridLayout(1, 3));
-        Dimension preferredSize = southPanel.getPreferredSize();
-        preferredSize.height = preferredSize.height / 2;
-        southPanel.setPreferredSize(preferredSize);
-        
+//        Dimension preferredSize = southPanel.getPreferredSize();
+//        preferredSize.height = preferredSize.height / 2;
+//        southPanel.setPreferredSize(preferredSize);
         southPanel.add(clearButton);
         southPanel.add(saveButton);
         southPanel.add(quitButton);
