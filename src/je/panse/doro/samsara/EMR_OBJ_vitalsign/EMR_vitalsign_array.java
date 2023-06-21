@@ -2,19 +2,21 @@ package je.panse.doro.samsara.EMR_OBJ_vitalsign;
 
 import java.util.ArrayList;
 
+import javax.swing.JTextArea;
+import javax.swing.text.JTextComponent;
+
 public class EMR_vitalsign_array {
 
-    private static ArrayList<String> inputArrayList = new ArrayList<>();
+	private static ArrayList<String> inputArrayList = new ArrayList<>();
 
-    public static void printInputArrayList(String input) {
+    public static void printInputArrayList(String input, JTextArea outputTextArea) {
         inputArrayList.add(input);
+        outputTextArea.setText("");
+
 
         // Remove characters from inputArrayList and get modified ArrayList
         ArrayList<String> modifiedArrayList = removeCharactersFromArrayList(inputArrayList, 'h', 'i', 'b', 'g', 'r');
         modifiedArrayList.removeIf(String::isEmpty); // Remove empty strings
-        System.out.println("Modified ArrayList: " + modifiedArrayList);
-
-        // Process the modified ArrayList or perform any other operations
 
         // Print the current contents of the ArrayList
         for (int i = 0; i < modifiedArrayList.size(); i++) {
@@ -24,23 +26,18 @@ public class EMR_vitalsign_array {
             String if3 = "Body temperature [" + value + "] °C\n";
             String if4 = "Respiration rate [" + value + "] per minute";
 
-            EMR_vitalsign.addTextArea(" ");
-
             // Add appropriate separator based on the index
             if (i == 0) {
-                System.out.print(if1);
-                EMR_vitalsign.addTextArea(if1);
+                outputTextArea.append(if1);
             } else if (i == 1) {
-                System.out.print(if1);
-                EMR_vitalsign.addTextArea("BP [" + value + "] mmHg  ");
-
+                outputTextArea.append(if1);
             } else if (i == 2) {
-                System.out.print("PR [" + value + "] per minute\n");
-	        } else if (i == 3) {
-	            System.out.print("Body temperature [" + value + "] °C\n");
-	        } else if (i == 4) {
-	            System.out.print("Respiration rate [" + value + "] per minute");
-	        }   
+                outputTextArea.append(if2);
+            } else if (i == 3) {
+                outputTextArea.append(if3);
+            } else if (i == 4) {
+                outputTextArea.append(if4);
+            }
         }
     }
 
@@ -62,6 +59,7 @@ public class EMR_vitalsign_array {
 
     public static void main(String[] args) {
         // Initialize and test the printInputArrayList method
-        printInputArrayList(args[0]);
+        JTextArea outputTextArea = new JTextArea();
+        printInputArrayList(args[0], outputTextArea);
     }
 }
