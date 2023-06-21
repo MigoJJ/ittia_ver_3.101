@@ -1,6 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_vitalsign;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -27,7 +28,7 @@ public class EMR_vitalsign extends JFrame {
 
     public EMR_vitalsign() {
         setTitle("GDS Vital Signs");
-        setSize(400, 400);
+        setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(4, 1)); // Use GridLayout with 4 rows and 1 column
 
@@ -54,14 +55,14 @@ public class EMR_vitalsign extends JFrame {
 
         // Output TextArea
         outputTextArea = new JTextArea();
-        outputTextArea.setRows(4);
+        outputTextArea.setRows(3);
         outputTextArea.setColumns(30);
         outputTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
         JScrollPane scrollPane = new JScrollPane(outputTextArea);
         add(scrollPane);
 
         desoutputTextArea = new JTextArea();
-        desoutputTextArea.setRows(4);
+        desoutputTextArea.setRows(3);
         desoutputTextArea.setColumns(30);
         desoutputTextArea.setText("at GDS, Left seated position, Regular");
         desoutputTextArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
@@ -93,12 +94,12 @@ public class EMR_vitalsign extends JFrame {
                 dispose();
             }
         });
-
-        // Set the preferred height for the south panel
-        JPanel southPanel = new JPanel(new GridLayout(1, 3));
-        Dimension preferredSize = southPanel.getPreferredSize();
-        preferredSize.height = preferredSize.height / 2;
-        southPanel.setPreferredSize(preferredSize);
+        
+     // Set the preferred height for the south panel
+        JPanel southPanel = new JPanel();
+        southPanel.setLayout(new FlowLayout());
+        Dimension panelSize = new Dimension(southPanel.getPreferredSize().width, 20);
+        southPanel.setPreferredSize(panelSize);
 
         southPanel.add(clearButton);
         southPanel.add(saveButton);
