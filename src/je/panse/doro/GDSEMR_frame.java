@@ -13,14 +13,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
+import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
@@ -118,7 +116,7 @@ public class GDSEMR_frame {
             });
 
             EMR_east_buttons_obj.main(null);
-            EMR_Vitalsign_BP.main(null);
+            EMR_vitalsign.main(null);
             EMR_HbA1c.main(null);
             EMR_symptom_main.main(null);
             EMR_thyroid_main.main(null);
