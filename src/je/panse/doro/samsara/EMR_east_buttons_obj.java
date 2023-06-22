@@ -27,8 +27,8 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_positive;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Vitalsign_BP;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
+import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
@@ -88,7 +88,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         Map<String, Runnable> buttonActions = new HashMap<>();
 
         buttonActions.put("BMI", () -> EMR_BMI_calculator.main(new String[0]));
-        buttonActions.put("BP", () -> EMR_Vitalsign_BP.main(new String[0]));
+        buttonActions.put("BP", () -> EMR_vitalsign.main(new String[0]));
         buttonActions.put("HbA1c", () -> EMR_HbA1c.main(new String[0]));
         buttonActions.put("LDL", () -> EMR_LDL.main(new String[0]));
         buttonActions.put("LFT", () -> EMR_LFT.main(new String[0]));

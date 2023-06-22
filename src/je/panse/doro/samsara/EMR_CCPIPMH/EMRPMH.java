@@ -129,7 +129,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
     	    }
     	    
     	    // append separator and the StringBuilder object to pmhxTextArea and set text area in GDSEMR_frame
-    	    sb.append("\n--------------------------------------\n");
+    	    sb.append("--------------------------------------\n");
     	    pmhxTextArea.append(sb.toString());
     	    GDSEMR_frame.setTextAreaText(3, sb.toString());
     	    GDSEMR_frame.setTextAreaText(3, commentpmh.getText());
