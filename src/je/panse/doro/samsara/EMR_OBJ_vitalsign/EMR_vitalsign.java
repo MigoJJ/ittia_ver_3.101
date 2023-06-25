@@ -76,6 +76,8 @@ public class EMR_vitalsign extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 outputTextArea.setText("");
+                desoutputTextArea.setText("");
+                inputTextField.setText("");
             }
         });
         JButton saveButton = new JButton("Save");
@@ -83,6 +85,9 @@ public class EMR_vitalsign extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buttonvitalsign();
+                outputTextArea.setText("");
+                desoutputTextArea.setText("");
+                inputTextField.setText("");
             }
         });
         JButton quitButton = new JButton("Quit");
