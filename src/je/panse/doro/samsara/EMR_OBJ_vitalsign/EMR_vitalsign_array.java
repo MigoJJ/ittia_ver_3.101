@@ -10,9 +10,9 @@ public class EMR_vitalsign_array {
 	private static ArrayList<String> inputArrayList = new ArrayList<>();
 
     public static void printInputArrayList(String input, JTextArea outputTextArea) {
+    	
         inputArrayList.add(input);
         outputTextArea.setText("");
-
 
         // Remove characters from inputArrayList and get modified ArrayList
         ArrayList<String> modifiedArrayList = removeCharactersFromArrayList(inputArrayList, 'h', 'i', 'b', 'g', 'r');
@@ -43,6 +43,8 @@ public class EMR_vitalsign_array {
 
     public static ArrayList<String> removeCharactersFromArrayList(ArrayList<String> arrayList, char... characters) {
         ArrayList<String> modifiedArrayList = new ArrayList<>();
+        modifiedArrayList.clear();
+
         for (String value : arrayList) {
             StringBuilder sb = new StringBuilder(value);
             for (char ch : characters) {

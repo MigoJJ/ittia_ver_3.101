@@ -41,7 +41,6 @@ public class EMR_vitalsign extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String input = inputTextField.getText();
-
                 if (input != null && (input.equals("h") || input.equals("i") || input.equals("b") || input.equals("g") || input.equals("r"))) {
                     descriptionOfVitalSigns(input);
                 } else {
@@ -88,6 +87,7 @@ public class EMR_vitalsign extends JFrame {
                 outputTextArea.setText("");
                 desoutputTextArea.setText("");
                 inputTextField.setText("");
+                inputArrayList.clear();
             }
         });
         JButton quitButton = new JButton("Quit");
