@@ -5,9 +5,9 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -25,7 +25,6 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
     private JButton clearButton, saveButton, quitButton;
 
     public EMR_HbA1c() {
-
         setTitle("EMR Interface for HbA1c Input");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -35,6 +34,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         inputFields = new JTextField[3];
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
         String[] labels = { "FBS/PP2  ", "Glucose [mg/dL]  ", "HbA1c [ % ]  " };
+        
         for (int i = 0; i < labels.length; i++) {
             JLabel label = new JLabel(labels[i]);
             label.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -44,10 +44,32 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
             inputFields[i].setHorizontalAlignment(JTextField.CENTER);
             inputFields[i].addActionListener(this);
             inputPanel.add(inputFields[i]);
+
+            final int index = i; 
+             // Add key listener to inputFields[2] to handle Enter key press
+            inputFields[i].addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                }
+
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                    	   if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                            if (index < 2) {
+                                inputFields[index + 1].requestFocus();
+                            } else if (index == 2) {
+                                printTextOutput();
+                            }
+                        }
+                }
+
+                @Override
+                public void keyReleased(KeyEvent e) {
+                }
+            });
         }
 
         add(inputPanel, BorderLayout.CENTER);
-        outputArea = new JTextArea();
         outputArea = new JTextArea(4, 30);
         add(outputArea, BorderLayout.NORTH);
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
@@ -61,24 +83,6 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         quitButton.addActionListener(this);
         buttonPanel.add(quitButton);
         add(buttonPanel, BorderLayout.SOUTH);
-
-        // Add key listener to inputFields[2] to handle Enter key press
-        inputFields[2].addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    actionPerformed(new ActionEvent(inputFields[2], ActionEvent.ACTION_PERFORMED, null));
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        });
     }
 
     public static void main(String[] args) {
@@ -87,59 +91,19 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         emr.setVisible(true);
     }
 
-    private void clearInputFields() {
-        for (JTextField textField : inputFields) {
-            textField.setText("");
-        }
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == clearButton) {
-            clearInputFields();
-            outputArea.setText("");
+            clearFieldArea();
         } else if (source == saveButton) {
-        	  String input = Arrays.toString(inputFields);
-              // Save input to file or database
-              outputArea.setText("Input saved: " + input);
+            printTextOutput();
+            clearFieldArea();
         } else if (source == quitButton) {
+        	 clearFieldArea();
             dispose();
-        } else {
-            JTextField textField = (JTextField) source;
-            int index = Arrays.asList(inputFields).indexOf(textField);
-            if (index < inputFields.length - 1) {
-                inputFields[index + 1].requestFocus();
-            } else {
-                double fbs_pp2 = Double.parseDouble(inputFields[0].getText());
-                double glucose_mgdl = Double.parseDouble(inputFields[1].getText());
-                String hba1cText = inputFields[2].getText();
-                String returnFBS = myString(fbs_pp2);
-
-                if (!hba1cText.isEmpty()) {
-                    try {
-                        double hba1c_perc = Double.parseDouble(hba1cText);
-                        double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
-                        double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
-                        double eag_mmoll = eag_mgdl / 18.01559;
-
-                        String outputText = String.format("\n" + returnFBS + " [ %.0f ] mg/dL   " + "HbA1c [ %.1f ]%%\n"
-                                + "\tIFCC HbA1c: %.0f mmol/mol\n" + "\teAG: %.0f mg/dL\n" + "\teAG: %.1f mmol/l\n",
-                                glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
-
-                        outputArea.setText(outputText);
-                        GDSEMR_frame.setTextAreaText(5, outputText);
-                        getGlucoseControlStatus(hba1c_perc);
-                    } catch (NumberFormatException ex) {
-                        System.err.println("Invalid HbA1c value: " + hba1cText);
-                        // Additional error handling if needed
-                    }
-                } else {
-                    String outputText = String.format("\n" + returnFBS + " [ %.0f ] mg/dL   ", glucose_mgdl);
-                    outputArea.setText(outputText);
-                    GDSEMR_frame.setTextAreaText(5, outputText);
-                }
-            }
+        } else if (source =="") {
+        	System.out.println(" Source is empty"); 
         }
     }
 
@@ -165,5 +129,71 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         String message = String.format("\n...now [ %s ] treated DM with current medication", status);
         GDSEMR_frame.setTextAreaText(8, message);
         System.out.println(message);
+    }
+
+    public void printTextOutput() {
+        double fbs_pp2 = 0.0;
+        double glucose_mgdl = 0.0;
+        double hba1c_perc = 0.0;
+
+        String fbs_pp2Text = inputFields[0].getText();
+        String glucose_mgdlText = inputFields[1].getText();
+        String hba1cText = inputFields[2].getText();
+
+        double number = Double.parseDouble(fbs_pp2Text);
+
+        if (!hba1cText.isEmpty()) {
+            try {
+                hba1c_perc = Double.parseDouble(hba1cText);
+                double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
+                double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
+                double eag_mmoll = eag_mgdl / 18.01559;
+
+                // Parse glucose_mgdlText and assign it to glucose_mgdl
+                glucose_mgdl = Double.parseDouble(glucose_mgdlText);
+
+                String outputText = String.format("\n" + myString(number) + " [ %.0f ] mg/dL   " + "HbA1c [ %.1f ]%%\n"
+                        + "\tIFCC HbA1c: %.0f mmol/mol\n" + "\teAG: %.0f mg/dL\n" + "\teAG: %.1f mmol/l\n",
+                        glucose_mgdl, hba1c_perc, ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
+
+                if (outputArea != null) {
+                    outputArea.setText(outputText);
+                }
+                EMR_HbA1c.getGlucoseControlStatus(hba1c_perc);
+                GDSEMR_frame.setTextAreaText(5, outputText);
+
+            } catch (NumberFormatException ex) {
+                System.err.println("Invalid HbA1c value: " + hba1cText);
+                // Additional error handling if needed
+            }
+        } else {
+            String outputText = String.format("\n" + myString(number) + " [ %.0f ] mg/dL   ", glucose_mgdl);
+            if (outputArea != null) {
+                outputArea.setText(outputText);
+            }
+            GDSEMR_frame.setTextAreaText(5, outputText);
+        }
+    }
+    private void handleKeyPress(KeyEvent e, int currentInputFieldIndex, int lastIndex) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (currentInputFieldIndex < lastIndex) {
+                currentInputFieldIndex++;
+                inputFields[currentInputFieldIndex].requestFocus(); // set focus to next input field
+                inputFields[currentInputFieldIndex].setCaretPosition(inputFields[currentInputFieldIndex].getText().length()); // set cursor position to end of text
+            } else {
+                String result = "TC-HDL-Tg-LDL [ ";
+                System.out.println(" result" + result);
+                GDSEMR_frame.setTextAreaText(5, "\n" + result);
+                GDSEMR_frame.setTextAreaText(9, "\n#  " + result);
+                dispose();
+            }
+        }
+    }
+    
+    public void clearFieldArea() {
+    	for (int i = 0; i < inputFields.length; i++) {
+    		inputFields[i].setText("");
+    	}
+    	outputArea.setText("");
     }
 }
