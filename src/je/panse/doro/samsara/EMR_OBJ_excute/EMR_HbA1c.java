@@ -69,8 +69,6 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
             });
         }
 
-
-
         add(inputPanel, BorderLayout.CENTER);
         outputArea = new JTextArea(4, 30);
         add(outputArea, BorderLayout.NORTH);
@@ -97,10 +95,12 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == clearButton) {
-            outputArea.setText("");
+            clearFieldArea();
         } else if (source == saveButton) {
             printTextOutput();
+            clearFieldArea();
         } else if (source == quitButton) {
+        	 clearFieldArea();
             dispose();
         } else if (source =="") {
         	System.out.println(" Source is empty"); 
@@ -188,5 +188,12 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
                 dispose();
             }
         }
+    }
+    
+    public void clearFieldArea() {
+    	for (int i = 0; i < inputFields.length; i++) {
+    		inputFields[i].setText("");
+    	}
+    	outputArea.setText("");
     }
 }
