@@ -1,4 +1,4 @@
-package je.panse.doro.samsara.EMR_OBJ_vitalsign;
+package je.panse.doro.samsara.EMR_OBJ_vitalsign.back;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class EMR_vitalsign_array {
 	private static ArrayList<String> inputArrayList = new ArrayList<>();
 
     public static void printInputArrayList(String input, JTextArea outputTextArea) {
-
+    	
         inputArrayList.add(input);
         outputTextArea.setText("");
 
@@ -57,5 +57,11 @@ public class EMR_vitalsign_array {
             modifiedArrayList.add(sb.toString());
         }
         return modifiedArrayList;
+    }
+
+    public static void main(String[] args) {
+        // Initialize and test the printInputArrayList method
+        JTextArea outputTextArea = new JTextArea();
+        printInputArrayList(args[0], outputTextArea);
     }
 }

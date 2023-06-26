@@ -18,7 +18,7 @@ import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
-import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
+import je.panse.doro.samsara.EMR_OBJ_vitalsign.back.EMR_vitalsign;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {

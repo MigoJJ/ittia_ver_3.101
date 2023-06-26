@@ -1,6 +1,6 @@
-package je.panse.doro.samsara.EMR_OBJ_vitalsign;
+package je.panse.doro.samsara.EMR_OBJ_vitalsign.back;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,7 +28,6 @@ public class EMR_vitalsign extends JFrame {
     private static ArrayList<String[]> inputArrayList = new ArrayList<>();
 
     public EMR_vitalsign() {
-
         setTitle("GDS Vital Signs");
         setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +74,10 @@ public class EMR_vitalsign extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                clearFieldArea();
+                outputTextArea.setText("");
+                desoutputTextArea.setText("");
+                inputTextField.setText("");
+                inputArrayList.clear();
             }
         });
         JButton saveButton = new JButton("Save");
@@ -82,20 +85,17 @@ public class EMR_vitalsign extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 buttonvitalsign();
-                dispose();
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        new EMR_vitalsign();
-                    }
-                });
+                outputTextArea.setText("");
+                desoutputTextArea.setText("");
+                inputTextField.setText("");
+                inputArrayList.clear();
             }
         });
-        
         JButton quitButton = new JButton("Quit");
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                buttonvitalsign();
                 dispose();
             }
         });
@@ -115,12 +115,56 @@ public class EMR_vitalsign extends JFrame {
         setVisible(true);
     }
 
+    private static String addIndentation(String text, int indentationLevel) {
+        StringBuilder indentedText = new StringBuilder();
+        for (int i = 0; i < indentationLevel; i++) {
+            indentedText.append(" ");
+        }
+        indentedText.append(text);
+        return indentedText.toString();
+    }
+
+    public static void addTextArea(String input) {
+        ArrayList<String> formattedVitalSigns = new ArrayList<>(); // Create a new ArrayList to store formatted vital signs
+
+        String[] vitalSigns = input.split(" "); // Split the input string by space
+        StringBuilder sb = new StringBuilder();
+        for (String vitalSign : vitalSigns) {
+            String[] parts = vitalSign.split("\\[|\\]"); // Split each vital sign by "[" or "]"
+            if (parts.length == 3) {
+                String name = parts[0];
+                String value = parts[1];
+                String unit = parts[2];
+                String formattedVitalSign = name + " [ " + value + " ] " + unit;
+                formattedVitalSigns.add(formattedVitalSign); // Add the formatted vital sign to the ArrayList
+            }
+        }
+
+        // Append the formatted vital signs to the StringBuilder
+        for (int i = 0; i < formattedVitalSigns.size(); i++) {
+            sb.append(formattedVitalSigns.get(i));
+            if (i != formattedVitalSigns.size() - 1) {
+                sb.append("  ");
+            }
+        }
+
+        // Append the formatted vital signs to the outputTextArea
+        outputTextArea.setText(""); // Clear the outputTextArea before adding new content
+        outputTextArea.append(sb.toString() + "\n");
+        formattedVitalSigns.clear();
+    }
+
     public static void buttonvitalsign() {
+    	String A="";
         String outputText = outputTextArea.getText();
         String desoutputText = desoutputTextArea.getText();
-        String A = "\n" + desoutputText + "\n" + outputText;
+        A = "\n" + desoutputText + "\n" + outputText;
+        System.out.println(A);
         GDSEMR_frame.setTextAreaText(5, A);
-        clearFieldArea();
+        outputTextArea.setText("");
+        desoutputTextArea.setText("");
+        inputTextField.setText("");
+        inputArrayList.clear();
     }
 
     public static void descriptionOfVitalSigns(String input) {
@@ -128,19 +172,6 @@ public class EMR_vitalsign extends JFrame {
         String returndta = EMR_vitalsign_desreturn.main(input, dta);
         desoutputTextArea.setText(returndta);
     }
-
-    public static void clearFieldArea() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                outputTextArea.setText(""); // Clear the outputTextArea before adding new content
-                desoutputTextArea.setText("at GDS, Left seated position, Regular");
-                inputTextField.setText("");
-                inputArrayList.clear();
-            }
-        });
-    }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
