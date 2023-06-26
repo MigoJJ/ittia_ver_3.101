@@ -1,14 +1,11 @@
 package je.panse.doro.samsara.EMR_OBJ_vitalsign;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,10 +19,10 @@ import je.panse.doro.GDSEMR_frame;
 
 public class EMR_vitalsign extends JFrame {
 
-    private JTextField inputTextField;
-    private JTextArea outputTextArea;
-    private JTextArea desoutputTextArea;
-    private ArrayList<String[]> inputArrayList;
+    private static JTextField inputTextField;
+    private static JTextArea outputTextArea;
+    private static JTextArea desoutputTextArea;
+    private static ArrayList<String[]> inputArrayList = new ArrayList<>();
 
     public EMR_vitalsign() {
         setTitle("GDS Vital Signs");
@@ -91,6 +88,7 @@ public class EMR_vitalsign extends JFrame {
         String desoutputText = desoutputTextArea.getText();
         String A = "\n" + desoutputText + "\n" + outputText;
         GDSEMR_frame.setTextAreaText(5, A);
+        // Save data and clear inputArrayList
         clearFieldArea();
     }
 
@@ -104,7 +102,6 @@ public class EMR_vitalsign extends JFrame {
         inputTextField.setText("");
         outputTextArea.setText("");
         desoutputTextArea.setText("at GDS, Left seated position, Regular");
-        inputArrayList.clear();
     }
 
     public static void main(String[] args) {
