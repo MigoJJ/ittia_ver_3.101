@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -21,35 +22,27 @@ import je.panse.doro.GDSEMR_frame;
 
 public class EMR_vitalsign extends JFrame {
 
-    private static JTextField inputTextField;
-    private static JTextArea outputTextArea;
-    private static JTextArea desoutputTextArea;
-    private static ArrayList<String[]> inputArrayList = new ArrayList<>();
+    private JTextField inputTextField;
+    private JTextArea outputTextArea;
+    private JTextArea desoutputTextArea;
+    private ArrayList<String[]> inputArrayList;
 
     public EMR_vitalsign() {
-
         setTitle("GDS Vital Signs");
         setSize(300, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(4, 1)); // Use GridLayout with 4 rows and 1 column
+        setLayout(new GridLayout(4, 1));
 
         // Input TextField
         inputTextField = new JTextField();
         inputTextField.setPreferredSize(new Dimension(inputTextField.getPreferredSize().width, 20));
         inputTextField.setHorizontalAlignment(SwingConstants.CENTER);
-        inputTextField.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String input = inputTextField.getText();
-                if (input != null && (input.equals("h") || input.equals("i") || input.equals("b") || input.equals("g") || input.equals("r"))) {
-                    descriptionOfVitalSigns(input);
-                } else {
-                    // JOptionPane.showMessageDialog(null, "String does not match the specified values.");
-                }
-
-                EMR_vitalsign_array.printInputArrayList(input, outputTextArea);
-                inputTextField.setText("");
+        inputTextField.addActionListener(e -> {
+            String input = inputTextField.getText();
+            if (input != null && (input.equals("h") || input.equals("i") || input.equals("b") || input.equals("g") || input.equals("r"))) {
+                descriptionOfVitalSigns(input);
             }
+            EMR_vitalsign_array.printInputArrayList(input, outputTextArea);
         });
         add(inputTextField);
 
@@ -71,40 +64,18 @@ public class EMR_vitalsign extends JFrame {
 
         // Buttons
         JButton clearButton = new JButton("Clear");
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clearFieldArea();
-            }
-        });
+        clearButton.addActionListener(e -> clearFieldArea());
+
         JButton saveButton = new JButton("Save");
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                buttonvitalsign();
-                dispose();
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        new EMR_vitalsign();
-                    }
-                });
-            }
-        });
-        
+        saveButton.addActionListener(e -> buttonvitalsign());
+
         JButton quitButton = new JButton("Quit");
-        quitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        quitButton.addActionListener(e -> outputTextArea.setText(""));
 
         // Set the preferred height for the south panel
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout());
-        Dimension panelSize = new Dimension(southPanel.getPreferredSize().width, 20);
-        southPanel.setPreferredSize(panelSize);
+        southPanel.setPreferredSize(new Dimension(southPanel.getPreferredSize().width, 20));
 
         southPanel.add(clearButton);
         southPanel.add(saveButton);
@@ -115,7 +86,7 @@ public class EMR_vitalsign extends JFrame {
         setVisible(true);
     }
 
-    public static void buttonvitalsign() {
+    public void buttonvitalsign() {
         String outputText = outputTextArea.getText();
         String desoutputText = desoutputTextArea.getText();
         String A = "\n" + desoutputText + "\n" + outputText;
@@ -123,31 +94,20 @@ public class EMR_vitalsign extends JFrame {
         clearFieldArea();
     }
 
-    public static void descriptionOfVitalSigns(String input) {
+    public void descriptionOfVitalSigns(String input) {
         String dta = desoutputTextArea.getText();
         String returndta = EMR_vitalsign_desreturn.main(input, dta);
         desoutputTextArea.setText(returndta);
     }
 
-    public static void clearFieldArea() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                outputTextArea.setText(""); // Clear the outputTextArea before adding new content
-                desoutputTextArea.setText("at GDS, Left seated position, Regular");
-                inputTextField.setText("");
-                inputArrayList.clear();
-            }
-        });
+    public void clearFieldArea() {
+        inputTextField.setText("");
+        outputTextArea.setText("");
+        desoutputTextArea.setText("at GDS, Left seated position, Regular");
+        inputArrayList.clear();
     }
 
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new EMR_vitalsign();
-            }
-        });
+        SwingUtilities.invokeLater(() -> new EMR_vitalsign());
     }
 }
