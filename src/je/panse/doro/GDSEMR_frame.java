@@ -116,7 +116,7 @@ public class GDSEMR_frame {
             });
 
             EMR_east_buttons_obj.main(null);
-            EMR_vitalsign.main(null);
+            EMR_vitalsign.main(args);
             EMR_HbA1c.main(null);
             EMR_symptom_main.main(null);
             EMR_thyroid_main.main(null);
