@@ -1,12 +1,15 @@
   O>	 
-PP2.5 [ 165 ] mg/dL   HbA1c [ 6.9 ]%
-  	IFCC HbA1c: 52 mmol/mol
-  	eAG: 151 mg/dL
-  	eAG: 8.4 mmol/l
-PP2.5 [ 166 ] mg/dL   HbA1c [ 9.3 ]%
-  	IFCC HbA1c: 78 mmol/mol
-  	eAG: 220 mg/dL
-  	eAG: 12.2 mmol/l
+at GDS, Left seated position, Regular
+BP [4] mmHg  BP [5] mmHg  PR [6] per minute
+Body temperature [36.5] °C
+Respiration rate [14] per minute
+PP1.0 [ 2 ] mg/dL   HbA1c [ 3.0 ]%
+  	IFCC HbA1c: 9 mmol/mol
+  	eAG: 39 mg/dL
+  	eAG: 2.2 mmol/l
+PP1.0 [ 4 ] mg/dL   HbA1c [ 5.0 ]%
+  	IFCC HbA1c: 31 mmol/mol
+  	eAG: 97 mg/dL
+  	eAG: 5.4 mmol/l
   P>	 
-...now [ Good ] treated DM with current medication
-...now [ Poor ] treated DM with current medication
+...now [ Excellent ] treated DM with current medication
