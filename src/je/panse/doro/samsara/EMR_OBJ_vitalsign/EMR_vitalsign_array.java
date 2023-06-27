@@ -1,23 +1,22 @@
 package je.panse.doro.samsara.EMR_OBJ_vitalsign;
 
-import java.util.ArrayList;
-
+import java.util.ArrayList;	
 import javax.swing.JTextArea;
-import javax.swing.text.JTextComponent;
 
-public class EMR_vitalsign_array {
+public class EMR_vitalsign_array extends EMR_vitalsign{
+	static ArrayList<String> modifiedArrayList = new ArrayList<>();
 
-	private static ArrayList<String> inputArrayList = new ArrayList<>();
-
-    public static void printInputArrayList(String input, JTextArea outputTextArea) {
-        inputArrayList.add(input);
-        outputTextArea.setText("");
-
-
+    public static void printInputArrayList(String input) {
+    	
+    	modifiedArrayList.add(input);
+        System.out.println(" input modifiedArrayList"+  input);
+        
         // Remove characters from inputArrayList and get modified ArrayList
-        ArrayList<String> modifiedArrayList = removeCharactersFromArrayList(inputArrayList, 'h', 'i', 'b', 'g', 'r');
+        removeCharactersFromArrayList(modifiedArrayList, 'h', 'i', 'b', 'g', 'r');
         modifiedArrayList.removeIf(String::isEmpty); // Remove empty strings
-
+        outputTextArea.setText("");
+        
+        
         // Print the current contents of the ArrayList
         for (int i = 0; i < modifiedArrayList.size(); i++) {
             String value = modifiedArrayList.get(i);
@@ -43,6 +42,7 @@ public class EMR_vitalsign_array {
 
     public static ArrayList<String> removeCharactersFromArrayList(ArrayList<String> arrayList, char... characters) {
         ArrayList<String> modifiedArrayList = new ArrayList<>();
+
         for (String value : arrayList) {
             StringBuilder sb = new StringBuilder(value);
             for (char ch : characters) {
@@ -56,10 +56,9 @@ public class EMR_vitalsign_array {
         }
         return modifiedArrayList;
     }
-
-    public static void main(String[] args) {
-        // Initialize and test the printInputArrayList method
-        JTextArea outputTextArea = new JTextArea();
-        printInputArrayList(args[0], outputTextArea);
+    
+    public static void clearmodifiedArray() {
+    	modifiedArrayList.clear();
     }
+
 }
