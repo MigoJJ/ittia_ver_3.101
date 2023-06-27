@@ -1,14 +1,18 @@
-  PMH>	 ---------------------------------
-    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
-    ☐ Cancer    ☐ Operation    ◙ Thyroid Disease
-    ☐ Asthma    ☐ Tuberculosis    ◙ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ☐ GERD    ◙ Gout
-    ☐ Arthritis    ☐ Hearing Loss    ◙ CVA
-    ☐ Depression    ☐ Cognitive Disorder
-    ☐ Allergy
-    ☐ Food    ☐ Injection    ☐ Medication
-    --------------------------------------
-    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
-    ◙ Asthma    ☐ Tuberculosis    ☐ Pneumonia
-    ◙ Chronic/Acute Hepatitis    ◙ GERD    ☐ Gout
-    ◙ Arthritis    ☐ Hearing Loss    ☐ CVA
+  CC>    DM F/U
+  O>
+at home by self
+    BP [125] mmHg      BP [85] mmHg  PR [65] per minute
+    Body temperature [36.4] °C
+    Respiration rate [14] per minute
+at GDS, Left seated position, Regular
+    BP [120] mmHg      BP [75] mmHg  PR [85] per minute
+    Body temperature [36.5] °C
+    Respiration rate [15] per minute
+  P>
+...Follow-up in the clinic in [ 3.0 ]-month
+...continue with current dosages of meds
+  Comment>
+-  Take advantage of free time in retirement or flexible schedules to prioritize physical activity.
+-  Engage in a variety of activities that you enjoy, such as walking, swimming, or yoga.
+-  Focus on exercises that improve balance and flexibility to reduce the risk of falls.
+-  Seek social support by joining exercise classes or groups for older adults with diabetes.

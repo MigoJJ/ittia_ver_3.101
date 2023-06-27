@@ -13,7 +13,7 @@ public class EMR_symptom_main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Select category ...");
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-        frame.setLocation(1460, 1350);
+        frame.setLocation(1460, 680);
 //        frame.setSize(new Dimension(300, 600));
 
         String[] buttonNames = {
