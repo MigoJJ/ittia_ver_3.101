@@ -12,7 +12,7 @@ public class EMR_vitalsign_array extends EMR_vitalsign{
         System.out.println(" input modifiedArrayList"+  input);
         
         // Remove characters from inputArrayList and get modified ArrayList
-        removeCharactersFromArrayList(modifiedArrayList, 'h', 'i', 'b', 'g', 'r');
+        removeCharactersFromArrayList(modifiedArrayList, 'h', 'i', 'b', 'g', 'r','o');
         modifiedArrayList.removeIf(String::isEmpty); // Remove empty strings
         outputTextArea.setText("");
         
