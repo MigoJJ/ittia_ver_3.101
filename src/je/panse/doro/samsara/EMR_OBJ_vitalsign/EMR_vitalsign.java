@@ -23,6 +23,7 @@ public class EMR_vitalsign extends JFrame {
         // Set layout manager for the JFrame
         setTitle("GDS Vital Signs");
         setSize(330, 200);
+        setLocation(1460, 250);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         
