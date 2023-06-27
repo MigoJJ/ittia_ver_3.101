@@ -1,22 +1,22 @@
 package je.panse.doro.samsara.EMR_OBJ_vitalsign;
 
-import java.util.ArrayList;
-
+import java.util.ArrayList;	
 import javax.swing.JTextArea;
-import javax.swing.text.JTextComponent;
 
-public class EMR_vitalsign_array {
+public class EMR_vitalsign_array extends EMR_vitalsign{
+	static ArrayList<String> modifiedArrayList = new ArrayList<>();
 
-	private static ArrayList<String> inputArrayList = new ArrayList<>();
-	private static ArrayList<String> modifiedArrayList = new ArrayList<>();
-
-    public static void printInputArrayList(String input, JTextArea outputTextArea) {
-        inputArrayList.add(input);
-
+    public static void printInputArrayList(String input) {
+    	
+    	modifiedArrayList.add(input);
+        System.out.println(" input modifiedArrayList"+  input);
+        
         // Remove characters from inputArrayList and get modified ArrayList
-        removeCharactersFromArrayList(inputArrayList, 'h', 'i', 'b', 'g', 'r');
+        removeCharactersFromArrayList(modifiedArrayList, 'h', 'i', 'b', 'g', 'r');
         modifiedArrayList.removeIf(String::isEmpty); // Remove empty strings
-
+        outputTextArea.setText("");
+        
+        
         // Print the current contents of the ArrayList
         for (int i = 0; i < modifiedArrayList.size(); i++) {
             String value = modifiedArrayList.get(i);
@@ -56,4 +56,9 @@ public class EMR_vitalsign_array {
         }
         return modifiedArrayList;
     }
+    
+    public static void clearmodifiedArray() {
+    	modifiedArrayList.clear();
+    }
+
 }
