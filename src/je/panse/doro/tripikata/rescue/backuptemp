@@ -1,4 +1,14 @@
-  O>	 
-at other clinic checked
-BP [1] mmHg  BP [2] mmHg  PR [3] per minute
-Body temperature [4] °C
+  PMH>	 ---------------------------------
+    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
+    ☐ Cancer    ☐ Operation    ◙ Thyroid Disease
+    ☐ Asthma    ☐ Tuberculosis    ◙ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ◙ Gout
+    ☐ Arthritis    ☐ Hearing Loss    ◙ CVA
+    ☐ Depression    ☐ Cognitive Disorder
+    ☐ Allergy
+    ☐ Food    ☐ Injection    ☐ Medication
+    --------------------------------------
+    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
+    ◙ Asthma    ☐ Tuberculosis    ☐ Pneumonia
+    ◙ Chronic/Acute Hepatitis    ◙ GERD    ☐ Gout
+    ◙ Arthritis    ☐ Hearing Loss    ☐ CVA

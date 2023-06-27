@@ -20,10 +20,10 @@ public class EMR_vitalsign_array extends EMR_vitalsign{
         // Print the current contents of the ArrayList
         for (int i = 0; i < modifiedArrayList.size(); i++) {
             String value = modifiedArrayList.get(i);
-            String if1 = "BP [" + value + "] mmHg  ";
+            String if1 = "    BP [" + value + "] mmHg  ";
             String if2 = "PR [" + value + "] per minute\n";
-            String if3 = "Body temperature [" + value + "] °C\n";
-            String if4 = "Respiration rate [" + value + "] per minute";
+            String if3 = "    Body temperature [" + value + "] °C\n";
+            String if4 = "    Respiration rate [" + value + "] per minute";
 
             // Add appropriate separator based on the index
             if (i == 0) {
