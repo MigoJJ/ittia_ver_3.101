@@ -28,8 +28,8 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         setTitle("EMR Interface for HbA1c Input");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setLocation(1460, 430);
-        setSize(new Dimension(1000, 600));
+        setLocation(1460, 415);
+        setSize(new Dimension(1000, 800));
 
         inputFields = new JTextField[3];
         JPanel inputPanel = new JPanel(new GridLayout(3, 2));
@@ -59,6 +59,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
                                 inputFields[index + 1].requestFocus();
                             } else if (index == 2) {
                                 printTextOutput();
+                                clearFieldArea();
                             }
                         }
                 }
