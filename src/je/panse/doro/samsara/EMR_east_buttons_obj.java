@@ -27,6 +27,7 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
+import je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
 
@@ -42,7 +43,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout",
         		"LDL", "LFT", "CBC", "eGFR", "Lp(a)",
         		"Etc.", "ChestPA", "EKG", "GFS", "CFS",
-        		"DEXA"," "," ","",""
+        		"DEXA","Abdomen"," ","",""
         };
 
         // Create buttons and add to array list
@@ -104,6 +105,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("ChestPA", () -> EMR_ChestPA.main(new String[0]));
         buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
         buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
+        buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
 
         return buttonActions;
     }

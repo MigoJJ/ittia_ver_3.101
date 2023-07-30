@@ -1,11 +1,23 @@
 package je.panse.doro.samsara.EMR_PE;
 
-import java.awt.*;	
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
 import je.panse.doro.GDSEMR_frame;
 
 public class PhysicalExaminationAbdomen {
@@ -100,13 +112,21 @@ public class PhysicalExaminationAbdomen {
         });
 
         JButton saveButton = new JButton("Save");
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String pe = outputArea.getText();
-                GDSEMR_frame.setTextAreaText(6, pe);
-            }
+        
+        saveButton.addActionListener(event -> {
+            String selectedItems = outputArea.getText();
+            GDSEMR_frame.setTextAreaText(5, selectedItems);
         });
+        
+//        
+//        
+//        saveButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                String pe = outputArea.getText();
+//                GDSEMR_frame.setTextAreaText(6, pe);
+//            }
+//        });
 
         JButton quitButton = new JButton("Quit");
 
