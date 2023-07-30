@@ -28,7 +28,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
         setTitle("EMR Interface for HbA1c Input");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setLocation(1460, 415);
+        setLocation(1460, 420);
         setSize(new Dimension(1000, 800));
 
         inputFields = new JTextField[3];
