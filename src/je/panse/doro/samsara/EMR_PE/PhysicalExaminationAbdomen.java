@@ -34,7 +34,6 @@ public class PhysicalExaminationAbdomen {
         // Create a JTextArea for output
         JTextArea outputArea = new JTextArea(10, 20);
         outputArea.setEditable(true);
-         outputArea.setText("\n< Abdominal Physical Excam >\n");
         JScrollPane scrollPane = new JScrollPane(outputArea);
         frame.getContentPane().add(scrollPane, BorderLayout.NORTH);
 
@@ -115,6 +114,7 @@ public class PhysicalExaminationAbdomen {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(event -> {
             String selectedItems = outputArea.getText();
+            GDSEMR_frame.setTextAreaText(5,"\n< Abdominal Physical Excam >\n");
             GDSEMR_frame.setTextAreaText(5, selectedItems);
         });
         
