@@ -152,7 +152,7 @@ public class EMR_eGFR extends JFrame {
     private String getReGFR(double eGFR) {
         if (eGFR >= 90) {
             return "G1  : Normal GFR";
-        } else if (eGFR < 89 && eGFR >= 60) {
+        } else if (eGFR < 90 && eGFR >= 60) {
             return "G2  : Mildly decreased GFR";
         } else if (eGFR < 60 && eGFR >= 45) {
             return "G3a : Mildly to moderately decreased GFR";

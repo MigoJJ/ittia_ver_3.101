@@ -27,7 +27,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 
     private JTextArea pmhxTextArea, commentpmh;
     private ArrayList<JCheckBox> checkBoxList;
-    private String dsquare = "◆";
+    private String dsquare = "◙";
 
     public EMRPMH() {
         super("Medical History");
@@ -46,7 +46,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
         String[] checkboxLabels = { "Diabetes Mellitus", "HTN", "Dyslipidemia\n", "Cancer", "Operation",
                 "Thyroid Disease\n", "Asthma", "Tuberculosis", "Pneumonia\n", "Chronic/Acute Hepatitis", "GERD",
                 "Gout\n", "Arthritis", "Hearing Loss", "CVA\n", "Depression", "Cognitive Disorder\n", "Allergy\n",
-                "Food", "Injection", "Medication" };
+                "Food", "Injection", "Medication\n" };
 
 		// Create a scrollable text area to display the medical history
 		pmhxTextArea = new JTextArea();
@@ -115,7 +115,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
     	if (e.getActionCommand().equals("Save and Show")) {
     	    // build a StringBuilder object for appending the selected checkboxes
     	    StringBuilder sb = new StringBuilder();
-    	    sb.append("---------------------------------\n");
+    	    sb.append("---------------------------------\n    ");
     	    
     	    // iterate over the checkBoxList and append selected checkboxes with dsquare and unselected with ☐
     	    for (JCheckBox checkbox : checkBoxList) {
