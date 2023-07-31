@@ -1,25 +1,25 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.IOException;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingUtilities;
-
-import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
-import je.panse.doro.listner.buttons.BlendColors;
-import je.panse.doro.samsara.EMR_east_buttons_obj;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
-import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
-import je.panse.doro.soap.subjective.EMR_symptom_main;
+	import java.awt.BorderLayout;	
+	import java.awt.Dimension;
+	import java.awt.GridLayout;
+	import java.awt.event.MouseAdapter;
+	import java.awt.event.MouseEvent;
+	import java.io.IOException;
+	
+	import javax.swing.JFrame;
+	import javax.swing.JPanel;
+	import javax.swing.JScrollPane;
+	import javax.swing.JTextArea;
+	import javax.swing.ScrollPaneConstants;
+	import javax.swing.SwingUtilities;
+	
+	import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
+	import je.panse.doro.listner.buttons.BlendColors;
+	import je.panse.doro.samsara.EMR_east_buttons_obj;
+	import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+	import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
+	import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
     private static final int FRAME_WIDTH = 1200;

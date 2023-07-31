@@ -17,7 +17,7 @@ public class EMR_thyroid_main {
     public static void main(String[] args) {
         JFrame frame = new JFrame("Select category ...");
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-        frame.setLocation(1760, 1350);
+        frame.setLocation(1760, 680);
         frame.setSize(new Dimension(250, 500)); // Increase the width to 1000 pixels
 
 
