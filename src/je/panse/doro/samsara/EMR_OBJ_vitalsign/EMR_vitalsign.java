@@ -84,6 +84,16 @@ public class EMR_vitalsign extends JFrame {
     
     private void buttonvitalsign() {
         GDSEMR_frame.setTextAreaText(5, "\n" + desoutputTextArea.getText() + "\n");
+        
+        
+        String text = outputTextArea.getText();
+        if (text.contains("] mmHg      BP [")) {
+            text = text.replace("] mmHg      BP ["," / "); // replace " / " with a space, modify this according to your needs
+            outputTextArea.setText(text);
+        }
+
+        
+        
         GDSEMR_frame.setTextAreaText(5, outputTextArea.getText());
         clearFieldArea();
     }
