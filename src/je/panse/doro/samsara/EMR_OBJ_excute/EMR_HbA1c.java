@@ -169,6 +169,7 @@ public class EMR_HbA1c extends JFrame implements ActionListener {
             }
         } else {
             String outputText = String.format("\n" + myString(number) + " [ %.0f ] mg/dL   ", glucose_mgdl);
+
             if (outputArea != null) {
                 outputArea.setText(outputText);
             }
