@@ -18,7 +18,11 @@ public class ittiaGDSPlanPanel_3_String {
 
         switch (i) {
             case 1:
-                comboboxesLabels = new String[]{"1", "2", "3", "2", "3", "4"};
+                comboboxesLabels = new String[]{"Consutation---------------------", 
+                		"to refer patients to receive additional health care services.",
+                		"Gastroenterology consult in GDS clinic",
+                		"Pulmonolgy consult in GDS clinic",
+                };
                 break;
             case 2:
                 comboboxesLabels = new String[]{"2", "2", "23", "2", "23", "24"};
@@ -40,6 +44,7 @@ public class ittiaGDSPlanPanel_3_String {
             case 5:
                 comboboxesLabels = new String[]{"Consutation---------------------", 
                 		"to refer patients to receive additional health care services.",
+                		"Gastroenterology consult to Univ Hospital",
                 		"Neurology consult to Univ Hospital",
                 		"Ohthalmology consult to Univ Hospital",
                 		"Nephrology consult to Univ Hospital",
