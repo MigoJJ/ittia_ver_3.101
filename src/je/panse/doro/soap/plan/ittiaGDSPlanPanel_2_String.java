@@ -107,7 +107,7 @@ public class ittiaGDSPlanPanel_2_String {
 		            };		            
 	            	break;
 		        case 5:
-		        	retA = "Diabetes F/U";
+		        	retA = "Plan Diabetes F/U";
 		            retB = new String[]{
 		            		"Plan to FPG, HbA1C, Lipid profile\n"
 				            		 + "\tserum creatinine, eGFR, +A/C ratio)\n"
@@ -125,7 +125,7 @@ public class ittiaGDSPlanPanel_2_String {
 		            		 + "\tComplete blood count (CBC)\n"
 		            		 + "\tVitamin D level",
 		            		 
-		            		"Obtain to Fasting plasma glucose (FPG)\n"
+		            		"plan to Fasting plasma glucose (FPG)\n"
 				            	+ "\tGlycated hemoglobin (HbA1C)\n",
 				            		 
 				            "Obtain to Lipid profile (total, LDL, HDL, triglycerides)\n",
@@ -141,6 +141,45 @@ public class ittiaGDSPlanPanel_2_String {
 				           + "\tp.r.n.> TUS"
 		            };		            
 	            	break;
+
+		        case 7:
+		        	retA = "Obtain Diabetes F/U";
+		            retB = new String[]{
+		            		"Obtain to FPG, HbA1C, Lipid profile\n"
+				            		 + "\tserum creatinine, eGFR, +A/C ratio)\n"
+				            		 + "\tLFT, Electrolyte panel, CBC), Lp(a), ApoB\n"
+				            		 + "\tVitamin D level",
+				            		
+		            		
+		            		"Obtain to FPG, HbA1C, Lipid profile\n"
+		            		 + "\tKidney function tests (serum creatinine\n"
+		            		 + "    estimated glomerular filtration rate (eGFR)\n"
+		            		 + "    urine albumin-to-creatinine ratio)\n"
+		            		 + "\tLiver function tests\n"
+		            		 + "\tElectrolyte panel\n"
+		            		 + "\tThyroid function tests\n"
+		            		 + "\tComplete blood count (CBC)\n"
+		            		 + "\tVitamin D level",
+		            		 
+		            		"Obtain to Fasting plasma glucose (FPG)\n"
+				            	+ "\tGlycated hemoglobin (HbA1C)\n",
+				            		 
+				            "Obtain to Lipid profile (total, LDL, HDL, triglycerides)\n",
+		            };	
+		            break;
+		            
+		        case 8:
+		        	retA = "Osteoporosis F/U";
+		            retB = new String[]{
+		            		"Denosumab (Prolia) S.C.",
+		            		"본비바주(이반드론산나트륨일수화물) 3mL  Bonviva Inj.\n(3mg as ibandronic acid)3mg을 3개월에 한번씩 15 - 30초 간 정맥주사",
+		            		"비타벨라프리필드주사(콜레칼시페롤)  Vitabella Prefilled Inj.\nCholecalciferol 5mg(200,000 i.u. as Vitamin D)",
+		            		"비타민D3비오엔주(콜레칼시페롤)  Vitamin D3 B.O.N. INJ.5mg(200,000 i.u. as Vitamin D)",
+		            		
+		            		"Teriparatide (Forteo):a synthetic form of parathyroid hormone",
+		            		"알렌드로네이트: 포사맥스+D 70 (Vitamin D3로서 5600 IU)/주1회",
+		            };	
+		            
 		        default:
 		            System.out.println("ReEnter the Number !!!");
 		            break;

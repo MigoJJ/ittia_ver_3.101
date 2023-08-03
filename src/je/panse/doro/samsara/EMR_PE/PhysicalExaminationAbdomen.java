@@ -40,22 +40,27 @@ public class PhysicalExaminationAbdomen {
         // Create 10 sub-panels
         String[][] options = {
             {"Sudden Onset", "Gradual Onset", "Intermittent", "Constant"},
-            {"Specific Location", "Quadrants", "Epigastric Region", "Umbilical Region",
-            "Hypogastric Region (Suprapubic)", "Periumbilical", "Diffuse Pain",
-            "Migration of Pain", "Radiation"},
-            {"<1 Hour", "1-6 Hours", "6-24 Hours", "1-3 Days", ">3 Days"},
-            {"Sharp", "Dull", "Cramping", "Burning", "Other"},
-            {"Yes", "No","Neck", "Back", "flank", "Anterior chest","inguinal area"},
-            {"Nausea", "Vomiting", "Changes in Bowel Movements", "Fever", "Other"},
-            {"Rest", "Certain Positions", "Medications", "Other" ,"Movement", "Eating", "Stress", "Other"},
-            {"Neck...", "Back", "flank", "Anterior chest","inguinal area..."},
-            {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
-            {"Constant", "Intermittent", "Pattern"}
+            {"Epigastric Region", "Umbilical Region","Periumbilical",
+            	"Hypogastric Region (Suprapubic)", "Right upper quadrant (RUQ)",
+            	"Left upper quadrant (LUQ)","Right lower quadrant (RLQ)","Left lower quadrant (LLQ)", "Diffuse Pain"},
+            {"<1 Hour", "1-6 Hours", "6-24 Hours", "1-3 Days", ">3 Days",
+            	"Acute: Pain that lasts for less than 6 weeks.","Subacute: Pain that lasts for 6 weeks to 3 months."
+            	,"Chronic: Pain that lasts for more than 3 months.","Recurrent: Pain that comes and goes over time."},
+            {"Sharp", "Dull", "Cramping", "Burning", "Throbbing","coliky","Other"},
+            {"Yes", "No","Neck", "Back", "flank", "Anterior chest","shoulder","inguinal area"},
+            {"Nausea","vomiting","Diarrhea","Constipation","Fever","Chills","Weight loss"
+            	,"Fatigue","Urinary symptoms","Pelvic pain"},
+            {"Rest", "Certain Positions", "Medications", "Other" ,"Movement", "Eating", "Stress", "Over-the-counter pain relievers"},
+            {"Rovsing's sign:[+]","Blumberg's sign:[+]","Murphy's sign:[+]","Grey-Turner's sign:[+]","Cullen's sign:[+]"},
+              {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
+            {"Mild tenderness[+]","Moderate tenderness abdomen[++]","Severe tenderness[+++]","",
+            	  "Rebound tenderness[ - ]","Mild rebound tenderness[+]","Moderate rebound tenderness[++]","Severe rebound tenderness[+++]"
+            	  ,"Guarding","Rigidity"}
         };
 
         String[] labels = {"Onset", "Location", "Duration", "Character", "Radiation",
                            "Associated Symptoms", "Alleviating Factors", "Etc.",
-                           "Severity", "Timing"};
+                           "Severity", "T / RT"};
 
         for (int i = 0; i < 10; i++) {
             JPanel panel = new JPanel();
@@ -114,6 +119,7 @@ public class PhysicalExaminationAbdomen {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(event -> {
             String selectedItems = outputArea.getText();
+            selectedItems = selectedItems.replaceAll("(?m)^", "    ");
             GDSEMR_frame.setTextAreaText(5,"\n< Abdominal Physical Excam >\n");
             GDSEMR_frame.setTextAreaText(5, selectedItems);
         });
