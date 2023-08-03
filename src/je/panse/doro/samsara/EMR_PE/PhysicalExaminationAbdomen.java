@@ -53,14 +53,14 @@ public class PhysicalExaminationAbdomen {
             {"Rest", "Certain Positions", "Medications", "Other" ,"Movement", "Eating", "Stress", "Over-the-counter pain relievers"},
             {"Rovsing's sign:[+]","Blumberg's sign:[+]","Murphy's sign:[+]","Grey-Turner's sign:[+]","Cullen's sign:[+]"},
               {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"},
-            {"Mild tenderness[+]","Moderate tendernessabdomen[++]","Severe tenderness[+++]","",
+            {"Mild tenderness[+]","Moderate tenderness abdomen[++]","Severe tenderness[+++]","",
             	  "Rebound tenderness[ - ]","Mild rebound tenderness[+]","Moderate rebound tenderness[++]","Severe rebound tenderness[+++]"
             	  ,"Guarding","Rigidity"}
         };
 
         String[] labels = {"Onset", "Location", "Duration", "Character", "Radiation",
                            "Associated Symptoms", "Alleviating Factors", "Etc.",
-                           "Severity", "Tenderness"};
+                           "Severity", "T / RT"};
 
         for (int i = 0; i < 10; i++) {
             JPanel panel = new JPanel();
@@ -119,6 +119,7 @@ public class PhysicalExaminationAbdomen {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener(event -> {
             String selectedItems = outputArea.getText();
+            selectedItems = selectedItems.replaceAll("(?m)^", "    ");
             GDSEMR_frame.setTextAreaText(5,"\n< Abdominal Physical Excam >\n");
             GDSEMR_frame.setTextAreaText(5, selectedItems);
         });
