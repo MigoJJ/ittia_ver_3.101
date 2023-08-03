@@ -1,5 +1,5 @@
 package je.panse.doro.samsara;
-import java.awt.Color;	
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -8,8 +8,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import je.panse.doro.fourgate.diabetes.EMR_pph_neuropathy;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
@@ -43,7 +46,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout",
         		"LDL", "LFT", "CBC", "eGFR", "Lp(a)",
         		"Etc.", "ChestPA", "EKG", "GFS", "CFS",
-        		"DEXA","Abdomen"," ","",""
+        		"DEXA","Abdomen","DM pph","",""
         };
 
         // Create buttons and add to array list
@@ -106,7 +109,9 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
         buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
+        buttonActions.put("DM pph", () -> EMR_pph_neuropathy.main(new String[0]));
 
+        
         return buttonActions;
     }
 
