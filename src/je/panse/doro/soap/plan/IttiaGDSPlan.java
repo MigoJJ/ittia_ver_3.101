@@ -53,6 +53,7 @@ public class IttiaGDSPlan extends JFrame {
 	        quitButton.addActionListener(new ActionListener() {
 	            @Override
 	            public void actionPerformed(ActionEvent e) {
+	            	IttiaGDSPlanPanel_1.saveButton();
 	            	dispose();
 	            }
 	        });
