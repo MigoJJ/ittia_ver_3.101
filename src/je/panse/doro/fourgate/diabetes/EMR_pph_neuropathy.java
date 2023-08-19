@@ -85,7 +85,7 @@ public class EMR_pph_neuropathy extends JFrame {
                 {"a", "b", "c", "d", "e"},
                 {"numbness[+]", "tingling[+]", "pain[+]", "weakness in limbs[+]", "muscle atrophy or loss[+]"},
                 {"ulcers[+]", "sores[+]", "infections[+]: redness, swelling, or warmth","hammertoes[+]","claw toes[+]"},
-                {"10-g monofilament to test for light touch sensation in the feet[   ]", "tuning fork to test for vibration sensation in the feet [ - ]", "c", "d", "e"},
+                {"10-g monofilament test for light touch sense in the feet[ - ]", "tuning fork test for vibration sense in the feet [ - ]", "c", "d", "e"},
                 {"muscle atrophy, which is a loss of muscle mass [-]","muscle weakness [-]","fasciculations, which are involuntary muscle twitches [-]","muscle tenderness[-]",""},
                 {"a", "b", "c", "d", "e"},
                 {"a", "b", "c", "d", "e"},
