@@ -26,8 +26,8 @@ public class EMR_pph_neuropathy extends JFrame {
     private static final Map<JCheckBox, String> checkboxTexts = new HashMap<>();
     private static final String[] buttonLabels = {"Clear", "Save", "Quit"};
     private static final String[] labels = {
-            "Diabetes duration:  ",
-            "Diabetes control:  ",
+            "Symptoms of neuropathy:  ",
+            "Foot abnormalities:  ",
             "Medication:  ",
             "Symptoms of neuropathy:  ",
             "Foot abnormalities:  ",
@@ -80,11 +80,11 @@ public class EMR_pph_neuropathy extends JFrame {
         JPanel checkBoxPanel = new JPanel();
         checkBoxPanel.setLayout(new BoxLayout(checkBoxPanel, BoxLayout.Y_AXIS));
         String[][] options = {
-                {"a", "b", "c", "d", "e"},
-                {"a", "b", "c", "d", "e"},
+                {"numbness[-]", "tingling[-]", "pain[-]", "weakness in limbs[-]", "muscle atrophy or loss[-]"},
+                {"ulcers[-]", "sores[-]", "infections[-]: redness, swelling, or warmth","hammertoes[-]","claw toes[-]"},
                 {"a", "b", "c", "d", "e"},
                 {"numbness[+]", "tingling[+]", "pain[+]", "weakness in limbs[+]", "muscle atrophy or loss[+]"},
-                {"ulcers[-]", "sores[-]", "infections[-]: redness, swelling, or warmth","hammertoes[-]","claw toes[-]"},
+                {"ulcers[+]", "sores[+]", "infections[+]: redness, swelling, or warmth","hammertoes[+]","claw toes[+]"},
                 {"10-g monofilament to test for light touch sensation in the feet[   ]", "tuning fork to test for vibration sensation in the feet [ - ]", "c", "d", "e"},
                 {"muscle atrophy, which is a loss of muscle mass [-]","muscle weakness [-]","fasciculations, which are involuntary muscle twitches [-]","muscle tenderness[-]",""},
                 {"a", "b", "c", "d", "e"},
