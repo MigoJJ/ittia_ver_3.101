@@ -21,13 +21,18 @@ import javax.swing.SwingUtilities;
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_pph_neuropathy extends JFrame {
-    private static JFrame frame = new JFrame("EMR Physician's Interface");
+    private static final long serialVersionUID = 1L;
+
+    private static final String FRAME_TITLE = "EMR Physician's Interface";
+    private static final String DEFAULT_TEXT = "< Diabetes Mellitus : peripheral neuropathy >\n";
+
+    private static JFrame frame = new JFrame(FRAME_TITLE);
     private static JTextArea textArea = new JTextArea(9, 50);
     private static final Map<JCheckBox, String> checkboxTexts = new HashMap<>();
     private static final String[] buttonLabels = {"Clear", "Save", "Quit"};
     private static final String[] labels = {
-            "Diabetes duration:  ",
-            "Diabetes control:  ",
+            "Symptoms of neuropathy:  ",
+            "Foot abnormalities:  ",
             "Medication:  ",
             "Symptoms of neuropathy:  ",
             "Foot abnormalities:  ",
@@ -80,12 +85,12 @@ public class EMR_pph_neuropathy extends JFrame {
         JPanel checkBoxPanel = new JPanel();
         checkBoxPanel.setLayout(new BoxLayout(checkBoxPanel, BoxLayout.Y_AXIS));
         String[][] options = {
-                {"a", "b", "c", "d", "e"},
-                {"a", "b", "c", "d", "e"},
+                {"numbness[-]", "tingling[-]", "pain[-]", "weakness in limbs[-]", "muscle atrophy or loss[-]"},
+                {"ulcers[-]", "sores[-]", "infections[-]: redness, swelling, or warmth","hammertoes[-]","claw toes[-]"},
                 {"a", "b", "c", "d", "e"},
                 {"numbness[+]", "tingling[+]", "pain[+]", "weakness in limbs[+]", "muscle atrophy or loss[+]"},
-                {"ulcers[-]", "sores[-]", "infections[-]: redness, swelling, or warmth","hammertoes[-]","claw toes[-]"},
-                {"10-g monofilament to test for light touch sensation in the feet[   ]", "tuning fork to test for vibration sensation in the feet [ - ]", "c", "d", "e"},
+                {"ulcers[+]", "sores[+]", "infections[+]: redness, swelling, or warmth","hammertoes[+]","claw toes[+]"},
+                {"10-g monofilament test for light touch sense in the feet[ - ]", "tuning fork test for vibration sense in the feet [ - ]", "c", "d", "e"},
                 {"muscle atrophy, which is a loss of muscle mass [-]","muscle weakness [-]","fasciculations, which are involuntary muscle twitches [-]","muscle tenderness[-]",""},
                 {"a", "b", "c", "d", "e"},
                 {"a", "b", "c", "d", "e"},
@@ -129,6 +134,7 @@ public class EMR_pph_neuropathy extends JFrame {
                         break;
                     case "Save":
                         GDSEMR_frame.setTextAreaText(1, textArea.getText());
+                        frame.dispose();
                         // Implement save logic here
                         break;
                     case "Quit":
