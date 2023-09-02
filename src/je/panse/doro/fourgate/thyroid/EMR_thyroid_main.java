@@ -22,7 +22,7 @@ public class EMR_thyroid_main {
 
 
         String[] buttonNames = {
-        		  "Thyroid Physical examination",
+        		"Thyroid Physical examination",
                 "Hyperthyroidism Symptom",
                 "Hypothyroidism Symptom",
                 "Hyperthyroidism with pregnancy",
