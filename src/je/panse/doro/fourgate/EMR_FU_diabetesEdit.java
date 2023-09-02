@@ -51,6 +51,7 @@ public class EMR_FU_diabetesEdit extends JFrame {
                 String text = get();
                 if (GDSEMR_frame.textAreas[index] != null) {
                     GDSEMR_frame.textAreas[index].setText(text);
+                    EMR_Comments.main("DM");
                 }
                 System.out.println("Loaded text " + text + " from file " + fileName);
             } catch (Exception ex) {
@@ -61,5 +62,6 @@ public class EMR_FU_diabetesEdit extends JFrame {
 
     public static void main(String[] args) {
         new EMR_FU_diabetesEdit();
+
     }
 }

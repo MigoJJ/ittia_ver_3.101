@@ -49,6 +49,7 @@ public class EMR_FU_hypertensionEdit extends JFrame {
                 String text = get();
                 if (GDSEMR_frame.textAreas[index] != null) {
                     GDSEMR_frame.textAreas[index].setText(text);
+                    EMR_Comments.main("BP");
                 }
                 System.out.println("Loaded text " + text + " from file " + fileName);
             } catch (Exception ex) {

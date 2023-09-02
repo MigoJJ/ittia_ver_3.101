@@ -134,10 +134,12 @@ public class EMR_pph_neuropathy extends JFrame {
                         break;
                     case "Save":
                         GDSEMR_frame.setTextAreaText(1, textArea.getText());
+                        clearInput(inputPanel);
                         frame.dispose();
                         // Implement save logic here
                         break;
                     case "Quit":
+                        clearInput(inputPanel);
                         frame.dispose();
                         break;
                 }
