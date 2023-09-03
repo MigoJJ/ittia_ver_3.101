@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import je.panse.doro.GDSEMR_frame;
+
 public class IttiaGDSPlan extends JFrame {
 
     public IttiaGDSPlan() {
@@ -41,6 +43,8 @@ public class IttiaGDSPlan extends JFrame {
 	            public void actionPerformed(ActionEvent e) {
 	            	IttiaGDSPlanPanel_1.clearButton();
 	            	IttiaGDSPlanPanel_2.clearButton();
+                    GDSEMR_frame.setTextAreaText(8, "");
+
 	            }
 	        });
 	        saveButton.addActionListener(new ActionListener() {
