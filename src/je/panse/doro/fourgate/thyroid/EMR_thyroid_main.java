@@ -1,78 +1,154 @@
 package je.panse.doro.fourgate.thyroid;
 
-import java.awt.Dimension;
+import javax.swing.*;
+
+import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.fourgate.thyroid.prganacy.EMR_Preg_CC;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-
-import je.panse.doro.fourgate.thyroid.prganacy.EMR_Preg_CC;
-import je.panse.doro.fourgate.thyroid.prganacy.EMR_Thyroid_Preg_te;
-import je.panse.doro.fourgate.thyroid.prganacy.EMR_Thyroid_Preg_to;
-
 public class EMR_thyroid_main {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Select category ...");
-        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
-        frame.setLocation(1760, 680);
-        frame.setSize(new Dimension(250, 500)); // Increase the width to 1000 pixels
+        JFrame frame = new JFrame("Thyroid disease");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 600);
 
+        JPanel panel = new JPanel(new GridLayout(11, 1));
 
-        String[] buttonNames = {
-        		  "Thyroid Physical examination",
+        String[] buttonLabels = {
+                "Thyroid Physical examination",
                 "Hyperthyroidism Symptom",
                 "Hypothyroidism Symptom",
-                "Hyperthyroidism with pregnancy",
-                "Hypothyroidism with pregnancy",
-                "Abnormal TFT with pregnancy",
+                ">  Hyperthyroidism with pregnancy",
+                ">  Hypothyroidism with pregnancy",
+                ">  Abnormal TFT with pregnancy",
                 "Non thyroidal illness",
                 "Abnormal TFT on Routine check",
+                "Thyroidal nodule",
+                "Post operation F/U PTC",
                 "Quit"
         };
-        for (String name : buttonNames) {
-            JButton button = new JButton(name);
-            button.setPreferredSize(new Dimension(300, 50)); // Set a fixed size for the button
-            button.setMaximumSize(new Dimension(300, 80)); // Set maximum size to enforce the fixed size
-            button.setAlignmentX(Box.CENTER_ALIGNMENT); // Align the button to the center horizontally
-            button.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    // Perform the desired action for each button here
-						if (name.contains("Hyperthyroidism Symptom") || name.contains("Hypothyroidism Symptom")) {
-						   String[] Esrr = EMR_thyroid_retStr.returnStr(name);
-						   EMR_thyroid_list.main(Esrr);
-						} else if (name.contains("Thyroid Physical examination")){
-							EMR_thyroid_PE.main(null);
-						} else if (name.contains("Hyperthyroidism with pregnancy")){
-							EMR_Preg_CC.main(null);
-//							EMR_Thyroid_Preg_te.main(null);
-						} else if (name.contains("Hypothyroidism with pregnancy")){
-							EMR_Preg_CC.main(null);
-//							EMR_Thyroid_Preg_to.main(null);
-						} else if (name.contains("Quit")){
-							frame.dispose();
-		//					EMR_Thyroid_Preg_to.main(null);
-						}
-                }
-            });
 
-            frame.add(button);
-            frame.add(Box.createVerticalStrut(10)); // Add vertical spacing between buttons
+        for (String label : buttonLabels) {
+            JButton button = new JButton(label);
+            button.addActionListener(new ThyroidButtonListener(frame));
+            button.setBackground(new Color(200, 200, 200));
+            panel.add(button);
         }
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.setLocationRelativeTo(null); // center the frame on the screen
-//        frame.pack();
+
+        frame.add(panel);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-    private String[] returnStr(String name) {
-        String[] returnargs = new String[]{};
-        // Add your logic to populate the returnargs array
-        return returnargs;
+
+    static class ThyroidButtonListener implements ActionListener {
+        private JFrame frame;
+
+        ThyroidButtonListener(JFrame frame) {
+            this.frame = frame;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+
+            switch (command) {
+                case "Thyroid Physical examination":
+                    thyroidPhysicalExam();
+                    break;
+                case "Hyperthyroidism Symptom":
+                    hyperthyroidismSymptom();
+                    break;
+                case "Hypothyroidism Symptom":
+                    hypothyroidismSymptom();
+                    break;
+                case ">  Hyperthyroidism with pregnancy":
+                    hyperthyroidismWithPregnancy();
+                    break;
+                case ">  Hypothyroidism with pregnancy":
+                    hypothyroidismWithPregnancy();
+                    break;
+                case ">  Abnormal TFT with pregnancy":
+                    abnormalTFTWithPregnancy();
+                    break;
+                case "Non thyroidal illness":
+                    nonThyroidalIllness();
+                    break;
+                case "Abnormal TFT on Routine check":
+                    abnormalTFTOnRoutineCheck();
+                    break;
+                case "Thyroidal nodule":
+                    thyroidalNodule();
+                    break;
+                case "Post operation F/U PTC":
+                    postOperationFUPtc();
+                    break;
+                case "Quit":
+                    frame.dispose();
+                    break;
+                default:
+                    System.out.println("Unknown command: " + command);
+            }
+        }
+
+        private void thyroidPhysicalExam() {
+            System.out.println("Performing Thyroid Physical Examination...");
+            EMR_thyroid_PE.main(null);
+        }
+
+        private void hyperthyroidismSymptom() {
+            System.out.println("Checking Hyperthyroidism Symptoms...");
+			   String[] Esrr = EMR_thyroid_retStr.returnStr("Hyperthyroidism Symptom");
+			   EMR_thyroid_list.main(Esrr);
+		}
+
+        private void hypothyroidismSymptom() {
+            System.out.println("Checking Hypothyroidism Symptoms...");
+			   String[] Esrr = EMR_thyroid_retStr.returnStr("Hypothyroidism Symptom");
+			   EMR_thyroid_list.main(Esrr);
+        }
+
+        private void hyperthyroidismWithPregnancy() {
+            System.out.println("Checking Hyperthyroidism with Pregnancy...");
+            GDSEMR_frame.setTextAreaText(0, "Checking Hyperthyroidism with Pregnancy [   ] weeks");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U Hyperthyroidism with Pregnancy [   ] weeks");
+			EMR_Preg_CC.main(null);
+        }
+
+        private void hypothyroidismWithPregnancy() {
+            System.out.println("Checking Hypothyroidism with Pregnancy...");
+            GDSEMR_frame.setTextAreaText(0, "Checking Hypothyroidism with Pregnancy [   ] weeks");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U Hypothyroidism with Pregnancy [   ] weeks");
+			EMR_Preg_CC.main(null);
+        }
+
+        private void abnormalTFTWithPregnancy() {
+            System.out.println("Checking Abnormal TFT with Pregnancy...");
+            GDSEMR_frame.setTextAreaText(0, "Checking Abnormal TFT with Pregnancy [   ] weeks");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U Abnormal TFT with Pregnancy [   ] weeks");
+			EMR_Preg_CC.main(null);        
+		}
+
+        private void nonThyroidalIllness() {
+            System.out.println("Checking Non-thyroidal Illness...");
+            GDSEMR_frame.setTextAreaText(0, "Checking NTI ");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U NTI [   ] months later");        }
+
+        private void abnormalTFTOnRoutineCheck() {
+            System.out.println("Checking Abnormal TFT on Routine Check...");
+            GDSEMR_frame.setTextAreaText(0, "Checking Abnormal TFT on Routine Check");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U Abnormal TFT [   ] months later");        }
+
+        private void thyroidalNodule() {
+            System.out.println("Checking Thyroidal Nodule...");
+            GDSEMR_frame.setTextAreaText(0, "Checking Thyroidal Nodule");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U Thyroidal Nodule [   ] months later");        }
+
+        private void postOperationFUPtc() {
+            System.out.println("Checking Post Operation F/U PTC...");
+            GDSEMR_frame.setTextAreaText(0, "Checking Post Operation F/U PTC\n    with hypothyroidism");
+            GDSEMR_frame.setTextAreaText(8, "\n...F/U Post Operation F/U PTC with hypothyroidism "
+            		+ "\n...        [   ] months later");            }
     }
 }
-
-
-
-

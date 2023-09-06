@@ -4,13 +4,17 @@ public class ittiaGDSPlanPanel_3_String {
 	public static String[] getCheckboxLabels() {
         return new String[]{
 			"...Next Lab F/U with NPO",
+			"...Coservative symptomatic treatment",
 			"...Ophthalmologist consultation[+]", 
-			"...Current medications or supplements",
-			"...Review of other clinic RC result",
+			"...Continie current medications or supplements",
+			"...Plan to review of other clinic RC result",
 			"...The patient Refused dose-adjustment", 
 			"...History of surgeries or hospitalizations",
 			"...Family medical history",
-			"2", "3", "2", "3", "2", "3", "2", "3", "2", "3", "4"};
+    		"...to refer patients to receive additional health care services.",
+    		"...Gastroenterology consult in GDS clinic",
+    		"...Pulmonolgy consult in GDS clinic",
+			"2", "3", "2", "3", "2", "3", "4"};
 
 	}
     public static String[] getboxs(int i) {
@@ -51,6 +55,7 @@ public class ittiaGDSPlanPanel_3_String {
                 		"Endocrinology and metabolism consult to Univ Hospital",
                 		"Orthopedics consult to Univ Hospital",
                 		"Cardiology consult to Univ Hospital",
+               			"ENT consult to Univ Hospital",
 
                 		};
                 break;
