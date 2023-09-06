@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_pph_neuropathy extends JFrame {
+public class EMR_pph_neuropathy2 extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private static final String FRAME_TITLE = "EMR Physician's Interface";
@@ -43,7 +43,7 @@ public class EMR_pph_neuropathy extends JFrame {
     };
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(EMR_pph_neuropathy::createAndShowGUI);
+        SwingUtilities.invokeLater(EMR_pph_neuropathy2::createAndShowGUI);
     }
 
     private static void createAndShowGUI() {
@@ -51,7 +51,7 @@ public class EMR_pph_neuropathy extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1300, 600);
 
-        textArea.setText(DEFAULT_TEXT);
+        textArea.setText("< Diabetes Mellitus : peripheral neuropathy >\n");
         frame.add(new JScrollPane(textArea), BorderLayout.NORTH);
 
         JPanel inputPanel = createInputPanel();
@@ -113,7 +113,7 @@ public class EMR_pph_neuropathy extends JFrame {
     }
 
     private static void updateTextArea() {
-        StringBuilder text = new StringBuilder(DEFAULT_TEXT);
+        StringBuilder text = new StringBuilder("< Diabetes Mellitus : peripheral neuropathy >\n");
         for (Map.Entry<JCheckBox, String> entry : checkboxTexts.entrySet()) {
             if (entry.getKey().isSelected()) {
                 text.append(entry.getValue());
@@ -131,7 +131,7 @@ public class EMR_pph_neuropathy extends JFrame {
                 switch (buttonLabel) {
 	                case "Negative pph_Neuropathy":
 	                    GDSEMR_frame.setTextAreaText(4, ""
-	                    		+ DEFAULT_TEXT
+	                    		+ "< Diabetes Mellitus : peripheral neuropathy >\n"
 	                    		+ "\n   numbness[-], tingling[-], pain[-], weakness in limbs[-] \n"
 	                    		+ "   ulcers[ - ], sores[ - ], infections[ - ]\n"
 	                    		+ "   10-g monofilament test for light touch sense in the feet[ - ]\n,"
@@ -172,6 +172,6 @@ public class EMR_pph_neuropathy extends JFrame {
                 }
             }
         }
-        textArea.setText(DEFAULT_TEXT);
+        textArea.setText("< Diabetes Mellitus : peripheral neuropathy >\n");
     }
 }

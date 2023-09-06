@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.thyroid.prganacy;
 
-import javax.swing.*;	
+import javax.swing.*;		
 import java.awt.*;
 
 public class EMR_Thyroid_Preg_te extends JFrame {
