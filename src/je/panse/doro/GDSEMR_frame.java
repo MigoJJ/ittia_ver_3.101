@@ -1,25 +1,27 @@
 package je.panse.doro;
 
-	import java.awt.BorderLayout;	
-	import java.awt.Dimension;
-	import java.awt.GridLayout;
-	import java.awt.event.MouseAdapter;
-	import java.awt.event.MouseEvent;
-	import java.io.IOException;
-	
-	import javax.swing.JFrame;
-	import javax.swing.JPanel;
-	import javax.swing.JScrollPane;
-	import javax.swing.JTextArea;
-	import javax.swing.ScrollPaneConstants;
-	import javax.swing.SwingUtilities;
-	
-	import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
-	import je.panse.doro.listner.buttons.BlendColors;
-	import je.panse.doro.samsara.EMR_east_buttons_obj;
-	import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
-	import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
-	import je.panse.doro.soap.subjective.EMR_symptom_main;
+	import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingUtilities;
+
+import je.panse.doro.listner.buttons.BlendColors;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
+import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
     private static final int FRAME_WIDTH = 1200;
@@ -72,7 +74,6 @@ public class GDSEMR_frame {
             centerPanel.add(scrollPane); // Add the scrollPane to the panel
 
             textAreas[i].getDocument().addDocumentListener(new GDSEMR_DocumentListner(textAreas, tempOutputArea));
-
             textAreas[i].addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -90,6 +91,22 @@ public class GDSEMR_frame {
             });
         }
 
+        tempOutputArea.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    JTextArea source = (JTextArea) e.getSource();
+                    String text = source.getText();
+                    // Copy to clipboard
+                    Toolkit toolkit = Toolkit.getDefaultToolkit();
+                    Clipboard clipboard = toolkit.getSystemClipboard();
+                    StringSelection strSel = new StringSelection(text);
+                    clipboard.setContents(strSel, null);
+                    System.out.println("tempOutputArea was double clicked!!!");
+                }
+            }
+        });
+        
         frame.add(centerPanel);
         frame.add(westPanel, BorderLayout.WEST);
         frame.add(northPanel, BorderLayout.NORTH);
