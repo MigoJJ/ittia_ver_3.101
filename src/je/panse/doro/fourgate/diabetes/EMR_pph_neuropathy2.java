@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_pph_neuropathy extends JFrame {
+public class EMR_pph_neuropathy2 extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private static final String FRAME_TITLE = "EMR Physician's Interface";
@@ -29,7 +29,7 @@ public class EMR_pph_neuropathy extends JFrame {
     private static JFrame frame = new JFrame(FRAME_TITLE);
     private static JTextArea textArea = new JTextArea(9, 50);
     private static final Map<JCheckBox, String> checkboxTexts = new HashMap<>();
-    private static final String[] buttonLabels = {"Clear", "Save", "Quit"};
+    private static final String[] buttonLabels = {"Negative pph_Neuropathy","Clear", "Save", "Quit"};
     private static final String[] labels = {
             "Symptoms of neuropathy:  ",
             "Foot abnormalities:  ",
@@ -43,7 +43,7 @@ public class EMR_pph_neuropathy extends JFrame {
     };
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(EMR_pph_neuropathy::createAndShowGUI);
+        SwingUtilities.invokeLater(EMR_pph_neuropathy2::createAndShowGUI);
     }
 
     private static void createAndShowGUI() {
@@ -129,15 +129,29 @@ public class EMR_pph_neuropathy extends JFrame {
             JButton button = new JButton(buttonLabel);
             button.addActionListener(e -> {
                 switch (buttonLabel) {
-                    case "Clear":
+	                case "Negative pph_Neuropathy":
+	                    GDSEMR_frame.setTextAreaText(4, ""
+	                    		+ "< Diabetes Mellitus : peripheral neuropathy >\n"
+	                    		+ "\n   numbness[-], tingling[-], pain[-], weakness in limbs[-] \n"
+	                    		+ "   ulcers[ - ], sores[ - ], infections[ - ]\n"
+	                    		+ "   10-g monofilament test for light touch sense in the feet[ - ]\n,"
+	                    		+ "   tuning fork test for vibration sense in the feet [ - ]");
+
+	                	clearInput(inputPanel);
+                        frame.dispose();
+
+	                    break;                
+	                case "Clear":
                         clearInput(inputPanel);
                         break;
                     case "Save":
                         GDSEMR_frame.setTextAreaText(1, textArea.getText());
+                        clearInput(inputPanel);
                         frame.dispose();
                         // Implement save logic here
                         break;
                     case "Quit":
+                        clearInput(inputPanel);
                         frame.dispose();
                         break;
                 }
@@ -158,6 +172,6 @@ public class EMR_pph_neuropathy extends JFrame {
                 }
             }
         }
-        textArea.setText(DEFAULT_TEXT);
+        textArea.setText("< Diabetes Mellitus : peripheral neuropathy >\n");
     }
 }

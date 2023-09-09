@@ -7,7 +7,7 @@ public class EMR_thyroid_retStr {
 	    String[] returnargs;
 	    switch (nameStr) {
 		    case "Hyperthyroidism Symptom":
-        		GDSEMR_frame.setTextAreaText(0, "Hyperthyroidism");
+        		GDSEMR_frame.setTextAreaText(0, "Hyperthyroidism F/U");
 		           returnargs = new String[] {
 	    			    "Weight loss or increased appetite",
 	    			    "Rapid or irregular heartbeat",
@@ -26,7 +26,7 @@ public class EMR_thyroid_retStr {
 	    			};
 		            break;
 		        case "Hypothyroidism Symptom":
-	        		GDSEMR_frame.setTextAreaText(0, "Hypothyroidism");
+	        		GDSEMR_frame.setTextAreaText(0, "Hypothyroidism F/U");
 		            returnargs = new String[]{
 		            	 "Fatigue or tiredness",
 	        		    "Weight gain or difficulty losing weight",
