@@ -1,11 +1,16 @@
   PMH>	 ---------------------------------
-    ☐ Diabetes Mellitus    ☐ HTN    ◙ Dyslipidemia
-    ☐ Cancer    ☐ Operation    ☐ Thyroid Disease
-    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
+    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
+    ☐ Cancer    ◙  Operation    ☐ Thyroid Disease
+    ☐ Asthma    ◙  Tuberculosis    ☐ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ◙  GERD    ☐ Gout
     ☐ Arthritis    ☐ Hearing Loss    ☐ CVA
-    ☐ Depression    ☐ Cognitive Disorder
+    ☐ Depression    ◙  Cognitive Disorder
     ☐ Allergy
     ☐ Food    ☐ Injection    ☐ Medication
     --------------------------------------
-  A>	 javax.swing.JTextArea[,0,0,685x200,invalid,layout=javax.swing.plaf.basic.BasicTextUI$UpdateHandler,alignmentX=0.0,alignmentY=0.0,border=javax.swing.plaf.basic.BasicBorders$MarginBorder@51593485,flags=296,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=600,height=200],caretColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],disabledTextColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],editable=true,margin=javax.swing.plaf.InsetsUIResource[top=0,left=0,bottom=0,right=0],selectedTextColor=sun.swing.PrintColorUIResource[r=51,g=51,b=51],selectionColor=javax.swing.plaf.ColorUIResource[r=184,g=207,b=229],colums=0,columWidth=0,rows=0,rowHeight=0,word=false,wrap=false]
+  A>	  -
+         ◙ Tuberculosis
+         ◙ Operation
+s/p Cholecystectomy d/t GB stone  
+         ◙ GERD
+         ◙ Cognitive Disorder
