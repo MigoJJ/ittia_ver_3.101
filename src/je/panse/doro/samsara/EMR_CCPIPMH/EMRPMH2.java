@@ -23,13 +23,13 @@ import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
+public class EMRPMH2<pmhxTextArea> extends JFrame implements ActionListener {
 
     private JTextArea pmhxTextArea, commentpmh;
     private ArrayList<JCheckBox> checkBoxList;
     private String dsquare = "◙";
 
-    public EMRPMH() {
+    public EMRPMH2() {
         super("Medical History");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(700, 700));
@@ -152,7 +152,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 	}
 
     public static void main(String text) throws IOException {
-        EMRPMH gui = new EMRPMH();
+        EMRPMH2 gui = new EMRPMH2();
 //        gui.actionPerformed(new ActionEvent(gui, 0, "Save and Show"));
     }
 }
