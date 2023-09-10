@@ -23,13 +23,13 @@ import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
+public class EMRPMH2<pmhxTextArea> extends JFrame implements ActionListener {
 
     private JTextArea pmhxTextArea, commentpmh;
     private ArrayList<JCheckBox> checkBoxList;
     private String dsquare = "◙";
 
-    public EMRPMH() {
+    public EMRPMH2() {
         super("Medical History");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(700, 700));
@@ -51,7 +51,7 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
 		// Create a scrollable text area to display the medical history
 		pmhxTextArea = new JTextArea();
 		pmhxTextArea.setPreferredSize(new Dimension(600, 200));
-		pmhxTextArea.setText(" -\n");
+		pmhxTextArea.setText(" ---------------------\n");
 		pmhxTextArea.setEditable(true);
 		pmhxTextArea.setFont(font);
 
@@ -111,56 +111,48 @@ public class EMRPMH<pmhxTextArea> extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
+    public void actionPerformed(ActionEvent e){			
+    	if (e.getActionCommand().equals("Save and Show")) {
+    	    // build a StringBuilder object for appending the selected checkboxes
+    	    StringBuilder sb = new StringBuilder();
+    	    sb.append("---------------------------------\n    ");
+    	    
+    	    // iterate over the checkBoxList and append selected checkboxes with dsquare and unselected with ☐
+    	    for (JCheckBox checkbox : checkBoxList) {
+    	        if (checkbox.isSelected()) {
+    	            sb.append(dsquare + " ");
+    	        } else {
+    	            sb.append("☐ ");
+    	        }
+    	        sb.append(checkbox.getText());
+    	        sb.append("    ");
+    	    }
+    	    
+    	    // append separator and the StringBuilder object to pmhxTextArea and set text area in GDSEMR_frame
+    	    sb.append("--------------------------------------\n");
+    	    pmhxTextArea.append(sb.toString());
+    	    GDSEMR_frame.setTextAreaText(7, pmhxTextArea.toString());
 
-        if ("Save and Show".equals(command)) {
-            handleSaveAndShow();
-        } else if ("Clear and Restart".equals(command)) {
-            handleClearAndRestart();
-        } else if ("Save and Quit".equals(command)) {
-            handleSaveAndQuit();
-        } else {
-            // Handle any other commands here
-        }
-    }
-
-    private void handleSaveAndShow() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("---------------------------------\n    ");
-
-        for (JCheckBox checkbox : checkBoxList) {
-            sb.append(checkbox.isSelected() ? "◙  " : "☐ ");
-            sb.append(checkbox.getText());
-            sb.append("    ");
-        }
-
-        sb.append("--------------------------------------\n");
-
-        String content = pmhxTextArea.getText();
-        GDSEMR_frame.setTextAreaText(7, content);
-        pmhxTextArea.append(sb.toString());
-        GDSEMR_frame.setTextAreaText(3, sb.toString());
-        GDSEMR_frame.setTextAreaText(3, commentpmh.getText());
-        dispose();
-    }
-
-    private void handleClearAndRestart() {
-        for (JCheckBox checkbox : checkBoxList) {
-            checkbox.setSelected(false);
-        }
-    }
-
-    private void handleSaveAndQuit() {
-        int response = JOptionPane.showConfirmDialog(this, "Are you sure you want to quit without saving?", "Confirm Exit", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION) {
-            dispose();
-        }
-    }
-
+    	    GDSEMR_frame.setTextAreaText(3, sb.toString());
+    	    GDSEMR_frame.setTextAreaText(3, commentpmh.getText());
+    	    // close the current window
+    	    dispose();
+    	} else if (e.getActionCommand().equals("Clear and Restart")) {
+    	    // iterate over the checkBoxList and uncheck them
+    	    for (JCheckBox checkbox : checkBoxList) {
+    	        checkbox.setSelected(false);
+    	    }
+    	} else if (e.getActionCommand().equals("Save and Quit")) {
+    	    // show a message dialog box indicating that the functionality is not yet implemented
+    	    JOptionPane.showMessageDialog(this, "Save and Quit not yet implemented.");
+    	    
+    	    // close the current window
+    	    dispose();
+    	}
+	}
 
     public static void main(String text) throws IOException {
-        EMRPMH gui = new EMRPMH();
+        EMRPMH2 gui = new EMRPMH2();
 //        gui.actionPerformed(new ActionEvent(gui, 0, "Save and Show"));
     }
 }
