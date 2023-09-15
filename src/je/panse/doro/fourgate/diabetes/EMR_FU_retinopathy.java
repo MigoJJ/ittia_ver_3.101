@@ -1,14 +1,13 @@
 package je.panse.doro.fourgate.diabetes;
 
-import javax.swing.*;
-
+import javax.swing.*;	
 import je.panse.doro.GDSEMR_frame;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.awt.Color;
 
 public class EMR_FU_retinopathy {
     private static JCheckBox[] checkboxes;
@@ -17,13 +16,14 @@ public class EMR_FU_retinopathy {
     public static void main(String[] args) {
         // Create frame
         JFrame frame = new JFrame("Diabetic Retinopathy Stages and Other Eye Conditions");
-        frame.setSize(500, 700);
+        frame.setSize(550, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create textArea at the north
         textArea = new JTextArea(5, 40);
         textArea.setEditable(true);
-
+        textArea.setForeground(Color.BLUE); 
+        
      // Set the current date in the format "yy-MM"
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
         LocalDate currentDate = LocalDate.now();
