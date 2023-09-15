@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import je.panse.doro.fourgate.diabetes.EMR_FU_retinopathy;
 import je.panse.doro.fourgate.diabetes.EMR_pph_neuropathy;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
@@ -46,7 +47,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout",
         		"LDL", "LFT", "CBC", "eGFR", "Lp(a)",
         		"Etc.", "ChestPA", "EKG", "GFS", "CFS",
-        		"DEXA","Abdomen","DM pph","",""
+        		"DEXA","Abdomen","DM pph","DM reti",""
         };
 
         // Create buttons and add to array list
@@ -110,6 +111,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
         buttonActions.put("DM pph", () -> EMR_pph_neuropathy.main(new String[0]));
+        buttonActions.put("DM reti", () -> EMR_FU_retinopathy.main(new String[0]));
 
         
         return buttonActions;
