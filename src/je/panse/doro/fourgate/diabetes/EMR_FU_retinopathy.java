@@ -16,11 +16,11 @@ public class EMR_FU_retinopathy {
     public static void main(String[] args) {
         // Create frame
         JFrame frame = new JFrame("Diabetic Retinopathy Stages and Other Eye Conditions");
-        frame.setSize(550, 700);
+        frame.setSize(550, 750);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create textArea at the north
-        textArea = new JTextArea(5, 40);
+        textArea = new JTextArea(7, 40);
         textArea.setEditable(true);
         textArea.setForeground(Color.BLUE); 
         
@@ -82,7 +82,23 @@ public class EMR_FU_retinopathy {
 
         // Create a south panel for buttons
         JPanel southPanel = new JPanel();
-
+        
+     // Retinppathy button
+        JButton RetinppathyButton = new JButton("Retinppathy");
+        RetinppathyButton.addActionListener((ActionEvent e) -> {
+            for (JCheckBox checkbox : checkboxes) {
+                checkbox.setSelected(false);
+            }
+            textArea.setText(currentDate.format(formatter) + """
+            < Diabetic Retinopathy >
+				\tNo apparent retinopathy : no NPDR
+				\t\tCataract [-] Cataract Surgery:[-]
+				\t\tGlaucoma [-]
+				\t\tRetinal Detachment [-]
+				\t\tMacular Degeration[-]
+                """);
+        });
+        
         // Clear button
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener((ActionEvent e) -> {
@@ -109,6 +125,7 @@ public class EMR_FU_retinopathy {
         });
 
         // Add buttons to southPanel
+        southPanel.add(RetinppathyButton);
         southPanel.add(clearButton);
         southPanel.add(saveButton);
         southPanel.add(quitButton);

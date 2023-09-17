@@ -109,13 +109,12 @@ public class EMR_Preg_CC extends JFrame {
                 String p2 = dataArray[2];
                 String p3 = dataArray[3];
                 String p4 = dataArray[4];
-
                 String pp3 = convertP3ToString(p3);
                 String pp4 = convertP4ToString(p4);
-
                 String result = String.format("# %s pregnancy  %s weeks  Due-date %s \n\t%s at %s%n", p0, p1, p2, pp3,pp4);
                 System.out.printf(result);
                 GDSEMR_frame.setTextAreaText(0, result);
+                GDSEMR_frame.setTextAreaText(7, result);
                 }
         }
     }
