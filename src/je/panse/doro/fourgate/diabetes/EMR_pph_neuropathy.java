@@ -49,7 +49,7 @@ public class EMR_pph_neuropathy extends JFrame {
     private static void createAndShowGUI() {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1300, 600);
+        frame.setSize(1500, 750);
 
         textArea.setText("< Diabetes Mellitus : peripheral neuropathy >\n");
         frame.add(new JScrollPane(textArea), BorderLayout.NORTH);
@@ -129,7 +129,23 @@ public class EMR_pph_neuropathy extends JFrame {
             JButton button = new JButton(buttonLabel);
             button.addActionListener(e -> {
                 switch (buttonLabel) {
+<<<<<<< HEAD
                     case "Clear":
+=======
+	                case "Negative pph_Neuropathy":
+	                    GDSEMR_frame.setTextAreaText(4, ""
+	                    		+ DEFAULT_TEXT
+	                    		+ "\n   numbness[-], tingling[-], pain[-], weakness in limbs[-] \n"
+	                    		+ "   ulcers[ - ], sores[ - ], infections[ - ]\n"
+	                    		+ "   10-g monofilament test for light touch sense in the feet[ - ]\n"
+	                    		+ "   tuning fork test for vibration sense in the feet [ - ]");
+
+	                	clearInput(inputPanel);
+                        frame.dispose();
+
+	                    break;                
+	                case "Clear":
+>>>>>>> refs/remotes/origin/feature
                         clearInput(inputPanel);
                         break;
                     case "Save":

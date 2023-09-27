@@ -148,40 +148,52 @@ public class EMR_DEXA extends JFrame implements ActionListener {
         setVisible(true);
     }
     
-    // Implement actionPerformed method for button actions
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == calculateButton) {
-            // Perform DEXA calculation based on input fields
-            int age = Integer.parseInt(ageTextField.getText());
-            String gender = genderComboBox.getSelectedItem().toString();
-            double totZScore = Double.parseDouble(totTextField.getText());
-            boolean fractureHistory = fractureCheckBox.isSelected();
-            boolean menopauseHistory = menopauseCheckBox.isSelected();
-
-            String diagnosis = calculateDEXADiagnosis(age, gender, totZScore, fractureHistory, menopauseHistory);
-
-            resultTextArea.setText(diagnosis);
-            GDSEMR_frame.setTextAreaText(5, "\n< DEXA >\n\t" + diagnosis);
-            String cdate = Date_current.main("d");
-            
-            if (fractureHistory) {
-                GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]  Fracture : [+]");
-            } else {
-                GDSEMR_frame.setTextAreaText(5, "\n\t" + "Age : [" + age + "]  Gender : [" + gender + "]  Fracture : none");
-            }
-            
-            GDSEMR_frame.setTextAreaText(9, "\n#  " + diagnosis + "   " + cdate);
-            dispose();
+            handleCalculateAction();
         } else if (e.getSource() == resetButton) {
-            // Reset input fields and output text area
-            ageTextField.setText("");
-            genderComboBox.setSelectedIndex(0);
-            totTextField.setText("");
-            fractureCheckBox.setSelected(false);
-            menopauseCheckBox.setSelected(false);
-            resultTextArea.setText("");
+            handleResetAction();
         }
     }
+
+    private void handleCalculateAction() {
+        // Extract input data
+        int age = Integer.parseInt(ageTextField.getText());
+        String gender = genderComboBox.getSelectedItem().toString();
+        double totZScore = Double.parseDouble(totTextField.getText());
+        boolean fractureHistory = fractureCheckBox.isSelected();
+        boolean menopauseHistory = menopauseCheckBox.isSelected();
+
+        // Calculate diagnosis
+        String diagnosis = calculateDEXADiagnosis(age, gender, totZScore, fractureHistory, menopauseHistory);
+
+        // Update result text areas
+        updateResultTextAreas(diagnosis, age, gender, fractureHistory);
+
+        // Dispose current frame
+        dispose();
+    }
+
+    private void handleResetAction() {
+        ageTextField.setText("");
+        genderComboBox.setSelectedIndex(0);
+        totTextField.setText("");
+        fractureCheckBox.setSelected(false);
+        menopauseCheckBox.setSelected(false);
+        resultTextArea.setText("");
+    }
+
+    private void updateResultTextAreas(String diagnosis, int age, String gender, boolean fractureHistory) {
+        resultTextArea.setText(diagnosis);
+        GDSEMR_frame.setTextAreaText(5, "\n< DEXA >\n\t" + diagnosis);
+        String cdate = Date_current.main("d");
+
+        String fractureStatus = fractureHistory ? "[+]" : "none";
+        GDSEMR_frame.setTextAreaText(5, String.format("\n\tAge : [%d]  Gender : [%s]  Fracture : %s", age, gender, fractureStatus));
+        
+        GDSEMR_frame.setTextAreaText(9, "\n#  " + diagnosis + "   " + cdate);
+    }
+
 
     private String calculateDEXADiagnosis(int age, String gender, double totZScore, boolean fractureHistory, boolean menopauseHistory) {
         String scoreType;
