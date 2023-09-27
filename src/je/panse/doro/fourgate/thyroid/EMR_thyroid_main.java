@@ -21,7 +21,7 @@ public class EMR_thyroid_main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 600);
 
-        JPanel panel = new JPanel(new GridLayout(11, 1));
+        JPanel panel = new JPanel(new GridLayout(12, 1));
 
         Map<String, Runnable> actions = new HashMap<>() {{
             put("Thyroid Physical examination", EMR_thyroid_main::thyroidPhysicalExam);
@@ -30,6 +30,9 @@ public class EMR_thyroid_main {
             put("Hyperthyroidism with pregnancy", EMR_thyroid_main::hyperthyroidismWithPregnancy);
             put("Hypothyroidism with pregnancy", EMR_thyroid_main::hypothyroidismWithPregnancy);
             put("Abnormal TFT with pregnancy", EMR_thyroid_main::abnormalTFTWithPregnancy);
+
+            put("New Patient for pregnancy", EMR_thyroid_main::newTFTWithPregnancy);
+            
             put("Non thyroidal illness", EMR_thyroid_main::nonThyroidalIllness);
             put("Abnormal TFT on Routine check", EMR_thyroid_main::abnormalTFTOnRoutineCheck);
             put("Thyroidal nodule", EMR_thyroid_main::thyroidalNodule);
@@ -48,6 +51,8 @@ public class EMR_thyroid_main {
             "Hyperthyroidism with pregnancy",
             "Hypothyroidism with pregnancy",
             "Abnormal TFT with pregnancy",
+            "New Patient for pregnancy",
+
             "Quit"
         );
 
@@ -89,7 +94,7 @@ public class EMR_thyroid_main {
             save(1, "\n\tDevelopmental delays in the child. [ denied ]");
             save(1, "\n\tPreeclampsia.[ denied ]");
             save(8, followUpMessage + " [   ] weeks");
-            EMR_Preg_CC.main(null);
+//            EMR_Preg_CC.main(null);
         }
 
         private static void hyperthyroidismWithPregnancy() {
@@ -103,6 +108,9 @@ public class EMR_thyroid_main {
         private static void abnormalTFTWithPregnancy() {
             handlePregnancy("Checking Abnormal TFT with Pregnancy", "...F/U Abnormal TFT with Pregnancy");
         }
+        
+        private static void newTFTWithPregnancy() {
+            EMR_Preg_CC.main(null);        }
       //-----------------------------------------------
         private static void nonThyroidalIllness() {
             System.out.println("Checking Non-thyroidal Illness...");

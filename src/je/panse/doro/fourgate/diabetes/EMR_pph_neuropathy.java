@@ -49,7 +49,7 @@ public class EMR_pph_neuropathy extends JFrame {
     private static void createAndShowGUI() {
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1300, 600);
+        frame.setSize(1500, 750);
 
         textArea.setText(DEFAULT_TEXT);
         frame.add(new JScrollPane(textArea), BorderLayout.NORTH);
@@ -134,7 +134,7 @@ public class EMR_pph_neuropathy extends JFrame {
 	                    		+ DEFAULT_TEXT
 	                    		+ "\n   numbness[-], tingling[-], pain[-], weakness in limbs[-] \n"
 	                    		+ "   ulcers[ - ], sores[ - ], infections[ - ]\n"
-	                    		+ "   10-g monofilament test for light touch sense in the feet[ - ]\n,"
+	                    		+ "   10-g monofilament test for light touch sense in the feet[ - ]\n"
 	                    		+ "   tuning fork test for vibration sense in the feet [ - ]");
 
 	                	clearInput(inputPanel);
