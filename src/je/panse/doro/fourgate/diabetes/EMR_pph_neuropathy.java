@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;		
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -129,9 +129,7 @@ public class EMR_pph_neuropathy extends JFrame {
             JButton button = new JButton(buttonLabel);
             button.addActionListener(e -> {
                 switch (buttonLabel) {
-<<<<<<< HEAD
-                    case "Clear":
-=======
+
 	                case "Negative pph_Neuropathy":
 	                    GDSEMR_frame.setTextAreaText(4, ""
 	                    		+ DEFAULT_TEXT
@@ -145,7 +143,6 @@ public class EMR_pph_neuropathy extends JFrame {
 
 	                    break;                
 	                case "Clear":
->>>>>>> refs/remotes/origin/feature
                         clearInput(inputPanel);
                         break;
                     case "Save":
