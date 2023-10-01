@@ -42,6 +42,7 @@ public class GDSEMR_ButtonPanel extends JPanel {
 			 buttons[2].setText("Clear");
 			 buttons[3].setText("Exit");
 			 buttons[4].setText("ittia_support");
+			 buttons[11].setText("ittia_EMR_Lab");
 			 // Add the button panel to the north of the frame
 			 setLayout(new FlowLayout(FlowLayout.LEFT));
 			 setBackground(Color.GRAY);
