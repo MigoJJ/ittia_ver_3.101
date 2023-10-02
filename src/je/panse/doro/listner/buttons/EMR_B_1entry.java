@@ -1,14 +1,14 @@
 package je.panse.doro.listner.buttons;
 
-import je.panse.doro.GDSEMR_frame;	
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
-import je.panse.doro.fourgate.EMR_Comments;
 import je.panse.doro.fourgate.EMR_FU_Edit;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
+import je.panse.doro.listner.laboratory.GDSbardlab;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
 import je.panse.doro.support.GDS_ittia_support;
@@ -51,7 +51,8 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 case "Button 10":
                     break;
-                case "Button 11":
+                case "ittia_EMR_Lab":
+                	GDSbardlab.main(null);
                     break;
                 default:
                     System.out.println("Invalid Button title");
