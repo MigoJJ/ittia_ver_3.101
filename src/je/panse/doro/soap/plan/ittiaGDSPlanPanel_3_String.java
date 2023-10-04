@@ -5,16 +5,20 @@ public class ittiaGDSPlanPanel_3_String {
         return new String[]{
 			"...Next Lab F/U with NPO",
 			"...Coservative symptomatic treatment",
-			"...Ophthalmologist consultation[+]", 
 			"...Continie current medications or supplements",
-			"...Plan to review of other clinic RC result",
+			"...F/U without medications", 
 			"...The patient Refused dose-adjustment", 
+			"...",
+			"...Ophthalmologist consultation[+]", 
+			"...Plan to review of other clinic RC result",
+			"...",
 			"...History of surgeries or hospitalizations",
 			"...Family medical history",
     		"...to refer patients to receive additional health care services.",
+    		"...",
     		"...Gastroenterology consult in GDS clinic",
     		"...Pulmonolgy consult in GDS clinic",
-			"2", "3", "2", "3", "2", "3", "4"};
+			"2", "3", "2" };
 
 	}
     public static String[] getboxs(int i) {
