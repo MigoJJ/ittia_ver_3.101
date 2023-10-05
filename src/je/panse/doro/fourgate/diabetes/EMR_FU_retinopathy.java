@@ -90,7 +90,7 @@ public class EMR_FU_retinopathy {
                 checkbox.setSelected(false);
             }
             textArea.setText(currentDate.format(formatter) + """
-            < Diabetic Retinopathy >
+            < Diabetic Retinopathy >>>>>>>>>>>>>>>>>
 				\tNo apparent retinopathy : no NPDR
 				\t\tCataract [-] Cataract Surgery:[-]
 				\t\tGlaucoma [-]
