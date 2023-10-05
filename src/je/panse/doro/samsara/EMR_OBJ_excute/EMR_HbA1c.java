@@ -1,11 +1,9 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
+import java.awt.*;
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
 
 public class EMR_HbA1c extends JFrame {
     private JTextArea textArea;
@@ -37,16 +35,13 @@ public class EMR_HbA1c extends JFrame {
 
     private JPanel createCenterPanel() {
         JPanel centerPanel = new JPanel(new GridLayout(3, 2));
-        
         for (int i = 0; i < textFields.length; i++) {
             JLabel label = new JLabel(labels[i]);
             textFields[i] = new JTextField();
             styleTextField(textFields[i]);
-            
             centerPanel.add(label);
             centerPanel.add(textFields[i]);
         }
-        
         return centerPanel;
     }
 
@@ -67,28 +62,10 @@ public class EMR_HbA1c extends JFrame {
 
     private void handleButtonAction(String buttonName) {
         switch (buttonName) {
-            case "Clear":
-                clear();
-                break;
-            case "Save":
-                save();
-                break;
-            case "Save and Quit":
-                save();
-                dispose();
-                break;
+            case "Clear": clear(); break;
+            case "Save": save(); break;
+            case "Save and Quit":save(); dispose(); break;
         }
-    }
-    
-    private void clear() {
-        textArea.setText("");
-        for (JTextField textField : textFields) {
-            textField.setText("");
-        }
-    }
-
-    private void save() {
-        // Implement the saving logic here.
     }
     
     private void setupListeners() {
@@ -106,16 +83,17 @@ public class EMR_HbA1c extends JFrame {
             if (!textFieldText.equals("0")) {
                 sampleTime = "PP" + textFieldText;
             }
-            textArea.append("   " + sampleTime);
+            textArea.append("\n   " + sampleTime);
         } else if (currentFieldIndex == 1) {
             textArea.append("  [    " + textFieldText + "   ] mg/dL");
         } else if (currentFieldIndex == 2) {
             textArea.append("   HbA1c       [    " + textFieldText + "   ] %\n");
             double hba1cDouble = Double.parseDouble(textFieldText);
             hba1cCalc(hba1cDouble);
-            Timer timer = new Timer(5000, e -> {
+            Timer timer = new Timer(3000, e -> {
                 save();
-                dispose();
+                clear();
+//                dispose();
             });
             timer.setRepeats(false); // Ensure the timer only fires once
             timer.start();
@@ -127,6 +105,18 @@ public class EMR_HbA1c extends JFrame {
             textFields[currentFieldIndex + 1].requestFocus();
         }
     }
+    
+    private void clear() {
+        textArea.setText("");
+        for (JTextField textField : textFields) {
+            textField.setText("");
+        }
+    }
+
+    private void save() {
+    	 GDSEMR_frame.setTextAreaText(5, textArea.getText());
+         }
+    
     // Calculate the HbA1c value and update the text area
     private void hba1cCalc(double hba1c_perc) {
         double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
@@ -139,6 +129,8 @@ public class EMR_HbA1c extends JFrame {
         		+ "\n\teAG: [  %.2f  ] mmol/l\n",
                 ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
         textArea.append(hba1cP);
+        GDSEMR_frame.setTextAreaText(5, textArea.getText());
+        getGlucoseControlStatus(hba1c_perc);
     }
 
     public static void getGlucoseControlStatus(double HbA1c) {
@@ -161,9 +153,11 @@ public class EMR_HbA1c extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             EMR_HbA1c emr = new EMR_HbA1c();
-            emr.pack();
-            emr.setLocationRelativeTo(null);
+            emr.setLocation(1460, 420); // Set the location
+            emr.setSize(330, 250);
+//            emr.pack();
             emr.setVisible(true);
         });
     }
+
 }
