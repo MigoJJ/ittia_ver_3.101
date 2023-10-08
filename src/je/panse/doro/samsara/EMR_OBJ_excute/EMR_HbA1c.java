@@ -129,7 +129,7 @@ public class EMR_HbA1c extends JFrame {
         		+ "\n\teAG: [  %.2f  ] mmol/l\n",
                 ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
         textArea.append(hba1cP);
-        GDSEMR_frame.setTextAreaText(5, textArea.getText());
+//        GDSEMR_frame.setTextAreaText(5, textArea.getText());
         getGlucoseControlStatus(hba1c_perc);
     }
 
