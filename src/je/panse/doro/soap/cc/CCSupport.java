@@ -58,7 +58,7 @@ public class CCSupport {
             JComboBox<String> comboBox = new JComboBox<>(comboBoxOption);
             comboBox.addItemListener(e -> {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
-                    textArea.append("   " + e.getItem().toString() + "\n");
+                    textArea.append(e.getItem().toString() + "\n");
                 }
             });
             centerPanel.add(comboBox);
@@ -103,7 +103,7 @@ public class CCSupport {
 
     private void saveAction(ActionEvent e) {
         String assess = textArea.getText();
-        GDSEMR_frame.setTextAreaText(0, "\n\t" + assess +"\t:(" );
+        GDSEMR_frame.setTextAreaText(0, "   " + assess +"\t:(" );
     }
 
     private void quitAction(ActionEvent e) {

@@ -15,4 +15,3 @@ public class EntryDir {
 	    System.out.println("Current user's directory: " + currentDir);
 	}
 }
-
