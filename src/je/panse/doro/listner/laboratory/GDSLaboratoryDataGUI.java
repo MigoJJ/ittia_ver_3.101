@@ -1,6 +1,5 @@
 package je.panse.doro.listner.laboratory;
 
-
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -18,9 +17,9 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
             Parameter Value Unit 
             using value format 
             """;
-
+    
     private JButton[] buttons;
-
+    
     public GDSLaboratoryDataGUI() {
         setupFrame();
         setupTextAreas();
@@ -39,17 +38,23 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
         outputTextArea.setEditable(true);
     }
 
-	public static void appendTextAreas(String value) {
-		outputTextArea.append(value);		
-	}
+    public static void appendTextAreas(String value) {
+        outputTextArea.append(value);      
+    }
     
     private void setupButtons() {
         String[] buttonLabels = {"Modify", "Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
         buttons = new JButton[buttonLabels.length];
+        
         for (int i = 0; i < buttonLabels.length; i++) {
-            buttons[i] = new JButton(buttonLabels[i]);
-            buttons[i].addActionListener(this);
+            buttons[i] = createButton(buttonLabels[i]);
         }
+    }
+
+    private JButton createButton(String label) {
+        JButton button = new JButton(label);
+        button.addActionListener(this);
+        return button;
     }
 
     private void arrangeComponents() {
@@ -87,33 +92,33 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "Modify":
-                String textFromInputArea = inputTextArea.getText();
-                outputTextArea.append("\nthe blow contents are data --------------------------\n" + textFromInputArea + "\nthe dataset finisfed --------------------------\n");
-                outputTextArea.append("\n" + bardorder);
-                GDSLaboratoryDataModify.main(textFromInputArea);
-                break;
-            case "Copy to Clipboard":
-                String textToCopy = outputTextArea.getText();
-                StringSelection selection = new StringSelection(textToCopy);
-                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-                clipboard.setContents(selection, null);
-                break;
-            case "Clear Input":
-                inputTextArea.setText("");
-                break;
-            case "Clear Output":
-                outputTextArea.setText("");
-                break;
-            case "Clear All":
+            case "Modify" -> modifyAction();
+            case "Copy to Clipboard" -> copyToClipboardAction();
+            case "Clear Input" -> inputTextArea.setText("");
+            case "Clear Output" -> outputTextArea.setText("");
+            case "Clear All" -> {
                 inputTextArea.setText("");
                 outputTextArea.setText("");
-                break;
-            case "Save and Quit":
-            	dispose();
-//                System.exit(0);
-                break;
+            }
+            case "Save and Quit" -> dispose();
         }
+    }
+
+    private void modifyAction() {
+        String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append(""
+        		+ "\nthe below contents are data --------------------------\n" 
+        		+ textFromInputArea 
+        		+ "\nthe dataset finished --------------------------\n");
+        outputTextArea.append("\n" + bardorder);
+        GDSLaboratoryDataModify.main(textFromInputArea);
+    }
+
+    private void copyToClipboardAction() {
+        String textToCopy = outputTextArea.getText();
+        StringSelection selection = new StringSelection(textToCopy);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(selection, null);
     }
 
     public static void main(String[] args) {
@@ -122,6 +127,4 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
             gui.setVisible(true);
         });
     }
-
-
 }
