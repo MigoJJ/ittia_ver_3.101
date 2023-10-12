@@ -17,18 +17,17 @@ public class EMR_PE_general extends JFrame {
     private JCheckBox[] checkboxes;
     private JCheckBox[][] subcategories;
     private String[] checkboxLabels = {
-            "< Inspect the scalp for any abnormalities >",
             "< Inspect the eyes >",
             "< Palpation of the neck >",
             "< Auscultation of the Chest >",
             "< Auscultation of the Heart >",
-            "< Assessment of Peripheral Edema >"
+            "< Assessment of Peripheral Edema >",
+            "< Inspect the skin for any abnormalities >",
     };
 
     private String[][] subcategoryLabels = {
-            {"No abnormalities of rashes, lesions, lumps, or signs of inflammation.",
-                    "rashes", "lesions", "lumps", "signs of inflammation", "tenderness", "deformities"},
-            {"No redness, swelling, discharge, abnormal eye movements, or changes in vision.",
+            {"not anemic / not icteric", "slightly anemic / not icteric",                   	
+                    "No redness, swelling, discharge, abnormal eye movements, or changes in vision.",
                     "No abnormal findings were observed during the assessment of pupil size, shape, and reactivity to light."},
             {"No masses, lymph node enlargement, or tenderness. Check for range of motion and stiffness.",
                     "masses", "lymph node enlargement", "tenderness","abnormal range of motion and stiffness"},
@@ -36,7 +35,24 @@ public class EMR_PE_general extends JFrame {
                     "crackles", "wheezes", "decreased breath sounds"},
             {"No additional heart sounds, such as murmurs or extra heart sounds.",
                     "additional heart sounds", "murmurs","skipped beats or abnormal rhythms"},
-            {"No signs of peripheral edema in the ankles and legs.","peripheral edema in ankle and foot","peripheral edema in legs"}
+            {"No signs of peripheral edema in the ankles and legs.","peripheral edema in ankle and foot","peripheral edema in legs"},
+    		{
+    		    "No abnormalities of significant skin lesions.",
+    		    "macules", "papules", "nodules", 
+    		    "plaques", 
+    		    "vesicles", 
+    		    "bullae", 
+    		    "pustules", 
+    		    "wheals", 
+    		    "cysts", 
+    		    "ulcers", 
+    		    "fissures", 
+    		    "crusts", 
+    		    "scales", 
+    		    "erosions", 
+    		    "telangiectasias"
+    		},
+
     };
 
     public EMR_PE_general() {
