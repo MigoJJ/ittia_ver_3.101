@@ -110,7 +110,8 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
                 outputTextArea.setText("");
                 break;
             case "Save and Quit":
-                System.exit(0);
+            	dispose();
+//                System.exit(0);
                 break;
         }
     }
