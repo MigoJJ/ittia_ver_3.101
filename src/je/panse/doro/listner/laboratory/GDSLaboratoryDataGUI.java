@@ -9,8 +9,8 @@ import javax.swing.*;
 
 public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
 
-    private static final JTextArea inputTextArea = new JTextArea(55, 35);
-    private static final JTextArea outputTextArea = new JTextArea(55, 35);
+    private static final JTextArea inputTextArea = new JTextArea(40, 35);
+    private static final JTextArea outputTextArea = new JTextArea(40, 35);
     private static final String bardorder = """
             make table
             if parameter does not exist -> remove the row;
