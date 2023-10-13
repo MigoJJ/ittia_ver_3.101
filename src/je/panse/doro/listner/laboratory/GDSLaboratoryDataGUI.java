@@ -100,7 +100,11 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
                 inputTextArea.setText("");
                 outputTextArea.setText("");
             }
-            case "Save and Quit" -> dispose();
+            case "Save and Quit" -> {
+	            inputTextArea.setText("");
+	            outputTextArea.setText("");
+	            dispose();
+            }
         }
     }
 
@@ -112,6 +116,7 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
         		+ "\nthe dataset finished --------------------------\n");
         outputTextArea.append("\n" + bardorder);
         GDSLaboratoryDataModify.main(textFromInputArea);
+        copyToClipboardAction();
     }
 
     private void copyToClipboardAction() {

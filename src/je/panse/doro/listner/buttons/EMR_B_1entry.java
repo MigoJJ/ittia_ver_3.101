@@ -1,5 +1,9 @@
 package je.panse.doro.listner.buttons;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_Edit;
@@ -27,6 +31,12 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     FileGeditToCilpboard.FileGeditToCilpboard();
                     break;
                 case "Copy":
+                	
+            	    String textToCopy = tempOutputArea.getText();
+            	    StringSelection selection = new StringSelection(textToCopy);
+            	    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+            	    clipboard.setContents(selection, null);
+                	
                     break;
                 case "Clear":
                     for (int i = 0; i < textAreas.length; i++) {
