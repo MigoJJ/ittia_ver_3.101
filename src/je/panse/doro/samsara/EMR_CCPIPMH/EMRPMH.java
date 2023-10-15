@@ -42,8 +42,8 @@ public class EMRPMH extends JFrame implements ActionListener {
         checkBoxList = new ArrayList<JCheckBox>();
         String[] checkboxLabels = { "Diabetes Mellitus", "HTN", "Dyslipidemia\n", "Cancer", "Operation",
                 "Thyroid Disease\n", "Asthma", "Tuberculosis", "Pneumonia\n", "Chronic/Acute Hepatitis", "GERD",
-                "Gout\n", "Arthritis", "Hearing Loss", "CVA\n", "Depression", "Cognitive Disorder\n", "...",
-                "Angina Pectoris", "AMI", "Arrhythmia\n", "Allergy\n", "...", "...", "Food", "Injection",
+                "Gout\n", "Arthritis", "Hearing Loss", "CVA\n", "Depression", "Cognitive Disorder\n",
+                "...","Angina Pectoris", "AMI", "Arrhythmia\n", "Allergy\n", "...", "Food", "Injection",
                 "Medication\n" };
 
         JTextArea[] textAreas = createTextAreas(font);
@@ -153,6 +153,8 @@ public class EMRPMH extends JFrame implements ActionListener {
         sb.append("--------------------------------------\n");
 
         String content = pmhxTextArea.getText();
+        content = content.replace("☐...", "");
+
         GDSEMR_frame.setTextAreaText(7, content);
         pmhxTextArea.append(sb.toString());
         GDSEMR_frame.setTextAreaText(3, sb.toString());
