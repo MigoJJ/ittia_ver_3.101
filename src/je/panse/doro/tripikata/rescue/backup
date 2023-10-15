@@ -1,16 +1,19 @@
   PMH>	 ---------------------------------
     ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
-    ☐ Cancer    ☐ Operation    ◙  Thyroid Disease
-    ☐ Asthma    ☐ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ☐ GERD    ◙  Gout
-    ☐ Arthritis    ☐ Hearing Loss    ◙  CVA
+    ◙  Cancer    ☐ Operation    ☐ Thyroid Disease
+    ◙  Asthma    ☐ Tuberculosis    ☐ Pneumonia
+    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
+    ◙  Arthritis    ☐ Hearing Loss    ☐ CVA
     ☐ Depression    ☐ Cognitive Disorder
-    ☐ ...    ☐ Angina Pectoris    ☐ AMI    ◙  Arrhythmia
+    ☐ ...    ◙  Angina Pectoris    ☐ AMI    ☐ Arrhythmia
     ☐ Allergy
-    ☐ ...    ☐ ...    ☐ Food    ☐ Injection    ☐ Medication
+    ☐ ...    ☐ ...    ◙  Food    ◙  Injection    ◙  Medication
     --------------------------------------
   A>	  -
-         ◙ CVA
-         ◙ Gout
-         ◙ Thyroid Disease
-         ◙ Arrhythmia
+         ◙ Angina Pectoris
+         ◙ Arthritis
+         ◙ Asthma
+         ◙ Cancer
+         ◙ Medication
+         ◙ Injection
+         ◙ Food
