@@ -33,7 +33,7 @@ public class EMRPMH extends JFrame {
 
     private void initializeFrame() {
         setTitle("GDSEMR PMH");
-        setSize(1200, 400);
+        setSize(900, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         checkboxes = new ArrayList<>();
     }

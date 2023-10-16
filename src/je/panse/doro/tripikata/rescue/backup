@@ -1,23 +1,18 @@
-  PMH>	  PMH> ------------------------------------
-     □  DM   □ HTN  ▣  Dyslipidemia
-     □  Cancer      □  Operation ▣  Thyroid Disease
-     □  Asthma      □  Tuberculosis  ▣  Pneumonia
-     □  Hepatitis   □  GERD      ▣  Gout
-     □  Arthritis   □  Hearing Loss  □ ...
-     □  Depression  □  CVA       ▣  Cognitive Disorder
-     □  Angina Pectoris          □  AMI   ▣  Arrhythmia
-     □  Allergy     □  ...
-     □  Food        □  Injection ▣  Medication
+  PMH>	 PMH> ------------------------------------
+     □  DM   □ HTN  □  Dyslipidemia
+     □  Cancer      ▣  Operation □  Thyroid Disease
+     ▣  Asthma     □  Pneumonia  □ Tuberculosis
+     □  Hepatitis   ▣  GERD        □  Gout
+     □  Arthritis    □  Hearing Loss  □ ...
+     □  CVA          ▣  Depression  □  Cognitive Disorder
+     □  Angina Pectoris          □  AMI   □  Arrhythmia
+     □  Allergy      □  ...
+     □  Food        ▣  Injection □   Medication
       ------------------------------------
-  A>	 
-   ▣   Dyslipidemia   12334
-   ▣   Thyroid Disease
-   ▣   Pneumonia
-   ▣   Gout
-   ▣   Cognitive Disorder  4567
-   ▣   Arrhythmia
-   ▣   Medication
-   #  GERD
-   #  Asthma
-   #  Tuberculosis
-   #  Chronic Superficial Gastritis
+  A>	
+   ▣   GERD
+   ▣   Depression
+1234
+   ▣   Injection
+   ▣   Asthma
+   ▣   Operation

@@ -11,12 +11,12 @@ public class EMRPMH_ReplaceString {
             " PMH> ------------------------------------\n" +
             "     □  DM   □ HTN  □  Dyslipidemia\n" +
             "     □  Cancer      □  Operation □  Thyroid Disease\n" +
-            "     □  Asthma      □  Tuberculosis  □ Pneumonia\n" +
-            "     □  Hepatitis   □  GERD      □  Gout\n" +
-            "     □  Arthritis   □  Hearing Loss  □ ...\n" +
-            "     □  Depression  □  CVA       □  Cognitive Disorder\n" +
+            "     □  Asthma     □  Pneumonia  □ Tuberculosis\n" +
+            "     □  Hepatitis   □  GERD        □  Gout\n" +
+            "     □  Arthritis    □  Hearing Loss  □ ...\n" +
+            "     □  CVA          □ Depression  □  Cognitive Disorder\n" +
             "     □  Angina Pectoris          □  AMI   □  Arrhythmia\n" +
-            "     □  Allergy     □  ...\n" +
+            "     □  Allergy      □  ...\n" +
             "     □  Food        □  Injection □   Medication\n" +
             "      ------------------------------------\n";
 
