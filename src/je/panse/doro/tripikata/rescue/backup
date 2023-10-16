@@ -1,10 +1,23 @@
-  CC>	 for Influenza Vaccination
-  [ ✔ ]  no allergy to eggs, chicken
-	, or any other component of the vaccine.
-  [ ✔ ]  no s/p Guillain-Barré syndrome.
-  [ ✔ ]  no adverse reactions to previous influenza vaccines.
-  [ ✔ ]  no pregnancy, breastfeeding, and immunosuppression.
+  PMH>	  PMH> ------------------------------------
+     □  DM   □ HTN  ▣  Dyslipidemia
+     □  Cancer      □  Operation ▣  Thyroid Disease
+     □  Asthma      □  Tuberculosis  ▣  Pneumonia
+     □  Hepatitis   □  GERD      ▣  Gout
+     □  Arthritis   □  Hearing Loss  □ ...
+     □  Depression  □  CVA       ▣  Cognitive Disorder
+     □  Angina Pectoris          □  AMI   ▣  Arrhythmia
+     □  Allergy     □  ...
+     □  Food        □  Injection ▣  Medication
+      ------------------------------------
   A>	 
-  #Vaxigriptetra pfs inj (4가) [0.5ml]  2023-10-16
-  P>	 
-   ...Vaccination as scheduled
+   ▣   Dyslipidemia   12334
+   ▣   Thyroid Disease
+   ▣   Pneumonia
+   ▣   Gout
+   ▣   Cognitive Disorder  4567
+   ▣   Arrhythmia
+   ▣   Medication
+   #  GERD
+   #  Asthma
+   #  Tuberculosis
+   #  Chronic Superficial Gastritis
