@@ -1,18 +1,16 @@
   PMH>	  PMH> ------------------------------------
-     ▣  DM   ▣  HTN  ▣  Dyslipidemia
-     □  Cancer      □  Operation ▣  Thyroid Disease
-     □  Asthma     □  Pneumonia  □ Tuberculosis
-     □  Hepatitis   □  GERD        □  Gout
+     □  DM   □ HTN  □  Dyslipidemia
+     □  Cancer      ▣  Operation ▣  Thyroid Disease
+     □  Asthma     □  Pneumonia  ▣  Tuberculosis
+     □  Hepatitis   ▣  GERD        □  Gout
      □  Arthritis    □  Hearing Loss  □ ...
      □  CVA          □ Depression  □  Cognitive Disorder
-     □  Angina Pectoris          ▣  AMI   □  Arrhythmia
+     □  Angina Pectoris          □  AMI   □  Arrhythmia
      □  Allergy      □  ...
      □  Food        □  Injection □   Medication
       ------------------------------------
   A>	 
-   ▣   DM
-   ▣   HTN
-   ▣   Dyslipidemia
    ▣   Thyroid Disease
-   ▣   Operation  s/p Cholecystectomy d/t GB stone 2012
-   ▣   AMI
+   ▣   Operation
+   ▣   Tuberculosis
+   ▣   GERD 2q143623456  with medications
