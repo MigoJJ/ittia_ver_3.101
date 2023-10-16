@@ -13,7 +13,8 @@ public class Influenza_Vaccine {
     	String currentDate = dateFormat.format(new Date());
     	
     	String CCstring ="for Influenza Vaccination\n";
-    	String  PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n\t, or any other component of the vaccine.\n"
+    	String  PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n"
+    			+ "        , or any other component of the vaccine.\n"
     			+ "  [ ✔ ]  no s/p Guillain-Barré syndrome.\n"
     			+ "  [ ✔ ]  no adverse reactions to previous influenza vaccines.\n"
     			+ "  [ ✔ ]  no pregnancy, breastfeeding, and immunosuppression.\n";
