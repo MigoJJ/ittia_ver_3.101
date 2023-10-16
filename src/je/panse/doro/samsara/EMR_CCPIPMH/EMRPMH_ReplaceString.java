@@ -8,7 +8,7 @@ public class EMRPMH_ReplaceString {
 
     public static void main(String stringB) {
         String stringA =
-            " PMH> ------------------------------------\n" +
+            "     ----------------------------------\n" +
             "     □  DM   □ HTN  □  Dyslipidemia\n" +
             "     □  Cancer      □  Operation □  Thyroid Disease\n" +
             "     □  Asthma     □  Pneumonia  □ Tuberculosis\n" +
