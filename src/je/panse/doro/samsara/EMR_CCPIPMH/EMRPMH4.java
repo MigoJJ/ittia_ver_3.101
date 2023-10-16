@@ -1,31 +1,27 @@
 package je.panse.doro.samsara.EMR_CCPIPMH;
 import javax.swing.*;
-
-import je.panse.doro.GDSEMR_frame;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EMRPMH extends JFrame {
+public class EMRPMH4 extends JFrame {
 
     private JTextArea textArea;
-    private JTextArea textArea2;
     private List<JCheckBox> checkboxes;
     private String[] checkboxLabels = {
-            "DM", "HTN", "Dyslipidemia",
+            "Diabetes Mellitus", "HTN", "Dyslipidemia",
             "Cancer", "Operation", "Thyroid Disease",
             "Asthma", "Tuberculosis", "Pneumonia",
-            "Hepatitis", "GERD", "Gout",
+            "Chronic/Acute Hepatitis", "GERD", "Gout",
             "Arthritis", "Hearing Loss", "...",
             "CVA", "Depression", "Cognitive Disorder", 
             "Angina Pectoris", "AMI", "Arrhythmia",
             "Allergy", "...","...", "Food", "Injection", "Medication"
     };
 
-    public EMRPMH() {
+    public EMRPMH4() {
         initializeFrame();
         createCenterPanel();
         createSouthPanel();
@@ -46,8 +42,6 @@ public class EMRPMH extends JFrame {
                 JCheckBox source = (JCheckBox) e.getSource();
                 if (source.isSelected()) {
                     textArea.append("   ▣   " + source.getText() + "\n\n");
-                    textArea2.append("   ▣   " + source.getText() + "\n\n");
-
 
                 } else {
                     String text = textArea.getText();
@@ -55,7 +49,6 @@ public class EMRPMH extends JFrame {
                     if (text.contains(labelLine)) {
                         text = text.replace(labelLine, "");
                         textArea.setText(text);
-                        textArea2.setText(text);
                     }
                 }
             }
@@ -68,10 +61,6 @@ public class EMRPMH extends JFrame {
         // Create a text area for output
         textArea = new JTextArea(20, 40);
         textArea.setEditable(true);
-        
-        textArea2 = new JTextArea(20, 40);
-        textArea2.setEditable(true);
-        
 
         // Create a scroll pane for the text area
         JScrollPane scrollPane = new JScrollPane(textArea);
@@ -114,20 +103,17 @@ public class EMRPMH extends JFrame {
             case "COPY":
             case "CLEAR":
                 textArea.setText(""); // Clear the text area
-                textArea2.setText(""); // Clear the text area
-
                 for (JCheckBox checkBox : checkboxes) {
                     checkBox.setSelected(false);
                 }                break;
             case "SAVE":
-            	EMRPMH_ReplaceString.main(textArea2.getText());
-                GDSEMR_frame.setTextAreaText(7, "\n" + textArea.getText());
-
+            	String stringB = "";
+            	stringB = textArea.getText();
+            	System.out.println(stringB);
+            	EMRPMH_ReplaceString.main(stringB);
             	break;
             case "QUIT":
-                textArea.setText(""); // Clear the text area
-                textArea2.setText(""); // Clear the text area
-            	dispose();
+                System.exit(0);
                 break;
         }
     }
@@ -135,7 +121,7 @@ public class EMRPMH extends JFrame {
     public static void main(String text) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                EMRPMH frame = new EMRPMH();
+                EMRPMH4 frame = new EMRPMH4();
                 frame.setVisible(true);
             }
         });
