@@ -41,7 +41,7 @@ public class GDSEMR_ButtonPanel extends JPanel {
 			 buttons[1].setText("Copy");
 			 buttons[2].setText("Clear");
 			 buttons[3].setText("Exit");
-			 buttons[4].setText("ittia_support");
+			 buttons[9].setText("ittia_support");
 			 buttons[10].setText("ittia_EMR_Lab");
 			 // Add the button panel to the north of the frame
 			 setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -52,6 +52,7 @@ public class GDSEMR_ButtonPanel extends JPanel {
 			 buttons[2].setText("F/U Chol");
 			 buttons[3].setText("F/U Thyroid");
 			 buttons[4].setText("URI");
+			 buttons[5].setText("Influenza Vaccine");
 			 buttons[9].setText("DM retinopathy");
 			 buttons[10].setText("F/U Edit");
 			 // Add the button panel to the south of the frame

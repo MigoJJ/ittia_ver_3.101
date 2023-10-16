@@ -11,6 +11,7 @@ import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
+import je.panse.doro.fourgate.Influenza.Influenza_Vaccine;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.laboratory.GDSLaboratoryDataGUI;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
@@ -51,6 +52,8 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "ittia_support":
                 	GDS_ittia_support.main(null);
                     break;
+                case "Button 5":
+                    break;
                 case "Button 6":
                     break;
                 case "Button 7":
@@ -58,8 +61,6 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "Button 8":
                     break;
                 case "Button 9":
-                    break;
-                case "Button 10":
                     break;
                 case "ittia_EMR_Lab":
                 	GDSLaboratoryDataGUI.main(null);
@@ -90,6 +91,9 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 case "URI":
                     EMR_FU_uriEdit.main(null);
+                    break;
+                case "Influenza Vaccine":
+                	Influenza_Vaccine.main();
                     break;
                 case "DM retinopathy":
                     OpenOneNotePage.main(null);
