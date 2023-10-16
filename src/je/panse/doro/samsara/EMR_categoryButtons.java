@@ -57,12 +57,7 @@ public class EMR_categoryButtons extends JFrame implements ActionListener {
 	        // Handle button clicks
 	        System.out.println("Button clicked: " + e.getActionCommand());
 	        if (e.getActionCommand().equals("PMH>")) {
-	            try {
-					EMRPMH.main(null);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+	            EMRPMH.main(null);
 	        }
 
 	    }

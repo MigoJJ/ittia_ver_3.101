@@ -23,6 +23,5 @@ public class Influenza_Vaccine {
     GDSEMR_frame.setTextAreaText(0,Influ);
     GDSEMR_frame.setTextAreaText(7,"\n  #" + "Vaxigriptetra pfs inj (4가) [0.5ml]  " + currentDate);
     GDSEMR_frame.setTextAreaText(8,Pstring);
-
     }
 }
