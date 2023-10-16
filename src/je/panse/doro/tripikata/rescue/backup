@@ -1,19 +1,10 @@
-  PMH>	 ---------------------------------
-    ☐ Diabetes Mellitus    ☐ HTN    ☐ Dyslipidemia
-    ◙  Cancer    ☐ Operation    ☐ Thyroid Disease
-    ◙  Asthma    ☐ Tuberculosis    ☐ Pneumonia
-    ☐ Chronic/Acute Hepatitis    ☐ GERD    ☐ Gout
-    ◙  Arthritis    ☐ Hearing Loss    ☐ CVA
-    ☐ Depression    ☐ Cognitive Disorder
-    ☐ ...    ◙  Angina Pectoris    ☐ AMI    ☐ Arrhythmia
-    ☐ Allergy
-    ☐ ...    ☐ ...    ◙  Food    ◙  Injection    ◙  Medication
-    --------------------------------------
-  A>	  -
-         ◙ Angina Pectoris
-         ◙ Arthritis
-         ◙ Asthma
-         ◙ Cancer
-         ◙ Medication
-         ◙ Injection
-         ◙ Food
+  CC>	 for Influenza Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+	, or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous influenza vaccines.
+  [ ✔ ]  no pregnancy, breastfeeding, and immunosuppression.
+  A>	 
+  #Vaxigriptetra pfs inj (4가) [0.5ml]  2023-10-16
+  P>	 
+   ...Vaccination as scheduled
