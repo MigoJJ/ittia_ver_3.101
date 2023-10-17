@@ -1,16 +1,14 @@
-  PMH>	  PMH> ------------------------------------
-     □  DM   □ HTN  □  Dyslipidemia
-     □  Cancer      ▣  Operation ▣  Thyroid Disease
-     □  Asthma     □  Pneumonia  ▣  Tuberculosis
-     □  Hepatitis   ▣  GERD        □  Gout
-     □  Arthritis    □  Hearing Loss  □ ...
-     □  CVA          □ Depression  □  Cognitive Disorder
-     □  Angina Pectoris          □  AMI   □  Arrhythmia
-     □  Allergy      □  ...
-     □  Food        □  Injection □   Medication
-      ------------------------------------
+  CC>	 for Influenza Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+        , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous influenza vaccines.
+  [ ✔ ]  no pregnancy, breastfeeding, and immunosuppression.
   A>	 
-   ▣   Thyroid Disease
-   ▣   Operation
-   ▣   Tuberculosis
-   ▣   GERD 2q143623456  with medications
+  #Vaxigriptetra pfs inj (4가) 2023-10-17
+  #SKY Cellflu (4 가) 2023-10-17
+  #Tdap (Tetanus, Diphtheria, Pertussis) 2023-10-17
+  #Shingles Vaccine (Shingrix) 2023-10-17
+  #Prevena 13 2023-10-17
+  P>	 
+   ...Vaccination as scheduled

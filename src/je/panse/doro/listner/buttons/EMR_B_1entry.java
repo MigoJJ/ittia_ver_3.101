@@ -11,7 +11,7 @@ import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
-import je.panse.doro.fourgate.Influenza.Influenza_Vaccine;
+import je.panse.doro.fourgate.Influenza.InjectionApp;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.laboratory.GDSLaboratoryDataGUI;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
@@ -92,8 +92,8 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "URI":
                     EMR_FU_uriEdit.main(null);
                     break;
-                case "Influenza Vaccine":
-                	Influenza_Vaccine.main();
+                case "Injections":
+                	InjectionApp.main(null);
                     break;
                 case "DM retinopathy":
                     OpenOneNotePage.main(null);

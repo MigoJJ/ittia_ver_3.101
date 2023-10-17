@@ -52,7 +52,7 @@ public class GDSEMR_ButtonPanel extends JPanel {
 			 buttons[2].setText("F/U Chol");
 			 buttons[3].setText("F/U Thyroid");
 			 buttons[4].setText("URI");
-			 buttons[5].setText("Influenza Vaccine");
+			 buttons[5].setText("Injections");
 			 buttons[9].setText("DM retinopathy");
 			 buttons[10].setText("F/U Edit");
 			 // Add the button panel to the south of the frame
