@@ -11,7 +11,7 @@ import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
-import je.panse.doro.fourgate.Influenza.InjectionApp;
+import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.laboratory.GDSLaboratoryDataGUI;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
