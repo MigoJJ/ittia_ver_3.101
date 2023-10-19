@@ -119,9 +119,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             button.setMaximumSize(size);
         }
 
-
         JPanel contentPanel = new JPanel(new GridBagLayout());
-
         // Adding JTextAreas and other components to the contentPanel
         addComponent(contentPanel, new JLabel("Input Data:"), 0, 0, GridBagConstraints.NORTH);
         addComponent(contentPanel, new JScrollPane(inputTextArea), 1, 0, GridBagConstraints.BOTH);
