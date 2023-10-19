@@ -1,4 +1,4 @@
-package je.panse.doro.listner.laboratory;
+package je.panse.doro.listner.AI_bard_chatGPT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class GDSLaboratoryDataModify {
     public static void main(String textFromInputArea) {
         for (Map.Entry<String, String> entry : MAPPING.entrySet()) {
             if (textFromInputArea.contains(entry.getKey())) {
-                GDSLaboratoryDataGUI.appendTextAreas(entry.getValue());
+                GDSLaboratoryGUI.appendTextAreas(entry.getValue());
             }
         }
     }

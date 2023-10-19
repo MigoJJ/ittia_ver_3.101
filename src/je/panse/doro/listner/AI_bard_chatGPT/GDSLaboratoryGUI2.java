@@ -1,4 +1,4 @@
-package je.panse.doro.listner.laboratory;
+package je.panse.doro.listner.AI_bard_chatGPT;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -7,11 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
+public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static final String bardorder = """
+    private static final String labbardorder = """
             make table
             if parameter does not exist -> remove the row;
             Parameter Value Unit 
@@ -20,7 +20,7 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
     
     private JButton[] buttons;
     
-    public GDSLaboratoryDataGUI() {
+    public GDSLaboratoryGUI2() {
         setupFrame();
         setupTextAreas();
         setupButtons();
@@ -114,7 +114,7 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
         		+ "\nthe below contents are data --------------------------\n" 
         		+ textFromInputArea 
         		+ "\nthe dataset finished --------------------------\n");
-        outputTextArea.append("\n" + bardorder);
+        outputTextArea.append("\n" + labbardorder);
         GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
@@ -128,7 +128,7 @@ public class GDSLaboratoryDataGUI extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            GDSLaboratoryDataGUI gui = new GDSLaboratoryDataGUI();
+            GDSLaboratoryGUI2 gui = new GDSLaboratoryGUI2();
             gui.setVisible(true);
         });
     }

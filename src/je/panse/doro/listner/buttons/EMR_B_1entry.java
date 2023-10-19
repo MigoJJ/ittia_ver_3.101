@@ -13,7 +13,7 @@ import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
-import je.panse.doro.listner.laboratory.GDSLaboratoryDataGUI;
+import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
 import je.panse.doro.support.GDS_ittia_support;
@@ -63,7 +63,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "Button 9":
                     break;
                 case "ittia_EMR_Lab":
-                	GDSLaboratoryDataGUI.main(null);
+                	GDSLaboratoryGUI.main(null);
                     break;
                 default:
                     System.out.println("Invalid Button title");
