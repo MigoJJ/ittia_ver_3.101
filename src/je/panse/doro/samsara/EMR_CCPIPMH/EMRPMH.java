@@ -36,6 +36,14 @@ public class EMRPMH extends JFrame {
         setSize(900, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         checkboxes = new ArrayList<>();
+
+        // Get the screen size
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+
+        // Set the location of the frame to the lower left corner
+        setLocation(0, screenHeight - this.getHeight());
     }
 
     private JCheckBox createCheckBox(String label) {

@@ -17,8 +17,8 @@ public class InjectionApp {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     
     private static final String[] BUTTON_LABELS = {
-        "Vaxigriptetra pfs inj (4가)",
-        "SKY Cellflu (4 가)",
+        "Vaxigriptetra pfs inj (4가) [유독]",
+        "SKY Cellflu (4 가) [nip] ",
         "Tdap (Tetanus, Diphtheria, Pertussis)",
         "Shingles Vaccine (Shingrix) #1/2",
         "HAV vaccination #1/2",
@@ -75,7 +75,7 @@ public class InjectionApp {
                 + "        , or any other component of the vaccine.\n"
                 + "  [ ✔ ]  no s/p Guillain-Barré syndrome.\n"
                 + "  [ ✔ ]  no adverse reactions to previous vaccines.\n"
-                + "  [ ✔ ]  no pregnancy, breastfeeding, and immunosuppression.\n";
+                + "  [ ✔ ]  no immunosuppression.\n";
         String Pstring = "\n   ...Vaccination as scheduled";
         String Influ = CCstring + PIstring;
 
