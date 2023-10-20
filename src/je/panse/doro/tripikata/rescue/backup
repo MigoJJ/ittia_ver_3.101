@@ -1,22 +1,23 @@
-  CC>    Sore throat and cough  
-The patient visitis for Vaccination
-  [ ✔ ]  no allergy to eggs, chicken
-        , or any other component of the vaccine.
-  [ ✔ ]  no s/p Guillain-Barré syndrome.
-  [ ✔ ]  no adverse reactions to previous vaccines.
-  [ ✔ ]  no pregnancy, breastfeeding, and immunosuppression.
-  S>
-The patient reports experiencing symptoms of URI,
-including cough, sore throat, and congestion.
-  O>
- Vital signs are within normal limits.
- CHB without rale[ - / - ] 
-  A>
-# The patient is diagnosed with a mild URI.
-  #  SKY Cellflu (4 가)  [2023-10-17]
-  P>
-Conservative treatment measures will be implemented, 
-including rest, increased fluid intake, 
-and symtptom relief meds as needed. 
-F/U will be scheduled in 1 week to assess symptom.
-  #  Recommend for Delayed Immunization  [2023-10-17]
+  ROS>	 < Head_and_Neck >,
+[◇] Headache,
+[◇] Neck pain,
+[◇] Earache,
+[◆] Sinus congestion,
+[◇] Sore throat,
+[◆] Difficulty swallowing,
+[◆] Hoarseness,
+[◇] Jaw pain,
+[◆] Facial swelling,
+[◇] Nasal congestion,
+[◇] Runny nose,
+[◇] Dizziness,
+[◇] Tinnitus (ringing in the ears),
+[◇] Vision changes,
+[◇] Mouth sores,
+[◇] Gum bleeding,
+[◇] Enlarged lymph nodes,
+[◇] Thyroid problems,
+[◇] Temporomandibular joint (TMJ) issues,
+[◇] Snoring,
+[◇] Sleep apnea
+  Comment>	 [Sinus congestion, Difficulty swallowing, Hoarseness, Facial swelling]
