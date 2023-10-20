@@ -102,7 +102,7 @@ public class EMR_ROS extends JFrame {
                 int rowIndex = table.getSelectedRow();
                 int columnIndex = table.getSelectedColumn();
                     Object cellValue = table.getValueAt(rowIndex, columnIndex);
-                    outputArea.append("   [+] " + cellValue.toString() + "\n");
+                    outputArea.append("   [ ▶ ] " + cellValue.toString() + "\n");
                     selectList.add(cellValue.toString());
                 }
         });
