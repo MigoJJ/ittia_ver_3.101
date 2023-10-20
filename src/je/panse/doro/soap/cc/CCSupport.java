@@ -103,6 +103,9 @@ public class CCSupport {
 
     private void saveAction(ActionEvent e) {
         String assess = textArea.getText();
+        if (assess.endsWith("\n")) {
+            assess = assess.substring(0, assess.length() - 1);
+        }
         GDSEMR_frame.setTextAreaText(0, "   " + assess +"\t:(" );
     }
 
