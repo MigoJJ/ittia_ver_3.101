@@ -38,32 +38,56 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             """;
     
     private static final String bardorderpro = """
-			the dataset finished --------------------------
-			
-			make problem list;
-			▣   ->  The Patient has suffered from
-			□   ->  The Patient has  not suffered from
-    		format will be required ;
-    		indentation and prefix   "    # ."  and  "        -   . ";
-			problem sample list is;
-			starting------------------------------
-			***  Problem List   ***********************
-			
-			    #1  Cardiovascular
-			          -  Hypertension (2006-02-17 ~ Present)
-			
-			    #2  Hepatic
-			         -  Fatty Liver
-			
-			    #3  Musculoskeletal
-			         -  Varicose veins (surgery performed 2019)
-			
-			    #4  Substance Use
-			         -  Heavy alcohol consumption
-			
-			    #5  Neurological
-			         -  Headache with medications (2023-10)
-			finishing-------------------------------
+the dataset finished --------------------------
+
+make problem list and comment;
+
+PMH>	-> Past Medical history;
+▣   ->  The Patient has suffered from
+□   ->  The Patient has  not suffered from
+
+▲     -> upper value for reference
+▼     -> lower value for reference
+
+if the problem list is "None" -> remove;
+
+
+
+format will be required ;
+indentation and prefix   "    # ."  and  "        -   . ";
+
+
+problem sample list is;
+
+starting------------------------------
+
+***  Problem List   ***********************
+
+    #1  Cardiovascular
+          -  ... (2006-02-17 ~ Present)
+      
+    #2  Endocrinology
+          -  ...   
+          -  ...   
+          -  ...   
+
+    #2  Hepatic
+         -  ...
+
+    #3  Musculoskeletal
+         -  ... (surgery performed 2019)
+
+    #4  Substance Use
+         -  ...
+
+    #5  Neurological
+         -  ... (2023-10)
+
+    #6  Comment
+          -  ...   
+          -  ...   
+          -  ...   
+finishing-------------------------------
 
             """;
     
