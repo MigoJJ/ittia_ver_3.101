@@ -11,7 +11,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static String[] centerButtonLabels = {"Modify List", "Modify Lab","Problem List","Modify ..."};
+    private static String[] centerButtonLabels = {"Modify List", "Modify Lab","EMR Summary","Modify ..."};
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
@@ -215,7 +215,7 @@ finishing-------------------------------
         switch (e.getActionCommand()) {
         	case "Modify List" -> modifyActionlist();
             case "Modify Lab" -> modifyActionlab();
-            case "Problem List" -> modifyActionpro();
+            case "EMR Summary" -> modifyActionpro();
             case "Copy to Clipboard" -> copyToClipboardAction();
             case "Clear Input" -> inputTextArea.setText("");
             case "Clear Output" -> outputTextArea.setText("");
