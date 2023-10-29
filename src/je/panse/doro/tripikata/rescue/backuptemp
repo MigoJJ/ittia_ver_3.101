@@ -1,23 +1,15 @@
-  ROS>	 < Head_and_Neck >,
-[◇] Headache,
-[◇] Neck pain,
-[◇] Earache,
-[◆] Sinus congestion,
-[◇] Sore throat,
-[◆] Difficulty swallowing,
-[◆] Hoarseness,
-[◇] Jaw pain,
-[◆] Facial swelling,
-[◇] Nasal congestion,
-[◇] Runny nose,
-[◇] Dizziness,
-[◇] Tinnitus (ringing in the ears),
-[◇] Vision changes,
-[◇] Mouth sores,
-[◇] Gum bleeding,
-[◇] Enlarged lymph nodes,
-[◇] Thyroid problems,
-[◇] Temporomandibular joint (TMJ) issues,
-[◇] Snoring,
-[◇] Sleep apnea
-  Comment>	 [Sinus congestion, Difficulty swallowing, Hoarseness, Facial swelling]
+  PMH>	      ----------------------------------
+     □  DM   □ HTN  □  Dyslipidemia
+     □  Cancer      □  Operation ▣  Thyroid Disease
+     □  Asthma     ▣  Pneumonia  □ Tuberculosis
+     □  Hepatitis   □  GERD        ▣  Gout
+     □  Arthritis    □  Hearing Loss  □ ...
+     □  CVA          □ Depression  □  Cognitive Disorder
+     □  Angina Pectoris          □  AMI   □  Arrhythmia
+     □  Allergy      □  ...
+     □  Food        □  Injection □   Medication
+      ------------------------------------
+  A>	 
+   ▣   Thyroid Disease
+   ▣   Pneumonia
+   ▣   Gout

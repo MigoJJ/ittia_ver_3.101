@@ -1,9 +1,5 @@
 package je.panse.doro.listner.buttons;
 
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_Edit;
@@ -14,6 +10,8 @@ import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
+import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_CopyBackup;
+import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_FileListFrame;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
 import je.panse.doro.support.GDS_ittia_support;
@@ -30,14 +28,12 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 case "Rescue":
                     EMR_Write_To_Chartplate.copyToClipboard(tempOutputArea);
                     FileGeditToCilpboard.FileGeditToCilpboard();
+                    EMR_B_FileListFrame.main(null);
                     break;
-                case "Copy":
-                	
-            	    String textToCopy = tempOutputArea.getText();
-            	    StringSelection selection = new StringSelection(textToCopy);
-            	    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-            	    clipboard.setContents(selection, null);
-                	
+                case "Copy + Backup":
+                	EMR_B_CopyBackup backupHelper = new EMR_B_CopyBackup();
+                	backupHelper.saveTextToFile(tempOutputArea.getText());  // Replace 12345 with the actual serial number
+                    EMR_B_FileListFrame.main(null);
                     break;
                 case "Clear":
                     for (int i = 0; i < textAreas.length; i++) {

@@ -25,9 +25,9 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("D3", "\n [ Vitamin-D3 ]");
         MAPPING.put("Uric", "\n [ Uric Acid ]");
         MAPPING.put("Insulin", "\n [ Insulin ]");
-        MAPPING.put("AFP", "\n [ AFP / CEA / CA19-9 / PSA / CA125]");
-
-
+        MAPPING.put("AFP", "\n [ AFP / CEA / CA19-9 / PSA / CA125 ]");
+        MAPPING.put("Sodium", "\n [ Na - Cl - K ]");
+        MAPPING.put("Calcium", "\n [ Calcium - Phosphrus ]");
         
     }
 

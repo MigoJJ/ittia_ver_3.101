@@ -26,12 +26,8 @@ public class EMR_ROS_JtableDATA {
 	        "Night sweats",
 	        "Headache",
 	        "Changes in vision or hearing",
-	        "Changes in appetite or thirst",
 	        "Chest pain or discomfort",
 	        "Shortness of breath or difficulty breathing",
-	        "Cough or sputum production",
-	        "Abdominal pain or discomfort",
-	        "Nausea or vomiting",
 	        "Changes in bowel habits",
 	        "Joint pain or stiffness",
 	        "Muscle pain or weakness",
@@ -78,14 +74,13 @@ public class EMR_ROS_JtableDATA {
 			"Dizziness or lightheadedness",
 			"Edema or swelling of the legs or ankles",
 			"Fatigue or weakness with exertion",
-			"History of high blood pressure or hypertension",
-			"History of heart disease or heart attack",
-			"Family history of cardiovascular disease",
 			"Previous cardiac surgeries or interventions",
 			"Use of tobacco or alcohol",
 			"Physical inactivity or sedentary lifestyle",
-			"High cholesterol or triglycerides",
-			"Diabetes or metabolic syndrome"
+			"Family history of cardiovascular disease",
+			"History of high blood pressure or hypertension",
+			"History of heart disease or heart attack",
+
         };
     }
     public static String[] Head_and_Neck() {
@@ -93,21 +88,13 @@ public class EMR_ROS_JtableDATA {
     	    "Headache",
     	    "Neck pain",
     	    "Earache",
-    	    "Sinus congestion",
-    	    "Sore throat",
     	    "Difficulty swallowing",
     	    "Hoarseness",
-    	    "Jaw pain",
     	    "Facial swelling",
-    	    "Nasal congestion",
-    	    "Runny nose",
-    	    "Dizziness",
+    	    "Dizziness or Vertigo",
     	    "Tinnitus (ringing in the ears)",
     	    "Vision changes",
     	    "Mouth sores",
-    	    "Gum bleeding",
-    	    "Enlarged lymph nodes",
-    	    "Thyroid problems",
     	    "Temporomandibular joint (TMJ) issues",
     	    "Snoring",
     	    "Sleep apnea"
@@ -116,28 +103,21 @@ public class EMR_ROS_JtableDATA {
     public static String[] Pulmonary() {
     	return new String[] {
 		    "Cough",
-		    "Shortness of breath",
 		    "Wheezing",
-		    "Chest pain",
-		    "Chest tightness",
+		    "Chest pain or tight ness",
+		    "Shortness of breath",
 		    "Sputum production",
 		    "Hemoptysis (coughing up blood)",
-		    "Difficulty breathing",
 		    "Frequent respiratory infections",
-		    "Fatigue",
 		    "Cyanosis (bluish discoloration of lips or skin)",
 		    "Clubbing of fingers",
 		    "Orthopnea (difficulty breathing while lying flat)",
 		    "Paroxysmal nocturnal dyspnea (sudden difficulty breathing at night)",
 		    "Snoring",
-		    "Sleep apnea",
 		    "Allergies",
 		    "Asthma",
 		    "Chronic obstructive pulmonary disease (COPD)",
-		    "Pneumonia",
-		    "Pulmonary embolism",
-		    "Tuberculosis",
-		    "Lung cancer"
+		    
     	};
 	}
     public static String[] Gastrointestinal() {
@@ -163,10 +143,8 @@ public class EMR_ROS_JtableDATA {
 		    "Hepatitis",
 		    "Gastroesophageal reflux disease (GERD)",
 		    "Peptic ulcer disease",
-		    "Inflammatory bowel disease (IBD)",
-		    "Irritable bowel syndrome (IBS)",
 		    "Gastrointestinal bleeding",
-		    "Colorectal cancer"
+		    
     	};
 	}
     public static String[] GenitoUrinary() {

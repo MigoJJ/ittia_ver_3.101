@@ -1,6 +1,6 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.awt.*;	
+import java.awt.*;		
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
@@ -11,7 +11,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static String[] centerButtonLabels = {"Modify List", "Modify Lab","Modify Chart","Modify ..."};
+    private static String[] centerButtonLabels = {"Modify List", "Modify Lab","EMR Summary","Modify ..."};
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
@@ -37,6 +37,60 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
             """;
     
+    private static final String bardorderpro = """
+the dataset finished --------------------------
+
+make problem list and comment;
+
+PMH>	-> Past Medical history;
+▣   ->  The Patient has suffered from
+□   ->  The Patient has  not suffered from
+
+▲     -> upper value for reference
+▼     -> lower value for reference
+
+if the problem list is "None" -> remove;
+
+
+
+format will be required ;
+indentation and prefix   "    # ."  and  "        -   . ";
+
+
+problem sample list is;
+
+starting------------------------------
+
+***  Problem List   ***********************
+
+    #1  Cardiovascular
+          -  ... (2006-02-17 ~ Present)
+      
+    #2  Endocrinology
+          -  ...   
+          -  ...   
+          -  ...   
+
+    #2  Hepatic
+         -  ...
+
+    #3  Musculoskeletal
+         -  ... (surgery performed 2019)
+
+    #4  Substance Use
+         -  ...
+
+    #5  Neurological
+         -  ... (2023-10)
+
+    #6  Comment
+          -  ...   
+          -  ...   
+          -  ...   
+finishing-------------------------------
+
+            """;
+    
     public GDSLaboratoryGUI() {
         setupFrame();
         setupTextAreas();
@@ -46,7 +100,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void setupFrame() {
         setTitle("GDS Laboratory Data");
-        setSize(1200, 800);
+        setSize(1200, 900);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Color backgroundColor = new Color(0xffdfba); // convert hex to Color object
@@ -161,6 +215,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         switch (e.getActionCommand()) {
         	case "Modify List" -> modifyActionlist();
             case "Modify Lab" -> modifyActionlab();
+            case "EMR Summary" -> modifyActionpro();
             case "Copy to Clipboard" -> copyToClipboardAction();
             case "Clear Input" -> inputTextArea.setText("");
             case "Clear Output" -> outputTextArea.setText("");
@@ -182,7 +237,10 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         outputTextArea.append(""
         		+ "\nthe below contents are data --------------------------\n" 
         		+ textFromInputArea 
-        		+ "\nthe dataset finished --------------------------\n");
+        		+ "\nthe dataset finished --------------------------\n"
+        		+ "\nmerge parameters like below;\n"
+        		+ "\ndo not calculate between values;\n"
+        		+ "\nthe row titles ;----------------------\n");
 
         GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
@@ -198,6 +256,16 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         copyToClipboardAction();
     }
 
+    private void modifyActionpro() {
+        String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append(""
+        		+ "\nthe below contents are data --------------------------\n" 
+        		+ textFromInputArea 
+        		+ "\n");
+        outputTextArea.append("\n" + bardorderpro);
+        copyToClipboardAction();
+    }
+    
     private void copyToClipboardAction() {
         String textToCopy = outputTextArea.getText();
         StringSelection selection = new StringSelection(textToCopy);
