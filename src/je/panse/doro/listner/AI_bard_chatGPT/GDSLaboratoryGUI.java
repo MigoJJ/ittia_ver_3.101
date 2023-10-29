@@ -239,7 +239,8 @@ finishing-------------------------------
         		+ textFromInputArea 
         		+ "\nthe dataset finished --------------------------\n"
         		+ "\nmerge parameters like below;\n"
-				+ "\nthe row titles ;----------------------\n");
+        		+ "\ndo not calculate between values;\n"
+        		+ "\nthe row titles ;----------------------\n");
 
         GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();

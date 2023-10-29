@@ -27,7 +27,7 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("Insulin", "\n [ Insulin ]");
         MAPPING.put("AFP", "\n [ AFP / CEA / CA19-9 / PSA / CA125 ]");
         MAPPING.put("Sodium", "\n [ Na - Cl - K ]");
-        MAPPING.put("Calcium", "\n [ Ca - P ]");
+        MAPPING.put("Calcium", "\n [ Calcium - Phosphrus ]");
         
     }
 
