@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class GDSLaboratoryGUI extends JFrame implements ActionListener {
+public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
@@ -20,58 +20,78 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             Parameter Value Unit 
             using value format 
             """;
-
     private static final String bardorderlist = """
-            modify the data using format like below data sample;
-            format sample data starting-------------
-            #1  Neurological
-                  - Pituitary nonfunctioning tumor (surgery performed) (2016)
-                  - Optic nerve deterioration (2021)
-                      > CT and MRI: normal
-                      > MRI: CVA[+]
-            #2  disease category
-            #3  disease category
-            format sample data finishing----------------
-            organize and make summary list using format;
-            the list sorted by disease category;
-            """;
+			modify the data using format  like below data sample;
+			format sample data starting-------------
+			    #1  Neurological
+			          - Pituitary nonfunctioning tumor (surgery performed) (2016)
+			          - Optic nerve deterioration (2021)
+			              > CT and MRI: normal
+			              > MRI: CVA[+]
+			    #2  disease category
+			    #3  disease category
+			format sample data finishing----------------
+			
+			organize and make summary list using format;
+			the list sorted by disease category;
 
-    private static final String bardorderpro = """
-            the dataset finished --------------------------
-            make problem list and comment;
-            PMH>    -> Past Medical history;
-            ▣   ->  The Patient has suffered from
-            □   ->  The Patient has  not suffered from
-            ▲     -> upper value for reference
-            ▼     -> lower value for reference
-            if the problem list is "None" -> remove;
-            format will be required ;
-            indentation and prefix   "    # ."  and  "        -   . ";
-            problem sample list is;
-            starting------------------------------
-            ***  Problem List   ***********************
-            #1  Cardiovascular
-                  -  ... (2006-02-17 ~ Present)
-            #2  Endocrinology
-                  -  ...   
-                  -  ...   
-                  -  ...   
-            #2  Hepatic
-                 -  ...
-            #3  Musculoskeletal
-                 -  ... (surgery performed 2019)
-            #4  Substance Use
-                 -  ...
-            #5  Neurological
-                 -  ... (2023-10)
-            #6  Comment
-                  -  ...   
-                  -  ...   
-                  -  ...   
-            finishing-------------------------------
             """;
     
-    public GDSLaboratoryGUI() {
+    private static final String bardorderpro = """
+			the dataset finished --------------------------
+			
+			make problem list and comment;
+			
+			PMH>	-> Past Medical history;
+			▣   ->  The Patient has suffered from
+			□   ->  The Patient has  not suffered from
+			
+			▲     -> upper value for reference
+			▼     -> lower value for reference
+			
+			if the problem list is "None" -> remove;
+			
+			
+			
+			format will be required ;
+			indentation and prefix   "    # ."  and  "        -   . ";
+			
+			
+			problem sample list is;
+			
+			starting------------------------------
+			
+			***  Problem List   ***********************
+			
+			    #1  Cardiovascular
+			          -  ... (2006-02-17 ~ Present)
+			      
+			    #2  Endocrinology
+			          -  ...   
+			          -  ...   
+			          -  ...   
+			
+			    #2  Hepatic
+			         -  ...
+			
+			    #3  Musculoskeletal
+			         -  ... (surgery performed 2019)
+			
+			    #4  Substance Use
+			         -  ...
+			
+			    #5  Neurological
+			         -  ... (2023-10)
+			
+			    #6  Comment
+			          -  ...   
+			          -  ...   
+			          -  ...   
+			finishing-------------------------------
+			
+			            """;
+    
+    public GDSLaboratoryGUI2() {
         setupFrame();
         setupTextAreas();
         setupButtons();
@@ -106,74 +126,55 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     }
 
     private void arrangeComponents() {
-        // Create the panels for the buttons
-        JPanel centerButtonPanel = createButtonPanel(centerButtonLabels);
-        JPanel eastButtonPanel = createButtonPanelWithStruts(eastButtonLabels);
+        JPanel eastButtonPanel = new JPanel();
+        eastButtonPanel.setLayout(new BoxLayout(eastButtonPanel, BoxLayout.Y_AXIS));
 
-        // Adjust button dimensions for uniformity
-        setUniformButtonDimensions(centerButtonPanel, eastButtonPanel);
+        JPanel centerButtonPanel = new JPanel();
+        centerButtonPanel.setLayout(new FlowLayout()); // or any other layout you prefer for the center buttons
 
-        // Main content panel using GridBagLayout
-        JPanel contentPanel = new JPanel(new GridBagLayout());
-        addComponentsToContentPanel(contentPanel);
+        JButton[] centerButtons = new JButton[centerButtonLabels.length];
 
-        // Set layout and add main components
-        setLayout(new BorderLayout());
-        add(contentPanel, BorderLayout.CENTER);
-        add(eastButtonPanel, BorderLayout.EAST);
-    }
-
-    private JPanel createButtonPanel(String[] labels) {
-        JPanel panel = new JPanel(new FlowLayout());
-        for (String label : labels) {
-            JButton button = createButton(label);
-            panel.add(button);
+        for (int i = 0; i < centerButtonLabels.length; i++) {
+            centerButtons[i] = createButton(centerButtonLabels[i]);
+            centerButtonPanel.add(centerButtons[i]);
         }
-        return panel;
-    }
 
-    private JPanel createButtonPanelWithStruts(String[] labels) {
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        for (int i = 0; i < labels.length; i++) {
-            JButton button = createButton(labels[i]);
-            panel.add(button);
-            if (i != labels.length - 1) { // Avoid adding a strut after the last button
-                panel.add(Box.createVerticalStrut(5));
+        JButton[] eastButtons = new JButton[eastButtonLabels.length];
+
+        for (int i = 0; i < eastButtonLabels.length; i++) {
+            eastButtons[i] = createButton(eastButtonLabels[i]);
+            eastButtonPanel.add(eastButtons[i]);
+            if (i != eastButtonLabels.length - 1) { // Avoid adding a strut after the last button
+                eastButtonPanel.add(Box.createVerticalStrut(5));
             }
         }
-        return panel;
-    }
 
-    private void setUniformButtonDimensions(JPanel... panels) {
+     // Determine the maximum width across all buttons
         int maxWidth = 0;
-        int fixedHeight = 40; // Fixed height in pixels
-
-        // Determine the maximum width across all buttons
-        for (JPanel panel : panels) {
-            for (Component component : panel.getComponents()) {
-                if (component instanceof JButton) {
-                    JButton button = (JButton) component;
-                    maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
-                    button.setBorder(BorderFactory.createLoweredBevelBorder());
-                }
-            }
+        for (JButton button : centerButtons) {
+            maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
+            button.setBorder(BorderFactory.createLoweredBevelBorder());  // 버튼에 대해 Border 설정
+        }
+        for (JButton button : eastButtons) {
+            maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
+            button.setBorder(BorderFactory.createLoweredBevelBorder());  // 버튼에 대해 Border 설정
         }
 
         // Set all buttons to the maximum width and fixed height
-        Dimension size = new Dimension(maxWidth, fixedHeight);
-        for (JPanel panel : panels) {
-            for (Component component : panel.getComponents()) {
-                if (component instanceof JButton) {
-                    JButton button = (JButton) component;
-                    button.setPreferredSize(size);
-                    button.setMaximumSize(size);
-                }
-            }
+        int fixedHeight = 40; // Fixed height in pixels
+        for (JButton button : centerButtons) {
+            Dimension size = new Dimension(maxWidth, fixedHeight);
+            button.setPreferredSize(size);
+            button.setMaximumSize(size);
         }
-    }
+        for (JButton button : eastButtons) {
+            Dimension size = new Dimension(maxWidth, fixedHeight);
+            button.setPreferredSize(size);
+            button.setMaximumSize(size);
+        }
 
-    private void addComponentsToContentPanel(JPanel contentPanel) {
+        JPanel contentPanel = new JPanel(new GridBagLayout());
+        // Adding JTextAreas and other components to the contentPanel
         addComponent(contentPanel, new JLabel("Input Data:"), 0, 0, GridBagConstraints.NORTH);
         addComponent(contentPanel, new JScrollPane(inputTextArea), 1, 0, GridBagConstraints.BOTH);
         addComponent(contentPanel, new JLabel("Output Data:"), 2, 0, GridBagConstraints.NORTH);
@@ -182,28 +183,32 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.insets = new Insets(5, 5, 5, 5);
         constraints.gridx = 0;
-        constraints.gridy = 4; 
+        constraints.gridy = 4; // Changed the y coordinate to place the buttons below the JTextAreas
         constraints.gridwidth = 4;
         constraints.anchor = GridBagConstraints.CENTER;
-        contentPanel.add(createButtonPanel(centerButtonLabels), constraints);
+        contentPanel.add(centerButtonPanel, constraints);
+
+        // Using BorderLayout to add both the GridBagLayout and the east buttons
+        setLayout(new BorderLayout());
+        add(contentPanel, BorderLayout.CENTER);
+        add(eastButtonPanel, BorderLayout.EAST);
     }
 
-    private void addComponent(JPanel contentPanel, JScrollPane jScrollPane, int i, int j, int both) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private void addComponent(JPanel contentPanel, JLabel jLabel, int i, int j, int north) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	private JButton createButton(String label) {
+    private JButton createButton(String label) {
         JButton button = new JButton(label);
         button.addActionListener(this);
+        button.setBackground(Color.decode("#ffffba"));
         return button;
     }
 
+    private void addComponent(JPanel panel, Component comp, int x, int y, int fill) {
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.gridx = x;
+        constraints.gridy = y;
+        constraints.fill = fill;
+        panel.add(comp, constraints);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {

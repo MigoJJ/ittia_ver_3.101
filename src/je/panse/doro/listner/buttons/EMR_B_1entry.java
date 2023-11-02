@@ -30,7 +30,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     FileGeditToCilpboard.FileGeditToCilpboard();
                     EMR_B_FileListFrame.main(null);
                     break;
-                case "Copy + Backup":
+                case "Backup":
                 	EMR_B_CopyBackup backupHelper = new EMR_B_CopyBackup();
                 	backupHelper.saveTextToFile(tempOutputArea.getText());  // Replace 12345 with the actual serial number
                     EMR_B_FileListFrame.main(null);
@@ -58,7 +58,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 case "Button 9":
                     break;
-                case "ittia_EMR_Lab":
+                case "ittia_EMR_AI":
                 	GDSLaboratoryGUI.main(null);
                     break;
                 default:
