@@ -1,6 +1,6 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.util.HashMap;
+import java.util.HashMap;	
 import java.util.Map;
 
 public class GDSLaboratoryDataModify {
