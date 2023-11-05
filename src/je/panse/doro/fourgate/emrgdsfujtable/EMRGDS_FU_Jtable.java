@@ -1,20 +1,21 @@
 package je.panse.doro.fourgate.emrgdsfujtable;
 
-import java.awt.*;
+import java.awt.*;			
 import java.awt.event.*;
 import java.io.*;
 import java.util.Vector;
 import javax.swing.*;
 import javax.swing.table.*;
 
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
 // Main Class for creating the GUI Table
 public class EMRGDS_FU_Jtable {
     
-    private JFrame frame;
+    private static JFrame frame;
     public static JTable table;
-    private DefaultTableModel model;
+    private static DefaultTableModel model;
     private JButton saveButton, loadButton;
 
     public EMRGDS_FU_Jtable() {
@@ -50,7 +51,7 @@ public class EMRGDS_FU_Jtable {
     }
 
     // Set specific row and column dimensions
-    private void setRowAndColumnDimensions() {
+    private static void setRowAndColumnDimensions() {
     	table.setRowHeight(80);
 //        table.setRowHeight(0, 150);  
         table.setRowHeight(0, 50);
@@ -99,8 +100,7 @@ public class EMRGDS_FU_Jtable {
         }
     }
 
-
-    private void loadData() {
+    private static void loadData() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(EntryDir.homeDir + "/fourgate/emrgdsfujtable/tabledata.ser"))) {
             
             // Load table data
@@ -122,24 +122,91 @@ public class EMRGDS_FU_Jtable {
 
             // Reapply the row dimensions after loading the data
             setRowAndColumnDimensions();
-
+//            printTableData(); 
+            
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
 
-
-
-    // Print table data to console
     private void printTableData() {
-        for (int row = 0; row < table.getRowCount(); row++) {
-            for (int col = 0; col < table.getColumnCount(); col++) {
-                System.out.print(table.getValueAt(row, col) + "\t");
+        for (int col = 0; col < table.getColumnCount(); col++) {
+            String columnName = table.getColumnName(col);
+            System.out.println("Column " + (col + 1) + " (" + columnName + "):");
+            for (int row = 0; row < table.getRowCount(); row++) {
+                System.out.println("Row [" + (row + 1) + "]: " + table.getValueAt(row, col));
             }
-            System.out.println();  // New line after each row
+            System.out.println(); // Add an empty line for separation
         }
     }
 
+								    static void extractTableData(String coName) {
+								        loadData();
+								
+								        if (isColumnNameInvalid(coName)) {
+								            return;
+								        }
+								
+								        int columnIndex = findColumnIndex(coName);
+								        
+								        if (columnIndex == -1) {
+								            System.out.println("Column named '" + coName + "' not found.");
+								            return;
+								        }
+								
+								        printColumnData(columnIndex, coName);
+								
+								    }
+								
+								    private static boolean isColumnNameInvalid(String coName) {
+								        if (coName == null || coName.trim().isEmpty()) {
+								            System.out.println("Column name is either null or empty.");
+								            return true;
+								        }
+								        return false;
+								    }
+								
+								    private static int findColumnIndex(String coName) {
+								        for (int col = 0; col < table.getColumnCount(); col++) {
+								            if (table.getColumnName(col).equals(coName)) {
+								                return col;
+								            }
+								        }
+								        return -1;
+								    }
+								
+								    private static void printColumnData(int columnIndex, String coName) {
+								        System.out.println("Column: " + coName);
+								
+								        for (int row = 0; row < table.getRowCount(); row++) {
+								            Object value = table.getValueAt(row, columnIndex);
+								            
+								            String jtableExtractString = null;
+								            if (value instanceof String) {
+								                jtableExtractString = (String) value;
+								            } else {
+								                // handle non-string values appropriately
+								            }
+								
+								            printRowData(row, jtableExtractString);
+								        }
+								
+								        System.out.println(); // Add an empty line for separation
+								    }
+								
+								    private static void printRowData(int row, String data) {
+								        if (data != null) {
+								            System.out.println("Row [" + (row + 1) + "]: " + data);
+								
+								        } else {
+								            System.out.println("Row [" + (row + 1) + "]: Data is null");
+								        }
+								    }
+								
+								
+
+
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new EMRGDS_FU_Jtable());
     }
