@@ -28,14 +28,16 @@ public class EMRGDS_FU_Jtable {
     // Initialize the main JFrame
     private void initializeFrame() {
         frame = new JFrame("EMRGDS_FU_Jtable");
-        frame.setSize(1600, 800);
+        frame.setSize(1600, 1200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     // Setup the table with the necessary properties and model
     private void initializeTable() {
-        String[] columnNames = {"Diabetes Mellitus", "Hypertension", "Hypercholesterolemia", "Thyroid", "URI",
-                                "Atypical chest pain", "Osteoporosis", "8", "9", "10"};
+        String[] columnNames = {"Category","Diabetes Mellitus", "Hypertension", 
+        						"Hypercholesterolemia", "Thyroid", "Influenza",
+        						"URI","Atypical chest pain", "Osteoporosis",
+        						"10"};
         model = new DefaultTableModel(columnNames, 10);
         table = new JTable(model);
         
@@ -49,12 +51,13 @@ public class EMRGDS_FU_Jtable {
 
     // Set specific row and column dimensions
     private void setRowAndColumnDimensions() {
-        table.setRowHeight(0, 150);  
-        table.setRowHeight(1, 130);
-        table.setRowHeight(2, 140);
-        table.getColumnModel().getColumn(0).setPreferredWidth(100);
-        table.getColumnModel().getColumn(1).setPreferredWidth(50);
-        table.getColumnModel().getColumn(2).setPreferredWidth(75);
+    	table.setRowHeight(80);
+//        table.setRowHeight(0, 150);  
+        table.setRowHeight(0, 50);
+//        table.setRowHeight(1, 40);
+//    	table.getColumnModel().getColumn(0).setPreferredWidth(5);
+//        table.getColumnModel().getColumn(1).setPreferredWidth(50);
+//        table.getColumnModel().getColumn(2).setPreferredWidth(75);
     }
 
     // Initialize the save and load buttons with actions
@@ -76,33 +79,56 @@ public class EMRGDS_FU_Jtable {
         frame.add(panel, BorderLayout.SOUTH);
     }
 
-    // Serialize and save the table data
     private void saveData() {
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(EntryDir.homeDir + "/fourgate/emrgdsfujtable/tabledata.ser"))) {
+            
+            // Save table data
             out.writeObject(model.getDataVector());
+            
+            // Save column widths
+            int[] columnWidths = new int[table.getColumnCount()];
+            for (int i = 0; i < table.getColumnCount(); i++) {
+                columnWidths[i] = table.getColumnModel().getColumn(i).getWidth();
+            }
+            out.writeObject(columnWidths);
+            
             JOptionPane.showMessageDialog(frame, "Data Saved Successfully!");
+            
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-    // Load the serialized table data
+
     private void loadData() {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(EntryDir.homeDir + "/fourgate/emrgdsfujtable/tabledata.ser"))) {
+            
+            // Load table data
             Vector<? extends Vector> data = (Vector<? extends Vector>) in.readObject();
             Vector<String> columnNames = new Vector<>();
-            
             for (int i = 0; i < model.getColumnCount(); i++) {
                 columnNames.add(model.getColumnName(i));
             }
-            
             model.setDataVector(data, columnNames);
+
+            // Load and set column widths
+            int[] columnWidths = (int[]) in.readObject();
+            for (int i = 0; i < table.getColumnCount(); i++) {
+                table.getColumnModel().getColumn(i).setWidth(columnWidths[i]);
+                table.getColumnModel().getColumn(i).setPreferredWidth(columnWidths[i]); // this line can be retained or removed based on your preference
+            }
+
             JOptionPane.showMessageDialog(frame, "Data Loaded Successfully!");
+
+            // Reapply the row dimensions after loading the data
             setRowAndColumnDimensions();
+
         } catch (IOException | ClassNotFoundException ex) {
             ex.printStackTrace();
         }
     }
+
+
 
     // Print table data to console
     private void printTableData() {
