@@ -5,6 +5,6 @@ package je.panse.doro.fourgate.emrgdsfujtable;
 	    public static void main(String[] args) {
 	        EMRGDS_FU_Jtable tableInstance = new EMRGDS_FU_Jtable();
 //	        tableInstance.extractTableData("Category");
-	        tableInstance.extractTableData("Thyroid");
+	        tableInstance.extractTableData("Diabetes Mellitus");
 	    }
 	}
