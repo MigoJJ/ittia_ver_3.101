@@ -37,7 +37,7 @@ public class EMRGDS_FU_csvgeneration {
     }
     
     private static void generateCSV() throws IOException {
-        File file = new File(EntryDir.homeDir +"/fourgate/emrgdsfu/output.csvoutput.csv");
+        File file = new File(EntryDir.homeDir +"/fourgate/emrgdsfu/output.csv");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             String[] columns = {"DM", "Thyroid", "Hypertension", "Hypercholesterolemia", "URI", "AtypicalChest Pain"};
             String[] rows = {"CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>"};
