@@ -63,7 +63,7 @@ public class EMR_thyroid_PE extends JFrame {
             {"Soft", "Soft to Firm", "Firm", "Cobble-stone", "Firm to Hard", "Hard"},
             {"Tender", "Non-tender"},
             {"Yes", "No"},
-            {"1+ = present but depressed", "2+ = normal / average", "3+ = increased", "4+ = clonus"},
+            {"1+ = present but depressed", "2+ = normal / average", "3+ = increased", "4+ = clonus","Doctor has not performed DTR test"},
             {"Class 0: No signs or symptoms",
 				"Class 1: Only signs (limited to upper lid retraction and stare, with or without lid lag)",
 				"Class 2: Soft tissue involvement (oedema of conjunctivae and lids, conjunctival injection, etc.)",

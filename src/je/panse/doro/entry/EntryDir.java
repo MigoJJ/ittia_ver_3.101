@@ -13,5 +13,7 @@ public class EntryDir {
 	    // Get the path to the current user's directory
 	    String currentDir = System.getProperty("user.dir");
 	    System.out.println("Current user's directory: " + currentDir);
+	    System.out.println("homeDir: " + homeDir);
+
 	}
 }

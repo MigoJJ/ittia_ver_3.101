@@ -20,9 +20,11 @@ public class InjectionApp {
         "Vaxigriptetra pfs inj (4가) [유독]",
         "SKY Cellflu (4 가) [nip] ",
         "Tdap (Tetanus, Diphtheria, Pertussis)",
+        "Td (Tetanus, Diphtheria)",
         "Shingles Vaccine (Shingrix) #1/2",
         "HAV vaccination #1/2",
         "HBV vaccination #1/3",
+        "Prevena 13 (pneumococcal vaccine (PCV13))",
         "Recommend for Delayed Immunization",
         "Quit"
     };
@@ -72,7 +74,7 @@ public class InjectionApp {
 
         String CCstring = "The patient visitis for Vaccination\n";
         String PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n"
-                + "        , or any other component of the vaccine.\n"
+                + "           , or any other component of the vaccine.\n"
                 + "  [ ✔ ]  no s/p Guillain-Barré syndrome.\n"
                 + "  [ ✔ ]  no adverse reactions to previous vaccines.\n"
                 + "  [ ✔ ]  no immunosuppression.\n";

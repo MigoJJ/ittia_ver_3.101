@@ -38,11 +38,11 @@ public class GDSEMR_ButtonPanel extends JPanel {
         }
 		if (locations.equals("north")) {
 			 buttons[0].setText("Rescue");
-			 buttons[1].setText("Copy");
+			 buttons[1].setText("Backup");
 			 buttons[2].setText("Clear");
 			 buttons[3].setText("Exit");
 			 buttons[9].setText("ittia_support");
-			 buttons[10].setText("ittia_EMR_Lab");
+			 buttons[10].setText("ittia_EMR_AI");
 			 // Add the button panel to the north of the frame
 			 setLayout(new FlowLayout(FlowLayout.LEFT));
 			 setBackground(Color.GRAY);

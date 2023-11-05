@@ -39,13 +39,16 @@ public class EMR_FU_retinopathy {
 
         // Checkboxes and their descriptions
         String[] descriptions = {
-            "No apparent retinopathy : no NPDR",
+            "The Patient has not visited an eye doctor yet.",
+            " ----------------- ",
+        	"No apparent retinopathy : no NPDR",
             "Non-proliferative diabetic retinopathy (NPDR)",
             "    - Mild NPDR",
             "    - Moderate NPDR",
             "    - Severe NPDR",
             "Proliferative diabetic retinopathy (PDR)",
             " ----------------- ",
+            "Cataract [+] ",
             "Cataract [+] Cataract Surgery:[+]",
             "Glaucoma [+]",
             "Retinal Detachment [+]",
