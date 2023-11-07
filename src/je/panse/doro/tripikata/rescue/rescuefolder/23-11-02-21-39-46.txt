@@ -1,0 +1,11 @@
+    S>	 The Patient has suffered from : ▣ 
+    □      Cough
+    □      Sore throat
+    □      Nasal congestion
+    □      Runny nose
+    □      Sneezing
+    □      Headache
+    □      Low-grade fever
+    □      Fatigue
+    □      Body aches
+    □      Difficulty breathing

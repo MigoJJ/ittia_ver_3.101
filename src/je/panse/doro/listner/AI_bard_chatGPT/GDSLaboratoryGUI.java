@@ -1,17 +1,35 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.awt.*;	
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;			
 
 public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static String[] centerButtonLabels = {"Modify List", "Modify Lab","Modify Chart","Modify ..."};
+    private static String[] centerButtonLabels = {"A>", "Lab>","EMR Summary","Modify ..."};
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
@@ -37,6 +55,60 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
             """;
     
+    private static final String bardorderpro = """
+			the dataset finished --------------------------
+			
+			make problem list and comment;
+			
+			PMH>	-> Past Medical history;
+			▣   ->  The Patient has suffered from
+			□   ->  The Patient has  not suffered from
+			
+			▲     -> upper value for reference
+			▼     -> lower value for reference
+			
+			if the problem list is "None" -> remove;
+			
+			
+			
+			format will be required ;
+			indentation and prefix   "    # ."  and  "        -   . ";
+			
+			
+			problem sample list is;
+			
+			starting------------------------------
+			
+			***  Problem List   ***********************
+			
+			    #1  Cardiovascular
+			          -  ... (2006-02-17 ~ Present)
+			      
+			    #2  Endocrinology
+			          -  ...   
+			          -  ...   
+			          -  ...   
+			
+			    #2  Hepatic
+			         -  ...
+			
+			    #3  Musculoskeletal
+			         -  ... (surgery performed 2019)
+			
+			    #4  Substance Use
+			         -  ...
+			
+			    #5  Neurological
+			         -  ... (2023-10)
+			
+			    #6  Comment
+			          -  ...   
+			          -  ...   
+			          -  ...   
+			finishing-------------------------------
+			
+			            """;
+    
     public GDSLaboratoryGUI() {
         setupFrame();
         setupTextAreas();
@@ -45,8 +117,8 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     }
 
     private void setupFrame() {
-        setTitle("GDS Laboratory Data");
-        setSize(1200, 800);
+        setTitle("GDS Bard chatGPT4.0");
+        setSize(1200, 900);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Color backgroundColor = new Color(0xffdfba); // convert hex to Color object
@@ -159,8 +231,9 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-        	case "Modify List" -> modifyActionlist();
-            case "Modify Lab" -> modifyActionlab();
+        	case "A>" -> modifyActionlist();
+            case "Lab>" -> modifyActionlab();
+            case "EMR Summary" -> modifyActionpro();
             case "Copy to Clipboard" -> copyToClipboardAction();
             case "Clear Input" -> inputTextArea.setText("");
             case "Clear Output" -> outputTextArea.setText("");
@@ -182,7 +255,10 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         outputTextArea.append(""
         		+ "\nthe below contents are data --------------------------\n" 
         		+ textFromInputArea 
-        		+ "\nthe dataset finished --------------------------\n");
+        		+ "\nthe dataset finished --------------------------\n"
+        		+ "\nmerge parameters like below;\n"
+        		+ "\ndo not calculate between values;\n"
+        		+ "\nthe row titles ;----------------------\n");
 
         GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
@@ -198,6 +274,16 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         copyToClipboardAction();
     }
 
+    private void modifyActionpro() {
+        String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append(""
+        		+ "\nthe below contents are data --------------------------\n" 
+        		+ textFromInputArea 
+        		+ "\n");
+        outputTextArea.append("\n" + bardorderpro);
+        copyToClipboardAction();
+    }
+    
     private void copyToClipboardAction() {
         String textToCopy = outputTextArea.getText();
         StringSelection selection = new StringSelection(textToCopy);
