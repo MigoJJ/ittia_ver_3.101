@@ -121,6 +121,7 @@ public class GDSEMR_frame {
         textAreas[i].append(string);
     }
 
+
     public static void main(String[] args) {
         try {
             SwingUtilities.invokeLater(() -> {

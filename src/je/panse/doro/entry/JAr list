@@ -1,0 +1,18 @@
+Here is a list of required JAR files:
+
+Apache POI JARs:
+
+poi-5.x.x.jar: This is the main JAR for the Apache POI library.
+poi-ooxml-5.x.x.jar: This JAR is required for operations related to the newer OOXML file formats like .xlsx.
+Dependencies for poi-ooxml-5.x.x.jar:
+
+poi-ooxml-lite-5.x.x.jar: Required for certain operations on OOXML format.
+xmlbeans-5.x.x.jar: XMLBeans is a tool that allows you to access the full power of XML in a Java friendly way. It's required by poi-ooxml.
+commons-compress-1.x.x.jar: Required for reading and writing ZIP streams, including those in XLSX and DOCX files.
+Java's JAXB:
+
+For Java 9+ you may also need javax.xml.bind JARs due to the removal of JAXB from the default classpath:
+jaxb-api-x.x.x.jar
+jaxb-core-x.x.x.jar
+jaxb-impl-x.x.x.jar
+activation-x.x.x.jar
