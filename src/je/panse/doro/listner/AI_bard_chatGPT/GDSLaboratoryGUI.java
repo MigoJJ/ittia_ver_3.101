@@ -33,12 +33,14 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
+    		clear previous input data
             make table
             if parameter does not exist -> remove the row;
             Parameter Value Unit 
             using value format 
             """;
     private static final String bardorderlist = """
+    		clear previous input data
 			modify the data using format  like below data sample;
 			format sample data starting-------------
 			    #1  Neurological
@@ -56,7 +58,8 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             """;
     
     private static final String bardorderpro = """
-			the dataset finished --------------------------
+    		clear previous input data
+			finishing input data --------------------------
 			
 			make problem list and comment;
 			
@@ -253,9 +256,9 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         String textFromInputArea = inputTextArea.getText();
         outputTextArea.append("\n" + bardorderlab);
         outputTextArea.append(""
-        		+ "\nthe below contents are data --------------------------\n" 
+        		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
-        		+ "\nthe dataset finished --------------------------\n"
+        		+ "\nfinishing  input data --------------------------\n"
         		+ "\nmerge parameters like below;\n"
         		+ "\ndo not calculate between values;\n"
         		+ "\nthe row titles ;----------------------\n");
@@ -267,7 +270,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private void modifyActionlist() {
         String textFromInputArea = inputTextArea.getText();
         outputTextArea.append(""
-        		+ "\nthe below contents are data --------------------------\n" 
+        		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
         		+ "\nthe dataset finished --------------------------\n");
         outputTextArea.append("\n" + bardorderlist);
@@ -277,9 +280,9 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private void modifyActionpro() {
         String textFromInputArea = inputTextArea.getText();
         outputTextArea.append(""
-        		+ "\nthe below contents are data --------------------------\n" 
+        		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
-        		+ "\n");
+        		+ "\nthe dataset finished --------------------------\n");
         outputTextArea.append("\n" + bardorderpro);
         copyToClipboardAction();
     }
