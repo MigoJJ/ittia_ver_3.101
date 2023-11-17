@@ -1,11 +1,31 @@
 package je.panse.doro.fourgate.emrgdsfujtable;
 
-import java.awt.*;			
-import java.awt.event.*;
-import java.io.*;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Vector;
-import javax.swing.*;
-import javax.swing.table.*;
+
+import javax.swing.AbstractCellEditor;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
@@ -181,14 +201,20 @@ public class EMRGDS_FU_Jtable {
 								        for (int row = 0; row < table.getRowCount(); row++) {
 								            Object value = table.getValueAt(row, columnIndex);
 								            
-								            String jtableExtractString = null;
-								            if (value instanceof String) {
-								                jtableExtractString = (String) value;
+								            String jtableExtractString = "";
+								            if (value != null) {
+								                jtableExtractString = value.toString();
+//								                String A00 = (String) model.getValueAt(row, columnIndex); 
+//								                GDSEMR_frame.setTextAreaText(5, A00);
+//
+//								                
 								            } else {
 								                // handle non-string values appropriately
 								            }
 								
 								            printRowData(row, jtableExtractString);
+
+
 								        }
 								
 								        System.out.println(); // Add an empty line for separation
@@ -197,7 +223,7 @@ public class EMRGDS_FU_Jtable {
 								    private static void printRowData(int row, String data) {
 								        if (data != null) {
 								            System.out.println("Row [" + (row + 1) + "]: " + data);
-								
+					
 								        } else {
 								            System.out.println("Row [" + (row + 1) + "]: Data is null");
 								        }
