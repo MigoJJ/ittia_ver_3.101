@@ -14,7 +14,7 @@ public class EMR_symptom_main {
         JFrame frame = new JFrame("Select category ...");
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setLocation(1460, 1000);
-        frame.setSize(new Dimension(400, 400));
+        frame.setSize(new Dimension(180, 400));
 
         String[] buttonNames = {
                 "Diabetes Mellitus",
