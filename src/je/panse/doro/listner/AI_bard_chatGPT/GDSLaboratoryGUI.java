@@ -42,18 +42,19 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private static final String bardorderlist = """
     		clear previous input data
 			modify the data using format  like below data sample;
+			
 			format sample data starting-------------
-			    #1  Neurological
-			          - Pituitary nonfunctioning tumor (surgery performed) (2016)
-			          - Optic nerve deterioration (2021)
-			              > CT and MRI: normal
-			              > MRI: CVA[+]
-			    #2  disease category
-			    #3  disease category
+			    #1  
+			          - 
+			          - 
+			              > 
+			              > 
+			    #2  
+			    #3  
 			format sample data finishing----------------
 			
 			organize and make summary list using format;
-			the list sorted by disease category;
+			the list classify using Mesh headings;
 
             """;
     
