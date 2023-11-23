@@ -22,7 +22,7 @@ public class EMR_vitalsign extends JFrame {
     public EMR_vitalsign() {
         // Set layout manager for the JFrame
         setTitle("GDS Vital Signs");
-        setSize(330, 200);
+        setSize(330, 220);
         setLocation(1460, 215);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -83,7 +83,7 @@ public class EMR_vitalsign extends JFrame {
     }
     
     private void buttonvitalsign() {
-        GDSEMR_frame.setTextAreaText(5, "\n" + desoutputTextArea.getText() + "\n");
+        GDSEMR_frame.setTextAreaText(5, "\n   " + desoutputTextArea.getText() + "\n\t");
 	        String text = outputTextArea.getText();
 	        if (text.contains("] mmHg      BP [")) {
 	            text = text.replace("] mmHg      BP ["," / "); // replace " / " with a space, modify this according to your needs
