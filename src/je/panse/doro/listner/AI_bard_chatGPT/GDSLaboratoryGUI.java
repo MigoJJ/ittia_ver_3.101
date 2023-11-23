@@ -40,20 +40,16 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             using value format 
             """;
     private static final String bardorderlist = """
-    		clear previous input data
-			modify the data using format  like below data sample;
-			format sample data starting-------------
-			    #1  Neurological
-			          - Pituitary nonfunctioning tumor (surgery performed) (2016)
-			          - Optic nerve deterioration (2021)
-			              > CT and MRI: normal
-			              > MRI: CVA[+]
-			    #2  disease category
-			    #3  disease category
-			format sample data finishing----------------
+			i would like to make EMR interface for physician.
+			clear previous input data;
 			
-			organize and make summary list using format;
-			the list sorted by disease category;
+			organize and make summary list using table format;
+			the list will be classified
+			    using Mesh main heading classifications;
+			and sort the list using disease base; 
+			
+			modify table like column titles;
+			#	,   MeSH Main Heading	,    Date	,    Details
 
             """;
     
@@ -269,11 +265,12 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     
     private void modifyActionlist() {
         String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append("\n" + bardorderlist);
         outputTextArea.append(""
         		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
         		+ "\nthe dataset finished --------------------------\n");
-        outputTextArea.append("\n" + bardorderlist);
+
         copyToClipboardAction();
     }
 

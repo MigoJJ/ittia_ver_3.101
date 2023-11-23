@@ -6,13 +6,13 @@ public class EMR_vitalsign_desreturn {
         String result = dta;
 
         if (input.equals("h")) {
-            result = "at home by self";
+            result = "   at home by self";
         } else if (input.equals("i")) {
             result = result.replace("Regular","irRegular");
         } else if (input.equals("b")) {
-            result = "at GDS, Left seated position, Regular";
+            result = "   at GDS, Left seated position, Regular";
         } else if (input.equals("o")) {
-            result = "at other clinic checked";
+            result = "   at other clinic checked";
         } else if (input.equals("r")) {
         result = result.replace("Left","Right");
         }
