@@ -38,6 +38,9 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             if parameter does not exist -> remove the row;
             Parameter Value Unit 
             using value format 
+       		nmerge parameters like below
+        	do not calculate between values
+        	the row titles ;----------------------
             """;
     private static final String bardorderlist = """
 			i would like to make EMR interface for physician.
@@ -250,27 +253,23 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void modifyActionlab() {
         String textFromInputArea = inputTextArea.getText();
-        outputTextArea.append("\n" + bardorderlab);
         outputTextArea.append(""
         		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
-        		+ "\nfinishing  input data --------------------------\n"
-        		+ "\nmerge parameters like below;\n"
-        		+ "\ndo not calculate between values;\n"
-        		+ "\nthe row titles ;----------------------\n");
+        		+ "\nfinishing  input data --------------------------\n");
 
+        outputTextArea.append("\n" + bardorderlab);
         GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
     
     private void modifyActionlist() {
         String textFromInputArea = inputTextArea.getText();
-        outputTextArea.append("\n" + bardorderlist);
+
         outputTextArea.append(""
         		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
         		+ "\nthe dataset finished --------------------------\n");
-
         copyToClipboardAction();
     }
 

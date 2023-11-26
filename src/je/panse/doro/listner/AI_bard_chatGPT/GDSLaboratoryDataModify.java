@@ -14,7 +14,7 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("Glucose", "\n[Glucose - HbA1c ];");
         MAPPING.put("free T-4", "\n[ T3 - free-T4 - TSH ];");
         MAPPING.put("Creatinine", "\n [ BUN - Creatinine ];");
-        MAPPING.put("creatinine(urine)", "\n [ urine Creatinine ];");
+        MAPPING.put("creatinine(urine)", "\n;");
 
         MAPPING.put("eGFR", "\n [ eGFR - A/C ratio ];");
         MAPPING.put("S.G", "\n [urine Protein /  Blood / RBC / WBC ]");
