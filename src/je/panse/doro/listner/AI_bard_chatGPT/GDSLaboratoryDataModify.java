@@ -13,7 +13,9 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("HGB", "\n[ Hb - WBC - Platelet];");
         MAPPING.put("Glucose", "\n[Glucose - HbA1c ];");
         MAPPING.put("free T-4", "\n[ T3 - free-T4 - TSH ];");
-        MAPPING.put("BUN", "\n [ BUN - Creatinine ];");
+        MAPPING.put("Creatinine", "\n [ BUN - Creatinine ];");
+        MAPPING.put("creatinine(urine)", "\n [ urine Creatinine ];");
+
         MAPPING.put("eGFR", "\n [ eGFR - A/C ratio ];");
         MAPPING.put("S.G", "\n [urine Protein /  Blood / RBC / WBC ]");
         MAPPING.put("TSH recepter Ab",
@@ -28,7 +30,7 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("AFP", "\n [ AFP / CEA / CA19-9 / PSA / CA125 ]");
         MAPPING.put("Sodium", "\n [ Na - Cl - K ]");
         MAPPING.put("Calcium", "\n [ Calcium - Phosphrus ]");
-        MAPPING.put("PT", "\n [ PT - APTT ]");
+        MAPPING.put("APTT", "\n [ PT - APTT ]");
         
     }
 
