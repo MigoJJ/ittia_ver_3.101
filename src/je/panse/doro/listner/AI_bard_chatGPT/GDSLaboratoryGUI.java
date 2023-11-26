@@ -33,7 +33,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
-    		clear previous input data
+    		clear previous values;
             make table
             if parameter does not exist -> remove the row;
             Parameter Value Unit 
