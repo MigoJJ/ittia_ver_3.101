@@ -33,14 +33,14 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
-    		clear previous values;
-            make table
-            if parameter does not exist -> remove the row;
-            Parameter Value Unit 
-            using value format 
-       		nmerge parameters like below
-        	do not calculate between values
-        	the row titles ;----------------------
+			clear previous values;
+			make table
+			if parameter does not exist -> remove the row;
+			Parameter Value Unit 
+			using value format
+			merge parameters like below
+			do not calculate between values
+			the row titles ;----------------------
             """;
     private static final String bardorderlist = """
 			i would like to make EMR interface for physician.
