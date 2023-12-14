@@ -25,7 +25,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;			
 
-public class GDSLaboratoryGUI extends JFrame implements ActionListener {
+public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
@@ -33,33 +33,14 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
     private static final String bardorderlab = """
-				you are a physician assistant;
-				please excute next ; setp by step;
-				
-				clear previous input data;
-				make table;
-				Parameter    Value    Unit;
-				
-				remove rows if all value is not available in row";
-				if all values are empty -> remove the row;
-				
-				
-				the row titles Starting ;----------------------
-				
-				[Glucose - HbA1c ];
-				[ Insulin ];
-				[ T3 / free-T4 / TSH ];
-				[ T-Chol - HDL - Triglyceride - LDL ];
-				[ GOT - GPT - ALP - GGT - T-Bil - Alb ];
-				[ Hb - WBC - Platelet];
-				[ BUN - Creatinine ];
-				[ eGFR - A/C ratio ];
-				[ urine Protein /  Blood / RBC / WBC ];
-				[ Ca- P - Na - K - Cl  -Uric Acid ];
-				[ AFP / CEA / CA19-9 / PSA / CA-125 ];
-				[ Lp(a) / ApoB ]
-				[ PT /aPTT ];
-				the row titles Finishing ;----------------------
+			clear previous values;
+			make table
+			if parameter does not exist -> remove the row;
+			Parameter Value Unit 
+			using value format
+			merge parameters like below
+			do not calculate between values
+			the row titles ;----------------------
             """;
     private static final String bardorderlist = """
 			i would like to make EMR interface for physician.
@@ -98,7 +79,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 			
 			            """;
     
-    public GDSLaboratoryGUI() {
+    public GDSLaboratoryGUI2() {
         setupFrame();
         setupTextAreas();
         setupButtons();
@@ -240,9 +221,13 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void modifyActionlab() {
         String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append(""
+        		+ "\nStarting input data --------------------------\n" 
+        		+ textFromInputArea 
+        		+ "\nfinishing  input data --------------------------\n");
 
         outputTextArea.append("\n" + bardorderlab);
-        outputTextArea.append("\n" + textFromInputArea);
+        GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
     
@@ -275,7 +260,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            GDSLaboratoryGUI gui = new GDSLaboratoryGUI();
+            GDSLaboratoryGUI2 gui = new GDSLaboratoryGUI2();
             gui.setVisible(true);
         });
     }
