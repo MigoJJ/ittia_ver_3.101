@@ -66,7 +66,10 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         setSize(1200, 750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Color backgroundColor = new Color(0xf2f3cb);
+        Color backgroundColor = new Color(0xf4e6bc);
+        Font consolasFont = new Font("Consolas", Font.PLAIN, 11); // Adjust font size as needed
+        inputTextArea.setFont(consolasFont);
+        outputTextArea.setFont(consolasFont);
         inputTextArea.setBackground(backgroundColor);
         outputTextArea.setBackground(backgroundColor);
         inputTextArea.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -88,7 +91,8 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private JButton createButton(String label) {
         JButton button = new JButton(label);
         button.addActionListener(this);
-        button.setBackground(Color.decode("#9db6e3"));
+        button.setBackground(Color.decode("#bdecc9"));
+
         return button;
     }
 
@@ -113,6 +117,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             eastButtonPanel.add(eastButtons[i]);
             if (i != eastButtons.length - 1) {
                 eastButtonPanel.add(Box.createVerticalStrut(5));
+
             }
         }
 
@@ -133,7 +138,10 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         for (String label : southButtonLabels) {
             JButton southButton = createButton(label);
             southButton.setPreferredSize(new Dimension(maxWidth, 40)); // Set fixed size
+            
             southButton.setBorder(BorderFactory.createLoweredBevelBorder());
+
+            
             mainButtonPanel.add(southButton);
         }
 
