@@ -17,12 +17,44 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private JButton[] mainButtons;
 
     // String constants for commands (replace with actual content)
-    private static final String bardorderlab = "// ... (content of bardorderlab)...";
-    private static final String bardorderlab1 = "// ... (content of bardorderlab1)...";
-    private static final String bardorderlist = "// ... (content of bardorderlist)...";
-    private static final String bardorderpro = "// ... (content of bardorderpro)...";
+    private static final String bardorderlab = """
+			clear previous values;
+			make table
+			if parameter does not exist -> remove the row;
+			Parameter Value Unit 
+			using value format
+			merge parameters like below
+			do not calculate between values\n
+			the row titles ;----------------------
+            """;
+    private static final String bardorderlab1 = """
+			Execute next step by step;
+			clear previous input data;
+			
+			you are a physician special assistant for EMR interface.
+			i would like to make EMR clinical laboratory result table;
+			
+			make table ;
+			Column titles - > Parameter, Value, Unit ;
+			Parameter row titles - >
+            """;
+    private static final String bardorderlist = """
+			i would like to make EMR interface for physician.
+			clear previous input data;
+			
+			organize and make summary list using table format;
+			the list will be classified
+			    using Mesh main heading classifications;
+			and sort the list using disease base; 
+			
+			modify table like column titles;
+			#	,   MeSH Main Heading	,    Date	,    Details
 
-    public GDSLaboratoryGUI() {
+            """;;
+    private static final String bardorderpro = "// ... (content of bardorderpro)...";
+ 
+	  
+  public GDSLaboratoryGUI() {
         initializeFrame();
         createTextAreas();
         createButtons();
