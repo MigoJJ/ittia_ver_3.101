@@ -12,7 +12,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     // Declare components
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static String[] southButtonLabels = {"A>", "Lab>", "Lab 231216", "Modify ..."};
+    private static String[] southButtonLabels = {"A>", "Lab>", "Lab 231216", "Modify PI>","P>","Etc."};
     private static String[] eastButtonLabels = {"Rescue", "Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] mainButtons;
 
@@ -63,10 +63,10 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void initializeFrame() {
         setTitle("GDS Bard chatGPT4.0");
-        setSize(1200, 900);
+        setSize(1200, 750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Color backgroundColor = new Color(0xffdfba);
+        Color backgroundColor = new Color(0xf2f3cb);
         inputTextArea.setBackground(backgroundColor);
         outputTextArea.setBackground(backgroundColor);
         inputTextArea.setBorder(BorderFactory.createRaisedBevelBorder());
@@ -88,7 +88,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private JButton createButton(String label) {
         JButton button = new JButton(label);
         button.addActionListener(this);
-        button.setBackground(Color.decode("#ffffba"));
+        button.setBackground(Color.decode("#9db6e3"));
         return button;
     }
 
