@@ -1,168 +1,113 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Toolkit;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.Arrays;
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;			
 
 public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
+    // Declare components
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static String[] centerButtonLabels = {"A>", "Lab>","Lab 231216","Modify ..."};
-    private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
-    private JButton[] centerButtons;
-    
-    private static final String bardorderlab = """
-			clear previous values;
-			make table
-			if parameter does not exist -> remove the row;
-			Parameter Value Unit 
-			using value format
-			merge parameters like below
-			do not calculate between values\n
-			the row titles ;----------------------
-            """;
-    private static final String bardorderlab1 = """
-			Execute next step by step;
-			clear previous input data;
-			
-			you are a physician special assistant for EMR interface.
-			i would like to make EMR clinical laboratory result table;
-			
-			make table ;
-			Column titles - > Parameter, Value, Unit ;
-			Parameter row titles - >
-            """;
-    private static final String bardorderlist = """
-			i would like to make EMR interface for physician.
-			clear previous input data;
-			
-			organize and make summary list using table format;
-			the list will be classified
-			    using Mesh main heading classifications;
-			and sort the list using disease base; 
-			
-			modify table like column titles;
-			#	,   MeSH Main Heading	,    Date	,    Details
+    private static String[] southButtonLabels = {"A>", "Lab>", "Lab 231216", "Modify ..."};
+    private static String[] eastButtonLabels = {"Rescue", "Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
+    private JButton[] mainButtons;
 
-            """;
-    
-    private static final String bardorderpro = """
-    		clear previous input data
-			finishing input data --------------------------
-			
-			PMH>	-> Past Medical history;
-			▣   ->  The Patient has suffered from
-			□   ->  The Patient has  not suffered from
-			
-			▲     -> upper value for reference
-			▼     -> lower value for reference
-			
-			if the problem list is "None" -> remove;
-			
-			problem sample list is;
-		
-			starting------------------------------
-			
-			***  Problem List   ***********************
+    // String constants for commands (replace with actual content)
+    private static final String bardorderlab = "// ... (content of bardorderlab)...";
+    private static final String bardorderlab1 = "// ... (content of bardorderlab1)...";
+    private static final String bardorderlist = "// ... (content of bardorderlist)...";
+    private static final String bardorderpro = "// ... (content of bardorderpro)...";
 
-			finishing-------------------------------
-			
-			            """;
-    
     public GDSLaboratoryGUI() {
-        setupFrame();
-        setupTextAreas();
-        setupButtons();
-        arrangeComponents();
+        initializeFrame();
+        createTextAreas();
+        createButtons();
+        layoutComponents();
     }
 
-    private void setupFrame() {
+    private void initializeFrame() {
         setTitle("GDS Bard chatGPT4.0");
         setSize(1200, 900);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Color backgroundColor = new Color(0xffdfba); // convert hex to Color object
+        Color backgroundColor = new Color(0xffdfba);
         inputTextArea.setBackground(backgroundColor);
         outputTextArea.setBackground(backgroundColor);
         inputTextArea.setBorder(BorderFactory.createRaisedBevelBorder());
         outputTextArea.setBorder(BorderFactory.createRaisedBevelBorder());
     }
 
-    private void setupTextAreas() {
+    private void createTextAreas() {
         outputTextArea.setEditable(true);
     }
 
     public static void appendTextAreas(String value) {
-        outputTextArea.append(value);      
+        outputTextArea.append(value);
     }
 
-    private void setupButtons() {
-        centerButtons = new JButton[centerButtonLabels.length];
-        for (int i = 0; i < centerButtonLabels.length; i++) {
-            centerButtons[i] = createButton(centerButtonLabels[i]);
+    private void createButtons() {
+        mainButtons = createButtons(southButtonLabels);
+    }
+
+    private JButton createButton(String label) {
+        JButton button = new JButton(label);
+        button.addActionListener(this);
+        button.setBackground(Color.decode("#ffffba"));
+        return button;
+    }
+
+    private JButton[] createButtons(String[] buttonLabels) {
+        JButton[] buttons = new JButton[buttonLabels.length];
+        for (int i = 0; i < buttonLabels.length; i++) {
+            buttons[i] = createButton(buttonLabels[i]);
         }
+        return buttons;
     }
 
-    private void arrangeComponents() {
+    private void layoutComponents() {
         JPanel eastButtonPanel = new JPanel();
         eastButtonPanel.setLayout(new BoxLayout(eastButtonPanel, BoxLayout.Y_AXIS));
 
-        JPanel centerButtonPanel = new JPanel();
-        centerButtonPanel.setLayout(new FlowLayout()); // or any other layout you prefer for the center buttons
+        JPanel mainButtonPanel = new JPanel();
+        mainButtonPanel.setLayout(new FlowLayout());
 
-        JButton[] centerButtons = new JButton[centerButtonLabels.length];
+        JButton[] eastButtons = createButtons(eastButtonLabels);
 
-        for (int i = 0; i < centerButtonLabels.length; i++) {
-            centerButtons[i] = createButton(centerButtonLabels[i]);
-            centerButtonPanel.add(centerButtons[i]);
-        }
-
-        JButton[] eastButtons = new JButton[eastButtonLabels.length];
-
-        for (int i = 0; i < eastButtonLabels.length; i++) {
-            eastButtons[i] = createButton(eastButtonLabels[i]);
+        for (int i = 0; i < eastButtons.length; i++) {
             eastButtonPanel.add(eastButtons[i]);
-            if (i != eastButtonLabels.length - 1) { // Avoid adding a strut after the last button
+            if (i != eastButtons.length - 1) {
                 eastButtonPanel.add(Box.createVerticalStrut(5));
             }
         }
 
-     // Determine the maximum width across all buttons
+        // Determine the maximum width across all buttons
         int maxWidth = 0;
-        for (JButton button : centerButtons) {
-            maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
-            button.setBorder(BorderFactory.createLoweredBevelBorder());  // 버튼에 대해 Border 설정
+        for (JButton[] buttons : Arrays.asList(mainButtons, eastButtons)) {
+            for (JButton button : buttons) {
+                maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
+            }
         }
         for (JButton button : eastButtons) {
             maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
-            button.setBorder(BorderFactory.createLoweredBevelBorder());  // 버튼에 대해 Border 설정
+            button.setBorder(BorderFactory.createLoweredBevelBorder());
+        }
+
+        
+        // Create south buttons
+        for (String label : southButtonLabels) {
+            JButton southButton = createButton(label);
+            southButton.setPreferredSize(new Dimension(maxWidth, 40)); // Set fixed size
+            southButton.setBorder(BorderFactory.createLoweredBevelBorder());
+            mainButtonPanel.add(southButton);
         }
 
         // Set all buttons to the maximum width and fixed height
         int fixedHeight = 40; // Fixed height in pixels
-        for (JButton button : centerButtons) {
+        for (JButton button : mainButtons) {
             Dimension size = new Dimension(maxWidth, fixedHeight);
             button.setPreferredSize(size);
             button.setMaximumSize(size);
@@ -172,7 +117,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             button.setPreferredSize(size);
             button.setMaximumSize(size);
         }
-
+        
         JPanel contentPanel = new JPanel(new GridBagLayout());
         // Adding JTextAreas and other components to the contentPanel
         addComponent(contentPanel, new JLabel("Input Data:"), 0, 0, GridBagConstraints.NORTH);
@@ -186,19 +131,12 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         constraints.gridy = 4; // Changed the y coordinate to place the buttons below the JTextAreas
         constraints.gridwidth = 4;
         constraints.anchor = GridBagConstraints.CENTER;
-        contentPanel.add(centerButtonPanel, constraints);
+        contentPanel.add(mainButtonPanel, constraints);
 
         // Using BorderLayout to add both the GridBagLayout and the east buttons
         setLayout(new BorderLayout());
         add(contentPanel, BorderLayout.CENTER);
         add(eastButtonPanel, BorderLayout.EAST);
-    }
-
-    private JButton createButton(String label) {
-        JButton button = new JButton(label);
-        button.addActionListener(this);
-        button.setBackground(Color.decode("#ffffba"));
-        return button;
     }
 
     private void addComponent(JPanel panel, Component comp, int x, int y, int fill) {
@@ -212,70 +150,82 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-        	case "A>" -> modifyActionlist();
-            case "Lab>" -> modifyActionlab();
-            case "Lab 231216" -> modifyActionlab1();
-            case "Copy to Clipboard" -> copyToClipboardAction();
-            case "Clear Input" -> inputTextArea.setText("");
-            case "Clear Output" -> outputTextArea.setText("");
-            case "Clear All" -> {
-                inputTextArea.setText("");
-                outputTextArea.setText("");
-            }
-            case "Save and Quit" -> {
-	            inputTextArea.setText("");
-	            outputTextArea.setText("");
-	            dispose();
+        String command = e.getActionCommand();
+
+        // Handle common commands iteratively
+        if (Arrays.asList("Clear Input", "Clear Output", "Clear All").contains(command)) {
+            clearTextAreas(command);
+        } else {
+            switch (command) {
+                case "A>":
+                    modifyActionlab();
+                    break;
+                case "Lab>":
+                    modifyActionlab1();
+                    break;
+                case "Lab 231216":
+                    modifyActionlist();
+                    break;
+                case "Copy to Clipboard":
+                    copyToClipboardAction();
+                    break;
+                case "Save and Quit":
+                    inputTextArea.setText("");
+                    outputTextArea.setText("");
+                    dispose();
+                    break;
             }
         }
     }
 
+    private void clearTextAreas(String command) {
+        switch (command) {
+            case "Clear Input":
+                inputTextArea.setText("");
+                break;
+            case "Clear Output":
+                outputTextArea.setText("");
+                break;
+            case "Clear All":
+                inputTextArea.setText("");
+                outputTextArea.setText("");
+                break;
+        }
+    }
+
     private void modifyActionlab() {
-    	        String textFromInputArea = inputTextArea.getText();
-        
-        outputTextArea.append(""
-        		+ "\nStarting input data --------------------------\n" 
-        		+ textFromInputArea 
-        		+ "\nfinishing  input data --------------------------\n");
+        // Add your actual logic for this button action here, replacing the placeholder text
+        String textFromInputArea = inputTextArea.getText();
+
+        outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nFinishing input data --------------------------\n");
         outputTextArea.append("\n" + bardorderlab);
-        
-        GDSLaboratoryDataModify.main(textFromInputArea);
+
+        //GDSLaboratoryDataModify.main(textFromInputArea);
+        // Replace this with your actual implementation for processing the data
         copyToClipboardAction();
     }
 
     private void modifyActionlab1() {
+        // Add your actual logic for this button action here, replacing the placeholder text
         String textFromInputArea = inputTextArea.getText();
-        outputTextArea.append(""
-        		+ "\nStarting input data --------------------------\n" 
-        		+ textFromInputArea 
-        		+ "\nthe dataset finished --------------------------\n");
+        outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nthe dataset finished --------------------------\n");
         outputTextArea.append("\n" + bardorderlab1);
-        GDSLaboratoryDataModify.main(textFromInputArea);
+
+        //GDSLaboratoryDataModify.main(textFromInputArea);
+        // Replace this with your actual implementation for processing the data
         copyToClipboardAction();
     }
     
     private void modifyActionlist() {
+        // Add your actual logic for this button action here, replacing the placeholder text
         String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nthe dataset finished --------------------------\n");
+        outputTextArea.append("\n" + bardorderlab1);
 
-        outputTextArea.append(""
-        		+ "\nStarting input data --------------------------\n" 
-        		+ textFromInputArea 
-        		+ "\nthe dataset finished --------------------------\n");
+        //GDSLaboratoryDataModify.main(textFromInputArea);
+        // Replace this with your actual implementation for processing the data
         copyToClipboardAction();
     }
-
-    private void modifyActionpro() {
-        String textFromInputArea = inputTextArea.getText();
-        outputTextArea.append(""
-        		+ "\nStarting input data --------------------------\n" 
-        		+ textFromInputArea 
-        		+ "\nthe dataset finished --------------------------\n");
-        outputTextArea.append("\n" + bardorderpro);
-        copyToClipboardAction();
-    }
-    
-
     
     private void copyToClipboardAction() {
         String textToCopy = outputTextArea.getText();
@@ -283,11 +233,8 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
         clipboard.setContents(selection, null);
     }
-
+    
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            GDSLaboratoryGUI gui = new GDSLaboratoryGUI();
-            gui.setVisible(true);
-        });
+        new GDSLaboratoryGUI().setVisible(true);
     }
 }

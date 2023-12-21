@@ -1,6 +1,6 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -25,13 +25,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;			
 
-public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
+public class GDSLaboratoryGUI3 extends JFrame implements ActionListener {
 
     private static final JTextArea inputTextArea = new JTextArea(40, 35);
     private static final JTextArea outputTextArea = new JTextArea(40, 35);
-    private static String[] centerButtonLabels = {"A>", "Lab>","EMR Summary","Modify ..."};
+    private static String[] centerButtonLabels = {"A>", "Lab>","Lab 231216","Modify ..."};
     private static String[] eastButtonLabels = {"Rescue","Copy to Clipboard", "Clear Input", "Clear Output", "Clear All", "Save and Quit"};
     private JButton[] centerButtons;
+    
     private static final String bardorderlab = """
 			clear previous values;
 			make table
@@ -39,8 +40,19 @@ public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
 			Parameter Value Unit 
 			using value format
 			merge parameters like below
-			do not calculate between values
+			do not calculate between values\n
 			the row titles ;----------------------
+            """;
+    private static final String bardorderlab1 = """
+			Execute next step by step;
+			clear previous input data;
+			
+			you are a physician special assistant for EMR interface.
+			i would like to make EMR clinical laboratory result table;
+			
+			make table ;
+			Column titles - > Parameter, Value, Unit ;
+			Parameter row titles - >
             """;
     private static final String bardorderlist = """
 			i would like to make EMR interface for physician.
@@ -79,7 +91,7 @@ public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
 			
 			            """;
     
-    public GDSLaboratoryGUI2() {
+    public GDSLaboratoryGUI3() {
         setupFrame();
         setupTextAreas();
         setupButtons();
@@ -203,7 +215,7 @@ public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
         switch (e.getActionCommand()) {
         	case "A>" -> modifyActionlist();
             case "Lab>" -> modifyActionlab();
-            case "EMR Summary" -> modifyActionpro();
+            case "Lab 231216" -> modifyActionlab1();
             case "Copy to Clipboard" -> copyToClipboardAction();
             case "Clear Input" -> inputTextArea.setText("");
             case "Clear Output" -> outputTextArea.setText("");
@@ -220,13 +232,25 @@ public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
     }
 
     private void modifyActionlab() {
-        String textFromInputArea = inputTextArea.getText();
+    	        String textFromInputArea = inputTextArea.getText();
+        
         outputTextArea.append(""
         		+ "\nStarting input data --------------------------\n" 
         		+ textFromInputArea 
         		+ "\nfinishing  input data --------------------------\n");
-
         outputTextArea.append("\n" + bardorderlab);
+        
+        GDSLaboratoryDataModify.main(textFromInputArea);
+        copyToClipboardAction();
+    }
+
+    private void modifyActionlab1() {
+        String textFromInputArea = inputTextArea.getText();
+        outputTextArea.append(""
+        		+ "\nStarting input data --------------------------\n" 
+        		+ textFromInputArea 
+        		+ "\nthe dataset finished --------------------------\n");
+        outputTextArea.append("\n" + bardorderlab1);
         GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
@@ -251,6 +275,8 @@ public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
         copyToClipboardAction();
     }
     
+
+    
     private void copyToClipboardAction() {
         String textToCopy = outputTextArea.getText();
         StringSelection selection = new StringSelection(textToCopy);
@@ -260,7 +286,7 @@ public class GDSLaboratoryGUI2 extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            GDSLaboratoryGUI2 gui = new GDSLaboratoryGUI2();
+            GDSLaboratoryGUI3 gui = new GDSLaboratoryGUI3();
             gui.setVisible(true);
         });
     }
