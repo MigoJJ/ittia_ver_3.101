@@ -1,6 +1,6 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.util.HashMap;	
+import java.util.HashMap;		
 import java.util.Map;
 
 public class GDSLaboratoryDataModify {
@@ -31,7 +31,7 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("Sodium", "\n [ Na - K - Cl ]");
         MAPPING.put("Calcium", "\n [ Calcium - Phosphrus ]");
         MAPPING.put("APTT", "\n [ PT - APTT ]");
-        
+        MAPPING.put("CRP", "\n [ CRP - ESR ]");
     }
 
     public static void main(String textFromInputArea) {

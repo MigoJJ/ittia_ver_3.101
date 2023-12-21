@@ -22,7 +22,6 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private static final String bardorderlab1 = BardOrderCommands.getBardOrderLab1();
     private static final String bardorderlist = BardOrderCommands.getBardOrderList();
     private static final String bardorderpro = BardOrderCommands.getBardOrderPro();
- 
 	  
   public GDSLaboratoryGUI() {
         initializeFrame();
@@ -200,20 +199,26 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     }
 
     private void modifyActionlab() {
+        String textFromInputArea = inputTextArea.getText();
     	modifyAction();
     	outputTextArea.append("\n" + bardorderlab);
+        GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
 
     private void modifyActionlab1() {
+        String textFromInputArea = inputTextArea.getText();
     	modifyAction();
     	outputTextArea.append("\n" + bardorderlab1);
+        GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
     
     private void modifyActionlist() {
+        String textFromInputArea = inputTextArea.getText();
     	modifyAction();
     	outputTextArea.append("\n" + bardorderlist);
+        GDSLaboratoryDataModify.main(textFromInputArea);
         copyToClipboardAction();
     }
     
