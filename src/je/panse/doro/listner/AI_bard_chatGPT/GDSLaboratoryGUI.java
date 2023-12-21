@@ -37,7 +37,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Color backgroundColor = new Color(0xf4e6bc);
-        Font consolasFont = new Font("Consolas", Font.PLAIN, 11); // Adjust font size as needed
+        Font consolasFont = new Font("Consolas", Font.PLAIN, 12); // Adjust font size as needed
         inputTextArea.setFont(consolasFont);
         outputTextArea.setFont(consolasFont);
         inputTextArea.setBackground(backgroundColor);
@@ -61,7 +61,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private JButton createButton(String label) {
         JButton button = new JButton(label);
         button.addActionListener(this);
-        button.setBackground(Color.decode("#bdecc9"));
+        button.setBackground(Color.decode("#dbe853"));
 
         return button;
     }
