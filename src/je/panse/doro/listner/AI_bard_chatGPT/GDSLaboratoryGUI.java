@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import je.panse.doro.listner.AI_bard_chatGPT.BardOrderCommands; 
 
 public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
@@ -17,41 +18,10 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private JButton[] mainButtons;
 
     // String constants for commands (replace with actual content)
-    private static final String bardorderlab = """
-			clear previous values;
-			make table
-			if parameter does not exist -> remove the row;
-			Parameter Value Unit 
-			using value format
-			merge parameters like below
-			do not calculate between values\n
-			the row titles ;----------------------
-            """;
-    private static final String bardorderlab1 = """
-			Execute next step by step;
-			clear previous input data;
-			
-			you are a physician special assistant for EMR interface.
-			i would like to make EMR clinical laboratory result table;
-			
-			make table ;
-			Column titles - > Parameter, Value, Unit ;
-			Parameter row titles - >
-            """;
-    private static final String bardorderlist = """
-			i would like to make EMR interface for physician.
-			clear previous input data;
-			
-			organize and make summary list using table format;
-			the list will be classified
-			    using Mesh main heading classifications;
-			and sort the list using disease base; 
-			
-			modify table like column titles;
-			#	,   MeSH Main Heading	,    Date	,    Details
-
-            """;;
-    private static final String bardorderpro = "// ... (content of bardorderpro)...";
+    private static final String bardorderlab = BardOrderCommands.getBardOrderLab();
+    private static final String bardorderlab1 = BardOrderCommands.getBardOrderLab1();
+    private static final String bardorderlist = BardOrderCommands.getBardOrderList();
+    private static final String bardorderpro = BardOrderCommands.getBardOrderPro();
  
 	  
   public GDSLaboratoryGUI() {
@@ -132,16 +102,12 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
             maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
             button.setBorder(BorderFactory.createLoweredBevelBorder());
         }
-
         
         // Create south buttons
         for (String label : southButtonLabels) {
             JButton southButton = createButton(label);
             southButton.setPreferredSize(new Dimension(maxWidth, 40)); // Set fixed size
-            
             southButton.setBorder(BorderFactory.createLoweredBevelBorder());
-
-            
             mainButtonPanel.add(southButton);
         }
 
@@ -234,38 +200,29 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     }
 
     private void modifyActionlab() {
-        // Add your actual logic for this button action here, replacing the placeholder text
-        String textFromInputArea = inputTextArea.getText();
-
-        outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nFinishing input data --------------------------\n");
-        outputTextArea.append("\n" + bardorderlab);
-
-        //GDSLaboratoryDataModify.main(textFromInputArea);
-        // Replace this with your actual implementation for processing the data
+    	modifyAction();
+    	outputTextArea.append("\n" + bardorderlab);
         copyToClipboardAction();
     }
 
     private void modifyActionlab1() {
-        // Add your actual logic for this button action here, replacing the placeholder text
-        String textFromInputArea = inputTextArea.getText();
-        outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nthe dataset finished --------------------------\n");
-        outputTextArea.append("\n" + bardorderlab1);
-
-        //GDSLaboratoryDataModify.main(textFromInputArea);
-        // Replace this with your actual implementation for processing the data
+    	modifyAction();
+    	outputTextArea.append("\n" + bardorderlab1);
         copyToClipboardAction();
     }
     
     private void modifyActionlist() {
+    	modifyAction();
+    	outputTextArea.append("\n" + bardorderlist);
+        copyToClipboardAction();
+    }
+    
+    private void modifyAction() {
         // Add your actual logic for this button action here, replacing the placeholder text
         String textFromInputArea = inputTextArea.getText();
         outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nthe dataset finished --------------------------\n");
-        outputTextArea.append("\n" + bardorderlab1);
-
-        //GDSLaboratoryDataModify.main(textFromInputArea);
-        // Replace this with your actual implementation for processing the data
-        copyToClipboardAction();
     }
+    
     
     private void copyToClipboardAction() {
         String textToCopy = outputTextArea.getText();
