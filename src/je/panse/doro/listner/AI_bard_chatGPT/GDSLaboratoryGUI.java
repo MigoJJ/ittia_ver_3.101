@@ -32,7 +32,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void initializeFrame() {
         setTitle("GDS Bard chatGPT4.0");
-        setSize(1200, 750);
+        setSize(1200, 850);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Color backgroundColor = new Color(0xf4e6bc);
