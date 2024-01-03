@@ -1,6 +1,6 @@
 package je.panse.doro.listner.AI_bard_chatGPT;
 
-import java.util.HashMap;	
+import java.util.HashMap;		
 import java.util.Map;
 
 public class GDSLaboratoryDataModify {
@@ -14,21 +14,24 @@ public class GDSLaboratoryDataModify {
         MAPPING.put("Glucose", "\n[Glucose - HbA1c ];");
         MAPPING.put("free T-4", "\n[ T3 - free-T4 - TSH ];");
         MAPPING.put("Creatinine", "\n [ BUN - Creatinine ];");
+        MAPPING.put("creatinine(urine)", "\n;");
+
         MAPPING.put("eGFR", "\n [ eGFR - A/C ratio ];");
         MAPPING.put("S.G", "\n [urine Protein /  Blood / RBC / WBC ]");
         MAPPING.put("TSH recepter Ab",
-        		"\n[TSH recepter Ab \n\t"
+        		"\n[ TSH recepter Ab \n\t"
         		+ "Thyroglobulin Ab \n\t"
-        		+ "Thyroid microsome Ab\t ");
+        		+ "Thyroid microsome Ab ]\t ");
         
         MAPPING.put("Lipoprotein a", "\n [ Lipoprotein a / Apolipoprotein B ]");
         MAPPING.put("D3", "\n [ Vitamin-D3 ]");
         MAPPING.put("Uric", "\n [ Uric Acid ]");
         MAPPING.put("Insulin", "\n [ Insulin ]");
         MAPPING.put("AFP", "\n [ AFP / CEA / CA19-9 / PSA / CA125 ]");
-        MAPPING.put("Sodium", "\n [ Na - Cl - K ]");
+        MAPPING.put("Sodium", "\n [ Na - K - Cl ]");
         MAPPING.put("Calcium", "\n [ Calcium - Phosphrus ]");
-        
+        MAPPING.put("APTT", "\n [ PT - APTT ]");
+        MAPPING.put("CRP", "\n [ CRP - ESR ]");
     }
 
     public static void main(String textFromInputArea) {
