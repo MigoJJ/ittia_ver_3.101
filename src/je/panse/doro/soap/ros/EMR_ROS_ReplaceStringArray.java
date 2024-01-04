@@ -20,7 +20,7 @@ public class EMR_ROS_ReplaceStringArray {
             }
         }
 //      System.out.println(columnS);
-      String delimiter = ",\n";
+      String delimiter = ",\n\t";
       String stringColumnS = String.join(delimiter, columnS);
       System.out.println(stringColumnS);
       return stringColumnS;

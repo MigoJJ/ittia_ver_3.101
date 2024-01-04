@@ -110,7 +110,7 @@ public class EMR_vitalsign extends JFrame {
         String dta = desoutputTextArea.getText();
         // Get the substring from the 2nd character to the end of the input string
         String modifiedInput = input.substring(1); // Starts at index 1, goes to the end
-        outputTextArea.setText("\n   " + "Body Temperature  [ " + modifiedInput + " ] °C");
+        outputTextArea.setText("Body Temperature  [ " + modifiedInput + " ] °C");
         desoutputTextArea.setText("");
     }
     

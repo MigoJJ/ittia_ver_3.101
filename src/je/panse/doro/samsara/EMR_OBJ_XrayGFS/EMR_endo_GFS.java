@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_endo_GFS {
     public static void main(String[] args) {
@@ -69,7 +70,8 @@ public class EMR_endo_GFS {
         bottomPanel.add(buttonPanel, BorderLayout.NORTH);
 
         // Create the text area
-        JTextArea textArea = new JTextArea("\n< GFS > \n");
+		String cdate = Date_current.defineTime("d");
+        JTextArea textArea = new JTextArea("\n< GFS >   " + cdate + "\n");
         textArea.setEditable(true);
         textArea.setWrapStyleWord(true);
         bottomPanel.add(new JScrollPane(textArea), BorderLayout.CENTER);
@@ -99,10 +101,10 @@ public class EMR_endo_GFS {
                 });
             }
         }
-
+		
         saveButton.addActionListener(event -> {
             String selectedItems = textArea.getText();
-            GDSEMR_frame.setTextAreaText(5, selectedItems);
+            GDSEMR_frame.setTextAreaText(5, selectedItems + "  " + cdate);
             frame.dispose();
         });
         quitButton.addActionListener(event -> {
