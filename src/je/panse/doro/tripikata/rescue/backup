@@ -1,3 +1,97 @@
+  CC>	 The patient visitis for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+  ROS>	 < Cardiovascular >,
+	[◆] Chest pain or discomfort,
+	[◆] Shortness of breath or dyspnea,
+	[◇] Palpitations or irregular heartbeats,
+	[◇] Dizziness or lightheadedness,
+	[◇] Edema or swelling of the legs or ankles,
+	[◆] Fatigue or weakness with exertion,
+	[◇] Previous cardiac surgeries or interventions,
+	[◇] Use of tobacco or alcohol,
+	[◇] Physical inactivity or sedentary lifestyle
+  PMH>	      ----------------------------------
+     □  DM   □ HTN  ▣  Dyslipidemia
+     □  Cancer      □  Operation ▣  Thyroid Disease
+     □  Asthma     ▣  Pneumonia  □ Tuberculosis
+     □  Hepatitis   □  GERD        □  Gout
+     □  Arthritis    □  Hearing Loss  □ ...
+     □  CVA          □ Depression  □  Cognitive Disorder
+     □  Angina Pectoris          □  AMI   □  Arrhythmia
+     □  Allergy      □  ...
+     □  Food        □  Injection □   Medication
+      ------------------------------------
+  S>	 
+  < Diabetes Mellitus : peripheral neuropathy >***************
+     numbness[-], tingling[-], pain[-], weakness in limbs[-] 
+     ulcers[ - ], sores[ - ], infections[ - ]
+     10-g monofilament test for light touch sense in the feet[ - ]
+     tuning fork test for vibration sense in the feet [ - ]
+     *************************************************
+  The Patient has suffered from : ▣ 
+    □      Weight loss
+    □      Rapid heartbeat
+    □      Nervousness
+    □      Tremors
+    ▣      Increased appetite
+    ▣      Heat intolerance
   O>	 
+< BMI >
+  	Overweight : BMI: [ 29.06 ]kg/m^2
+  	Height : 175 cm   Weight : 89 kg   Waist: 63 cm
+TC-HDL-Tg-LDL [ 125 - 65 - 96 - 45 ] mg/dL
+< EKG >
+	A normal EKG (electrocardiogram)  2024.01.04
 < GFS >   2024.01.04
 	Chronic superficial gastritis
+< CFS >   2024.01.04
+	Colonic polyps
+	    polyp #2-5
+2024-01        < Diabetic Retinopathy >>>>>>>>>>>>>>>>>
+  	No apparent retinopathy : no NPDR
+  		Cataract [-] Cataract Surgery:[-]
+		Glaucoma [-]
+		Retinal Detachment [-]
+		Macular Degeration[-]
+	17.5	[ Vitamin-D  (20-50 ng/mL) ]
+   FBS  [    125   ] mg/dL   HbA1c       [    7.6   ] %
+  	IFCC HbA1c: [  60  ] mmol/mol
+  	eAG: [  171  ] mg/dL
+  	eAG: [  9.52  ] mmol/l
+   at GDS, Left seated position, Regular
+	BP [125] mmHg  BP [86] mmHg  PR [96] per minute
+< Chest PA >	A normal Chest PA X-ray    2024.01.04
+  Physical Exam>	 
+   < Inspect the eyes >
+      [ ✔ ] not anemic / not icteric
+   < Auscultation of the Chest >
+       The presence of normal vesicular breath sounds, as well as any abnormal sounds such as crackles, wheezes, or decreased breath sounds.
+   < Auscultation of the Heart >
+       No additional heart sounds, such as murmurs or extra heart sounds.
+  A>	 
+  #  Vaxigriptetra pfs inj (4가) [유독]  [2024-01-04]
+  # Overweight : BMI: [ 29.06 ]kg/m^2    2024.01
+   #  Chronic/Acute Hepatitis
+   #  Pneumonia
+   #  Thyroid Disease
+   #  Liver Cancer
+   #  Hypertension 
+   [ ▶ ] [Chest pain or discomfort, Shortness of breath or dyspnea, Fatigue or weakness with exertion]   2024.01.04
+>  TC-HDL-Tg-LDL [ 125 - 65 - 96 - 45 ] mg/dL   2024.01.04
+	17.5	[ Vitamin-D  (20-50 ng/mL) ]   2024.01
+  P>	 
+   ...Vaccination as scheduled
+  Follow up interval: [ 3 ] months
+  Prescription : continue with current dosages of meds
+...D/C all kinds of dietary[food, health, nutritional] supplements
+...The patient Refused dose-adjustment
+...Next Lab F/U with NPO
+...Plan to FPG, HbA1C, Lipid profile
+	serum creatinine, eGFR, +A/C ratio)
+	LFT, Electrolyte panel, CBC), Lp(a), ApoB
+	Vitamin D level
+...now [ Fair ] controlled glucose status
