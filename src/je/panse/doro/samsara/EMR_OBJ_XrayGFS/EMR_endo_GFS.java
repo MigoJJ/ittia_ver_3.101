@@ -145,7 +145,7 @@ public class EMR_endo_GFS {
 	}
 	public static String[] stomachArray() {
 	    String[] stringArray = {"Gastritis",
-		    	"Acute gastritisc",
+		    	"Acute gastritis",
 		    	"Chronic superficial gastritis",
 		    	"Chronic erosive gastritis",
 		    	"Chronic atrophic gastritis",

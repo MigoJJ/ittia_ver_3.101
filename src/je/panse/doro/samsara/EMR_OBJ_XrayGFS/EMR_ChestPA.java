@@ -1,5 +1,5 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
-import java.time.LocalDate;
+import java.time.LocalDate;	
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.BoxLayout;
@@ -30,10 +30,12 @@ public class EMR_ChestPA {
 				"Lung cancer",
 				"Pleural effusion",
 				"Tuberculosis",
+				"Tuberculosis scar",
 				"Atelectasis",
 				"Bronchitis",
 				"Interstitial lung disease",
-				"Pulmonary embolism."
+				"Pulmonary embolism.",
+				"Cardiomegaly"
 		
 		};
 		
