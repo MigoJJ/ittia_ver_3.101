@@ -1,5 +1,7 @@
 package je.panse.doro.chartplate;
 
+import je.panse.doro.samsara.comm.datetime.Date_current;
+
 public class EMR_ChangeString {
 
 	public static String EMR_ChangeString(String lines) {
@@ -7,10 +9,15 @@ public class EMR_ChangeString {
 		        lines = EMR_ChangeStringCC.EMR_ChangeString_abr(lines); // Call the method from the EMR_ChangeString class to change the string
 		    } else if (lines.contains(":>")) {
 		        lines = EMR_ChangeStringCC.EMR_ChangeString_Px(lines); // Call the method from the EMR_ChangeString class to change the string
+		    } else {
+		    	
 		    }
 		
+   	   String cdate = Date_current.main("d");
+       String outputText = lines;
+
+		outputText = outputText.replace(":cd ", cdate);
 		
-		String outputText = lines;
 		outputText = outputText.replace(":d ", "diabetes mellitus");
 		outputText = outputText.replace(":dr ", "DM with retinopathy");
 		outputText = outputText.replace(":dn ", "DM with Nephropathy");
