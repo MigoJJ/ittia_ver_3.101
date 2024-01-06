@@ -200,25 +200,26 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void modifyActionlab() {
         String textFromInputArea = inputTextArea.getText();
-    	modifyAction();
     	outputTextArea.append("\n" + bardorderlab);
         GDSLaboratoryDataModify.main(textFromInputArea);
+    	modifyAction();
+
         copyToClipboardAction();
     }
 
     private void modifyActionlab1() {
         String textFromInputArea = inputTextArea.getText();
-    	modifyAction();
     	outputTextArea.append("\n" + bardorderlab1);
         GDSLaboratoryDataModify.main(textFromInputArea);
+    	modifyAction();
         copyToClipboardAction();
     }
     
     private void modifyActionlist() {
         String textFromInputArea = inputTextArea.getText();
-    	modifyAction();
     	outputTextArea.append("\n" + bardorderlist);
         GDSLaboratoryDataModify.main(textFromInputArea);
+    	modifyAction();
         copyToClipboardAction();
     }
     
