@@ -61,7 +61,7 @@ public class EMR_EKG {
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
 			String cdate = Date_current.defineTime("d");
-			GDSEMR_frame.setTextAreaText(5,selectedItems);
+			GDSEMR_frame.setTextAreaText(5,selectedItems + "  " + cdate);
 //			saveComment(selectedItems);
 			frame.dispose();
 		});

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
     private JTextField[] inputFields = {new JTextField(10), new JTextField(10), new JTextField(10)};
@@ -40,6 +41,7 @@ public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
         
     @Override
     public void keyPressed(KeyEvent e) {
+    	String cdate = Date_current.main("d");
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             if (currentInputFieldIndex < 3) {
                 currentInputFieldIndex++;
@@ -53,7 +55,7 @@ public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
                 	    + inputFields[3].getText()+ " ] mg/dL");
 		        System.out.println(" result" + result);
 		        GDSEMR_frame.setTextAreaText(5,"\n" + result);
-				GDSEMR_frame.setTextAreaText(9, "\n#  " + result);
+				GDSEMR_frame.setTextAreaText(7, "\n>  " + result + "   " + cdate);
 				dispose();
             }
         }

@@ -115,7 +115,7 @@ public class EMR_BMI_calculator extends JFrame implements ActionListener {
                     outputArea.setText(result1);
                     GDSEMR_frame.setTextAreaText(5, result1);
                     String cdate = Date_current.main("m");
-                    GDSEMR_frame.setTextAreaText(9, "\n# " + result + "  " + cdate);
+                    GDSEMR_frame.setTextAreaText(7, "\n# " + result + "    " + cdate);
                 }
             }
         });

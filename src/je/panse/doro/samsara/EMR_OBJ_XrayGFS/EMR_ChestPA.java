@@ -1,5 +1,5 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
-import java.time.LocalDate;
+import java.time.LocalDate;	
 import java.time.format.DateTimeFormatter;
 
 import javax.swing.BoxLayout;
@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_ChestPA {
 
@@ -29,10 +30,12 @@ public class EMR_ChestPA {
 				"Lung cancer",
 				"Pleural effusion",
 				"Tuberculosis",
+				"Tuberculosis scar",
 				"Atelectasis",
 				"Bronchitis",
 				"Interstitial lung disease",
-				"Pulmonary embolism."
+				"Pulmonary embolism.",
+				"Cardiomegaly"
 		
 		};
 		
@@ -48,11 +51,12 @@ public class EMR_ChestPA {
 			String selectedItems = "\n< Chest PA >";
 			for (int i = 0; i < checkboxes.length; i++) {
 				if (checkboxes[i].isSelected()) {
-				selectedItems += "\t" + checkboxes[i].getText() + "\n";
+				selectedItems += "\t" + checkboxes[i].getText();
 				}
 			}
 			//		JOptionPane.showMessageDialog(frame, selectedItems);
-			GDSEMR_frame.setTextAreaText(5, selectedItems);
+			String cdate = Date_current.defineTime("d");
+			GDSEMR_frame.setTextAreaText(5, selectedItems  + "   " + cdate  + "\n");
 //			saveComment(selectedItems);
 			frame.dispose();
 		

@@ -62,8 +62,6 @@ public class EMR_ROS_JtableDATA {
 		    "Difficulty seeing at night",
 		    "Sensitivity to light",
 		    "Previous eye surgeries or injuries",
-		    "Family history of eye diseases",
-		    "Use of corrective lenses or contact lenses"
         };
     }
     public static String[] Cardiovascular() {
@@ -77,10 +75,6 @@ public class EMR_ROS_JtableDATA {
 			"Previous cardiac surgeries or interventions",
 			"Use of tobacco or alcohol",
 			"Physical inactivity or sedentary lifestyle",
-			"Family history of cardiovascular disease",
-			"History of high blood pressure or hypertension",
-			"History of heart disease or heart attack",
-
         };
     }
     public static String[] Head_and_Neck() {
@@ -137,14 +131,7 @@ public class EMR_ROS_JtableDATA {
 		    "Blood in stool",
 		    "Black, tarry stools",
 		    "Jaundice (yellowing of skin or eyes)",
-		    "Liver problems",
-		    "Gallbladder problems",
-		    "Pancreatic problems",
-		    "Hepatitis",
-		    "Gastroesophageal reflux disease (GERD)",
-		    "Peptic ulcer disease",
-		    "Gastrointestinal bleeding",
-		    
+	    
     	};
 	}
     public static String[] GenitoUrinary() {
@@ -158,88 +145,38 @@ public class EMR_ROS_JtableDATA {
 		    "Urinary incontinence",
 		    "Nocturia (frequent urination at night)",
 		    "Urinary retention",
-		    "Kidney pain",
-		    "Flank pain",
-		    "Lower abdominal pain",
 		    "Testicular pain",
-		    "Pelvic pain",
-		    "Prostate problems",
-		    "Urinary tract infection (UTI)",
-		    "Kidney stones",
-		    "Bladder issues",
-		    "Interstitial cystitis",
 		    "Urinary incontinence",
-		    "Erectile dysfunction",
 		    "Sexually transmitted infections (STIs)",
-		    "Prostate cancer",
-		    "Bladder cancer",
-		    "Renal cancer"
     	};
 	}
     public static String[] HematologyOncology() {
     	return new String[] {
 		    "Easy bruising",
-		    "Excessive bleeding",
-		    "Anemia",
 		    "Fatigue",
 		    "Enlarged lymph nodes",
 		    "Night sweats",
 		    "Unexplained weight loss",
-		    "Bone pain",
-		    "Joint pain",
-		    "Abdominal pain",
-		    "Swollen spleen",
-		    "Swollen liver",
-		    "Fever",
-		    "Chills",
 		    "Recurrent infections",
 		    "Chest pain",
 		    "Shortness of breath",
-		    "Cough",
 		    "Skin changes",
-		    "Lumps or masses",
-		    "Abnormal bleeding or clotting",
-		    "Leukemia",
-		    "Lymphoma",
-		    "Multiple myeloma",
-		    "Hemophilia",
-		    "Thrombocytopenia",
-		    "Hemolytic anemia",
-		    "Sickle cell disease",
-		    "Coagulation disorders",
-		    "Solid tumors (e.g., breast, lung, colon, etc.)"
     	};
 	}
     public static String[] Endocrine() {
     	return new String[] {
-		    "Fatigue",
-		    "Weight changes",
 		    "Heat or cold intolerance",
 		    "Excessive sweating",
 		    "Increased thirst",
 		    "Frequent urination",
 		    "Hunger",
 		    "Tremors",
-		    "Irregular menstrual periods",
-		    "Infertility",
 		    "Hair loss",
 		    "Dry skin",
-		    "Mood changes",
 		    "Depression",
 		    "Anxiety",
 		    "Sleep disturbances",
 		    "Enlarged thyroid (goiter)",
-		    "Thyroid nodules",
-		    "Thyroid cancer",
-		    "Hypothyroidism",
-		    "Hyperthyroidism",
-		    "Diabetes mellitus",
-		    "Adrenal gland disorders",
-		    "Pituitary gland disorders",
-		    "Parathyroid gland disorders",
-		    "Hypoglycemia",
-		    "Cushing's syndrome",
-		    "Addison's disease"
     	};
 	}
     public static String[] MentalHealth() {
@@ -263,22 +200,12 @@ public class EMR_ROS_JtableDATA {
 		    "Substance abuse",
 		    "Eating disorders",
 		    "Obsessions or compulsions",
-		    "Personality disorders",
-		    "Post-traumatic stress disorder (PTSD)",
-		    "Generalized anxiety disorder (GAD)",
-		    "Major depressive disorder (MDD)",
-		    "Bipolar disorder",
-		    "Schizophrenia",
-		    "Attention deficit hyperactivity disorder (ADHD)",
-		    "Borderline personality disorder (BPD)",
-    		    "Substance use disorder (SUD)"
     	};
 	}
     public static String[] SkinAndHair() {
     	return new String[] {
-		    "Rash",
+		    "Rash or Redness",
 		    "Itching",
-		    "Redness",
 		    "Swelling",
 		    "Dry skin",
 		    "Oily skin",
@@ -286,25 +213,14 @@ public class EMR_ROS_JtableDATA {
 		    "Eczema",
 		    "Psoriasis",
 		    "Hives",
-		    "Skin infections",
-		    "Changes in moles",
 		    "Skin discoloration",
 		    "Hair loss",
 		    "Excessive hair growth",
 		    "Nail abnormalities",
 		    "Warts",
-		    "Fungal infections",
-		    "Sunburn",
-		    "Skin cancer",
-		    "Allergies",
-		    "Burns",
 		    "Scars",
 		    "Rosacea",
 		    "Dandruff",
-		    "Alopecia areata",
-		    "Lice infestation",
-		    "Folliculitis",
-		    "Cellulitis"
 		};
 	}
 }

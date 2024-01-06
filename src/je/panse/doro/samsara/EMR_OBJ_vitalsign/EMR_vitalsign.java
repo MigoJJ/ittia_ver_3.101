@@ -69,6 +69,8 @@ public class EMR_vitalsign extends JFrame {
             if (input != null && (input.equals("h") || input.equals("i") || input.equals("b") 
             		|| input.equals("g") || input.equals("r")) || input.equals("o")) {
                 descriptionOfVitalSigns(input);
+            } else if (input.contains("t")) {
+            	descriptionOfTemperature(input);
             } else {
             EMR_vitalsign_array.printInputArrayList(input);
             }
@@ -102,6 +104,14 @@ public class EMR_vitalsign extends JFrame {
         String dta = desoutputTextArea.getText();
         String returndta = EMR_vitalsign_desreturn.main(input, dta);
         desoutputTextArea.setText(returndta);
+    }
+
+    public void descriptionOfTemperature(String input) {
+        String dta = desoutputTextArea.getText();
+        // Get the substring from the 2nd character to the end of the input string
+        String modifiedInput = input.substring(1); // Starts at index 1, goes to the end
+        outputTextArea.setText("Body Temperature  [ " + modifiedInput + " ] °C");
+        desoutputTextArea.setText("");
     }
     
     public static void main(String[] args) {
