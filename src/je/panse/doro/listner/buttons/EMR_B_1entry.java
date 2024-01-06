@@ -8,6 +8,7 @@ import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
+import je.panse.doro.fourgate.routinecheck.routinecheck;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
 import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_CopyBackup;
@@ -90,6 +91,12 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 case "Injections":
                 	InjectionApp.main(null);
+                    break;
+                case "GDS RC":
+                	routinecheck.GDSRC(null);
+                    break;
+                case "공단검진":
+                	routinecheck.HCRC(null);
                     break;
                 case "DM retinopathy":
                     OpenOneNotePage.main(null);
