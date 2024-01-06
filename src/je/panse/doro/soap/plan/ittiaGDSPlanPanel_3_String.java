@@ -5,15 +5,16 @@ public class ittiaGDSPlanPanel_3_String {
         return new String[]{
 			"...Next Lab F/U with NPO",
 			"...Coservative symptomatic treatment",
+			"...F/U without medications",
 			"...Continie current medications or supplements",
-			"...F/U without medications", 
+			"...D/C all kinds of dietary[food, health, nutritional] supplements",
 			"...The patient Refused dose-adjustment", 
 			"...",
 			"...Ophthalmologist consultation[+]", 
 			"...Plan to review of other clinic RC result",
 			"...",
 			"...History of surgeries or hospitalizations",
-			"...Family medical history",
+			"...Check for Family medical history",
     		"...to refer patients to receive additional health care services.",
     		"...",
     		"...Gastroenterology consult in GDS clinic",
@@ -53,12 +54,19 @@ public class ittiaGDSPlanPanel_3_String {
                 comboboxesLabels = new String[]{"Consutation---------------------", 
                 		"to refer patients to receive additional health care services.",
                 		"Gastroenterology consult to Univ Hospital",
-                		"Neurology consult to Univ Hospital",
-                		"Ohthalmology consult to Univ Hospital",
+                		"Pulmonology consult to Univ Hospital",
+                		"Cardiology consult to Univ Hospital",
                 		"Nephrology consult to Univ Hospital",
                 		"Endocrinology and metabolism consult to Univ Hospital",
+                		"Hemato-Oncology consult to Univ Hospital",
+                		"---",
+                		"Psychiatry consult to Univ Hospital",
+                		"Neurology consult to Univ Hospital",
+                		"Opthalmology consult to Univ Hospital",
                 		"Orthopedics consult to Univ Hospital",
-                		"Cardiology consult to Univ Hospital",
+                		"Neurosurgery consult to Univ Hospital",
+                		"Urology consult to Univ Hospital",
+                		"Dermatology consult to Univ Hospital",
                			"ENT consult to Univ Hospital",
 
                 		};
@@ -68,8 +76,7 @@ public class ittiaGDSPlanPanel_3_String {
                 System.out.println("ReEnter the Number !!!");
                 break;
         }
-
-        return comboboxesLabels;
+        return (comboboxesLabels);
     }
 }
 

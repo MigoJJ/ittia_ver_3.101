@@ -16,12 +16,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.comm.datetime.Date_current;
 
 public class EMR_Lab_enterresult extends JFrame {
 
     private JTextField[] textBoxes;
     private int numFields = 10;
     private String[] nameFields = {"Vitamin-D  (20-50 ng/mL)", "CRP  ", "ESR  ", "Uric Acid  ", "AFP", "CA-19-9", "CEA", "PSA", "CA125", "Cyfra-21"};
+	private String cdate = Date_current.defineTime("m");
 
     public EMR_Lab_enterresult() {
         super("Name Prompt Program");
@@ -89,6 +91,8 @@ public class EMR_Lab_enterresult extends JFrame {
                 String labelText = labels[i].getText();
                 if (!outputText.isEmpty()) {
                     GDSEMR_frame.setTextAreaText(5, "\n\t" + outputText + "\t[ " + labelText + " ]\n");
+                    GDSEMR_frame.setTextAreaText(7, "\n\t" + outputText + "\t[ " + labelText + " ]   " + cdate);
+
                     dispose();
                 }
             }

@@ -53,6 +53,6 @@ public class IttiaGDSPlanPanel_3 extends JPanel implements ActionListener {
         String selectedItem = (String) comboBox.getSelectedItem();
 //        System.out.println("WJ ~!!!" +selectedItem);
         textArea.append("..."+ selectedItem + "\n"); // Append selected item to the target JTextArea
-        IttiaGDSPlanPanel_1.appendTextArea(selectedItem+"\n");
+        IttiaGDSPlanPanel_1.appendTextArea("\t" + selectedItem+"\n");
     }
 }
