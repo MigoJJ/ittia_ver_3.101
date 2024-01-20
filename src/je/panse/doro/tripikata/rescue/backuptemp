@@ -1,3 +1,46 @@
-  CC>	 The patient was seen at the GDS for a routine checkup on .2024.01.08
-  A>	 
-  #  GDS clinic Routine check  [ 2024.01.08 ]
+  CC>	diabetes mellitus F/U The patient visitis for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+  ROS>	< Cardiovascular >,
+	[◇] Chest pain or discomfort,
+	[◆] Shortness of breath or dyspnea,
+	[◆] Palpitations or irregular heartbeats,
+	[◆] Dizziness or lightheadedness,
+	[◇] Edema or swelling of the legs or ankles,
+	[◆] Fatigue or weakness with exertion,
+	[◇] Previous cardiac surgeries or interventions,
+	[◇] Use of tobacco or alcohol,
+	[◇] Physical inactivity or sedentary lifestyle
+  PMH>	     ----------------------------------
+     □  DM   □ HTN  ▣  Dyslipidemia
+     □  Cancer      □  Operation ▣  Thyroid Disease
+     □  Asthma     □  Pneumonia  □ Tuberculosis
+     □  Hepatitis   □  GERD        □  Gout
+     □  Arthritis    □  Hearing Loss  □ ...
+     □  CVA          □ Depression  □  Cognitive Disorder
+     □  Angina Pectoris          □  AMI   □  Arrhythmia
+     □  Allergy      □  ...
+     □  Food        □  Injection □   Medication
+      ------------------------------------
+    S>	The Patient has suffered from : ▣ 
+    □      Polyuria
+    ▣      Polydipsia
+    ▣      Polyphagia
+    □      Weight loss
+    □      Fatigue
+    □      Blurred vision
+  O>	
+  	1	T3 (pg/mL):	
+  ▼	2	Free T4 (ng/dL):	
+  	3	TSH (mIU/L):	
+  A>	
+   ▣   Dyslipidemia
+   ▣   Thyroid Disease
+   [ ▶ ] [Shortness of breath or dyspnea, Palpitations or irregular heartbeats, Dizziness or lightheadedness, Fatigue or weakness with exertion]   2024.01.20
+  #  HAV vaccination #1/2  [2024-01-20]
+  P>	
+...now [ Poor ] controlled glucose status
+   ...Vaccination as scheduled
