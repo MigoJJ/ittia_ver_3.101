@@ -153,8 +153,9 @@ public class EMR_HbA1c extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             EMR_HbA1c emr = new EMR_HbA1c();
-            emr.setLocation(1460, 440); // Set the location
-            emr.setSize(330, 230);
+            emr.setLocation(0, 60); // Set the location
+            emr.setSize(300, 230);
+      	 	 emr.setUndecorated(true);
 //            emr.pack();
             emr.setVisible(true);
         });

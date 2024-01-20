@@ -1,6 +1,9 @@
 package je.panse.doro.samsara.EMR_OBJ_Vitalsign;
 
 import javax.swing.*;
+
+import je.panse.doro.GDSEMR_frame;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.HashSet;
@@ -25,9 +28,10 @@ public class Vitalsign extends JFrame {
         createView();
         setTitle("Vital Sign Tracker");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400, 320);
-        setLocationRelativeTo(null);
-        setResizable(false);
+        setSize(300, 300);
+        setLocation(0, 290);
+//        setLocationRelativeTo(null);
+        setResizable(true);
     }
 
     private void initializeValidInputs() {
@@ -162,7 +166,11 @@ public class Vitalsign extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Logic to save data
-                outputArea.setText("Data saved successfully.");
+                GDSEMR_frame.setTextAreaText(5, "\n"+ descriptionArea.getText());
+                GDSEMR_frame.setTextAreaText(5, "\n\t"+ outputArea.getText());
+                inputField.setText("");
+                outputArea.setText("");
+                descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
             }
         });
 
@@ -175,56 +183,58 @@ public class Vitalsign extends JFrame {
     }
 
     private void createBPBTRR(String input) {
-    	
-		if (input.toLowerCase().contains("t")) {
-			  String newinput = input.substring(1);
-			  descriptionArea.setText("   at GDS : Forehead (Temporal Artery) Thermometers:");
-			  outputArea.setText("\tBody Temperature [ " + newinput + " ] ℃");
-			}
-    	
-        try {
-        	double value = Double.parseDouble(input); // Convert input to integer
-
-            if (sbp == null) {
-                // First input - Systolic Blood Pressure
-                sbp = (int) value;
-                outputArea.setText("\tSBP [" + sbp + "] mmHg");
-            } else if (dbp == null) {
-                // Second input - Diastolic Blood Pressure
-                dbp = (int) value;
-                outputArea.setText("    BP [" + sbp + " / " + dbp + "] mmHg");
-            } else if (pulseRate == null) {
-                // Third input - Pulse Rate
-                pulseRate = (int) value;
-                outputArea.append("  PR [" + pulseRate + "]/minute");
-
-                // Reset sbp and dbp for the next set of inputs
-
-            } else if (bodyTemperature == null) {
-                // Fourth input - Body Temperature
-                bodyTemperature = value;
-                outputArea.append("\n\tBody Temperature [" + bodyTemperature + "]℃");
-
-                // Reset bodyTemperature for the next input
-            } else if (respirationRate == null) {
-                // Fifth input - Respiration Rate
-                respirationRate = (int) value;
-                outputArea.append("\n\tRespiration Rate [" + respirationRate + "]/minute");
-                
-                sbp = null;
-                dbp = null;
-                pulseRate = null;
-                bodyTemperature = null;
-                respirationRate = null;
-                // Reset respirationRate for the next input
-            } else {
-                // Handle additional inputs or provide an error message if necessary
-                outputArea.setText("Input exceeded expected data fields.");
+        // Check for temperature reading
+        if (input.toLowerCase().startsWith("t")) {
+            try {
+                // Parse temperature value
+                double temperatureValue = Double.parseDouble(input.substring(1));
+                descriptionArea.setText("   at GDS : Forehead (Temporal Artery) Thermometers:");
+                outputArea.setText("Body Temperature [ " + temperatureValue + " ] ℃");
+            } catch (NumberFormatException e) {
+                outputArea.setText("Invalid temperature input. Please enter a valid number.");
             }
+            return; // Exit the method after handling temperature
+        }
+
+        try {
+            // Parse general input as double
+            double value = Double.parseDouble(input);
+            processMeasurement(value);
         } catch (NumberFormatException e) {
             outputArea.setText("Invalid input. Please enter a number.");
         }
     }
+
+    private void processMeasurement(double value) {
+        if (sbp == null) {
+            sbp = (int) value;
+            outputArea.setText("\tSBP [" + sbp + "] mmHg    ");
+        } else if (dbp == null) {
+            dbp = (int) value;
+            outputArea.setText("BP [" + sbp + " / " + dbp + "] mmHg    ");
+        } else if (pulseRate == null) {
+            pulseRate = (int) value;
+            outputArea.append("PR [" + pulseRate + "]/minute    ");
+        } else if (bodyTemperature == null) {
+            bodyTemperature = value;
+            outputArea.append("\n\tBody Temperature [" + bodyTemperature + "]℃");
+        } else if (respirationRate == null) {
+            respirationRate = (int) value;
+            outputArea.append("\n\tRespiration Rate [" + respirationRate + "]/minute");
+            resetMeasurements();
+        } else {
+            outputArea.setText("Input exceeded expected data fields.");
+        }
+    }
+
+    private void resetMeasurements() {
+        sbp = null;
+        dbp = null;
+        pulseRate = null;
+        bodyTemperature = null;
+        respirationRate = null;
+    }
+
 
     private void createBodytemp(Double input) {
     	descriptionArea.setText("   at GDS : Forehead (Temporal Artery) Thermometers:");
