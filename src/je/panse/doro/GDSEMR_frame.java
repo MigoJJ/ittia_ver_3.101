@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-	import java.awt.BorderLayout;
+	import java.awt.BorderLayout;		
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -19,13 +19,14 @@ import javax.swing.SwingUtilities;
 
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
-import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
+import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
-    private static final int FRAME_WIDTH = 1200;
-    private static final int FRAME_HEIGHT = 1200;
+    private static final int FRAME_WIDTH = 1250;
+    private static final int FRAME_HEIGHT = 1020;
 
     public static JFrame frame;
     public static JTextArea[] textAreas;
@@ -41,7 +42,9 @@ public class GDSEMR_frame {
 
     public void createAndShowGUI() throws Exception {
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        frame.setLocation(50, 50);
+        frame.setLocation(360, 60);
+   	 	 frame.setUndecorated(true);
+
 
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
         centerPanel.setPreferredSize(new Dimension(900, 1000));
@@ -113,7 +116,7 @@ public class GDSEMR_frame {
         frame.add(southPanel, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
+//        frame.pack();
         frame.setVisible(true);
     }
 
@@ -134,9 +137,10 @@ public class GDSEMR_frame {
             });
 
             EMR_east_buttons_obj.main(null);
-            EMR_vitalsign.main(args);
+            Vitalsign.main(args);
             EMR_HbA1c.main(null);
             EMR_symptom_main.main(null);
+            EMR_BMI_calculator.main(null);
 //            EMR_thyroid_main.main(null);
         } catch (Exception e) {
             e.printStackTrace();

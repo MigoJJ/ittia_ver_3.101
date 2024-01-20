@@ -12,7 +12,7 @@ import je.panse.doro.GDSEMR_frame;
 
 public class InjectionApp {
 
-    private static final int FRAME_WIDTH = 270;
+    private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HEIGHT = 400;
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     
