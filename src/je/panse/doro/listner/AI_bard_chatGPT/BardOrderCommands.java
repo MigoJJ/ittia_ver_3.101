@@ -27,12 +27,14 @@ public class BardOrderCommands {
 
     private static final String BARDORDERLIST = """
         i would like to make EMR interface for physician.
+
+        Execute next step by step;
         clear previous input data;
         
         organize and make summary list using table format;
         the list will be classified
             using Mesh main heading classifications;
-        and sort the list using disease base; 
+        and sort the list using organ base; 
         
         modify table like column titles;
         #	,   MeSH Main Heading	,    Date	,    Details

@@ -1,5 +1,5 @@
 package je.panse.doro.samsara;
-import java.awt.Color;
+import java.awt.Color;	
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -30,7 +30,7 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
-import je.panse.doro.samsara.EMR_OBJ_vitalsign.EMR_vitalsign;
+import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen;
 
 public class EMR_east_buttons_obj extends JFrame implements ActionListener {
@@ -38,8 +38,9 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
     private ArrayList<JButton> buttons = new ArrayList<>();
 
     public EMR_east_buttons_obj(String position, String title) {
-        setSize(new Dimension(450, 180));
-        setLayout(new GridLayout(0, 5)); // Set 0 rows and 5 columns
+    	 setUndecorated(true);
+        setSize(new Dimension(1850, 30));
+        setLayout(new GridLayout(0, 20)); // Set 0 rows and 5 columns
         setBackground(new Color(240, 240, 240));
         setTitle(title);
         setLocation(1460, 0);
@@ -91,7 +92,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         Map<String, Runnable> buttonActions = new HashMap<>();
 
         buttonActions.put("BMI", () -> EMR_BMI_calculator.main(new String[0]));
-        buttonActions.put("BP", () ->  EMR_vitalsign.main(new String[0]));
+        buttonActions.put("BP", () ->  Vitalsign.main(new String[0]));
         buttonActions.put("HbA1c", () -> EMR_HbA1c.main(new String[0]));
         buttonActions.put("LDL", () -> EMR_LDL.main(new String[0]));
         buttonActions.put("LFT", () -> EMR_LFT.main(new String[0]));

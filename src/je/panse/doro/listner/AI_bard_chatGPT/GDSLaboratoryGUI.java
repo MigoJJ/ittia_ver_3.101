@@ -163,13 +163,14 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         } else {
             switch (command) {
                 case "A>":
-                    modifyActionlab();
+                    modifyActionlist();
+
                     break;
                 case "Lab>":
-                    modifyActionlab1();
+                    modifyActionlab();
                     break;
                 case "Lab 231216":
-                    modifyActionlist();
+                    modifyActionlab1();
                     break;
                 case "Copy to Clipboard":
                     copyToClipboardAction();
