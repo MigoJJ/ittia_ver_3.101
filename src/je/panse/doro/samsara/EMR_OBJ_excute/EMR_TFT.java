@@ -39,8 +39,9 @@ public class EMR_TFT extends JFrame {
         // Set JFrame properties
         setTitle("GDS TFT Input Form");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 600);
-        setLocationRelativeTo(null);
+        setSize(300, 360);
+//        setLocationRelativeTo(null);
+        setLocation(1750, 310);
 
         // Create panel
         JPanel panel = new JPanel(new BorderLayout());

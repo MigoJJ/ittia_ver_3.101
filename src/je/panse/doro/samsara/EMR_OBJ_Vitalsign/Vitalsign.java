@@ -29,7 +29,7 @@ public class Vitalsign extends JFrame {
         setTitle("Vital Sign Tracker");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 300);
-        setLocation(0, 290);
+        setLocation(0, 300);
 //        setLocationRelativeTo(null);
         setResizable(true);
     }

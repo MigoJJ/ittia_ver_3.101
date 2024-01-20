@@ -9,7 +9,7 @@ public class EMR_HbA1c extends JFrame {
     private JTextArea textArea;
     private JTextField[] textFields = new JTextField[3];
     private final String[] buttonNames = {"Clear", "Save", "Save and Quit"};
-    private final String[] labels = {"FBS / PP2 time", "Glucose mg/dL", "HbA1c %"};
+    private final String[] labels = {"      FBS / PP2 time", "      Glucose mg/dL", "      HbA1c %"};
 
     // Constructor
     public EMR_HbA1c() {
