@@ -156,6 +156,8 @@ public class Vitalsign extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+            	dispose();
+            	Vitalsign.main(null);
                 inputField.setText("");
                 outputArea.setText("");
                 descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
@@ -168,6 +170,8 @@ public class Vitalsign extends JFrame {
                 // Logic to save data
                 GDSEMR_frame.setTextAreaText(5, "\n"+ descriptionArea.getText());
                 GDSEMR_frame.setTextAreaText(5, "\n\t"+ outputArea.getText());
+            	dispose();
+            	Vitalsign.main(null);
                 inputField.setText("");
                 outputArea.setText("");
                 descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
