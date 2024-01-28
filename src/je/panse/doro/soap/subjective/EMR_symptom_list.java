@@ -68,7 +68,7 @@ public class EMR_symptom_list extends JPanel {
                 for (int i = 0; i < retStringlen; i++) {
                     String symptom = retString[i];
                     String textFieldContent = textFields[i].getText();
-                    result.append("    ").append(textFieldContent).append("    ").append(symptom).append("\n");
+                    result.append("\t").append(textFieldContent).append("    ").append(symptom).append("\n");
                 }
                 textArea.setText("The Patient has suffered from : ▣ \n");
                 textArea.append(result.toString());
