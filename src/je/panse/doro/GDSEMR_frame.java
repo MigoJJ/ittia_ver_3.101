@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-	import java.awt.BorderLayout;		
+	import java.awt.BorderLayout;			
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
@@ -17,15 +17,17 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 
+import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
-    private static final int FRAME_WIDTH = 1250;
+    private static final int FRAME_WIDTH = 1280;
     private static final int FRAME_HEIGHT = 1020;
 
     public static JFrame frame;
@@ -141,7 +143,8 @@ public class GDSEMR_frame {
             EMR_HbA1c.main(null);
             EMR_symptom_main.main(null);
             EMR_BMI_calculator.main(null);
-//            EMR_thyroid_main.main(null);
+            EMR_TFT.main(null);
+            InjectionApp.main(null);
         } catch (Exception e) {
             e.printStackTrace();
         }

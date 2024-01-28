@@ -34,7 +34,7 @@ public class EMR_ROS_ButtonActions  extends JFrame implements ActionListener {
 			ArrayList<String> allList = EMR_ROS.allList;
 			String retuenedStr = EMR_ROS_ReplaceStringArray.main(allList, selectList);
 			GDSEMR_frame.setTextAreaText(2, retuenedStr);
-			GDSEMR_frame.setTextAreaText(7, "\n   [ ▶ ] " + selectList.toString() + "   " + cdate);
+			GDSEMR_frame.setTextAreaText(9, "\n   [ ▶ ] " + selectList.toString() + "   " + cdate);
            outputArea.setText("");
 			EMR_ROS.disposemain(null);
 		    break;

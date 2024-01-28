@@ -14,7 +14,7 @@ public class EMR_symptom_main {
         JFrame frame = new JFrame("Select category ...");
         frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         frame.setLocation(0, 610);
-        frame.setSize(new Dimension(300, 400));
+        frame.setSize(new Dimension(300, 460));
 
         String[] buttonNames = {
                 "Diabetes Mellitus",
@@ -24,6 +24,9 @@ public class EMR_symptom_main {
                 "UTI",
                 "Abdominal pain",
                 "Atypical chest pain",
+                "Osteoporosis",
+                "Hypercholesterolemia",
+                "Pituitary disease",
                 "Quit"
         };
         for (String name : buttonNames) {

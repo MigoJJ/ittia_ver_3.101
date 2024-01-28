@@ -1,25 +1,28 @@
 package je.panse.doro.samsara.EMR_OBJ_Vitalsign;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import javax.swing.JTextField;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GradientPaint;
+import java.awt.Color;
 
-class GradientTextField extends JTextField {
+public class GradientTextField extends JTextField {
     public GradientTextField(int columns) {
         super(columns);
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        Graphics2D g2 = (Graphics2D) g.create();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        Color lightSkyBlueStart = new Color(135, 206, 250); // Light sky blue start color
-        Color lightSkyBlueEnd = new Color(176, 226, 255); // Light sky blue end color
-        GradientPaint gp = new GradientPaint(0, 0, lightSkyBlueStart, 0, getHeight(), lightSkyBlueEnd);
-        g2.setPaint(gp);
-        g2.fillRect(0, 0, getWidth(), getHeight());
-        g2.dispose();
+        Graphics2D g2d = (Graphics2D) g.create();
+        int width = getWidth();
+        int height = getHeight();
+        Color lightSkyBlue1 = new Color(175, 228, 255); // A lighter shade of light sky blue
+        Color lightSkyBlue2 = new Color(200, 240, 255); // An even lighter shade
 
-        super.paintComponent(g);
+        GradientPaint gp = new GradientPaint(0, 0, lightSkyBlue1, 0, height, lightSkyBlue2);
+        g2d.setPaint(gp);
+        g2d.fillRect(0, 0, width, height);
+        super.paintComponent(g2d);
+        g2d.dispose();
     }
 }
