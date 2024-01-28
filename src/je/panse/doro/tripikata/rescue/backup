@@ -1,10 +1,19 @@
   O>	 
-	1.26	[ Insulin (2-25 μU/mL) ]
-	0.25	[ C-peptide (1-4.5 ng/mL) ]
-	0.1	[ CRP (<3 mg/L)  ]
-	15	[ ESR   ]
+  	HCV Ab:    Negative
+  	RPR:    Negative
+  	Stool Hb:    Negative
+  	Stool Hb:    Positive
+  	RF:    Positive
+	1	[ Vitamin-D  (20-50 ng/mL) ]
+	2	[ Insulin (2-25 μU/mL) ]
+	3	[ C-peptide (1-4.5 ng/mL) ]
+	4	[ CRP (<3 mg/L)  ]
+	5	[ ESR   ]
+  	6	[ Uric Acid (Men: 4-7 mg/dL; Women: 3-6 mg/dL)  ]
   A>	 
-	1.26	[ Insulin (2-25 μU/mL) ]   2024.01
-	0.25	[ C-peptide (1-4.5 ng/mL) ]   2024.01
-	0.1	[ CRP (<3 mg/L)  ]   2024.01
-	15	[ ESR   ]   2024.01
+	1	[ Vitamin-D  (20-50 ng/mL) ]   2024.01
+	2	[ Insulin (2-25 μU/mL) ]   2024.01
+	3	[ C-peptide (1-4.5 ng/mL) ]   2024.01
+	4	[ CRP (<3 mg/L)  ]   2024.01
+	5	[ ESR   ]   2024.01
+  	6	[ Uric Acid (Men: 4-7 mg/dL; Women: 3-6 mg/dL)  ]   2024.01
