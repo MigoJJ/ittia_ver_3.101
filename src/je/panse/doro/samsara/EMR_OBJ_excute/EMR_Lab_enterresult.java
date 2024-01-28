@@ -22,7 +22,7 @@ public class EMR_Lab_enterresult extends JFrame {
 
     private JTextField[] textBoxes;
     private int numFields = 10;
-    private String[] nameFields = {"Vitamin-D  (20-50 ng/mL)", "CRP  ", "ESR  ", "Uric Acid  ", "AFP", "CA-19-9", "CEA", "PSA", "CA125", "Cyfra-21"};
+    private String[] nameFields = {"Vitamin-D  (20-50 ng/mL)", "Insulin (2-25 μU/mL)", "C-peptide (1-4.5 ng/mL)","CRP (<3 mg/L) ", "ESR  ", "Uric Acid (Men: 4-7 mg/dL; Women: 3-6 mg/dL) ", "AFP", "CA-19-9", "CEA", "PSA", "CA125", "Cyfra-21"};
 	private String cdate = Date_current.defineTime("m");
 
     public EMR_Lab_enterresult() {

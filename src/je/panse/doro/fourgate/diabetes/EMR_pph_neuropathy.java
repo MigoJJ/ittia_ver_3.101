@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes;
 
-import java.awt.BorderLayout;		
+import java.awt.BorderLayout;			
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -24,7 +24,7 @@ public class EMR_pph_neuropathy extends JFrame {
     private static final long serialVersionUID = 1L;
 
     private static final String FRAME_TITLE = "EMR Physician's Interface";
-    private static final String DEFAULT_TEXT = "\n< Diabetes Mellitus : peripheral neuropathy >***************\n";
+    private static final String DEFAULT_TEXT = "\n< Diabetes Mellitus : peripheral neuropathy >***\n";
 
     private static JFrame frame = new JFrame(FRAME_TITLE);
     private static JTextArea textArea = new JTextArea(9, 50);
@@ -98,7 +98,7 @@ public class EMR_pph_neuropathy extends JFrame {
         };
         for (int i = 0; i < 5; i++) {
             JCheckBox checkBox = new JCheckBox(options[index][i]);
-            checkboxTexts.put(checkBox, "    " + checkBox.getText() + "\n");
+            checkboxTexts.put(checkBox, "\t" + checkBox.getText() + "\n");
             checkBox.addItemListener(e -> {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     updateTextArea();
@@ -113,7 +113,7 @@ public class EMR_pph_neuropathy extends JFrame {
     }
 
     private static void updateTextArea() {
-        StringBuilder text = new StringBuilder("< Diabetes Mellitus : peripheral neuropathy >\n");
+        StringBuilder text = new StringBuilder("\n< Diabetes Mellitus : peripheral neuropathy >\n");
         for (Map.Entry<JCheckBox, String> entry : checkboxTexts.entrySet()) {
             if (entry.getKey().isSelected()) {
                 text.append(entry.getValue());
@@ -131,10 +131,13 @@ public class EMR_pph_neuropathy extends JFrame {
                 switch (buttonLabel) {
 
 	                case "Negative pph_Neuropathy":
-	                    GDSEMR_frame.setTextAreaText(4, ""
+	                    GDSEMR_frame.setTextAreaText(5, ""
 	                    		+ DEFAULT_TEXT
-	                    		+ "\n     numbness[-], tingling[-], pain[-], weakness in limbs[-] \n"
-	                    		+ "     ulcers[ - ], sores[ - ], infections[ - ]\n"
+	                    		+ "\n\tnumbness[-]\n"
+	                    		+ "\ttingling[-]\n"
+	                    		+ "\tpain[-]\n"
+	                    		+ "\tweakness in limbs[-] \n"
+	                    		+ "\tulcers[ - ], sores[ - ], infections[ - ]\n"
 	                    		+ "     10-g monofilament test for light touch sense in the feet[ - ]\n"
 	                    		+ "     tuning fork test for vibration sense in the feet [ - ]\n"
 	                    		+ "     *************************************************");
@@ -147,7 +150,7 @@ public class EMR_pph_neuropathy extends JFrame {
                         clearInput(inputPanel);
                         break;
                     case "Save":
-                        GDSEMR_frame.setTextAreaText(1, textArea.getText());
+                        GDSEMR_frame.setTextAreaText(5, textArea.getText());
                         frame.dispose();
                         // Implement save logic here
                         break;
