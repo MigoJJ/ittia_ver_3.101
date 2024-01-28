@@ -1,4 +1,4 @@
-package je.panse.doro.chartplate;
+package je.panse.doro.soap.cc;
 
 import je.panse.doro.samsara.comm.datetime.Date_current;
 
