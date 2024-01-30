@@ -3,14 +3,18 @@ package je.panse.doro.listner.AI_bard_chatGPT;
 public class BardOrderCommands {
 
     private static final String BARDORDERLAB = """
-        clear previous values;
-        make table
-        if parameter does not exist -> remove the row;
-        Parameter Value Unit 
-        using value format
-        merge parameters like below
-        do not calculate between values\n
-        the row titles ;----------------------
+	    Execute step by step;
+	    clear previous values;
+	    make table
+	    if parameter does not exist -> remove the row;
+	    Parameter Value Unit
+	    using value format
+	    Value Font -> BOLD;
+	    merge parameters like below
+	    do not calculate between values
+
+        the row titles - >
+         ----------------------
     """;
 
     private static final String BARDORDERLAB1 = """
