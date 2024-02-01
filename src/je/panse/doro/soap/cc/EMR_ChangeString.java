@@ -17,6 +17,8 @@ public class EMR_ChangeString {
        String outputText = lines;
 
 		outputText = outputText.replace(":cd ", cdate);
+		outputText = outputText.replace(":call ", "- The patient received a lab results phone call notification from the doctor's office.");
+
 		
 		outputText = outputText.replace(":d ", "diabetes mellitus");
 		outputText = outputText.replace(":dr ", "DM with retinopathy");
