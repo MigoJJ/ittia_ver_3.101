@@ -227,7 +227,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     private void modifyAction() {
         // Add your actual logic for this button action here, replacing the placeholder text
         String textFromInputArea = inputTextArea.getText();
-        outputTextArea.append("\nStarting input data --------------------------\n" + textFromInputArea + "\nthe dataset finished --------------------------\n");
+        outputTextArea.append("\nStarting a new clinical laboratory data --------------------------\n" + textFromInputArea + "\nfinidhing a new clinical laboratory data --------------------------\n");
     }
     
     

@@ -3,21 +3,12 @@ package je.panse.doro.listner.AI_bard_chatGPT;
 public class BardOrderCommands {
 
     private static final String BARDORDERLAB = """
-
-        Execute step by step;
-		 clear previous values;
+		Execute step by step;
+		clear previous table values;
 		
-		 merge parameters like below
-		 do not calculate between values
-
-		
-		 make merged rows table
-		
-		 Parameter Value Unit
-		 using value format
-		 Value Font -> BOLD;
-		 if parameter does not exist -> remove the row;
-		 the row titles - >
+		Make a table with column titles as Parameter, Value, Unit;
+		All rows containing group titles (e.g., "Kidney Function:", "Inflammation Markers:");
+		Merge this table Parameters with 
          ----------------------
     """;
 
