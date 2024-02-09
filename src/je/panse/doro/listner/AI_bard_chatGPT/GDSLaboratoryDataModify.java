@@ -19,7 +19,7 @@ public class GDSLaboratoryDataModify {
 
         MAPPING.put("eGFR", "\n [ eGFR - A/C ratio ];");
         MAPPING.put("S.G", "\n [urine Protein /  Blood / RBC / WBC ]");
-        MAPPING.put("TSH receptor Ab","Anti TSH-R-Ab - " + "Anti-Tg Ab -" + "Anti mic Ab ]\n ");
+        MAPPING.put("TSH recepter Ab","[ Anti TSH-R-Ab - " + "Anti-Tg Ab -" + "Anti mic Ab ]\n ");
         
         MAPPING.put("Lipoprotein a", "\n [ Lipoprotein a / Apolipoprotein B ]");
         MAPPING.put("D3", "\n [ Vitamin-D3 ]");
