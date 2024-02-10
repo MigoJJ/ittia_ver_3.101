@@ -35,7 +35,7 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
         setSize(1200, 850);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Color backgroundColor = new Color(0xf4e6bc);
+        Color backgroundColor = Color.decode("#a0aae2");
         Font consolasFont = new Font("Consolas", Font.PLAIN, 12); // Adjust font size as needed
         inputTextArea.setFont(consolasFont);
         outputTextArea.setFont(consolasFont);
@@ -201,9 +201,9 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
 
     private void modifyActionlab() {
         String textFromInputArea = inputTextArea.getText();
-    	outputTextArea.append("\n" + bardorderlab);
+    	 outputTextArea.append("\n" + bardorderlab);
         GDSLaboratoryDataModify.main(textFromInputArea);
-    	modifyAction();
+    	 modifyAction();
 
         copyToClipboardAction();
     }
@@ -217,11 +217,11 @@ public class GDSLaboratoryGUI extends JFrame implements ActionListener {
     }
     
     private void modifyActionlist() {
-        String textFromInputArea = inputTextArea.getText();
+       String textFromInputArea = inputTextArea.getText();
     	outputTextArea.append("\n" + bardorderlist);
-        GDSLaboratoryDataModify.main(textFromInputArea);
+       GDSLaboratoryDataModify.main(textFromInputArea);
     	modifyAction();
-        copyToClipboardAction();
+       copyToClipboardAction();
     }
     
     private void modifyAction() {
