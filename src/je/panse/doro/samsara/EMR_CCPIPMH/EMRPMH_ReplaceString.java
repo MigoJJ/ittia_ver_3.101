@@ -8,7 +8,7 @@ public class EMRPMH_ReplaceString {
 
     public static void main(String stringB) {
         String stringA =
-            "     ----------------------------------\n" +
+            "\n     ----------------------------------\n" +
             "     □  DM   □ HTN  □  Dyslipidemia\n" +
             "     □  Cancer      □  Operation □  Thyroid Disease\n" +
             "     □  Asthma     □  Pneumonia  □ Tuberculosis\n" +
@@ -18,7 +18,7 @@ public class EMRPMH_ReplaceString {
             "     □  Angina Pectoris          □  AMI   □  Arrhythmia\n" +
             "     □  Allergy      □  ...\n" +
             "     □  Food        □  Injection □   Medication\n" +
-            "      ------------------------------------\n";
+            "     ------------------------------------\n";
 
         System.out.println(replaceStringAWithB(stringA, stringB));
 

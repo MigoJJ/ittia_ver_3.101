@@ -1,5 +1,5 @@
 package je.panse.doro.samsara;
-import java.awt.Color;	
+import java.awt.Color;		
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -19,13 +19,13 @@ import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_CFS;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_GFS;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMRLabPositive;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_CBC;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_enterresult;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_positive;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
@@ -103,7 +103,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("CBC", () -> EMR_CBC.main(new String[0]));
         buttonActions.put("Etc.", () -> {
             EMR_Lab_enterresult.main(new String[0]);
-            EMR_Lab_positive.main(new String[0]);
+            EMRLabPositive.main(new String[0]);
         });
         buttonActions.put("GFS", () -> EMR_endo_GFS.main(new String[0]));
         buttonActions.put("CFS", () -> EMR_endo_CFS.main(new String[0]));

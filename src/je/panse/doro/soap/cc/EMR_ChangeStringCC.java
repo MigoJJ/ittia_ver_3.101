@@ -1,4 +1,4 @@
-package je.panse.doro.chartplate;
+package je.panse.doro.soap.cc;
 
 public class EMR_ChangeStringCC {
 
