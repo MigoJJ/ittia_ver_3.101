@@ -1,6 +1,6 @@
 package je.panse.doro.listner.buttons;
 
-import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.GDSEMR_frame;	
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_Edit;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
@@ -8,7 +8,7 @@ import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
-import je.panse.doro.fourgate.routinecheck.routinecheck;
+import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
 import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_CopyBackup;
@@ -93,10 +93,10 @@ public class EMR_B_1entry extends GDSEMR_frame {
                 	InjectionApp.main(null);
                     break;
                 case "GDS RC":
-                	routinecheck.GDSRC(null);
+                	RoutineCheck.performGDSRoutineCheck();
                     break;
                 case "공단검진":
-                	routinecheck.HCRC(null);
+                	RoutineCheck.performHCRoutineCheck();
                     break;
                 case "DM retinopathy":
                     OpenOneNotePage.main(null);

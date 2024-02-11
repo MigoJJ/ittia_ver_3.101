@@ -93,12 +93,13 @@ public class EMR_FU_retinopathy {
                 checkbox.setSelected(false);
             }
             textArea.setText(currentDate.format(formatter) + """
-            < Diabetic Retinopathy >>>>>>>>>>>>>>>>>
+            < Diabetic Retinopathy > ****************
 				\tNo apparent retinopathy : no NPDR
 				\t\tCataract [-] Cataract Surgery:[-]
 				\t\tGlaucoma [-]
 				\t\tRetinal Detachment [-]
 				\t\tMacular Degeration[-]
+                *************************************************
                 """);
         });
         
@@ -117,6 +118,7 @@ public class EMR_FU_retinopathy {
             // Placeholder for save action
             System.out.println("Save button clicked. Implement saving logic here.");
             GDSEMR_frame.setTextAreaText(5, "\n"+ textArea.getText());
+            GDSEMR_frame.setTextAreaText(5, "\n"+ "*************************************************");
             textArea.setText("");
             frame.dispose();
         });
