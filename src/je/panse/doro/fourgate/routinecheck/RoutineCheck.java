@@ -26,13 +26,13 @@ public class RoutineCheck {
     // Method to handle General Duty Surgery Routine Check
     public static void performGDSRoutineCheck() {
         String currentDate = getCurrentDate();
-        setRoutineCheckText("The patient was seen at the GDS clinic for a routine checkup on ", currentDate, "GDS clinic Routine check");
+        setRoutineCheckText("The patient was seen at the GDS clinic \n\tfor a routine checkup on ", currentDate, "GDS clinic Routine check");
     }
 
     // Method to handle Health Center Routine Check
     public static void performHCRoutineCheck() {
         String currentDate = getCurrentDate();
-        setRoutineCheckText("The patient was seen at the GDS clinic for a 공단검진 on ", currentDate, "공단검진 at GDS clinic");
+        setRoutineCheckText("The patient was seen at the GDS clinic \n\tfor a 공단검진 on ", currentDate, "공단검진 at GDS clinic");
     }
 
     // Helper method to get current date in the desired format
