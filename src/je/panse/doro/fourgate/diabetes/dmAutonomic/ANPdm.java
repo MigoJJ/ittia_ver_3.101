@@ -18,7 +18,9 @@ public class ANPdm {
 
     public static void initComponents() {
         JFrame frame = new JFrame("ANPdm");
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // or EXIT_ON_CLOSE depending on your requirement
+
 	        frame.setLayout(new BorderLayout());
 	
 	     // Set frame to open at coordinates (300, 300) on the screen
@@ -93,7 +95,6 @@ public class ANPdm {
     public static DefaultTableModel createTableModel() {
         String[] columnNames = {"Column 1", "[ + ]", "[ - ]", "Items"};
         String[] defaultItems = ANPdmReturnString.getDefaultStrings();
-        
         DefaultTableModel tableModel = new DefaultTableModel(columnNames, defaultItems.length) {
             @Override
             public Class<?> getColumnClass(int columnIndex) {
@@ -123,4 +124,9 @@ public class ANPdm {
         columnModel.getColumn(2).setPreferredWidth(5);
         columnModel.getColumn(3).setPreferredWidth(500);
     }
+
+	public static void exitFrame() {
+		// TODO Auto-generated method stub
+        frame.dispose(); // This will close the window and release all resources.
+	}
 }
