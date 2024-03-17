@@ -1,10 +1,9 @@
 package je.panse.doro.fourgate.diabetes.dmAutonomic;
 
-import java.awt.BorderLayout;							
+import java.awt.BorderLayout;								
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
-
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.*;
@@ -22,7 +21,7 @@ public class ANPdm {
     public static void initComponents() {
 	        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // or EXIT_ON_CLOSE depending on your requirement
 	        frame.setLayout(new BorderLayout());
-	        frame.setLocation(300, 100);
+	        frame.setLocation(600, 300);
 	        frame.setVisible(true);
 
      // Add JTextArea in the NORTH panel with a specific size
@@ -30,7 +29,7 @@ public class ANPdm {
 	        DefaultTableModel tableModel = createTableModel();
 	        JTable table = new JTable(tableModel);
 	        JScrollPane scrollPaneForTextArea = new JScrollPane(textArea);
-	        scrollPaneForTextArea.setPreferredSize(new Dimension(1000, 400)); // Set preferred size of the JScrollPane
+	        scrollPaneForTextArea.setPreferredSize(new Dimension(500, 250)); // Set preferred size of the JScrollPane
 	        frame.add(scrollPaneForTextArea, BorderLayout.NORTH);
         
      // Add buttons in the WEST panel with a specific width using ANPdmButton class

@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes.dmAutonomic;
 
-import java.awt.Component;	
+import java.awt.Component;		
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
