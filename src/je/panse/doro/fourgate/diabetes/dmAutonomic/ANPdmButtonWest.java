@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes.dmAutonomic;
 
-import java.awt.Component;
+import java.awt.Component;	
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -10,10 +10,12 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.table.TableModel;
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
 
 public class ANPdmButtonWest {
 
     public static Component createButton(String name, JTextArea textArea, JTable table) {
+    	
         JButton button = new JButton(name);
         button.addActionListener(e -> performAction(name, textArea, table.getModel(), ANPdm.frame));
         return button;
@@ -30,8 +32,8 @@ public class ANPdmButtonWest {
             case "Copy":
                 copyAction(textArea);
                 break;
-            case "Exit":
-                ANPdm.exitFrame(); // This will close the frame when the button is clicked
+            case "Quit":
+            	ANPdm.exitFrame(buttonName); // This will close the frame when the button is clicked
             	break;
             case "SelectAll":
                 selectAllAction(model);
