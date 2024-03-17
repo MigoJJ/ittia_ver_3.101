@@ -33,6 +33,7 @@ public class ANPdmButtonWest {
                 copyAction(textArea);
                 break;
             case "Quit":
+            	clearAction(textArea, model);
             	ANPdm.exitFrame(buttonName); // This will close the frame when the button is clicked
             	break;
             case "SelectAll":
