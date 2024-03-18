@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate;
 
-import java.io.File;		
+import java.io.File;						
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
@@ -16,7 +16,7 @@ public class EMR_FU_diabetesEdit extends JFrame {
             if (GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGenetal/textarea" + (i);
+            String fileName = (EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i));
             new FileLoader(fileName, i).execute();
         }
     }

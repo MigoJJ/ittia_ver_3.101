@@ -1,6 +1,6 @@
 package je.panse.doro.listner.buttons;
 
-import je.panse.doro.GDSEMR_frame;	
+import je.panse.doro.GDSEMR_frame;				
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_Edit;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
@@ -70,12 +70,12 @@ public class EMR_B_1entry extends GDSEMR_frame {
         if (panelLocation.equals("south")) {
             switch (noButton) {
                 case "F/U DM":
-                	
-                    EMR_FU_diabetesEdit.main(null);
+                	  EMR_FU_diabetesEdit.main(null);
+//                    EMR_FU_diabetesEdit.main(null);
                     break;
                     
                 case "F/U HTN":
-                    EMR_FU_hypertensionEdit.main(null);
+                	   EMR_FU_hypertensionEdit.main(null);
                     
                     break;
 

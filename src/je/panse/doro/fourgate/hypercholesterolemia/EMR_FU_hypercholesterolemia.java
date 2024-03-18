@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.hypercholesterolemia;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
