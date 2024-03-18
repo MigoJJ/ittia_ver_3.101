@@ -1,16 +1,14 @@
 package je.panse.doro.fourgate;
 
-import java.io.File;
+import java.io.File;	
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane; // Import for user messages
 import javax.swing.SwingWorker;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_FU_diabetesEdit extends JFrame {
-
     private static final int NUM_TEXT_AREAS = 10;
 
     public EMR_FU_diabetesEdit() {
@@ -18,20 +16,18 @@ public class EMR_FU_diabetesEdit extends JFrame {
             if (GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            new FileLoader(getFilepath(i)).execute(); // Use getFilepath for dynamic path
+            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
+            new FileLoader(fileName, i).execute();
         }
     }
 
-    private String getFilepath(int index) {
-        return EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + index;
-    }
-
-    private static class FileLoader extends SwingWorker<String, Void> {
-
+    private class FileLoader extends SwingWorker<String, Void> {
         private final String fileName;
+        private final int index;
 
-        public FileLoader(String fileName) {
+        public FileLoader(String fileName, int index) {
             this.fileName = fileName;
+            this.index = index;
         }
 
         @Override
@@ -42,9 +38,7 @@ public class EMR_FU_diabetesEdit extends JFrame {
                     text += scanner.nextLine() + "\n";
                 }
             } catch (FileNotFoundException ex) {
-                // Inform user about file not found
-                JOptionPane.showMessageDialog(null, "Failed to read file: " + fileName, "Error", JOptionPane.ERROR_MESSAGE);
-                return null; // Indicate failure
+                System.err.println("Failed to read file " + fileName + ": " + ex.getMessage());
             }
             return text;
         }
@@ -53,18 +47,14 @@ public class EMR_FU_diabetesEdit extends JFrame {
         protected void done() {
             try {
                 String text = get();
-                if (text != null && GDSEMR_frame.textAreas[getIndex()] != null) {
-                    GDSEMR_frame.textAreas[getIndex()].setText(text);
-                    EMR_Comments.main("DM");
+                if (GDSEMR_frame.textAreas[index] != null) {
+                    GDSEMR_frame.textAreas[index].setText(text);
+                    EMR_Comments.main("Chol");
                 }
+                System.out.println("Loaded text " + text + " from file " + fileName);
             } catch (Exception ex) {
                 System.err.println("Failed to load file " + fileName + ": " + ex.getMessage());
             }
-        }
-
-        private int getIndex() {
-            // Assuming FileLoader is created with the correct index
-            return this.fileName.lastIndexOf("/") + 1; // Extract index from filename
         }
     }
 

@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes.dmGeneral;
 
-import java.awt.BorderLayout;		
+import java.awt.BorderLayout;			
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -97,7 +97,8 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
                 JTextArea textArea = textAreas.get(i);
                 try {
                     // Open existing text file and overwrite with new text
-                    String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
+                	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea0";
+//                    String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
                     File file = new File(filename);
                     BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                     writer.write(textArea.getText());
@@ -116,7 +117,9 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
     }
 
 	private static String getSavedText(int index) {
-        String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + index;
+//        String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + index;
+    	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea"+ index;
+
 		File file = new File(filename);
 	    if (!file.exists()) {
 	        return ""; // Return empty string if file doesn't exist yet

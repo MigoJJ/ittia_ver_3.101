@@ -1,49 +1,28 @@
-  CC>    Hypertension F/U
-  PMH>
-     ----------------------------------
-     □  DM   ▣  HTN  □  Dyslipidemia
-     □  Cancer      ▣  Operation □  Thyroid Disease
-     □  Asthma     □  Pneumonia  □ Tuberculosis
-     □  Hepatitis   □  GERD        □  Gout
-     □  Arthritis    □  Hearing Loss  □ ...
-     □  CVA          □ Depression  □  Cognitive Disorder
-     □  Angina Pectoris          □  AMI   □  Arrhythmia
-     □  Allergy      □  ...
-     □  Food        □  Injection □   Medication
-     ------------------------------------
+  CC>    DM F/U
+  ROS>
+[◇] Headache,    [◇] Neck pain,
+[◇] Earache,       [◇] Sinus congestion,
+[◇] Difficulty swallowing,    [◇] Hoarseness,
+[◇] Jaw pain,       [◇] Facial swelling,
+[◇] Nasal congestion,
+[◇] Dizziness,      [◇] Tinnitus (ringing in the ears),
+[◇] Vision changes,
+[◇] Mouth sores,[◇] Enlarged lymph nodes,
+[◇] Sleep apnea
   S>
-  The Patient has suffered from : ▣ 
-    □      Sharp or stabbing pain
-    □      Chest tightness
-    □      Shortness of breath
-    □      Dizziness
-    □      Nausea
-  O>
-< BMI >
-  Healthy weight : BMI: [ 21.38 ]kg/m^2
-  Height : 184 cm   Weight : 72.4 kg   Waist: 73 cm
-     at GDS : Regular pulse, Right Seated Position
-	BP [154 / 91] mmHg    PR [54]/minute    
-   FBS  [    94   ] mg/dL   HbA1c       [    5.8   ] %
-  	IFCC HbA1c: [  40  ] mmol/mol
-  	eAG: [  120  ] mg/dL
-  	eAG: [  6.65  ] mmol/l
-TC-HDL-Tg-LDL [ 219 - 67. - 58 - 140 ] mg/dL
-< GFS >   2024.03.18
-	Chronic erosive gastritis
-	Chronic atrophic gastritis
-< CFS >   2024.03.18
-	Colonic polyps
-	    polyp #3  inplammatory hyperplastic
-	BP [155 / 90] mmHg    PR [49]/minute    
+    Frequent urination [ - ]
+    Increased thirst [ - ]
+    increased hunger.[ - ]
+    Unexpected Weight loss [ - ]
+    Extreme Fatigue [ so-so ]
+    Blurred vision [denied ]
+    Slow-healing sores or frequent infections [none]
+    Areas of darkened skin [ - ]
+      Tingling or numbness in the hands or feet [none both]:
   A>
-  # Healthy weight : BMI: [ 21.38 ]kg/m^2    2024.03
->  TC-HDL-Tg-LDL [ 219 - 67. - 58 - 140 ] mg/dL   2024.03.18
-#  GB polyp cholesterol 
-▣   HTN   without medications 2024.03
-  ▣   Operation :left inguinal hernia  2018
-▣   HTN  without medications 2024.03
+#  DM  F/U 
   P>
-...now [ Excellent ] controlled glucose status
+...Follow-up in the clinic in [ 3.0 ]-month
+...continue with current dosages of meds
   Comment>
-Limit your alcohol intake. Drinking too much alcohol can raise blood pressure.Limit your alcohol intake. Drinking too much alcohol can raise blood pressure.
+Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.

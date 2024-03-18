@@ -71,7 +71,6 @@ public class EMR_B_1entry extends GDSEMR_frame {
             switch (noButton) {
                 case "F/U DM":
                 	  EMR_FU_diabetesEdit.main(null);
-//                    EMR_FU_diabetesEdit.main(null);
                     break;
                     
                 case "F/U HTN":
