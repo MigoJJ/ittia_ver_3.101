@@ -1,5 +1,5 @@
 package je.panse.doro.samsara;
-import java.awt.Color;			
+import java.awt.Color;				
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -11,8 +11,9 @@ import java.util.Map;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import je.panse.doro.fourgate.diabetes.EMR_FU_retinopathy;
-import je.panse.doro.fourgate.diabetes.EMR_pph_neuropathy;
+
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
+import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
@@ -110,7 +111,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
         buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
-        buttonActions.put("DM pph", () -> EMR_pph_neuropathy.main(new String[0]));
+        buttonActions.put("DM pph", () -> PNPdm.main(new String[0]));
         buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
         buttonActions.put("DM reti", () -> EMR_FU_retinopathy.main(new String[0]));
 
