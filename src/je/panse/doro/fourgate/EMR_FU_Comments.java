@@ -4,7 +4,7 @@ import java.util.Random;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_Comments {
+public class EMR_FU_Comments {
     
     public static String getRandomRecommendation(String dcode) {
         String[] recommendationsDM = {

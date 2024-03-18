@@ -49,7 +49,7 @@ public class EMR_FU_hypercholesterolemiaEdit extends JFrame {
                 String text = get();
                 if (GDSEMR_frame.textAreas[index] != null) {
                     GDSEMR_frame.textAreas[index].setText(text);
-                    EMR_Comments.main("Chol");
+                    EMR_FU_Comments.main("Chol");
                 }
                 System.out.println("Loaded text " + text + " from file " + fileName);
             } catch (Exception ex) {
