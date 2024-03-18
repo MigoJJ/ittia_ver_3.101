@@ -1,19 +1,28 @@
-  O>	 
-  	HCV Ab:    Negative
-  	RPR:    Negative
-  	Stool Hb:    Negative
-  	Stool Hb:    Positive
-  	RF:    Positive
-	1	[ Vitamin-D  (20-50 ng/mL) ]
-	2	[ Insulin (2-25 μU/mL) ]
-	3	[ C-peptide (1-4.5 ng/mL) ]
-	4	[ CRP (<3 mg/L)  ]
-	5	[ ESR   ]
-  	6	[ Uric Acid (Men: 4-7 mg/dL; Women: 3-6 mg/dL)  ]
-  A>	 
-	1	[ Vitamin-D  (20-50 ng/mL) ]   2024.01
-	2	[ Insulin (2-25 μU/mL) ]   2024.01
-	3	[ C-peptide (1-4.5 ng/mL) ]   2024.01
-	4	[ CRP (<3 mg/L)  ]   2024.01
-	5	[ ESR   ]   2024.01
-  	6	[ Uric Acid (Men: 4-7 mg/dL; Women: 3-6 mg/dL)  ]   2024.01
+  CC>    DM F/U
+  ROS>
+[◇] Headache,    [◇] Neck pain,
+[◇] Earache,       [◇] Sinus congestion,
+[◇] Difficulty swallowing,    [◇] Hoarseness,
+[◇] Jaw pain,       [◇] Facial swelling,
+[◇] Nasal congestion,
+[◇] Dizziness,      [◇] Tinnitus (ringing in the ears),
+[◇] Vision changes,
+[◇] Mouth sores,[◇] Enlarged lymph nodes,
+[◇] Sleep apnea
+  S>
+    Frequent urination [ - ]
+    Increased thirst [ - ]
+    increased hunger.[ - ]
+    Unexpected Weight loss [ - ]
+    Extreme Fatigue [ so-so ]
+    Blurred vision [denied ]
+    Slow-healing sores or frequent infections [none]
+    Areas of darkened skin [ - ]
+      Tingling or numbness in the hands or feet [none both]:
+  A>
+#  DM  F/U 
+  P>
+...Follow-up in the clinic in [ 3.0 ]-month
+...continue with current dosages of meds
+  Comment>
+Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.
