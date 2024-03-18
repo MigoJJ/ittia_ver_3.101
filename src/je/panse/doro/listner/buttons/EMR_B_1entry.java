@@ -1,12 +1,8 @@
 package je.panse.doro.listner.buttons;
 
-import je.panse.doro.GDSEMR_frame;				
+import je.panse.doro.GDSEMR_frame;					
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
-import je.panse.doro.fourgate.EMR_FU_Edit;
-import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
-import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
-import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
-import je.panse.doro.fourgate.EMR_FU_uriEdit;
+import je.panse.doro.fourgate.*;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
@@ -102,7 +98,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 case "F/U Edit":
                     System.out.println("southsouthsouth 1 1 1 ~~!!");
-                    EMR_FU_Edit.main(null);
+                    EMR_FU_mainEdit.main(null);
                     break;
                 default:
                     System.out.println("I do not recognize this button");
