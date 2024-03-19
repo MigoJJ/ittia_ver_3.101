@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes.dmGeneral;
 
-import java.awt.BorderLayout;			
+import java.awt.BorderLayout;				
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -8,10 +8,13 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,31 +28,31 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
     private static ArrayList<JTextArea> textAreas;
     private static JButton inputButton, editButton, saveButton, exitButton;
 
-    public EMR_FU_diabetes() {
-        setTitle("Diabetes Mellitus Preform");
-        setSize(400, 1000);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ // Improved code with error handling and comments
+    public EMR_FU_diabetes() throws FileNotFoundException {
+      setTitle("Diabetes Mellitus Preform");
+      setSize(400, 1000);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Create JTextAreas with default text and make them scrollable
-        textAreas = new ArrayList<JTextArea>();
-        String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
+      // Create JTextAreas with default text and make them scrollable
+      List<JTextArea> medicalTextFields = new ArrayList<>();  // More descriptive name
+      String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
 
-        // Create panel for JTextAreas
-        JPanel textAreaPanel = new JPanel();
-        textAreaPanel.setLayout(new GridLayout(textAreas.size(), 1));
-        for (int i = 0; i < textAreas.size(); i++) {
-            textAreaPanel.add(textAreas.get(i));
-        }
+      // Create panel for JTextAreas
+      JPanel textAreaPanel = new JPanel();
+      textAreaPanel.setLayout(new GridLayout(medicalTextFields.size(), 1));
+      for (int i = 0; i < defaultTexts.length; i++) {
+        JTextArea textArea = new JTextArea();
+        textArea.setText(getSavedText(i)); // Load saved text from file
         
-	    for (int i = 0; i < defaultTexts.length; i++) {
-	        JTextArea textArea = new JTextArea();
-	        textArea.setText(getSavedText(i)); // Load saved text from file
-	        textArea.setLineWrap(true);
-	        textArea.setWrapStyleWord(true);
-	        JScrollPane scrollPane = new JScrollPane(textArea);
-	        textAreaPanel.add(scrollPane);
-	        textAreas.add(textArea);
-	    }
+        textAreas.add(textArea); // Add to the ArrayList
+
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        textAreaPanel.add(scrollPane);
+        medicalTextFields.add(textArea);
+      }
         
         // Create buttons
         saveButton = new JButton("Save");
@@ -97,7 +100,7 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
                 JTextArea textArea = textAreas.get(i);
                 try {
                     // Open existing text file and overwrite with new text
-                	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea0";
+                	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea" +i;
 //                    String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
                     File file = new File(filename);
                     BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -144,7 +147,12 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 	    SwingUtilities.invokeLater(new Runnable() {
 	        public void run() {
-	            new EMR_FU_diabetes();
+	            try {
+					new EMR_FU_diabetes();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        }
 	    });
 		}

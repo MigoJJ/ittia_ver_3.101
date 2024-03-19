@@ -16,8 +16,10 @@ public class EMR_FU_diabetesEdit extends JFrame {
             if (GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
-            new FileLoader(fileName, i).execute();
+//            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
+        	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea" +i;
+
+            new FileLoader(filename, i).execute();
         }
     }
 
