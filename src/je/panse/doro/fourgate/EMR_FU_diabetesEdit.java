@@ -1,25 +1,32 @@
 package je.panse.doro.fourgate;
 
-import java.io.File;	
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.SwingWorker;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
+// Import GDSEMR_frame and EntryDir if needed
+// import je.panse.doro.GDSEMR_frame;
+// import je.panse.doro.entry.EntryDir;
+
 public class EMR_FU_diabetesEdit extends JFrame {
+
     private static final int NUM_TEXT_AREAS = 10;
 
     public EMR_FU_diabetesEdit() {
         for (int i = 0; i < NUM_TEXT_AREAS; i++) {
-            if (GDSEMR_frame.textAreas[i] != null) {
+            // Clear existing text in GDSEMR_frame if available
+            if (GDSEMR_frame.textAreas != null && GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-//            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
-        	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea" +i;
 
-            new FileLoader(filename, i).execute();
+            // Define file path
+            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
+            new FileLoader(fileName, i).execute();
         }
     }
 
@@ -49,9 +56,9 @@ public class EMR_FU_diabetesEdit extends JFrame {
         protected void done() {
             try {
                 String text = get();
-                if (GDSEMR_frame.textAreas[index] != null) {
+                if (GDSEMR_frame.textAreas != null && GDSEMR_frame.textAreas[index] != null) {
                     GDSEMR_frame.textAreas[index].setText(text);
-                    EMR_FU_Comments.main("Chol");
+                    EMR_FU_Comments.main("DM"); // Call EMR_FU_Comments with argument
                 }
                 System.out.println("Loaded text " + text + " from file " + fileName);
             } catch (Exception ex) {
@@ -61,6 +68,6 @@ public class EMR_FU_diabetesEdit extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_FU_diabetesEdit();
+        new EMR_FU_diabetesEdit(); // Use the correct class name
     }
 }
