@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes.dmGeneral;
 
-import java.awt.BorderLayout;			
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
+
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_FU_diabetes extends JFrame implements ActionListener {
@@ -28,6 +30,7 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
     public EMR_FU_diabetes() {
         setTitle("Diabetes Mellitus Preform");
         setSize(400, 1000);
+        setLocation(200,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Create JTextAreas with default text and make them scrollable
@@ -40,7 +43,6 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
         for (int i = 0; i < textAreas.size(); i++) {
             textAreaPanel.add(textAreas.get(i));
         }
-        
 	    for (int i = 0; i < defaultTexts.length; i++) {
 	        JTextArea textArea = new JTextArea();
 	        textArea.setText(getSavedText(i)); // Load saved text from file
@@ -66,15 +68,20 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
         buttonPanel.add(exitButton);
 
         // Gradually darken background color using orange
-        float hue = 0.13f;
-        float saturation = 1.0f;
+        float hue = 0.12f;
+        float saturation = 0.5f;
         float brightness = 1.0f;
         float increment = 0.03f;
         for (int i = 0; i < textAreas.size(); i++) {
             JTextArea textArea = textAreas.get(i);
-            Color color = Color.getHSBColor(hue, saturation, brightness);
-            textArea.setBackground(color);
+                        
+         // Assuming hue, saturation, brightness are already defined
+            Color grayColor = Color.LIGHT_GRAY; // Choose your preferred method (predefined or custom)
+            // grayColor = Color.LIGHT_GRAY; // For a lighter shade
+            // grayColor = new Color(128, 128, 128); // For a custom dark shade
+            textArea.setBackground(grayColor);
             brightness -= increment;
+            
         }
 
         // Add components to JFrame
@@ -97,8 +104,7 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
                 JTextArea textArea = textAreas.get(i);
                 try {
                     // Open existing text file and overwrite with new text
-                	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea0";
-//                    String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
+                    String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
                     File file = new File(filename);
                     BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                     writer.write(textArea.getText());
@@ -117,9 +123,7 @@ public class EMR_FU_diabetes extends JFrame implements ActionListener {
     }
 
 	private static String getSavedText(int index) {
-//        String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + index;
-    	String filename = "/home/migowj/git/ittia_ver_3.01/src/je/panse/doro/fourgate/diabetes/dmGeneral/textarea"+ index;
-
+		String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea"  + index;
 		File file = new File(filename);
 	    if (!file.exists()) {
 	        return ""; // Return empty string if file doesn't exist yet
