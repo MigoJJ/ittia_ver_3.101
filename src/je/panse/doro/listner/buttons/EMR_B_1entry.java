@@ -41,12 +41,20 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 case "Exit":
                     frame.dispose();
+
+                	  break;
+                case "CE":
+                		for (int index = 1; index <= 7; index++) {
+              		  textAreas[index].setText("");
+              		  String inputData = titles[index] + "\t";
+                      textAreas[index].setText(inputData);
+
+                		}
                     break;
                 case "ittia_support":
                 	GDS_ittia_support.main(null);
                     break;
-                case "Button 5":
-                    break;
+
                 case "Button 6":
                     break;
                 case "Button 7":
