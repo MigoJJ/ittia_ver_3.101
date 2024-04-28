@@ -1,6 +1,26 @@
-  CC>    DM F/U
+  CC>    Hypertension F/U
+The patient was seen at the GDS clinic 
+	for a routine checkup on 2024.04.28
+  ROS>
+[◇] Headache,    [◇] Neck pain,
+[◇] Earache,    [◇] Sinus congestion,
+[◇] Difficulty swallowing,    [◇] Hoarseness,
+[◇] Jaw pain,    [◇] Facial swelling,
+[◇] Nasal congestion,
+[◇] Dizziness,
+[◇] Tinnitus (ringing in the ears),
+[◇] Vision changes,
+[◇] Mouth sores,
+[◇] Enlarged lymph nodes,
+[◇] Sleep apnea
+  S>
+  The Patient has suffered from : ▣ 
+    □      Sharp or stabbing pain
+    □      Chest tightness
+    □      Shortness of breath
+    □      Dizziness
+    □      Nausea
   P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...continue with current dosages of meds
+  #  GDS clinic Routine check  [ 2024.04.28 ]
   Comment>
-Take your medication as prescribed. If you are taking medication for diabetes, it is important to take it as prescribed by your doctor.
+Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.
