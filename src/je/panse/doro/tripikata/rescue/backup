@@ -1,26 +1,10 @@
-  CC>    Hypertension F/U
-The patient was seen at the GDS clinic 
-	for a routine checkup on 2024.04.28
-  ROS>
-[◇] Headache,    [◇] Neck pain,
-[◇] Earache,    [◇] Sinus congestion,
-[◇] Difficulty swallowing,    [◇] Hoarseness,
-[◇] Jaw pain,    [◇] Facial swelling,
-[◇] Nasal congestion,
-[◇] Dizziness,
-[◇] Tinnitus (ringing in the ears),
-[◇] Vision changes,
-[◇] Mouth sores,
-[◇] Enlarged lymph nodes,
-[◇] Sleep apnea
-  S>
-  The Patient has suffered from : ▣ 
-    □      Sharp or stabbing pain
-    □      Chest tightness
-    □      Shortness of breath
-    □      Dizziness
-    □      Nausea
-  P>
-  #  GDS clinic Routine check  [ 2024.04.28 ]
-  Comment>
-Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.
+  CC>	 The patient visitis for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+  A>	 
+  #  SKY Cellflu (4 가) [nip]   [2024-04-28]
+  P>	 
+   ...Vaccination as scheduled
