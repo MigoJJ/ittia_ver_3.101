@@ -60,6 +60,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                       textAreas[index].setText(inputData);
 
                 		}
+                	 break;
                 case "Copy":
                     try {
                         String textToCopy = tempOutputArea.getText();
