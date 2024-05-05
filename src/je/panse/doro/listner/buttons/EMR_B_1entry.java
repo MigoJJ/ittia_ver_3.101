@@ -1,8 +1,18 @@
 package je.panse.doro.listner.buttons;
 
-import je.panse.doro.GDSEMR_frame;					
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
+import javax.swing.JOptionPane;
+
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
-import je.panse.doro.fourgate.*;
+import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
+import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
+import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
+import je.panse.doro.fourgate.EMR_FU_mainEdit;
+import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
@@ -50,7 +60,19 @@ public class EMR_B_1entry extends GDSEMR_frame {
                       textAreas[index].setText(inputData);
 
                 		}
+                	 break;
+                case "Copy":
+                    try {
+                        String textToCopy = tempOutputArea.getText();
+                        StringSelection stringSelection = new StringSelection(textToCopy);
+                        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                        clipboard.setContents(stringSelection, null);
+                        JOptionPane.showMessageDialog(null, "Text copied to clipboard!"); // Assuming you use Swing for GUI
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Failed to copy text: " + e.getMessage());
+                    }
                     break;
+
                 case "ittia_support":
                 	GDS_ittia_support.main(null);
                     break;
