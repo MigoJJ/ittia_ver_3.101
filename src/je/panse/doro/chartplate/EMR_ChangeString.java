@@ -1,6 +1,7 @@
-package je.panse.doro.soap.cc;
+package je.panse.doro.chartplate;
 
 import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.soap.cc.EMR_ChangeStringCC;
 
 public class EMR_ChangeString {
 

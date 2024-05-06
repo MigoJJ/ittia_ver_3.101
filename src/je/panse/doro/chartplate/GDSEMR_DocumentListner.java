@@ -6,7 +6,6 @@ import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import je.panse.doro.soap.cc.EMR_ChangeString;
 import je.panse.doro.soap.cc.EMR_ChangeStringCC;
 
 public class GDSEMR_DocumentListner implements DocumentListener {
