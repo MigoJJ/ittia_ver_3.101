@@ -139,4 +139,7 @@ public class GDSEMR_frame {
             }
         }
     }
+    public static void setTextAreaText(int i, String string) {
+        textAreas[i].append(string);
+    }
 }
