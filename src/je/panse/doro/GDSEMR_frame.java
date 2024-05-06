@@ -4,33 +4,32 @@ package je.panse.doro;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
-
 import je.panse.doro.chartplate.GDSEMR_ButtonPanel;
 import je.panse.doro.chartplate.GDSEMR_DocumentListner;
+import je.panse.doro.chartplate.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.listner.buttons.BlendColors;
-import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.listner.functionkey.FunctionKeyPress;
+import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
-import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
+
+
 
 public class GDSEMR_frame {
     private static final int FRAME_WIDTH = 1280;
@@ -115,21 +114,20 @@ public class GDSEMR_frame {
         EMR_TFT.main(null);
         InjectionApp.main(null);
     }
+    
+    public class GDSEMR_FunctionKey {
 
-    private static class FunctionKeyPress extends KeyAdapter {
-        @Override
-        public void keyPressed(KeyEvent e) {
-            if (e.getKeyCode() == KeyEvent.VK_F1) {
-                // Define action for F1 key press
-                System.out.println("F1 key pressed - Action executed.");
+        // Static method to handle function key action
+        public static void handleFunctionKeyAction(int textAreaIndex, String functionKeyMessage) {
+            // Print the function key action to the console
+            System.out.println(functionKeyMessage);
 
-                GDSEMR_frame.setTextAreaText(1, "F1 key pressed - Action executed.");
-
-            }
-            // Add more keys as needed
+            // Set the text in the specified text area of GDSEMR_frame
+            je.panse.doro.GDSEMR_frame.setTextAreaText(textAreaIndex, functionKeyMessage);
         }
     }
 
+    
     private static class DoubleClickMouseListener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
