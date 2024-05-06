@@ -20,6 +20,9 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
 
+import je.panse.doro.chartplate.GDSEMR_ButtonPanel;
+import je.panse.doro.chartplate.GDSEMR_DocumentListner;
+import je.panse.doro.chartplate.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.listner.buttons.BlendColors;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
@@ -119,6 +122,9 @@ public class GDSEMR_frame {
             if (e.getKeyCode() == KeyEvent.VK_F1) {
                 // Define action for F1 key press
                 System.out.println("F1 key pressed - Action executed.");
+
+                GDSEMR_frame.setTextAreaText(1, "F1 key pressed - Action executed.");
+
             }
             // Add more keys as needed
         }

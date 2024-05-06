@@ -1,4 +1,4 @@
-package je.panse.doro;
+package je.panse.doro.chartplate;
 
 import java.io.IOException;
 
@@ -6,8 +6,6 @@ import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
-import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
-import je.panse.doro.chartplate.EMR_organize_titles;
 import je.panse.doro.soap.cc.EMR_ChangeString;
 import je.panse.doro.soap.cc.EMR_ChangeStringCC;
 
