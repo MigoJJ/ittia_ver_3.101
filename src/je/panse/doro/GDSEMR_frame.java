@@ -8,7 +8,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,13 +21,13 @@ import je.panse.doro.chartplate.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.listner.buttons.BlendColors;
-import je.panse.doro.listner.functionkey.FunctionKeyPress;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
+
 
 
 
@@ -126,12 +125,11 @@ public class GDSEMR_frame {
                 // Construct the function key message dynamically
                 String functionKeyMessage = "F" + (keyCode - KeyEvent.VK_F1 + 1) + " key pressed - Action executed.";
     
-                // Handle the function key action using the utility class
-                GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage);
+                // Handle the function key action using the utility class, passing the key code
+                GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage, keyCode);
             }
         }
     }
-
     
     private static class DoubleClickMouseListener extends MouseAdapter {
         @Override
