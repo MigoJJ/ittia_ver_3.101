@@ -8,6 +8,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -114,16 +115,20 @@ public class GDSEMR_frame {
         EMR_TFT.main(null);
         InjectionApp.main(null);
     }
+
+    public class FunctionKeyPress extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
     
-    public class GDSEMR_FunctionKey {
-
-        // Static method to handle function key action
-        public static void handleFunctionKeyAction(int textAreaIndex, String functionKeyMessage) {
-            // Print the function key action to the console
-            System.out.println(functionKeyMessage);
-
-            // Set the text in the specified text area of GDSEMR_frame
-            je.panse.doro.GDSEMR_frame.setTextAreaText(textAreaIndex, functionKeyMessage);
+            // Check if the key code is within the range of function keys from F1 to F12
+            if (keyCode >= KeyEvent.VK_F1 && keyCode <= KeyEvent.VK_F12) {
+                // Construct the function key message dynamically
+                String functionKeyMessage = "F" + (keyCode - KeyEvent.VK_F1 + 1) + " key pressed - Action executed.";
+    
+                // Handle the function key action using the utility class
+                GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage);
+            }
         }
     }
 
