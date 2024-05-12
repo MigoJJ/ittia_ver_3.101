@@ -33,7 +33,3 @@ public class FunctionKeyPress extends KeyAdapter {
     }
 }
 
-// In the GDSEMR_frame class or wherever you initialize the JTextAreas
-for (JTextArea textArea : textAreas) {
-    textArea.addKeyListener(new FunctionKeyPress());
-}
