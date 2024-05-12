@@ -1,26 +1,12 @@
 package je.panse.doro.samsara.EMR_OBJ_Vitalsign;
+import javax.swing.*;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import je.panse.doro.GDSEMR_frame;
+
+import java.awt.*;
+import java.awt.event.*;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
-// Assuming je.panse.doro.GDSEMR_frame is a class you have in your project
-import je.panse.doro.GDSEMR_frame;
 
 public class Vitalsign extends JFrame {
     private JTextField inputField;
@@ -42,7 +28,8 @@ public class Vitalsign extends JFrame {
         setTitle("Vital Sign Tracker");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 300);
-        setLocationRelativeTo(null); // Centers the window on the screen
+        setLocation(0, 300);
+//        setLocationRelativeTo(null); // Centers the window on the screen
         setResizable(true);
     }
 
@@ -73,7 +60,8 @@ public class Vitalsign extends JFrame {
 
     // Create and configure the input field for user input
     private void createInputField(JPanel panel) {
-        inputField = new JTextField(20);
+//        inputField = new JTextField(20);
+        inputField = new GradientTextField(20);
         inputField.setHorizontalAlignment(JTextField.CENTER);
         Dimension preferredSize = inputField.getPreferredSize();
         preferredSize.height = 30;
@@ -241,18 +229,22 @@ public class Vitalsign extends JFrame {
         respirationRate = null;
     }
 
-    // Reset the interface and restart the application
+    // Reset the interface
     private void resetAll() {
         inputField.setText("");
         outputArea.setText("");
         descriptionArea.setText(" at GDS : Regular pulse, Right Seated Position");
     }
 
-    // Save the current state of description and output areas
+    // Save the current state of description and output areas and restart the application
     private void saveData() {
-        GDSEMR_frame.setTextAreaText(5, "\n"+ descriptionArea.getText());
-        GDSEMR_frame.setTextAreaText(5, "\n\t"+ outputArea.getText());
-        resetAll();
+        GDSEMR_frame.setTextAreaText(5, "\n" + descriptionArea.getText());
+        GDSEMR_frame.setTextAreaText(5, "\n\t" + outputArea.getText());
+        // Restart the Vitalsign class by disposing of the current instance and creating a new one
+        SwingUtilities.invokeLater(() -> {
+            dispose();  // Close the current window
+            new Vitalsign().setVisible(true);  // Open a new window
+        });
     }
 
     public static void main(String[] args) {
