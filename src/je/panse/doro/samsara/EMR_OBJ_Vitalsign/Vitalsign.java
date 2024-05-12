@@ -67,7 +67,7 @@ public class Vitalsign extends JFrame {
         preferredSize.height = 30;
         inputField.setPreferredSize(preferredSize);
         inputField.setMaximumSize(inputField.getPreferredSize());
-        inputField.setOpaque(true);  // Ensure visibility in all environments
+        inputField.setOpaque(false);  // Ensure visibility in all environments
         panel.add(inputField);
     }
 
