@@ -1,29 +1,31 @@
+
 package je.panse.doro;
 
-	import java.awt.BorderLayout;				
+import java.awt.BorderLayout;	
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
-
+import je.panse.doro.chartplate.GDSEMR_ButtonPanel;
+import je.panse.doro.chartplate.GDSEMR_DocumentListner;
+import je.panse.doro.chartplate.GDSEMR_FunctionKey;
+import je.panse.doro.chartplate.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.listner.buttons.BlendColors;
-import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
-import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
+import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
@@ -39,14 +41,13 @@ public class GDSEMR_frame {
         frame = new JFrame("GDS EMR Interface for Physician");
         textAreas = new JTextArea[10];
         tempOutputArea = new JTextArea();
-        titles = new String[] { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
+        titles = new String[]{"CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>"};
     }
 
     public void createAndShowGUI() throws Exception {
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         frame.setLocation(360, 60);
-   	 	 frame.setUndecorated(true);
-
+        frame.setUndecorated(true);
 
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
         centerPanel.setPreferredSize(new Dimension(900, 1000));
@@ -54,99 +55,95 @@ public class GDSEMR_frame {
         tempOutputArea.setEditable(true);
 
         JPanel westPanel = new JPanel(new BorderLayout());
-        westPanel.setPreferredSize(new Dimension(500, westPanel.getHeight()));
-        westPanel.add(tempOutputArea, BorderLayout.WEST);
+        westPanel.setPreferredSize(new Dimension(500, FRAME_HEIGHT));
         JScrollPane outputScrollPane = new JScrollPane(tempOutputArea);
         outputScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        westPanel.add(outputScrollPane);
+        westPanel.add(outputScrollPane, BorderLayout.CENTER);
 
         JPanel northPanel = new GDSEMR_ButtonPanel("north");
         JPanel southPanel = new GDSEMR_ButtonPanel("south");
 
-        // Create the textAreas and add them to the panel
+        // Initialize and setup JTextAreas and their JScrollPane containers
         for (int i = 0; i < textAreas.length; i++) {
             textAreas[i] = new JTextArea();
             String inputData = (titles[i] + "\t" + " ");
-            textAreas[i].setLineWrap(true); // enable line wrapping
+            textAreas[i].setLineWrap(true);
             textAreas[i].setText(inputData);
-            textAreas[i].setCaretPosition(0); // ensure that the JScrollPane knows the preferred size
-            // Create background colors
+            textAreas[i].setCaretPosition(0);
+            
             BlendColors.blendColors(textAreas[i], tempOutputArea, i);
 
-            // Wrap the JTextArea in a JScrollPane
             JScrollPane scrollPane = new JScrollPane(textAreas[i]);
             scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-            centerPanel.add(scrollPane); // Add the scrollPane to the panel
+            centerPanel.add(scrollPane);
 
             textAreas[i].getDocument().addDocumentListener(new GDSEMR_DocumentListner(textAreas, tempOutputArea));
-            textAreas[i].addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    if (e.getClickCount() == 2) {
-                        JTextArea source = (JTextArea) e.getSource();
-                        String text = source.getText();
-                        System.out.println("Double-clicked on: " + text);
-                        try {
-                            GDSEMR_fourgate.main(text);
-                        } catch (IOException e1) {
-                            e1.printStackTrace();
-                        }
-                    }
-                }
-            });
+            textAreas[i].addMouseListener(new DoubleClickMouseListener());
+            textAreas[i].addKeyListener(new FunctionKeyPress());
         }
 
-        tempOutputArea.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    JTextArea source = (JTextArea) e.getSource();
-                    String text = source.getText();
-                    // Copy to clipboard
-                    Toolkit toolkit = Toolkit.getDefaultToolkit();
-                    Clipboard clipboard = toolkit.getSystemClipboard();
-                    StringSelection strSel = new StringSelection(text);
-                    clipboard.setContents(strSel, null);
-                    System.out.println("tempOutputArea was double clicked!!!");
-                }
-            }
-        });
-        
-        frame.add(centerPanel);
+        frame.add(centerPanel, BorderLayout.CENTER);
         frame.add(westPanel, BorderLayout.WEST);
         frame.add(northPanel, BorderLayout.NORTH);
         frame.add(southPanel, BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        frame.pack();
         frame.setVisible(true);
     }
 
-    public static void setTextAreaText(int i, String string) {
-        textAreas[i].append(string);
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            GDSEMR_frame emrFrame = new GDSEMR_frame();
+            try {
+                emrFrame.createAndShowGUI();
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
+
+        // Additional feature executions, likely these are separate threads or events
+        EMR_east_buttons_obj.main(null);
+        Vitalsign.main(args);
+        EMR_HbA1c.main(null);
+        EMR_symptom_main.main(null);
+        EMR_BMI_calculator.main(null);
+        EMR_TFT.main(null);
+        InjectionApp.main(null);
     }
 
-
-    public static void main(String[] args) {
-        try {
-            SwingUtilities.invokeLater(() -> {
-                try {
-                    GDSEMR_frame emrFrame = new GDSEMR_frame();
-                    emrFrame.createAndShowGUI();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-
-            EMR_east_buttons_obj.main(null);
-            Vitalsign.main(args);
-            EMR_HbA1c.main(null);
-            EMR_symptom_main.main(null);
-            EMR_BMI_calculator.main(null);
-            EMR_TFT.main(null);
-            InjectionApp.main(null);
-        } catch (Exception e) {
-            e.printStackTrace();
+    public class FunctionKeyPress extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+    
+            // Check if the key code is within the range of function keys from F1 to F12
+            if (keyCode >= KeyEvent.VK_F1 && keyCode <= KeyEvent.VK_F12) {
+                // Construct the function key message dynamically
+                String functionKeyMessage = "F" + (keyCode - KeyEvent.VK_F1 + 1) + " key pressed - Action executed.";
+    
+                // Handle the function key action using the utility class, passing the key code
+                GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage, keyCode);
+            }
         }
+    }
+    
+    private static class DoubleClickMouseListener extends MouseAdapter {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2) {
+                JTextArea source = (JTextArea) e.getSource();
+                String text = source.getText();
+                System.out.println("Double-clicked on: " + text);
+                try {
+                    GDSEMR_fourgate.main(text);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
+    public static void setTextAreaText(int i, String string) {
+        textAreas[i].append(string);
     }
 }

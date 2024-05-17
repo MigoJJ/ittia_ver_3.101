@@ -17,9 +17,11 @@ public class GradientTextField extends JTextField {
         int width = getWidth();
         int height = getHeight();
         Color lightSkyBlue1 = new Color(175, 228, 255); // A lighter shade of light sky blue
-        Color lightSkyBlue2 = new Color(200, 240, 255); // An even lighter shade
+        Color mediumBlue = new Color(100, 168, 255); // A medium shade of blue
+        Color lighterBlue = new Color(150, 200, 255); // A lighter shade of blue
 
-        GradientPaint gp = new GradientPaint(0, 0, lightSkyBlue1, 0, height, lightSkyBlue2);
+        GradientPaint gp = new GradientPaint(0, 0, mediumBlue, 0, height, lighterBlue);
+
         g2d.setPaint(gp);
         g2d.fillRect(0, 0, width, height);
         super.paintComponent(g2d);

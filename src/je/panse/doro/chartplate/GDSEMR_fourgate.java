@@ -1,7 +1,8 @@
-package je.panse.doro;
+package je.panse.doro.chartplate;
 
-import java.io.IOException;	
+import java.io.IOException;
 
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
 import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
 import je.panse.doro.soap.assessment.AssessmentSupport;
