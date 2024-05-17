@@ -1,4 +1,4 @@
-package je.panse.doro;
+package je.panse.doro.chartplate;
 
 import java.awt.Color;
 import java.awt.FlowLayout;

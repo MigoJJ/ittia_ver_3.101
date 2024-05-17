@@ -1,5 +1,4 @@
 package je.panse.doro.samsara.EMR_OBJ_Vitalsign;
-
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
@@ -30,22 +29,23 @@ public class Vitalsign extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(300, 300);
         setLocation(0, 300);
-//        setLocationRelativeTo(null);
+//        setLocationRelativeTo(null); // Centers the window on the screen
         setResizable(true);
     }
 
+    // Initialize the set of valid single character inputs
     private void initializeValidInputs() {
         validInputs = new HashSet<>();
-        validInputs.add("h");
-        validInputs.add("o");
-        validInputs.add("g");
-        validInputs.add("l");
-        validInputs.add("r");
-        validInputs.add("i");
-        validInputs.add("t");
-
+        validInputs.add("h"); // Home
+        validInputs.add("o"); // Other clinic
+        validInputs.add("g"); // GDS
+        validInputs.add("l"); // Left position
+        validInputs.add("r"); // Right position
+        validInputs.add("i"); // Irregular pulse
+        validInputs.add("t"); // Temperature input prefix
     }
 
+    // Set up the main view with all UI components
     private void createView() {
         JPanel panel = new JPanel();
         getContentPane().add(panel);
@@ -58,59 +58,66 @@ public class Vitalsign extends JFrame {
         createButtons(panel);
     }
 
+    // Create and configure the input field for user input
     private void createInputField(JPanel panel) {
+//        inputField = new JTextField(20);
         inputField = new GradientTextField(20);
         inputField.setHorizontalAlignment(JTextField.CENTER);
         Dimension preferredSize = inputField.getPreferredSize();
         preferredSize.height = 30;
         inputField.setPreferredSize(preferredSize);
         inputField.setMaximumSize(inputField.getPreferredSize());
-        inputField.setOpaque(false); // Make the text field transparent so the gradient is visible
+        inputField.setOpaque(false);  // Ensure visibility in all environments
         panel.add(inputField);
     }
 
+    // Create and configure the description area for fixed messages
     private void createDescriptionArea(JPanel panel) {
         descriptionArea = new JTextArea(1, 20);
-        descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
+        descriptionArea.setText(" at GDS : Regular pulse, Right Seated Position");
         descriptionArea.setBorder(BorderFactory.createTitledBorder("Description"));
         descriptionArea.setLineWrap(true);
         descriptionArea.setWrapStyleWord(true);
+        descriptionArea.setEditable(false);  // Ensure it's read-only
         JScrollPane descriptionScrollPane = new JScrollPane(descriptionArea);
         panel.add(descriptionScrollPane);
     }
 
+    // Create and configure the output area for displaying results and messages
     private void createOutputArea(JPanel panel) {
         outputArea = new JTextArea(5, 20);
         outputArea.setBorder(BorderFactory.createTitledBorder("Output"));
-        outputArea.setEditable(true);
+        outputArea.setEditable(false);  // Results are not editable by the user
         outputArea.setLineWrap(true);
         outputArea.setWrapStyleWord(true);
         JScrollPane outputScrollPane = new JScrollPane(outputArea);
         panel.add(outputScrollPane);
     }
 
+    // Add a key listener to process input when the user presses Enter
     private void addKeyListenerToInputField() {
         inputField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                     handleInput();
+                    inputField.setText("");
                 }
             }
         });
     }
 
+    // Handle user input from the input field
     private void handleInput() {
         String input = inputField.getText().trim();
-       
         if (validInputs.contains(input)) {
             updateDescriptionArea(input);
-         }else {
-           createBPBTRR(input);
-          }
-        inputField.setText("");
+        } else {
+            createBPBTRR(input);
+        }
     }
 
+    // Update the description area based on the specific single character inputs
     private void updateDescriptionArea(String input) {
         String datext = descriptionArea.getText();
         
@@ -122,7 +129,7 @@ public class Vitalsign extends JFrame {
                 descriptionArea.setText("   at Other clinic");
                 break;
             case "g":
-                descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
+                descriptionArea.setText(" at GDS : Regular pulse, Right Seated Position");
                 break;
             case "l":
                 datext = datext.replace("Right", "Left");
@@ -133,14 +140,16 @@ public class Vitalsign extends JFrame {
                 descriptionArea.setText(datext);
                 break;
             case "i":
-                datext = datext.replace("Regular", "irRegular");
+                datext = datext.replace("Regular", "Irregular");
                 descriptionArea.setText(datext);
                 break;
             default:
-                // Do nothing or handle any default case if required
-        	}
+                outputArea.setText("Unrecognized input. Try again.");
+                break;
         }
+    }
 
+    // Create and configure the buttons for user actions
     private void createButtons(JPanel panel) {
         JPanel buttonPanel = new JPanel();
         clearButton = new JButton("Clear");
@@ -153,55 +162,34 @@ public class Vitalsign extends JFrame {
 
         panel.add(buttonPanel, BorderLayout.SOUTH);
 
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	dispose();
-            	Vitalsign.main(null);
-                inputField.setText("");
-                outputArea.setText("");
-                descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
-            }
-        });
-
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Logic to save data
-                GDSEMR_frame.setTextAreaText(5, "\n"+ descriptionArea.getText());
-                GDSEMR_frame.setTextAreaText(5, "\n\t"+ outputArea.getText());
-            	dispose();
-            	Vitalsign.main(null);
-                inputField.setText("");
-                outputArea.setText("");
-                descriptionArea.setText("   at GDS : Regular pulse, Right Seated Position");
-            }
-        });
-
-        quitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        clearButton.addActionListener(e -> resetAll());
+        saveButton.addActionListener(e -> saveData());
+        quitButton.addActionListener(e -> dispose());
     }
 
+    // Handle non-standard inputs for BP, Body Temperature, and Respiration Rate
     private void createBPBTRR(String input) {
-        // Check for temperature reading
         if (input.toLowerCase().startsWith("t")) {
-            try {
-                // Parse temperature value
-                double temperatureValue = Double.parseDouble(input.substring(1));
-                descriptionArea.setText("   at GDS : Forehead (Temporal Artery) Thermometers:");
-                outputArea.setText("Body Temperature [ " + temperatureValue + " ] ℃");
-            } catch (NumberFormatException e) {
-                outputArea.setText("Invalid temperature input. Please enter a valid number.");
-            }
-            return; // Exit the method after handling temperature
+            handleTemperatureInput(input);
+        } else {
+            handleNumericInput(input);
         }
+    }
 
+    // Process and display the body temperature
+    private void handleTemperatureInput(String input) {
         try {
-            // Parse general input as double
+            double temperatureValue = Double.parseDouble(input.substring(1));
+            descriptionArea.setText(" at GDS : Forehead (Temporal Artery) Thermometers:");
+            outputArea.setText("Body Temperature [ " + temperatureValue + " ] ℃");
+        } catch (NumberFormatException e) {
+            outputArea.setText("Invalid temperature input. Please enter a valid number.");
+        }
+    }
+
+    // Process numeric inputs for BP, Pulse, and Respiration Rate
+    private void handleNumericInput(String input) {
+        try {
             double value = Double.parseDouble(input);
             processMeasurement(value);
         } catch (NumberFormatException e) {
@@ -209,6 +197,7 @@ public class Vitalsign extends JFrame {
         }
     }
 
+    // Update output based on measurements and reset if complete
     private void processMeasurement(double value) {
         if (sbp == null) {
             sbp = (int) value;
@@ -231,6 +220,7 @@ public class Vitalsign extends JFrame {
         }
     }
 
+    // Reset all vital signs measurements
     private void resetMeasurements() {
         sbp = null;
         dbp = null;
@@ -239,23 +229,25 @@ public class Vitalsign extends JFrame {
         respirationRate = null;
     }
 
-
-    private void createBodytemp(Double input) {
-    	descriptionArea.setText("   at GDS : Forehead (Temporal Artery) Thermometers:");
-    	outputArea.setText("\tBody Temperature [ " + input + " ] ℃");
-    	
+    // Reset the interface
+    private void resetAll() {
+        inputField.setText("");
+        outputArea.setText("");
+        descriptionArea.setText(" at GDS : Regular pulse, Right Seated Position");
     }
-    
-    
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Vitalsign().setVisible(true);
-            }
+
+    // Save the current state of description and output areas and restart the application
+    private void saveData() {
+        GDSEMR_frame.setTextAreaText(5, "\n" + descriptionArea.getText());
+        GDSEMR_frame.setTextAreaText(5, "\n\t" + outputArea.getText());
+        // Restart the Vitalsign class by disposing of the current instance and creating a new one
+        SwingUtilities.invokeLater(() -> {
+            dispose();  // Close the current window
+            new Vitalsign().setVisible(true);  // Open a new window
         });
     }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new Vitalsign().setVisible(true));
+    }
 }
-    
-    
-    
