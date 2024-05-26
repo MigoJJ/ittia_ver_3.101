@@ -183,6 +183,7 @@ public class EMR_ChangeString {
                 .replace(":ggr ", "공단검진 결과상담")
                 .replace(":rr ", "Other clinic RC and Lab result consultation")
                 .replace(":SxTx ", "Symptomatic treatment and supportive care ");
+                outputText = outputText.replace( ":aa " , "Astrix 100 mg 1 tab po qd ");
                 
                 
     		    if (outputText.contains(":(")) {
