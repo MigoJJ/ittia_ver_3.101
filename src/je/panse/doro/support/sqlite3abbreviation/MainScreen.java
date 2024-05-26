@@ -1,10 +1,11 @@
 package je.panse.doro.support.sqlite3abbreviation;
 
-import javax.swing.*;      	
+import javax.swing.*;      		
 import java.awt.*;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 import je.panse.doro.entry.EntryDir;
+
 
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
