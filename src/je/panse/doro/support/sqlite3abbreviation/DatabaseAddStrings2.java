@@ -4,17 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import je.panse.doro.entry.EntryDir;
 
-public class DatabaseAddStrings {
+public class DatabaseAddStrings2 {
     private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
 
     public static void main(String[] args) {
-        // Ensure the table exists
-        createTable();
-
         // Define the data to be inserted
         String[][] data = {
             {":cd", "cdate"},
@@ -175,29 +171,14 @@ public class DatabaseAddStrings {
             {":ggr", "공단검진 결과상담"},
             {":rr", "Other clinic RC and Lab result consultation"},
             {":SxTx", "Symptomatic treatment and supportive care"}
-            // Add more entries as needed
         };
 
         // Insert data into the database
         insertData(data);
     }
 
-    private static void createTable() {
-        String createTableSQL = "CREATE TABLE IF NOT EXISTS abbreviations ("
-                              + "abbreviation TEXT PRIMARY KEY, "
-                              + "full_text TEXT);";
-
-        try (Connection conn = DriverManager.getConnection(dbURL);
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(createTableSQL);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     private static void insertData(String[][] data) {
-        String sql = "INSERT INTO abbreviations (abbreviation, full_text) VALUES (?, ?)"
-                   + "ON CONFLICT(abbreviation) DO UPDATE SET full_text=excluded.full_text";
+        String sql = "INSERT INTO abbreviations (Abbreviation, FullText) VALUES (?, ?)";
 
         try (Connection conn = DriverManager.getConnection(dbURL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -209,11 +190,11 @@ public class DatabaseAddStrings {
             }
 
             pstmt.executeBatch();
-            System.out.println("Data inserted/updated successfully");
+            System.out.println("Data inserted successfully");
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
 }
+
