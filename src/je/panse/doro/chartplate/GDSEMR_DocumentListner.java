@@ -1,12 +1,14 @@
 package je.panse.doro.chartplate;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import je.panse.doro.soap.cc.EMR_ChangeStringCC;
+import je.panse.doro.support.sqlite3abbreviation.AbbreviationExpander;
 
 public class GDSEMR_DocumentListner implements DocumentListener {
     private JTextArea[] textAreas;
@@ -49,6 +51,7 @@ public class GDSEMR_DocumentListner implements DocumentListener {
             text = EMR_ChangeString.EMR_ChangeString(text);
             text = EMR_organize_titles.EMR_organize_titles(text);
             outputData += ("\n" + text);
+
         }
         tempOutputArea.setText(outputData);
         EMR_Write_To_Chartplate.textAreaAppend(tempOutputArea);
