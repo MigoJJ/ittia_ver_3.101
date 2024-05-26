@@ -40,10 +40,18 @@ public class AbbreviationExpander {
 	  }
 
 	  public static void main(String[] args) throws SQLException {
-	    String text = "The meeting is TBD. We expect an ETA by :c noon.";
+	    String text = ":c ";
 	    String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
 	    String expandedText = replaceAbbreviations(text, dbURL);
 	    System.out.println(expandedText); // Output: The meeting is To Be Determined. We expect an estimated time of arrival by noon.
+	    
+	    String outputText = "This is a test string with diabetes mellitus.";
+//	    String expandedText = "an expanded text";
+
+	    outputText = outputText.replace(" " + expandedText + " diabetes mellitus", " " + expandedText);
+
+	    System.out.println(outputText);
+
 	  }
 	}
 
