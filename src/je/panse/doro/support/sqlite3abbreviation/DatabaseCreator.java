@@ -1,16 +1,16 @@
 package je.panse.doro.support.sqlite3abbreviation;
 
-import java.sql.Connection;	
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+
 import je.panse.doro.entry.EntryDir;
 
 public class DatabaseCreator {
-    // Path to the SQLite database
-//  String url = "jdbc:sqlite:/home/migowj/git/ittia_ver_4.01/src/je/panse/doro/support/sqlite3/abbreviation/AbbFullDis.db";
-  private static String url = "jdbc:sqlite:/" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
-  
     public static void main(String[] args) {
+        // Path to the SQLite database
+//        String url = "jdbc:sqlite:/home/migowj/git/ittia_ver_4.01/src/je/panse/doro/support/sqlite3/abbreviation/AbbFullDis.db";
+        String url = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
 
         // SQL statement for creating a new table
         String sql = "CREATE TABLE IF NOT EXISTS aAbbreviation (\n"
