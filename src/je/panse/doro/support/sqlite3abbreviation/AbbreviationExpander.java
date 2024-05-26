@@ -45,10 +45,10 @@ public class AbbreviationExpander {
 	    String expandedText = replaceAbbreviations(text, dbURL);
 	    System.out.println(expandedText); // Output: The meeting is To Be Determined. We expect an estimated time of arrival by noon.
 	    
-	    String outputText = "This is a test string with diabetes mellitus.";
+	    String outputText = "outputText = outputText.replace (";
 //	    String expandedText = "an expanded text";
 
-	    outputText = outputText.replace(" " + expandedText + " diabetes mellitus", " " + expandedText);
+	    outputText = (outputText + text + ", " + expandedText + "diabetes mellitus");
 
 	    System.out.println(outputText);
 
