@@ -48,7 +48,7 @@ public class AbbreviationExpander {
 	    String outputText = "outputText = outputText.replace (";
 //	    String expandedText = "an expanded text";
 
-	    outputText = (outputText + text + ", " + expandedText + "diabetes mellitus");
+	    outputText = "\t" + outputText + "\" text \"";
 
 	    System.out.println(outputText);
 
