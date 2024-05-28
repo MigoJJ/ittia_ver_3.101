@@ -1,0 +1,478 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "GDSEMR_frame",
+            "request": "launch",
+            "mainClass": "je.panse.doro.GDSEMR_frame",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EntryDir",
+            "request": "launch",
+            "mainClass": "je.panse.doro.entry.EntryDir",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EntryDirforWindows",
+            "request": "launch",
+            "mainClass": "je.panse.doro.entry.EntryDirforWindows",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "IttiaEntry",
+            "request": "launch",
+            "mainClass": "je.panse.doro.entry.IttiaEntry",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_diabetesEdit",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.EMR_FU_diabetesEdit",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_hypercholesterolemiaEdit",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_hypertensionEdit",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.EMR_FU_hypertensionEdit",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_mainEdit",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.EMR_FU_mainEdit",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_uriEdit",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.EMR_FU_uriEdit",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_retinopathy",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.diabetes.EMR_FU_retinopathy",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "ANPdm",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_diabetes",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.diabetes.dmGeneral.EMR_FU_diabetes",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "PNPdm",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMRGDS_FU_Jtable",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.emrgdsfujtable.EMRGDS_FU_Jtable",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "excuteTest",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.emrgdsfujtable.excuteTest",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_hypercholesterolemia",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.hypercholesterolemia.EMR_FU_hypercholesterolemia",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_hypertension",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.hypertension.EMR_FU_hypertension",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "InjectionApp",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.influenza.InjectionApp",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_thyroid_PE",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.thyroid.EMR_thyroid_PE",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_thyroid_list",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.thyroid.EMR_thyroid_list",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_thyroid_main",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.thyroid.EMR_thyroid_main",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_Preg_CC",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.thyroid.prganacy.EMR_Preg_CC",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_Thyroid_Preg_te",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.thyroid.prganacy.EMR_Thyroid_Preg_te",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_Thyroid_Preg_to",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.thyroid.prganacy.EMR_Thyroid_Preg_to",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_FU_uri",
+            "request": "launch",
+            "mainClass": "je.panse.doro.fourgate.uri.EMR_FU_uri",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "GDSLaboratoryGUI",
+            "request": "launch",
+            "mainClass": "je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_B_FileListFrame",
+            "request": "launch",
+            "mainClass": "je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_FileListFrame",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "Vitalsign",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_ChestPA",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_DEXA",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_EKG",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_endo_CFS",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_CFS",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_endo_GFS",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_GFS",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMRLabPositive",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMRLabPositive",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_BMI_calculator",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_CBC",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_CBC",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_HbA1c",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_LDL",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_LFT",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_Lab_enterresult",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_enterresult",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_LpaApoB",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_TFT",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_TFTout",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_eGFR",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "PhysicalExaminationAbdomen",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_categoryButtons",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_categoryButtons",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_east_buttons_category",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.EMR_east_buttons_category",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "FileGeditToCilpboard",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.comm.FileGeditToCilpboard",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "OpenOneNotePage",
+            "request": "launch",
+            "mainClass": "je.panse.doro.samsara.comm.OpenOneNotePage",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "SOAP",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.SOAP",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "AssessmentSupport",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.assessment.AssessmentSupport",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "CCSupport",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.cc.CCSupport",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "OpenODTFile",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.comment.OpenODTFile",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_PE_general",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.pe.EMR_PE_general",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "IttiaGDSPlan",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.plan.IttiaGDSPlan",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_ROS",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.ros.EMR_ROS",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_symptom_list",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.subjective.EMR_symptom_list",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_symptom_main",
+            "request": "launch",
+            "mainClass": "je.panse.doro.soap.subjective.EMR_symptom_main",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "GDS_ittia_support",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.GDS_ittia_support",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "AbbreviationFinder",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.AbbreviationFinder",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "CheckTableSchema",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.CheckTableSchema",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "DatabaseAddStrings",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.DatabaseAddStrings",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "DatabaseCreator",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.DatabaseCreator",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "DatabaseExtractStrings",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.DatabaseExtractStrings",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "DatabaseSetup",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.DatabaseSetup",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "MainScreen",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3abbreviation.MainScreen",
+            "projectName": "ITTIA_version2_1"
+        }
+    ]
+}
