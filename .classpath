@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-17"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/17.0.10-linux-x86_64"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="/home/jae/Programs/SQLite/Database/sqlite-jdbc-3.20.0.jar"/>
+	<classpathentry kind="lib" path="/home/migowj/Programs/SQLite3/drivers/sqlite-jdbc-3.45.3.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
