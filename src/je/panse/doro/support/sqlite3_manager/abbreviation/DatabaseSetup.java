@@ -1,4 +1,4 @@
-package je.panse.doro.support.sqlite3abbreviation;
+package je.panse.doro.support.sqlite3_manager.abbreviation;
 
 import je.panse.doro.entry.EntryDir;	
 import java.sql.Connection;

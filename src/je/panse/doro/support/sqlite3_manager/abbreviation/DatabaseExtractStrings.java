@@ -1,4 +1,4 @@
-package je.panse.doro.support.sqlite3abbreviation;
+package je.panse.doro.support.sqlite3_manager.abbreviation;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
