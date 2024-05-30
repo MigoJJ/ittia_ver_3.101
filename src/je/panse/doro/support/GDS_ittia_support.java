@@ -8,7 +8,7 @@ import je.panse.doro.entry.EntryDir;
 
 public class GDS_ittia_support {
     public static void main(String[] args) {
-        String directoryPath = EntryDir.homeDir + "/support";
+        String directoryPath = EntryDir.homeDir + "/support/EMR_support_Folder";
 
         try {
             String dirPath = directoryPath + File.separator;

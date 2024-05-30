@@ -11,7 +11,7 @@ public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
 //    private String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_4.01/src/je/panse/doro/support/sqlite3/abbreviation/AbbFullDis.db";
-    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
+    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
     public MainScreen() {
         setTitle("Database Interaction Screen");
@@ -45,7 +45,7 @@ public class MainScreen extends JFrame {
         southPanel.add(findButton);
 
         JButton exitButton = new JButton("Exit");
-        exitButton.addActionListener(e -> System.exit(0));
+        exitButton.addActionListener(e -> dispose());
         southPanel.add(exitButton);
 
         add(southPanel, BorderLayout.SOUTH);
