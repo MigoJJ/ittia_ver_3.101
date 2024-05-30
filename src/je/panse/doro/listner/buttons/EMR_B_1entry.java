@@ -22,6 +22,7 @@ import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_FileListFrame;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
 import je.panse.doro.support.GDS_ittia_support;
+import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
 
 public class EMR_B_1entry extends GDSEMR_frame {
 
@@ -73,6 +74,10 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     }
                     break;
 
+                case "Abbreviation":
+                    MainScreen.main(null);
+                    break;
+                
                 case "ittia_support":
                 	GDS_ittia_support.main(null);
                     break;
