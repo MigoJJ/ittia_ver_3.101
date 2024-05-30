@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DatabaseExtractStrings",
+            "request": "launch",
+            "mainClass": "je.panse.doro.support.sqlite3_manager.abbreviation.DatabaseExtractStrings",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
             "name": "MainScreen",
             "request": "launch",
             "mainClass": "je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen",

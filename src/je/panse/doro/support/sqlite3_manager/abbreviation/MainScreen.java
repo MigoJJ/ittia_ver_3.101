@@ -2,10 +2,11 @@ package je.panse.doro.support.sqlite3_manager.abbreviation;
 
 import javax.swing.*;      			
 import java.awt.*;
+import java.io.IOException;
 import java.sql.*;
+
 import javax.swing.table.DefaultTableModel;
 import je.panse.doro.entry.EntryDir;
-
 
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
@@ -15,13 +16,18 @@ public class MainScreen extends JFrame {
 
     public MainScreen() {
         setTitle("Database Interaction Screen");
-        setSize(800, 600);
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         // Table setup
         tableModel = new DefaultTableModel(new String[]{"Abbreviation", "Full Text"}, 0);
         table = new JTable(tableModel);
+        table.setRowHeight(30); // Set the row height to 30
+
+        // Center the frame on the screen
+        setLocationRelativeTo(null);
+
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
 
@@ -48,13 +54,33 @@ public class MainScreen extends JFrame {
         exitButton.addActionListener(e -> dispose());
         southPanel.add(exitButton);
 
+        JButton extractButton = new JButton("Extract");
+        extractButton.addActionListener(e -> {
+            try {
+                DatabaseExtractStrings.main(null);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
+        southPanel.add(extractButton);
+
         add(southPanel, BorderLayout.SOUTH);
 
         // Load initial data
         loadData();
+        setDefaultFont(scrollPane, new Font("Consolas", Font.PLAIN, 16));
         setVisible(true);
     }
 
+    private void setDefaultFont(Component component, Font font) {
+        component.setFont(font);
+        if (component instanceof Container) {
+            for (Component child : ((Container) component).getComponents()) {
+                setDefaultFont(child, font);
+            }
+        }
+    }
     private void loadData() {
         try (Connection conn = DriverManager.getConnection(dbURL);
              Statement stmt = conn.createStatement();
@@ -188,6 +214,8 @@ public class MainScreen extends JFrame {
             JOptionPane.showMessageDialog(this, "Error updating data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
+
     public static void main(String[] args) {
         new MainScreen();
     }
