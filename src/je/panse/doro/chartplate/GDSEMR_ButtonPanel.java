@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import je.panse.doro.listner.buttons.EMR_B_1entry;
+import je.panse.doro.listner.buttons.EMR_ButtonEntry;
 
 public class GDSEMR_ButtonPanel extends JPanel {
     private JButton[] buttons = new JButton[11];
@@ -24,7 +24,7 @@ public class GDSEMR_ButtonPanel extends JPanel {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        try {
-		        	EMR_B_1entry.EMR_B_1entryentry(e.getActionCommand(),locations);
+		        	EMR_ButtonEntry.EMR_B_1entryentry(e.getActionCommand(),locations);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 				e1.printStackTrace();

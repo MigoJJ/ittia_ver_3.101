@@ -5,8 +5,8 @@ import java.awt.Font;
 import javax.swing.JTextArea;
 import je.panse.doro.GDSEMR_frame;
 
-public class BlendColors extends GDSEMR_frame {
-	public BlendColors() throws Exception {
+public class EMR_BlendColors extends GDSEMR_frame {
+	public EMR_BlendColors() throws Exception {
 		super();
 		// TODO Auto-generated constructor stub
 	}
