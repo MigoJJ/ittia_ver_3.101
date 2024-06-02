@@ -48,6 +48,7 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 	    
 	    public static void callsaveTextToFile(JTextArea textArea) {
 	    	String textToSave = textArea.getText();
+			
 	    	String filePath = EntryDir.homeDir + "/tripikata/rescue/backup";
 			String newFilePath = EntryDir.homeDir + "/tripikata/rescue/backuptemp";
 
@@ -58,6 +59,7 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 	    	} catch (IOException e) {
 	    	    e.printStackTrace();
 	    	}
+
           File_copy.main(filePath, newFilePath);
 	    }
 	}

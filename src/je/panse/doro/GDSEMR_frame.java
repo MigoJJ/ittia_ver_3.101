@@ -1,7 +1,6 @@
-
 package je.panse.doro;
 
-import java.awt.BorderLayout;		
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
@@ -20,18 +19,18 @@ import je.panse.doro.chartplate.GDSEMR_DocumentListner;
 import je.panse.doro.chartplate.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
-import je.panse.doro.listner.buttons.BlendColors;
+import je.panse.doro.listner.buttons.EMR_BlendColors;
+import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
-import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
-
 
 public class GDSEMR_frame {
     private static final int FRAME_WIDTH = 1280;
     private static final int FRAME_HEIGHT = 1020;
+    public static int PatientID = 0;
 
     public static JFrame frame;
     public static JTextArea[] textAreas;
@@ -72,7 +71,7 @@ public class GDSEMR_frame {
             textAreas[i].setText(inputData);
             textAreas[i].setCaretPosition(0);
             
-            BlendColors.blendColors(textAreas[i], tempOutputArea, i);
+            EMR_BlendColors.blendColors(textAreas[i], tempOutputArea, i);
 
             JScrollPane scrollPane = new JScrollPane(textAreas[i]);
             scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -98,7 +97,6 @@ public class GDSEMR_frame {
             try {
                 emrFrame.createAndShowGUI();
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         });
@@ -117,18 +115,18 @@ public class GDSEMR_frame {
         @Override
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
-    
+
             // Check if the key code is within the range of function keys from F1 to F12
             if (keyCode >= KeyEvent.VK_F1 && keyCode <= KeyEvent.VK_F12) {
                 // Construct the function key message dynamically
                 String functionKeyMessage = "F" + (keyCode - KeyEvent.VK_F1 + 1) + " key pressed - Action executed.";
-    
+
                 // Handle the function key action using the utility class, passing the key code
                 GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage, keyCode);
             }
         }
     }
-    
+
     private static class DoubleClickMouseListener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -144,7 +142,12 @@ public class GDSEMR_frame {
             }
         }
     }
+
     public static void setTextAreaText(int i, String string) {
         textAreas[i].append(string);
+    }
+
+    public static void updateTempOutputArea(String text) {
+        tempOutputArea.setText(text);
     }
 }
