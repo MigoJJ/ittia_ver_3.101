@@ -12,8 +12,7 @@ import je.panse.doro.entry.EntryDir;
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
-    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
-
+    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
     public MainScreen() {
         setTitle("Database Interaction Screen");
