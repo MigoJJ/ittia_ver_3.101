@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EMR_InputFrame",
+            "request": "launch",
+            "mainClass": "je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_InputFrame",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
+            "name": "EMR_BackupInputFrame",
+            "request": "launch",
+            "mainClass": "je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_BackupInputFrame",
+            "projectName": "ITTIA_version2_1"
+        },
+        {
+            "type": "java",
             "name": "DatabaseExtractStrings",
             "request": "launch",
             "mainClass": "je.panse.doro.support.sqlite3_manager.abbreviation.DatabaseExtractStrings",

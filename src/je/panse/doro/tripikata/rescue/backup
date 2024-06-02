@@ -1,7 +1,10 @@
-  CC>   Hypercholesterolemia F/U
-  P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...now [ well ] treated with current medication
-    continue with current dosages of meds
-  Comment>
-Choose lean protein sources. When choosing protein sources, such as meat, poultry, or fish, opt for lean cuts that are low in saturated fat.
+  CC>	 The patient visitis for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+  A>	 
+  #  Tdap (Tetanus, Diphtheria, Pertussis)  [2024-06-02]
+  P>	 
+   ...Vaccination as scheduled

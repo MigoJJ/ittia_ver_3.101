@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import je.panse.doro.listner.buttons.EMR_B_1entry;
+import je.panse.doro.listner.buttons.EMR_ButtonEntry;
 
 public class GDSEMR_ButtonPanel extends JPanel {
     private JButton[] buttons = new JButton[11];
@@ -24,7 +24,7 @@ public class GDSEMR_ButtonPanel extends JPanel {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        try {
-		        	EMR_B_1entry.EMR_B_1entryentry(e.getActionCommand(),locations);
+		        	EMR_ButtonEntry.EMR_B_1entryentry(e.getActionCommand(),locations);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -39,10 +39,10 @@ public class GDSEMR_ButtonPanel extends JPanel {
 		if (locations.equals("north")) {
 			 buttons[0].setText("Rescue");
 			 buttons[1].setText("Backup");
-			 buttons[2].setText("Clear");
-			 buttons[3].setText("Exit");
+			 buttons[2].setText("Copy");
+			 buttons[3].setText("Clear");
 			 buttons[4].setText("CE");
-			 buttons[5].setText("Copy");
+			 buttons[5].setText("Exit");
 			 buttons[8].setText("Abbreviation");
 			 buttons[9].setText("ittia_support");
 			 buttons[10].setText("ittia_EMR_AI");

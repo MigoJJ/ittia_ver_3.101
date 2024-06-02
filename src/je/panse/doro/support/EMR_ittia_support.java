@@ -3,10 +3,9 @@ package je.panse.doro.support;
 import java.awt.Desktop;	
 import java.io.File;
 import java.io.IOException;
-
 import je.panse.doro.entry.EntryDir;
 
-public class GDS_ittia_support {
+public class EMR_ittia_support {
     public static void main(String[] args) {
         String directoryPath = EntryDir.homeDir + "/support/EMR_support_Folder";
 
