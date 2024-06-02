@@ -1,0 +1,22 @@
+  CC>    Hypertension F/U
+  ROS>
+[◇] Headache,    [◇] Neck pain,
+[◇] Earache,    [◇] Sinus congestion,
+[◇] Difficulty swallowing,    [◇] Hoarseness,
+[◇] Jaw pain,    [◇] Facial swelling,
+[◇] Nasal congestion,
+[◇] Dizziness,
+[◇] Tinnitus (ringing in the ears),
+[◇] Vision changes,
+[◇] Mouth sores,
+[◇] Enlarged lymph nodes,
+[◇] Sleep apnea
+  S>
+  The Patient has suffered from : ▣ 
+    □      Sharp or stabbing pain
+    □      Chest tightness
+    □      Shortness of breath
+    □      Dizziness
+    □      Nausea
+  Comment>
+Increase your potassium intake. Potassium helps to lower blood pressure. Good sources of potassium include fruits, vegetables, and whole grains.

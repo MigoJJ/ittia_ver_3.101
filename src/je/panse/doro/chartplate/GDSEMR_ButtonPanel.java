@@ -39,10 +39,10 @@ public class GDSEMR_ButtonPanel extends JPanel {
 		if (locations.equals("north")) {
 			 buttons[0].setText("Rescue");
 			 buttons[1].setText("Backup");
-			 buttons[2].setText("Clear");
-			 buttons[3].setText("Exit");
+			 buttons[2].setText("Copy");
+			 buttons[3].setText("Clear");
 			 buttons[4].setText("CE");
-			 buttons[5].setText("Copy");
+			 buttons[5].setText("Exit");
 			 buttons[8].setText("Abbreviation");
 			 buttons[9].setText("ittia_support");
 			 buttons[10].setText("ittia_EMR_AI");
