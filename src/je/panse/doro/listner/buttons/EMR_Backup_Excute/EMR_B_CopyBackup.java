@@ -1,5 +1,6 @@
 package je.panse.doro.listner.buttons.EMR_Backup_Excute;
 
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,22 +16,22 @@ public class EMR_B_CopyBackup {
     /**
      * Save the provided text to a file.
      *
-     * @param patientId The Patient ID to be included in the filename.
+     * @param text The text to be saved.
      */
-    public void saveTextToFile(String patientId) {
-        String fileName = generateFileName(patientId);
-        writeToFile(DIRECTORY_PATH, fileName, patientId);
+    public void saveTextToFile(String text) {
+        String fileName = generateFileName();
+        writeToFile(DIRECTORY_PATH, fileName, text);
     }
 
     /**
-     * Generate a filename based on the current date and time and patient ID.
+     * Generate a filename based on the current date and time.
      *
      * @return The generated filename.
      */
-    private String generateFileName(String patientId) {
+    private String generateFileName() {
         LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(" [yyyy-MM-dd-HH-mm-ss]");
-        return patientId + " - " + currentDateTime.format(formatter) + ".txt";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd-HH-mm-ss");
+        return currentDateTime.format(formatter) + ".txt";
     }
 
     /**
