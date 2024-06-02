@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate;
 
-import java.io.IOException;
+import java.io.IOException;	
 import java.sql.SQLException;
 
 import javax.swing.JTextArea;
@@ -8,7 +8,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import je.panse.doro.soap.cc.EMR_ChangeStringCC;
-import je.panse.doro.support.sqlite3abbreviation.AbbreviationExpander;
 
 public class GDSEMR_DocumentListner implements DocumentListener {
     private JTextArea[] textAreas;
