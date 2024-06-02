@@ -17,8 +17,9 @@ import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
-import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_CopyBackup;
-import je.panse.doro.listner.buttons.EMR_B_Excute.EMR_B_FileListFrame;
+import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_CopyBackup;
+import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;
+import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
 import je.panse.doro.support.GDS_ittia_support;
@@ -39,29 +40,12 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     EMR_B_FileListFrame.main(null);
                     break;
                 case "Backup":
+                    EMR_InputFrame.main(null);
                 	EMR_B_CopyBackup backupHelper = new EMR_B_CopyBackup();
                 	backupHelper.saveTextToFile(tempOutputArea.getText());  // Replace 12345 with the actual serial number
                     EMR_B_FileListFrame.main(null);
                     break;
-                case "Clear":
-                    for (int i = 0; i < textAreas.length; i++) {
-                        textAreas[i].setText("");
-                        String inputData = titles[i] + "\t";
-                        textAreas[i].setText(inputData);
-                    }
-                    break;
-                case "Exit":
-                    frame.dispose();
 
-                	  break;
-                case "CE":
-                		for (int index = 1; index <= 7; index++) {
-              		  textAreas[index].setText("");
-              		  String inputData = titles[index] + "\t";
-                      textAreas[index].setText(inputData);
-
-                		}
-                	 break;
                 case "Copy":
                     try {
                         String textToCopy = tempOutputArea.getText();
@@ -73,6 +57,26 @@ public class EMR_B_1entry extends GDSEMR_frame {
                         JOptionPane.showMessageDialog(null, "Failed to copy text: " + e.getMessage());
                     }
                     break;
+            
+                case "CE":
+                    for (int index = 1; index <= 7; index++) {
+                    textAreas[index].setText("");
+                    String inputData = titles[index] + "\t";
+                    textAreas[index].setText(inputData);
+                }
+                break;
+                case "Clear":
+                    for (int i = 0; i < textAreas.length; i++) {
+                        textAreas[i].setText("");
+                        String inputData = titles[i] + "\t";
+                        textAreas[i].setText(inputData);
+                    }
+                    break;
+                case "Exit":
+                    frame.dispose();
+
+                	  break;
+
 
                 case "Abbreviation":
                     MainScreen.main(null);
