@@ -3,9 +3,7 @@ package je.panse.doro.listner.buttons;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
-
 import javax.swing.JOptionPane;
-
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
@@ -22,12 +20,12 @@ import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
-import je.panse.doro.support.GDS_ittia_support;
+import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
 
-public class EMR_B_1entry extends GDSEMR_frame {
+public class EMR_ButtonEntry extends GDSEMR_frame {
 
-    public EMR_B_1entry() throws Exception {
+    public EMR_ButtonEntry() throws Exception {
         super();
     }
 
@@ -83,7 +81,7 @@ public class EMR_B_1entry extends GDSEMR_frame {
                     break;
                 
                 case "ittia_support":
-                	GDS_ittia_support.main(null);
+                	EMR_ittia_support.main(null);
                     break;
 
                 case "Button 6":

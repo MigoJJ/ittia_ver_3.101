@@ -7,11 +7,11 @@ import java.awt.event.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class IttiaEntry extends JFrame implements ActionListener {
+public class Entryittia extends JFrame implements ActionListener {
     private final ArrayList<JButton> buttons;
 
     // Constructor
-    public IttiaEntry() {
+    public Entryittia() {
         super("My JFrame with Buttons");
         buttons = new ArrayList<>();
         initializeFrame();
@@ -81,6 +81,6 @@ public class IttiaEntry extends JFrame implements ActionListener {
 
     // Main method
     public static void main(String[] args) {
-        new IttiaEntry();
+        new Entryittia();
     }
 }

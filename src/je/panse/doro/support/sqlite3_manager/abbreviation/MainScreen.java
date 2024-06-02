@@ -1,18 +1,19 @@
 package je.panse.doro.support.sqlite3_manager.abbreviation;
 
+import java.awt.*;
+import java.io.IOException;
+import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import java.awt.*;
-import java.io.IOException;
-import java.sql.*;
 import je.panse.doro.entry.EntryDir;
 
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
     private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
+
 
     public MainScreen() {
         setTitle("Database Interaction Screen");
