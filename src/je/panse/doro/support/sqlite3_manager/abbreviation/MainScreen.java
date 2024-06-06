@@ -1,6 +1,6 @@
 package je.panse.doro.support.sqlite3_manager.abbreviation;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;			
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -18,7 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.BorderFactory;
+import javax.swing.SwingUtilities;
 import je.panse.doro.entry.EntryDir;
+import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.DatabaseExtractStrings;
 
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
