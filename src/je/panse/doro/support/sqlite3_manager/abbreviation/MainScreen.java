@@ -21,6 +21,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.BorderFactory;
 import javax.swing.SwingUtilities;
 import je.panse.doro.entry.EntryDir;
+import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.DatabaseExtractStrings;
 
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
