@@ -1,0 +1,38 @@
+  CC>    DM F/U
+The patient visitis for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+  ROS>
+[◇] Headache,    [◇] Neck pain,
+[◇] Earache,       [◇] Sinus congestion,
+[◇] Difficulty swallowing,    [◇] Hoarseness,
+[◇] Jaw pain,       [◇] Facial swelling,
+[◇] Nasal congestion,
+[◇] Dizziness,      [◇] Tinnitus (ringing in the ears),
+[◇] Vision changes,
+[◇] Mouth sores,[◇] Enlarged lymph nodes,
+[◇] Sleep apnea
+  S>
+    Frequent urination [ - ]
+    Increased thirst [ - ]
+    increased hunger.[ - ]
+    Unexpected Weight loss [ - ]
+    Extreme Fatigue [ so-so ]
+    Blurred vision [denied ]
+    Slow-healing sores or frequent infections [none]
+    Areas of darkened skin [ - ]
+      Tingling or numbness in the hands or feet [none both]:
+  A>
+#  DM  F/U 
+  #  Tdap (Tetanus, Diphtheria, Pertussis)  [2024-06-06]
+  #  Shingles Vaccine (Shingrix) #1/2  [2024-06-06]
+  #  HAV vaccination #1/2  [2024-06-06]
+  P>
+...Follow-up in the clinic in [ 3.0 ]-month
+...continue with current dosages of meds
+   ...Vaccination as scheduled
+  Comment>
+Exercise regularly. Aim for at least 30 minutes of moderate-intensity exercise most days of the week.
