@@ -26,8 +26,8 @@ import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.DatabaseEx
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
-//    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
-    private static String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_3.051/src/je/panse/doro/support/sqlite3_manager/abbreviation/AbbFullDis.db";
+    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
+//    private static String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_3.051/src/je/panse/doro/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
     
     public MainScreen() {
