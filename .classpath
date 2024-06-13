@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/migowj/Downloads/sqlite-jdbc-3.45.1.0.jar"/>
-	<classpathentry kind="lib" path="/home/migowj/Downloads/slf4j-api-1.7.36.jar"/>
+	<classpathentry kind="lib" path="/home/dce040b/다운로드/sqlite-jdbc-3.46.0.0.jar"/>
+	<classpathentry kind="lib" path="/home/dce040b/다운로드/slf4j-api-2.1.0-alpha1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
