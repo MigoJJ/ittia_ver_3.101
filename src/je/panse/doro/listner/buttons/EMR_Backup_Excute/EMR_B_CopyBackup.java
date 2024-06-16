@@ -1,54 +1,55 @@
 package je.panse.doro.listner.buttons.EMR_Backup_Excute;
 
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
+import javax.swing.JOptionPane;
+
+import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_B_CopyBackup {
 
-    private static final String DIRECTORY_PATH = EntryDir.homeDir + "/tripikata/rescue/rescuefolder";
+	    public void saveTextToFile(String patientId) {
+	        try {
+	            String content = GDSEMR_frame.tempOutputArea.getText();
+	            String directoryPath = EntryDir.homeDir + "/tripikata/rescue/rescuefolder/";
+	            File directory = new File(directoryPath);
+	            if (!directory.exists()) {
+	                directory.mkdirs();  // Create the directory if it does not exist
+	            }
+	            File file = new File(directoryPath + patientId + ".txt");
+	            FileWriter fw = new FileWriter(file);
+	            BufferedWriter bw = new BufferedWriter(fw);
+	            bw.write(content);
+	            bw.close();
+	            JOptionPane.showMessageDialog(null, "Backup saved successfully!");
+	        } catch (IOException ex) {
+	            JOptionPane.showMessageDialog(null, "Error saving backup: " + ex.getMessage());
+	        }
+	    }
+	    public void clearDirectory() {
+	        String directoryPath = "/home/migowj/git/ittia_ver_3.502/src/je/panse/doro/tripikata/rescue/rescuefolder/";
+	        File directory = new File(directoryPath);
+	        if (directory.exists()) {
+	            File[] files = directory.listFiles(); // Get all files in the directory
+	            if (files != null) { // Make sure the list files operation doesn't return null
+	                for (File file : files) {
+	                    if (!file.delete()) { // Attempt to delete each file
+	                        JOptionPane.showMessageDialog(null, "Failed to delete " + file.getName(), "Error", JOptionPane.ERROR_MESSAGE);
+	                        return; // Exit if a deletion fails
+	                    }
+	                }
+	                JOptionPane.showMessageDialog(null, "All files have been deleted successfully!");
+	            }
+	        } else {
+	            JOptionPane.showMessageDialog(null, "Directory does not exist or is not accessible", "Error", JOptionPane.WARNING_MESSAGE);
+	        }
+	    }
 
-    /**
-     * Save the provided text to a file.
-     *
-     * @param text The text to be saved.
-     */
-    public void saveTextToFile(String text) {
-        String fileName = generateFileName();
-        writeToFile(DIRECTORY_PATH, fileName, text);
-    }
-
-    /**
-     * Generate a filename based on the current date and time.
-     *
-     * @return The generated filename.
-     */
-    private String generateFileName() {
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd-HH-mm-ss");
-        return currentDateTime.format(formatter) + ".txt";
-    }
-
-    /**
-     * Write the provided text to the specified directory and filename.
-     *
-     * @param directoryPath The path of the directory.
-     * @param fileName      The name of the file.
-     * @param text          The text to be written.
-     */
-    private void writeToFile(String directoryPath, String fileName, String text) {
-        File outputFile = new File(directoryPath, fileName);
-        try (FileWriter writer = new FileWriter(outputFile)) {
-            writer.write(text);
-            System.out.println("Text has been successfully saved to " + outputFile.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("An error occurred while writing to the file.");
-        }
-    }
 }
+
+	
