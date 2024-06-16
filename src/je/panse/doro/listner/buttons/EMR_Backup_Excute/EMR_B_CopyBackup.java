@@ -32,7 +32,7 @@ public class EMR_B_CopyBackup {
 	        }
 	    }
 	    public void clearDirectory() {
-	        String directoryPath = "/home/migowj/git/ittia_ver_3.502/src/je/panse/doro/tripikata/rescue/rescuefolder/";
+	        String directoryPath = EntryDir.homeDir + "/tripikata/rescue/rescuefolder/";
 	        File directory = new File(directoryPath);
 	        if (directory.exists()) {
 	            File[] files = directory.listFiles(); // Get all files in the directory
