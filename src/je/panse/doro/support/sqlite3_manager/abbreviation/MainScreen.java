@@ -1,6 +1,6 @@
 package je.panse.doro.support.sqlite3_manager.abbreviation;
 
-import java.awt.BorderLayout;			
+import java.awt.BorderLayout;				
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -27,7 +27,9 @@ public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
     private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
+//    private static String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_3.051/src/je/panse/doro/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
+    
     public MainScreen() {
         setTitle("Database Interaction Screen");
         setSize(800, 800);
