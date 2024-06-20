@@ -21,169 +21,171 @@ public class EMR_ChangeString {
 		outputText = outputText.replace(":call ", "- The patient received a lab results phone call notification from the doctor's office.");
 
 		
-		outputText = outputText.replace(":d ", "diabetes mellitus");
-		outputText = outputText.replace(":dr ", "DM with retinopathy");
-		outputText = outputText.replace(":dn ", "DM with Nephropathy");
-		outputText = outputText.replace(":dnp ", "DM with Peripheral Neuropathy");
-		outputText = outputText.replace(":dna ", "DM with Autonomic Neuropathy");
-		outputText = outputText.replace(":dp ", "Prediabetes");
-		outputText = outputText.replace(":dg ", "Gestational Diabetes Mellitus");
-		outputText = outputText.replace(":c ", "Hypercholesterolemia F/U");
-		outputText = outputText.replace(":fd ", "Diabetes mellitus  F/U");
-		outputText = outputText.replace(":ft ", "Hypertension F/U");
-		outputText = outputText.replace(":fc ", "Hypercholesterolemia F/U");
-		outputText = outputText.replace(":fctg ", "HyperTriGlyceridemia F/U");
-		outputText = outputText.replace(":fte ", "Hyperthyroidism F/U");
-		outputText = outputText.replace(":fto ", "Hypothyroidism F/U");
-		outputText = outputText.replace(":fnti ", "Non-Thyroidal Illness F/U");
-		outputText = outputText.replace(":ftep ", "Hyperthyroidism with Pregnancy [   ]  weeks F/U");
-		outputText = outputText.replace(":ftop ", "Hypothyroidism with Pregnancy [   ]  weeks F/U");
-		outputText = outputText.replace(":do ", "DM without complications");
-		outputText = outputText.replace(":drn ", "DM with Retinopathy \n\t: Non-proliferative diabetic retinopathy");
-		outputText = outputText.replace(":drp ", "DM with Retinopathy \n\t: Proliferative diabetic retinopathy");
-		outputText = outputText.replace(":drm ", "DM with Retinopathy \n\t: Macular edema");
-		outputText = outputText.replace(":dnm ", "DM with Nephropathy with microalbuminuria");
-		outputText = outputText.replace(":dnc ", "DM with Nephropathywith CRF");
-		outputText = outputText.replace(":da ", "DM with Autonomic Neuropathy");
-		outputText = outputText.replace(":pd ", "Prediabetes");
-		outputText = outputText.replace(":pg ", "Gestational Diabetes Mellitus");
-		outputText = outputText.replace(":t ", "Hypertension");
-		outputText = outputText.replace(":ctg ", "HyperTriGlyceridemia");
-		outputText = outputText.replace(":te ", "Hyperthyroidism : Graves' disease");
-		outputText = outputText.replace(":to ", "Hypothyroidism : Hashimoto's thyroiditis");
-		outputText = outputText.replace(":ts ", "Subacute Thyroiditis");
-		outputText = outputText.replace(":tt ", "c/w Chronic Thyroiditis on USG");
+		outputText = outputText.replace( ":d " , "diabetes mellitus ");
+		outputText = outputText.replace( ":c " , "Hypercholesterolemia ");
+		outputText = outputText.replace( ":tt " , "c/w Chronic Thyroiditis on USG ");
+		outputText = outputText.replace( ":t " , "Hypertension ");
+		outputText = outputText.replace( ":cd " , "Colonic diverticulum [  ] test ");
+		outputText = outputText.replace( ":call " , "The patient received a lab results phone call notification from the doctor's office. ");
+		outputText = outputText.replace( ":dr " , "DM with retinopathy ");
+		outputText = outputText.replace( ":dn " , "DM with Nephropathy ");
+		outputText = outputText.replace( ":dnp " , "DM with Peripheral Neuropathy ");
+		outputText = outputText.replace( ":dna " , "DM with Autonomic Neuropathy ");
+		outputText = outputText.replace( ":dp " , "Prediabetes ");
+		outputText = outputText.replace( ":dg " , "Gestational Diabetes Mellitus ");
+		outputText = outputText.replace( ":fd " , "Diabetes mellitus F/U ");
+		outputText = outputText.replace( ":ft " , "Hypertension F/U ");
+		outputText = outputText.replace( ":fc " , "Hypercholesterolemia F/U ");
+		outputText = outputText.replace( ":fctg " , "HyperTriGlyceridemia F/U ");
+		outputText = outputText.replace( ":fte " , "Hyperthyroidism F/U ");
+		outputText = outputText.replace( ":fto " , "Hypothyroidism F/U ");
+		outputText = outputText.replace( ":fnti " , "Non-Thyroidal Illness F/U ");
+		outputText = outputText.replace( ":ftep " , "Hyperthyroidism with Pregnancy [ ] weeks F/U ");
+		outputText = outputText.replace( ":ftop " , "Hypothyroidism with Pregnancy [ ] weeks F/U ");
+		outputText = outputText.replace( ":do " , "DM without complications ");
+		outputText = outputText.replace( ":drn " , "DM with Retinopathy : Non-proliferative diabetic retinopathy ");
+		outputText = outputText.replace( ":drp " , "DM with Retinopathy : Proliferative diabetic retinopathy ");
+		outputText = outputText.replace( ":drm " , "DM with Retinopathy : Macular edema ");
+		outputText = outputText.replace( ":dnm " , "DM with Nephropathy with microalbuminuria ");
+		outputText = outputText.replace( ":dnc " , "DM with Nephropathy with CRF ");
+		outputText = outputText.replace( ":da " , "DM with Autonomic Neuropathy ");
+		outputText = outputText.replace( ":pd " , "Prediabetes ");
+		outputText = outputText.replace( ":pg " , "Gestational Diabetes Mellitus ");
+		outputText = outputText.replace( ":ctg " , "HyperTriGlyceridemia ");
+		outputText = outputText.replace( ":te " , "Hyperthyroidism  ");
+		outputText = outputText.replace( ":to " , "Hypothyroidism  ");
+		outputText = outputText.replace( ":ts " , "C/W Subacute Thyroiditis ");
+		outputText = outputText.replace( ":tn " , "Thyroid nodule ");
+		outputText = outputText.replace( ":tc " , "Thyroid cyst ");
+		outputText = outputText.replace( ":tsg " , "Simple Goiter ");
+		outputText = outputText.replace( ":at " , "Atypical Chest pain ");
+		outputText = outputText.replace( ":ap " , "Angina Pectoris ");
+		outputText = outputText.replace( ":aps " , "Angina Pectoris with stent insertion ");
+		outputText = outputText.replace( ":omi " , "R/O Old Myocardial Infarction  ");
+		outputText = outputText.replace( ":ami " , "Acute Myocardial Infarction ");
+		outputText = outputText.replace( ":amis " , "Acute Myocardial Infarction with stent insertion ");
+		outputText = outputText.replace( ":as " , "Artherosclerosis Carotid artery ");
+		outputText = outputText.replace( ":asa " , "Artherosclerosis Carotid artery and Aorta ");
+		outputText = outputText.replace( ":af " , "Atrial Fibrillation ");
+		outputText = outputText.replace( ":afr " , "Atrial Fibrillation with RVR ");
+		outputText = outputText.replace( ":afl " , "Atrial Flutter ");
+		outputText = outputText.replace( ":pvc " , "PVC Premature Ventricular Contractions ");
+		outputText = outputText.replace( ":apc " , "APC atrial premature complexes ");
+		outputText = outputText.replace( ":gre " , "Reflux esophagitis ");
+		outputText = outputText.replace( ":gcag " , "Chronic Atrophic Gastritis ");
+		outputText = outputText.replace( ":gcsg " , "Chronic Superficial Gastritis ");
+		outputText = outputText.replace( ":geg " , "r/o Erosive Gastritis ");
+		outputText = outputText.replace( ":gibs " , "r/o Irritable Bowel Syndrome ");
+		outputText = outputText.replace( ":ggil " , "Gilbert's syndrome ");
+		outputText = outputText.replace( ":gcon " , "Severe Constipation ");
+		outputText = outputText.replace( ":nti " , "Non-Thyroidal Illness ");
+		outputText = outputText.replace( ":tep " , "Hyperthyroidism with Pregnancy [    ] weeks ");
+		outputText = outputText.replace( ":top " , "Hypothyroidism with Pregnancy [     ] weeks ");
+		outputText = outputText.replace( ":tco " , "Papillary Thyroid Cancer OP(+) Hypothyroidism ");
+		outputText = outputText.replace( ":tcor " , "Papillary Thyroid Cancer OP(+) RAI Tx(+) Hypothyroidism ");
+		outputText = outputText.replace( ":sos " , "Severe Osteoporosis ");
+		outputText = outputText.replace( ":os " , "Osteoporosis ");
+		outputText = outputText.replace( ":ospe " , "Osteopenia ");
+		outputText = outputText.replace( ":cp " , "Colonic Polyp ");
+		outputText = outputText.replace( ":cpm " , "Colonic Polyps multiple ");
+		outputText = outputText.replace( ":cps " , "Colonic Polyp single ");
+		outputText = outputText.replace( ":gp " , "GB polyp ");
+		outputText = outputText.replace( ":gs " , "GB stone ");
+		outputText = outputText.replace( ":ggp " , "Gastric Polyp ");
+		outputText = outputText.replace( ":oc " , "s/p Cholecystectomy d/t GB stone ");
+		outputText = outputText.replace( ":oa " , "s/p Appendectomy ");
+		outputText = outputText.replace( ":occ " , "s/p Colon cancer op(+) ");
+		outputText = outputText.replace( ":ogc " , "s/p Gastric cancer cancer op(+) ");
+		outputText = outputText.replace( ":oh " , "s/p TAH : Total Abdominal Hysterectomy ");
+		outputText = outputText.replace( ":oho " , "s/p TAH with BSO ");
+		outputText = outputText.replace( ":bph " , "BPH ");
+		outputText = outputText.replace( ":op " , "Prostate cancer operation(+) ");
+		outputText = outputText.replace( ":ob " , "s/p Breast Cancer Operation ");
+		outputText = outputText.replace( ":ot " , "Papillary Thyroid Cancer OP(+)	with Hypothyroidism ");
+		outputText = outputText.replace( ":oca " , "Cataract OP(+) ");
+		outputText = outputText.replace( ":hav " , "s/p Hepatitis A infection ");
+		outputText = outputText.replace( ":hbv " , "HBsAg(+) Carrier ");
+		outputText = outputText.replace( ":hcv " , "Hepatitis C virus (HCV) chronic infection ");
+		outputText = outputText.replace( ":hcvp " , "HCV-Ab(Positive) --> PCR(Negative) confirmed ");
+		outputText = outputText.replace( ":hh " , "Hepatic Hemangioma ");
+		outputText = outputText.replace( ":hc " , "Hepatic Cyst ");
+		outputText = outputText.replace( ":hn " , "Hepatic Nodule ");
+		outputText = outputText.replace( ":hhn " , "Hepatic higher echoic nodule ");
+		outputText = outputText.replace( ":hf " , "Fatty Liver ");
+		outputText = outputText.replace( ":hfmi " , "Mild Fatty Liver ");
+		outputText = outputText.replace( ":hfmo " , "Moderate Fatty Liver ");
+		outputText = outputText.replace( ":hfse " , "Severe Fatty Liver ");
+		outputText = outputText.replace( ":rc " , "Renal Cyst ");
+		outputText = outputText.replace( ":rs " , "Renal Stone ");
+		outputText = outputText.replace( ":rse " , "Renal Stone s/p ESWL ");
+		outputText = outputText.replace( ":rn " , "Renal Nodule ");
+		outputText = outputText.replace( ":rih " , "isolated hematuria ");
+		outputText = outputText.replace( ":rgh " , "gross hematuria ");
+		outputText = outputText.replace( ":rip " , "isolated proteinuria ");
+		outputText = outputText.replace( ":bc " , "Breast Cyst ");
+		outputText = outputText.replace( ":bn " , "Breast Nodule ");
+		outputText = outputText.replace( ":bnb " , "Breast Nodule with biopsy ");
+		outputText = outputText.replace( ":bco " , "s/p Breast Cancer Operation ");
+		outputText = outputText.replace( ":bcoc " , "s/p Breast Cancer Operation+ ChemoTx(+) ");
+		outputText = outputText.replace( ":bcor " , "s/p Breast Cancer Operation + RT(+) ");
+		outputText = outputText.replace( ":bcocr " , "s/p Breast Cancer Operation : ChemoTx(+) + RT(+) ");
+		outputText = outputText.replace( ":ins " , "Insomnia ");
+		outputText = outputText.replace( ":epi " , "Epigastric pain ");
+		outputText = outputText.replace( ":dys " , "Dysuria and frequency ");
+		outputText = outputText.replace( ":ind " , "Epigastric pain and Indigestion ");
+		outputText = outputText.replace( ":dia " , "Diarrhea ");
+		outputText = outputText.replace( ":con " , "Constipation ");
+		outputText = outputText.replace( ":cov " , "COVID-19 PCR (+) ");
+		outputText = outputText.replace( ":covc " , "s/p COVID-19 PCR (+) without complications [ ] ");
+		outputText = outputText.replace( ":covs " , "s/p COVID-19 PCR (+) with complications [ ] ");
+		outputText = outputText.replace( ":ver " , "Vertigo ");
+		outputText = outputText.replace( ":hea " , "Headache ");
+		outputText = outputText.replace( ":wei " , "Weight loss [ ] kg ");
+		outputText = outputText.replace( ":weig " , "Weight gain [ ] kg ");
+		outputText = outputText.replace( ":eas " , "Easy fatigue ");
+		outputText = outputText.replace( ":obe " , "Obesity ");
+		outputText = outputText.replace( ":obec " , "Central Obesity ");
+		outputText = outputText.replace( ":gla " , "Glaucoma(+) ");
+		outputText = outputText.replace( ":cat " , "Cataract(+) ");
+		outputText = outputText.replace( ":cato " , "Cataract operation (+) [ ] ");
+		outputText = outputText.replace( ":ida " , "Iron Deficiency Anemia ");
+		outputText = outputText.replace( ":leu " , "Leukocytopenia ");
+		outputText = outputText.replace( ":thr " , "Thrombocytopenia ");
+		outputText = outputText.replace( ":got " , "GOT/GPT/GGT elevation ");
+		outputText = outputText.replace( ":afp " , "AFP elevation ");
+		outputText = outputText.replace( ":ca1 " , "CA19-9 elevation ");
+		outputText = outputText.replace( ":her " , "Herpes Zoster ");
+		outputText = outputText.replace( ":uti " , "Urinary Tract Infection ");
+		outputText = outputText.replace( ":uri " , "Upper Respiratory Infection ");
+		outputText = outputText.replace( ":gou " , "Gout ");
+		outputText = outputText.replace( ":hiv " , "HIVD : herniated intervertebral disc ");
+		outputText = outputText.replace( ":dep " , "Depression ");
+		outputText = outputText.replace( ":anx " , "Anxiety disorder ");
+		outputText = outputText.replace( ":cog " , "Cognitive Disorder ");
+		outputText = outputText.replace( ":pa " , "s/p Bronchial Asthma ");
+		outputText = outputText.replace( ":pc " , "Chronic Cough ");
+		outputText = outputText.replace( ":pp " , "Pneumonia ");
+		outputText = outputText.replace( ":pn " , "s/p Pulmonary Nodule ");
+		outputText = outputText.replace( ":pt " , "s/p Pulmonary Tuberculosis ");
+		outputText = outputText.replace( ":ntm " , "NTM : Nontuberculous Mycobacterial Pulmonary Disease ");
+		outputText = outputText.replace( ":gr " , "GDS RC ");
+		outputText = outputText.replace( ":grr " , "GDSRC Result Consultation ");
+		outputText = outputText.replace( ":gg " , "공단검진 ");
+		outputText = outputText.replace( ":ggr " , "공단검진 결과상담 ");
+		outputText = outputText.replace( ":rr " , "Other clinic RC and Lab result consultation ");
+		outputText = outputText.replace( ":SxTx " , "Symptomatic treatment and supportive care ");
+		outputText = outputText.replace( ":teg " , "Hyperthyroidism : Greaves' disease ");
+		outputText = outputText.replace( ":toh " , "Hypothyroidism : Hashimoto's thyroditis ");
+		outputText = outputText.replace( ":aa " , "Astrix 100 mg 1 tab po qd ");
+		outputText = outputText.replace( ":dn- " , "Dm without Nephropathy ");
+		outputText = outputText.replace( ":migo " , "DR. Koh Jae Joon ");
+		outputText = outputText.replace( ":jj " , "Migo JJ ");
+		outputText = outputText.replace( ":df " , "Diabetes Mellitus F/U ");
+		outputText = outputText.replace( ":tf " , "Hypertension F/U ");
+		outputText = outputText.replace( ":cf " , "Hypercholwsterolemia F/U ");
+		outputText = outputText.replace( ":tof " , "Hypothyroidism F/U ");
+		outputText = outputText.replace( ":tef " , "Hyperthyroisidm F/U ");
 
-		outputText = outputText.replace(":tn ", "Thyroid nodule")
-                .replace(":tc ", "Thyroid cyst")
-                .replace(":tsg ", "Simple Goiter")
-                .replace(":at ", "Atypical Chest pain")
-                .replace(":ap ", "Angina Pectoris")
-                .replace(":aps ", "Angina Pectoris with stent insertion")
-                .replace(":omi ", "Old Myocardial Infarction")
-                .replace(":ami ", "Acute Myocardial Infarction")
-                .replace(":amis ", "Acute Myocardial Infarction with stent insertion")
-                .replace(":as ", "Artherosclerosis Carotid artery")
-                .replace(":asa ", "Artherosclerosis Carotid artery and Aorta")
-                .replace(":af ", "Atrial Fibrillation")
-                .replace(":afr ", "Atrial Fibrillation with RVR")
-                .replace(":afl ", "Atrial Flutter")
-                .replace(":pvc ", "PVC  Premature Ventricular Contractions")
-                .replace(":apc ", "APC  atrial premature complexes")
-                .replace(":gre ", "Reflux esophagitis")
-                .replace(":gcag ", "Chronic Atrophic Gastritis")
-                .replace(":gcsg ", "Chronic Superficial Gastritis")
-                .replace(":geg ", "r/o Erosive Gastritis")
-                .replace(":gibs ", "r/o Irritable Bowel Syndrome")
-                .replace(":ggil ", "Gilbert's syndrome")
-                .replace(":gcon ", "Severe Constipation")
-                .replace(":ctg ", "HyperTriGlyceridemia")
-                .replace(":te ", "Hyperthyroidism : Graves' disease")
-                .replace(":to ", "Hypothyroidism : Hashimoto's thyroiditis")
-                .replace(":ts ", "Subacute Thyroiditis");
-		outputText = outputText.replace(":nti ", "Non-Thyroidal Illness")
-                .replace(":tep ", "Hyperthyroidism with Pregnancy [ ] weeks")
-                .replace(":top ", "Hypothyroidism with Pregnancy [ ] weeks")
-                .replace(":tco ", "Papillary Thyroid Cancer OP(+)\n\tHypothyroidism")
-                .replace(":tcor ", "Papillary Thyroid Cancer OP(+) RAI Tx(+)\n\tHypothyroidism")
-                .replace(":sos ", "Severe Osteoporosis")
-                .replace(":os ", "Osteoporosis")
-                .replace(":ospe ", "Osteopenia")
-                .replace(":cp ", "Colonic Polyp")
-                .replace(":cpm ", "Colonic Polyps multiple")
-                .replace(":cps ", "Colonic Polyp single")
-                .replace(":cd ", "Colonic diverticulum")
-                .replace(":gp ", "GB polyp")
-                .replace(":gs ", "GB stone")
-                .replace(":ggp ", "Gastric Polyp")
-                .replace(":oc ", "s/p Cholecystectomy d/t GB stone")
-                .replace(":oa ", "s/p Appendectomy")
-                .replace(":occ ", "s/p Colon cancer op(+)")
-                .replace(":ogc ", "s/p Gastric cancer cancer op(+)")
-                .replace(":oh ", "s/p TAH : Total Abdominal Hysterectomy")
-                .replace(":oho ", "s/p TAH with BSO")
-                .replace(":bph ", "BPH")
-                .replace(":op ", "Prostate cancer operation(+)")
-                .replace(":ob ", "s/p Breast Cancer Operation")
-                .replace(":ot ", "Papillary Thyroid Cancer OP(+)\n\twith Hypothyroidism")
-                .replace(":oca ", "Cataract OP(+)")
-                .replace(":hav ", "s/p Hepatitis A infection")
-                .replace(":hbv ", "HBsAg(+) Carrier")
-                .replace(":hcv ", "Hepatitis C virus (HCV) chronic infection")
-                .replace(":hcvp ", "HCV-Ab(Positive) --> PCR(Negative) confirmed")
-                .replace(":hh ", "Hepatic Hemangioma")
-                .replace(":hc ", "Hepatic Cyst")
-                .replace(":hn ", "Hepatic Nodule")
-                .replace(":hhn ", "Hepatic higher echoic nodule")
-                .replace(":hf ", "Fatty Liver")
-                .replace(":hfmi ", "Mild Fatty Liver")
-                .replace(":hfmo ", "Moderate Fatty Liver")
-                .replace(":hfse ", "Severe Fatty Liver")
-                .replace(":rc ", "Renal Cyst")
-                .replace(":rs ", "Renal Stone")
-                .replace(":rse ", "Renal Stone s/p ESWL")
-                .replace(":rn ", "Renal Nodule")
-                .replace(":rih ", "isolated hematuria")
-                .replace(":rgh ", "gross hematuria")
-                .replace(":rip ", "isolated proteinuria")
-                .replace(":bc ", "Breast Cyst")
-                .replace(":bn ", "Breast Nodule")
-                .replace(":bnb ", "Breast Nodule with biopsy");
-
-                outputText = outputText.replace(":bco ", "s/p Breast Cancer Operation")
-                .replace(":bcoc ", "s/p Breast Cancer Operation+ ChemoTx(+)")
-                .replace(":bcor ", "s/p Breast Cancer Operation + RT(+)")
-                .replace(":bcocr ", "s/p Breast Cancer Operation \n\t:  ChemoTx(+) + RT(+)")
-                
-                .replace(":ins ", "Insomnia")
-                .replace(":epi ", "Epigastric pain")
-                .replace(":dys ", "Dysuria and frequency")
-                .replace(":ind ", "Epigastric pain and Indigestion")
-                .replace(":dir ", "Diarrhea")
-                .replace(":con ", "Constipation")
-                
-                .replace(":cov ", "COVID-19 PCR (+)")
-                .replace(":covc ", "s/p COVID-19 PCR (+) without complications [   ]")
-                .replace(":covs ", "s/p COVID-19 PCR (+) with complications [   ]")
-                
-                .replace(":ver ", "Vertigo")
-                .replace(":hea ", "Headache")
-                .replace(":wei ", "Weight loss [   ] kg")
-                .replace(":weig ", "Weight gain [   ] kg")
-                .replace(":eas ", "Easy fatigue")
-                .replace(":obe ", "Obesity")
-                .replace(":obec ", "Central Obesity")
-                .replace(":gla ", "Glaucoma(+)")
-                .replace(":cat ", "Cataract(+)")
-                .replace(":cato ", "Cataract operation (+) [   ]")
-                .replace(":ida ", "Iron Deficiency Anemia")
-                .replace(":leu ", "Leukocytopenia")
-                .replace(":thr ", "Thrombocytopenia")
-                .replace(":got ", "GOT/GPT/GGT elevation")
-                
-                .replace(":afp ", "AFP elevation")
-                .replace(":ca1 ", "CA19-9 elevation")
-                .replace(":her ", "Herpes Zoster")
-                .replace(":uti ", "Urinary Tract Infection")
-                .replace(":uri ", "Upper Respiratory Infection")
-                .replace(":gou ", "Gout")
-                .replace(":dis ", "HIVD : herniated intervertebral disc")
-                .replace(":dep ", "Depression")
-                .replace(":anx ", "Anxiety disorder")
-                .replace(":cog ", "Cognitive Disorder")
-                .replace(":pa ", "s/p Bronchial Asthma")
-                .replace(":pc ", "Chronic Cough")
-                .replace(":pp ", "Pneumonia")
-                .replace(":pn ", "s/p Pulmonary Nodule")
-                .replace(":pt ", "s/p Pulmonary Tuberculosis")
-                .replace(":ntm ", "NTM : Nontuberculous Mycobacterial Pulmonary Disease")
-                .replace(":gr ", "GDS RC")
-                .replace(":grr ", "GDSRC Result Consultation")
-                .replace(":gg ", "공단검진")
-                .replace(":ggr ", "공단검진 결과상담")
-                .replace(":rr ", "Other clinic RC and Lab result consultation")
-                .replace(":SxTx ", "Symptomatic treatment and supportive care ");
-                outputText = outputText.replace( ":aa " , "Astrix 100 mg 1 tab po qd ");
                 
                 
     		    if (outputText.contains(":(")) {
