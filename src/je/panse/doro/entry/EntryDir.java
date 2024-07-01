@@ -7,10 +7,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
 public class EntryDir {
-//    public static String currentDir = "/home/dce040b/ittia";
+
     public static String currentDir = System.getProperty("user.dir");
 
     public static String homeDir = currentDir + "/src/je/panse/doro";
+//    public static String homeDir = currentDir + "/je/panse/doro";
+
     public static String backupDir = homeDir + "/tripikata/rescue";
 
     public static void main(String[] args) {
