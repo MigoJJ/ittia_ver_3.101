@@ -1,5 +1,5 @@
 outputText = outputText.replace( ":d " , "diabetes mellitus ");
-outputText = outputText.replace( ":c " , "Hypercholesterolemia F/U ");
+outputText = outputText.replace( ":c " , "Hypercholesterolemia ");
 outputText = outputText.replace( ":tt " , "c/w Chronic Thyroiditis on USG ");
 outputText = outputText.replace( ":t " , "Hypertension ");
 outputText = outputText.replace( ":cd " , "Colonic diverticulum [  ] test ");
@@ -59,8 +59,8 @@ outputText = outputText.replace( ":gibs " , "r/o Irritable Bowel Syndrome ");
 outputText = outputText.replace( ":ggil " , "Gilbert's syndrome ");
 outputText = outputText.replace( ":gcon " , "Severe Constipation ");
 outputText = outputText.replace( ":nti " , "Non-Thyroidal Illness ");
-outputText = outputText.replace( ":tep " , "Hyperthyroidism with Pregnancy [ ] weeks ");
-outputText = outputText.replace( ":top " , "Hypothyroidism with Pregnancy [ ] weeks ");
+outputText = outputText.replace( ":tep " , "Hyperthyroidism with Pregnancy [    ] weeks ");
+outputText = outputText.replace( ":top " , "Hypothyroidism with Pregnancy [     ] weeks ");
 outputText = outputText.replace( ":tco " , "Papillary Thyroid Cancer OP(+)
 	Hypothyroidism ");
 outputText = outputText.replace( ":tcor " , "Papillary Thyroid Cancer OP(+) RAI Tx(+)
@@ -164,3 +164,8 @@ outputText = outputText.replace( ":aa " , "Astrix 100 mg 1 tab po qd ");
 outputText = outputText.replace( ":dn- " , "Dm without Nephropathy ");
 outputText = outputText.replace( ":migo " , "DR. Koh Jae Joon ");
 outputText = outputText.replace( ":jj " , "Migo JJ ");
+outputText = outputText.replace( ":df " , "Diabetes Mellitus F/U ");
+outputText = outputText.replace( ":tf " , "Hypertension F/U ");
+outputText = outputText.replace( ":cf " , "Hypercholwsterolemia F/U ");
+outputText = outputText.replace( ":tof " , "Hypothyroidism F/U ");
+outputText = outputText.replace( ":tef " , "Hyperthyroisidm F/U ");
