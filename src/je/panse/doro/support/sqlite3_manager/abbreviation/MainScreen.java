@@ -1,6 +1,6 @@
 package je.panse.doro.support.sqlite3_manager.abbreviation;
 
-import java.awt.BorderLayout;				
+import java.awt.BorderLayout;					
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
