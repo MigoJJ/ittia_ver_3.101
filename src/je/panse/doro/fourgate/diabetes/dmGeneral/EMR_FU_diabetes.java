@@ -1,6 +1,7 @@
 package je.panse.doro.fourgate.diabetes.dmGeneral;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,93 +24,136 @@ import javax.swing.SwingUtilities;
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_FU_diabetes extends JFrame implements ActionListener {
-    private ArrayList<JTextArea> textAreas;
-    private JButton saveButton, exitButton;
+    private static ArrayList<JTextArea> textAreas;
+    private static JButton inputButton, editButton, saveButton, exitButton;
 
     public EMR_FU_diabetes() {
         setTitle("Diabetes Mellitus Preform");
         setSize(400, 1000);
-        setLocation(200, 200);
+        setLocation(200,200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Initialize JTextAreas
-        textAreas = new ArrayList<>();
-        String[] defaultTexts = {"CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>"};
+        // Create JTextAreas with default text and make them scrollable
+        textAreas = new ArrayList<JTextArea>();
+        String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
 
-        JPanel textAreaPanel = new JPanel(new GridLayout(defaultTexts.length, 1));
-        for (String text : defaultTexts) {
-            JTextArea textArea = new JTextArea(text);
-            textArea.setLineWrap(true);
-            textArea.setWrapStyleWord(true);
-            JScrollPane scrollPane = new JScrollPane(textArea);
-            textAreaPanel.add(scrollPane);
-            textAreas.add(textArea);
+        // Create panel for JTextAreas
+        JPanel textAreaPanel = new JPanel();
+        textAreaPanel.setLayout(new GridLayout(textAreas.size(), 1));
+        for (int i = 0; i < textAreas.size(); i++) {
+            textAreaPanel.add(textAreas.get(i));
         }
-
-        // Buttons
+	    for (int i = 0; i < defaultTexts.length; i++) {
+	        JTextArea textArea = new JTextArea();
+	        textArea.setText(getSavedText(i)); // Load saved text from file
+	        textArea.setLineWrap(true);
+	        textArea.setWrapStyleWord(true);
+	        JScrollPane scrollPane = new JScrollPane(textArea);
+	        textAreaPanel.add(scrollPane);
+	        textAreas.add(textArea);
+	    }
+        
+        // Create buttons
         saveButton = new JButton("Save");
         exitButton = new JButton("Exit");
+
+        // Attach action listeners to buttons
         saveButton.addActionListener(this);
         exitButton.addActionListener(this);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
+        // Create panel for buttons
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridLayout(1, 4));
         buttonPanel.add(saveButton);
         buttonPanel.add(exitButton);
 
+        // Gradually darken background color using orange
+        float hue = 0.12f;
+        float saturation = 0.5f;
+        float brightness = 1.0f;
+        float increment = 0.03f;
+        for (int i = 0; i < textAreas.size(); i++) {
+            JTextArea textArea = textAreas.get(i);
+                        
+         // Assuming hue, saturation, brightness are already defined
+            Color grayColor = Color.LIGHT_GRAY; // Choose your preferred method (predefined or custom)
+            // grayColor = Color.LIGHT_GRAY; // For a lighter shade
+            // grayColor = new Color(128, 128, 128); // For a custom dark shade
+            textArea.setBackground(grayColor);
+            brightness -= increment;
+            
+        }
+
         // Add components to JFrame
-        getContentPane().add(textAreaPanel, BorderLayout.CENTER);
-        getContentPane().add(buttonPanel, BorderLayout.SOUTH);
+        add(textAreaPanel, BorderLayout.CENTER);
+        add(buttonPanel, BorderLayout.NORTH);
 
         setVisible(true);
-    }
 
-    private String getSavedText(int index) {
-        String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + index; // Ensure EntryDir.homeDir is initialized
-        if (filename.contains("null")) {
-            System.err.println("Error: Path contains 'null'. Path was not initialized correctly.");
-            return "";
-        }
+    exitButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        		dispose();
+        	}
+        });
 
-        File file = new File(filename);
-        if (!file.exists()) return ""; // If file doesn't exist, return empty string
-
-        StringBuilder sb = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                sb.append(line).append(System.lineSeparator());
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return ""; // Return empty string if there was an error
-        }
-        return sb.toString();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == saveButton) {
+    saveButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             for (int i = 0; i < textAreas.size(); i++) {
                 JTextArea textArea = textAreas.get(i);
-                String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
-                if (filename.contains("null")) {
-                    JOptionPane.showMessageDialog(this, "File path is not initialized correctly.", "Error", JOptionPane.ERROR_MESSAGE);
-                    continue;
-                }
-
-                try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+                try {
+                    // Open existing text file and overwrite with new text
+                    String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + i;
+                    File file = new File(filename);
+                    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                     writer.write(textArea.getText());
+                    writer.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
             }
-            JOptionPane.showMessageDialog(this, "Text saved to files.");
-        } else if (e.getSource() == exitButton) {
-            dispose();
+            JOptionPane.showMessageDialog(null, "Text saved to files.");
         }
+    });
+    // Add panels to JFrame
+    getContentPane().add(buttonPanel, BorderLayout.NORTH);
+    getContentPane().add(textAreaPanel, BorderLayout.CENTER);
+    setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(EMR_FU_diabetes::new);
-    }
+	private static String getSavedText(int index) {
+		String filename = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea"  + index;
+		File file = new File(filename);
+	    if (!file.exists()) {
+	        return ""; // Return empty string if file doesn't exist yet
+	    }
+	    try {
+	        BufferedReader reader = new BufferedReader(new FileReader(file));
+	        StringBuilder sb = new StringBuilder();
+	        String line = reader.readLine();
+	        while (line != null) {
+	            sb.append(line);
+	            sb.append(System.lineSeparator());
+	            line = reader.readLine();
+	        }
+	        reader.close();
+	        return sb.toString();
+	    } catch (IOException ex) {
+	        ex.printStackTrace();
+	        return ""; // Return empty string if there was an error reading the file
+	    }
+	}
+    
+	public static void main(String[] args) {
+	    SwingUtilities.invokeLater(new Runnable() {
+	        public void run() {
+	            new EMR_FU_diabetes();
+	        }
+	    });
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+	}
 }
