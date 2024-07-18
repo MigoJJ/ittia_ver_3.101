@@ -14,7 +14,7 @@ public class EMRPMH extends JFrame {
     private JTextArea textArea2;
     private List<JCheckBox> checkboxes;
     private String[] checkboxLabels = {
-            "DM", "HTN", "Dyslipidemia", "Cancer", "Operation", "Thyroid Disease",
+            "Diabetes Mellitus", "Hypertension", "Dyslipidemia", "Cancer", "Operation", "Thyroid Disease",
             "Asthma", "Tuberculosis", "Pneumonia", "Chrnic Hepatitis B", "GERD", "Gout",
             "Arthritis", "Hearing Loss", "Parkinson's disease", "CVA", "Depression", 
             "Cognitive Disorder", "Angina Pectoris", "AMI", "Arrhythmia", "Allergy", 
@@ -66,11 +66,12 @@ public class EMRPMH extends JFrame {
 
         if (source.isSelected()) {
             textArea.setText(textArea.getText().replace(labelLine, checkedLabelLine));
-            textArea2.append(" " + checkedLabelLine + " \n");
+            textArea2.append("   " + checkedLabelLine + " \n\n");
         } else {
             textArea.setText(textArea.getText().replace(checkedLabelLine, labelLine));
-            textArea2.setText(textArea2.getText().replace(" " + checkedLabelLine + "\n", ""));
+            textArea2.setText(textArea2.getText().replace(" " + checkedLabelLine + " \n", ""));
         }
+        
     }
 
     private void handleButtonClick(String buttonLabel) {
@@ -83,10 +84,13 @@ public class EMRPMH extends JFrame {
                 break;
             case "SAVE":
                 String processedText = processCheckedItems();
-                textArea.setText(addSpaceToEachLine(processedText));
-                textArea2.setText(addSpaceToEachLine(getCheckedItemsText()));
-                GDSEMR_frame.setTextAreaText(7, "\n" + textArea2.getText());
+                textArea.setText((processedText));
                 GDSEMR_frame.setTextAreaText(3, "\n" + textArea.getText());
+                
+                String textArea2String = textArea2.getText();
+                textArea2.setText((getCheckedItemsText()));
+                GDSEMR_frame.setTextAreaText(7, "\n" + textArea2String);
+                
                 break;
             case "QUIT":
                 dispose();
@@ -96,10 +100,10 @@ public class EMRPMH extends JFrame {
 
     private String initialText() {
         return "\n     ----------------------------------\n" +
-               "     □ DM               □ HTN              □ Dyslipidemia\n" +
+               "     □ Diabetes Mellitus □ Hypertension □ Dyslipidemia \n" +
                "     □ Cancer           □ Operation        □ Thyroid Disease\n" +
                "     □ Asthma           □ Pneumonia        □ Tuberculosis\n" +
-               "     □ Hepatitis        □ GERD             □ Gout\n" +
+               "     □ Chrnic Hepatitis B        □ GERD             □ Gout\n" +
                "     □ Arthritis        □ Hearing Loss     □ Parkinson's Disease\n" +
                "     □ CVA              □ Depression       □ Cognitive Disorder\n" +
                "     □ Angina Pectoris  □ AMI              □ Arrhythmia\n" +
