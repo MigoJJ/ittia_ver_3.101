@@ -1,6 +1,6 @@
 package je.panse.doro.soap.assessment;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;

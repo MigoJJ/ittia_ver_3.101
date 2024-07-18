@@ -1,14 +1,13 @@
   PMH>	 
      ----------------------------------
-     □ DM               □ HTN              □ Dyslipidemia
+     □ DM               ▣ HTN              ▣ Dyslipidemia
      □ Cancer           □ Operation        □ Thyroid Disease
-     □ Asthma           □ Pneumonia        □ Tuberculosis
+     ▣ Asthma           □ Pneumonia        □ Tuberculosis
      □ Hepatitis        □ GERD             □ Gout
      □ Arthritis        □ Hearing Loss     □ Parkinson's Disease
-     □ CVA              □ Depression       □ Cognitive Disorder
+     □ CVA              ▣ Depression       □ Cognitive Disorder
      □ Angina Pectoris  □ AMI              □ Arrhythmia
      □ Allergy          □ ...              
      □ Food             □ Injection        □ Medication
      ------------------------------------
   A>	 
-   ▣   Thyroid Disease

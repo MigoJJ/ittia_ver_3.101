@@ -6,8 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
-import je.panse.doro.GDSEMR_frame; // Ensure this import statement correctly points to your GDSEMR_frame class
+import je.panse.doro.GDSEMR_frame;
 
 public class EMRPMH extends JFrame {
 
@@ -84,8 +83,10 @@ public class EMRPMH extends JFrame {
                 break;
             case "SAVE":
                 String processedText = processCheckedItems();
-                textArea.setText(processedText);
+
+                textArea.setText(getCheckedItemsText());
                 GDSEMR_frame.setTextAreaText(7, "\n" + textArea.getText());
+                textArea2.setText(processedText);
                 GDSEMR_frame.setTextAreaText(3, "\n" + textArea2.getText());
                 break;
             case "QUIT":
@@ -118,6 +119,16 @@ public class EMRPMH extends JFrame {
             }
         }
         return template;
+    }
+
+    private String getCheckedItemsText() {
+        StringBuilder checkedItems = new StringBuilder();
+        for (JCheckBox checkBox : checkboxes) {
+            if (checkBox.isSelected()) {
+                checkedItems.append("▣ ").append(checkBox.getText()).append("\n");
+            }
+        }
+        return checkedItems.toString();
     }
 
     public static void main(String[] args) {
