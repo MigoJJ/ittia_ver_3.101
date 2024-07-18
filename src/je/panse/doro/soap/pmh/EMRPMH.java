@@ -106,7 +106,7 @@ public class EMRPMH extends JFrame {
                "     □ Chrnic Hepatitis B        □ GERD             □ Gout\n" +
                "     □ Arthritis        □ Hearing Loss     □ Parkinson's Disease\n" +
                "     □ CVA              □ Depression       □ Cognitive Disorder\n" +
-               "     □ Angina Pectoris  □ AMI              □ Arrhythmia\n" +
+               "     □ Angina Pectoris  □ AMI              □ Arrhythmia\n.\n" +
                "     □ Allergy          □ ...              \n" +
                "     □ Food             □ Injection        □ Medication\n" +
                "     ------------------------------------\n";
