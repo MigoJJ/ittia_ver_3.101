@@ -18,9 +18,9 @@ public class EMRPMH extends JFrame {
             "DM", "HTN", "Dyslipidemia",
             "Cancer", "Operation", "Thyroid Disease",
             "Asthma", "Tuberculosis", "Pneumonia",
-            "Hepatitis", "GERD", "Gout",
-            "Arthritis", "Hearing Loss", "...",
-            "CVA", "Depression", "Cognitive Disorder", 
+            "Chrnic Hepatitis B", "GERD", "Gout",
+            "Arthritis", "Hearing Loss", "Parkinson's disease",
+            "CVA", "Depression","Cognitive Disorder", 
             "Angina Pectoris", "AMI", "Arrhythmia",
             "Allergy", "...","...", "Food", "Injection", "Medication"
     };

@@ -7,18 +7,18 @@ import je.panse.doro.GDSEMR_frame;
 public class EMRPMH_ReplaceString {
 
     public static void main(String stringB) {
-        String stringA =
-            "\n     ----------------------------------\n" +
-            "     □  DM   □ HTN  □  Dyslipidemia\n" +
-            "     □  Cancer      □  Operation □  Thyroid Disease\n" +
-            "     □  Asthma     □  Pneumonia  □ Tuberculosis\n" +
-            "     □  Hepatitis   □  GERD        □  Gout\n" +
-            "     □  Arthritis    □  Hearing Loss  □ ...\n" +
-            "     □  CVA          □ Depression  □  Cognitive Disorder\n" +
-            "     □  Angina Pectoris          □  AMI   □  Arrhythmia\n" +
-            "     □  Allergy      □  ...\n" +
-            "     □  Food        □  Injection □   Medication\n" +
-            "     ------------------------------------\n";
+    	String stringA =
+    		    "\n     ----------------------------------\n" +
+    		    "     □ DM                □ HTN             □ Dyslipidemia\n" +
+    		    "     □ Cancer            □ Operation       □ Thyroid Disease\n" +
+    		    "     □ Asthma            □ Pneumonia       □ Tuberculosis\n" +
+    		    "     □ Hepatitis         □ GERD            □ Gout\n" +
+    		    "     □ Arthritis         □ Hearing Loss    □ Parkinson's Disease\n" +
+    		    "     □ CVA               □ Depression      □ Cognitive Disorder\n" +
+    		    "     □ Angina Pectoris   □ AMI             □ Arrhythmia\n" +
+    		    "     □ Allergy           □ ... \n" +
+    		    "     □ Food              □ Injection       □ Medication\n" +
+    		    "     ------------------------------------\n";
 
         System.out.println(replaceStringAWithB(stringA, stringB));
 
