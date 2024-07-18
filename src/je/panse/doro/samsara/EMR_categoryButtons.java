@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
+import je.panse.doro.soap.pmh.EMRPMH;
 
 public class EMR_categoryButtons extends JFrame implements ActionListener {
 	    private static final long serialVersionUID = 1L;
