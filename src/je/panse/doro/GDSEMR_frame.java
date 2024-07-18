@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;    
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
@@ -144,7 +144,7 @@ public class GDSEMR_frame {
     }
 
     public static void setTextAreaText(int i, String string) {
-        textAreas[i].append(string);
+        textAreas[i].append(string); // Use append method here
     }
 
     public static void updateTempOutputArea(String text) {

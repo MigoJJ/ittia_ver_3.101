@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.samsara.EMR_east_buttons_obj;
-import je.panse.doro.samsara.EMR_CCPIPMH.EMRPMH;
 import je.panse.doro.soap.assessment.AssessmentSupport;
 import je.panse.doro.soap.cc.CCSupport;
 import je.panse.doro.soap.pe.EMR_PE_general;
 import je.panse.doro.soap.plan.IttiaGDSPlan;
+import je.panse.doro.soap.pmh.EMRPMH;
 import je.panse.doro.soap.ros.EMR_ROS;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 

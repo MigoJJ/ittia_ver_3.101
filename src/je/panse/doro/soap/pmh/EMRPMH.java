@@ -1,4 +1,4 @@
-package je.panse.doro.samsara.EMR_CCPIPMH;
+package je.panse.doro.soap.pmh;
 
 import javax.swing.*;
 import java.awt.*;
@@ -66,10 +66,10 @@ public class EMRPMH extends JFrame {
 
         if (source.isSelected()) {
             textArea.setText(textArea.getText().replace(labelLine, checkedLabelLine));
-            textArea2.append(checkedLabelLine + "\n");
+            textArea2.append(" " + checkedLabelLine + " \n");
         } else {
             textArea.setText(textArea.getText().replace(checkedLabelLine, labelLine));
-            textArea2.setText(textArea2.getText().replace(checkedLabelLine + "\n", ""));
+            textArea2.setText(textArea2.getText().replace(" " + checkedLabelLine + "\n", ""));
         }
     }
 
@@ -83,11 +83,10 @@ public class EMRPMH extends JFrame {
                 break;
             case "SAVE":
                 String processedText = processCheckedItems();
-
-                textArea.setText(getCheckedItemsText());
-                GDSEMR_frame.setTextAreaText(7, "\n" + textArea.getText());
-                textArea2.setText(processedText);
-                GDSEMR_frame.setTextAreaText(3, "\n" + textArea2.getText());
+                textArea.setText(addSpaceToEachLine(processedText));
+                textArea2.setText(addSpaceToEachLine(getCheckedItemsText()));
+                GDSEMR_frame.setTextAreaText(7, "\n" + textArea2.getText());
+                GDSEMR_frame.setTextAreaText(3, "\n" + textArea.getText());
                 break;
             case "QUIT":
                 dispose();
@@ -125,10 +124,19 @@ public class EMRPMH extends JFrame {
         StringBuilder checkedItems = new StringBuilder();
         for (JCheckBox checkBox : checkboxes) {
             if (checkBox.isSelected()) {
-                checkedItems.append("▣ ").append(checkBox.getText()).append("\n");
+                checkedItems.append("▣ ").append(checkBox.getText()).append("\n\n");
             }
         }
         return checkedItems.toString();
+    }
+
+    private String addSpaceToEachLine(String text) {
+        String[] lines = text.split("\n");
+        StringBuilder spacedText = new StringBuilder();
+        for (String line : lines) {
+            spacedText.append(" ").append(line).append("\n");
+        }
+        return spacedText.toString();
     }
 
     public static void main(String[] args) {
