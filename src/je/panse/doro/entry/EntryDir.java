@@ -1,23 +1,49 @@
 package je.panse.doro.entry;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
+import java.io.File;
 
 public class EntryDir {
+    public static final String currentDir = System.getProperty("user.dir");
+    public static final String homeDir;
+    public static final String backupDir;
 
-    public static String currentDir = System.getProperty("user.dir");
+    static {
+        // Check if the application is in production or development environment
+        String env = System.getProperty("app.env", "dev"); // Default to development environment
+        if ("prod".equals(env)) {
+            homeDir = currentDir + File.separator + "je" + File.separator + "panse" + File.separator + "doro";
+        } else {
+            homeDir = currentDir + File.separator + "src" + File.separator + "je" + File.separator + "panse" + File.separator + "doro";
+//            homeDir = currentDir + File.separator + "je" + File.separator + "panse" + File.separator + "doro";
 
-    public static String homeDir = currentDir + "/src/je/panse/doro";
-//    public static String homeDir = currentDir + "/je/panse/doro";
-
-    public static String backupDir = homeDir + "/tripikata/rescue";
+        }
+        backupDir = homeDir + File.separator + "tripikata" + File.separator + "rescue";
+    }
 
     public static void main(String[] args) {
-        // Get the path to the current user's directory
+        // Ensure that the home directory exists
+        createDirectoryIfNotExists(homeDir);
+        // Ensure that the backup directory exists
+        createDirectoryIfNotExists(backupDir);
+
+        // Output the directories for verification
         System.out.println("Current user's directory: " + currentDir);
-        System.out.println("homeDir: " + homeDir);
+        System.out.println("Home Directory: " + homeDir);
+        System.out.println("Backup Directory: " + backupDir);
+    }
+
+    // Utility method to create a directory if it does not exist
+    private static void createDirectoryIfNotExists(String directoryPath) {
+        File dir = new File(directoryPath);
+        if (!dir.exists()) {
+            boolean wasSuccessful = dir.mkdirs();
+            if (wasSuccessful) {
+                System.out.println("Successfully created directory: " + directoryPath);
+            } else {
+                System.out.println("Failed to create directory: " + directoryPath);
+            }
+        } else {
+            System.out.println("Directory already exists: " + directoryPath);
+        }
     }
 }
