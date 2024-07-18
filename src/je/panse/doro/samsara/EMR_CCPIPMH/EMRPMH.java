@@ -1,13 +1,13 @@
 package je.panse.doro.samsara.EMR_CCPIPMH;
+
 import javax.swing.*;
-
-import je.panse.doro.GDSEMR_frame;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
+import je.panse.doro.GDSEMR_frame; // Ensure this import statement correctly points to your GDSEMR_frame class
 
 public class EMRPMH extends JFrame {
 
@@ -15,137 +15,117 @@ public class EMRPMH extends JFrame {
     private JTextArea textArea2;
     private List<JCheckBox> checkboxes;
     private String[] checkboxLabels = {
-            "DM", "HTN", "Dyslipidemia",
-            "Cancer", "Operation", "Thyroid Disease",
-            "Asthma", "Tuberculosis", "Pneumonia",
-            "Chrnic Hepatitis B", "GERD", "Gout",
-            "Arthritis", "Hearing Loss", "Parkinson's disease",
-            "CVA", "Depression","Cognitive Disorder", 
-            "Angina Pectoris", "AMI", "Arrhythmia",
-            "Allergy", "...","...", "Food", "Injection", "Medication"
+            "DM", "HTN", "Dyslipidemia", "Cancer", "Operation", "Thyroid Disease",
+            "Asthma", "Tuberculosis", "Pneumonia", "Chrnic Hepatitis B", "GERD", "Gout",
+            "Arthritis", "Hearing Loss", "Parkinson's disease", "CVA", "Depression", 
+            "Cognitive Disorder", "Angina Pectoris", "AMI", "Arrhythmia", "Allergy", 
+            "...", "...", "Food", "Injection", "Medication"
     };
 
     public EMRPMH() {
-        initializeFrame();
-        createCenterPanel();
-        createSouthPanel();
-    }
-
-    private void initializeFrame() {
         setTitle("GDSEMR PMH");
-        setSize(900, 400);
+        setSize(1200, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null); // Center the frame
+        setLayout(new BorderLayout());
+
+        textArea = new JTextArea(20, 40);
+        textArea2 = new JTextArea(20, 40);
         checkboxes = new ArrayList<>();
 
-        // Get the screen size
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int screenHeight = screenSize.height;
-        int screenWidth = screenSize.width;
-
-        // Set the location of the frame to the lower left corner
-        setLocation(0, screenHeight - this.getHeight());
-    }
-
-    private JCheckBox createCheckBox(String label) {
-        JCheckBox checkBox = new JCheckBox(label);
-        checkBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JCheckBox source = (JCheckBox) e.getSource();
-                if (source.isSelected()) {
-                    textArea.append("   ▣   " + source.getText() + "\n\n");
-                    textArea2.append("   ▣   " + source.getText() + "\n\n");
-
-
-                } else {
-                    String text = textArea.getText();
-                    String labelLine = "   ▣   " + source.getText() + "\n";
-                    if (text.contains(labelLine)) {
-                        text = text.replace(labelLine, "");
-                        textArea.setText(text);
-                        textArea2.setText(text);
-                    }
-                }
-            }
-        });
-        checkboxes.add(checkBox);
-        return checkBox;
-    }
-    
-    private void createCenterPanel() {
-        // Create a text area for output
-        textArea = new JTextArea(20, 40);
-        textArea.setEditable(true);
+        JScrollPane scrollPane1 = new JScrollPane(textArea);
+        JScrollPane scrollPane2 = new JScrollPane(textArea2);
         
-        textArea2 = new JTextArea(20, 40);
-        textArea2.setEditable(true);
-        
+        JPanel textPanel = new JPanel(new GridLayout(1, 2));
+        textPanel.add(scrollPane1);
+        textPanel.add(scrollPane2);
+        add(textPanel, BorderLayout.CENTER);
 
-        // Create a scroll pane for the text area
-        JScrollPane scrollPane = new JScrollPane(textArea);
-
-        // Add the scroll pane to the CENTER
-        add(scrollPane, BorderLayout.CENTER);
-
-        // Create checkboxes panel for the CENTER
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new GridLayout(0, 3)); // 3 columns
-
+        JPanel centerPanel = new JPanel(new GridLayout(0, 3));
         for (String label : checkboxLabels) {
-            JCheckBox checkBox = createCheckBox(label);
+            JCheckBox checkBox = new JCheckBox(label);
+            checkBox.addActionListener(this::handleCheckBoxAction);
+            checkboxes.add(checkBox);
             centerPanel.add(checkBox);
         }
-
-        // Add the CENTER panel
         add(centerPanel, BorderLayout.WEST);
-    }
-    private void createSouthPanel() {
-        JPanel southPanel = new JPanel();
 
+        JPanel southPanel = new JPanel();
         String[] buttonLabels = {"COPY", "CLEAR", "SAVE", "QUIT"};
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    handleButtonClick(label);
-                }
-            });
+            button.addActionListener(e -> handleButtonClick(label));
             southPanel.add(button);
         }
-
         add(southPanel, BorderLayout.SOUTH);
+    }
+
+    private void handleCheckBoxAction(ActionEvent e) {
+        JCheckBox source = (JCheckBox) e.getSource();
+        String labelLine = "□ " + source.getText();
+        String checkedLabelLine = "▣ " + source.getText();
+
+        if (source.isSelected()) {
+            textArea.setText(textArea.getText().replace(labelLine, checkedLabelLine));
+            textArea2.append(checkedLabelLine + "\n");
+        } else {
+            textArea.setText(textArea.getText().replace(checkedLabelLine, labelLine));
+            textArea2.setText(textArea2.getText().replace(checkedLabelLine + "\n", ""));
+        }
     }
 
     private void handleButtonClick(String buttonLabel) {
         switch (buttonLabel) {
             case "COPY":
             case "CLEAR":
-                textArea.setText(""); // Clear the text area
-                textArea2.setText(""); // Clear the text area
-
-                for (JCheckBox checkBox : checkboxes) {
-                    checkBox.setSelected(false);
-                }                break;
+                textArea.setText(initialText());
+                textArea2.setText("");
+                checkboxes.forEach(cb -> cb.setSelected(false));
+                break;
             case "SAVE":
-            	EMRPMH_ReplaceString.main(textArea2.getText());
+                String processedText = processCheckedItems();
+                textArea.setText(processedText);
                 GDSEMR_frame.setTextAreaText(7, "\n" + textArea.getText());
-
-            	break;
+                GDSEMR_frame.setTextAreaText(3, "\n" + textArea2.getText());
+                break;
             case "QUIT":
-                textArea.setText(""); // Clear the text area
-                textArea2.setText(""); // Clear the text area
-            	dispose();
+                dispose();
                 break;
         }
     }
 
-    public static void main(String text) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                EMRPMH frame = new EMRPMH();
-                frame.setVisible(true);
+    private String initialText() {
+        return "\n     ----------------------------------\n" +
+               "     □ DM               □ HTN              □ Dyslipidemia\n" +
+               "     □ Cancer           □ Operation        □ Thyroid Disease\n" +
+               "     □ Asthma           □ Pneumonia        □ Tuberculosis\n" +
+               "     □ Hepatitis        □ GERD             □ Gout\n" +
+               "     □ Arthritis        □ Hearing Loss     □ Parkinson's Disease\n" +
+               "     □ CVA              □ Depression       □ Cognitive Disorder\n" +
+               "     □ Angina Pectoris  □ AMI              □ Arrhythmia\n" +
+               "     □ Allergy          □ ...              \n" +
+               "     □ Food             □ Injection        □ Medication\n" +
+               "     ------------------------------------\n";
+    }
+
+    private String processCheckedItems() {
+        String template = initialText();
+        for (JCheckBox checkBox : checkboxes) {
+            String labelLine = "□ " + checkBox.getText();
+            String checkedLabelLine = "▣ " + checkBox.getText();
+            if (checkBox.isSelected()) {
+                template = template.replace(labelLine, checkedLabelLine);
             }
+        }
+        return template;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            EMRPMH frame = new EMRPMH();
+            frame.setVisible(true);
+            frame.textArea.setText(frame.initialText());
+            frame.textArea2.setText("");
         });
     }
 }

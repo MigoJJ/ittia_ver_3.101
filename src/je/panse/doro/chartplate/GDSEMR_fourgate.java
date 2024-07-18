@@ -22,7 +22,7 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 	public static void main(String text) throws IOException {
 		System.out.println("Double-clicked on: text >>> " + text);
 		if (text.contains("PMH>")) {
-			EMRPMH.main(text);
+			EMRPMH.main(null);
 		} else if (text.contains("CC>")) {
 			CCSupport.main(null);
 		} else if (text.contains("ROS>")) {
