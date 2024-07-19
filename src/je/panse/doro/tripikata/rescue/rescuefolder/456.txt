@@ -1,0 +1,31 @@
+  CC>	 The patient visitis for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+The patient was seen at the GDS clinic 
+	for a 공단검진 on 2024.07.20The patient was seen at the GDS clinic 
+	for a routine checkup on 2024.07.20
+    S>	 The Patient has suffered from : ▣ 
+	□      Polyuria
+	□      Polydipsia
+	□      Polyphagia
+	□      Weight loss
+	□      Fatigue
+	□      Blurred vision
+  O>	 
+< Chest PA >	Lung cancer   2024.07.20
+  A>	 
+   #  Cancer
+   #  Tuberculosis
+   #  Gout
+   #  Depression
+  #  Td (Tetanus, Diphtheria)  [2024-07-20]
+  P>	 
+  Follow up interval: [ 3 ] months
+  Prescription : continue with current dosages of meds
+	transfer to AMC Hospital
+   ...Vaccination as scheduled
+  #  공단검진 at GDS clinic  [ 2024.07.20 ]
+  #  GDS clinic Routine check  [ 2024.07.20 ]
