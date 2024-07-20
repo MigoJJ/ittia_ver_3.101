@@ -1,4 +1,5 @@
 package je.panse.doro.soap.pmh;
+
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -30,13 +31,13 @@ public class EMRPMH extends JFrame {
         "Arthritis", "Hearing Loss", "Parkinson's Disease",
         "CVA", "Depression", "Cognitive Disorder",
         "Angina Pectoris", "AMI", "Arrhythmia",
-        "Allergy", "...", "Food",
+        "\nAllergy", "Food",
         "Injection", "Medication"
     };
 
     public EMRPMH() {
         setTitle("EMR PMH");
-        setSize(800, 800);
+        setSize(800, 850);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         initComponents();
@@ -44,7 +45,7 @@ public class EMRPMH extends JFrame {
 
     private void initComponents() {
         // Text areas initialization
-        textArea1 = new JTextArea(5, 10);
+        textArea1 = new JTextArea(3, 10);
         textArea2 = new JTextArea(14, 50);
         setupTextArea(textArea1);
         setupTextArea(textArea2);
@@ -98,7 +99,7 @@ public class EMRPMH extends JFrame {
         textArea2.setFont(new Font("Consolas", Font.PLAIN, 12));  // Use a monospaced font for alignment
         textArea2.setText(
             "   ------------------------------------- \n" +
-    		 "    □ Diabetes Mellitus     \t□ Hypertension     \t□ Dyslipidemia\n" +
+    		 "    □ Dyslipidemia     \t□ Hypertension     \t□ Diabetes Mellitus\n" +
             "    □ Cancer                \t□ Operation        \t□ Thyroid Disease\n" +
             "    □ Asthma                \t□ Pneumonia        \t□ Tuberculosis\n" +
             "    □ Chronic Hepatitis B   \t□ GERD             \t□ Gout\n" +
@@ -109,7 +110,7 @@ public class EMRPMH extends JFrame {
             "    \n" +
             "    □ Allergy               \t□ ...              \n" +
             "    □ Food                  \t□ Injection        \t□ Medication\n"+
-            "   ------------------------------------- \n"
+            "   -------------------------------------- \n"
         );
     }
 
@@ -118,7 +119,7 @@ public class EMRPMH extends JFrame {
         clearButton.addActionListener(this::clearAction);
         copyButton.addActionListener(this::copyAction);
         saveButton.addActionListener(this::saveAction);
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> dispose());
     }
 
     private void clearAction(ActionEvent e) {

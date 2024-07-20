@@ -1,22 +1,15 @@
   PMH>	 
    ------------------------------------- 
-    □ Diabetes Mellitus     	▣ Hypertension     	□ Dyslipidemia
-    □ Cancer                	▣ Operation        	□ Thyroid Disease
-    □ Asthma                	▣ Pneumonia        	□ Tuberculosis
+    □ Dyslipidemia     	□ Hypertension     	□ Diabetes Mellitus
+    □ Cancer                	□ Operation        	□ Thyroid Disease
+    □ Asthma                	□ Pneumonia        	□ Tuberculosis
     □ Chronic Hepatitis B   	□ GERD             	□ Gout
-    □ Arthritis             	□ Hearing Loss     	□ Parkinson's Disease
-    □ CVA                   	□ Depression       	□ Cognitive Disorder
+    □ Arthritis             	▣ Hearing Loss     	□ Parkinson's Disease
+    □ CVA                   	▣ Depression       	□ Cognitive Disorder
     □ Angina Pectoris       	□ AMI              	□ Arrhythmia
     □ Allergy               	□ ...              
     □ Food                  	□ Injection        	□ Medication
-    □ Asthma                	▣ Pneumonia        	▣ Tuberculosis
-    □ Chronic Hepatitis B   	□ GERD             	▣ Gout
-    □ CVA                   	□ Depression       	▣ Cognitive Disorder
+   -------------------------------------- 
   A>	 
-   ▣ Pneumonia
-   ▣ Operation
-     ▣ Hypertension :cd
-   ▣ Hypertension 2024.07.20
-   ▣ Cognitive Disorder
-   ▣ Gout
-   ▣ Tuberculosis
+   ▣ Depression
+   ▣ Hearing Loss
