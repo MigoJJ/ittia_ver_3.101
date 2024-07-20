@@ -1,10 +1,22 @@
-  CC>	 The patient visitis for Vaccination
-  [ ✔ ]  no allergy to eggs, chicken
-           , or any other component of the vaccine.
-  [ ✔ ]  no s/p Guillain-Barré syndrome.
-  [ ✔ ]  no adverse reactions to previous vaccines.
-  [ ✔ ]  no immunosuppression.
+  PMH>	 
+   ------------------------------------- 
+    □ Diabetes Mellitus     	▣ Hypertension     	□ Dyslipidemia
+    □ Cancer                	▣ Operation        	□ Thyroid Disease
+    □ Asthma                	▣ Pneumonia        	□ Tuberculosis
+    □ Chronic Hepatitis B   	□ GERD             	□ Gout
+    □ Arthritis             	□ Hearing Loss     	□ Parkinson's Disease
+    □ CVA                   	□ Depression       	□ Cognitive Disorder
+    □ Angina Pectoris       	□ AMI              	□ Arrhythmia
+    □ Allergy               	□ ...              
+    □ Food                  	□ Injection        	□ Medication
+    □ Asthma                	▣ Pneumonia        	▣ Tuberculosis
+    □ Chronic Hepatitis B   	□ GERD             	▣ Gout
+    □ CVA                   	□ Depression       	▣ Cognitive Disorder
   A>	 
-  #  Shingles Vaccine (Shingrix) #1/2  [2024-07-20]
-  P>	 
-   ...Vaccination as scheduled
+   ▣ Pneumonia
+   ▣ Operation
+     ▣ Hypertension :cd
+   ▣ Hypertension 2024.07.20
+   ▣ Cognitive Disorder
+   ▣ Gout
+   ▣ Tuberculosis

@@ -1,12 +1,22 @@
 package je.panse.doro.soap.pmh;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.datatransfer.StringSelection;
-import java.awt.Toolkit;
+
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
+import je.panse.doro.GDSEMR_frame;
 
 public class EMRPMH extends JFrame {
     private JTextArea textArea1, textArea2;
@@ -26,7 +36,7 @@ public class EMRPMH extends JFrame {
 
     public EMRPMH() {
         setTitle("EMR PMH");
-        setSize(800, 600);
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         initComponents();
@@ -34,8 +44,8 @@ public class EMRPMH extends JFrame {
 
     private void initComponents() {
         // Text areas initialization
-        textArea1 = new JTextArea(5, 20);
-        textArea2 = new JTextArea(10, 50);
+        textArea1 = new JTextArea(5, 10);
+        textArea2 = new JTextArea(14, 50);
         setupTextArea(textArea1);
         setupTextArea(textArea2);
         textArea2.setEditable(true);  // textArea2 for display only
@@ -85,16 +95,21 @@ public class EMRPMH extends JFrame {
     }
 
     private void setTextArea2Content() {
+        textArea2.setFont(new Font("Consolas", Font.PLAIN, 12));  // Use a monospaced font for alignment
         textArea2.setText(
-            "     □ Diabetes Mellitus     \t□ Hypertension     \t□ Dyslipidemia \n" +
-            "     □ Cancer                \t□ Operation        \t□ Thyroid Disease\n" +
-            "     □ Asthma                \t□ Pneumonia        \t□ Tuberculosis\n" +
-            "     □ Chronic Hepatitis B   \t□ GERD             \t□ Gout\n" +
-            "     □ Arthritis             \t□ Hearing Loss     \t□ Parkinson's Disease\n" +
-            "     □ CVA                   \t□ Depression       \t□ Cognitive Disorder\n" +
-            "     □ Angina Pectoris       \t□ AMI              \t□ Arrhythmia\n" +
-            "     □ Allergy               \t□ ...              \n" +
-            "     □ Food                  \t□ Injection        \t□ Medication\n"
+            "   ------------------------------------- \n" +
+    		 "    □ Diabetes Mellitus     \t□ Hypertension     \t□ Dyslipidemia\n" +
+            "    □ Cancer                \t□ Operation        \t□ Thyroid Disease\n" +
+            "    □ Asthma                \t□ Pneumonia        \t□ Tuberculosis\n" +
+            "    □ Chronic Hepatitis B   \t□ GERD             \t□ Gout\n" +
+            "    □ Arthritis             \t□ Hearing Loss     \t□ Parkinson's Disease\n" +
+            "    \n" +
+            "    □ CVA                   \t□ Depression       \t□ Cognitive Disorder\n" +
+            "    □ Angina Pectoris       \t□ AMI              \t□ Arrhythmia\n" +
+            "    \n" +
+            "    □ Allergy               \t□ ...              \n" +
+            "    □ Food                  \t□ Injection        \t□ Medication\n"+
+            "   ------------------------------------- \n"
         );
     }
 
@@ -127,6 +142,22 @@ public class EMRPMH extends JFrame {
         System.out.println("Details from TextArea1: " + textArea1.getText());
         System.out.println("Details from TextArea2: " + textArea2.getText());
         System.out.println("Selected Conditions:\n" + String.join("\n", getSelectedConditions()));
+
+        // Update GDSEMR_frame text areas
+        GDSEMR_frame.setTextAreaText(7, "\n" + textArea1.getText());
+        GDSEMR_frame.setTextAreaText(3, "\n" + textArea2.getText());
+
+
+    }
+
+    private String getCheckedItemsText() {
+        StringBuilder sb = new StringBuilder();
+        for (JCheckBox checkBox : checkBoxes) {
+            if (checkBox.isSelected()) {
+                sb.append("▣ ").append(checkBox.getText()).append("\n");
+            }
+        }
+        return sb.toString();
     }
 
     private java.util.List<String> getSelectedConditions() {
@@ -145,10 +176,18 @@ public class EMRPMH extends JFrame {
         public void itemStateChanged(ItemEvent e) {
             JCheckBox source = (JCheckBox) e.getItem();
             if (e.getStateChange() == ItemEvent.SELECTED) {
-                textArea1.append("■ " + source.getText() + "\n");
+                textArea1.append("   ▣ " + source.getText() + "\n");
+                updateTextArea2(source.getText(), "□ ", "▣ ");
             } else if (e.getStateChange() == ItemEvent.DESELECTED) {
-                textArea1.setText(textArea1.getText().replace("■ " + source.getText() + "\n", ""));
+                textArea1.setText(textArea1.getText().replace("   ▣ " + source.getText() + "\n", ""));
+                updateTextArea2(source.getText(), "▣ ", "□ ");
             }
+        }
+
+        private void updateTextArea2(String text, String oldPrefix, String newPrefix) {
+            String currentText = textArea2.getText();
+            String newText = currentText.replace(oldPrefix + text, newPrefix + text);
+            textArea2.setText(newText);
         }
     }
 
