@@ -8,7 +8,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -16,7 +15,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
-
 import je.panse.doro.GDSEMR_frame;
 
 public class EMRPMH extends JFrame {
@@ -24,15 +22,14 @@ public class EMRPMH extends JFrame {
     private JButton clearButton, copyButton, saveButton, quitButton;
     private JCheckBox[] checkBoxes;
     private String[] conditions = {
-        "Diabetes Mellitus", "Hypertension", "Dyslipidemia",
+        "Hypertension", "Dyslipidemia", "Diabetes Mellitus",
         "Cancer", "Operation", "Thyroid Disease",
         "Asthma", "Pneumonia", "Tuberculosis",
         "Chronic Hepatitis B", "GERD", "Gout",
         "Arthritis", "Hearing Loss", "Parkinson's Disease",
         "CVA", "Depression", "Cognitive Disorder",
         "Angina Pectoris", "AMI", "Arrhythmia",
-        "\nAllergy", "Food",
-        "Injection", "Medication"
+        "Allergy", "Food", "Injection", "Medication"
     };
 
     public EMRPMH() {
@@ -49,7 +46,7 @@ public class EMRPMH extends JFrame {
         textArea2 = new JTextArea(14, 50);
         setupTextArea(textArea1);
         setupTextArea(textArea2);
-        textArea2.setEditable(true);  // textArea2 for display only
+        textArea2.setEditable(false);  // textArea2 for display only
         setTextArea2Content();  // Set the predefined text
 
         // Checkboxes setup
@@ -98,22 +95,17 @@ public class EMRPMH extends JFrame {
     private void setTextArea2Content() {
         textArea2.setFont(new Font("Consolas", Font.PLAIN, 12));  // Use a monospaced font for alignment
         textArea2.setText(
-            "   ------------------------------------- \n" +
-    		 "    □ Dyslipidemia     \t□ Hypertension     \t□ Diabetes Mellitus\n" +
-            "    □ Cancer                \t□ Operation        \t□ Thyroid Disease\n" +
-            "    □ Asthma                \t□ Pneumonia        \t□ Tuberculosis\n" +
-            "    □ Chronic Hepatitis B   \t□ GERD             \t□ Gout\n" +
-            "    □ Arthritis             \t□ Hearing Loss     \t□ Parkinson's Disease\n" +
-            "    \n" +
-            "    □ CVA                   \t□ Depression       \t□ Cognitive Disorder\n" +
-            "    □ Angina Pectoris       \t□ AMI              \t□ Arrhythmia\n" +
-            "    \n" +
-            "    □ Allergy               \t□ ...              \n" +
-            "    □ Food                  \t□ Injection        \t□ Medication\n"+
-            "   -------------------------------------- \n"
+            "    □ Dyslipidemia     \t□ Hypertension     \t□ Diabetes Mellitus\n" +
+            "    □ Cancer           \t□ Operation        \t□ Thyroid Disease\n" +
+            "    □ Asthma           \t□ Pneumonia        \t□ Tuberculosis\n" +
+            "    □ Chronic Hepatitis B\t□ GERD             \t□ Gout\n" +
+            "    □ Arthritis        \t□ Hearing Loss     \t□ Parkinson's Disease\n" +
+            "    □ CVA              \t□ Depression       \t□ Cognitive Disorder\n" +
+            "    □ Angina Pectoris  \t□ AMI              \t□ Arrhythmia\n" +
+            "    □ Allergy          \t□ ...              \n" +
+            "    □ Food             \t□ Injection        \t□ Medication\n"
         );
     }
-
 
     private void configureButtonActions() {
         clearButton.addActionListener(this::clearAction);
@@ -145,11 +137,13 @@ public class EMRPMH extends JFrame {
         System.out.println("Selected Conditions:\n" + String.join("\n", getSelectedConditions()));
 
         // Update GDSEMR_frame text areas
-        GDSEMR_frame.setTextAreaText(7, "\n" + textArea1.getText());
-        GDSEMR_frame.setTextAreaText(3, "\n" + textArea2.getText());
+        String textArea1Content = "-------------------------\n" + textArea1.getText() + "\n--------------------------";
+        String textArea2Content = "-------------------------\n" + textArea2.getText() + "\n-------------------------------------------------";
 
-
+        GDSEMR_frame.setTextAreaText(7, textArea1Content);
+        GDSEMR_frame.setTextAreaText(3, textArea2Content);
     }
+
 
     private String getCheckedItemsText() {
         StringBuilder sb = new StringBuilder();
