@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.thyroid;
+package je.panse.doro.fourgate.thyroid.entry;
 
 import java.awt.Color;	
 import java.awt.GridLayout;
@@ -13,7 +13,7 @@ import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.fourgate.thyroid.prganacy.EMR_Preg_CC;
 
 
-public class EMR_thyroid_main {
+public class EMR_thyroid_main2 {
     private static JFrame frame;
 
     public static void main(String[] args) {
@@ -24,19 +24,19 @@ public class EMR_thyroid_main {
         JPanel panel = new JPanel(new GridLayout(12, 1));
 
         Map<String, Runnable> actions = new HashMap<>() {{
-            put("Thyroid Physical examination", EMR_thyroid_main::thyroidPhysicalExam);
-            put("Hyperthyroidism Symptom", EMR_thyroid_main::hyperthyroidismSymptom);
-            put("Hypothyroidism Symptom", EMR_thyroid_main::hypothyroidismSymptom);
-            put("Hyperthyroidism with pregnancy", EMR_thyroid_main::hyperthyroidismWithPregnancy);
-            put("Hypothyroidism with pregnancy", EMR_thyroid_main::hypothyroidismWithPregnancy);
-            put("Abnormal TFT with pregnancy", EMR_thyroid_main::abnormalTFTWithPregnancy);
+            put("Thyroid Physical examination", EMR_thyroid_main2::thyroidPhysicalExam);
+            put("Hyperthyroidism Symptom", EMR_thyroid_main2::hyperthyroidismSymptom);
+            put("Hypothyroidism Symptom", EMR_thyroid_main2::hypothyroidismSymptom);
+            put("Hyperthyroidism with pregnancy", EMR_thyroid_main2::hyperthyroidismWithPregnancy);
+            put("Hypothyroidism with pregnancy", EMR_thyroid_main2::hypothyroidismWithPregnancy);
+            put("Abnormal TFT with pregnancy", EMR_thyroid_main2::abnormalTFTWithPregnancy);
 
-            put("New Patient for pregnancy", EMR_thyroid_main::newTFTWithPregnancy);
+            put("New Patient for pregnancy", EMR_thyroid_main2::newTFTWithPregnancy);
             
-            put("Non thyroidal illness", EMR_thyroid_main::nonThyroidalIllness);
-            put("Abnormal TFT on Routine check", EMR_thyroid_main::abnormalTFTOnRoutineCheck);
-            put("Thyroidal nodule", EMR_thyroid_main::thyroidalNodule);
-            put("Post operation F/U PTC", EMR_thyroid_main::postOperationFUPtc);
+            put("Non thyroidal illness", EMR_thyroid_main2::nonThyroidalIllness);
+            put("Abnormal TFT on Routine check", EMR_thyroid_main2::abnormalTFTOnRoutineCheck);
+            put("Thyroidal nodule", EMR_thyroid_main2::thyroidalNodule);
+            put("Post operation F/U PTC", EMR_thyroid_main2::postOperationFUPtc);
             put("Quit", frame::dispose);
         }};
 
@@ -50,9 +50,7 @@ public class EMR_thyroid_main {
             "Post operation F/U PTC",
             "Hyperthyroidism with pregnancy",
             "Hypothyroidism with pregnancy",
-            "Abnormal TFT with pregnancy",
-            "New Patient for pregnancy",
-
+            
             "Quit"
         );
 
@@ -73,19 +71,19 @@ public class EMR_thyroid_main {
     
         private static void thyroidPhysicalExam() {
             System.out.println("Performing Thyroid Physical Examination...");
-            EMR_thyroid_PE.main(null);
+//            EMR_thyroid_PE.main(null);
         }
 
         private static void hyperthyroidismSymptom() {
             System.out.println("Checking Hyperthyroidism Symptoms...");
-			   String[] Esrr = EMR_thyroid_retStr.returnStr("Hyperthyroidism Symptom");
-			   EMR_thyroid_list.main(Esrr);
+//			   String[] Esrr = EMR_thyroid_retStr.returnStr("Hyperthyroidism Symptom");
+//			   EMR_thyroid_list.main(Esrr);
 		}
 
         private static void hypothyroidismSymptom() {
             System.out.println("Checking Hypothyroidism Symptoms...");
-			   String[] Esrr = EMR_thyroid_retStr.returnStr("Hypothyroidism Symptom");
-			   EMR_thyroid_list.main(Esrr);
+//			   String[] Esrr = EMR_thyroid_retStr.returnStr("Hypothyroidism Symptom");
+//			   EMR_thyroid_list.main(Esrr);
         }
 //-----------------------------------------------Pregnancy
         private static void handlePregnancy(String mainMessage, String followUpMessage) {
