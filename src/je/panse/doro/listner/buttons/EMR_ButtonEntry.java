@@ -1,9 +1,11 @@
 package je.panse.doro.listner.buttons;
 
-import java.awt.Toolkit;	
+import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+
 import javax.swing.JOptionPane;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
@@ -13,7 +15,8 @@ import je.panse.doro.fourgate.EMR_FU_mainEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
-import je.panse.doro.fourgate.thyroid.EMR_thyroid_main;
+import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_Preganacyentry;
+import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;
@@ -115,7 +118,9 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     
                     break;
                 case "F/U Thyroid":
-                    EMR_thyroid_main.main(null);
+                    EMR_thyroid_mainentry.main(null);
+                    EMR_thyroid_Preganacyentry.main(null);
+                    
                     break;
                 case "URI":
                     EMR_FU_uriEdit.main(null);
