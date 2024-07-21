@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.thyroid.entry;
 
-import java.awt.Dimension;	
+import java.awt.Dimension;		
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
