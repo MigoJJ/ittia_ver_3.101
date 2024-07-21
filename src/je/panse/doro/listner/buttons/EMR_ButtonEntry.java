@@ -71,8 +71,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     }
                     break;
                 case "Exit":
-                    frame.dispose();
-
+                	 System.exit(0);
                 	  break;
 
 
