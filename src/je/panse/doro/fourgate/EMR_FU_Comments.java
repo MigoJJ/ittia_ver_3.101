@@ -1,64 +1,66 @@
 package je.panse.doro.fourgate;
 
-import java.util.Random;
-
+import java.util.Random;	
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_FU_Comments {
-    
+
+    private static final Random rand = new Random(); 
+
     public static String getRandomRecommendation(String dcode) {
-        String[] recommendationsDM = {
-                "Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.",
-                "Maintain a healthy weight. If you are overweight or obese, losing even a small amount of weight can help improve your blood sugar control.",
-                "Exercise regularly. Aim for at least 30 minutes of moderate-intensity exercise most days of the week.",
-                "Take your medication as prescribed. If you are taking medication for diabetes, it is important to take it as prescribed by your doctor.",
-                "Monitor your blood sugar regularly. This will help you track your blood sugar levels and make sure they are in a healthy range.",
-                "Get regular eye, foot, and dental exams. People with diabetes are at increased risk for certain health problems, so it is important to get regular checkups to catch any problems early."
-        };
-        
-        String[] recommendationsBP = {
-        	    "Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.",
-        	    "Maintain a healthy weight. If you are overweight or obese, losing even a small amount of weight can help improve your blood pressure.",
-        	    "Exercise regularly. Aim for at least 30 minutes of moderate-intensity exercise most days of the week.",
-        	    "Limit your sodium intake. The recommended daily sodium intake is less than 2,300 milligrams.",
-        	    "Increase your potassium intake. Potassium helps to lower blood pressure. Good sources of potassium include fruits, vegetables, and whole grains.",
-        	    "Limit your alcohol intake. Drinking too much alcohol can raise blood pressure.",
-        	    "Quit smoking. Smoking can raise blood pressure and increase your risk of heart disease and stroke.",
-        	    "Manage stress. Stress can raise blood pressure. Find healthy ways to manage stress, such as exercise, yoga, or meditation."
-        };
-        
-        String[] recommendationsCholesterol = {
-        	    "Eat a healthy diet. This means eating plenty of fruits, vegetables, and whole grains. It also means limiting sugary drinks, processed foods, and unhealthy fats.",
-        	    "Maintain a healthy weight. If you are overweight or obese, losing even a small amount of weight can help lower your cholesterol levels.",
-        	    "Exercise regularly. Aim for at least 30 minutes of moderate-intensity exercise most days of the week.",
-        	    "Limit your saturated fat intake. Saturated fat is found in animal products such as meat, dairy, and eggs. The recommended daily intake of saturated fat is less than 16 grams for men and less than 12 grams for women.",
-        	    "Limit your trans fat intake. Trans fat is a type of unhealthy fat that is found in processed foods. The recommended daily intake of trans fat is zero grams.",
-        	    "Choose lean protein sources. When choosing protein sources, such as meat, poultry, or fish, opt for lean cuts that are low in saturated fat.",
-        	    "Eat plenty of fiber. Fiber helps to lower cholesterol levels. Good sources of fiber include fruits, vegetables, and whole grains.",
-        	    "Nuts and seeds. Nuts and seeds are a good source of healthy fats and fiber. They can help to lower cholesterol levels.",
-        	    "Soy products. Soy products, such as tofu and tempeh, are a good source of protein and fiber. They can also help to lower cholesterol levels.",
-        	    "Garlic. Garlic has been shown to lower cholesterol levels. You can add garlic to your diet in a variety of ways, such as cooking with it, eating it raw, or taking garlic supplements."
-        };
-        
-        Random rand = new Random();
-        int randomIndexDM = rand.nextInt(recommendationsDM.length);
-        int randomIndexBP = rand.nextInt(recommendationsBP.length);
-        int randomIndexCholesterol = rand.nextInt(recommendationsCholesterol.length);
-        
-        if (dcode == "DM") {
-        	return recommendationsDM[randomIndexDM]; 
-        } else if (dcode == "BP") {
-        	return recommendationsBP[randomIndexBP];
-        } else if (dcode == "Chol") {
-        	return recommendationsCholesterol[randomIndexCholesterol];
-        } else {
-        	return  "\n";
+        switch (dcode) {
+
+                case "DM": // Diabetes Recommendations
+                    return getRandomFromArray(new String[] {
+                        "Eat plenty of fruits, vegetables, and whole grains.",
+                        "Maintain a healthy weight to improve blood sugar control.",
+                        "Get at least 30 minutes of moderate exercise most days.", 
+                        "Take your diabetes medication as prescribed.",
+                        "Monitor your blood sugar regularly.",
+                        "Get regular eye, foot, and dental checkups."
+                    });
+                case "BP": // Blood Pressure Recommendations
+                    return getRandomFromArray(new String[] {
+                        "Eat a healthy diet with fruits, vegetables, and whole grains.",
+                        "Maintain a healthy weight to lower blood pressure.",
+                        "Get at least 30 minutes of moderate exercise most days.", 
+                        "Limit sodium intake (less than 2,300mg daily).",
+                        "Increase potassium intake (from fruits and vegetables).",
+                        "Limit alcohol consumption.",
+                        "Manage stress through exercise, yoga, or meditation."
+                    });
+                case "Chol": // Cholesterol Recommendations
+                    return getRandomFromArray(new String[] {
+                        "Limit sugary drinks, processed foods, and unhealthy fats.", 
+                        "Maintain a healthy weight to lower cholesterol.",
+                        "Get at least 30 minutes of moderate exercise most days.", 
+                        "Limit saturated fat (less than 16g men/12g women daily).", 
+                        "Avoid trans fat.", 
+                        "Choose lean protein sources.",
+                        "Eat plenty of fiber.", 
+                        "Include nuts and seeds in your diet.", 
+                        "Consider soy products (tofu, tempeh).",
+                        "Add garlic to your meals." 
+                    });
+                default:
+                    return "\n"; 
+            }
         }
+
+    // Helper function to get a random element from a String array
+    private static String getRandomFromArray(String[] array) {
+        return array[rand.nextInt(array.length)];
     }
-    
-    public static void main(String args) {
-        String rec = getRandomRecommendation(args);
-        System.out.println(rec);
-        GDSEMR_frame.setTextAreaText(9,rec);
+
+    public static void main(String[] args) {
+        if (args.length > 0) {
+            String dcode = args[0];
+            String recommendation = getRandomRecommendation(dcode);
+            System.out.println(recommendation);
+            GDSEMR_frame.setTextAreaText(9, recommendation); // Assuming this method exists
+        } else {
+            System.err.println("Error: Please provide a dcode (DM, BP, or Chol) as an argument.");
+            // Consider exiting with an error code here: System.exit(1);
+        }
     }
 }
