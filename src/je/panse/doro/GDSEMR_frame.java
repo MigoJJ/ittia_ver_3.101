@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;    
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
@@ -111,7 +111,15 @@ public class GDSEMR_frame {
         InjectionApp.main(null);
     }
 
-    public class FunctionKeyPress extends KeyAdapter {
+    public static void setTextAreaText(int index, String text) {
+        if (textAreas != null && index >= 0 && index < textAreas.length) {
+            textAreas[index].append(text);
+        } else {
+            System.err.println("Invalid text area index or text areas not initialized.");
+        }
+    }
+
+    private static class FunctionKeyPress extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
             int keyCode = e.getKeyCode();
@@ -141,10 +149,6 @@ public class GDSEMR_frame {
                 }
             }
         }
-    }
-
-    public static void setTextAreaText(int i, String string) {
-        textAreas[i].append(string); // Use append method here
     }
 
     public static void updateTempOutputArea(String text) {

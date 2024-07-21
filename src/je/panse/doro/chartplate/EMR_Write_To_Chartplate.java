@@ -7,7 +7,12 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.StringJoiner;
+
 import javax.swing.JTextArea;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.samsara.comm.File_copy;
@@ -20,23 +25,26 @@ public class EMR_Write_To_Chartplate extends GDSEMR_frame {
     }
 
     public static void textAreaAppend(JTextArea tempOutputArea) throws IOException {
-        tempOutputArea.setText(tempOutputArea.getText());
+        String originalText = tempOutputArea.getText();
+        // Split the text into lines
+        String[] lines = originalText.split("\n");
+        Set<String> seenLines = new LinkedHashSet<>();
+        StringJoiner resultText = new StringJoiner("\n");
 
-        // Remove empty and duplicate lines, and process lines with colons
-        String[] lines = tempOutputArea.getText().split("\n");
-        StringBuilder sb = new StringBuilder();
+        // Process lines
         for (String line : lines) {
-            if (line.contains(":")) {
-                line = EMR_ChangeString.EMR_ChangeString(line);
-            }
-            if (!line.trim().isEmpty() && sb.indexOf(line) == -1) {
-                sb.append(line).append("\n");
+            if (!seenLines.contains(line)) {
+                if (line.contains(":")) {
+                    line = EMR_ChangeString.EMR_ChangeString(line);
+                }
+                seenLines.add(line);
+                resultText.add(line);
             }
         }
 
         // Set the text of the JTextArea to the filtered text
-        tempOutputArea.setText(sb.toString());
-        System.out.println("Processed text: " + sb.toString());
+        tempOutputArea.setText(resultText.toString());
+        System.out.println("Processed text: " + resultText.toString());
 
         // Copy updated text to clipboard
         copyToClipboard(tempOutputArea);
