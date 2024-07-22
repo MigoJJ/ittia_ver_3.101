@@ -1,13 +1,17 @@
 package je.panse.doro.fourgate.thyroid.entry;
 
-import java.awt.Dimension;		
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_thyroid_Preganacyentry {
@@ -15,7 +19,7 @@ public class EMR_thyroid_Preganacyentry {
     private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HEIGHT = 400;
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-    
+
     private static final String[] BUTTON_LABELS = {
             "Non thyroidal illness",
             "Abnormal TFT on Routine check",
@@ -23,7 +27,6 @@ public class EMR_thyroid_Preganacyentry {
             "Post operation F/U PTC",
             "Hyperthyroidism with pregnancy",
             "Hypothyroidism with pregnancy",
-            
             "Quit"
     };
 
@@ -49,10 +52,29 @@ public class EMR_thyroid_Preganacyentry {
         };
 
         for (String label : BUTTON_LABELS) {
-            JButton button = new JButton(label);
-            button.addActionListener(buttonClickListener);
+            JButton button = createGradientButton(label, buttonClickListener);
             frame.add(button);
         }
+    }
+
+    private static JButton createGradientButton(String text, ActionListener listener) {
+        JButton button = new JButton(text) {
+            @Override
+            protected void paintComponent(java.awt.Graphics g) {
+                if (g instanceof java.awt.Graphics2D) {
+                    java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
+                    int h = getHeight();
+                    GradientPaint gradient = new GradientPaint(0, 0, new Color(210, 180, 140), 0, h, new Color(180, 150, 110));
+                    g2d.setPaint(gradient);
+                    g2d.fillRect(0, 0, getWidth(), getHeight());
+                }
+                super.paintComponent(g);
+            }
+        };
+        button.setFocusPainted(false);
+        button.setContentAreaFilled(false);
+        button.addActionListener(listener);
+        return button;
     }
 
     private static void positionFrameToBottomRight(JFrame frame) {
@@ -70,7 +92,7 @@ public class EMR_thyroid_Preganacyentry {
             return;
         }
 
-        String CCstring = "The patient visitis for Vaccination\n";
+        String CCstring = "The patient visits for Vaccination\n";
         String PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n"
                 + "           , or any other component of the vaccine.\n"
                 + "  [ ✔ ]  no s/p Guillain-Barré syndrome.\n"
