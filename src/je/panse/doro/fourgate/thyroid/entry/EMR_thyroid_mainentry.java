@@ -66,6 +66,8 @@ public class EMR_thyroid_mainentry {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Quit")) {
                     frame.dispose();
+                } else if (name.equals("Thyroid Physical examination")) {
+                	EMR_thyroid_PE.main(null);
                 } else {
                     // Replace with your logic to handle button click
                     // String[] args = returnStr(name);

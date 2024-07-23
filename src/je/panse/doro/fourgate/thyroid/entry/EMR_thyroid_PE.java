@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.thyroid;
+package je.panse.doro.fourgate.thyroid.entry;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

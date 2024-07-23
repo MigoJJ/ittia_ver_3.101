@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_PE;
 import je.panse.doro.fourgate.thyroid.prganacy.EMR_Preg_CC;
 
 
