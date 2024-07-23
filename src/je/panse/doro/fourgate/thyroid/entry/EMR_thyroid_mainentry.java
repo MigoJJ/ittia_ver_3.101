@@ -7,11 +7,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
+import je.panse.doro.fourgate.thyroid.EMR_thyroid_list;
 
 public class EMR_thyroid_mainentry {
 
@@ -68,7 +70,7 @@ public class EMR_thyroid_mainentry {
                     frame.dispose();
                 } else if (name.equals("Thyroid Physical examination")) {
                 	EMR_thyroid_PE.main(null);
-                } else {
+	            } else {
                     // Replace with your logic to handle button click
                     // String[] args = returnStr(name);
                     // EMR_symptom_list.main(args);

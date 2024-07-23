@@ -1,16 +1,13 @@
 
-  CC>	 The patient visitis for Vaccination
+  CC>	The patient visits for Vaccination
   [ ✔ ]  no allergy to eggs, chicken
            , or any other component of the vaccine.
   [ ✔ ]  no s/p Guillain-Barré syndrome.
   [ ✔ ]  no adverse reactions to previous vaccines.
   [ ✔ ]  no immunosuppression.
-The patient visitis for Vaccination
 The patient visits for Vaccination
-  A>	 
-  #  Vaxigriptetra pfs inj (4가) [유독]  [2024-07-23]
-  #  HAV vaccination #1/2  [2024-07-23]
-  #  HBV vaccination #1/3  [2024-07-23]
-  #  Non thyroidal illness  [2024-07-23]
-  P>	 
+  A>	
+  #  Hyperthyroidism with pregnancy  [2024-07-23]
+  #  Hypothyroidism with pregnancy  [2024-07-23]
+  P>	
    ...Vaccination as scheduled
