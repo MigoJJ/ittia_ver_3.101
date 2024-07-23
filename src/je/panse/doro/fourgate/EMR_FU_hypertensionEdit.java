@@ -17,7 +17,7 @@ public class EMR_FU_hypertensionEdit extends JFrame {
             if (GDSEMR_frame.textAreas != null && GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
+            String fileName = EntryDir.homeDir + "/fourgate/hypertension/textarea" + (i);
             new FileLoader(fileName, i).execute();
         }
     }
