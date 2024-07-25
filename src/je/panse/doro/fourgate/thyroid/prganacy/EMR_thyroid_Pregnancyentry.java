@@ -5,13 +5,13 @@ import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_thyroid_Pregnancyentry {
@@ -21,14 +21,13 @@ public class EMR_thyroid_Pregnancyentry {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     private static final String[] BUTTON_LABELS = {
-    		"New Patient for Pregnancy with Thyrid disease",
-    		"F/U Pregnancy with Hyperthyroidism",
-            "F/U Pregnancy with Hypothyroidism",
-    		"F/U Pregnancy with Non thyroidal illness",
-            "F/U Pregnancy with TSH elevation",
-            "F/U Pregnancy with TSH low",
-
-            "Quit"
+        "New Patient for Pregnancy with Thyroid disease",
+        "F/U Pregnancy with Hyperthyroidism",
+        "F/U Pregnancy with Hypothyroidism",
+        "F/U Pregnancy with Non thyroidal illness",
+        "F/U Pregnancy with TSH elevation",
+        "F/U Pregnancy with TSH low",
+        "Quit"
     };
 
     public static void main(String[] args) {
@@ -86,24 +85,34 @@ public class EMR_thyroid_Pregnancyentry {
     }
 
     private static void updateDetails(JFrame frame, String clickedButtonText) {
-        String currentDate = DATE_FORMAT.format(new Date());
-
         if ("Quit".equals(clickedButtonText)) {
             frame.dispose();
             return;
         }
 
-        String CCstring = "The patient visits for Vaccination\n";
-        String PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n";
-        String Pstring = "  [ ✔ ]  no allergy to eggs, chicken\n";
-        String Influ = CCstring + PIstring;
+        if ("New Patient for Pregnancy with Thyroid disease".equals(clickedButtonText)) {
+            EMR_Preg_CC.main(null);
+            return;
+        }
 
-        if (clickedButtonText.contains("Delay")) {
-            GDSEMR_frame.setTextAreaText(8, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
-        } else {
-            GDSEMR_frame.setTextAreaText(0, Influ);
-            GDSEMR_frame.setTextAreaText(7, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
-            GDSEMR_frame.setTextAreaText(8, Pstring);
+        String currentDate = DATE_FORMAT.format(new Date());
+
+        String[] conditions = {
+            "F/U Pregnancy with Hyperthyroidism",
+            "F/U Pregnancy with Hypothyroidism",
+            "F/U Pregnancy with Non thyroidal illness",
+            "F/U Pregnancy with TSH elevation",
+            "F/U Pregnancy with TSH low"
+        };
+
+        for (String condition : conditions) {
+            if (condition.equals(clickedButtonText)) {
+                String prefix = condition.replace("F/U ", "F/U [   ] weeks \n\t ") + "\n";
+                GDSEMR_frame.setTextAreaText(0, prefix);
+                GDSEMR_frame.setTextAreaText(7, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
+                GDSEMR_frame.setTextAreaText(8, "...Plan F/U [   ] weeks\n\t " + condition.replace("F/U ", ""));
+                return;
+            }
         }
     }
 }
