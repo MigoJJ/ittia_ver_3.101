@@ -15,8 +15,8 @@ import je.panse.doro.fourgate.EMR_FU_mainEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
-import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_Preganacyentry;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
+import je.panse.doro.fourgate.thyroid.prganacy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;
@@ -119,7 +119,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     break;
                 case "F/U Thyroid":
                     EMR_thyroid_mainentry.main(null);
-                    EMR_thyroid_Preganacyentry.main(null);
+                    EMR_thyroid_Pregnancyentry.main(null);
                     
                     break;
                 case "URI":

@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.thyroid.entry;
+package je.panse.doro.fourgate.thyroid.prganacy;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,19 +14,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_thyroid_Preganacyentry {
+public class EMR_thyroid_Pregnancyentry {
 
     private static final int FRAME_WIDTH = 300;
     private static final int FRAME_HEIGHT = 400;
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     private static final String[] BUTTON_LABELS = {
-            "Non thyroidal illness",
-            "Abnormal TFT on Routine check",
-            "Thyroidal nodule",
-            "Post operation F/U PTC",
-            "Hyperthyroidism with pregnancy",
-            "Hypothyroidism with pregnancy",
+    		"New Patient for Pregnancy with Thyrid disease",
+    		"F/U Pregnancy with Hyperthyroidism",
+            "F/U Pregnancy with Hypothyroidism",
+    		"F/U Pregnancy with Non thyroidal illness",
+            "F/U Pregnancy with TSH elevation",
+            "F/U Pregnancy with TSH low",
+
             "Quit"
     };
 
@@ -48,7 +49,7 @@ public class EMR_thyroid_Preganacyentry {
     private static void addButtonsToFrame(JFrame frame) {
         ActionListener buttonClickListener = e -> {
             String clickedButtonText = ((JButton) e.getSource()).getText();
-            updateInjectionDetails(frame, clickedButtonText);
+            updateDetails(frame, clickedButtonText);
         };
 
         for (String label : BUTTON_LABELS) {
@@ -84,7 +85,7 @@ public class EMR_thyroid_Preganacyentry {
         frame.setLocation(xPosition, yPosition);
     }
 
-    private static void updateInjectionDetails(JFrame frame, String clickedButtonText) {
+    private static void updateDetails(JFrame frame, String clickedButtonText) {
         String currentDate = DATE_FORMAT.format(new Date());
 
         if ("Quit".equals(clickedButtonText)) {
@@ -93,12 +94,8 @@ public class EMR_thyroid_Preganacyentry {
         }
 
         String CCstring = "The patient visits for Vaccination\n";
-        String PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n"
-                + "           , or any other component of the vaccine.\n"
-                + "  [ ✔ ]  no s/p Guillain-Barré syndrome.\n"
-                + "  [ ✔ ]  no adverse reactions to previous vaccines.\n"
-                + "  [ ✔ ]  no immunosuppression.\n";
-        String Pstring = "\n   ...Vaccination as scheduled";
+        String PIstring = "  [ ✔ ]  no allergy to eggs, chicken\n";
+        String Pstring = "  [ ✔ ]  no allergy to eggs, chicken\n";
         String Influ = CCstring + PIstring;
 
         if (clickedButtonText.contains("Delay")) {
