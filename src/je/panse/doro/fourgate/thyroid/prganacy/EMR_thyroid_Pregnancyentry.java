@@ -107,7 +107,7 @@ public class EMR_thyroid_Pregnancyentry {
 
         for (String condition : conditions) {
             if (condition.equals(clickedButtonText)) {
-                String prefix = condition.replace("F/U ", "F/U [   ] weeks \n\t ") + "\n";
+                String prefix = condition.replace("F/U ", "F/U [   ] weeks    " +  currentDate +"\n\t");
                 GDSEMR_frame.setTextAreaText(0, prefix);
                 GDSEMR_frame.setTextAreaText(7, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
                 GDSEMR_frame.setTextAreaText(8, "...Plan F/U [   ] weeks\n\t " + condition.replace("F/U ", ""));
