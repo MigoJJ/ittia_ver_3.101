@@ -1,7 +1,7 @@
 package je.panse.doro.soap.subjective;
 
 public class EMR_symptom_retStr {
-    static String[] returnStr(String nameStr) {
+    public static String[] returnStr(String nameStr) {
 	    String[] returnargs;
 
 	    switch (nameStr) {

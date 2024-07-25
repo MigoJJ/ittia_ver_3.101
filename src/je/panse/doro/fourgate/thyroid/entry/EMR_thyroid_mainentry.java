@@ -14,6 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import je.panse.doro.fourgate.thyroid.EMR_thyroid_list;
+import je.panse.doro.soap.subjective.EMR_symptom_list;
+import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
 public class EMR_thyroid_mainentry {
 
@@ -70,7 +72,13 @@ public class EMR_thyroid_mainentry {
                     frame.dispose();
                 } else if (name.equals("Thyroid Physical examination")) {
                 	EMR_thyroid_PE.main(null);
-	            } else {
+                } else if (name.equals("Hyperthyroidism Symptom")) {
+                    String[] Esrr = EMR_symptom_retStr.returnStr("Hyperthyroidism");
+                    EMR_symptom_list.main(Esrr);
+                } else if (name.equals("Hypothyroidism Symptom")) {
+                    String[] Esrr = EMR_symptom_retStr.returnStr("Hypothyroidism");
+                    EMR_symptom_list.main(Esrr);
+                } else {
                     // Replace with your logic to handle button click
                     // String[] args = returnStr(name);
                     // EMR_symptom_list.main(args);
