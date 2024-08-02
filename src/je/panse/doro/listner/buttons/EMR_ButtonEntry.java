@@ -16,7 +16,7 @@ import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
-import je.panse.doro.fourgate.thyroid.prganacy.EMR_thyroid_Pregnancyentry;
+import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.listner.AI_bard_chatGPT.GDSLaboratoryGUI;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;

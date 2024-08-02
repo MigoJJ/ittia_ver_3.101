@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_PE;
-import je.panse.doro.fourgate.thyroid.prganacy.EMR_Preg_CC;
+import je.panse.doro.fourgate.thyroid.pregnancy.EMR_Preg_CC;
 
 
 public class EMR_thyroid_main {
