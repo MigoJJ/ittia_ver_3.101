@@ -17,7 +17,7 @@ public class EMR_FU_hypercholesterolemiaEdit extends JFrame {
             if (GDSEMR_frame.textAreas != null && GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
+            String fileName = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + (i);
             new FileLoader(fileName, i).execute();
         }
     }
