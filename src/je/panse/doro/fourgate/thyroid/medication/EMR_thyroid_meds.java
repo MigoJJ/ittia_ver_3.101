@@ -142,7 +142,7 @@ public class EMR_thyroid_meds extends JFrame {
                     System.out.println("Current meds  :cd\n ..." + cellValue);
                     
                     try {
-                        GDSEMR_frame.setTextAreaText(8, "...Current meds [ :cd ]\n ..." + cellValue);
+                        GDSEMR_frame.setTextAreaText(8, "\n...Current meds [ :cd ]\n ..." + cellValue);
                     } catch (Exception ex) {
                         System.out.println("Error updating text area: " + ex.getMessage());
                     }
