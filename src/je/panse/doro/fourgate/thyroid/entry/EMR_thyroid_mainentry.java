@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.thyroid.entry;
 
-import java.awt.Color;
+import java.awt.Color;	
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -13,7 +13,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import je.panse.doro.fourgate.thyroid.EMR_thyroid_list;
 import je.panse.doro.soap.subjective.EMR_symptom_list;
 import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
