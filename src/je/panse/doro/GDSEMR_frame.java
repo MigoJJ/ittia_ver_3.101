@@ -115,10 +115,10 @@ public class GDSEMR_frame {
     }
 
     public static void setTextAreaText(int index, String text) {
-        if (index >= 0 && index < textAreas.length) {
-            textAreas[index].setText(text);
+        if (textAreas != null && index >= 0 && index < textAreas.length) {
+            textAreas[index].append(text);
         } else {
-            System.out.println("Invalid text area index: " + index);
+            System.err.println("Invalid text area index or text areas not initialized.");
         }
     }
 
