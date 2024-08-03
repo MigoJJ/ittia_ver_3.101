@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.thyroid.entry;
 
-import java.awt.Color;	
+import java.awt.Color;		
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -13,6 +13,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import je.panse.doro.fourgate.thyroid.medication.EMR_thyroid_meds;
 import je.panse.doro.soap.subjective.EMR_symptom_list;
 import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
@@ -29,7 +30,7 @@ public class EMR_thyroid_mainentry {
                 "Thyroid Physical examination",
                 "Hyperthyroidism Symptom",
                 "Hypothyroidism Symptom",
-                "Non thyroidal illness",
+                "Medications",
                 "Abnormal TFT on Routine check",
                 "Thyroidal nodule",
                 "Post operation F/U PTC",
@@ -77,6 +78,9 @@ public class EMR_thyroid_mainentry {
                 } else if (name.equals("Hypothyroidism Symptom")) {
                     String[] Esrr = EMR_symptom_retStr.returnStr("Hypothyroidism");
                     EMR_symptom_list.main(Esrr);
+                } else if (name.equals("Medications")) {
+                    String[] Esrr = EMR_symptom_retStr.returnStr("Medications");
+                    EMR_thyroid_meds.main(null);
                 } else {
                     // Replace with your logic to handle button click
                     // String[] args = returnStr(name);

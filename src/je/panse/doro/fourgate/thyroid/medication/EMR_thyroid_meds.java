@@ -113,7 +113,7 @@ public class EMR_thyroid_meds extends JFrame {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                dispose();
             }
         });
     }
@@ -141,7 +141,11 @@ public class EMR_thyroid_meds extends JFrame {
                     String cellValue = (String) target.getValueAt(row, column);
                     System.out.println("Current meds  :cd\n ..." + cellValue);
                     
-                    GDSEMR_frame.setTextAreaText(8,"   Current meds  :cd\n ..." + cellValue);
+                    try {
+                        GDSEMR_frame.setTextAreaText(8, "...Current meds [ :cd ]\n ..." + cellValue);
+                    } catch (Exception ex) {
+                        System.out.println("Error updating text area: " + ex.getMessage());
+                    }
                 }
             }
         });
