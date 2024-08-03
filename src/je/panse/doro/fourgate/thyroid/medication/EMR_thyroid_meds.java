@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.thyroid.medication;
 
-import javax.swing.*;
+import javax.swing.*;	
 import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -61,9 +61,9 @@ public class EMR_thyroid_meds extends JFrame {
                 "Methimazole [ 5 ] mg 2 tab p.o. q.d.",
                 "Methimazole [ 5 ] mg 2 tab p.o. b.i.d.",
                 "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.\n   Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. b.i.d.\n   Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. q.d.\n   Indenol [ 10 ] mg 1 tab p.o. q.d.",
+                "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
+                "Methimazole [ 5 ] mg 2 tab p.o. b.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
+                "Methimazole [ 5 ] mg 2 tab p.o. q.d.\n     Indenol [ 10 ] mg 1 tab p.o. q.d.",
                 "Methimazole [ 2.5 ] mg 1 tab p.o. q.d.",
                 "Methimazole [ 2.5 ] mg 1 tab p.o. b.i.d."
         }));
@@ -74,9 +74,9 @@ public class EMR_thyroid_meds extends JFrame {
                 "Antiroid [ 50 ] mg 2 tab p.o. q.d.",
                 "Antiroid [ 50 ] mg 2 tab p.o. b.i.d.",
                 "Antiroid [ 50 ] mg 2 tab p.o. t.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. t.i.d.\n   Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. b.i.d.\n   Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. q.d.\n   Indenol [ 10 ] mg 1 tab p.o. q.d."
+                "Antiroid [ 50 ] mg 2 tab p.o. t.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
+                "Antiroid [ 50 ] mg 2 tab p.o. b.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
+                "Antiroid [ 50 ] mg 2 tab p.o. q.d.\n     Indenol [ 10 ] mg 1 tab p.o. q.d."
         }));
 
         mainPanel.add(createFrameWithTable("Camen", new String[]{
@@ -91,6 +91,12 @@ public class EMR_thyroid_meds extends JFrame {
                 "Camen [ 10 ] mg 2 tab p.o. b.i.d.",
                 "Camen [ 10 ] mg 2 tab p.o. t.i.d.",
                 "Camen [ 20 ] mg 1 tab p.o. q.d."
+        }));
+        
+        mainPanel.add(createFrameWithTable("Followup", new String[]{
+        	   "Plan to TSH, free thyroxine (T4), T3\n",
+	           "Plan to TSH, free thyroxine (T4), T3 + Autoantibodies\n",
+	           "Obtain TUS : [ Thyroid Ultrasonography ]\n",
         }));
 
         add(mainPanel, BorderLayout.CENTER);

@@ -13,6 +13,7 @@ import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.EMR_FU_mainEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
+import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
@@ -106,11 +107,11 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
             switch (noButton) {
                 case "F/U DM":
                 	  EMR_FU_diabetesEdit.main(null);
+               	      EMR_dm_mainentry.main(null);                	  
                     break;
                     
                 case "F/U HTN":
                 	   EMR_FU_hypertensionEdit.main(null);
-                    
                     break;
 
                 case "F/U Chol":
