@@ -1,6 +1,7 @@
 package je.panse.doro.fourgate.thyroid.medication;
 
 import javax.swing.*;
+import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,9 +12,10 @@ public class EMR_thyroid_meds extends JFrame {
 
     public EMR_thyroid_meds() {
         setTitle("Thyroid Medication Management");
-        setSize(800, 600);
+        setSize(800, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+        setLocationRelativeTo(null); // Center the frame on the monitor
 
         // South panel with buttons
         JPanel southPanel = new JPanel();
@@ -29,9 +31,9 @@ public class EMR_thyroid_meds extends JFrame {
 
         add(southPanel, BorderLayout.SOUTH);
 
-        // Main panel with grid layout 2x3
+        // Main panel with grid layout 3x2
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridLayout(2, 3));
+        mainPanel.setLayout(new GridLayout(3, 2));
 
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
                 "Synthyroid [ 25 ] ug 1 tab p.o. q.d.",
@@ -48,6 +50,7 @@ public class EMR_thyroid_meds extends JFrame {
                 "Synthyroxine [ 37.5 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 50 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 75 ] ug 1 tab p.o. q.d.",
+                "Synthyroxine [ 88 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 100 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 150 ] ug 1 tab p.o. q.d."
         }));
@@ -60,7 +63,9 @@ public class EMR_thyroid_meds extends JFrame {
                 "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.",
                 "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.\n   Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
                 "Methimazole [ 5 ] mg 2 tab p.o. b.i.d.\n   Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. q.d.\n   Indenol [ 10 ] mg 1 tab p.o. q.d."
+                "Methimazole [ 5 ] mg 2 tab p.o. q.d.\n   Indenol [ 10 ] mg 1 tab p.o. q.d.",
+                "Methimazole [ 2.5 ] mg 1 tab p.o. q.d.",
+                "Methimazole [ 2.5 ] mg 1 tab p.o. b.i.d."
         }));
 
         mainPanel.add(createFrameWithTable("Antiroid", new String[]{
@@ -125,7 +130,8 @@ public class EMR_thyroid_meds extends JFrame {
         }
 
         JTable table = new JTable(rowData, columnNames);
-        table.setRowHeight(20); // Set row height to 15
+        table.setRowHeight(23); // Set row height to 23
+        table.setFont(new Font("Consolas", Font.PLAIN, 12)); // Set font to Consolas
         table.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 if (e.getClickCount() == 1) {
@@ -133,7 +139,9 @@ public class EMR_thyroid_meds extends JFrame {
                     int row = target.getSelectedRow();
                     int column = target.getSelectedColumn();
                     String cellValue = (String) target.getValueAt(row, column);
-                    System.out.println("Selected: " + cellValue);
+                    System.out.println("Current meds  :cd\n ..." + cellValue);
+                    
+                    GDSEMR_frame.setTextAreaText(8,"   Current meds  :cd\n ..." + cellValue);
                 }
             }
         });
