@@ -34,13 +34,13 @@ public class ittiaGDSPlanPanel_2_String {
 		            break;
 		        case 2:
 		        	retA = "Synthyroxine";
-		            retB = new String[]{"Synthyroxine [ 25 ] ug 1 tab p.o. q.d.",
-		            		"Synthyroxine [ 37.5 ] ug 1 tab p.o. q.d.",
-		            		"Synthyroxine [ 50 ] ug 1 tab p.o. q.d.",
-		            		"Synthyroxine [ 75 ] ug 1 tab p.o. q.d.",
-		            		"Synthyroxine [ 100 ] ug 1 tab p.o. q.d.",
-		            		"Synthyroxine [ 150 ] ug 1 tab p.o. q.d.",
-		            };		            
+		            retB = new String[]{                "Synthyroxine [ 25 ] ug 1 tab p.o. q.d.",
+		                    "Synthyroxine [ 37.5 ] ug 1 tab p.o. q.d.",
+		                    "Synthyroxine [ 50 ] ug 1 tab p.o. q.d.",
+		                    "Synthyroxine [ 75 ] ug 1 tab p.o. q.d.",
+		                    "Synthyroxine [ 100 ] ug 1 tab p.o. q.d.",
+		                    "Synthyroxine [ 150 ] ug 1 tab p.o. q.d."
+		                    };		            
 	            	break;
 		        case 3:
 		        	retA = "Antiroid";
