@@ -12,7 +12,7 @@ public class EMR_thyroid_meds extends JFrame {
 
     public EMR_thyroid_meds() {
         setTitle("Thyroid Medication Management");
-        setSize(800, 850);
+        setSize(850, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null); // Center the frame on the monitor
@@ -151,7 +151,7 @@ public class EMR_thyroid_meds extends JFrame {
                     int row = target.getSelectedRow();
                     int column = target.getSelectedColumn();
                     String cellValue = (String) target.getValueAt(row, column);
-                    System.out.println("Current meds  :cd\n ..." + cellValue);
+                    System.out.println("Current meds  :cd \n ..." + cellValue);
                     
                     try {
                         GDSEMR_frame.setTextAreaText(8, "\n...Current meds [ :cd ]\n ..." + cellValue);
