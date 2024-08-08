@@ -47,11 +47,11 @@ public class EMR_thyroid_meds extends JFrame {
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
                 "Synthyroxine [ 25 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 37.5 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 50 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 75 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 88 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 100 ] ug 1 tab p.o. q.d.",
+                "Synthyroxine [ 125 ] ug 1 tab p.o. q.d.",
                 "Synthyroxine [ 150 ] ug 1 tab p.o. q.d."
         }));
 
@@ -94,10 +94,16 @@ public class EMR_thyroid_meds extends JFrame {
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{
-        	   "Plan to TSH, free thyroxine (T4), T3\n",
-	           "Plan to TSH, free thyroxine (T4), T3 + Autoantibodies\n",
-	           "Obtain TUS : [ Thyroid Ultrasonography ]\n",
-        }));
+        	    "...Plan to TSH, free thyroxine (T4), T3\n",
+	           "...Plan to TSH, free thyroxine (T4), T3 + Autoantibodies\n",
+	           "...Obtain TUS : [ Thyroid Ultrasonography ]\n",
+	           "[ → ] advised the patient to continue with current medication\n",
+	           "[ ↘ ] decreased the dose of current medication\n",
+	           "[ ↗ ] increased the dose of current medication\n",
+	           "[ ⭯ ] changed the dose of current medication\n",
+	           " |→   Starting new medication\n",
+	           "  →|  discontinue current medication\n",
+	     }));
 
         add(mainPanel, BorderLayout.CENTER);
 
