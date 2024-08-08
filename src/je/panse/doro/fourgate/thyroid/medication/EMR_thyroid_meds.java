@@ -138,7 +138,7 @@ public class EMR_thyroid_meds extends JFrame {
         String[] columnNames = {"Medication"};
         String[][] rowData = new String[data.length][1];
         for (int i = 0; i < data.length; i++) {
-            rowData[i][0] = data[i];
+            rowData[i][0] = "   " + data[i]; // Add three spaces as a prefix
         }
 
         JTable table = new JTable(rowData, columnNames);

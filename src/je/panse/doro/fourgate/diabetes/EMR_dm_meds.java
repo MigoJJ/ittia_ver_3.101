@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes;
 
-import javax.swing.*;		
+import javax.swing.*;			
 import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,13 +38,13 @@ public class EMR_dm_meds extends JFrame {
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
                 "Jadian [ 10 ] mg 1 tab p.o. q.d.",
                 "Jadian [ 25 ] mg 1 tab p.o. q.d.",
-                  "...",
+                "...",
                 "Exiglu [ 10 ] mg 1 tab p.o. q.d.",
                 "Exiglu-M SR [ 10/500 ] mg 1 tab p.o. q.d.",
                 "Exiglu-M SR [ 10/1000 ] mg 1 tab p.o. q.d.",
-                  "...",
+                "...",
                 "Actos [ 15 ] mg 1 tab p.o. q.d.",
-                "Atos  [ 30 ] mg 1 tab p.o. q.d."
+                "Atos [ 30 ] mg 1 tab p.o. q.d."
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
@@ -53,17 +53,17 @@ public class EMR_dm_meds extends JFrame {
                 "Amaryl [ 1 ]  mg  1 tab p.o. b.i.d.",
                 "Amaryl [ 2 ]  mg  1 tab p.o. q.d.",
                 "Amaryl [ 2 ]  mg  1 tab p.o. b.i.d.",
-                   "...",
+                "...",
                 "Amaryl-M [ 1/500 ]  mg  1 tab p.o. q.d.",
                 "Amaryl-M [ 1/500 ]  mg  1 tab p.o. b.i.d.",
-        		  "Amaryl-M [ 2/500 ]  mg  1 tab p.o. q.d.",
-        		  "Amaryl-M [ 2/500 ]  mg  1 tab p.o. b.i.d.",
+                "Amaryl-M [ 2/500 ]  mg  1 tab p.o. q.d.",
+                "Amaryl-M [ 2/500 ]  mg  1 tab p.o. b.i.d.",
 
         }));
 
         mainPanel.add(createFrameWithTable("Methimazole", new String[]{
-        		  "Januvia [ 50 ] mg 1 tab p.o. q.d.",
-        		  "Januvia [ 100 ] mg 1 tab p.o. q.d.",
+                "Januvia [ 50 ] mg 1 tab p.o. q.d.",
+                "Januvia [ 100 ] mg 1 tab p.o. q.d.",
                 "Janumet [ 50/500 ] mg 1 tab p.o. q.d.",
                 "Janumet [ 50/500 ] mg 1 tab p.o. b.i.d.",
         }));
@@ -90,23 +90,23 @@ public class EMR_dm_meds extends JFrame {
                 "Diabex [ 500 ] mg 1 tab p.o. q.d.",
                 "Diabex [ 250 ] mg 1 tab p.o. b.i.d.",
                 "Diabex [ 500 ] mg 1 tab p.o. b.i.d.",
-                  "------",
+                "------",
                 "Diamicron [ 30 ] mg 1 tab p.o. q.d.",
                 "Diamicron [ 30 ] mg 1 tab p.o. b.i.d.",
                 "Diamicron [ 60 ] mg 1 tab p.o. q.d.",
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{
-        	    "...Plan to FBS, HbA1c \n",
-	           "...Plan to FBS, HbA1c, +A/C \n",
-	           "...Obtain CUS : [ Carotid artery Ultrasonography ]\n",
-	           "[ → ] advised the patient to continue with current medication\n",
-	           "[ ↘ ] decreased the dose of current medication\n",
-	           "[ ↗ ] increased the dose of current medication\n",
-	           "[ ⭯ ] changed the dose of current medication\n",
-	           " |→   Starting new medication\n",
-	           "  →|  discontinue current medication\n",
-	     }));
+                "...Plan to FBS, HbA1c \n",
+                "...Plan to FBS, HbA1c, +A/C \n",
+                "...Obtain CUS : [ Carotid artery Ultrasonography ]\n",
+                "[ → ] advised the patient to continue with current medication\n",
+                "[ ↘ ] decreased the dose of current medication\n",
+                "[ ↗ ] increased the dose of current medication\n",
+                "[ ⭯ ] changed the dose of current medication\n",
+                " |→   Starting new medication\n",
+                "  →|  discontinue current medication\n",
+        }));
 
         add(mainPanel, BorderLayout.CENTER);
 
@@ -141,7 +141,7 @@ public class EMR_dm_meds extends JFrame {
         String[] columnNames = {"Medication"};
         String[][] rowData = new String[data.length][1];
         for (int i = 0; i < data.length; i++) {
-            rowData[i][0] = data[i];
+            rowData[i][0] = "   " + data[i]; // Add three spaces as a prefix
         }
 
         JTable table = new JTable(rowData, columnNames);
@@ -154,7 +154,7 @@ public class EMR_dm_meds extends JFrame {
                     int row = target.getSelectedRow();
                     int column = target.getSelectedColumn();
                     String cellValue = (String) target.getValueAt(row, column);
-                    System.out.println("Current meds  :cd\n ..." + cellValue);
+                    System.out.println("Current meds  :cd \n ..." + cellValue);
                     
                     try {
                         GDSEMR_frame.setTextAreaText(8, "\n...Current meds [ :cd ]\n ..." + cellValue);
