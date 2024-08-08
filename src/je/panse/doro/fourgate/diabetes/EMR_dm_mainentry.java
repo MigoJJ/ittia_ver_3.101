@@ -15,7 +15,6 @@ import javax.swing.JFrame;
 
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
 import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
-import je.panse.doro.fourgate.thyroid.medication.EMR_thyroid_meds;
 import je.panse.doro.soap.subjective.EMR_symptom_list;
 import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
@@ -90,7 +89,7 @@ public class EMR_dm_mainentry {
                 	ANPdm.main(null); 
                 } else if (name.equals("Medications")) {
                     String[] Esrr = EMR_symptom_retStr.returnStr("Medications");
-                    EMR_thyroid_meds.main(null);
+                    EMR_dm_meds.main(null);
                 } else {
                     // Replace with your logic to handle button click
                     // String[] args = returnStr(name);
