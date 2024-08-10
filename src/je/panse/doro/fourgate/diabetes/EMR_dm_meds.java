@@ -1,6 +1,6 @@
-package je.panse.doro.fourgate.thyroid.medication;
+package je.panse.doro.fourgate.diabetes;
 
-import javax.swing.*;		
+import javax.swing.*;			
 import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,11 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class EMR_thyroid_meds extends JFrame {
+public class EMR_dm_meds extends JFrame {
 
-    public EMR_thyroid_meds() {
-        setTitle("Thyroid Medication Management");
-        setSize(850, 850);
+    public EMR_dm_meds() {
+        setTitle("DM Medication Management");
+        setSize(800, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null); // Center the frame on the monitor
@@ -36,74 +36,77 @@ public class EMR_thyroid_meds extends JFrame {
         mainPanel.setLayout(new GridLayout(3, 2));
 
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
-                "Synthyroid [ 25 ] ug 1 tab p.o. q.d.",
-                "Synthyroid [ 37.5 ] ug 1 tab p.o. q.d.",
-                "Synthyroid [ 50 ] ug 1 tab p.o. q.d.",
-                "Synthyroid [ 75 ] ug 1 tab p.o. q.d.",
-                "Synthyroid [ 100 ] ug 1 tab p.o. q.d.",
-                "Synthyroid [ 112 ] ug 1 tab p.o. q.d.",
-                "Synthyroid [ 150 ] ug 1 tab p.o. q.d."
+                "Jadian [ 10 ] mg 1 tab p.o. q.d.",
+                "Jadian [ 25 ] mg 1 tab p.o. q.d.",
+                "...",
+                "Exiglu [ 10 ] mg 1 tab p.o. q.d.",
+                "Exiglu-M SR [ 10/500 ] mg 1 tab p.o. q.d.",
+                "Exiglu-M SR [ 10/1000 ] mg 1 tab p.o. q.d.",
+                "...",
+                "Actos [ 15 ] mg 1 tab p.o. q.d.",
+                "Atos [ 30 ] mg 1 tab p.o. q.d."
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
-                "Synthyroxine [ 25 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 50 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 75 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 88 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 100 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 125 ] ug 1 tab p.o. q.d.",
-                "Synthyroxine [ 150 ] ug 1 tab p.o. q.d."
+                "Amaryl [ 1 ]  mg  0.5 tab p.o. q.d.",
+                "Amaryl [ 1 ]  mg  1 tab p.o. q.d.",
+                "Amaryl [ 1 ]  mg  1 tab p.o. b.i.d.",
+                "Amaryl [ 2 ]  mg  1 tab p.o. q.d.",
+                "Amaryl [ 2 ]  mg  1 tab p.o. b.i.d.",
+                "...",
+                "Amaryl-M [ 1/500 ]  mg  1 tab p.o. q.d.",
+                "Amaryl-M [ 1/500 ]  mg  1 tab p.o. b.i.d.",
+                "Amaryl-M [ 2/500 ]  mg  1 tab p.o. q.d.",
+                "Amaryl-M [ 2/500 ]  mg  1 tab p.o. b.i.d.",
+
         }));
 
         mainPanel.add(createFrameWithTable("Methimazole", new String[]{
-                "Methimazole [ 5 ] mg 1 tab p.o. q.d.",
-                "Methimazole [ 5 ] mg 1 tab p.o. b.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. q.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. b.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. t.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. b.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
-                "Methimazole [ 5 ] mg 2 tab p.o. q.d.\n     Indenol [ 10 ] mg 1 tab p.o. q.d.",
-                "Methimazole [ 2.5 ] mg 1 tab p.o. q.d.",
-                "Methimazole [ 2.5 ] mg 1 tab p.o. b.i.d."
+                "Januvia [ 50 ] mg 1 tab p.o. q.d.",
+                "Januvia [ 100 ] mg 1 tab p.o. q.d.",
+                "Janumet [ 50/500 ] mg 1 tab p.o. q.d.",
+                "Janumet [ 50/500 ] mg 1 tab p.o. b.i.d.",
         }));
 
         mainPanel.add(createFrameWithTable("Antiroid", new String[]{
-                "Antiroid [ 50 ] mg 1 tab p.o. q.d.",
-                "Antiroid [ 50 ] mg 1 tab p.o. b.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. q.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. b.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. t.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. t.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. t.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. b.i.d.\n     Indenol [ 10 ] mg 1 tab p.o. b.i.d.",
-                "Antiroid [ 50 ] mg 2 tab p.o. q.d.\n     Indenol [ 10 ] mg 1 tab p.o. q.d."
+                "Lantus Solosta  [     ] IU SC AM",
+                "Ryzodeg FlexTouch [    ] IU SC AM",
+                "Tresiba FlexTouch  [     ] IU SC AM",
+                "Levemir FlexPen [     ] IU SC AM",
+                "Tuojeo Solostar  [     ] IU SC AM",
+                "---Rapid acting---",
+                "NovoRapid FlexPen 100u/mL [     ] IU SC",
+                "NOVOMIX 30 Flexpen 100U/mL  [     ] IU SC",
+                "Apidra Inj. SoloStar [     ] IU SC ",
+                "Fiasp Flex Touch  [    ] IU SC",
+                "Humalog Mix 25 Quick Pen  [    ] IU SC",
+                "Humalog Mix 50 Quick Pen  [    ] IU SC",
+                "---Mixed---",
+                "Soliqua Pen (10-40) [     ] IU SC ",
         }));
 
         mainPanel.add(createFrameWithTable("Camen", new String[]{
-                "Camen [ 5 ] mg 1 tab p.o. q.d.",
-                "Camen [ 5 ] mg 1 tab p.o. b.i.d.",
-                "Camen [ 5 ] mg 2 tab p.o. q.d.",
-                "Camen [ 5 ] mg 2 tab p.o. b.i.d.",
-                "Camen [ 5 ] mg 2 tab p.o. t.i.d.",
-                "Camen [ 10 ] mg 1 tab p.o. q.d.",
-                "Camen [ 10 ] mg 1 tab p.o. b.i.d.",
-                "Camen [ 10 ] mg 2 tab p.o. q.d.",
-                "Camen [ 10 ] mg 2 tab p.o. b.i.d.",
-                "Camen [ 10 ] mg 2 tab p.o. t.i.d.",
-                "Camen [ 20 ] mg 1 tab p.o. q.d."
+                "Diabex [ 250 ] mg 1 tab p.o. q.d.",
+                "Diabex [ 500 ] mg 1 tab p.o. q.d.",
+                "Diabex [ 250 ] mg 1 tab p.o. b.i.d.",
+                "Diabex [ 500 ] mg 1 tab p.o. b.i.d.",
+                "------",
+                "Diamicron [ 30 ] mg 1 tab p.o. q.d.",
+                "Diamicron [ 30 ] mg 1 tab p.o. b.i.d.",
+                "Diamicron [ 60 ] mg 1 tab p.o. q.d.",
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{
-        	    "...Plan to TSH, free thyroxine (T4), T3\n",
-	           "...Plan to TSH, free thyroxine (T4), T3 + Autoantibodies\n",
-	           "...Obtain TUS : [ Thyroid Ultrasonography ]\n",
-	           "[ → ] advised the patient to continue with current medication\n",
-	           "[ ↘ ] decreased the dose of current medication\n",
-	           "[ ↗ ] increased the dose of current medication\n",
-	           "[ ⭯ ] changed the dose of current medication\n",
-	           " |→   Starting new medication\n",
-	           "  →|  discontinue current medication\n",
-	     }));
+                "...Plan to FBS, HbA1c \n",
+                "...Plan to FBS, HbA1c, +A/C \n",
+                "...Obtain CUS : [ Carotid artery Ultrasonography ]\n",
+                "[ → ] advised the patient to continue with current medication\n",
+                "[ ↘ ] decreased the dose of current medication\n",
+                "[ ↗ ] increased the dose of current medication\n",
+                "[ ⭯ ] changed the dose of current medication\n",
+                " |→   Starting new medication\n",
+                "  →|  discontinue current medication\n",
+        }));
 
         add(mainPanel, BorderLayout.CENTER);
 
@@ -170,7 +173,7 @@ public class EMR_thyroid_meds extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new EMR_thyroid_meds().setVisible(true);
+                new EMR_dm_meds().setVisible(true);
             }
         });
     }
