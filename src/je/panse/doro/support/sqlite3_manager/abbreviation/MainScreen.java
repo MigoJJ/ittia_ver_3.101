@@ -1,12 +1,19 @@
 package je.panse.doro.support.sqlite3_manager.abbreviation;
 
-import java.awt.BorderLayout;					
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,26 +22,31 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.BorderFactory;
-import javax.swing.SwingUtilities;
+
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.DatabaseExtractStrings;
+import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.InsertAbbreviations;
 
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
     private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
-//    private static String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_3.051/src/je/panse/doro/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
-    
     public MainScreen() {
         setTitle("Database Interaction Screen");
         setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
+
+        // Create the database and table if they don't exist
+        createDatabaseAndTable();
+        // Insert abbreviations
+        InsertAbbreviations inserter = new InsertAbbreviations();
+        inserter.insertAbbreviations();
 
         // Table setup
         tableModel = new DefaultTableModel(new String[]{"Abbreviation", "Full Text"}, 0);
@@ -96,7 +108,6 @@ public class MainScreen extends JFrame {
 
         setVisible(true);
     }
-
     private void setColumnWidths(JTable table, int... widths) {
         int totalWidth = table.getPreferredSize().width;
         for (int i = 0; i < widths.length; i++) {
@@ -104,7 +115,7 @@ public class MainScreen extends JFrame {
             column.setPreferredWidth((totalWidth / 3) * widths[i]);
         }
     }
-
+    
     private void setColumnIndentation(JTable table, int indentSpaces) {
         int indentPixels = indentSpaces * 6;
         DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
@@ -133,6 +144,23 @@ public class MainScreen extends JFrame {
             }
         }
     }
+    
+    private void createDatabaseAndTable() {
+        String createTableSQL = "CREATE TABLE IF NOT EXISTS Abbreviations ("
+                + "abbreviation TEXT PRIMARY KEY, "
+                + "full_text TEXT NOT NULL"
+                + ");";
+        
+        try (Connection conn = DriverManager.getConnection(dbURL);
+             Statement stmt = conn.createStatement()) {
+            // Execute the SQL statement to create the table
+            stmt.execute(createTableSQL);
+            System.out.println("Database and table created (if not existed) successfully.");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error creating database or table: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     private void loadData() {
         try (Connection conn = DriverManager.getConnection(dbURL);
@@ -190,20 +218,30 @@ public class MainScreen extends JFrame {
     }
 
     private void insertRecord(String abbreviation, String fullText) {
+        if (abbreviation.trim().isEmpty() || fullText.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Both fields are required.", "Input Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         String sql = "INSERT INTO Abbreviations (abbreviation, full_text) VALUES (?, ?)";
         try (Connection conn = DriverManager.getConnection(dbURL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, abbreviation);
-            pstmt.setString(2, fullText);
+
+            pstmt.setString(1, abbreviation.trim());
+            pstmt.setString(2, fullText.trim());
+
             int affectedRows = pstmt.executeUpdate();
             if (affectedRows > 0) {
                 tableModel.addRow(new Object[]{abbreviation, fullText});
                 JOptionPane.showMessageDialog(this, "Record added successfully!");
+            } else {
+                JOptionPane.showMessageDialog(this, "No rows were inserted.", "Insert Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(this, "Error inserting data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+
 
     private void deleteRecord() {
         int selectedRow = table.getSelectedRow();
