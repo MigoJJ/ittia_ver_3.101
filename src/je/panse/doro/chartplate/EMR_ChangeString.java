@@ -157,8 +157,8 @@ public class EMR_ChangeString {
     	replacements.put( ":uri " , "Upper Respiratory Infection ");
     	replacements.put( ":uti " , "Urinary Tract Infection ");
     	replacements.put( ":ver " , "Vertigo ");
-    	replacements.put( ":wei " , "Weight loss [ ] kg ");
-    	replacements.put( ":weig " , "Weight gain [ ] kg ");
+    	replacements.put( ":wei " , "Weight loss [    ] kg ");
+    	replacements.put( ":weig " ,"Weight gain [    ] kg ");
     	replacements.put( ":ww " , " with medication. ");
     	replacements.put( ":wq " , " without medication. ");
 
