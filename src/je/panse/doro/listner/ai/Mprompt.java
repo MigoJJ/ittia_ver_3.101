@@ -44,12 +44,13 @@ public class Mprompt extends JFrame {
         // West panel with six buttons
         JPanel westPanel = new JPanel(new GridLayout(6, 1, 10, 10));
 
-        JButton rescueButton = new JButton("Rescue");
-        JButton copyToClipboardButton = new JButton("Copy to clipboard");
-        JButton clearInputButton = new JButton("Clear input");
-        JButton clearOutputButton = new JButton("Clear output");
-        JButton clearAllButton = new JButton("Clear All");
-        JButton saveAndQuitButton = new JButton("Save and Quit");
+        JButton rescueButton = createStyledButton("Rescue", new Color(255, 87, 34), Color.WHITE);
+        JButton copyToClipboardButton = createStyledButton("Copy to clipboard", new Color(76, 175, 80), Color.WHITE);
+        JButton clearInputButton = createStyledButton("Clear input", new Color(33, 150, 243), Color.WHITE);
+        JButton clearOutputButton = createStyledButton("Clear output", new Color(255, 193, 7), Color.WHITE);
+        JButton clearAllButton = createStyledButton("Clear All", new Color(156, 39, 176), Color.WHITE);
+        JButton saveAndQuitButton = createStyledButton("Save and Quit", new Color(244, 67, 54), Color.WHITE);
+
 
         westPanel.add(rescueButton);
         westPanel.add(copyToClipboardButton);
@@ -63,12 +64,12 @@ public class Mprompt extends JFrame {
         // South panel with six buttons
         JPanel southPanel = new JPanel(new GridLayout(1, 6, 10, 10));
 
-        JButton aButton = new JButton("A>");
-        JButton labButton = new JButton("Lab>");
-        JButton tLabButton = new JButton("T-Lab>");
-        JButton piButton = new JButton("PI>");
-        JButton pButton = new JButton("P>");
-        JButton etcButton = new JButton("Etc>");
+        JButton aButton = createStyledButton("A>", new Color(63, 81, 181), Color.WHITE);
+        JButton labButton = createStyledButton("Lab>", new Color(3, 169, 244), Color.WHITE);
+        JButton tLabButton = createStyledButton("T-Lab>", new Color(0, 188, 212), Color.WHITE);
+        JButton piButton = createStyledButton("PI>", new Color(0, 150, 136), Color.WHITE);
+        JButton pButton = createStyledButton("P>", new Color(139, 195, 74), Color.WHITE);
+        JButton etcButton = createStyledButton("Etc>", new Color(255, 152, 0), Color.WHITE);
 
         southPanel.add(aButton);
         southPanel.add(labButton);
@@ -129,6 +130,14 @@ public class Mprompt extends JFrame {
 
         setLocationRelativeTo(null); // Center the frame on the screen
         setVisible(true);
+    }
+    
+    private JButton createStyledButton(String text, Color backgroundColor, Color textColor) {
+        JButton button = new JButton(text);
+        button.setBackground(backgroundColor);
+        button.setForeground(textColor);
+        button.setFont(new Font("Consolas", Font.BOLD, 14));
+        return button;
     }
 
     private void formatAndDisplayOutput() {

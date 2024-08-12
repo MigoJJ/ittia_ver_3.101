@@ -1,21 +1,2 @@
 
-  PMH>	 -------------------------
-    □ Dyslipidemia     	□ Hypertension     	□ Diabetes Mellitus
-    □ Cancer           	□ Operation        	□ Thyroid Disease
-    □ Asthma           	▣ Pneumonia        	□ Tuberculosis
-    □ GERD             	□ Hepatitis A / B  	□ Gout
-    ▣ Arthritis        	□ Hearing Loss     	▣ Parkinson's Disease
-    □ CVA              	▣ Depression       	□ Cognitive Disorder
-    ▣ AMI              	▣ Angina Pectoris  	□ Arrhythmia
-    □ Allergy          	□ ...              
-    □ Food             	□ Injection        	□ Medication
--------------------------------------------------
-  A>	 -------------------------
-   ▣ Pneumonia
-   ▣ Depression
-   ▣ AMI
-   ▣ Angina Pectoris
-   ▣ Arthritis
-   ▣ Chronic Hepatitis B
-   ▣ Parkinson's Disease
---------------------------
+  CC>	 Hypertension 
