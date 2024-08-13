@@ -39,7 +39,7 @@ public class EMR_ChangeString {
     	replacements.put( ":cat " , "Cataract(+) ");
     	replacements.put( ":cato " , "Cataract operation (+) [ ] ");
     	replacements.put( ":c " , "Hypercholesterolemia ");
-    	replacements.put( ":cf " , "Hypercholwsterolemia F/U ");
+    	replacements.put( ":cf " , "Hypercholesterolemia F/U ");
     	replacements.put( ":cd " , "Colonic diverticulum [  ] test ");
     	replacements.put( ":cog " , "Cognitive Disorder ");
     	replacements.put( ":con " , "Constipation ");
@@ -150,7 +150,7 @@ public class EMR_ChangeString {
     	replacements.put( ":tn " , "Thyroid nodule ");
     	replacements.put( ":top " , "Hypothyroidism with Pregnancy [     ] weeks ");
     	replacements.put( ":to " , "Hypothyroidism ");
-    	replacements.put( ":tof " , "Hyperthyroidism F/U ");
+    	replacements.put( ":tof " , "Hypothyroidism F/U ");
     	replacements.put( ":ts " , "C/W Subacute Thyroiditis ");
     	replacements.put( ":tco " , "Papillary Thyroid Cancer OP(+) Hypothyroidism ");
     	replacements.put( ":tcor " , "Papillary Thyroid Cancer OP(+) RAI Tx(+) Hypothyroidism ");
