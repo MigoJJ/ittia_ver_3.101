@@ -37,8 +37,9 @@ public class EMR_dm_lab extends JFrame {
 
         mainPanel.add(createFrameWithTable("F/U Laboratory Test", new String[]{
                 "...FBS / PP2  HbA1c",
-                "...FBS / PP2  HbA1c +A/C",
+                "...FBS / PP2  HbA1c +A/C(eGFR, U-microalbumin)",
                 "...FBS / PP2  HbA1c +A/C Electorlyte",
+                "...FBS / PP2  HbA1c +A/C Electorlyte Insulin",
                 "...FBS / PP2  HbA1c +A/C Electorlyte  Vitamin-D",
         }));
 
