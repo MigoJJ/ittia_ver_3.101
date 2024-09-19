@@ -1,28 +1,7 @@
 
-  CC>    DM F/U
-  ROS>
-< Hematology/Oncology >,
-	[◇] Easy bruising,
-	[◇] Fatigue,
-	[◇] Enlarged lymph nodes,
-	[◇] Night sweats,
-	[◇] Unexplained weight loss,
-	[◇] Recurrent infections,
-	[◇] Chest pain,
-	[◇] Shortness of breath,
-	[◇] Skin changes
-  S>
-    Frequent urination [ - ]
-    Increased thirst [ - ]
-    increased hunger.[ - ]
-    Unexpected Weight loss [ - ]
-    Extreme Fatigue [ so-so ]
-    Blurred vision [denied ]
-  A>
-#  DM  F/U 
-  P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...continue with current dosages of meds
-  Comment>
-Maintain a healthy weight to improve blood sugar control.
-   [ ▶ ] []   2024.08.25
+  P>	
+...follow - up without medications [ 2024.09.19] 
+...
+...continuous current prescription [ 2024.09.19] 
+...increased dose of current medications [ 2024.09.19] 
+...change current medications [ 2024.09.19]
