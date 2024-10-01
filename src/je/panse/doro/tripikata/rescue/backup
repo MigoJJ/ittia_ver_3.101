@@ -1,13 +1,6 @@
 
-  CC>	The patient visits for Vaccination
-  [ ✔ ]  no allergy to eggs, chicken
-           , or any other component of the vaccine.
-  [ ✔ ]  no s/p Guillain-Barré syndrome.
-  [ ✔ ]  no adverse reactions to previous vaccines.
-  [ ✔ ]  no immunosuppression.
-The patient visits for Vaccination
-  A>	
-  #  Kovax Influ 4ga PF® vaccine [nip]   [2024-10-01]
-  #  Sanofi's VaxigripTetra® Vaccine(4가) [유독]  [2024-10-01]
-  P>	
-   ...Vaccination as scheduled
+  PI>	
+... ➢ Sanofi's VaxigripTetra® Vaccine(4가) [유독] side effect [ ⏵ ]
+	[ ⏵ ] Swelling
+	[ ⏵ ] Fever or chilling
+     [ ✔ ] All other side effects of injections are denied.

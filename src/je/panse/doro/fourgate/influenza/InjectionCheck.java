@@ -1,12 +1,23 @@
 package je.panse.doro.fourgate.influenza;
 
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
+import je.panse.doro.GDSEMR_frame;
 
 public class InjectionCheck extends JFrame {
     private final String[] vaccines;
@@ -23,17 +34,17 @@ public class InjectionCheck extends JFrame {
 
         // Initialize data
         vaccines = new String[]{
-                "Sanofi's VaxigripTetra® Vaccine(4가) [유독]",
-                "Kovax Influ 4ga PF® vaccine [nip]",
-                "Tdap (Tetanus, Diphtheria, Pertussis)",
-                "Td (Tetanus, Diphtheria)",
-                "Shingles Vaccine (Shingrix) #1/2",
-                "HAV vaccination #1/2",
-                "HBV vaccination #1/3",
-                "Prevena 13 (pneumococcal vaccine (PCV13))",
-                "Etc."
+                " ➢ Sanofi's VaxigripTetra® Vaccine(4가) [유독]",
+                " ➢ Kovax Influ 4ga PF® vaccine [nip]",
+                " ➢ Tdap (Tetanus, Diphtheria, Pertussis)",
+                " ➢ Td (Tetanus, Diphtheria)",
+                " ➢ Shingles Vaccine (Shingrix) #1/2",
+                " ➢ HAV vaccination #1/2",
+                " ➢ HBV vaccination #1/3",
+                " ➢ Prevena 13 (pneumococcal vaccine (PCV13))",
+                " ➢ Etc."
         };
-        controls = new String[]{"All denied", "Delay", "Clear","Save", "Quit"};
+        controls = new String[]{"All denied","All other", "Delay", "Clear","Save", "Quit"};
         columnNames = new String[]{"Reaction Type", "Reaction"};
         tableData = new Object[][]{
                 {"Injection Site", "Pain"},
@@ -67,7 +78,7 @@ public class InjectionCheck extends JFrame {
         for (String vaccine : vaccines) {
             JButton button = new JButton(vaccine);
             // Add ActionListener to append button text to TextArea
-            button.addActionListener(e -> outputTextArea.append(vaccine + "\n"));
+            button.addActionListener(e -> outputTextArea.append(vaccine + " side effect [ ⏵ ]\n"));
             eastPanel.add(button);
         }
         add(eastPanel, BorderLayout.EAST);
@@ -81,11 +92,27 @@ public class InjectionCheck extends JFrame {
             button.addActionListener(e -> {
                 String command = e.getActionCommand();
                 switch (command) {
-                    case "All denied":
-                        outputTextArea.setText("All injections denied.");
+	                case "All denied":
+	                    outputTextArea.append("     [ ✔ ] All side effects of injections are denied.\n");
+	
+	                    // Find the maximum width for the "Reaction Type" column to align columns
+	                    int typeColumnWidth = 15; // You can adjust this value to match the desired alignment
+	
+	                    // Append each reaction from tableData with prefix "[-]" and aligned columns
+	                    for (Object[] row : tableData) {
+	                        String reactionType = (String) row[0];
+	                        String reaction = (String) row[1];
+	                        
+	                        // Format the output with fixed column width for alignment
+	                        outputTextArea.append(String.format("     [-] %-"+typeColumnWidth+"s : %s\n", reactionType, reaction));
+	                    }
+                    break;
+
+                    case "All other":
+                        outputTextArea.append("     [ ✔ ] All other side effects of injections are denied.");
                         break;
                     case "Delay":
-                        outputTextArea.setText("Injections delayed.");
+                        outputTextArea.append("     [ ✔ ] Recommendations for delayed immunization.");
                         break;
                     case "Clear":
                         outputTextArea.setText("");
@@ -94,7 +121,7 @@ public class InjectionCheck extends JFrame {
                         saveSelections();
                         break;
                     case "Quit":
-                        System.exit(0);
+                        dispose();
                         break;
                 }
             });
@@ -127,18 +154,20 @@ public class InjectionCheck extends JFrame {
                     // Get the reaction value from the clicked row
                     String reaction = (String) reactionTable.getValueAt(selectedRow, 1);
                     // Display the reaction in the output text area
-                    outputTextArea.append(reaction +"\n");
+                    outputTextArea.append("\t[ ⏵ ] "+ reaction +"\n");
                 }
             }
         });
-
+        
         JScrollPane tableScrollPane = new JScrollPane(reactionTable);
 
-        // Creating the Output TextArea
-        outputTextArea = new JTextArea(8, 20);
+     // Creating the Output TextArea
+        outputTextArea = new JTextArea(10, 20);
         outputTextArea.setLineWrap(true);
         outputTextArea.setWrapStyleWord(true);
+        outputTextArea.setBackground(new Color(135, 206, 235)); // Sky blue color
         JScrollPane textAreaScrollPane = new JScrollPane(outputTextArea);
+
 
         // Adding components to center panel
         centerPanel.add(tableScrollPane, BorderLayout.CENTER);
@@ -154,10 +183,12 @@ public class InjectionCheck extends JFrame {
             String reactionType = (String) reactionTable.getValueAt(selectedRow, 0);
             String reaction = (String) reactionTable.getValueAt(selectedRow, 1);
             // Append the new selection to the outputTextArea with a new line
-            outputTextArea.append("Saved Selection: " + reactionType + ": " + reaction + "\n");
+//            outputTextArea.append("Saved Selection: " + reactionType + ": " + reaction + "\n");
+            
         } else {
             outputTextArea.append("No selection made.\n");
         }
+        GDSEMR_frame.setTextAreaText(1, "\n..." + outputTextArea.getText());
     }
 
 
