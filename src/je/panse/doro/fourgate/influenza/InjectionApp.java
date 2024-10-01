@@ -17,8 +17,8 @@ public class InjectionApp {
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     
     private static final String[] BUTTON_LABELS = {
-        "Vaxigriptetra pfs inj (4가) [유독]",
-        "SKY Cellflu (4 가) [nip] ",
+        "Sanofi's VaxigripTetra® Vaccine(4가) [유독]",
+        "Kovax Influ 4ga PF® vaccine [nip] ",
         "Tdap (Tetanus, Diphtheria, Pertussis)",
         "Td (Tetanus, Diphtheria)",
         "Shingles Vaccine (Shingrix) #1/2",

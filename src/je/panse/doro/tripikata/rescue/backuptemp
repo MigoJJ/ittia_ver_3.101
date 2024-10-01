@@ -1,7 +1,13 @@
 
+  CC>	The patient visits for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+The patient visits for Vaccination
+  A>	
+  #  Kovax Influ 4ga PF® vaccine [nip]   [2024-10-01]
+  #  Sanofi's VaxigripTetra® Vaccine(4가) [유독]  [2024-10-01]
   P>	
-...follow - up without medications [ 2024.09.19] 
-...
-...continuous current prescription [ 2024.09.19] 
-...increased dose of current medications [ 2024.09.19] 
-...change current medications [ 2024.09.19]
+   ...Vaccination as scheduled
