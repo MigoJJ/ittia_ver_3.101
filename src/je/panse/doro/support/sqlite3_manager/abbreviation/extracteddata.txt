@@ -148,3 +148,4 @@ replacements.put( ":weig  " , "Weight gain [ ] kg ");
 replacements.put( ":ww  " , "with medication. ");
 replacements.put( ":wq  " , "without medication. ");
 replacements.put( ":tegf " , "Hyperthyroidism Greaves' disease F/U ");
+replacements.put( ":oc " , "s/p cholecystectomy due to GB stone ");

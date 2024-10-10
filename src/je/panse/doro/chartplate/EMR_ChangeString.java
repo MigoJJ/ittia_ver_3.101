@@ -113,6 +113,7 @@ public class EMR_ChangeString {
     	replacements.put( ":nti " , "Non-Thyroidal Illness ");
     	replacements.put( ":ntm " , "NTM : Nontuberculous Mycobacterial Pulmonary Disease ");
     	replacements.put( ":oa " , "s/p Appendectomy ");
+    	replacements.put( ":oc " , "s/p cholecystectomy due to GB stone ");
     	replacements.put( ":oca " , "Cataract OP(+) ");
     	replacements.put( ":oco " , "s/p Colon cancer op(+) ");
     	replacements.put( ":ogc " , "s/p Gastric cancer cancer op(+) ");
