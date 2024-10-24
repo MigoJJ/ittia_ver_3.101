@@ -135,9 +135,9 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "공단검진":
                 	RoutineCheck.performHCRoutineCheck();
                     break;
-                case "DM retinopathy":
-                    OpenOneNotePage.main(null);
-                    break;
+//                case "DM retinopathy":
+//                    OpenOneNotePage.main(null);
+//                    break;
                 case "F/U Edit":
                     System.out.println("southsouthsouth 1 1 1 ~~!!");
                     EMR_FU_mainEdit.main(null);
