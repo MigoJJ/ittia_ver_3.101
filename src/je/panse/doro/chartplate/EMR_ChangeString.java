@@ -39,7 +39,7 @@ public class EMR_ChangeString {
     	replacements.put( ":cat " , "Cataract(+)");
     	replacements.put( ":cato " , "Cataract operation (+) [ ]");
     	replacements.put( ":c " , "Hypercholesterolemia");
-    	replacements.put( ":cf " , "Hypercholwsterolemia F/U");
+    	replacements.put( ":cf " , "Hypercholesterolemia F/U");
     	replacements.put( ":cd " , "Colonic diverticulum [  ] test");
     	replacements.put( ":cog " , "Cognitive Disorder");
     	replacements.put( ":con " , "Constipation");
