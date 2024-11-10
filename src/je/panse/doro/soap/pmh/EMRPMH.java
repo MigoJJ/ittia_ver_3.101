@@ -149,7 +149,7 @@ public class EMRPMH extends JFrame {
         if (textArea1Content.toString().contains(searchPhrase)) {
             // Replace only the specific phrase while keeping other content
             String replacement = "Allergy\n   During the medical check-up, the patient had no known allergies\n   "
-                                 + "to food, injections and medications as of October 2024";
+                                 + "to food, injections and medications as of " +":cd ";
             int start = textArea1Content.indexOf(searchPhrase);
             int end = start + searchPhrase.length();
             textArea1Content.replace(start, end, replacement);
