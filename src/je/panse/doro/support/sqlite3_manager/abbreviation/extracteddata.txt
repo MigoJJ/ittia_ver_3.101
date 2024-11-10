@@ -150,3 +150,4 @@ replacements.put( ":wq " , "without medication.");
 replacements.put( ":tegf" , "Hyperthyroidism Greaves' disease F/U");
 replacements.put( ":oc" , "s/p cholecystectomy due to GB stone");
 replacements.put( ":cdd" , "current date");
+replacements.put( ":new" , "The patient visited GDS Internal Medicine clinic for the first time. [:cd ]");
