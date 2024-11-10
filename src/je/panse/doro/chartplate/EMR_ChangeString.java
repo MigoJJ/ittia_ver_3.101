@@ -165,7 +165,7 @@ public class EMR_ChangeString {
     	replacements.put( ":oc " , "s/p cholecystectomy due to GB stone");
     	replacements.put( ":cdd " , "current date");
     	replacements.put( ":new " , "The patient visited GDS Internal Medicine Clinic for the first time.[:cd ]");
-    	replacements.put( ":all" , "During the medical check-up, the patient had no known allergies to food, injections and medications as of November 2024 ");
+    	replacements.put( ":all " , "During the medical check-up, the patient had no known allergies to food, injections and medications as of November 2024 ");
 
     }
 
