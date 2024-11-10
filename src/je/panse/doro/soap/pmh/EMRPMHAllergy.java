@@ -6,6 +6,7 @@ import je.panse.doro.GDSEMR_frame;
 import javax.swing.event.TableModelListener;
 import javax.swing.event.TableModelEvent;
 import java.awt.*;
+import java.time.LocalDate;
 
 public class EMRPMHAllergy extends JFrame {
     private JTable table;
@@ -57,7 +58,6 @@ public class EMRPMHAllergy extends JFrame {
                 if (e.getType() == TableModelEvent.UPDATE && e.getColumn() == 1) {
                     int row = e.getFirstRow();
                     boolean isSelected = (boolean) tableModel.getValueAt(row, 1);
-                    System.out.println("Checkbox changed for row: " + row + ", new value: " + isSelected);
                     updateTextArea(row, isSelected);
                 }
             }
@@ -117,8 +117,6 @@ public class EMRPMHAllergy extends JFrame {
             
             textArea.revalidate();
             textArea.repaint();
-            
-            System.out.println("TextArea content: \n" + textArea.getText());
         });
     }
 
@@ -146,6 +144,23 @@ public class EMRPMHAllergy extends JFrame {
         for (int i = 0; i < table.getRowCount(); i++) {
             table.setValueAt(value, i, 1);
         }
+        
+        // Clear the text area
+        textArea.setText("");
+        
+        // Get the current date
+        String currentDate = LocalDate.now().toString();
+        
+        // Prepare the no allergies text
+        String noAllergiesText = String.format("▣ Allergy\n" +
+                                               "During the medical check-up, the patient had no known allergies\n" +
+                                               "to food, injections, and medications as of: %s", currentDate);
+        
+        // Set the text in the North Panel's JTextArea
+        textArea.setText(noAllergiesText);
+        
+        // Update the GDSEMR_frame
+        GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n" + noAllergiesText);
     }
 
     private void setAnaphylaxisSymptoms(boolean value) {
@@ -167,7 +182,7 @@ public class EMRPMHAllergy extends JFrame {
         if (!textAreaContent.isEmpty()) {
             selectedSymptoms.append("\nAdditional Notes:\n").append(textAreaContent);
             
-            GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n"+textAreaContent);
+            GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n" + textAreaContent);
         }
         JOptionPane.showMessageDialog(this, selectedSymptoms.toString());
     }
