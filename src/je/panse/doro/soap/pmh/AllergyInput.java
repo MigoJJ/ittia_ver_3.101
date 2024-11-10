@@ -2,6 +2,7 @@ package je.panse.doro.soap.pmh;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import je.panse.doro.GDSEMR_frame;
 import javax.swing.event.TableModelListener;
 import javax.swing.event.TableModelEvent;
 import java.awt.*;
@@ -105,7 +106,7 @@ public class AllergyInput extends JFrame {
         SwingUtilities.invokeLater(() -> {
             String symptom = (String) table.getValueAt(row, 2);
             String category = (String) table.getValueAt(row, 0);
-            String lineToAdd = category + ": " + symptom + "\n";
+            String lineToAdd = category + ": " + symptom + "  [+] \n";
 
             if (isSelected) {
                 textArea.append(lineToAdd);
@@ -165,6 +166,8 @@ public class AllergyInput extends JFrame {
         String textAreaContent = textArea.getText();
         if (!textAreaContent.isEmpty()) {
             selectedSymptoms.append("\nAdditional Notes:\n").append(textAreaContent);
+            
+            GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n"+textAreaContent);
         }
         JOptionPane.showMessageDialog(this, selectedSymptoms.toString());
     }

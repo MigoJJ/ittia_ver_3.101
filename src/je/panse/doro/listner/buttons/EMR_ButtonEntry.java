@@ -24,6 +24,7 @@ import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.samsara.comm.FileGeditToCilpboard;
 import je.panse.doro.samsara.comm.OpenOneNotePage;
+import je.panse.doro.soap.pmh.AllergyInput;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
 
@@ -126,8 +127,8 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "URI":
                     EMR_FU_uriEdit.main(null);
                     break;
-                case "Injections":
-                	InjectionApp.main(null);
+                case "Allergy":
+                	AllergyInput.main(null);
                     break;
                 case "GDS RC":
                 	RoutineCheck.performGDSRoutineCheck();
