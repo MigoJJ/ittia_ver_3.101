@@ -7,12 +7,12 @@ import javax.swing.event.TableModelListener;
 import javax.swing.event.TableModelEvent;
 import java.awt.*;
 
-public class AllergyInput extends JFrame {
+public class EMRPMHAllergy extends JFrame {
     private JTable table;
     private DefaultTableModel tableModel;
     private JTextArea textArea;
 
-    public AllergyInput() {
+    public EMRPMHAllergy() {
         initializeFrame();
         createNorthPanel();
         createTable();
@@ -173,6 +173,6 @@ public class AllergyInput extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(AllergyInput::new);
+        SwingUtilities.invokeLater(EMRPMHAllergy::new);
     }
 }
