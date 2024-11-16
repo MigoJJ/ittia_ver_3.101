@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.editmain;
+package je.panse.doro.fourgate.A_editmain;
 
 import java.util.Random;	
 import je.panse.doro.GDSEMR_frame;

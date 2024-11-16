@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.editmain;
+package je.panse.doro.fourgate.A_editmain;
 
 import javax.swing.JFrame;	
 
