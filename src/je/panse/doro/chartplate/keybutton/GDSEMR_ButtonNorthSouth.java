@@ -8,10 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import je.panse.doro.listner.buttons.EMR_ButtonEntry;
 
-public class GDSEMR_ButtonPanel extends JPanel {
+public class GDSEMR_ButtonNorthSouth extends JPanel {
     private JButton[] buttons = new JButton[11];
     
-    public GDSEMR_ButtonPanel(String locations) {
+    public GDSEMR_ButtonNorthSouth(String locations) {
         super();
         
         // Create the buttons

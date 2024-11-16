@@ -17,7 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentListener;
 
 import je.panse.doro.chartplate.*;
-import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonPanel;
+import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
 import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
 import je.panse.doro.chartplate.mainpage.GDSEMR_DocumentListner;
@@ -50,8 +50,8 @@ public class GDSEMR_frame {
 
         JPanel centerPanel = createCenterPanel();
         JPanel westPanel = createWestPanel();
-        JPanel northPanel = new GDSEMR_ButtonPanel("north");
-        JPanel southPanel = new GDSEMR_ButtonPanel("south");
+        JPanel northPanel = new GDSEMR_ButtonNorthSouth("north");
+        JPanel southPanel = new GDSEMR_ButtonNorthSouth("south");
 
         frame.add(centerPanel, BorderLayout.CENTER);
         frame.add(westPanel, BorderLayout.WEST);
