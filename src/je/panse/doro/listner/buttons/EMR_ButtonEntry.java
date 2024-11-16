@@ -15,6 +15,7 @@ import je.panse.doro.fourgate.EMR_FU_mainEdit;
 import je.panse.doro.fourgate.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
 import je.panse.doro.fourgate.influenza.InjectionApp;
+import je.panse.doro.fourgate.osteoporosis.EMRGDS_Os_buttons;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
@@ -78,16 +79,13 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Exit":
                 	 System.exit(0);
                 	  break;
-
-
                 case "Abbreviation":
                     MainScreen.main(null);
                     break;
-                
+               
                 case "ittia_support":
                 	EMR_ittia_support.main(null);
                     break;
-
                 case "Button 6":
                     break;
                 case "Button 7":
@@ -108,7 +106,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
             switch (noButton) {
                 case "F/U DM":
                 	  EMR_FU_diabetesEdit.main(null);
-               	  EMR_dm_mainentry.main(null);                	  
+               	      EMR_dm_mainentry.main(null);                	  
                     break;
                     
                 case "F/U HTN":
@@ -116,18 +114,19 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     break;
 
                 case "F/U Chol":
-                    EMR_FU_hypercholesterolemiaEdit.main(null);
-                    
+                       EMR_FU_hypercholesterolemiaEdit.main(null);
                     break;
                 case "F/U Thyroid":
                     EMR_thyroid_mainentry.main(null);
                     EMR_thyroid_Pregnancyentry.main(null);
-                    
+                    break;
+                case "Osteoporosis":
+                	EMRGDS_Os_buttons.main(null);
                     break;
                 case "URI":
                     EMR_FU_uriEdit.main(null);
                     break;
-                case "Allergy":
+                                case "Allergy":
                 	EMRPMHAllergy.main(null);
                     break;
                 case "GDS RC":
@@ -136,9 +135,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "공단검진":
                 	RoutineCheck.performHCRoutineCheck();
                     break;
-//                case "DM retinopathy":
-//                    OpenOneNotePage.main(null);
-//                    break;
+                
                 case "F/U Edit":
                     System.out.println("southsouthsouth 1 1 1 ~~!!");
                     EMR_FU_mainEdit.main(null);
