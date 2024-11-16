@@ -161,9 +161,11 @@ public class EMR_ChangeString {
     	replacements.put( ":weig " , "Weight gain [ ] kg");
     	replacements.put( ":ww " , "with medication.");
     	replacements.put( ":wq " , "without medication.");
-    	replacements.put( ":tegf" , "Hyperthyroidism Greaves' disease F/U");
-    	replacements.put( ":oc" , "s/p cholecystectomy due to GB stone");
-    	replacements.put( ":cdd" , "current date");
+    	replacements.put( ":tegf " , "Hyperthyroidism Greaves' disease F/U");
+    	replacements.put( ":oc " , "s/p cholecystectomy due to GB stone");
+    	replacements.put( ":cdd " , "current date");
+    	replacements.put( ":new " , "The patient visited GDS Internal Medicine Clinic for the first time.[:cd ]");
+    	replacements.put( ":all " , "During the medical check-up, the patient had no known allergies to food, injections and medications as of November 2024 ");
 
     }
 

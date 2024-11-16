@@ -8,16 +8,16 @@ public class EMR_ChangeStringCC {
             if (wordArray[i].contains(":(")) {
 
                 if (wordArray[i].contains("d")) {
-                    wordArray[i] = wordArray[i].replace("d", "-day ago)");
+                    wordArray[i] = wordArray[i].replace("d", "-day ago  :cd )");
                     wordArray[i] = wordArray[i].replace(":(", " (onset ");
                 } else if (wordArray[i].contains("w")) {
-                    wordArray[i] = wordArray[i].replace("w", "-week ago)");
+                    wordArray[i] = wordArray[i].replace("w", "-week ago  :cd )");
                     wordArray[i] = wordArray[i].replace(":(", " (onset ");
                 } else if (wordArray[i].contains("m")) {
-                    wordArray[i] = wordArray[i].replace("m", "-month ago)");
+                    wordArray[i] = wordArray[i].replace("m", "-month ago  :cd )");
                     wordArray[i] = wordArray[i].replace(":(", " (onset ");
                 } else if (wordArray[i].contains("y")) {
-                    wordArray[i] = wordArray[i].replace("y", "-year ago)");
+                    wordArray[i] = wordArray[i].replace("y", "-year ago :cd )");
                     wordArray[i] = wordArray[i].replace(":(", " (onset ");
                 } else {
                     return word;
