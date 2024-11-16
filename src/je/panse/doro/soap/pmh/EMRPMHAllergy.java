@@ -1,6 +1,6 @@
 package je.panse.doro.soap.pmh;
 
-import javax.swing.*;
+import javax.swing.*;	
 import javax.swing.table.DefaultTableModel;
 import je.panse.doro.GDSEMR_frame;
 import javax.swing.event.TableModelListener;
@@ -130,7 +130,7 @@ public class EMRPMHAllergy extends JFrame {
         allDeniedButton.addActionListener(e -> setAllSymptoms(false));
         anaphylaxisDeniedButton.addActionListener(e -> setAnaphylaxisSymptoms(false));
         saveButton.addActionListener(e -> saveSelectedSymptoms());
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> dispose());
 
         buttonPanel.add(allDeniedButton);
         buttonPanel.add(anaphylaxisDeniedButton);

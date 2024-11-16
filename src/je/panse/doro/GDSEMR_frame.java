@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;		
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
@@ -14,11 +14,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentListener;
-
-import je.panse.doro.chartplate.*;
+import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
+import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
+import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
+import je.panse.doro.chartplate.mainpage.GDSEMR_DocumentListner;
+import je.panse.doro.chartplate.mainpage.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
-import je.panse.doro.listner.buttons.EMR_BlendColors;
 import je.panse.doro.samsara.*;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.*;
@@ -46,8 +47,8 @@ public class GDSEMR_frame {
 
         JPanel centerPanel = createCenterPanel();
         JPanel westPanel = createWestPanel();
-        JPanel northPanel = new GDSEMR_ButtonPanel("north");
-        JPanel southPanel = new GDSEMR_ButtonPanel("south");
+        JPanel northPanel = new GDSEMR_ButtonNorthSouth("north");
+        JPanel southPanel = new GDSEMR_ButtonNorthSouth("south");
 
         frame.add(centerPanel, BorderLayout.CENTER);
         frame.add(westPanel, BorderLayout.WEST);

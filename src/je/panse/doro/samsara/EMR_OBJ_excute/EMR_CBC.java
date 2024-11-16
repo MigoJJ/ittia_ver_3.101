@@ -12,8 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.comm.String_ArrowChange;
-import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.chartplate.filecontrol.String_ArrowChange;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
 public class EMR_CBC extends JFrame {
 
