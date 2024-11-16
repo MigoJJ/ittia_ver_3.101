@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.influenza;
 
-import java.awt.Dimension;
+import java.awt.Dimension;		
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -25,7 +25,7 @@ public class InjectionApp {
         "HAV vaccination #1/2",
         "HBV vaccination #1/3",
         "Prevena 13 (pneumococcal vaccine (PCV13))",
-        "Etc.",
+        "Side Effect",
         "Quit"
     };
 
@@ -81,7 +81,7 @@ public class InjectionApp {
         String Pstring = "\n   ...Vaccination as scheduled";
         String Influ = CCstring + PIstring;
 
-        if (clickedButtonText.contains("Etc")) {
+        if (clickedButtonText.contains("Side Effect")) {
         	 InjectionCheck.main(null);
 //            GDSEMR_frame.setTextAreaText(8, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
         } else {

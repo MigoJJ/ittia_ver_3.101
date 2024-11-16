@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
 public class EMR_BMI_calculator extends JFrame implements ActionListener {
     
