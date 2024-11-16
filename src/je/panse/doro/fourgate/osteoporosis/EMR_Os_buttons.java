@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.osteoporosis;
 
-import java.awt.Color;		
+import java.awt.Color;			
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -22,7 +22,7 @@ import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
 import je.panse.doro.soap.subjective.EMR_symptom_list;
 import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
-public class EMRGDS_Os_buttons {
+public class EMR_Os_buttons {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Select category ...");

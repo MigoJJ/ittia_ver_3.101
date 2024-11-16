@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;	
+import java.awt.BorderLayout;		
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
@@ -14,9 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
-import javax.swing.event.DocumentListener;
-
-import je.panse.doro.chartplate.*;
 import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
 import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
