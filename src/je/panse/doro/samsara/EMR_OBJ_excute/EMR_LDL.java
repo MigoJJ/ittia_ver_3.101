@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
 public class EMR_LDL extends JFrame implements ActionListener, KeyListener {
     private JTextField[] inputFields = {new JTextField(10), new JTextField(10), new JTextField(10)};

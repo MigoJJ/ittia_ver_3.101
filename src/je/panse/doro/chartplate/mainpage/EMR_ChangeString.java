@@ -3,7 +3,7 @@ package je.panse.doro.chartplate.mainpage;
 import java.util.HashMap;
 import java.util.Map;
 
-import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 import je.panse.doro.soap.cc.EMR_ChangeStringCC;
 
 public class EMR_ChangeString {

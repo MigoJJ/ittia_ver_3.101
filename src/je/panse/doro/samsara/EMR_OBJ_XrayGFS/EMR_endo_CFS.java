@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
 public class EMR_endo_CFS {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package je.panse.doro.samsara.comm.alignstring;
+package je.panse.doro.chartplate.filecontrol.align;
 
 import java.awt.Component;
 import java.awt.event.KeyAdapter;
@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import je.panse.doro.GDSEMR_frame;
 
-public class String_ConvertToArray2 extends JFrame {
+public class String_ConvertToArray extends JFrame {
     private JTextArea outputTextArea = new JTextArea(25, 60);
 
     private void createAndShowGUI(String inputString) {
@@ -28,7 +28,7 @@ public class String_ConvertToArray2 extends JFrame {
         // Create a new 2D array to store the table data
         Object[][] data = new Object[rows.length][3];
 
-     // Iterate over the rows
+        // Iterate over the rows
         int rowIndex = 0;
         for (String row : rows) {
             // Split the row by tabs to get columns
@@ -122,15 +122,12 @@ public class String_ConvertToArray2 extends JFrame {
         // Set the text of the JTextArea
         outputTextArea.setText(rowsText.toString());
         System.out.println(rowsText.toString());
-        GDSEMR_frame.setTextAreaText(5, "\n"+ rowsText.toString());
-
+        GDSEMR_frame.setTextAreaText(5, "\n" + rowsText.toString());
     }
 
     public static void main(String inputargs) {
         SwingUtilities.invokeLater(() -> {
-            new String_ConvertToArray2().createAndShowGUI(inputargs);
+            new String_ConvertToArray().createAndShowGUI(inputargs);
         });
     }
 }
-
-

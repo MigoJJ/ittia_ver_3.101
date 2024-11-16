@@ -21,7 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.comm.alignstring.String_ConvertToArray;
+import je.panse.doro.chartplate.filecontrol.align.String_ConvertToArray;
 
 public class EMR_TFT extends JFrame {
     private JTextField[] textFields;

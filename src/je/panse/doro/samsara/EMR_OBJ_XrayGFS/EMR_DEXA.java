@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.comm.datetime.Date_current;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
 public class EMR_DEXA extends JFrame implements ActionListener {
     

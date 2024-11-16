@@ -7,6 +7,8 @@ import java.awt.datatransfer.StringSelection;
 import javax.swing.JOptionPane;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.chartplate.filecontrol.FileGeditToCilpboard;
+import je.panse.doro.chartplate.filecontrol.OpenOneNotePage;
 import je.panse.doro.chartplate.mainpage.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
@@ -23,8 +25,6 @@ import je.panse.doro.listner.ai.Mprompt;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.listner.buttons.EMR_Backup_Excute.EMR_InputFrame;
-import je.panse.doro.samsara.comm.FileGeditToCilpboard;
-import je.panse.doro.samsara.comm.OpenOneNotePage;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;

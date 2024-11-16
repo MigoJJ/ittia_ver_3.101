@@ -14,8 +14,8 @@ import java.util.StringJoiner;
 import javax.swing.JTextArea;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.chartplate.filecontrol.File_copy;
 import je.panse.doro.entry.EntryDir;
-import je.panse.doro.samsara.comm.File_copy;
 
 public class EMR_Write_To_Chartplate extends GDSEMR_frame {
 
