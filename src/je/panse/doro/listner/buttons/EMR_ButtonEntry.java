@@ -1,13 +1,13 @@
 package je.panse.doro.listner.buttons;
 
-import java.awt.Toolkit;
+import java.awt.Toolkit;	
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
 import javax.swing.JOptionPane;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.chartplate.EMR_Write_To_Chartplate;
+import je.panse.doro.chartplate.mainpage.EMR_Write_To_Chartplate;
 import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
@@ -122,12 +122,16 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     break;
                 case "Osteoporosis":
                 	EMRGDS_Os_buttons.main(null);
+//                	EMR_Osteoporosis_mainentry
                     break;
                 case "URI":
                     EMR_FU_uriEdit.main(null);
                     break;
-                                case "Allergy":
+                case "Allergy":
                 	EMRPMHAllergy.main(null);
+                    break;
+                case "Injections":
+                	InjectionApp.main(null);
                     break;
                 case "GDS RC":
                 	RoutineCheck.performGDSRoutineCheck();
@@ -135,7 +139,6 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "공단검진":
                 	RoutineCheck.performHCRoutineCheck();
                     break;
-                
                 case "F/U Edit":
                     System.out.println("southsouthsouth 1 1 1 ~~!!");
                     EMR_FU_mainEdit.main(null);

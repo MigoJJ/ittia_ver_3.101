@@ -1,4 +1,4 @@
-package je.panse.doro.chartplate;
+package je.panse.doro.chartplate.mainpage;
 
 import java.util.HashMap;
 import java.util.Map;

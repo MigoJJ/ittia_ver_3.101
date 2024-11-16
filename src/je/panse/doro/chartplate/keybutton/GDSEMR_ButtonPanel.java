@@ -1,4 +1,4 @@
-package je.panse.doro.chartplate;
+package je.panse.doro.chartplate.keybutton;
 
 import java.awt.Color;		
 import java.awt.FlowLayout;

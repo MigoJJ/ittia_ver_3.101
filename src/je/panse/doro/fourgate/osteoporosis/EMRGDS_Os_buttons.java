@@ -92,9 +92,9 @@ public class EMRGDS_Os_buttons {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Quit")) {
                     frame.dispose();
-                } else if (name.equals("DM General symptoms")) {
-                    String[] Esrr = EMR_symptom_retStr.returnStr("Diabetes Mellitus");
-                    EMR_symptom_list.main(Esrr);
+                } else if (name.equals("Osteoporosis Definition")) {
+                    
+
                 } else if (name.equals("DM Retinopathy")) {
                     EMR_FU_retinopathy.main(null);
                 } else if (name.equals("DM Peripheral Neuropathy")) {
