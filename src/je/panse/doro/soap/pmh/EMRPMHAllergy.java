@@ -130,7 +130,7 @@ public class EMRPMHAllergy extends JFrame {
         allDeniedButton.addActionListener(e -> setAllSymptoms(false));
         anaphylaxisDeniedButton.addActionListener(e -> setAnaphylaxisSymptoms(false));
         saveButton.addActionListener(e -> saveSelectedSymptoms());
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> dispose());
 
         buttonPanel.add(allDeniedButton);
         buttonPanel.add(anaphylaxisDeniedButton);

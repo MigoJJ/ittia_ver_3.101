@@ -1,12 +1,12 @@
 package je.panse.doro.chartplate.keybutton;
 
-import java.awt.Color;		
+import java.awt.Color;			
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import je.panse.doro.listner.buttons.EMR_ButtonEntry;
+import je.panse.doro.chartplate.keybutton.EMR_ButtonEntry;
 
 public class GDSEMR_ButtonNorthSouth extends JPanel {
     private JButton[] buttons = new JButton[11];
