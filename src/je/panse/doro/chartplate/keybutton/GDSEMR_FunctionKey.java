@@ -2,9 +2,9 @@ package je.panse.doro.chartplate.keybutton;
 
 import java.awt.event.KeyEvent;
 
-import je.panse.doro.fourgate.EMR_FU_diabetesEdit;
-import je.panse.doro.fourgate.EMR_FU_hypercholesterolemiaEdit;
-import je.panse.doro.fourgate.EMR_FU_hypertensionEdit;
+import je.panse.doro.fourgate.editmain.EMR_FU_diabetesEdit;
+import je.panse.doro.fourgate.editmain.EMR_FU_hypercholesterolemiaEdit;
+import je.panse.doro.fourgate.editmain.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 

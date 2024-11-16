@@ -1,22 +1,23 @@
-package je.panse.doro.fourgate;
+package je.panse.doro.fourgate.editmain;
 
-import java.io.File;	
+import java.io.File;		
 import java.io.FileNotFoundException;
+import java.util.Random;	
 import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.SwingWorker;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_uriEdit extends JFrame {
+public class EMR_FU_diabetesEdit extends JFrame {
     private static final int NUM_TEXT_AREAS = 10;
 
-    public EMR_FU_uriEdit() {
+    public EMR_FU_diabetesEdit() {
         for (int i = 0; i < NUM_TEXT_AREAS; i++) {
-            if (GDSEMR_frame.textAreas[i] != null) {
+            if (GDSEMR_frame.textAreas != null && GDSEMR_frame.textAreas[i] != null) {
                 GDSEMR_frame.textAreas[i].setText("");
             }
-            String fileName = EntryDir.homeDir + "/fourgate/uri/textarea" + (i);
+            String fileName = EntryDir.homeDir + "/fourgate/diabetes/dmGeneral/textarea" + (i);
             new FileLoader(fileName, i).execute();
         }
     }
@@ -47,10 +48,14 @@ public class EMR_FU_uriEdit extends JFrame {
         protected void done() {
             try {
                 String text = get();
-                if (GDSEMR_frame.textAreas[index] != null) {
+                if (GDSEMR_frame.textAreas != null && GDSEMR_frame.textAreas[index] != null) {
                     GDSEMR_frame.textAreas[index].setText(text);
+
+                    // Get the recommendation directly:
+                    String recommendation = EMR_FU_Comments.getRandomRecommendation("DM");
+                    GDSEMR_frame.setTextAreaText(9, recommendation);  
                 }
-                System.out.println("Loaded text " + text + " from file " + fileName);
+                System.out.println("Loaded text from file: " + fileName); 
             } catch (Exception ex) {
                 System.err.println("Failed to load file " + fileName + ": " + ex.getMessage());
             }
@@ -58,6 +63,7 @@ public class EMR_FU_uriEdit extends JFrame {
     }
 
     public static void main(String[] args) {
-        new EMR_FU_uriEdit();
+        new EMR_FU_diabetesEdit(); 
     }
 }
+
