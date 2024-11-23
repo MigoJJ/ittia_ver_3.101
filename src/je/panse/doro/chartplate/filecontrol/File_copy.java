@@ -13,7 +13,7 @@ public class File_copy {
 
         try {
             Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
-            System.out.println("File copied successfully.");
+//            System.out.println("File copied successfully.");
         } catch (Exception e) {
             e.printStackTrace();
         }

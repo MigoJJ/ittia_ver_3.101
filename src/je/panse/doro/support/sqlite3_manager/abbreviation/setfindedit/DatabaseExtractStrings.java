@@ -15,47 +15,66 @@ import je.panse.doro.entry.EntryDir;
 
 public class DatabaseExtractStrings {
 
-  private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
+    private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
+    private static final String TABLE_NAME = "Abbreviations";
+    private static final String COLUMN_TO_SORT = "abbreviation";
 
-  public static void main(String[] args) throws IOException {
-    // Extract data from the database
-    String[][] data = extractData();
-
-    // Save extracted data to a file
-    saveToFile(data, "extracteddata.txt");
-
-    // Print confirmation message (optional)
-    System.out.println("Data saved to extracteddata.txt");
-  }
-
-  private static void saveToFile(String[][] data, String filename) throws IOException {
-       String filePath = EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/" + "extracteddata.txt"; 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {      for (String[] entry : data) {
-        writer.write("replacements.put( \"" + entry[0] + "\" , \"" + entry[1] + "\");\n");
-      }
-    }
-  }
-
-  private static String[][] extractData() {
-    List<String[]> dataList = new ArrayList<>();
-    String sql = "SELECT abbreviation, full_text FROM abbreviations";
-
-    try (Connection conn = DriverManager.getConnection(dbURL);
-         PreparedStatement pstmt = conn.prepareStatement(sql);
-         ResultSet rs = pstmt.executeQuery()) {
-
-      while (rs.next()) {
-        String abbreviation = rs.getString("abbreviation");
-        String fullText = rs.getString("full_text");
-        dataList.add(new String[]{abbreviation, fullText});
-      }
-
-    } catch (SQLException e) {
-      System.out.println(e.getMessage());
+    public static void main(String[] args) throws IOException {
+        DatabaseExtractStrings extractor = new DatabaseExtractStrings();
+        extractor.extractAndSaveData();
+        extractor.sortAlphabetically();
     }
 
-    // Convert List to String[][]
-    String[][] dataArray = new String[dataList.size()][2];
-    return dataList.toArray(dataArray);
-  }
+    public void extractAndSaveData() throws IOException {
+        String[][] data = extractData();
+        saveToFile(data, "extracteddata.txt");
+        System.out.println("Data saved to extracteddata.txt");
+    }
+
+    private void saveToFile(String[][] data, String filename) throws IOException {
+        String filePath = EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/" + filename;
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (String[] entry : data) {
+                writer.write("replacements.put(\"" + entry[0] + "\", \"" + entry[1] + "\");\n");
+            }
+        }
+    }
+
+    private String[][] extractData() {
+        List<String[]> dataList = new ArrayList<>();
+        String sql = "SELECT abbreviation, full_text FROM " + TABLE_NAME + " ORDER BY " + COLUMN_TO_SORT + " ASC";
+
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                String abbreviation = rs.getString("abbreviation");
+                String fullText = rs.getString("full_text");
+                dataList.add(new String[]{abbreviation, fullText});
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error extracting data: " + e.getMessage());
+        }
+
+        return dataList.toArray(new String[0][]);
+    }
+
+    public void sortAlphabetically() {
+        String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + COLUMN_TO_SORT + " ASC";
+        
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            
+            while (rs.next()) {
+                String abbreviation = rs.getString("abbreviation");
+                String fullText = rs.getString("full_text");
+                System.out.println(abbreviation + ": " + fullText);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error sorting data: " + e.getMessage());
+        }
+    }
 }

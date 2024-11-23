@@ -121,7 +121,7 @@ public class String_ConvertToArray extends JFrame {
 
         // Set the text of the JTextArea
         outputTextArea.setText(rowsText.toString());
-        System.out.println(rowsText.toString());
+//        System.out.println(rowsText.toString());
         GDSEMR_frame.setTextAreaText(5, "\n" + rowsText.toString());
     }
 
