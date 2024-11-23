@@ -34,34 +34,34 @@ public class MainScreen extends JFrame {
     }
 
     private void setupTable() {
-        String[] columnNames = {"Abbreviation", "Full Text"};
-        tableModel = new DefaultTableModel(columnNames, 0);
-        table = new JTable(tableModel);
-        table.setRowHeight(30);
-
-        Font customFont = new Font("Consolas", Font.BOLD, 11);
-        table.setFont(customFont);
-
-        // Add TableRowSorter
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
-        table.setRowSorter(sorter);
-
-        // Sort by Abbreviation column (index 0) in ascending order
-        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
-        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
-        sorter.setSortKeys(sortKeys);
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        add(scrollPane, BorderLayout.CENTER);
-
-        setColumnWidths();
-        setColumnAlignment(); // Align columns
-        setColumnIndentation(table, 6); // Apply indentation
-    }
+		        String[] columnNames = {"Abbreviation", "Full Text"};
+		        tableModel = new DefaultTableModel(columnNames, 0);
+		        table = new JTable(tableModel);
+		        table.setRowHeight(30);
+		
+		        Font customFont = new Font("Consolas", Font.BOLD, 11);
+		        table.setFont(customFont);
+		
+		        // Add TableRowSorter
+		        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+		        table.setRowSorter(sorter);
+		
+		        // Sort by Abbreviation column (index 0) in ascending order
+		        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+		        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+		        sorter.setSortKeys(sortKeys);
+		
+		        JScrollPane scrollPane = new JScrollPane(table);
+		        add(scrollPane, BorderLayout.CENTER);
+		
+		        setColumnWidths();
+		        setColumnAlignment(); // Align columns
+		        setColumnIndentation(table, 6); // Apply indentation
+		    }
 
 
     private void setColumnWidths() {
-        table.getColumnModel().getColumn(0).setPreferredWidth(150); // Abbreviation
+        table.getColumnModel().getColumn(0).setPreferredWidth(30); // Abbreviation
         table.getColumnModel().getColumn(1).setPreferredWidth(500); // Full Text
         table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     }
@@ -74,11 +74,22 @@ public class MainScreen extends JFrame {
         }
     }
 
-    private void setColumnIndentation(JTable table, int indentation) {
+    private void setColumnIndentation(JTable table, int indentSpaces) {
+        int indentPixels = indentSpaces * table.getFontMetrics(table.getFont()).charWidth('W');
+        
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (c instanceof JLabel) {
+                    JLabel label = (JLabel) c;
+                    label.setBorder(BorderFactory.createEmptyBorder(0, indentPixels, 0, 0));
+                }
+                return c;
+            }
+        };
+        
         for (int i = 0; i < table.getColumnCount(); i++) {
-            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-            renderer.setBorder(BorderFactory.createEmptyBorder(0, indentation, 0, 0)); // Set left indentation
-            renderer.setHorizontalAlignment(SwingConstants.LEFT); // Maintain left alignment
             table.getColumnModel().getColumn(i).setCellRenderer(renderer);
         }
     }
