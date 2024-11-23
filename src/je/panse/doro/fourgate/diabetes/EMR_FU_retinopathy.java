@@ -116,7 +116,7 @@ public class EMR_FU_retinopathy {
         JButton saveButton = new JButton("Save");
         saveButton.addActionListener((ActionEvent e) -> {
             // Placeholder for save action
-            System.out.println("Save button clicked. Implement saving logic here.");
+//            System.out.println("Save button clicked. Implement saving logic here.");
             GDSEMR_frame.setTextAreaText(5, "\n"+ textArea.getText());
             GDSEMR_frame.setTextAreaText(5, "\n"+ "*************************************************");
             textArea.setText("");

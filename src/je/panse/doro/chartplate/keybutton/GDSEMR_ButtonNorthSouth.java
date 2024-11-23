@@ -30,7 +30,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
 				e1.printStackTrace();
 			}
 		        // Handle button click
-		        System.out.println("Button " + e.getActionCommand() + " clicked");
+//		        System.out.println("Button " + e.getActionCommand() + " clicked");
 		    }
 		});
 		// Add the button to the panel

@@ -121,7 +121,7 @@ public class ANPdm {
     }
 
 	public static void exitFrame(String buttonName) {
-      System.out.println("Exit action performed    " + buttonName);
+//      System.out.println("Exit action performed    " + buttonName);
       frame.dispose(); // This will close the window and release all resources.	
       }
 }
