@@ -154,12 +154,12 @@ public class EMR_dm_meds extends JFrame {
                     int row = target.getSelectedRow();
                     int column = target.getSelectedColumn();
                     String cellValue = (String) target.getValueAt(row, column);
-                    System.out.println("Current meds  :cd \n ..." + cellValue);
+//                    System.out.println("Current meds  :cd \n ..." + cellValue);
                     
                     try {
                         GDSEMR_frame.setTextAreaText(8, "\n...Current meds [ :cd ]\n ..." + cellValue);
                     } catch (Exception ex) {
-                        System.out.println("Error updating text area: " + ex.getMessage());
+//                        System.out.println("Error updating text area: " + ex.getMessage());
                     }
                 }
             }

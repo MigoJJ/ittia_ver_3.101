@@ -24,7 +24,7 @@ public class Date_current {
 	    	  ft =  new SimpleDateFormat ("yyyy.MM.dd E  hh:mm a ");  
 	      }
 	      save_time = ft.format(dNow);
-	      System.out.println("Current Date: " + ft.format(dNow));
+//	      System.out.println("Current Date: " + ft.format(dNow));
 	      return save_time;
 	}
 
@@ -32,7 +32,7 @@ public class Date_current {
 		String dateinput = args;
 		Date_current add_date = new Date_current();
 		String rcd = add_date.defineTime(dateinput);
-		System.out.println("Returned Current Date: " + rcd);		
+//		System.out.println("Returned Current Date: " + rcd);		
 	   return rcd;
 	}
 }
