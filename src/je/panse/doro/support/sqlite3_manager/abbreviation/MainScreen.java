@@ -3,26 +3,24 @@ package je.panse.doro.support.sqlite3_manager.abbreviation;
 import java.awt.*;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.table.*;
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.DatabaseExtractStrings;
 import je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit.DatabaseSort;
 
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-
 public class MainScreen extends JFrame {
     private DefaultTableModel tableModel;
     private JTable table;
     private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
-    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
     public MainScreen() {
         setupFrame();
         setupTable();
         setupButtons();
+        createDatabaseTable(); // Ensure the table exists
         loadData();
         setVisible(true);
     }
@@ -40,45 +38,51 @@ public class MainScreen extends JFrame {
         tableModel = new DefaultTableModel(columnNames, 0);
         table = new JTable(tableModel);
         table.setRowHeight(30);
-        
-        Font customFont = new Font("Consolas", Font.BOLD,11);
+
+        Font customFont = new Font("Consolas", Font.BOLD, 11);
         table.setFont(customFont);
-        
+
+        // Add TableRowSorter
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
+        table.setRowSorter(sorter);
+
+        // Sort by Abbreviation column (index 0) in ascending order
+        List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+        sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
+        sorter.setSortKeys(sortKeys);
+
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
-        
+
         setColumnWidths();
-        setColumnAlignment();
-        setColumnIndentation(table, 6);
+        setColumnAlignment(); // Align columns
+        setColumnIndentation(table, 6); // Apply indentation
     }
-    private void setColumnIndentation(JTable table, int indentSpaces) {
-        int indentPixels = indentSpaces * 6;
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer() {
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                if (c instanceof JLabel) {
-                    JLabel label = (JLabel) c;
-                    label.setBorder(BorderFactory.createEmptyBorder(0, indentPixels, 0, 0));
-                }
-                return c;
-            }
-        };
-        for (int i = 0; i < table.getColumnCount(); i++) {
-            table.getColumnModel().getColumn(i).setCellRenderer(renderer);
-        }
-    }
+
+
     private void setColumnWidths() {
-        table.getColumnModel().getColumn(0).setPreferredWidth(15);
-        table.getColumnModel().getColumn(1).setPreferredWidth(500);
+        table.getColumnModel().getColumn(0).setPreferredWidth(150); // Abbreviation
+        table.getColumnModel().getColumn(1).setPreferredWidth(500); // Full Text
         table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
     }
 
     private void setColumnAlignment() {
-        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-        rightRenderer.setHorizontalAlignment(JLabel.RIGHT);
-        table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            table.getColumnModel().getColumn(i).setCellRenderer(renderer);
+        }
     }
+
+    private void setColumnIndentation(JTable table, int indentation) {
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+            renderer.setBorder(BorderFactory.createEmptyBorder(0, indentation, 0, 0)); // Set left indentation
+            renderer.setHorizontalAlignment(SwingConstants.LEFT); // Maintain left alignment
+            table.getColumnModel().getColumn(i).setCellRenderer(renderer);
+        }
+    }
+
 
     private void setupButtons() {
         JPanel southPanel = new JPanel();
@@ -93,28 +97,37 @@ public class MainScreen extends JFrame {
 
     private void handleButtonClick(String label) {
         switch (label) {
-            case "Add": showAddDialog(); break;
-            case "Delete": deleteRecord(); break;
-            case "Edit": editRecord(); break;
-            case "Find": showFindDialog(); break;
-            case "Exit": 
-            	          DatabaseSort.main(null);
-            	          dispose(); break;
-            case "Extract": 
+            case "Add":
+                showAddDialog();
+                break;
+            case "Delete":
+                deleteRecord();
+                break;
+            case "Edit":
+                editRecord();
+                break;
+            case "Find":
+                showFindDialog();
+                break;
+            case "Exit":
+                dispose();
+                break;
+            case "Extract":
                 try {
                     DatabaseExtractStrings.main(null);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    showError("Error extracting data: " + e.getMessage());
                 }
                 break;
         }
     }
 
     private void loadData() {
+        String sql = "SELECT abbreviation, full_text FROM Abbreviations";
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT abbreviation, full_text FROM Abbreviations")) {
-            tableModel.setRowCount(0);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            tableModel.setRowCount(0); // Clear existing data
             while (rs.next()) {
                 tableModel.addRow(new Object[]{rs.getString("abbreviation"), rs.getString("full_text")});
             }
@@ -123,56 +136,44 @@ public class MainScreen extends JFrame {
         }
     }
 
+    private void createDatabaseTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS Abbreviations (" +
+                     "abbreviation TEXT PRIMARY KEY, " +
+                     "full_text TEXT NOT NULL)";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+        } catch (SQLException e) {
+            showError("Error creating table: " + e.getMessage());
+        }
+    }
+
     private void showAddDialog() {
         JTextField abbreviationField = new JTextField(10);
         JTextField fullTextField = new JTextField(30);
         JPanel panel = createInputPanel(abbreviationField, fullTextField);
-        
+
         if (JOptionPane.showConfirmDialog(null, panel, "Add New Entry", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
             insertRecord(abbreviationField.getText(), fullTextField.getText());
         }
     }
 
-    private void showFindDialog() {
-        JTextField searchText = new JTextField(30);
-        JPanel panel = new JPanel(new GridLayout(0, 1));
-        panel.add(new JLabel("Search Text:"));
-        panel.add(searchText);
-
-        int result = JOptionPane.showConfirmDialog(null, panel, "Find Abbreviation or Full Text", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-        if (result == JOptionPane.OK_OPTION) {
-            findRecords(searchText.getText());
-        }
-    }
-
-    private void findRecords(String searchText) {
-        String sql = "SELECT abbreviation, full_text FROM Abbreviations WHERE abbreviation LIKE ? OR full_text LIKE ?";
-        try (Connection conn = DriverManager.getConnection(MainScreen.dbURL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, "%" + searchText + "%");
-            pstmt.setString(2, "%" + searchText + "%");
-            ResultSet rs = pstmt.executeQuery();
-            tableModel.setRowCount(0); // Clear existing data
-            while (rs.next()) {
-                tableModel.addRow(new Object[]{rs.getString("abbreviation"), rs.getString("full_text")});
-            }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error finding data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-    
     private void insertRecord(String abbreviation, String fullText) {
+        if (abbreviation.isEmpty() || fullText.isEmpty()) {
+            showError("Abbreviation and Full Text cannot be empty.");
+            return;
+        }
+
         String sql = "INSERT INTO Abbreviations (abbreviation, full_text) VALUES (?, ?)";
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, abbreviation);
             pstmt.setString(2, fullText);
-            if (pstmt.executeUpdate() > 0) {
-                tableModel.addRow(new Object[]{abbreviation, fullText});
-                JOptionPane.showMessageDialog(this, "Record added successfully!");
-            }
+            pstmt.executeUpdate();
+            tableModel.addRow(new Object[]{abbreviation, fullText});
+            JOptionPane.showMessageDialog(this, "Record added successfully!");
         } catch (SQLException e) {
-            showError("Error inserting data: " + e.getMessage());
+            showError("Error inserting record: " + e.getMessage());
         }
     }
 
@@ -184,12 +185,11 @@ public class MainScreen extends JFrame {
             try (Connection conn = DriverManager.getConnection(DB_URL);
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, abbreviation);
-                if (pstmt.executeUpdate() > 0) {
-                    tableModel.removeRow(selectedRow);
-                    JOptionPane.showMessageDialog(this, "Record deleted successfully!");
-                }
+                pstmt.executeUpdate();
+                tableModel.removeRow(selectedRow);
+                JOptionPane.showMessageDialog(this, "Record deleted successfully!");
             } catch (SQLException e) {
-                showError("Error deleting data: " + e.getMessage());
+                showError("Error deleting record: " + e.getMessage());
             }
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
@@ -203,16 +203,12 @@ public class MainScreen extends JFrame {
             JTextField abbreviationField = new JTextField(abbreviation, 10);
             JTextField fullTextField = new JTextField((String) tableModel.getValueAt(selectedRow, 1), 30);
             JPanel panel = createInputPanel(abbreviationField, fullTextField);
-            
+
             if (JOptionPane.showConfirmDialog(null, panel, "Edit Entry", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
                 String newAbbreviation = abbreviationField.getText().trim();
                 String newFullText = fullTextField.getText().trim();
-                if (!newAbbreviation.isEmpty() && !newFullText.isEmpty()) {
-                    updateRecord(abbreviation, newAbbreviation, newFullText);
-                    loadData();
-                } else {
-                    JOptionPane.showMessageDialog(this, "Please enter both abbreviation and full text.");
-                }
+                updateRecord(abbreviation, newAbbreviation, newFullText);
+                loadData();
             }
         } else {
             JOptionPane.showMessageDialog(this, "Please select a row to edit.");
@@ -226,11 +222,37 @@ public class MainScreen extends JFrame {
             pstmt.setString(1, newAbbreviation);
             pstmt.setString(2, newFullText);
             pstmt.setString(3, oldAbbreviation);
-            if (pstmt.executeUpdate() > 0) {
-                JOptionPane.showMessageDialog(this, "Record updated successfully!");
+            pstmt.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Record updated successfully!");
+        } catch (SQLException e) {
+            showError("Error updating record: " + e.getMessage());
+        }
+    }
+
+    private void showFindDialog() {
+        JTextField searchText = new JTextField(30);
+        JPanel panel = new JPanel(new GridLayout(0, 1));
+        panel.add(new JLabel("Search Text:"));
+        panel.add(searchText);
+
+        if (JOptionPane.showConfirmDialog(null, panel, "Find Record", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            findRecords(searchText.getText());
+        }
+    }
+
+    private void findRecords(String searchText) {
+        String sql = "SELECT abbreviation, full_text FROM Abbreviations WHERE abbreviation LIKE ? OR full_text LIKE ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, "%" + searchText + "%");
+            pstmt.setString(2, "%" + searchText + "%");
+            ResultSet rs = pstmt.executeQuery();
+            tableModel.setRowCount(0); // Clear existing data
+            while (rs.next()) {
+                tableModel.addRow(new Object[]{rs.getString("abbreviation"), rs.getString("full_text")});
             }
         } catch (SQLException e) {
-            showError("Error updating data: " + e.getMessage());
+            showError("Error finding records: " + e.getMessage());
         }
     }
 
@@ -244,7 +266,7 @@ public class MainScreen extends JFrame {
     }
 
     private void showError(String message) {
-        JOptionPane.showMessageDialog(this, message, "Database Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     public static void main(String[] args) {
