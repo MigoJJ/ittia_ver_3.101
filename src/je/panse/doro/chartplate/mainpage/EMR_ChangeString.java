@@ -21,7 +21,7 @@ public class EMR_ChangeString {
     	replacements.put( ":amis " , "Acute Myocardial Infarction with stent insertion");
     	replacements.put( ":anx " , "Anxiety disorder");
     	replacements.put( ":ap " , "Angina Pectoris");
-    	replacements.put( ":apc " , "APC atrial premature complexes");
+    	replacements.put( ":apc" , "APC atrial premature complexes");
     	replacements.put( ":aps " , "Angina Pectoris with stent insertion");
     	replacements.put( ":as " , "Artherosclerosis Carotid artery");
     	replacements.put( ":asa " , "Artherosclerosis Carotid artery and Aorta");
@@ -39,7 +39,7 @@ public class EMR_ChangeString {
     	replacements.put( ":cat " , "Cataract(+)");
     	replacements.put( ":cato " , "Cataract operation (+) [ ]");
     	replacements.put( ":c " , "Hypercholesterolemia");
-    	replacements.put( ":cf " , "Hypercholesterolemia F/U");
+    	replacements.put( ":cf" , "Hypercholesterolemia F/U");
     	replacements.put( ":cd " , "Colonic diverticulum [  ] test");
     	replacements.put( ":cog " , "Cognitive Disorder");
     	replacements.put( ":con " , "Constipation");
@@ -164,8 +164,9 @@ public class EMR_ChangeString {
     	replacements.put( ":tegf " , "Hyperthyroidism Greaves' disease F/U");
     	replacements.put( ":oc " , "s/p cholecystectomy due to GB stone");
     	replacements.put( ":cdd " , "current date");
-    	replacements.put( ":new " , "The patient visited GDS Internal Medicine Clinic for the first time.[:cd ]");
-    	replacements.put( ":all " , "During the medical check-up, the patient had no known allergies to food, injections and medications as of November 2024 ");
+    	replacements.put( ":new " , "The patient visited GDS Internal Medicine clinic for the first time. [:cd ]");
+    	replacements.put( ":all " , "During the medical check-up, the patient had no known allergies to food, injections and medications as of  November 2024");
+    	replacements.put( ":her " , "Herpes Zoster");
 
     }
 

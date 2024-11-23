@@ -1,4 +1,4 @@
-package je.panse.doro.support.sqlite3_manager.abbreviation.actionfolder;
+package je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit;
 
 import java.sql.*;
 import je.panse.doro.entry.EntryDir;
