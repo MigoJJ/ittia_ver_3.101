@@ -1,22 +1,12 @@
 
-  CC>    DM F/U
-  ROS>< Hematology/Oncology >,
-	[◇] Easy bruising,
-	[◇] Fatigue,
-	[◇] Enlarged lymph nodes,
-	[◇] Night sweats,
-	[◇] Skin changes
-  S>
-    Frequent urination [ - ]
-    Increased thirst [ - ]
-    increased hunger.[ - ]
-    Unexpected Weight loss [ - ]
-    Extreme Fatigue [ so-so ]
-    Blurred vision [denied ]
-  A>
-#  DM  F/U 
-  P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...continue with current dosages of meds
-  Comment>
-Get regular eye, foot, and dental checkups.
+  CC>	The patient received a lab results phone call notification from the doctor's office.  
+  Physical Exam>	<Thyroid Exam>
+     Goiter size  :	[   ] cc
+     Goiter :		
+     Nodules :		
+     Consistency:	
+     Tenderness:	
+     Bruit :		
+     DTR :		
+     Werner’s Report :
+	 

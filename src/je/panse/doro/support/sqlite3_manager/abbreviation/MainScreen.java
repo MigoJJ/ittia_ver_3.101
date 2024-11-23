@@ -29,72 +29,79 @@ public class MainScreen extends JFrame {
     private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 //    private static String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_3.051/src/je/panse/doro/support/sqlite3_manager/abbreviation/AbbFullDis.db";
 
-    
-    public MainScreen() {
+        public MainScreen() {
         setTitle("Database Interaction Screen");
         setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-
-        // Table setup
-        tableModel = new DefaultTableModel(new String[]{"Abbreviation", "Full Text"}, 0);
-        table = new JTable(tableModel);
-        table.setRowHeight(30); // Set the row height to 30
-
-        // Center the frame on the screen
         setLocationRelativeTo(null);
 
-        JScrollPane scrollPane = new JScrollPane(table);
-        add(scrollPane, BorderLayout.CENTER);
+     // Table setup
+        String[] columnNames = {"Abbreviation", "Full Text"};
+        tableModel = new DefaultTableModel(columnNames, 0);
+        table = new JTable(tableModel);
+        table.setRowHeight(30);
 
-        // Set column width ratio 1:2 (Abbreviation: Full Text)
-        setColumnWidths(table, 1, 2);
+	        // Set font to Consolas Bold size 12
+	        Font customFont = new Font("Consolas", Font.BOLD, 12);
+	        table.setFont(customFont);
+	
+	        JScrollPane scrollPane = new JScrollPane(table);
+	        add(scrollPane, BorderLayout.CENTER);
+	
+	        setColumnIndentation(table, 6);
+	
+	        // Adjust column widths
+	        table.getColumnModel().getColumn(0).setPreferredWidth(30); // Abbreviation column
+	        table.getColumnModel().getColumn(1).setPreferredWidth(300); // Full Text column
+	
+	        // Ensure the columns maintain their relative sizes
+	        table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 
-        // Set indentation for table cells
-        setColumnIndentation(table, 6);
-
+        // Align Abbreviation column to the right
+        DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
+        rightRenderer.setHorizontalAlignment(JLabel.CENTER);
+        table.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
         // South panel for buttons
         JPanel southPanel = new JPanel();
-
-        JButton addButton = new JButton("Add");
-        addButton.addActionListener(e -> showAddDialog());
-        southPanel.add(addButton);
-
-        JButton deleteButton = new JButton("Delete");
-        deleteButton.addActionListener(e -> deleteRecord());
-        southPanel.add(deleteButton);
-
-        JButton editButton = new JButton("Edit");
-        editButton.addActionListener(e -> editRecord());
-        southPanel.add(editButton);
-
-        JButton findButton = new JButton("Find");
-        findButton.addActionListener(e -> showFindDialog());
-        southPanel.add(findButton);
-
-        JButton exitButton = new JButton("Exit");
-        exitButton.addActionListener(e -> dispose());
-        southPanel.add(exitButton);
-
-        JButton extractButton = new JButton("Extract");
-        extractButton.addActionListener(e -> {
-            try {
-                DatabaseExtractStrings.main(null);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        });
-        southPanel.add(extractButton);
-
+        String[] buttonLabels = {"Add", "Delete", "Edit", "Find", "Exit", "Extract"};
+        for (String label : buttonLabels) {
+            JButton button = new JButton(label);
+            button.addActionListener(e -> handleButtonClick(label));
+            southPanel.add(button);
+        }
         add(southPanel, BorderLayout.SOUTH);
 
-        // Load initial data
         loadData();
-
-        // Set default font for center panel components
-        setDefaultFont(scrollPane, new Font("Consolas", Font.PLAIN, 16));
-
+        setDefaultFont(scrollPane, new Font("Consolas", Font.PLAIN, 12));
         setVisible(true);
+    }
+
+    private void handleButtonClick(String label) {
+        switch (label) {
+            case "Add":
+                showAddDialog();
+                break;
+            case "Delete":
+                deleteRecord();
+                break;
+            case "Edit":
+                editRecord();
+                break;
+            case "Find":
+                showFindDialog();
+                break;
+            case "Exit":
+                dispose();
+                break;
+            case "Extract":
+                try {
+                    DatabaseExtractStrings.main(null);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
     }
 
     private void setColumnWidths(JTable table, int... widths) {
