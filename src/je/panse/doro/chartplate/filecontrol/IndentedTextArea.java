@@ -1,4 +1,4 @@
-package je.panse.doro.listner;
+package je.panse.doro.chartplate.filecontrol;
 
 import javax.swing.*;		
 import javax.swing.text.*;
