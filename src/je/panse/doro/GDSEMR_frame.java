@@ -14,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
+
+import je.panse.doro.chartplate.keybutton.EMR_east_buttons_obj;
 import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
 import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
