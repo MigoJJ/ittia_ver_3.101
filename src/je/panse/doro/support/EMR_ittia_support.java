@@ -17,7 +17,7 @@ public class EMR_ittia_support {
             if (directory.exists()) {
                 Desktop desktop = Desktop.getDesktop();
                 desktop.open(directory);
-                System.out.println("Directory opened successfully.");
+//                System.out.println("Directory opened successfully.");
             } else {
                 System.err.println("Directory does not exist.");
             }

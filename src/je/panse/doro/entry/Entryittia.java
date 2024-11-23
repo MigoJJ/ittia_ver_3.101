@@ -58,13 +58,13 @@ public class Entryittia extends JFrame implements ActionListener {
                 break;
             case "Rescue":
                 // Placeholder for Rescue functionality
-                System.out.println("Rescue action triggered.");
+//                System.out.println("Rescue action triggered.");
                 break;
             case "Quit":
                 dispose(); // Close the frame when "Quit" is pressed
                 break;
             default:
-                System.err.println("Unrecognized action for button: " + buttonText);
+//                System.err.println("Unrecognized action for button: " + buttonText);
         }
     }
 
@@ -79,7 +79,7 @@ public class Entryittia extends JFrame implements ActionListener {
         if (Desktop.isDesktopSupported() && file.exists()) {
             Desktop.getDesktop().open(file); // Opens with default system editor
         } else {
-            System.err.println("Desktop is not supported or file does not exist: " + filePath);
+//            System.err.println("Desktop is not supported or file does not exist: " + filePath);
         }
     }
 
@@ -94,7 +94,7 @@ public class Entryittia extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
         String buttonText = button.getText();
-        System.out.println("Button \"" + buttonText + "\" was pressed.");
+//        System.out.println("Button \"" + buttonText + "\" was pressed.");
         
         try {
             handleButtonPress(buttonText);

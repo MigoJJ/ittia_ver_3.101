@@ -56,7 +56,7 @@ public class EMR_FU_Comments {
         if (args.length > 0) {
             String dcode = args[0];
             String recommendation = getRandomRecommendation(dcode);
-            System.out.println(recommendation);
+//            System.out.println(recommendation);
             GDSEMR_frame.setTextAreaText(9, recommendation); // Assuming this method exists
         } else {
             System.err.println("Error: Please provide a dcode (DM, BP, or Chol) as an argument.");

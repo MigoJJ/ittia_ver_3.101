@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;		
+import java.awt.BorderLayout;			
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.KeyAdapter;
@@ -14,13 +14,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingUtilities;
+
+import je.panse.doro.chartplate.keybutton.EMR_east_buttons_obj;
 import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
 import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
 import je.panse.doro.chartplate.mainpage.GDSEMR_DocumentListner;
 import je.panse.doro.chartplate.mainpage.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
-import je.panse.doro.samsara.*;
+
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.*;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
@@ -97,6 +99,44 @@ public class GDSEMR_frame {
         return westPanel;
     }
 
+    public static void setTextAreaText(int index, String text) {
+        if (textAreas != null && index >= 0 && index < textAreas.length) {
+            textAreas[index].append(text);
+        } else {
+            System.err.println("Invalid text area index or text areas not initialized.");
+        }
+    }
+
+    public static void updateTempOutputArea(String text) {
+        tempOutputArea.setText(text);
+    }
+    
+    private static class FunctionKeyPress extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            int keyCode = e.getKeyCode();
+            if (keyCode >= KeyEvent.VK_F1 && keyCode <= KeyEvent.VK_F12) {
+                String functionKeyMessage = "F" + (keyCode - KeyEvent.VK_F1 + 1) + " key pressed - Action executed.";
+                GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage, keyCode);
+            }
+        }
+    }
+
+    private static class DoubleClickMouseListener extends MouseAdapter {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() == 2) {
+                JTextArea source = (JTextArea) e.getSource();
+                String text = source.getText();
+//                System.out.println("Double-clicked on: " + text);
+                try {
+                    GDSEMR_fourgate.main(text);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             GDSEMR_frame emrFrame = new GDSEMR_frame();
@@ -115,44 +155,5 @@ public class GDSEMR_frame {
         EMR_BMI_calculator.main(null);
         EMR_TFT.main(null);
         InjectionApp.main(null);
-    }
-
-    public static void setTextAreaText(int index, String text) {
-        if (textAreas != null && index >= 0 && index < textAreas.length) {
-            textAreas[index].append(text);
-        } else {
-            System.err.println("Invalid text area index or text areas not initialized.");
-        }
-    }
-
-    private static class FunctionKeyPress extends KeyAdapter {
-        @Override
-        public void keyPressed(KeyEvent e) {
-            int keyCode = e.getKeyCode();
-            if (keyCode >= KeyEvent.VK_F1 && keyCode <= KeyEvent.VK_F12) {
-                String functionKeyMessage = "F" + (keyCode - KeyEvent.VK_F1 + 1) + " key pressed - Action executed.";
-                GDSEMR_FunctionKey.handleFunctionKeyAction(1, functionKeyMessage, keyCode);
-            }
-        }
-    }
-
-    private static class DoubleClickMouseListener extends MouseAdapter {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if (e.getClickCount() == 2) {
-                JTextArea source = (JTextArea) e.getSource();
-                String text = source.getText();
-                System.out.println("Double-clicked on: " + text);
-                try {
-                    GDSEMR_fourgate.main(text);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
-    }
-
-    public static void updateTempOutputArea(String text) {
-        tempOutputArea.setText(text);
     }
 }

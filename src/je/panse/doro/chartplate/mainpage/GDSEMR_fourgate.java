@@ -3,7 +3,7 @@ package je.panse.doro.chartplate.mainpage;
 import java.io.IOException;		
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.EMR_east_buttons_obj;
+import je.panse.doro.chartplate.keybutton.EMR_east_buttons_obj;
 import je.panse.doro.soap.assessment.AssessmentSupport;
 import je.panse.doro.soap.cc.CCSupport;
 import je.panse.doro.soap.pe.EMR_PE_general;
@@ -20,7 +20,7 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 	}
 
 	public static void main(String text) throws IOException {
-		System.out.println("Double-clicked on: text >>> " + text);
+//		System.out.println("Double-clicked on: text >>> " + text);
 		if (text.contains("PMH>")) {
 			EMRPMH.main(null);
 		} else if (text.contains("CC>")) {
