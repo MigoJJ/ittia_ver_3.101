@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate.mainpage;
 
-import java.io.IOException;
+import java.io.IOException;	
 import javax.swing.JTextArea;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -38,18 +38,21 @@ public class GDSEMR_DocumentListner implements DocumentListener {
         }
     }
 
-    public void updateOutputArea() throws IOException {
-        String outputData = "";
-        for (int i = 0; i < textAreas.length; i++) {
-            String text = textAreas[i].getText();
-            
-            text = EMR_ChangeString.EMR_ChangeString(text);
-            text = EMR_organize_titles.EMR_organize_titles(text);
-            outputData += ("\n" + text);
 
+    public void updateOutputArea() throws IOException {
+        StringBuilder outputData = new StringBuilder();
+        for (int i = 0; i < textAreas.length; i++) {
+            if (textAreas[i] != null) {
+                String text = textAreas[i].getText();
+                if (text != null && !text.isEmpty()) {
+                    text = EMR_ChangeString.EMR_ChangeString(text);
+                    text = EMR_organize_titles.EMR_organize_titles(text);
+                    outputData.append("\n").append(text);
+                }
+            }
         }
-        tempOutputArea.setText(outputData);
+        tempOutputArea.setText(outputData.toString());
         EMR_Write_To_Chartplate.textAreaAppend(tempOutputArea);
     }
-    
+
 }
