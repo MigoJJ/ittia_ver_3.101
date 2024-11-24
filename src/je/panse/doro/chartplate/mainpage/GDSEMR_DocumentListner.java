@@ -39,20 +39,39 @@ public class GDSEMR_DocumentListner implements DocumentListener {
     }
 
 
-    public void updateOutputArea() throws IOException {
+    public synchronized void updateOutputArea() throws IOException {
+        // The rest of the code remains the same
+
         StringBuilder outputData = new StringBuilder();
         for (int i = 0; i < textAreas.length; i++) {
             if (textAreas[i] != null) {
                 String text = textAreas[i].getText();
                 if (text != null && !text.isEmpty()) {
-                    text = EMR_ChangeString.EMR_ChangeString(text);
-                    text = EMR_organize_titles.EMR_organize_titles(text);
+                    try {
+                        System.out.println("Processing text area " + i + ": " + text);
+                        text = EMR_ChangeString.EMR_ChangeString(text);
+                        System.out.println("After EMR_ChangeString: " + text);
+                        text = EMR_organize_titles.EMR_organize_titles(text);
+                        System.out.println("After EMR_organize_titles: " + text);
+                    } catch (Exception e) {
+                        System.err.println("Error processing text area " + i + ": " + e.getMessage());
+                        e.printStackTrace();
+                        continue; // Skip to the next text area
+                    }
                     outputData.append("\n").append(text);
                 }
             }
         }
         tempOutputArea.setText(outputData.toString());
-        EMR_Write_To_Chartplate.textAreaAppend(tempOutputArea);
+        System.out.println("Final Output Data: " + outputData);
+
+        try {
+            EMR_Write_To_Chartplate.textAreaAppend(tempOutputArea);
+        } catch (Exception e) {
+            System.err.println("Error updating chart plate: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
+
 
 }

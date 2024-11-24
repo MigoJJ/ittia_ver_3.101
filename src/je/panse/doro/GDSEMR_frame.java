@@ -1,25 +1,9 @@
 package je.panse.doro;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridLayout;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import je.panse.doro.chartplate.keybutton.EMR_east_buttons_obj;
 import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
@@ -29,9 +13,7 @@ import je.panse.doro.chartplate.mainpage.GDSEMR_DocumentListner;
 import je.panse.doro.chartplate.mainpage.GDSEMR_fourgate;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
-import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.*;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
@@ -41,58 +23,38 @@ public class GDSEMR_frame {
     public static JFrame frame;
     public static JTextArea[] textAreas;
     public static JTextArea tempOutputArea;
-    public static String[] titles = {"CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>"};
+    public static String[] titles = {
+        "CC>", "PI>", "ROS>", "PMH>", "S>", 
+        "O>", "Physical Exam>", "A>", "P>", "Comment>"
+    };
 
     public GDSEMR_frame() {
         frame = new JFrame("GDS EMR Interface for Physician");
-        textAreas = new JTextArea[10];
-
-        // Create tempOutputArea with gradient background
-        tempOutputArea = new JTextArea() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g.create();
-                int width = getWidth();
-                int height = getHeight();
-
-                // Create a gradient paint with very light green
-                GradientPaint gradient = new GradientPaint(
-                    0, 0, new Color(224, 255, 224),  // Start color (very light green)
-                    0, height, Color.WHITE           // End color (white)
-                );
-                g2d.setPaint(gradient);
-                g2d.fillRect(0, 0, width, height);
-
-                g2d.dispose();
-            }
-        };
-
-        tempOutputArea.setLineWrap(true);
-        tempOutputArea.setWrapStyleWord(true);
-        tempOutputArea.setFont(new Font("Consolas", Font.PLAIN, 11));
-        tempOutputArea.setEditable(true);
+        textAreas = new JTextArea[titles.length];
+        tempOutputArea = new JTextArea();
     }
 
+    /**
+     * Initializes and displays the GUI.
+     */
     public void createAndShowGUI() throws Exception {
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         frame.setLocation(360, 60);
         frame.setUndecorated(true);
 
-        JPanel centerPanel = createCenterPanel();
-        JPanel westPanel = createWestPanel();
-        JPanel northPanel = new GDSEMR_ButtonNorthSouth("north");
-        JPanel southPanel = new GDSEMR_ButtonNorthSouth("south");
-
-        frame.add(centerPanel, BorderLayout.CENTER);
-        frame.add(westPanel, BorderLayout.WEST);
-        frame.add(northPanel, BorderLayout.NORTH);
-        frame.add(southPanel, BorderLayout.SOUTH);
+        // Add panels
+        frame.add(createCenterPanel(), BorderLayout.CENTER);
+        frame.add(createWestPanel(), BorderLayout.WEST);
+        frame.add(new GDSEMR_ButtonNorthSouth("north"), BorderLayout.NORTH);
+        frame.add(new GDSEMR_ButtonNorthSouth("south"), BorderLayout.SOUTH);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
 
+    /**
+     * Creates the center panel containing text areas.
+     */
     private JPanel createCenterPanel() {
         JPanel centerPanel = new JPanel(new GridLayout(5, 2));
         centerPanel.setPreferredSize(new Dimension(900, 1000));
@@ -102,35 +64,69 @@ public class GDSEMR_frame {
             textAreas[i].setLineWrap(true);
             textAreas[i].setCaretPosition(0);
 
+            // Apply custom blending colors
             try {
                 EMR_BlendColors.blendColors(textAreas[i], tempOutputArea, i);
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
+            // Add scroll pane and listeners
             JScrollPane scrollPane = new JScrollPane(textAreas[i]);
             scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
             centerPanel.add(scrollPane);
 
             textAreas[i].getDocument().addDocumentListener(new GDSEMR_DocumentListner(textAreas, tempOutputArea));
-
             textAreas[i].addMouseListener(new DoubleClickMouseListener());
             textAreas[i].addKeyListener(new FunctionKeyPress());
         }
         return centerPanel;
     }
 
+    /**
+     * Creates the west panel containing the output area.
+     */
     private JPanel createWestPanel() {
-        JPanel westPanel = new JPanel(new BorderLayout());
+        // Custom JPanel with gradient background
+        JPanel westPanel = new JPanel(new BorderLayout()) {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = (Graphics2D) g;
+                int width = getWidth();
+                int height = getHeight();
+
+                // Define the gradient from white to light green
+                GradientPaint gradient = new GradientPaint(
+                    0, 0, new Color(240, 255, 240), // Very light green
+                    0, height, new Color(220, 245, 220) // Slightly darker green
+                );
+                g2d.setPaint(gradient);
+                g2d.fillRect(0, 0, width, height);
+            }
+        };
+
         westPanel.setPreferredSize(new Dimension(500, FRAME_HEIGHT));
 
+        // ScrollPane for tempOutputArea
         JScrollPane outputScrollPane = new JScrollPane(tempOutputArea);
         outputScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        outputScrollPane.setOpaque(false);
+        outputScrollPane.getViewport().setOpaque(false);
+
+        // Ensure tempOutputArea itself is transparent to show the gradient
+        tempOutputArea.setOpaque(false);
+        tempOutputArea.setBorder(null);
+
         westPanel.add(outputScrollPane, BorderLayout.CENTER);
 
         return westPanel;
     }
 
+
+    /**
+     * Updates the text of a specific text area.
+     */
     public static void setTextAreaText(int index, String text) {
         if (textAreas != null && index >= 0 && index < textAreas.length) {
             textAreas[index].append(text);
@@ -139,10 +135,16 @@ public class GDSEMR_frame {
         }
     }
 
+    /**
+     * Updates the temporary output area.
+     */
     public static void updateTempOutputArea(String text) {
         tempOutputArea.setText(text);
     }
 
+    /**
+     * Handles function key press events.
+     */
     private static class FunctionKeyPress extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -154,6 +156,9 @@ public class GDSEMR_frame {
         }
     }
 
+    /**
+     * Handles double-click events on text areas.
+     */
     private static class DoubleClickMouseListener extends MouseAdapter {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -162,13 +167,16 @@ public class GDSEMR_frame {
                 String text = source.getText();
                 try {
                     GDSEMR_fourgate.main(text);
-                } catch (IOException e1) {
-                    e1.printStackTrace();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
                 }
             }
         }
     }
 
+    /**
+     * Main method to launch the application.
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             GDSEMR_frame emrFrame = new GDSEMR_frame();
