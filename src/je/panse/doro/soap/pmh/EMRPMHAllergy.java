@@ -9,9 +9,10 @@ import java.awt.*;
 import java.time.LocalDate;
 
 public class EMRPMHAllergy extends JFrame {
-    private JTable table;
-    private DefaultTableModel tableModel;
-    private JTextArea textArea;
+    private static JTable table;
+    private static DefaultTableModel tableModel;
+    private static JTextArea textArea;
+    private static EMRPMHAllergy instance;
 
     public EMRPMHAllergy() {
         initializeFrame();
@@ -139,27 +140,31 @@ public class EMRPMHAllergy extends JFrame {
 
         add(buttonPanel, BorderLayout.SOUTH);
     }
-
-    private void setAllSymptoms(boolean value) {
+    public static EMRPMHAllergy getInstance() {
+        if (instance == null) {
+            instance = new EMRPMHAllergy();
+        }
+        return instance;
+    }
+    public static void setAllSymptoms(boolean value) {
+        if (instance == null) {
+            return;
+        }
+        
         for (int i = 0; i < table.getRowCount(); i++) {
             table.setValueAt(value, i, 1);
         }
         
-        // Clear the text area
         textArea.setText("");
         
-        // Get the current date
         String currentDate = LocalDate.now().toString();
         
-        // Prepare the no allergies text
         String noAllergiesText = String.format("▣ Allergy\n" +
                                                "During the medical check-up, the patient had no known allergies\n" +
                                                "to food, injections, and medications as of: %s", currentDate);
         
-        // Set the text in the North Panel's JTextArea
         textArea.setText(noAllergiesText);
         
-        // Update the GDSEMR_frame
         GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n" + noAllergiesText);
     }
 

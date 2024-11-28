@@ -111,8 +111,10 @@ public class EMR_TFT extends JFrame {
         }
         inputTextArea.setText(outputText.toString());
         GDSEMR_frame.setTextAreaText(5, outputText.toString());
-        String cdate = Date_current.main("m");
+        String cdate = Date_current.main("d");
         GDSEMR_frame.setTextAreaText(7, "\n# TFT    " + cdate);
+        inputTextArea.setText("");
+        clearFields();
     }
 
     private class TextFieldKeyListener extends KeyAdapter {
@@ -125,11 +127,13 @@ public class EMR_TFT extends JFrame {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                if (index < textFields.length - 1) {
-                    textFields[index + 1].requestFocus();
-                } else {
-                    saveData();
-                }
+                String value = textFields[4].getText();
+	                if (index < textFields.length - 1) {
+	                    textFields[index + 1].requestFocus();
+	                } else {
+	                    saveData();
+	                    clearFields();
+	                }
             }
         }
     }
