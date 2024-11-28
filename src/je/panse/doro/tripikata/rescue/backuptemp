@@ -1,14 +1,9 @@
 
-  CC>    Sore throat and cough  
-  S>
-	The patient reports experiencing symptoms of URI,
-	including cough, sore throat, and congestion.
-  O>
-	Vital signs are within normal limits.
-	CHB without rale[ - / - ] 
-  A>
-# The patient is diagnosed with a mild URI.
-  P>
-...Conservative treatment measures will be implemented, 
-...including rest, increased fluid intake and symtptom relief meds as needed. 
-...F/U will be scheduled in 1 week to assess symptom.
+  O>	
+  ▼	1	T3 (pg/mL):	
+  ▼	2	Free T3 (pg/mL):	
+  ▲	3	Free T4 (ng/dL):	
+  	4	TSH (mIU/L):	
+  ▲	5	Anti-TSH-Receptor Antibodies (IU/L):	
+  	6	Anti-Thyroglobulin Antibodies (IU/mL):	
+  	7	Anti-Microsomal Antibodies (IU/mL):	
