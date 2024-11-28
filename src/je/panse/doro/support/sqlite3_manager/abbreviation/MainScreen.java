@@ -171,15 +171,25 @@ public class MainScreen extends JFrame {
 
     private void deleteRecord() {
         int selectedRow = table.getSelectedRow();
+
         if (selectedRow >= 0) {
-            String abbreviation = (String) tableModel.getValueAt(selectedRow, 0);
+            // Convert view index to model index (necessary if sorting is applied)
+            int modelRow = table.convertRowIndexToModel(selectedRow);
+            String abbreviation = (String) tableModel.getValueAt(modelRow, 0);
+
             String sql = "DELETE FROM Abbreviations WHERE abbreviation = ?";
             try (Connection conn = DriverManager.getConnection(DB_URL);
                  PreparedStatement pstmt = conn.prepareStatement(sql)) {
                 pstmt.setString(1, abbreviation);
-                pstmt.executeUpdate();
-                tableModel.removeRow(selectedRow);
-                JOptionPane.showMessageDialog(this, "Record deleted successfully!");
+                int rowsAffected = pstmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    // Remove row from the table model
+                    tableModel.removeRow(modelRow);
+                    JOptionPane.showMessageDialog(this, "Record deleted successfully!");
+                } else {
+                    showError("No record found to delete. Please refresh the table.");
+                }
             } catch (SQLException e) {
                 showError("Error deleting record: " + e.getMessage());
             }
@@ -187,6 +197,7 @@ public class MainScreen extends JFrame {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
         }
     }
+
 
     private void editRecord() {
         int selectedRow = table.convertRowIndexToModel(table.getSelectedRow());
