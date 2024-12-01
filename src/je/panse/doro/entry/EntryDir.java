@@ -12,6 +12,7 @@ public class EntryDir {
         String env = System.getProperty("app.env", "dev");
         String[] pathParts = {"je", "panse", "doro"};
         String basePath = "prod".equals(env) ? currentDir : currentDir + File.separator + "src";
+//        String basePath = "prod".equals(env) ? currentDir : currentDir + File.separator;
         homeDir = buildPath(basePath, pathParts);
         backupDir = buildPath(homeDir, "tripikata", "rescue");
     }
