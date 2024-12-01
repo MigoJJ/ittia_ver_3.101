@@ -165,7 +165,7 @@ public class EMRPMHAllergy extends JFrame {
         
         textArea.setText(noAllergiesText);
         
-        GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n" + noAllergiesText);
+        GDSEMR_frame.setTextAreaText(7, "\n###  Allergic Reactions  ###\n" + noAllergiesText);
     }
 
     private void setAnaphylaxisSymptoms(boolean value) {
@@ -187,7 +187,7 @@ public class EMRPMHAllergy extends JFrame {
         if (!textAreaContent.isEmpty()) {
             selectedSymptoms.append("\nAdditional Notes:\n").append(textAreaContent);
             
-            GDSEMR_frame.setTextAreaText(1, "\n###  Allergic Reactions  ###\n" + textAreaContent);
+            GDSEMR_frame.setTextAreaText(7, "\n###  Allergic Reactions  ###\n" + textAreaContent);
         }
         JOptionPane.showMessageDialog(this, selectedSymptoms.toString());
     }

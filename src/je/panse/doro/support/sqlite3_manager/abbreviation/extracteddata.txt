@@ -142,6 +142,7 @@ replacements.put(":tof ", "Hyperthyroidism F/U");
 replacements.put(":toh ", "Hypothyroidism : Hashimoto's thyroditis");
 replacements.put(":top ", "Hypothyroidism with Pregnancy [     ] weeks");
 replacements.put(":ts ", "C/W Subacute Thyroiditis");
+replacements.put(":tt ", "thyroiditis");
 replacements.put(":uri ", "Upper Respiratory Infection");
 replacements.put(":uti ", "Urinary Tract Infection");
 replacements.put(":ver ", "Vertigo");
