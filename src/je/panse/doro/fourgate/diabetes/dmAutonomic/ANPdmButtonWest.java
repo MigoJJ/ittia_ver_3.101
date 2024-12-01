@@ -48,7 +48,7 @@ public class ANPdmButtonWest {
     }
 
     private static void saveAction(JTextArea textArea) {
-        System.out.println("Save action performed");
+//        System.out.println("Save action performed");
         GDSEMR_frame.setTextAreaText(1, textArea.getText());
     }
 
