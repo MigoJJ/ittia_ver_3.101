@@ -53,7 +53,7 @@ public class PNPdmButtonWest {
     }
 
     private static void clearAction(JTextArea textArea, TableModel model) {
-        textArea.setText("\n  < Peripheral Neuropathy >\n");
+        textArea.setText("\n  < Peripheral Neuropathy :cd > \n");
         updateCheckboxes(model, false);
     }
 

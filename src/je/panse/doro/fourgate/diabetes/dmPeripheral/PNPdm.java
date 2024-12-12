@@ -25,7 +25,7 @@ public class PNPdm {
 	        frame.setVisible(true);
 
      // Add JTextArea in the NORTH panel with a specific size
-        JTextArea textArea = new JTextArea("    < Peripheral Neuroapthy >\n");
+        JTextArea textArea = new JTextArea("    < Peripheral Neuroapthy  :cd > \n");
 	        DefaultTableModel tableModel = createTableModel();
 	        JTable table = new JTable(tableModel);
 	        JScrollPane scrollPaneForTextArea = new JScrollPane(textArea);
