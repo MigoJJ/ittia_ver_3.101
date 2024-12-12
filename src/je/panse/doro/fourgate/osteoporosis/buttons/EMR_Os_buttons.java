@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.osteoporosis;
+package je.panse.doro.fourgate.osteoporosis.buttons;
 
 import java.awt.Color;			
 import java.awt.Dimension;
@@ -93,7 +93,7 @@ public class EMR_Os_buttons {
                 if (name.equals("Quit")) {
                     frame.dispose();
                 } else if (name.equals("Osteoporosis Definition")) {
-                    
+                	  OS_definition.main(null);
 
                 } else if (name.equals("DM Retinopathy")) {
                     EMR_FU_retinopathy.main(null);

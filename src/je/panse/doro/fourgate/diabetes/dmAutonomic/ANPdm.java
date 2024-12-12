@@ -25,7 +25,7 @@ public class ANPdm {
 	        frame.setVisible(true);
 
      // Add JTextArea in the NORTH panel with a specific size
-        JTextArea textArea = new JTextArea("    < Autonomic Neuroapthy >\n");
+        JTextArea textArea = new JTextArea("    < Autonomic Neuroapthy  :cd > \n");
 	        DefaultTableModel tableModel = createTableModel();
 	        JTable table = new JTable(tableModel);
 	        JScrollPane scrollPaneForTextArea = new JScrollPane(textArea);

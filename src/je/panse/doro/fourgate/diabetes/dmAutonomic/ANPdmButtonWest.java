@@ -53,7 +53,7 @@ public class ANPdmButtonWest {
     }
 
     private static void clearAction(JTextArea textArea, TableModel model) {
-        textArea.setText("\n  < Autonomic Neuropathy >\n");
+        textArea.setText("\n  < Autonomic Neuropathy :cd > \n");
         updateCheckboxes(model, false);
     }
 
