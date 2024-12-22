@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypertensionEdit;
+import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
+import je.panse.doro.fourgate.hypertension.EMR_htn_mainentry;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 
@@ -19,8 +21,10 @@ public class GDSEMR_FunctionKey {
         if (keyCode == KeyEvent.VK_F1) {
             // Set the specific text in the text area at index 8 if F1, F2, F3, or F4 is pressed
             EMR_FU_diabetesEdit.main(null);
+            EMR_dm_mainentry.main(null);
         } else if (keyCode == KeyEvent.VK_F2) {
         	EMR_FU_hypertensionEdit.main(null);
+        	EMR_htn_mainentry.main(null);
         } else if (keyCode == KeyEvent.VK_F3) {
         	EMR_FU_hypercholesterolemiaEdit.main(null);
         } else if (keyCode == KeyEvent.VK_F4) {
