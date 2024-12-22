@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.hypertension;
+package je.panse.doro.fourgate.hypertension.htnGeneral;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
