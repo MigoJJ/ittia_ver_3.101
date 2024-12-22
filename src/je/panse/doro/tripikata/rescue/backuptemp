@@ -1,11 +1,33 @@
 
-  CC>    Hypertension F/U
-  S>
-  The Patient has suffered from : ▣ 
-    □      Sharp or stabbing pain
-    □      Chest tightness
-    □      Shortness of breath
-    □      Dizziness
-    □      Nausea
+  CC>   Hypercholesterolemia F/U
+F/U [   ] weeks    2024-12-22
+	Pregnancy with HyperthyroidismF/U [   ] weeks    2024-12-22
+	Pregnancy with HypothyroidismF/U [   ] weeks    2024-12-22
+	Pregnancy with Non thyroidal illnessF/U [   ] weeks    2024-12-22
+	Pregnancy with TSH elevationF/U [   ] weeks    2024-12-22
+	Pregnancy with TSH low
+  PI>
+    Chest pain (angina) or heart attack: [denied]
+    Stroke or transient ischemic attack (TIA): [none]
+    Peripheral artery disease [none]
+    Poor wound healing [none]
+  O>
+    Xanthomas [ - ]    Xanthelasmas [- ]    Arcus senilis  [ - ]
+  A>
+  #  F/U Pregnancy with Hyperthyroidism  [2024-12-22]
+  #  F/U Pregnancy with Hypothyroidism  [2024-12-22]
+  #  F/U Pregnancy with Non thyroidal illness  [2024-12-22]
+  #  F/U Pregnancy with TSH elevation  [2024-12-22]
+  #  F/U Pregnancy with TSH low  [2024-12-22]
+  P>
+...Follow-up in the clinic in [ 3.0 ]-month
+...now [ well ] treated with current medication
+    continue with current dosages of meds
+...Plan F/U [   ] weeks
+	 Pregnancy with Hyperthyroidism...Plan F/U [   ] weeks
+	 Pregnancy with Hypothyroidism...Plan F/U [   ] weeks
+	 Pregnancy with Non thyroidal illness...Plan F/U [   ] weeks
+	 Pregnancy with TSH elevation...Plan F/U [   ] weeks
+	 Pregnancy with TSH low
   Comment>
-Manage stress through exercise, yoga, or meditation.
+Limit saturated fat (less than 16g men/12g women daily).
