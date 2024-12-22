@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.hypertension;
 
-import java.awt.Color;	
+import java.awt.Color;		
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -14,12 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
-import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
-import je.panse.doro.soap.subjective.EMR_symptom_list;
-import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
-public class EMR_dm_mainentry {
+public class EMR_htn_mainentry {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Select category ...");
@@ -29,13 +25,13 @@ public class EMR_dm_mainentry {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         String[] buttonNames = {
-                "DM General symptoms",
-                "DM Retinopathy",
-                "DM Peripheral Neuropathy",
-                "DM Autonomic Neuropathy",
+                "HTN General symptoms",
+                "HTN ",
+                "HTN ",
+                "HTN ",
                 "Medications",
-                "DM F/U Laboratory Test",
-                "DM",
+                "HTN F/U Laboratory Test",
+                "HTN",
                 "Quit"
         };
 
@@ -89,19 +85,19 @@ public class EMR_dm_mainentry {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Quit")) {
                     frame.dispose();
-                } else if (name.equals("DM General symptoms")) {
-                    String[] Esrr = EMR_symptom_retStr.returnStr("Diabetes Mellitus");
-                    EMR_symptom_list.main(Esrr);
-                } else if (name.equals("DM Retinopathy")) {
-                    EMR_FU_retinopathy.main(null);
-                } else if (name.equals("DM Peripheral Neuropathy")) {
-                    PNPdm.main(null);
-                } else if (name.equals("DM Autonomic Neuropathy")) {
-                    ANPdm.main(null); 
+//                } else if (name.equals("HTN General symptoms")) {
+//                    String[] Esrr = EMR_symptom_retStr.returnStr("Diabetes Mellitus");
+//                    EMR_symptom_list.main(Esrr);
+//                } else if (name.equals("DM Retinopathy")) {
+//                    EMR_FU_retinopathy.main(null);
+//                } else if (name.equals("DM Peripheral Neuropathy")) {
+//                    PNPdm.main(null);
+//                } else if (name.equals("DM Autonomic Neuropathy")) {
+//                    ANPdm.main(null); 
                 } else if (name.equals("Medications")) {
-                    EMR_dm_meds.main(null);
-	            } else if (name.equals("DM F/U Laboratory Test")) {
-	                EMR_dm_lab.main(null);
+                    EMR_htn_meds.main(null);
+//	            } else if (name.equals("DM F/U Laboratory Test")) {
+//	                EMR_dm_lab.main(null);
 	            }
                 
                 else {

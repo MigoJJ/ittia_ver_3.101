@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.diabetes;
 
-import java.awt.Color;	
+import java.awt.Color;		
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
