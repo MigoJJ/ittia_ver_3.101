@@ -36,15 +36,16 @@ public class EMR_htn_meds extends JFrame {
         mainPanel.setLayout(new GridLayout(3, 2));
 
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
-                "Jadian [ 10 ] mg 1 tab p.o. q.d.",
-                "Jadian [ 25 ] mg 1 tab p.o. q.d.",
+                "Atacand [ 8 ] mg 1 tab p.o. q.d.",
+                "Atacand [ 16 ] mg 1 tab p.o. q.d.",
+                "Atacand-plus [ 16/12.5 ] mg 1 tab p.o. q.d.",
                 "...",
-                "Exiglu [ 10 ] mg 1 tab p.o. q.d.",
-                "Exiglu-M SR [ 10/500 ] mg 1 tab p.o. q.d.",
-                "Exiglu-M SR [ 10/1000 ] mg 1 tab p.o. q.d.",
+                "Noevasc [ 2.5 ] mg 1 tab p.o. q.d.",
+                "Norvasc [ 5 ]   mg 1 tab p.o. q.d.",
+                "Norvasc [ 10 ]  mg 1 tab p.o. q.d.",
                 "...",
-                "Actos [ 15 ] mg 1 tab p.o. q.d.",
-                "Atos [ 30 ] mg 1 tab p.o. q.d."
+                "Sevikar [  ] mg 1 tab p.o. q.d.",
+                
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{

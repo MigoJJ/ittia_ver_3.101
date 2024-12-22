@@ -8,11 +8,13 @@ import javax.swing.JOptionPane;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.filecontrol.FileGeditToCilpboard;
+import je.panse.doro.chartplate.filecontrol.File_open;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.chartplate.keybutton.ai.Mprompt;
 import je.panse.doro.chartplate.mainpage.EMR_Write_To_Chartplate;
+import je.panse.doro.entry.EntryDir;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypertensionEdit;
@@ -82,13 +84,12 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Abbreviation":
                     MainScreen.main(null);
                     break;
-               
+                case "Code":
+                	File_open.main(EntryDir.homeDir +"/support/EMR_support_Folder/Etc/Disease_Code.odt");
+                	File_open.main(EntryDir.homeDir +"/support/EMR_support_Folder/Etc/Code.odt");
+                	break;               
                 case "ittia_support":
                 	EMR_ittia_support.main(null);
-                    break;
-                case "Button 6":
-                    break;
-                case "Button 7":
                     break;
                 case "Button 8":
                     break;

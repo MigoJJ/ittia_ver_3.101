@@ -32,9 +32,9 @@ public class File_open {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String wordFilePath) {
         // Example usage
-        String wordFilePath = "/path/to/your/word/file.docx";
+//        String wordFilePath = "/path/to/your/word/file.docx";
         openWordFile(wordFilePath);
     }
 }
