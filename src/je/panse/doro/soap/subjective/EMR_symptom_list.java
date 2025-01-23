@@ -3,6 +3,7 @@ package je.panse.doro.soap.subjective;
 import javax.swing.*;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.samsara.EMR_PE.PE_Abdominal_pain_diagnosis;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -92,7 +93,17 @@ public class EMR_symptom_list extends JPanel {
             }
         });
 
-        JButton button4 = new JButton("Quit");
+        JButton button4 = new JButton("DDx");
+        button4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String text = textArea.getText();
+                GDSEMR_frame.setTextAreaText(4, text);
+                textArea.setText(""); 
+                frame.dispose(); // Close the frame after saving
+            	PE_Abdominal_pain_diagnosis.main(null);
+            }
+        });
+        JButton button5 = new JButton("Quit");
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
@@ -106,6 +117,7 @@ public class EMR_symptom_list extends JPanel {
         buttonPanel.add(button2);
         buttonPanel.add(button3);
         buttonPanel.add(button4);
+        buttonPanel.add(button5);
 
         // Add components to the main panel
         add(new JScrollPane(textArea));

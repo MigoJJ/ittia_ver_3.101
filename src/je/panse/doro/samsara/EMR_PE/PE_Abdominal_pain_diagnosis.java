@@ -135,27 +135,6 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
         }
 
         private void initializeData() {
-            // Right Upper Quadrant Pain
-            Object[][] ruqConditions = {
-                {false, "Gallbladder Disease (Cholecystitis, cholelithiasis, biliary colic)"},
-                {false, "Liver Disease (Hepatitis, liver abscess, liver tumors, hepatic congestion)"},
-                {false, "Duodenal Ulcer"},
-                {false, "Right Kidney Issues (Pyelonephritis, nephrolithiasis)"},
-                {false, "Pneumonia (Right Lower Lobe)"}
-            };
-            data.add(new Object[]{"Right Upper Quadrant Pain", ruqConditions});
-
-            // Left Lower Quadrant Pain
-            Object[][] llqConditions = {
-                    {false, "Diverticulitis"},
-                    {false, "Ovarian Issues (Ovarian cyst, ectopic pregnancy, ovarian torsion)"},
-                    {false, "Left Kidney Issues (Pyelonephritis, nephrolithiasis)"},
-                    {false, "Inflammatory Bowel Disease (Ulcerative colitis)"},
-                    {false, "Hernia (Inguinal)"},
-                    {false, "Ectopic Pregnancy"}
-            };
-            data.add(new Object[]{"Left Lower Quadrant (LLQ) Pain", llqConditions});
-
             // Epigastric Pain (Upper Middle Abdomen)
             Object[][] epigastricConditions = {
                     {false, "Peptic Ulcer Disease (Gastric or duodenal ulcers)"},
@@ -185,6 +164,49 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
                     {false, "Metabolic Disorders (Diabetic ketoacidosis (DKA))"}
             };
             data.add(new Object[]{"Generalized Abdominal Pain (Diffuse Pain)", generalizedConditions});
+
+        	// Right Upper Quadrant Pain
+            Object[][] ruqConditions = {
+                {false, "Gallbladder Disease (Cholecystitis, cholelithiasis, biliary colic)"},
+                {false, "Liver Disease (Hepatitis, liver abscess, liver tumors, hepatic congestion)"},
+                {false, "Duodenal Ulcer"},
+                {false, "Right Kidney Issues (Pyelonephritis, nephrolithiasis)"},
+                {false, "Pneumonia (Right Lower Lobe)"}
+            };
+            data.add(new Object[]{"Right Upper Quadrant Pain [ RUQ ]", ruqConditions});
+
+            // Left Upper Quadrant Pain
+            Object[][] luqConditions = {
+                    {false, "Gastric Ulcer"},
+                    {false, "Gastritis"},
+                    {false, "Pancreatitis"},
+                    {false, "Splenic Issues (Splenomegaly, splenic infarct, splenic rupture)"},
+                    {false, "Left Kidney Issues (Pyelonephritis, nephrolithiasis)"},
+                    {false, "Pneumonia (Left Lower Lobe)"}
+            };
+            data.add(new Object[]{"Left Upper Quadrant Pain [ LUQ ]", luqConditions});
+
+            // Right Lower Quadrant Pain
+            Object[][] rlqConditions = {
+                    {false, "Appendicitis"},
+                    {false, "Ovarian Issues (Ovarian cyst, ectopic pregnancy, ovarian torsion)"},
+                    {false, "Right Kidney Issues (Pyelonephritis, nephrolithiasis)"},
+                    {false, "Inflammatory Bowel Disease (Crohn's disease)"},
+                    {false, "Hernia (Inguinal)"},
+                    {false, "Ectopic Pregnancy"}
+            };
+            data.add(new Object[]{"Right Lower Quadrant Pain [ RLQ ]", rlqConditions});
+            
+            // Left Lower Quadrant Pain
+            Object[][] llqConditions = {
+                    {false, "Diverticulitis"},
+                    {false, "Ovarian Issues (Ovarian cyst, ectopic pregnancy, ovarian torsion)"},
+                    {false, "Left Kidney Issues (Pyelonephritis, nephrolithiasis)"},
+                    {false, "Inflammatory Bowel Disease (Ulcerative colitis)"},
+                    {false, "Hernia (Inguinal)"},
+                    {false, "Ectopic Pregnancy"}
+            };
+            data.add(new Object[]{"Left Lower Quadrant (LLQ) Pain", llqConditions});
 
             // Add more categories as needed
         }
