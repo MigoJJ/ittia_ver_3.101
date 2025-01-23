@@ -39,13 +39,12 @@ public class EMR_Osteoporosis_meds extends JFrame {
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
                 "Foxamax [ 70 ] mg 1 tab p.o. q.d.",
                 "....",
-                "...",
-                "Exiglu [ 10 ] mg 1 tab p.o. q.d.",
-                "Exiglu-M SR [ 10/500 ] mg 1 tab p.o. q.d.",
-                "Exiglu-M SR [ 10/1000 ] mg 1 tab p.o. q.d.",
-                "...",
-                "Actos [ 15 ] mg 1 tab p.o. q.d.",
-                "Atos [ 30 ] mg 1 tab p.o. q.d."
+        		"Denosumab (Prolia) S.C.",
+        		"본비바주(이반드론산나트륨일수화물) 3mL  Bonviva Inj.\n(3mg as ibandronic acid)3mg을 3개월에 한번씩 15 - 30초 간 정맥주사",
+        		"비타벨라프리필드주사(콜레칼시페롤)  Vitabella Prefilled Inj.\nCholecalciferol 5mg(200,000 i.u. as Vitamin D)",
+        		"비타민D3비오엔주(콜레칼시페롤)  Vitamin D3 B.O.N. INJ.5mg(200,000 i.u. as Vitamin D)",
+        	    "Teriparatide (Forteo):a synthetic form of parathyroid hormone",
+        		"알렌드로네이트: 포사맥스+D 70 (Vitamin D3로서 5600 IU)/주1회",
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
