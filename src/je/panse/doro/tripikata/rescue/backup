@@ -1,24 +1,7 @@
 
-    S>	The Patient has suffered from : ▣ 
-	□      Cramp-like pain
-	□      Bloating
-	□      Nausea
-	□      Vomiting
-	□      Diarrhea
-	□      Constipation
-	□      RLQ pain
-  The Patient has suffered from : ▣ 
-	▣      Constipation
-	▣      RLQ pain
-  A>	
-  [R/O]: Gastroesophageal Reflux Disease (GERD)
-  [R/O]: Ovarian Issues (Ovarian cyst, ectopic pregnancy, ovarian torsion)
-  [R/O]: Right Kidney Issues (Pyelonephritis, nephrolithiasis)
-Less likely
-  [R/O]: Gallbladder Disease (Cholecystitis, cholelithiasis, biliary colic)
-  [R/O]: Liver Disease (Hepatitis, liver abscess, liver tumors, hepatic congestion)
-  [R/O]: Duodenal Ulcer
-More likely
-  [R/O]: Diverticulitis
-  [R/O]: Hernia (Inguinal)
-  [R/O]: Gastritis
+  CC>    Hypertension F/U
+  P>
+    Follow up interval: [ 3 ] months
+    Prescription : [ → ] advised the patient to continue with current medication
+  Comment>
+Increase potassium intake (from fruits and vegetables).
