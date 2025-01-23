@@ -17,6 +17,7 @@ import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.*;
 import je.panse.doro.samsara.EMR_OBJ_excute.*;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
+import je.panse.doro.samsara.EMR_PE.PE_Abdominal_pain_diagnosis;
 import je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 
@@ -90,7 +91,10 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("ChestPA", () -> EMR_ChestPA.main(new String[0]));
         buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
         buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
+        
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
+//        buttonActions.put("Abdomen", () -> PE_Abdominal_pain_diagnosis.main(new String[0]));
+        
         buttonActions.put("DM pph", () -> PNPdm.main(new String[0]));
         buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
         buttonActions.put("Allergy", () -> {

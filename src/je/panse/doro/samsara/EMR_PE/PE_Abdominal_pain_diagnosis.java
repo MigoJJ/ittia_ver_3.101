@@ -1,15 +1,20 @@
 package je.panse.doro.samsara.EMR_PE;
 import javax.swing.*;
 import javax.swing.table.*;
+
+import je.panse.doro.GDSEMR_frame;
+
 import java.awt.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class MedicalConditionsTable extends JFrame {
+public class PE_Abdominal_pain_diagnosis extends JFrame {
     private final JTable table;
     private final JTextArea notesArea;
 
-    public MedicalConditionsTable() {
+    public PE_Abdominal_pain_diagnosis() {
         setTitle("Medical Conditions Checklist");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -19,26 +24,69 @@ public class MedicalConditionsTable extends JFrame {
         notesArea.setEditable(true);
         notesArea.setLineWrap(true);
         notesArea.setWrapStyleWord(true);
+        notesArea.setBackground(new Color(245, 222, 179)); // Very light brown (Wheat color)
 
         table = createTable();
         table.setRowHeight(130); // Adjust row height for readability
-        table.setPreferredScrollableViewportSize(new Dimension(1000, 700)); // Preferred table size
+        table.setPreferredScrollableViewportSize(new Dimension(900, 700)); // Preferred table size
+        // EAST Panel for Buttons
+        JPanel eastPanel = new JPanel();
+        eastPanel.setLayout(new BoxLayout(eastPanel, BoxLayout.Y_AXIS));
+        eastPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
+        // Buttons
+        JButton clearButton = new JButton("Clear");
+        JButton saveButton = new JButton("Save");
+        JButton dateButton = new JButton("Date");
+        JButton lessButton = new JButton("Less Likely");
+        JButton moreButton = new JButton("More Likely");
+        JButton quitButton = new JButton("Quit");
+
+        // Button Actions
+        clearButton.addActionListener(e -> notesArea.setText(""));
+        saveButton.addActionListener(e -> {
+            System.out.println("Saved notes:\n" + notesArea.getText());
+            JOptionPane.showMessageDialog(this, "Notes saved successfully!", "Save Notes", JOptionPane.INFORMATION_MESSAGE);
+            GDSEMR_frame.setTextAreaText(7, "\n" + notesArea.getText());
+        });
+        dateButton.addActionListener(e -> {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            String formattedDate = dateFormat.format(new Date());
+            notesArea.append("Date: " + formattedDate + "\n");
+        });
+        lessButton.addActionListener(e -> notesArea.append("Less likely\n"));
+        moreButton.addActionListener(e -> notesArea.append("More likely\n"));
+        quitButton.addActionListener(e -> dispose());
+
+        // Add buttons to the EAST panel
+        eastPanel.add(clearButton);
+        eastPanel.add(Box.createVerticalStrut(10)); // Add spacing between buttons
+        eastPanel.add(saveButton);
+        eastPanel.add(Box.createVerticalStrut(10));
+        eastPanel.add(dateButton);
+        eastPanel.add(Box.createVerticalStrut(10));
+        eastPanel.add(lessButton);
+        eastPanel.add(Box.createVerticalStrut(10));
+        eastPanel.add(moreButton);
+        eastPanel.add(Box.createVerticalStrut(10));
+        eastPanel.add(quitButton);
         // Layout setup
         JSplitPane splitPane = new JSplitPane(
             JSplitPane.VERTICAL_SPLIT,
             new JScrollPane(table),
             new JScrollPane(notesArea)
         );
-        splitPane.setDividerLocation(660);
+        splitPane.setDividerLocation(675);
         splitPane.setResizeWeight(0.7); // Allocate space (70% for table, 30% for notes)
 
         add(splitPane, BorderLayout.CENTER);
+        add(eastPanel, BorderLayout.EAST); // Add EAST panel
 
         pack(); // Compute optimal size
-        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximize frame
+//        setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximize frame
         setLocationRelativeTo(null); // Center frame on screen
     }
+
 
 
     private JTable createTable() {
@@ -253,7 +301,7 @@ public class MedicalConditionsTable extends JFrame {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            new MedicalConditionsTable().setVisible(true);
+            new PE_Abdominal_pain_diagnosis().setVisible(true);
         });
     }
 }
