@@ -1,5 +1,27 @@
 
+<<<<<<< HEAD
   O>	
 TC-HDL-Tg-LDL [ 1 - 2 - 3 - 4 ] mg/dL
   A>	
 >  TC-HDL-Tg-LDL [ 1 - 2 - 3 - 4 ] mg/dL   2025.01.27
+=======
+  CC>    Diabetes Mellitus  F/U
+  S>
+    Unexpected Weight loss [ - ]
+  A>
+#  DM  F/U   2025.01.27
+  P>
+...Follow-up in the clinic in [ 3.0 ]-month
+...continue with current dosages of meds
+...Plan to perform laboratory tests during the next visit on [ 2025.01.27]
+ ...   ...FBS / PP2  HbA1c +A/C Electorlyte  Vitamin-D
+ ...   ...FBS / PP2  HbA1c +A/C Electorlyte
+ ...   ...EKG
+   ...   ...EKG  CUS : Carotid artery US
+   ...   ...EKG  CUS : Carotid artery US  CPA
+ ...   ...Carotid artery US
+   ...   ...EKG  CUS : Carotid artery US
+ ...   ...FBS / PP2  HbA1c +A/C(eGFR, U-microalbumin)
+  Comment>
+Monitor your blood sugar regularly.
+>>>>>>> branch 'Home250123' of https://github.com/MigoJJ/inttia_ver_3.072.git
