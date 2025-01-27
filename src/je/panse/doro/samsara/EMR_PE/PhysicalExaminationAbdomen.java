@@ -123,7 +123,11 @@ public class PhysicalExaminationAbdomen {
             GDSEMR_frame.setTextAreaText(5,"\n< Abdominal Physical Excam >\n");
             GDSEMR_frame.setTextAreaText(5, selectedItems);
         });
-        
+
+        JButton ddxButton = new JButton("DDx");
+        ddxButton.addActionListener(event -> {
+        	PE_Abdominal_pain_diagnosis.main(null);
+        });
          JButton quitButton = new JButton("Quit");
          quitButton.addActionListener(event -> {
         	 frame.dispose();
@@ -132,8 +136,8 @@ public class PhysicalExaminationAbdomen {
         // Add buttons to the panel
         buttonPanel.add(clearButton);
         buttonPanel.add(saveButton);
+        buttonPanel.add(ddxButton);
         buttonPanel.add(quitButton);
-
         // Add the panel to the frame
         frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
         frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);

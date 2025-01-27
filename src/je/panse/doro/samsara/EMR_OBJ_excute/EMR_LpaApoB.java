@@ -1,78 +1,89 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.*;					
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
 import je.panse.doro.GDSEMR_frame;
 
-public class EMR_LpaApoB extends JFrame implements ActionListener, KeyListener {
-    private JTextField[] inputFields = {new JTextField(10), new JTextField(10)};
-    private int currentInputFieldIndex = 0;
+public class EMR_LpaApoB extends JFrame {
+    private static final String[] FIELDS = {
+        "Lipoprotein(a)", "ApoproteinB"
+    };
     
+    private final JTextField[] inputs = new JTextField[FIELDS.length];
+    private int currentField = 0;
+
     public EMR_LpaApoB() {
-        setTitle("EMR Interface for Lp(a) ApoB Profile");
+        setupFrame();
+        createUI();
+        inputs[0].requestFocus();
+        setVisible(true);
+    }
+
+    private void setupFrame() {
+        setTitle("Lp(a) ApoB Profile Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // center the frame on the screen
-        setLayout(new BorderLayout());
         setSize(400, 200);
+        setLocationRelativeTo(null);
+    }
+
+    private void createUI() {
+        JPanel panel = new JPanel(new GridLayout(2, 2));
         
-        String[] labelNames = {"Lipoprotein(a)", "ApoproteinB"}; // fixed size of labelNames
-        
-        JPanel inputPanel = new JPanel(new GridLayout(2, 2));
-        inputFields = new JTextField[2]; // removed redundant initialization
-        
-        for (int i = 0; i < labelNames.length; i++) { // use labelNames.length in loop condition
-            inputFields[i] = new JTextField(10);
-            Insets insets = new Insets(0, 10, 0, 0);
-            inputFields[i].setMargin(insets);
-            JLabel label = new JLabel(labelNames[i] + ": ");
-            label.setHorizontalAlignment(SwingConstants.RIGHT);
-            inputPanel.add(label);
-            inputPanel.add(inputFields[i]);
-            inputFields[i].addKeyListener(this);
+        for (int i = 0; i < FIELDS.length; i++) {
+            panel.add(createLabel(FIELDS[i]));
+            panel.add(createInputField(i));
         }
         
-        inputFields[0].requestFocus();
-        inputFields[0].setCaretPosition(inputFields[0].getText().length());
-        
-        add(inputPanel, BorderLayout.CENTER);
-        
-        setVisible(true); // added setVisible call to make frame visible
+        add(panel);
     }
-        
-    @Override
-    public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (currentInputFieldIndex < inputFields.length - 1) { // use inputFields.length - 1 to avoid ArrayIndexOutOfBoundsException
-                currentInputFieldIndex++;
-                inputFields[currentInputFieldIndex].requestFocus(); // set focus to next input field
-                inputFields[currentInputFieldIndex].setCaretPosition(inputFields[currentInputFieldIndex].getText().length()); // set cursor position to end of text
-            } else {
-            	String result = "\nLiporpotein(a)  " + String.format("[ %3.1f ]", Double.parseDouble(inputFields[0].getText())) + " ≤ 30.0 mg/dL"
-            			+  "\nApoLiporpotein(B) " + String.format("[ %3.1f ]", Double.parseDouble(inputFields[1].getText())) + "  M:46-174   F:46-142 mg/dL";
-                System.out.println(" result" + result);
-                GDSEMR_frame.setTextAreaText(5, result);
-                dispose(); // dispose after updating text area
+
+    private JLabel createLabel(String text) {
+        JLabel label = new JLabel(text + ": ");
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
+        return label;
+    }
+
+    private JTextField createInputField(int index) {
+        JTextField field = new JTextField(10);
+        field.setMargin(new Insets(0, 10, 0, 0));
+        field.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent e) {
+                if (e.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    handleEnterKey(index);
+                }
             }
+        });
+        inputs[index] = field;
+        return field;
+    }
+
+    private void handleEnterKey(int index) {
+        if (index < inputs.length - 1) {
+            inputs[index + 1].requestFocus();
+        } else {
+            saveResults();
+            dispose();
         }
     }
 
-    
-    // Other methods of KeyListener are not used, but need to be implemented because of the interface
-    @Override
-    public void keyTyped(KeyEvent e) {}
-    
-    @Override
-    public void keyReleased(KeyEvent e) {}
+    private void saveResults() {
+        try {
+            double lpa = Double.parseDouble(inputs[0].getText());
+            double apoB = Double.parseDouble(inputs[1].getText());
+            
+            String result = String.format(
+                "\nLiporpotein(a)  [ %.1f ] ≤ 30.0 mg/dL\n" +
+                "ApoLiporpotein(B) [ %.1f ] M:46-174 F:46-142 mg/dL",
+                lpa, apoB);
+                
+            GDSEMR_frame.setTextAreaText(5, result);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers");
+        }
+    }
 
     public static void main(String[] args) {
-        EMR_LpaApoB frame = new EMR_LpaApoB();
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(EMR_LpaApoB::new);
     }
-
-	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }

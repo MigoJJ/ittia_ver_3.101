@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.A_editmain;
 
-import javax.swing.JFrame;	
+import javax.swing.JFrame;		
 
 import je.panse.doro.fourgate.diabetes.dmGeneral.EMR_FU_diabetes;
 import je.panse.doro.fourgate.hypercholesterolemia.EMR_FU_hypercholesterolemia;

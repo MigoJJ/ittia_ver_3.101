@@ -1,153 +1,113 @@
 package je.panse.doro.fourgate.hypercholesterolemia;
 
-import java.awt.BorderLayout;	
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
 import je.panse.doro.entry.EntryDir;
 
-public class EMR_FU_hypercholesterolemia extends JFrame implements ActionListener {
-    private static ArrayList<JTextArea> textAreas;
-    private static JButton inputButton, editButton, saveButton, exitButton;
+public class EMR_FU_hypercholesterolemia extends JFrame {
+    private static final String BASE_PATH = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea";
+    private static final String[] SECTIONS = {
+        "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", 
+        "Physical Exam>", "A>", "P>", "Comment>"
+    };
+    
+    private final ArrayList<JTextArea> textAreas = new ArrayList<>();
 
     public EMR_FU_hypercholesterolemia() {
-        setTitle("Hypercholesterolemia Preform");
-        setSize(400, 1000);
-        setLocation(100,100);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // Create JTextAreas with default text and make them scrollable
-        textAreas = new ArrayList<JTextArea>();
-        String[] defaultTexts = { "CC>", "PI>", "ROS>", "PMH>", "S>", "O>", "Physical Exam>", "A>", "P>", "Comment>" };
-
-        // Create panel for JTextAreas
-        JPanel textAreaPanel = new JPanel();
-        textAreaPanel.setLayout(new GridLayout(textAreas.size(), 1));
-        for (int i = 0; i < textAreas.size(); i++) {
-            textAreaPanel.add(textAreas.get(i));
-        }
-        
-	    for (int i = 0; i < defaultTexts.length; i++) {
-	        JTextArea textArea = new JTextArea();
-	        textArea.setText(getSavedText(i)); // Load saved text from file
-	        textArea.setLineWrap(true);
-	        textArea.setWrapStyleWord(true);
-	        JScrollPane scrollPane = new JScrollPane(textArea);
-	        textAreaPanel.add(scrollPane);
-	        textAreas.add(textArea);
-	    }
-        
-        // Create buttons
-        saveButton = new JButton("Save");
-        exitButton = new JButton("Exit");
-
-        // Attach action listeners to buttons
-        saveButton.addActionListener(this);
-        exitButton.addActionListener(this);
-
-        // Create panel for buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(1, 4));
-        buttonPanel.add(saveButton);
-        buttonPanel.add(exitButton);
-
-        // Gradually darken background color using orange
-        float hue = 0.06f;
-        float saturation = 0.5f;
-        float brightness = 1.0f;
-        float increment = 0.02f;
-        for (int i = 0; i < textAreas.size(); i++) {
-            JTextArea textArea = textAreas.get(i);
-            Color color = Color.getHSBColor(hue, saturation, brightness);
-            textArea.setBackground(color);
-            brightness -= increment;
-        }
-
-        // Add components to JFrame
-        add(textAreaPanel, BorderLayout.CENTER);
-        add(buttonPanel, BorderLayout.NORTH);
-
-        setVisible(true);
-
-    exitButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        		dispose();
-        	}
-        });
-
-    saveButton.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            for (int i = 0; i < textAreas.size(); i++) {
-                JTextArea textArea = textAreas.get(i);
-                try {
-                    // Open existing text file and overwrite with new text
-                    String filename = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + i;
-                    File file = new File(filename);
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                    writer.write(textArea.getText());
-                    writer.close();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-            JOptionPane.showMessageDialog(null, "Text saved to files.");
-        }
-    });
-    // Add panels to JFrame
-    getContentPane().add(buttonPanel, BorderLayout.NORTH);
-    getContentPane().add(textAreaPanel, BorderLayout.CENTER);
-    setVisible(true);
+        initializeFrame();
+        createAndShowGUI();
     }
 
-	private static String getSavedText(int index) {
-		String filename = EntryDir.homeDir + "/fourgate/hypercholesterolemia/textarea" + index;
-		File file = new File(filename);
-	    if (!file.exists()) {
-	        return ""; // Return empty string if file doesn't exist yet
-	    }
-	    try {
-	        BufferedReader reader = new BufferedReader(new FileReader(file));
-	        StringBuilder sb = new StringBuilder();
-	        String line = reader.readLine();
-	        while (line != null) {
-	            sb.append(line);
-	            sb.append(System.lineSeparator());
-	            line = reader.readLine();
-	        }
-	        reader.close();
-	        return sb.toString();
-	    } catch (IOException ex) {
-	        ex.printStackTrace();
-	        return ""; // Return empty string if there was an error reading the file
-	    }
-	}
-    
-	public static void main(String[] args) {
-	    SwingUtilities.invokeLater(new Runnable() {
-	        public void run() {
-	            new EMR_FU_hypercholesterolemia();
-	        }
-	    });
-		}
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-	}
+    private void initializeFrame() {
+        setTitle("Hypercholesterolemia Preform");
+        setSize(400, 1000);
+        setLocation(100, 100);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void createAndShowGUI() {
+        add(createTextAreaPanel(), BorderLayout.CENTER);
+        add(createButtonPanel(), BorderLayout.NORTH);
+        setVisible(true);
+    }
+
+    private JPanel createTextAreaPanel() {
+        JPanel panel = new JPanel(new GridLayout(SECTIONS.length, 1));
+        float brightness = 1.0f;
+        
+        for (int i = 0; i < SECTIONS.length; i++) {
+            JTextArea textArea = createTextArea(i);
+            textArea.setBackground(createGradientColor(brightness));
+            brightness -= 0.02f;
+            
+            panel.add(new JScrollPane(textArea));
+            textAreas.add(textArea);
+        }
+        
+        return panel;
+    }
+
+    private JTextArea createTextArea(int index) {
+        JTextArea textArea = new JTextArea(loadTextFromFile(index));
+        textArea.setLineWrap(true);
+        textArea.setWrapStyleWord(true);
+        return textArea;
+    }
+
+    private Color createGradientColor(float brightness) {
+        return Color.getHSBColor(0.06f, 0.5f, brightness);
+    }
+
+    private JPanel createButtonPanel() {
+        JPanel panel = new JPanel(new GridLayout(1, 2));
+        
+        JButton saveButton = new JButton("Save");
+        saveButton.addActionListener(e -> saveAllTexts());
+        
+        JButton exitButton = new JButton("Exit");
+        exitButton.addActionListener(e -> dispose());
+        
+        panel.add(saveButton);
+        panel.add(exitButton);
+        return panel;
+    }
+
+    private String loadTextFromFile(int index) {
+        File file = new File(BASE_PATH + index);
+        if (!file.exists()) return SECTIONS[index];
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+            return content.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return SECTIONS[index];
+        }
+    }
+
+    private void saveAllTexts() {
+        try {
+            for (int i = 0; i < textAreas.size(); i++) {
+                try (BufferedWriter writer = new BufferedWriter(
+                        new FileWriter(BASE_PATH + i))) {
+                    writer.write(textAreas.get(i).getText());
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Files saved successfully");
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Error saving files: " + e.getMessage(),
+                "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(EMR_FU_hypercholesterolemia::new);
+    }
 }

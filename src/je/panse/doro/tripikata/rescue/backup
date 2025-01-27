@@ -1,11 +1,10 @@
 
-  CC>    Hypertension F/U
-  S>
-  The Patient has suffered from : ▣ 
-    □      Sharp or stabbing pain
-    □      Chest tightness
-    □      Shortness of breath
-    □      Dizziness
-    □      Nausea
-  Comment>
-Limit alcohol consumption.
+  CC>	The patient visits for Vaccination
+  [ ✔ ]  no allergy to eggs, chicken
+           , or any other component of the vaccine.
+  [ ✔ ]  no s/p Guillain-Barré syndrome.
+  [ ✔ ]  no adverse reactions to previous vaccines.
+  [ ✔ ]  no immunosuppression.
+  P>	
+   ...Vaccination as scheduled
+...now [ Good ] controlled glucose status

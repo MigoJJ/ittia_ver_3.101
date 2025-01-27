@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate.keybutton;
 
-import java.awt.Color;						
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -9,14 +9,29 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import je.panse.doro.fourgate.diabetes.EMR_FU_retinopathy;
+
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
 import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
-import je.panse.doro.samsara.EMR_OBJ_XrayGFS.*;
-import je.panse.doro.samsara.EMR_OBJ_excute.*;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_CFS;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_GFS;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMRLabPositive;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_CBC;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LDL;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_Lab_enterresult;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_LpaApoB;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
+import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 import je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 
@@ -90,7 +105,10 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("ChestPA", () -> EMR_ChestPA.main(new String[0]));
         buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
         buttonActions.put("DEXA", () -> EMR_DEXA.main(new String[0]));
+        
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
+//        buttonActions.put("Abdomen", () -> PE_Abdominal_pain_diagnosis.main(new String[0]));
+        
         buttonActions.put("DM pph", () -> PNPdm.main(new String[0]));
         buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
         buttonActions.put("Allergy", () -> {

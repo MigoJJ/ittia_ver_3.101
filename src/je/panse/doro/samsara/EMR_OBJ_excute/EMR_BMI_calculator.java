@@ -1,125 +1,142 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.*;	
-import java.awt.event.*;
 import javax.swing.*;
+import java.awt.*;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
-public class EMR_BMI_calculator extends JFrame implements ActionListener {
-    private JLabel[] labels = {
-        new JLabel("Height (cm): "),
-        new JLabel("Weight (kg): "),
-        new JLabel("Waist (cm or inch): ")
-    };
-    private JTextField[] fields = new JTextField[3];
-    private JButton SaveandQuit;
+public class EMR_BMI_calculator extends JFrame {
+    private static final String[] FIELDS = {"Height (cm): ", "Weight (kg): ", "Waist (cm or inch): "};
+    private static final Dimension FIELD_SIZE = new Dimension(15, 30);
+    private final JTextField[] inputs = new JTextField[FIELDS.length];
 
     public EMR_BMI_calculator() {
-        setTitle("BMI Calculator");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 240);
-        setResizable(true);
-        positionFrameToTopRight();
-
-        JPanel panel = new JPanel(new GridBagLayout());
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.insets = new Insets(5, 5, 5, 5);
-
-        for (int i = 0; i < labels.length; i++) {
-            constraints.gridx = 0;
-            constraints.gridy = i;
-            panel.add(labels[i], constraints);
-
-            fields[i] = new JTextField(10);
-            fields[i].setPreferredSize(new Dimension(15, 30));
-            fields[i].setHorizontalAlignment(SwingConstants.CENTER);
-            constraints.gridx = 1;
-            panel.add(fields[i], constraints);
-
-            addKeyListenerToField(fields[i], i);
-        }
-
-        SaveandQuit = new JButton("Save & Quit");
-        SaveandQuit.addActionListener(this);
-        constraints.gridx = 1;
-        constraints.gridy = labels.length;
-        constraints.gridwidth = 2;
-        panel.add(SaveandQuit, constraints);
-
-        add(panel);
+        setupFrame();
+        createUI();
         setVisible(true);
     }
 
-    private void addKeyListenerToField(JTextField field, int index) {
-        field.addKeyListener(new KeyAdapter() {
+    private void setupFrame() {
+        setTitle("BMI Calculator");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 240);
+        setLocation(
+            Toolkit.getDefaultToolkit().getScreenSize().width - 300, 
+            60
+        );
+    }
+
+    private void createUI() {
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 5, 5, 5);
+
+        // Create input fields
+        for (int i = 0; i < FIELDS.length; i++) {
+            addInputRow(panel, gbc, i);
+        }
+
+        // Add save button
+        addSaveButton(panel, gbc);
+        add(panel);
+    }
+
+    private void addInputRow(JPanel panel, GridBagConstraints gbc, int row) {
+        // Add label
+        gbc.gridx = 0;
+        gbc.gridy = row;
+        panel.add(new JLabel(FIELDS[row]), gbc);
+
+        // Add text field
+        JTextField field = createTextField();
+        inputs[row] = field;
+        gbc.gridx = 1;
+        panel.add(field, gbc);
+
+        // Add key listener for Enter
+        field.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                    if (index < fields.length - 1) {
-                        fields[index + 1].requestFocusInWindow();
-                    } else {
-                        calculateAndDisplayBMI();
-                    }
+            public void keyPressed(java.awt.event.KeyEvent e) {
+                if (e.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    handleEnterKey(row);
                 }
             }
         });
     }
 
-    private void calculateAndDisplayBMI() {
-        double height = Double.parseDouble(fields[0].getText());
-        double weight = Double.parseDouble(fields[1].getText());
-        double bmi = weight / (height / 100.0 * height / 100.0);
+    private JTextField createTextField() {
+        JTextField field = new JTextField(10);
+        field.setPreferredSize(FIELD_SIZE);
+        field.setHorizontalAlignment(SwingConstants.CENTER);
+        return field;
+    }
 
-        String result = getBMICategory(bmi);
-        result = String.format("%s : BMI: [ %.2f ]kg/m^2", result, bmi);
-        String result1 = "\n" + result + "\nHeight : " + height + " cm   Weight : " + weight + " kg";
+    private void addSaveButton(JPanel panel, GridBagConstraints gbc) {
+        JButton saveButton = new JButton("Save & Quit");
+        saveButton.addActionListener(e -> dispose());
+        gbc.gridx = 1;
+        gbc.gridy = FIELDS.length;
+        gbc.gridwidth = 2;
+        panel.add(saveButton, gbc);
+    }
 
-        if (!fields[2].getText().isEmpty()) {
-            String waist = fields[2].getText();
-            
-            if (waist.contains("i")) {
-                waist = waist.replace("i", "");
-                double waistValue = Double.parseDouble(waist);
-                waistValue *= 2.54;
-                waist = String.format("%.1f", waistValue);
-            }
-            
-            result1 += "   Waist: " + waist + " cm";
+    private void handleEnterKey(int currentField) {
+        if (currentField < inputs.length - 1) {
+            inputs[currentField + 1].requestFocusInWindow();
+        } else {
+            calculateBMI();
         }
+    }
 
-        updateTextAreas(result, result1);
-        dispose();
-        EMR_BMI_calculator.main(null);
+    private void calculateBMI() {
+        try {
+            double height = Double.parseDouble(inputs[0].getText());
+            double weight = Double.parseDouble(inputs[1].getText());
+            double bmi = weight / Math.pow(height/100, 2);
+
+            String bmiCategory = getBMICategory(bmi);
+            String waistMeasurement = processWaistMeasurement();
+            
+            updateEMRFrame(bmi, height, weight, bmiCategory, waistMeasurement);
+            
+            dispose();
+            EMR_BMI_calculator.main(null);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Please enter valid numbers");
+        }
+    }
+
+    private String processWaistMeasurement() {
+        String waist = inputs[2].getText().trim();
+        if (waist.isEmpty()) return "";
+
+        if (waist.contains("i")) {
+            double inches = Double.parseDouble(waist.replace("i", ""));
+            return String.format("%.1f", inches * 2.54);
+        }
+        return waist;
     }
 
     private String getBMICategory(double bmi) {
         if (bmi < 18.5) return "Underweight";
         if (bmi < 25) return "Healthy weight";
         if (bmi < 30) return "Overweight";
-        return "Obese";
+        return "BMI Category";
     }
 
-    private void updateTextAreas(String result, String result1) {
-        GDSEMR_frame.setTextAreaText(5, "\n< BMI >\n" + result1);
-        String cdate = Date_current.main("m");
-        GDSEMR_frame.setTextAreaText(7, "\n# " + result + "    " + cdate);
-    }
+    private void updateEMRFrame(double bmi, double height, double weight, 
+                              String category, String waist) {
+        String bmiText = String.format("%s : BMI: [ %.2f ]kg/m^2", category, bmi);
+        String details = String.format("\n< BMI >\n%s\nHeight : %.1f cm   Weight : %.1f kg%s",
+            bmiText, height, weight, 
+            waist.isEmpty() ? "" : "   Waist: " + waist + " cm");
 
-    private void positionFrameToTopRight() {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setLocation(screenSize.width - getWidth(), 60);
+        GDSEMR_frame.setTextAreaText(5, details);
+        GDSEMR_frame.setTextAreaText(7, "\n# " + bmiText + "    " + Date_current.main("m"));
     }
 
     public static void main(String[] args) {
-        new EMR_BMI_calculator();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == SaveandQuit) {
-            dispose();
-        }
+        SwingUtilities.invokeLater(EMR_BMI_calculator::new);
     }
 }
