@@ -1,117 +1,60 @@
 package je.panse.doro.chartplate.keybutton.EMR_Backup_Excute;
 
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.Timer;
-import java.util.TimerTask;
-
+import java.io.*;
+import java.nio.file.*;
 import je.panse.doro.entry.EntryDir;
 
 public class EMR_B_FileListFrame extends JFrame {
-    private JList<String> fileList;
-    private DefaultListModel<String> listModel;
-    private static final String DIRECTORY_PATH = EntryDir.homeDir + "/tripikata/rescue/rescuefolder";
-
+    private static final String DIR_PATH = EntryDir.homeDir + "/tripikata/rescue/rescuefolder";
+    
     public EMR_B_FileListFrame() {
         setTitle("File List");
         setSize(300, 400);
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new BorderLayout());
-
-        listModel = new DefaultListModel<>();
-        fileList = new JList<>(listModel);
-        populateFileList();
-
-        fileList.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evt) {
-                if (evt.getClickCount() == 2) {
-                    int index = fileList.locationToIndex(evt.getPoint());
-                    String selectedItem = listModel.getElementAt(index);
-                    File selectedFile = new File(DIRECTORY_PATH, selectedItem);
-                    
-                    EditorFrame editorFrame = new EditorFrame(selectedFile);
-                    editorFrame.setVisible(true);
-                }
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        
+        JList<String> fileList = new JList<>(loadFiles());
+        fileList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                if (e.getClickCount() == 2) 
+                    openEditor(new File(DIR_PATH, fileList.getSelectedValue()));
             }
         });
-
-        JScrollPane scrollPane = new JScrollPane(fileList);
-        add(scrollPane, BorderLayout.CENTER);
-
-        // Set location to the upper right corner
-        setLocationRelativeTo(null);
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        Point centerPoint = ge.getCenterPoint();
-        Rectangle bounds = ge.getMaximumWindowBounds();
-        int x = (int) bounds.getMaxX() - getWidth();
-        int y = 0;
-        setLocation(x, y);
-
-        // Close the frame after 5 seconds
-        new Timer().schedule(new TimerTask() {
-            public void run() {
-                dispose();
-            }
-        }, 10000);
+        
+        add(new JScrollPane(fileList));
+        setLocation((int)GraphicsEnvironment.getLocalGraphicsEnvironment()
+            .getMaximumWindowBounds().getMaxX() - 300, 0);
+            
+        new javax.swing.Timer(10000, e -> dispose()).start();
     }
 
-    private void populateFileList() {
-        File dir = new File(DIRECTORY_PATH);
-        File[] files = dir.listFiles();
+    private DefaultListModel<String> loadFiles() {
+        DefaultListModel<String> model = new DefaultListModel<>();
+        File[] files = new File(DIR_PATH).listFiles();
+        if (files != null) for (File f : files) model.addElement(f.getName());
+        return model;
+    }
 
-        if (files != null) {
-            for (File file : files) {
-                listModel.addElement(file.getName());
-            }
+    private void openEditor(File file) {
+        JFrame editor = new JFrame("Editor: " + file.getName());
+        JTextArea text = new JTextArea();
+        
+        try {
+            text.setText(Files.readString(file.toPath()));
+            editor.add(new JScrollPane(text));
+            editor.setSize(500, 800);
+            editor.setLocationRelativeTo(null);
+            editor.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            editor.setVisible(true);
+            
+            new javax.swing.Timer(15000, e -> editor.dispose()).start();
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Failed to load file", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new EMR_B_FileListFrame().setVisible(true);
-        });
+        SwingUtilities.invokeLater(() -> new EMR_B_FileListFrame().setVisible(true));
     }
-
-    class EditorFrame extends JFrame {
-        private JTextArea textArea;
-
-        public EditorFrame(File file) {
-            setTitle("Editor: " + file.getName());
-            setSize(500, 800);
-            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            setLayout(new BorderLayout());
-
-            textArea = new JTextArea();
-            JScrollPane scrollPane = new JScrollPane(textArea);
-            add(scrollPane, BorderLayout.CENTER);
-
-            loadFileContent(file);
-            setLocationRelativeTo(null);
-
-            // Close the frame after 15 seconds
-            new Timer().schedule(new TimerTask() {
-                public void run() {
-                    dispose();
-                }
-            }, 15000);  // 15000 milliseconds = 15 seconds
-        }
-
-        private void loadFileContent(File file) {
-            try {
-                byte[] bytes = Files.readAllBytes(file.toPath());
-                String content = new String(bytes, StandardCharsets.UTF_8);
-                textArea.setText(content);
-            } catch (IOException e) {
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(this, "Failed to load file content", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-    }
-
 }

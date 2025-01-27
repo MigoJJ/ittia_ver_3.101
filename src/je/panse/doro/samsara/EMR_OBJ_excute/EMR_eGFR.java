@@ -1,173 +1,149 @@
-
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.BorderLayout;	
-import java.awt.Container;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
+import javax.swing.*;
+import java.awt.*;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 
 public class EMR_eGFR extends JFrame {
-
-    private JTextField[] inputFields;
-    private JButton submitButton;
-    private JButton clearButton;
+    private static final String[] LABELS = {
+        "Creatinie : ", "eGFR : ", "Albumin / Creatinie ratio : "
+    };
     
+    private static final String[][] GFR_CATEGORIES = {
+        {"90", "G1  : Normal GFR"},
+        {"60", "G2  : Mildly decreased GFR"},
+        {"45", "G3a : Mildly to moderately decreased GFR"},
+        {"30", "G3b : Moderate to severely decreased GFR"},
+        {"15", "G4  : Severely decreased GFR"},
+        {"0",  "G5  : Kidney failure"}
+    };
+    
+    private final JTextField[] inputs = new JTextField[LABELS.length];
+
     public EMR_eGFR() {
-        
-        // Set up the JFrame
-        super("EMR GFR Interface");
+        setupFrame();
+        createUI();
+        setVisible(true);
+    }
+
+    private void setupFrame() {
+        setTitle("EMR GFR Interface");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 200);
         setLocationRelativeTo(null);
+    }
+
+    private void createUI() {
+        add(createInputPanel(), BorderLayout.CENTER);
+        add(createButtonPanel(), BorderLayout.SOUTH);
+    }
+
+    private JPanel createInputPanel() {
+        JPanel panel = new JPanel(new GridLayout(3, 2));
         
-        // Create the input fields
-        inputFields = new JTextField[3];
-        String[] labels = {"Creatinie : ", "eGFR : ", "Albumin / Creatinie ratio : "};
-        JPanel inputPanel = new JPanel(new GridLayout(3, 2));
-        for (int i = 0; i < 3; i++) {
-            JLabel label = new JLabel(labels[i], JLabel.RIGHT);
-            inputPanel.add(label);
-            inputFields[i] = new JTextField();
-            inputFields[i].setHorizontalAlignment(JTextField.CENTER);
-            inputFields[i].addActionListener(new InputFieldActionListener());
-            inputPanel.add(inputFields[i]);
+        for (int i = 0; i < LABELS.length; i++) {
+            panel.add(new JLabel(LABELS[i], JLabel.RIGHT));
+            inputs[i] = createInputField(i);
+            panel.add(inputs[i]);
         }
-        // Create the buttons
-        submitButton = new JButton("Submit");
-        clearButton = new JButton("Clear");
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 2));
-        buttonPanel.add(submitButton);
-        buttonPanel.add(clearButton);
-        
-        // Add components to the content pane
-        Container c = getContentPane();
-        c.setLayout(new BorderLayout());
-        c.add(inputPanel, BorderLayout.CENTER);
-        c.add(buttonPanel, BorderLayout.SOUTH);
-
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Clear the text of all input fields
-                for (JTextField inputField : inputFields) {
-                    inputField.setText("");
-                }
-            }
-        });
-        // Show the JFrame
-        setVisible(true);
-    }
-    
-    private class InputFieldActionListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            // Move the cursor to the next input field when Enter is pressed
-            JTextField source = (JTextField) e.getSource();
-            for (int i = 0; i < 3; i++) {
-                if (source == inputFields[i]) {
-                    if (i < 2) {
-                        inputFields[i+1].requestFocus();
-                    } else {
-                        String result = ""; 
-                        String cresult = "";
-                        String cr = inputFields[0].getText().trim();
-                        String eGFR = inputFields[1].getText().trim();
-                        String AC = inputFields[2].getText().trim();
-                    	
-                        if (eGFR.isEmpty()) {
-                            result = "\n\t" + cr + "\tCreatinie (mg/dl)\n";
-                        } else {
-                            result = "\n\t" + cr + "\tCreatinie (mg/dl)\n"
-                            		+"\n\t" + eGFR + "\teGFR ( mL/min/1.73m²)\n"
-                            		+"\n\t" + AC + "\t+A/C ratio (mg/g)\n";
-                            cresult = EMR_eGFR_Calc(cr, eGFR, AC);
-                       	}
-                        // Clear the text of all input fields
-                        for (JTextField inputField : inputFields) {
-                            inputField.setText("");
-                       	}
-
-                        GDSEMR_frame.setTextAreaText(5, "\n\t..........\n");
-                        String[] results = {result, cresult};
-	                        for (String res : results) {
-	                            GDSEMR_frame.setTextAreaText(5, res);
-	                        }
-                        String rresult = EMR_eGFR.EMR_AG(cresult);
-                        GDSEMR_frame.setTextAreaText(7, rresult);
-                        dispose();
-                    }
-                    break;
-                }
-            }
-        }
-    }
-    public static String EMR_AG(String argsCKD) {
-		 String[] lines = argsCKD.split("\n");
-		 StringBuilder sb = new StringBuilder();
-		 for (String line : lines) {
-		     int colonIndex = line.indexOf(':');
-		     if (colonIndex != -1) {
-		         String code = line.substring(0, colonIndex).trim();
-		         sb.append(code).append(" ");
-		     }
-		 }
-		 String cdate = Date_current.main("m");
-		 String rargsCKD = ">  CKD [ " + sb.toString().trim() + " ] " + cdate;
-		 return "\n" + rargsCKD;
+        return panel;
     }
 
-    public String EMR_eGFR_Calc(String cr, String egfr, String ac) {
-        double C1 = Double.parseDouble(cr.trim());
-        double eGFR = Double.parseDouble(egfr.trim());
-        double ACratio = Double.parseDouble(ac.trim());
-        
-        String RACratio = getRACratio(ACratio);
-        String ReGFR = getReGFR(eGFR);
-        
-        return "\t" + RACratio + "\n\t" + ReGFR;
+    private JTextField createInputField(int index) {
+        JTextField field = new JTextField();
+        field.setHorizontalAlignment(JTextField.CENTER);
+        field.addActionListener(e -> handleEnterKey(index));
+        return field;
     }
 
-    private String getRACratio(double ACratio) {
-        if (ACratio < 30) {
-            return "A1  : Normal to mildly increased A/C_ratio";
-        } else if (ACratio >= 30 && ACratio <= 300) {
-            return "A2  : Moderately increased A/C_ratio";
-        } else if (ACratio > 300) {
-            return "A3  : Severely increased A/C_ratio";
+    private JPanel createButtonPanel() {
+        JPanel panel = new JPanel(new GridLayout(1, 2));
+        panel.add(createButton("Submit", () -> processInput()));
+        panel.add(createButton("Clear", () -> clearInputs()));
+        return panel;
+    }
+
+    private JButton createButton(String text, Runnable action) {
+        JButton button = new JButton(text);
+        button.addActionListener(e -> action.run());
+        return button;
+    }
+
+    private void handleEnterKey(int currentField) {
+        if (currentField < inputs.length - 1) {
+            inputs[currentField + 1].requestFocus();
         } else {
-            return "";
+            processInput();
         }
     }
 
-    private String getReGFR(double eGFR) {
-        if (eGFR >= 90) {
-            return "G1  : Normal GFR";
-        } else if (eGFR < 90 && eGFR >= 60) {
-            return "G2  : Mildly decreased GFR";
-        } else if (eGFR < 60 && eGFR >= 45) {
-            return "G3a : Mildly to moderately decreased GFR";
-        } else if (eGFR < 45 && eGFR >= 30) {
-            return "G3b : Moderate to severely decreased GFR";
-        } else if (eGFR < 30 && eGFR >= 15) {
-            return "G4  : Severely decreased GFR";
-        } else if (eGFR < 15) {
-            return "G5  : Kidney failure";
+    private void processInput() {
+        String cr = inputs[0].getText().trim();
+        String egfr = inputs[1].getText().trim();
+        String ac = inputs[2].getText().trim();
+
+        StringBuilder result = new StringBuilder("\n");
+        result.append("\t").append(cr).append("\tCreatinie (mg/dl)\n");
+        
+        if (!egfr.isEmpty()) {
+            result.append("\t").append(egfr).append("\teGFR ( mL/min/1.73m²)\n")
+                  .append("\t").append(ac).append("\t+A/C ratio (mg/g)\n");
+            
+            String classification = calculateClassification(
+                Double.parseDouble(cr),
+                Double.parseDouble(egfr),
+                Double.parseDouble(ac)
+            );
+            
+            updateEMRFrame(result.toString(), classification);
+        }
+        
+        clearInputs();
+        dispose();
+    }
+
+    private String calculateClassification(double cr, double egfr, double acRatio) {
+        StringBuilder result = new StringBuilder();
+        
+        // A/C Ratio Classification
+        if (acRatio < 30) {
+            result.append("\tA1  : Normal to mildly increased A/C_ratio\n");
+        } else if (acRatio <= 300) {
+            result.append("\tA2  : Moderately increased A/C_ratio\n");
         } else {
-            return "";
+            result.append("\tA3  : Severely increased A/C_ratio\n");
+        }
+        
+        // GFR Classification
+        for (String[] category : GFR_CATEGORIES) {
+            if (egfr >= Double.parseDouble(category[0])) {
+                result.append("\t").append(category[1]);
+                break;
+            }
+        }
+        
+        return result.toString();
+    }
+
+    private void updateEMRFrame(String details, String classification) {
+        GDSEMR_frame.setTextAreaText(5, "\n\t..........\n" + details + classification);
+        
+        String[] codes = classification.split("\n");
+        String codeString = codes[0].substring(0, codes[0].indexOf(':')) + " " +
+                          codes[1].substring(0, codes[1].indexOf(':'));
+        
+        GDSEMR_frame.setTextAreaText(7, String.format("\n>  CKD [ %s ] %s", 
+            codeString.trim(), Date_current.main("m")));
+    }
+
+    private void clearInputs() {
+        for (JTextField field : inputs) {
+            field.setText("");
         }
     }
 
-	public static void main(String[] args) {
-        new EMR_eGFR();
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(EMR_eGFR::new);
     }
 }

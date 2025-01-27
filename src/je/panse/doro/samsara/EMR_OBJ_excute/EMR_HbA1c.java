@@ -1,164 +1,145 @@
 package je.panse.doro.samsara.EMR_OBJ_excute;
 
-import java.awt.*;
 import javax.swing.*;
-
+import java.awt.*;
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_HbA1c extends JFrame {
-    private JTextArea textArea;
-    private JTextField[] textFields = new JTextField[3];
-    private final String[] buttonNames = {"Clear", "Save", "Save and Quit"};
-    private final String[] labels = {"      FBS / PP2 time", "      Glucose mg/dL", "      HbA1c %"};
+    private static final String[] LABELS = {
+        "FBS / PP2 time", "Glucose mg/dL", "HbA1c %"
+    };
+    
+    private static final String[][] GLUCOSE_STATUS = {
+        {"9.0", "Very poor"},
+        {"8.5", "Poor"},
+        {"7.5", "Fair"},
+        {"6.5", "Good"},
+        {"0.0", "Excellent"}
+    };
+    
+    private final JTextArea outputArea = new JTextArea(4, 20);
+    private final JTextField[] inputs = new JTextField[LABELS.length];
 
-    // Constructor
     public EMR_HbA1c() {
-        initializeFrame();
-        setupUIComponents();
-        setupButtons();
-        setupListeners();
+        setupFrame();
+        createUI();
+        setVisible(true);
     }
 
-    private void initializeFrame() {
+    private void setupFrame() {
         setTitle("HbA1c EMR");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 230);
+        setLocation(0, 60);
+        setUndecorated(true);
         setLayout(new BorderLayout());
     }
 
-    private void setupUIComponents() {
-        textArea = new JTextArea(4, 20);
-        add(textArea, BorderLayout.NORTH);
-
-        JPanel centerPanel = createCenterPanel();
-        add(centerPanel, BorderLayout.CENTER);
+    private void createUI() {
+        add(outputArea, BorderLayout.NORTH);
+        add(createInputPanel(), BorderLayout.CENTER);
+        add(createButtonPanel(), BorderLayout.SOUTH);
     }
 
-    private JPanel createCenterPanel() {
-        JPanel centerPanel = new JPanel(new GridLayout(3, 2));
-        for (int i = 0; i < textFields.length; i++) {
-            JLabel label = new JLabel(labels[i]);
-            textFields[i] = new JTextField();
-            styleTextField(textFields[i]);
-            centerPanel.add(label);
-            centerPanel.add(textFields[i]);
+    private JPanel createInputPanel() {
+        JPanel panel = new JPanel(new GridLayout(3, 2));
+        
+        for (int i = 0; i < LABELS.length; i++) {
+            panel.add(new JLabel("      " + LABELS[i]));
+            inputs[i] = createStyledTextField(i);
+            panel.add(inputs[i]);
         }
-        return centerPanel;
+        return panel;
     }
 
-    private void styleTextField(JTextField textField) {
-        textField.setPreferredSize(new Dimension(textField.getPreferredSize().width, 30));
-        textField.setHorizontalAlignment(JTextField.CENTER);
+    private JTextField createStyledTextField(int index) {
+        JTextField field = new JTextField();
+        field.setPreferredSize(new Dimension(field.getPreferredSize().width, 30));
+        field.setHorizontalAlignment(JTextField.CENTER);
+        field.addActionListener(e -> processInput(index));
+        return field;
     }
 
-    private void setupButtons() {
-        JPanel buttonPanel = new JPanel(new FlowLayout());
-        for (String buttonName : buttonNames) {
-            JButton button = new JButton(buttonName);
-            button.addActionListener(e -> handleButtonAction(buttonName));
-            buttonPanel.add(button);
+    private JPanel createButtonPanel() {
+        JPanel panel = new JPanel(new FlowLayout());
+        for (String name : new String[]{"Clear", "Save", "Save and Quit"}) {
+            JButton button = new JButton(name);
+            button.addActionListener(e -> handleButton(name));
+            panel.add(button);
         }
-        add(buttonPanel, BorderLayout.SOUTH);
+        return panel;
     }
 
-    private void handleButtonAction(String buttonName) {
-        switch (buttonName) {
-            case "Clear": clear(); break;
-            case "Save": save(); break;
-            case "Save and Quit":save(); dispose(); break;
+    private void processInput(int index) {
+        String value = inputs[index].getText();
+        
+        if (index == 0) {
+            outputArea.append("\n   " + (value.equals("0") ? "FBS" : "PP" + value));
+        } else if (index == 1) {
+            outputArea.append("  [    " + value + "   ] mg/dL");
+        } else if (index == 2) {
+            processHbA1c(value);
+        }
+        
+        inputs[index].setText("");
+        if (index < inputs.length - 1) {
+            inputs[index + 1].requestFocus();
         }
     }
-    
-    private void setupListeners() {
-        for (int i = 0; i < textFields.length; i++) {
-            final int currentFieldIndex = i;
-            textFields[i].addActionListener(e -> handleTextFieldAction(currentFieldIndex));
-        }
+
+    private void processHbA1c(String value) {
+        double hba1c = Double.parseDouble(value);
+        outputArea.append("   HbA1c       [    " + value + "   ] %\n");
+        calculateHbA1c(hba1c);
+        
+        new Timer(3000, e -> {
+            save();
+            clear();
+        }).start();
     }
 
-    private void handleTextFieldAction(int currentFieldIndex) {
-        String sampleTime = "FBS";
-        String textFieldText = textFields[currentFieldIndex].getText();
+    private void calculateHbA1c(double hba1c) {
+        double ifcc = (hba1c - 2.15) * 10.929;
+        double eagMgDl = (28.7 * hba1c) - 46.7;
+        double eagMmolL = eagMgDl / 18.01559;
 
-        if (currentFieldIndex == 0) {
-            if (!textFieldText.equals("0")) {
-                sampleTime = "PP" + textFieldText;
+        outputArea.append(String.format(
+            "\n\tIFCC HbA1c: [  %.0f  ] mmol/mol" +
+            "\n\teAG: [  %.0f  ] mg/dL" +
+            "\n\teAG: [  %.2f  ] mmol/l\n",
+            ifcc, eagMgDl, eagMmolL));
+
+        determineGlucoseStatus(hba1c);
+    }
+
+    private void determineGlucoseStatus(double hba1c) {
+        for (String[] status : GLUCOSE_STATUS) {
+            if (hba1c > Double.parseDouble(status[0])) {
+                GDSEMR_frame.setTextAreaText(8, 
+                    "\n...now [ " + status[1] + " ] controlled glucose status");
+                break;
             }
-            textArea.append("\n   " + sampleTime);
-        } else if (currentFieldIndex == 1) {
-            textArea.append("  [    " + textFieldText + "   ] mg/dL");
-        } else if (currentFieldIndex == 2) {
-            textArea.append("   HbA1c       [    " + textFieldText + "   ] %\n");
-            double hba1cDouble = Double.parseDouble(textFieldText);
-            hba1cCalc(hba1cDouble);
-            Timer timer = new Timer(3000, e -> {
-                save();
-                clear();
-//                dispose();
-            });
-            timer.setRepeats(false); // Ensure the timer only fires once
-            timer.start();
-        }
-
-        textFields[currentFieldIndex].setText("");
-
-        if (currentFieldIndex < textFields.length - 1) {
-            textFields[currentFieldIndex + 1].requestFocus();
         }
     }
-    
-    private void clear() {
-        textArea.setText("");
-        for (JTextField textField : textFields) {
-            textField.setText("");
+
+    private void handleButton(String name) {
+        switch (name) {
+            case "Clear" -> clear();
+            case "Save" -> save();
+            case "Save and Quit" -> {save(); dispose();}
         }
+    }
+
+    private void clear() {
+        outputArea.setText("");
+        for (JTextField field : inputs) field.setText("");
     }
 
     private void save() {
-    	 GDSEMR_frame.setTextAreaText(5, textArea.getText());
-         }
-    
-    // Calculate the HbA1c value and update the text area
-    private void hba1cCalc(double hba1c_perc) {
-        double ifcc_hba1c_mmolmol = (hba1c_perc - 2.15) * 10.929;
-        double eag_mgdl = (28.7 * hba1c_perc) - 46.7;
-        double eag_mmoll = eag_mgdl / 18.01559;
-
-        String hba1cP = String.format(
-        		"\n\tIFCC HbA1c: [  %.0f  ] mmol/mol"
-        		+ "\n\teAG: [  %.0f  ] mg/dL"
-        		+ "\n\teAG: [  %.2f  ] mmol/l\n",
-                ifcc_hba1c_mmolmol, eag_mgdl, eag_mmoll);
-        textArea.append(hba1cP);
-//        GDSEMR_frame.setTextAreaText(5, textArea.getText());
-        getGlucoseControlStatus(hba1c_perc);
+        GDSEMR_frame.setTextAreaText(5, outputArea.getText());
     }
 
-    public static void getGlucoseControlStatus(double HbA1c) {
-        String status;
-        if (HbA1c > 9.0) {
-            status = "Very poor";
-        } else if (HbA1c >= 8.5 && HbA1c <= 9.0) {
-            status = "Poor";
-        } else if (HbA1c >= 7.5 && HbA1c < 8.5) {
-            status = "Fair";
-        } else if (HbA1c >= 6.5 && HbA1c < 7.5) {
-            status = "Good";
-        } else {
-            status = "Excellent";
-        }
-        String message = String.format("\n...now [ %s ] controlled glucose status", status);
-        GDSEMR_frame.setTextAreaText(8, message);
-        System.out.println(message);
-    }
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            EMR_HbA1c emr = new EMR_HbA1c();
-            emr.setLocation(0, 60); // Set the location
-            emr.setSize(300, 230);
-      	 	 emr.setUndecorated(true);
-//            emr.pack();
-            emr.setVisible(true);
-        });
+        SwingUtilities.invokeLater(EMR_HbA1c::new);
     }
-
 }
