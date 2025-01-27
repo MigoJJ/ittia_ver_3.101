@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.*;
+import java.awt.*;	
 import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.*;

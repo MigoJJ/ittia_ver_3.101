@@ -1,7 +1,20 @@
 
-  CC>    Hypertension F/U
+  CC>    Diabetes Mellitus  F/U
+  S>
+    Unexpected Weight loss [ - ]
+  A>
+#  DM  F/U   2025.01.27
   P>
-    Follow up interval: [ 3 ] months
-    Prescription : [ → ] advised the patient to continue with current medication
+...Follow-up in the clinic in [ 3.0 ]-month
+...continue with current dosages of meds
+...Plan to perform laboratory tests during the next visit on [ 2025.01.27]
+ ...   ...FBS / PP2  HbA1c +A/C Electorlyte  Vitamin-D
+ ...   ...FBS / PP2  HbA1c +A/C Electorlyte
+ ...   ...EKG
+   ...   ...EKG  CUS : Carotid artery US
+   ...   ...EKG  CUS : Carotid artery US  CPA
+ ...   ...Carotid artery US
+   ...   ...EKG  CUS : Carotid artery US
+ ...   ...FBS / PP2  HbA1c +A/C(eGFR, U-microalbumin)
   Comment>
-Increase potassium intake (from fruits and vegetables).
+Monitor your blood sugar regularly.
