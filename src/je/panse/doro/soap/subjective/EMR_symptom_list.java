@@ -96,13 +96,18 @@ public class EMR_symptom_list extends JPanel {
         JButton button4 = new JButton("DDx");
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String text = textArea.getText();
-                GDSEMR_frame.setTextAreaText(4, text);
-                textArea.setText(""); 
-                frame.dispose(); // Close the frame after saving
-            	PE_Abdominal_pain_diagnosis.main(null);
+                // Get text from the text area and trim leading/trailing spaces
+                String text = textArea.getText().trim();
+                // Save the text in GDSEMR_frame and clear the text area
+                GDSEMR_frame.setTextAreaText(4, text); // Save the input text
+                textArea.setText(""); // Clear the text area
+
+                // Close the frame after saving
+                frame.dispose();
             }
         });
+
+
         JButton button5 = new JButton("Quit");
         button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

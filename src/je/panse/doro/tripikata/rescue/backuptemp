@@ -1,21 +1,17 @@
 
-  CC>	The patient visits for Vaccination
-  [ ✔ ]  no allergy to eggs, chicken
-           , or any other component of the vaccine.
-  [ ✔ ]  no s/p Guillain-Barré syndrome.
-  [ ✔ ]  no adverse reactions to previous vaccines.
-  [ ✔ ]  no immunosuppression.
-  PI>	
-... ➢ Prevena 13 (pneumococcal vaccine (PCV13)) side effect [ ⏵ ]
-	[ ⏵ ] Headache
-	[ ⏵ ] Muscle Pain
-	[ ⏵ ] Fatigue or tiredness
-	[ ▹ ] Fatigue or tiredness
-	[ ⏵ ] Joint pain
-	[ ▹ ] Joint pain
-                             [ ⏵ ] Swollen lymph nodes
-	[ ▹ ] Swollen lymph nodes
-  A>	
-  #  Kovax Influ 4ga PF® vaccine [nip]   [2025-01-28]
-  P>	
-   ...Vaccination as scheduled
+    S>	The Patient has suffered from : ▣ 
+	□      Nausea
+	□      Vomiting
+	□      Loss of appetite
+	□      Bloating
+	□      Fever
+	□      Diarrhea
+	□      Constipation
+	□      Heartburn
+	□      Belching
+	□      Urinary problems
+	□      Fatigue
+	□      Changes in bowel habits
+	□      Gas
+	□      Cramping
+	□      Back pain

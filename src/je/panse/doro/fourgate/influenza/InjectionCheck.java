@@ -74,31 +74,44 @@ public class InjectionCheck extends JFrame {
         javax.swing.Timer singleClickTimer = new javax.swing.Timer(200, e -> {
             int row = table.getSelectedRow();
             if (row != -1) {
-                outputArea.append("\t[ ⏵ ] " + table.getValueAt(row, 1) + "\n");
+                outputArea.append("\t[ ▹ ] " + table.getValueAt(row, 1) + "\n");
             }
         });
         singleClickTimer.setRepeats(false); // Ensure the timer only fires once
 
         table.addMouseListener(new java.awt.event.MouseAdapter() {
+            private boolean doubleClickFlag = false; // Flag to track double click
+
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 int row = table.getSelectedRow();
                 if (row != -1) {
                     if (e.getClickCount() == 1) { // Single click
+                        doubleClickFlag = false; // Reset flag for single click
                         // Start the timer for single-click action
-                        singleClickTimer.start();
+                        singleClickTimer.restart(); // Reset and start the timer
                     } else if (e.getClickCount() == 2) { // Double click
-                        // Cancel the single-click timer
+                        // Set flag to true and cancel single-click action
+                        doubleClickFlag = true;
                         singleClickTimer.stop();
                         // Execute double-click action
-                        outputArea.append("\t[ ▹ ] " + table.getValueAt(row, 1) + "\n");
+                        outputArea.append("\t[ ⏵ ] " + table.getValueAt(row, 1) + "\n");
                     }
+                }
+            }
+
+            @Override
+            public void mousePressed(java.awt.event.MouseEvent e) {
+                // Cancel the timer if double click detected
+                if (doubleClickFlag) {
+                    singleClickTimer.stop();
                 }
             }
         });
 
         return table;
     }
+
 
 
     private void setupLayout() {
