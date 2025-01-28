@@ -104,7 +104,7 @@ public class EMR_symptom_list extends JPanel {
             }
         });
         JButton button5 = new JButton("Quit");
-        button4.addActionListener(new ActionListener() {
+        button5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
             }

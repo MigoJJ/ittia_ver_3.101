@@ -62,19 +62,44 @@ public class InjectionCheck extends JFrame {
 
     private JTable createReactionTable() {
         JTable table = new JTable(REACTIONS, new String[]{"Reaction Type", "Reaction"}) {
-            public boolean isCellEditable(int row, int column) { return false; }
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
         };
+
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        // Timer to handle single-click delay
+        javax.swing.Timer singleClickTimer = new javax.swing.Timer(200, e -> {
+            int row = table.getSelectedRow();
+            if (row != -1) {
+                outputArea.append("\t[ ⏵ ] " + table.getValueAt(row, 1) + "\n");
+            }
+        });
+        singleClickTimer.setRepeats(false); // Ensure the timer only fires once
+
         table.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 int row = table.getSelectedRow();
                 if (row != -1) {
-                    outputArea.append("\t[ ⏵ ] " + table.getValueAt(row, 1) + "\n");
+                    if (e.getClickCount() == 1) { // Single click
+                        // Start the timer for single-click action
+                        singleClickTimer.start();
+                    } else if (e.getClickCount() == 2) { // Double click
+                        // Cancel the single-click timer
+                        singleClickTimer.stop();
+                        // Execute double-click action
+                        outputArea.append("\t[ ▹ ] " + table.getValueAt(row, 1) + "\n");
+                    }
                 }
             }
         });
+
         return table;
     }
+
 
     private void setupLayout() {
         setLayout(new BorderLayout());
