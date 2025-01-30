@@ -1,5 +1,5 @@
 package je.panse.doro.samsara.EMR_PE;
-import javax.swing.*;
+import javax.swing.*;		
 import javax.swing.table.*;
 
 import je.panse.doro.GDSEMR_frame;
@@ -42,20 +42,34 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
         JButton moreButton = new JButton("More Likely");
         JButton quitButton = new JButton("Quit");
 
-        // Button Actions
-        clearButton.addActionListener(e -> notesArea.setText(""));
-        saveButton.addActionListener(e -> {
-            System.out.println("Saved notes:\n" + notesArea.getText());
-            JOptionPane.showMessageDialog(this, "Notes saved successfully!", "Save Notes", JOptionPane.INFORMATION_MESSAGE);
-            GDSEMR_frame.setTextAreaText(7, "\n" + notesArea.getText());
+        clearButton.addActionListener(e -> {
+            // Clear text area
+            notesArea.setText("");
+            
+            // Clear all checkboxes in the table
+            ClickableTableModel model = (ClickableTableModel) table.getModel();
+            for (int row = 0; row < model.getRowCount(); row++) {
+                Object[][] conditions = (Object[][]) model.getValueAt(row, 1);
+                for (Object[] condition : conditions) {
+                    condition[0] = false;
+                }
+            }
+            table.repaint();
         });
+
         dateButton.addActionListener(e -> {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             String formattedDate = dateFormat.format(new Date());
             notesArea.append("Date: " + formattedDate + "\n");
         });
-        lessButton.addActionListener(e -> notesArea.append("Less likely\n"));
-        moreButton.addActionListener(e -> notesArea.append("More likely\n"));
+        lessButton.addActionListener(e -> notesArea.append("* Less likely\n"));
+        moreButton.addActionListener(e -> notesArea.append("* More likely\n"));
+        saveButton.addActionListener(e -> {
+        	    String textContent = notesArea.getText();
+        	    GDSEMR_frame.setTextAreaText(7, textContent);
+        	    dispose();
+        	});
+
         quitButton.addActionListener(e -> dispose());
 
         // Add buttons to the EAST panel
@@ -300,7 +314,7 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
                     checkBox.addActionListener(e -> {
                         item[0] = checkBox.isSelected();
                         if (checkBox.isSelected()) {
-                            notesArea.append("[R/O]: " + item[1] + "\n");
+                            notesArea.append("   [R/O]: " + item[1] + "\n");
                         }
                     });
                     checkboxes.add(checkBox);

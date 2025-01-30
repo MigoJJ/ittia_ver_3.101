@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.hypertension;
+package je.panse.doro.fourgate.hypercholesterolemia;
 
 import javax.swing.*;			
 import je.panse.doro.GDSEMR_frame;
@@ -8,9 +8,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class EMR_htn_meds extends JFrame {
+public class EMR_chol_meds extends JFrame {
 
-    public EMR_htn_meds() {
+    public EMR_chol_meds() {
         setTitle("DM Medication Management");
         setSize(800, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -36,34 +36,29 @@ public class EMR_htn_meds extends JFrame {
         mainPanel.setLayout(new GridLayout(3, 2));
 
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
-                "Atacand [ 8 ] mg 1 tab p.o. q.d.",
-                "Atacand [ 16 ] mg 1 tab p.o. q.d.",
-                "Atacand-plus [ 16/12.5 ] mg 1 tab p.o. q.d.",
-                "...",
-                "Noevasc [ 2.5 ] mg 1 tab p.o. q.d.",
-                "Norvasc [ 5 ]   mg 1 tab p.o. q.d.",
-                "Norvasc [ 10 ]  mg 1 tab p.o. q.d.",
-                "...",
+                "Livalo [ 1 ] mg 1 tab p.o. q.d.",
+                "Livalo [ 2 ] mg 1 tab p.o. q.d.",
+                "Livalo [ 3 ] mg 1 tab p.o. q.d.",
+                "Livalo [ 4 ] mg 1 tab p.o. q.d.",
 
-                
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
-                "Sevikar [ 5/20 ] mg 1 tab p.o. q.d.",
-                "Sevikar [ 5/40 ] mg 1 tab p.o. q.d.",
-                "Sevikar [ 10/40 ] mg 1 tab p.o. q.d.",
-                "Sevikar HCT [ 5/20/12.5 ] mg 1 tab p.o. q.d.",
-                "Sevikar HCT [ 5/40/12.5 ] mg 1 tab p.o. q.d.",
-                "Sevikar HCT [ 10/40/12.5 ] mg 1 tab p.o. q.d.",
+                "Vytorin [ 10/10 ]  mg  1 tab p.o. q.d.",
+                "Vytorin [ 10/10 ]  mg  1 tab p.o. q.o.d.",
+                "Vytorin [ 10/20 ]  mg  1 tab p.o. q.d.",
+                "Vytorin [ 10/40 ]  mg  1 tab p.o. q.d.",
+                
                 "...",
                 
         }));
 
         mainPanel.add(createFrameWithTable("Methimazole", new String[]{
-                "Januvia [ 50 ] mg 1 tab p.o. q.d.",
-                "Januvia [ 100 ] mg 1 tab p.o. q.d.",
-                "Janumet [ 50/500 ] mg 1 tab p.o. q.d.",
-                "Janumet [ 50/500 ] mg 1 tab p.o. b.i.d.",
+                "Crestor [ 5 ] mg 1 tab p.o. q.d.",
+                "Crestor [ 5 ] mg 1 tab p.o. q.o.d.",
+                "Crestor [ 10 ] mg 1 tab p.o. q.d.",
+                "Crestor [ 20 ] mg 1 tab p.o. q.d.",
+                
         }));
 
         mainPanel.add(createFrameWithTable("Antiroid", new String[]{
@@ -72,26 +67,15 @@ public class EMR_htn_meds extends JFrame {
                 "Tresiba FlexTouch  [     ] IU SC AM",
                 "Levemir FlexPen [     ] IU SC AM",
                 "Tuojeo Solostar  [     ] IU SC AM",
-                "---Rapid acting---",
-                "NovoRapid FlexPen 100u/mL [     ] IU SC",
-                "NOVOMIX 30 Flexpen 100U/mL  [     ] IU SC",
-                "Apidra Inj. SoloStar [     ] IU SC ",
-                "Fiasp Flex Touch  [    ] IU SC",
-                "Humalog Mix 25 Quick Pen  [    ] IU SC",
-                "Humalog Mix 50 Quick Pen  [    ] IU SC",
-                "---Mixed---",
-                "Soliqua Pen (10-40) [     ] IU SC ",
         }));
 
         mainPanel.add(createFrameWithTable("Camen", new String[]{
-                "Diabex [ 250 ] mg 1 tab p.o. q.d.",
-                "Diabex [ 500 ] mg 1 tab p.o. q.d.",
-                "Diabex [ 250 ] mg 1 tab p.o. b.i.d.",
-                "Diabex [ 500 ] mg 1 tab p.o. b.i.d.",
-                "------",
-                "Diamicron [ 30 ] mg 1 tab p.o. q.d.",
-                "Diamicron [ 30 ] mg 1 tab p.o. b.i.d.",
-                "Diamicron [ 60 ] mg 1 tab p.o. q.d.",
+                "Lipitor [ 10 ] mg 1 tab p.o. q.d.",
+                "Lipitor [ 10 ] mg 1 tab p.o. q.o.d.",
+                "Lipitor [ 20 ] mg 1 tab p.o. q.d.",
+                "Lipitor [ 40 ] mg 1 tab p.o. q.d.",
+                "Lipitor plus [ 10/10 ] mg 1 tab p.o. q.d.",
+                
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{
@@ -171,7 +155,7 @@ public class EMR_htn_meds extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new EMR_htn_meds().setVisible(true);
+                new EMR_chol_meds().setVisible(true);
             }
         });
     }
