@@ -62,8 +62,8 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
             String formattedDate = dateFormat.format(new Date());
             notesArea.append("Date: " + formattedDate + "\n");
         });
-        lessButton.addActionListener(e -> notesArea.append("Less likely\n"));
-        moreButton.addActionListener(e -> notesArea.append("More likely\n"));
+        lessButton.addActionListener(e -> notesArea.append("* Less likely\n"));
+        moreButton.addActionListener(e -> notesArea.append("* More likely\n"));
         saveButton.addActionListener(e -> {
         	    String textContent = notesArea.getText();
         	    GDSEMR_frame.setTextAreaText(7, textContent);
@@ -314,7 +314,7 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
                     checkBox.addActionListener(e -> {
                         item[0] = checkBox.isSelected();
                         if (checkBox.isSelected()) {
-                            notesArea.append("[R/O]: " + item[1] + "\n");
+                            notesArea.append("   [R/O]: " + item[1] + "\n");
                         }
                     });
                     checkboxes.add(checkBox);

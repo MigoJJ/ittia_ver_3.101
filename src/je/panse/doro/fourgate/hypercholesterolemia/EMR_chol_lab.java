@@ -1,6 +1,6 @@
-package je.panse.doro.fourgate.hypertension;
+package je.panse.doro.fourgate.hypercholesterolemia;
 
-import javax.swing.*;			
+import javax.swing.*;				
 import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class EMR_htn_meds extends JFrame {
+public class EMR_chol_lab extends JFrame {
 
-    public EMR_htn_meds() {
-        setTitle("DM Medication Management");
+    public EMR_chol_lab() {
+        setTitle("DM F/U Laboratory Test");
         setSize(800, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -35,28 +35,22 @@ public class EMR_htn_meds extends JFrame {
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new GridLayout(3, 2));
 
-        mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
-                "Atacand [ 8 ] mg 1 tab p.o. q.d.",
-                "Atacand [ 16 ] mg 1 tab p.o. q.d.",
-                "Atacand-plus [ 16/12.5 ] mg 1 tab p.o. q.d.",
-                "...",
-                "Noevasc [ 2.5 ] mg 1 tab p.o. q.d.",
-                "Norvasc [ 5 ]   mg 1 tab p.o. q.d.",
-                "Norvasc [ 10 ]  mg 1 tab p.o. q.d.",
-                "...",
-
-                
+        mainPanel.add(createFrameWithTable("F/U Laboratory Test", new String[]{
+                "...FBS / PP2  HbA1c",
+                "...FBS / PP2  HbA1c +A/C(eGFR, U-microalbumin)",
+                "...FBS / PP2  HbA1c +A/C Electorlyte",
+                "...FBS / PP2  HbA1c +A/C Electorlyte Insulin",
+                "...FBS / PP2  HbA1c +A/C Electorlyte  Vitamin-D",
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
-                "Sevikar [ 5/20 ] mg 1 tab p.o. q.d.",
-                "Sevikar [ 5/40 ] mg 1 tab p.o. q.d.",
-                "Sevikar [ 10/40 ] mg 1 tab p.o. q.d.",
-                "Sevikar HCT [ 5/20/12.5 ] mg 1 tab p.o. q.d.",
-                "Sevikar HCT [ 5/40/12.5 ] mg 1 tab p.o. q.d.",
-                "Sevikar HCT [ 10/40/12.5 ] mg 1 tab p.o. q.d.",
+                "...EKG  CUS : Carotid artery US  CPA",
+                "...EKG  CUS : Carotid artery US",
+                "...EKG",
+                "...CPA",
+                "...Carotid artery US",
                 "...",
-                
+
         }));
 
         mainPanel.add(createFrameWithTable("Methimazole", new String[]{
@@ -95,9 +89,6 @@ public class EMR_htn_meds extends JFrame {
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{
-                "...Plan to FBS, HbA1c \n",
-                "...Plan to FBS, HbA1c, +A/C \n",
-                "...Obtain CUS : [ Carotid artery Ultrasonography ]\n",
                 "[ → ] advised the patient to continue with current medication\n",
                 "[ ↘ ] decreased the dose of current medication\n",
                 "[ ↗ ] increased the dose of current medication\n",
@@ -152,12 +143,12 @@ public class EMR_htn_meds extends JFrame {
                     int row = target.getSelectedRow();
                     int column = target.getSelectedColumn();
                     String cellValue = (String) target.getValueAt(row, column);
-//                    System.out.println("Current meds  :cd \n ..." + cellValue);
+                    System.out.println("Plan to perform laboratory tests during the next visit on  :cd \n ..." + cellValue);
                     
                     try {
-                        GDSEMR_frame.setTextAreaText(8, "\n...Current meds [ :cd ]\n ..." + cellValue);
+                        GDSEMR_frame.setTextAreaText(8, "\n...Plan to perform laboratory tests during the next visit on [ :cd ]\n ..." + cellValue);
                     } catch (Exception ex) {
-//                        System.out.println("Error updating text area: " + ex.getMessage());
+                        System.out.println("Error updating text area: " + ex.getMessage());
                     }
                 }
             }
@@ -171,7 +162,7 @@ public class EMR_htn_meds extends JFrame {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new EMR_htn_meds().setVisible(true);
+                new EMR_chol_lab().setVisible(true);
             }
         });
     }

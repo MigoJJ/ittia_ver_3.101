@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.hypercholesterolemia;
+package je.panse.doro.fourgate.hypercholesterolemia.cholGeneral;
 
 import javax.swing.*;
 import java.awt.*;
