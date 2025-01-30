@@ -36,36 +36,29 @@ public class EMR_chol_meds extends JFrame {
         mainPanel.setLayout(new GridLayout(3, 2));
 
         mainPanel.add(createFrameWithTable("Synthyroid", new String[]{
-                "Jadian [ 10 ] mg 1 tab p.o. q.d.",
-                "Jadian [ 25 ] mg 1 tab p.o. q.d.",
-                "...",
-                "Exiglu [ 10 ] mg 1 tab p.o. q.d.",
-                "Exiglu-M SR [ 10/500 ] mg 1 tab p.o. q.d.",
-                "Exiglu-M SR [ 10/1000 ] mg 1 tab p.o. q.d.",
-                "...",
-                "Actos [ 15 ] mg 1 tab p.o. q.d.",
-                "Atos [ 30 ] mg 1 tab p.o. q.d."
+                "Livalo [ 1 ] mg 1 tab p.o. q.d.",
+                "Livalo [ 2 ] mg 1 tab p.o. q.d.",
+                "Livalo [ 3 ] mg 1 tab p.o. q.d.",
+                "Livalo [ 4 ] mg 1 tab p.o. q.d.",
+
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
-                "Amaryl [ 1 ]  mg  0.5 tab p.o. q.d.",
-                "Amaryl [ 1 ]  mg  1 tab p.o. q.d.",
-                "Amaryl [ 1 ]  mg  1 tab p.o. b.i.d.",
-                "Amaryl [ 2 ]  mg  1 tab p.o. q.d.",
-                "Amaryl [ 2 ]  mg  1 tab p.o. b.i.d.",
+                "Vytorin [ 10/10 ]  mg  1 tab p.o. q.d.",
+                "Vytorin [ 10/10 ]  mg  1 tab p.o. q.o.d.",
+                "Vytorin [ 10/20 ]  mg  1 tab p.o. q.d.",
+                "Vytorin [ 10/40 ]  mg  1 tab p.o. q.d.",
+                
                 "...",
-                "Amaryl-M [ 1/500 ]  mg  1 tab p.o. q.d.",
-                "Amaryl-M [ 1/500 ]  mg  1 tab p.o. b.i.d.",
-                "Amaryl-M [ 2/500 ]  mg  1 tab p.o. q.d.",
-                "Amaryl-M [ 2/500 ]  mg  1 tab p.o. b.i.d.",
-
+                
         }));
 
         mainPanel.add(createFrameWithTable("Methimazole", new String[]{
-                "Januvia [ 50 ] mg 1 tab p.o. q.d.",
-                "Januvia [ 100 ] mg 1 tab p.o. q.d.",
-                "Janumet [ 50/500 ] mg 1 tab p.o. q.d.",
-                "Janumet [ 50/500 ] mg 1 tab p.o. b.i.d.",
+                "Crestor [ 5 ] mg 1 tab p.o. q.d.",
+                "Crestor [ 5 ] mg 1 tab p.o. q.o.d.",
+                "Crestor [ 10 ] mg 1 tab p.o. q.d.",
+                "Crestor [ 20 ] mg 1 tab p.o. q.d.",
+                
         }));
 
         mainPanel.add(createFrameWithTable("Antiroid", new String[]{
@@ -74,26 +67,15 @@ public class EMR_chol_meds extends JFrame {
                 "Tresiba FlexTouch  [     ] IU SC AM",
                 "Levemir FlexPen [     ] IU SC AM",
                 "Tuojeo Solostar  [     ] IU SC AM",
-                "---Rapid acting---",
-                "NovoRapid FlexPen 100u/mL [     ] IU SC",
-                "NOVOMIX 30 Flexpen 100U/mL  [     ] IU SC",
-                "Apidra Inj. SoloStar [     ] IU SC ",
-                "Fiasp Flex Touch  [    ] IU SC",
-                "Humalog Mix 25 Quick Pen  [    ] IU SC",
-                "Humalog Mix 50 Quick Pen  [    ] IU SC",
-                "---Mixed---",
-                "Soliqua Pen (10-40) [     ] IU SC ",
         }));
 
         mainPanel.add(createFrameWithTable("Camen", new String[]{
-                "Diabex [ 250 ] mg 1 tab p.o. q.d.",
-                "Diabex [ 500 ] mg 1 tab p.o. q.d.",
-                "Diabex [ 250 ] mg 1 tab p.o. b.i.d.",
-                "Diabex [ 500 ] mg 1 tab p.o. b.i.d.",
-                "------",
-                "Diamicron [ 30 ] mg 1 tab p.o. q.d.",
-                "Diamicron [ 30 ] mg 1 tab p.o. b.i.d.",
-                "Diamicron [ 60 ] mg 1 tab p.o. q.d.",
+                "Lipitor [ 10 ] mg 1 tab p.o. q.d.",
+                "Lipitor [ 10 ] mg 1 tab p.o. q.o.d.",
+                "Lipitor [ 20 ] mg 1 tab p.o. q.d.",
+                "Lipitor [ 40 ] mg 1 tab p.o. q.d.",
+                "Lipitor plus [ 10/10 ] mg 1 tab p.o. q.d.",
+                
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{

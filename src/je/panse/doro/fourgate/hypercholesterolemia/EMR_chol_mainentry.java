@@ -29,13 +29,13 @@ public class EMR_chol_mainentry {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         String[] buttonNames = {
-                "DM General symptoms",
-                "DM Retinopathy",
-                "DM Peripheral Neuropathy",
-                "DM Autonomic Neuropathy",
+                "Chol General symptoms",
+                "Chol ",
+                "Chol ",
+                "Chol Statin side-effect",
                 "Medications",
-                "DM F/U Laboratory Test",
-                "DM",
+                "Chol F/U Laboratory Test",
+                "Hypercholesterolemia",
                 "Quit"
         };
 
@@ -87,28 +87,31 @@ public class EMR_chol_mainentry {
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (name.equals("Quit")) {
+            	switch (name) {
+                case "Quit":
                     frame.dispose();
-                } else if (name.equals("DM General symptoms")) {
-                    String[] Esrr = EMR_symptom_retStr.returnStr("Diabetes Mellitus");
+                    break;
+                case "Chol General symptoms":
+                    String[] Esrr = EMR_symptom_retStr.returnStr("Hypercholesterolemia"); // Corrected typo
                     EMR_symptom_list.main(Esrr);
-                } else if (name.equals("DM Retinopathy")) {
-//                    EMR_FU_retinopathy.main(null);
-                } else if (name.equals("DM Peripheral Neuropathy")) {
-                    PNPdm.main(null);
-                } else if (name.equals("DM Autonomic Neuropathy")) {
-                    ANPdm.main(null); 
-                } else if (name.equals("Medications")) {
-                    EMR_chol_meds.main(null);
-	            } else if (name.equals("DM F/U Laboratory Test")) {
-	                EMR_chol_lab.main(null);
-	            }
-                
-                else {
-                    // Replace with your logic to handle button click
-                    // String[] args = returnStr(name);
-                    // EMR_symptom_list.main(args);
-                }
+                    break;
+                case "Chol":
+                    // Add Chol functionality here
+                    break;
+                case "Chol Stain side-effect":
+                    ANPdm.main(null);
+                    break;
+                case "Medications":
+                	EMR_chol_meds.main(null);
+                    break;
+                    // ... other cases
+                case "Hypercholesterolemia":
+                    // Add Hypercholesterolemia functionality here
+                    break;
+                default:
+                    // Handle other cases or display a default message
+                    break;
+            	}
             }
         });
 

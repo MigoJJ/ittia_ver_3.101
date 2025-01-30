@@ -36,11 +36,10 @@ public class EMR_chol_lab extends JFrame {
         mainPanel.setLayout(new GridLayout(3, 2));
 
         mainPanel.add(createFrameWithTable("F/U Laboratory Test", new String[]{
-                "...FBS / PP2  HbA1c",
-                "...FBS / PP2  HbA1c +A/C(eGFR, U-microalbumin)",
+                "...Lipid battery:",
+                "...Lipid battery...FBS / PP2:",
+                "...Lipid battery...FBS / PP2: HbA1c +A/C(eGFR, U-microalbumin)",
                 "...FBS / PP2  HbA1c +A/C Electorlyte",
-                "...FBS / PP2  HbA1c +A/C Electorlyte Insulin",
-                "...FBS / PP2  HbA1c +A/C Electorlyte  Vitamin-D",
         }));
 
         mainPanel.add(createFrameWithTable("Synthyroxine", new String[]{
@@ -55,37 +54,15 @@ public class EMR_chol_lab extends JFrame {
 
         mainPanel.add(createFrameWithTable("Methimazole", new String[]{
                 "Januvia [ 50 ] mg 1 tab p.o. q.d.",
-                "Januvia [ 100 ] mg 1 tab p.o. q.d.",
-                "Janumet [ 50/500 ] mg 1 tab p.o. q.d.",
-                "Janumet [ 50/500 ] mg 1 tab p.o. b.i.d.",
+
         }));
 
         mainPanel.add(createFrameWithTable("Antiroid", new String[]{
                 "Lantus Solosta  [     ] IU SC AM",
-                "Ryzodeg FlexTouch [    ] IU SC AM",
-                "Tresiba FlexTouch  [     ] IU SC AM",
-                "Levemir FlexPen [     ] IU SC AM",
-                "Tuojeo Solostar  [     ] IU SC AM",
-                "---Rapid acting---",
-                "NovoRapid FlexPen 100u/mL [     ] IU SC",
-                "NOVOMIX 30 Flexpen 100U/mL  [     ] IU SC",
-                "Apidra Inj. SoloStar [     ] IU SC ",
-                "Fiasp Flex Touch  [    ] IU SC",
-                "Humalog Mix 25 Quick Pen  [    ] IU SC",
-                "Humalog Mix 50 Quick Pen  [    ] IU SC",
-                "---Mixed---",
-                "Soliqua Pen (10-40) [     ] IU SC ",
         }));
 
         mainPanel.add(createFrameWithTable("Camen", new String[]{
                 "Diabex [ 250 ] mg 1 tab p.o. q.d.",
-                "Diabex [ 500 ] mg 1 tab p.o. q.d.",
-                "Diabex [ 250 ] mg 1 tab p.o. b.i.d.",
-                "Diabex [ 500 ] mg 1 tab p.o. b.i.d.",
-                "------",
-                "Diamicron [ 30 ] mg 1 tab p.o. q.d.",
-                "Diamicron [ 30 ] mg 1 tab p.o. b.i.d.",
-                "Diamicron [ 60 ] mg 1 tab p.o. q.d.",
         }));
         
         mainPanel.add(createFrameWithTable("Followup", new String[]{
