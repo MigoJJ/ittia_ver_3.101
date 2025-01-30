@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class StatinSideEffectCheck extends JFrame {
+public class EMR_chol_StatinSideEffectCheck extends JFrame {
     private JCheckBox[] sideEffectBoxes;
     private JCheckBox[] emergencyBoxes;
     private JTextArea resultArea;
     private final Color BROWN = new Color(139, 69, 19); // Define brown color
     private final Font TITLE_FONT = new Font("Arial", Font.BOLD, 11);
 
-    public StatinSideEffectCheck() {
+    public EMR_chol_StatinSideEffectCheck() {
         setTitle("Statin Side Effect Checker");
         setLayout(new BorderLayout());
 
@@ -97,7 +97,7 @@ public class StatinSideEffectCheck extends JFrame {
             JOptionPane.showMessageDialog(this, "Results Saved!");
         });
 
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> dispose());
 
         buttonPanel.add(clearButton);
         buttonPanel.add(saveButton);
@@ -118,19 +118,19 @@ public class StatinSideEffectCheck extends JFrame {
         StringBuilder text = new StringBuilder("***Selected Side Effects:  Statin/Ezetimibe***\n");
         for (JCheckBox box : sideEffectBoxes) {
             if (box.isSelected()) {
-                text.append("   - ").append(box.getText().trim()).append("\n"); // trim() removes leading spaces
+                text.append("   [ + ] ").append(box.getText().trim()).append("\n"); // trim() removes leading spaces
             }
         }
         text.append("\n***Selected Emergency Symptoms:  Statin/Ezetimibe***\n");
         for (JCheckBox box : emergencyBoxes) {
             if (box.isSelected()) {
-                text.append("   - ").append(box.getText().trim()).append("\n"); // trim() removes leading spaces
+                text.append("   [ + ]").append(box.getText().trim()).append("\n"); // trim() removes leading spaces
             }
         }
         resultArea.setText(text.toString());
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new StatinSideEffectCheck());
+        SwingUtilities.invokeLater(() -> new EMR_chol_StatinSideEffectCheck());
     }
 }

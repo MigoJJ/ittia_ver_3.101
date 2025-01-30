@@ -98,8 +98,8 @@ public class EMR_chol_mainentry {
                 case "Chol":
                     // Add Chol functionality here
                     break;
-                case "Chol Stain side-effect":
-                    ANPdm.main(null);
+                case "Chol Statin side-effect":
+                	EMR_chol_StatinSideEffectCheck.main(null);
                     break;
                 case "Medications":
                 	EMR_chol_meds.main(null);
