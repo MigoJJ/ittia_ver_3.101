@@ -127,13 +127,27 @@ public class EMR_TFT extends JFrame {
         @Override
         public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                String value = textFields[4].getText();
-	                if (index < textFields.length - 1) {
-	                    textFields[index + 1].requestFocus();
-	                } else {
-	                    saveData();
-	                    clearFields();
-	                }
+                String value = textFields[index].getText().trim(); // Trim whitespace
+
+                if (index == 3) { // Special behavior for textFields[3]
+                    if (value.isEmpty()) { 
+                        // If empty, save data and clear fields
+                        saveData();
+                        clearFields();
+                    } else {
+                        // If not empty, move focus to textFields[4]
+                        textFields[4].requestFocus();
+                    }
+                    return; // Exit after handling textFields[3]
+                }
+
+                // Default behavior for other fields
+                if (index < textFields.length - 1) {
+                    textFields[index + 1].requestFocus();
+                } else {
+                    saveData();
+                    clearFields();
+                }
             }
         }
     }

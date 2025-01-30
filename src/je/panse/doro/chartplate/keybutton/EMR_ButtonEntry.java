@@ -2,24 +2,32 @@ package je.panse.doro.chartplate.keybutton;
 
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
+
 import javax.swing.JOptionPane;
-import static je.panse.doro.GDSEMR_frame.*;
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.chartplate.filecontrol.*;
-import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.*;
+import je.panse.doro.chartplate.filecontrol.FileGeditToCilpboard;
+import je.panse.doro.chartplate.filecontrol.File_open;
+import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_CopyBackup;
+import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_FileListFrame;
+import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.chartplate.mainpage.EMR_Write_To_Chartplate;
 import je.panse.doro.entry.EntryDir;
-import je.panse.doro.fourgate.A_editmain.*;
+import je.panse.doro.fourgate.A_editmain.EMR_FU_diabetesEdit;
+import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
+import je.panse.doro.fourgate.A_editmain.EMR_FU_hypertensionEdit;
+import je.panse.doro.fourgate.A_editmain.EMR_FU_mainEdit;
+import je.panse.doro.fourgate.A_editmain.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
+import je.panse.doro.fourgate.hypercholesterolemia.EMR_chol_mainentry;
 import je.panse.doro.fourgate.hypertension.EMR_htn_mainentry;
 import je.panse.doro.fourgate.influenza.InjectionApp;
 import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
-import je.panse.doro.fourgate.thyroid.entry.*;
+import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
-import je.panse.doro.support.*;
+import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
 
 public class EMR_ButtonEntry extends GDSEMR_frame {
@@ -74,7 +82,10 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     EMR_FU_hypertensionEdit.main(null);
                     EMR_htn_mainentry.main(null);
                     break;
-                case "F/U Chol": EMR_FU_hypercholesterolemiaEdit.main(null); break;
+                case "F/U Chol": 
+                	EMR_FU_hypercholesterolemiaEdit.main(null);
+                	EMR_chol_mainentry.main(null);
+                	 break;
                 case "F/U Thyroid":
                     EMR_thyroid_mainentry.main(null);
                     EMR_thyroid_Pregnancyentry.main(null);
