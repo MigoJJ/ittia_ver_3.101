@@ -1,5 +1,5 @@
 package je.panse.doro.samsara.EMR_PE;
-import javax.swing.*;	
+import javax.swing.*;		
 import javax.swing.table.*;
 
 import je.panse.doro.GDSEMR_frame;
@@ -64,6 +64,12 @@ public class PE_Abdominal_pain_diagnosis extends JFrame {
         });
         lessButton.addActionListener(e -> notesArea.append("Less likely\n"));
         moreButton.addActionListener(e -> notesArea.append("More likely\n"));
+        saveButton.addActionListener(e -> {
+        	    String textContent = notesArea.getText();
+        	    GDSEMR_frame.setTextAreaText(7, textContent);
+        	    dispose();
+        	});
+
         quitButton.addActionListener(e -> dispose());
 
         // Add buttons to the EAST panel

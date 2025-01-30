@@ -1,15 +1,24 @@
 package je.panse.doro.soap.subjective;
 
-import javax.swing.*;
-
-import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.samsara.EMR_PE.PE_Abdominal_pain_diagnosis;
-
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import je.panse.doro.GDSEMR_frame;
 
 public class EMR_symptom_list extends JPanel {
     private JFrame frame;
@@ -84,14 +93,24 @@ public class EMR_symptom_list extends JPanel {
         });
 
         JButton button3 = new JButton("Save");
-        button3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String text = textArea.getText();
-                GDSEMR_frame.setTextAreaText(4, text);
-                textArea.setText(""); 
-                frame.dispose(); // Close the frame after saving
+        button3.addActionListener(e -> {
+            // First execute the show text field content logic
+            StringBuilder result = new StringBuilder();
+            for (int i = 0; i < retStringlen; i++) {
+                String symptom = retString[i];
+                String textFieldContent = textFields[i].getText();
+                result.append("\t").append(textFieldContent).append("    ").append(symptom).append("\n");
             }
+            textArea.setText("The Patient has suffered from : ▣ \n");
+            textArea.append(result.toString());
+            
+            // Then execute the save logic
+            String text = textArea.getText();
+            GDSEMR_frame.setTextAreaText(4, text);
+            textArea.setText("");
+            frame.dispose();
         });
+
 
         JButton button4 = new JButton("DDx");
         button4.addActionListener(new ActionListener() {
@@ -127,6 +146,18 @@ public class EMR_symptom_list extends JPanel {
         // Add components to the main panel
         add(new JScrollPane(textArea));
         add(buttonPanel);
+        
+        textArea.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {  // Check for double click
+                    String text = textArea.getText();
+                    GDSEMR_frame.setTextAreaText(4, text);
+                    textArea.setText("");
+                    frame.dispose();
+                }
+            }
+        });
     }
 
     public static void main(String[] argsStr) {
