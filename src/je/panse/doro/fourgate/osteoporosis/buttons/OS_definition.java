@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.osteoporosis.buttons;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;		
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -19,11 +19,11 @@ public class OS_definition extends JFrame {
         // Set JFrame properties
         setTitle("Image Viewer");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setSize(1200, 800);
         setLocationRelativeTo(null);
 
         // Load the image
-        String imagePath = EntryDir.homeDir + "je/panse/doro/fourgate/osteoporosis/reference/os_definition.jpg";
+        String imagePath = EntryDir.homeDir + "/support/EMR_support_Folder/Osteoporosis/OsteoporosisDiagnosis.png";
         try {
             ImageIcon icon = new ImageIcon(ImageIO.read(new File(imagePath)));
             JLabel label = new JLabel(icon);
