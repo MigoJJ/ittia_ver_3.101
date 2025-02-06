@@ -1,5 +1,20 @@
 
   CC>    Hypertension F/U
+  PI>
+<<< Medication Side Effect >>>
+     [ + ] Diuretics: Increased Urination
+     [ + ] Diuretics: Dehydration
+     [ - ]  Diuretics: Electrolyte Imbalances (Low Potassium, Sodium, Magnesium)
+     [ - ]  Diuretics: Dizziness or Lightheadedness
+     [ - ]  Diuretics: Fatigue
+     [ - ]  Diuretics: Muscle Cramps
+     [ - ]  Diuretics: Gout
+     [ + ] Calcium Channel Blockers: Fatigue
+     [ + ] Calcium Channel Blockers: Swelling in the Ankles and Feet
+     [ + ] Calcium Channel Blockers: Constipation
+     [ - ]  Calcium Channel Blockers: Headache
+     [ - ]  Calcium Channel Blockers: Dizziness or Lightheadedness
+     [ - ]  Calcium Channel Blockers: Palpitations
   S>
   The Patient has suffered from : ▣ 
   Common Side Effects of Blood Pressure Medications:
@@ -15,4 +30,4 @@
     Follow up interval: [ 3 ] months
     Prescription : [ → ] advised the patient to continue with current medication
   Comment>
-Increase potassium intake (from fruits and vegetables).
+Get at least 30 minutes of moderate exercise most days.

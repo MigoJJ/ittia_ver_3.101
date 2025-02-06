@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.hypertension;
+package je.panse.doro.fourgate.hypertension.htnMedication;
 
 import javax.swing.*;			
 import je.panse.doro.GDSEMR_frame;
