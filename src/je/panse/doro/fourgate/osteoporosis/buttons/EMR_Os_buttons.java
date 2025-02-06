@@ -100,7 +100,7 @@ public class EMR_Os_buttons {
                 } else if (name.equals("DM Autonomic Neuropathy")) {
                     ANPdm.main(null); 
                 } else if (name.equals("Medications")) {
-                		EMR_Osteoporosis_meds.main(null);
+
                  	   OS_definition.main("Medications");                		
 	            } else if (name.equals("DM F/U Laboratory Test")) {
 	                EMR_dm_lab.main(null);
