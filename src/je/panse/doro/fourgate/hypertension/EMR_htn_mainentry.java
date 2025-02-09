@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.hypertension;
 
-import java.awt.Color;		
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -14,6 +14,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import je.panse.doro.fourgate.hypertension.htnMedication.EMR_htn_meds;
+import je.panse.doro.fourgate.hypertension.htnMedication.HTN_MedicationFrame_Main;
+
 
 public class EMR_htn_mainentry {
 
@@ -26,7 +29,7 @@ public class EMR_htn_mainentry {
 
         String[] buttonNames = {
                 "HTN General symptoms",
-                "HTN ",
+                "HTN Meds Side Effect",
                 "HTN ",
                 "HTN ",
                 "Medications",
@@ -85,9 +88,9 @@ public class EMR_htn_mainentry {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Quit")) {
                     frame.dispose();
-//                } else if (name.equals("HTN General symptoms")) {
-//                    String[] Esrr = EMR_symptom_retStr.returnStr("Diabetes Mellitus");
-//                    EMR_symptom_list.main(Esrr);
+                    
+                } else if (name.equals("HTN Meds Side Effect")) {
+                	HTN_MedicationFrame_Main.main(null);
 //                } else if (name.equals("DM Retinopathy")) {
 //                    EMR_FU_retinopathy.main(null);
 //                } else if (name.equals("DM Peripheral Neuropathy")) {
