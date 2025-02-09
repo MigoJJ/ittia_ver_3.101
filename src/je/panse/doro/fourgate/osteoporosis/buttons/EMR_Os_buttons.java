@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.osteoporosis.buttons;
 
-import java.awt.Color;			
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -14,13 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import je.panse.doro.fourgate.diabetes.EMR_FU_retinopathy;
 import je.panse.doro.fourgate.diabetes.EMR_dm_lab;
-import je.panse.doro.fourgate.diabetes.EMR_dm_meds;
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
-import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
-import je.panse.doro.soap.subjective.EMR_symptom_list;
-import je.panse.doro.soap.subjective.EMR_symptom_retStr;
+import je.panse.doro.fourgate.osteoporosis.EMR_Osteoporosis_meds;
+import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
+
 
 public class EMR_Os_buttons {
 
@@ -93,16 +91,17 @@ public class EMR_Os_buttons {
                 if (name.equals("Quit")) {
                     frame.dispose();
                 } else if (name.equals("Osteoporosis Definition")) {
-                	  OS_definition.main(null);
+                	   OS_definition.main("Osteoporosis Definition");
 
-                } else if (name.equals("DM Retinopathy")) {
-                    EMR_FU_retinopathy.main(null);
-                } else if (name.equals("DM Peripheral Neuropathy")) {
-                    PNPdm.main(null);
+                } else if (name.equals("DEXA")) {
+                	EMR_DEXA.main(null);
+                } else if (name.equals("Secondary Osteoporosis")) {
+                		OS_definition.main("Secondary Osteoporosis");
                 } else if (name.equals("DM Autonomic Neuropathy")) {
                     ANPdm.main(null); 
                 } else if (name.equals("Medications")) {
-                    EMR_dm_meds.main(null);
+
+                 	   OS_definition.main("Medications");                		
 	            } else if (name.equals("DM F/U Laboratory Test")) {
 	                EMR_dm_lab.main(null);
 	            }
