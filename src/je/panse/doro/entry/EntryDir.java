@@ -1,6 +1,6 @@
 package je.panse.doro.entry;
 
-import java.io.File;	
+import java.io.File;		
 import java.util.Arrays;
 
 public class EntryDir {
