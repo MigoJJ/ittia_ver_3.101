@@ -1,6 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -78,6 +79,7 @@ public class EMR_DEXA extends JFrame implements ActionListener {
            + "* Bone Turnover Markers (CTX/NTX, BSAP)\n "
            + "   - 3-6 months after new medication, then annually.");
         zScoreInfo.setEditable(false);
+        zScoreInfo.setBackground(new Color(205, 206, 250)); // Light Sky Blue
         JPanel westPanel = new JPanel(new BorderLayout());
         westPanel.setBorder(BorderFactory.createTitledBorder("Z-Score Explanation"));
         westPanel.add(zScoreInfo, BorderLayout.CENTER);
@@ -92,10 +94,17 @@ public class EMR_DEXA extends JFrame implements ActionListener {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.weightx = 0.6; // Reduce width ratio (Previously 1.0)
-        
+
         add(inputPanel, BorderLayout.CENTER);
-            
+
         Font boldItalicFont = new Font("SansSerif", Font.BOLD | Font.ITALIC, 12);
+
+        // Set text field background color (Very Light Brown)
+        Color veryLightBrown = new Color(210, 180, 140);  // Light brown shade
+
+        scoreField.setBackground(veryLightBrown);
+        ageField.setBackground(veryLightBrown);
+        
         addField(inputPanel, gbc, new JLabel("Score:", JLabel.TRAILING), boldItalicFont, scoreField, 0);
         addField(inputPanel, gbc, new JLabel("Age:", JLabel.TRAILING), boldItalicFont, ageField, 1);
         addField(inputPanel, gbc, new JLabel("Gender:", JLabel.TRAILING), boldItalicFont, genderComboBox, 2);
@@ -117,6 +126,7 @@ public class EMR_DEXA extends JFrame implements ActionListener {
         add(buttonPanel, BorderLayout.SOUTH);
 
         // Output Area
+        outputTextArea.setBackground(new Color(250, 250, 250)); // Light Sky Blue
         add(new JScrollPane(outputTextArea), BorderLayout.NORTH);
     }
 
