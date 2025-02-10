@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.hypertension.htnMedication;
 
-import javax.swing.*;			
+import javax.swing.*;				
 import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,10 +21,12 @@ public class EMR_htn_meds extends JFrame {
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new FlowLayout());
 
+        JButton sideButton = new JButton("Side Effects");
         JButton editButton = new JButton("Edit");
         JButton saveButton = new JButton("Save");
         JButton quitButton = new JButton("Quit");
 
+        southPanel.add(sideButton);
         southPanel.add(editButton);
         southPanel.add(saveButton);
         southPanel.add(quitButton);
@@ -109,6 +111,12 @@ public class EMR_htn_meds extends JFrame {
         add(mainPanel, BorderLayout.CENTER);
 
         // Add action listeners for buttons
+        sideButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	HTN_MedicationFrame_Main.main(null);// Implement edit functionality
+            }
+        });
         editButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
