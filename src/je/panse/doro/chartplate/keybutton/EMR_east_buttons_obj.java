@@ -50,7 +50,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout",
                 "LDL", "LFT", "CBC", "eGFR", "Lp(a)",
                 "Etc.", "ChestPA", "EKG", "GFS", "CFS",
-                "DEXA","Abdomen","DM pph","DM ANP","Allergy"
+                "DEXA","Abdomen","Allergy","DM ANP","Medication"
         };
 
         for (String buttonName : buttonNames) {
@@ -108,13 +108,13 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
 //        buttonActions.put("Abdomen", () -> PE_Abdominal_pain_diagnosis.main(new String[0]));
-        
-        buttonActions.put("DM pph", () -> PNPdm.main(new String[0]));
-        buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
+
         buttonActions.put("Allergy", () -> {
             EMRPMHAllergy allergyFrame = EMRPMHAllergy.getInstance();
 //            allergyFrame.setVisible(false);
             EMRPMHAllergy.setAllSymptoms(false);
+            buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
+            buttonActions.put("Medication", () -> PNPdm.main(new String[0]));
         });
 
         return buttonActions;

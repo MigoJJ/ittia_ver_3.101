@@ -1,6 +1,6 @@
 package je.panse.doro;
 
-import java.awt.*;	
+import java.awt.*;		
 import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.*;
@@ -11,7 +11,7 @@ import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
 import je.panse.doro.chartplate.mainpage.GDSEMR_DocumentListner;
 import je.panse.doro.chartplate.mainpage.GDSEMR_fourgate;
-import je.panse.doro.fourgate.influenza.InjectionApp;
+import je.panse.doro.fourgate.n_vaccinations.InjectionApp;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.*;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
