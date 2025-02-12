@@ -1,4 +1,4 @@
-package je.panse.doro.fourgate.influenza;
+package je.panse.doro.fourgate.n_vaccinations;
 
 import javax.swing.*;
 import java.awt.*;
