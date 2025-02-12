@@ -16,8 +16,8 @@ import javax.swing.Timer;
 
 import je.panse.doro.fourgate.diabetes.EMR_dm_lab;
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
+import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
 import je.panse.doro.fourgate.osteoporosis.EMR_Osteoporosis_meds;
-import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
 
 
 public class EMR_Os_buttons {

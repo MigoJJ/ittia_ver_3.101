@@ -1,4 +1,4 @@
-package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
+package je.panse.doro.fourgate.osteoporosis;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

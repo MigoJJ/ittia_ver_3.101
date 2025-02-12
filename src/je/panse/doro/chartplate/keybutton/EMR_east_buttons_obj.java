@@ -15,9 +15,9 @@ import javax.swing.JFrame;
 
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
 import je.panse.doro.fourgate.n_medications.emr_select_medication;
+import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
-import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_DEXA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_EKG;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_CFS;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_GFS;
