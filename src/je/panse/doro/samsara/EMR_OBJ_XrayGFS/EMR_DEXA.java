@@ -157,20 +157,45 @@ public class EMR_DEXA extends JFrame implements ActionListener {
         outputTextArea.setText("");
     }
 
-    private String calculateDEXADiagnosis(double score, String type, int age, String gender, boolean fracture) {
-        return type.equals("T-Score") ? (score <= -2.5 && fracture ? "Severe Osteoporosis" : 
-                (score <= -2.5 ? "Osteoporosis" : (score < -1.0 ? "Osteopenia" : "Normal Bone Density")))
-                : ((age < 50 || gender.equals("Female")) && score < -2.0 ? "Low Z-Score" : "Normal Z-Score");
+    private String calculateDEXADiagnosis(double score, String type, int age, String gender, boolean fracture, boolean menopause) {
+        if (gender.equals("Female") && !menopause) { // Premenopausal women
+            // Z-score interpretation
+            return (score < -2.0) ? "Low Z-Score (BMD lower than expected)" : "Normal Z-Score (BMD within expected range)";
+
+        } else { // Everyone else (including postmenopausal women and men of any age)
+            // T-score interpretation
+            if (type.equals("T-Score")) {
+                return (score <= -2.5 && fracture) ? "Severe Osteoporosis" :
+                        (score <= -2.5 ? "Osteoporosis" : (score < -1.0 ? "Osteopenia" : "Normal Bone Density"));
+            } else { //If a Z-score is entered for a non-premenopausal female, still interpret it.
+                return (score < -2.0) ? "Low Z-Score (BMD lower than expected)" : "Normal Z-Score (BMD within expected range)";
+            }
+        }
     }
 
     private String formatReport(double score, String scoreType, int age, String gender, boolean fracture, boolean menopause) {
-        String diagnosis = calculateDEXADiagnosis(score, scoreType, age, gender, fracture);
+        String diagnosis = calculateDEXADiagnosis(score, scoreType, age, gender, fracture, menopause); // Pass menopause to calculateDiagnosis
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd"));
-        return String.format("< DEXA >\n\t%s %s [%.1f]\n\tAge: [%d]  Gender: [%s]\n\t%s  Fracture: [%s]\nComment>\n# %s  %s [%.1f]   %s",
-                diagnosis, scoreType, score, age, gender,
-                gender.equals("Female") ? "Menopause: [" + (menopause ? "Postmenopausal" : "Premenopausal") + "]" : "",
-                fracture ? "+" : "-", diagnosis.split("\\(")[0], scoreType, score, date);
+
+        String report = "< DEXA >\n";
+        report += String.format("\t%s %s [%.1f]\n", diagnosis, scoreType, score);
+        report += String.format("\tAge: [%d]  Gender: [%s]\n", age, gender);
+
+        if (gender.equals("Female")) {
+            report += String.format("\tMenopause: [%s]  Fracture: [%s]\n", (menopause ? "Postmenopausal" : "Premenopausal"), fracture ? "+" : "-");
+            if (!menopause && scoreType.equals("T-Score")) { // Add warning for T-Score in premenopausal women
+                report += "\t**Warning: T-score is not typically used for premenopausal women. Consider using Z-score.**\n";
+            }
+
+        } else {
+            report += String.format("\tFracture: [%s]\n", fracture ? "+" : "-");
+        }
+
+        report += "Comment>\n";
+        report += String.format("# %s %s [%.1f]   %s", diagnosis.split("\\(")[0], scoreType, score, date);
+        return report;
     }
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
