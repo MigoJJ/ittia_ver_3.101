@@ -21,7 +21,7 @@ import je.panse.doro.fourgate.A_editmain.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
 import je.panse.doro.fourgate.hypercholesterolemia.EMR_chol_mainentry;
 import je.panse.doro.fourgate.hypertension.EMR_htn_mainentry;
-import je.panse.doro.fourgate.influenza.InjectionApp;
+import je.panse.doro.fourgate.n_vaccinations.InjectionApp;
 import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;

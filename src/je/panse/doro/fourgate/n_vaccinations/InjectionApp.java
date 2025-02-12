@@ -1,6 +1,6 @@
-package je.panse.doro.fourgate.influenza;
+package je.panse.doro.fourgate.n_vaccinations;
 
-import java.awt.Dimension;			
+import java.awt.Dimension;				
 import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
