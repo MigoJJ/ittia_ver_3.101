@@ -92,7 +92,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     EMR_thyroid_Pregnancyentry.main(null);
                     break;
                 case "Osteoporosis": EMR_Os_buttons.main(null); 
-                		EMR_DEXA.main(null);;
+                		EMR_DEXA.main(null);
                 		break;
                 case "URI": EMR_FU_uriEdit.main(null); break;
                 case "Allergy": EMRPMHAllergy.main(null); break;

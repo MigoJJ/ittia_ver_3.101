@@ -18,6 +18,7 @@ import je.panse.doro.fourgate.diabetes.EMR_dm_lab;
 import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
 import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
 import je.panse.doro.fourgate.osteoporosis.EMR_Osteoporosis_meds;
+import je.panse.doro.fourgate.osteoporosis.reference.SecondaryOsteoporosisTable;
 
 
 public class EMR_Os_buttons {
@@ -97,6 +98,7 @@ public class EMR_Os_buttons {
                 	EMR_DEXA.main(null);
                 } else if (name.equals("Secondary Osteoporosis")) {
                 		OS_definition.main("Secondary Osteoporosis");
+                		SecondaryOsteoporosisTable.main(null);
                 } else if (name.equals("DM Autonomic Neuropathy")) {
                     ANPdm.main(null); 
                 } else if (name.equals("Medications")) {
