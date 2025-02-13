@@ -134,7 +134,7 @@ public class SecondaryOsteoporosisTable extends JFrame implements ActionListener
                 for (int i = 0; i < rowCount; i++) {
                     String category = (String) model.getValueAt(i, 0);
                     String condition = (String) model.getValueAt(i, 1);
-                    allDeniedText.append("   [-] denied: ").append(category).append(" - ").append(condition).append("\n");
+                    allDeniedText.append("   [-] : ").append(category).append(" - ").append(condition).append("\n");
                 }
                 outputTextArea.append(allDeniedText.toString());
                 	break;
