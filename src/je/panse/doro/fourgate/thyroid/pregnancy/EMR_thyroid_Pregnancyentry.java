@@ -17,6 +17,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.support.EMR_ittia_support;
 
 public class EMR_thyroid_Pregnancyentry {
     private static final String[] BUTTONS = {
@@ -28,6 +29,7 @@ public class EMR_thyroid_Pregnancyentry {
         "F/U Pregnancy with Hypothyroidism",
         "F/U Pregnancy with TSH elevation (Subclinical Hypothyroidism)",
         "Postpartum Thyroiditis",
+        "Support Files",
         "Quit"
     };
 
@@ -79,8 +81,8 @@ public class EMR_thyroid_Pregnancyentry {
                 if (g instanceof Graphics2D g2d) {
                     int h = getHeight();
                     GradientPaint gradient = new GradientPaint(
-                        0, 0, new Color(210, 180, 140),
-                        0, h, new Color(180, 150, 110)
+                            0, 0, new Color(240, 230, 210), // Lighter top color
+                            0, h, new Color(225, 215, 185)  // Lighter bottom color
                     );
                     g2d.setPaint(gradient);
                     g2d.fillRect(0, 0, getWidth(), h);
@@ -122,17 +124,22 @@ public class EMR_thyroid_Pregnancyentry {
         }
 
         // Execute special logic for new patient entry
-        if (buttonText.startsWith("New Patient")) {
+        else if (buttonText.startsWith("New Patient")) {
             EMR_Preg_CC.main(null); // Assuming EMR_Preg_CC is another class
             return;
         }
 
+        else if ("Support Files".equals(buttonText)) {
+        	EMR_ittia_support.thyroid("Thyroid");
+        	frame.dispose();
+            return;
+        }
         // Update EMR with patient condition without opening any file
         updateEMRFrameText(buttonText);
-        JOptionPane.showMessageDialog(frame, 
-            "Selected Condition: " + buttonText + "\nEMR Updated.", 
-            "Notification", 
-            JOptionPane.INFORMATION_MESSAGE);
+//        JOptionPane.showMessageDialog(frame, 
+//            "Selected Condition: " + buttonText + "\nEMR Updated.", 
+//            "Notification", 
+//            JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
