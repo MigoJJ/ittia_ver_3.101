@@ -19,6 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.entry.EntryDir;
 
 public class EMR_thyroid_Pregnancyentry {
     private static final String[] BUTTONS = {
@@ -110,7 +111,7 @@ public class EMR_thyroid_Pregnancyentry {
             return;
         }
 
-        String filePath = "/home/dce040b/git/ittia_ver_3.074007/src/je/panse/doro/support/EMR_support_Folder/Thyroid/";
+        String filePath = EntryDir.homeDir +"/je/panse/doro/support/EMR_support_Folder/Thyroid/";
 
         try {
             switch (buttonText) {
@@ -127,14 +128,13 @@ public class EMR_thyroid_Pregnancyentry {
                     break;
 
                 default:
-                    updateEMRFrameText(buttonText);
+                   ;
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(frame, "Error opening file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 
         }
         updateEMRFrameText(buttonText);
-
     }
 
     private static void updateEMRFrameText(String condition) {
