@@ -14,8 +14,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
+import je.panse.doro.fourgate.diabetes.EMR_FU_retinopathy;
 import je.panse.doro.fourgate.hypertension.htnMedication.EMR_htn_meds;
 import je.panse.doro.fourgate.hypertension.htnMedication.HTN_MedicationFrame_Main;
+import je.panse.doro.fourgate.hypertension.htnfollowup.htnFollowup_main;
 
 
 public class EMR_htn_mainentry {
@@ -88,16 +90,13 @@ public class EMR_htn_mainentry {
             public void actionPerformed(ActionEvent e) {
                 if (name.equals("Quit")) {
                     frame.dispose();
-                    
-                } else if (name.equals("HTN Meds Side Effect")) {
-                	HTN_MedicationFrame_Main.main(null);
-//                } else if (name.equals("DM Retinopathy")) {
-//                    EMR_FU_retinopathy.main(null);
-//                } else if (name.equals("DM Peripheral Neuropathy")) {
-//                    PNPdm.main(null);
-//                } else if (name.equals("DM Autonomic Neuropathy")) {
-//                    ANPdm.main(null); 
-                } else if (name.equals("Medications")) {
+                  }  else if (name.equals("HTN General symptoms")) {
+                	  		htnFollowup_main.main(null);
+                	 }                     
+                     else if (name.equals("HTN Meds Side Effect")) {
+                    		HTN_MedicationFrame_Main.main(null);
+                     }
+                     else if (name.equals("Medications")) {
                     EMR_htn_meds.main(null);
 //	            } else if (name.equals("DM F/U Laboratory Test")) {
 //	                EMR_dm_lab.main(null);
