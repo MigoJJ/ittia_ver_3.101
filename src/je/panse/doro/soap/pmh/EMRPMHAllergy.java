@@ -151,12 +151,12 @@ String[] otherSymptoms = {
     }
 
     private void setSymptoms(boolean anaphylaxisOnly, boolean value) {
-        StringBuilder result = new StringBuilder("\n[" + (anaphylaxisOnly ? "Anaphylaxis" : "Allergy") + " Symptoms Denied]\n");
+        StringBuilder result = new StringBuilder("\n [" + (anaphylaxisOnly ? "Anaphylaxis" : "Allergy") + " Symptoms Denied]\n");
         IntStream.range(0, table.getRowCount()).forEach(i -> {
             String category = (String) table.getValueAt(i, 0);
             if (anaphylaxisOnly == category.equals("Anaphylaxis") || !anaphylaxisOnly) {
                 table.setValueAt(value, i, 1);
-                result.append("- ").append(table.getValueAt(i, 2)).append("\n");
+                result.append("    - ").append(table.getValueAt(i, 2)).append("\n");
             }
         });
         textArea.append(result.toString());
@@ -164,7 +164,7 @@ String[] otherSymptoms = {
 
     private void updateTextArea(int row, boolean selected) {
         SwingUtilities.invokeLater(() -> {
-            String symptom = "* " + table.getValueAt(row, 0) + ": " + table.getValueAt(row, 2) + "\n";
+            String symptom = "    * " + table.getValueAt(row, 0) + ": " + table.getValueAt(row, 2) + "\n";
             if (selected) {
                 textArea.append(symptom);
             } else {
