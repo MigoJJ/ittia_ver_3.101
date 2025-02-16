@@ -25,4 +25,7 @@ public class EMR_ittia_support {
             System.err.println("Error opening directory: " + e.getMessage());
         }
     }
+    public static void thyroid(String args) {
+        String directoryPath = EntryDir.homeDir + "/support/EMR_support_Folder/" + args ;
+    }
 }
