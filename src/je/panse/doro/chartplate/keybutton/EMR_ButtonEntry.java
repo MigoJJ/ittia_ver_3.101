@@ -96,6 +96,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 		break;
                 case "URI": EMR_FU_uriEdit.main(null); break;
                 case "Allergy": EMRPMHAllergy.main(null); break;
+                      
                 case "Injections": InjectionApp.main(null); break;
                 case "GDS RC": RoutineCheck.performGDSRoutineCheck(); break;
                 case "공단검진": RoutineCheck.performHCRoutineCheck(); break;

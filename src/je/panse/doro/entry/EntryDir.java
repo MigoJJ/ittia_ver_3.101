@@ -17,7 +17,9 @@ public class EntryDir {
         // Construct base path depending on environment
         String basePath = "prod".equals(env) ? currentDir 
                                              : currentDir + File.separator + "src";
-
+//        String basePath = "prod".equals(env) ? currentDir 
+//                                           : currentDir + File.separator;
+        
         // Build paths for home and backup directories
         homeDir = buildPath(basePath, pathParts);
         backupDir = buildPath(homeDir, "tripikata", "rescue");

@@ -7,6 +7,8 @@ import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypertensionEdit;
 import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
 import je.panse.doro.fourgate.hypertension.EMR_htn_mainentry;
+import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
+import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 
@@ -30,7 +32,9 @@ public class GDSEMR_FunctionKey {
         } else if (keyCode == KeyEvent.VK_F4) {
         	EMR_thyroid_mainentry.main(null);
         	EMR_thyroid_Pregnancyentry.main(null);
-
+        } else if (keyCode == KeyEvent.VK_F5) {
+        	EMR_DEXA.main(null);
+        	EMR_Os_buttons.main(null);
         } else if (keyCode == KeyEvent.VK_F9) {
             je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up without medications [ :cd ] \n...");
         } else if (keyCode == KeyEvent.VK_F10) {

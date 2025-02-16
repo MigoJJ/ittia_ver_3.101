@@ -55,8 +55,8 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
 			 buttons[1].setText("F/U HTN");
 			 buttons[2].setText("F/U Chol");
 			 buttons[3].setText("F/U Thyroid");
-			 buttons[4].setText("URI");
-			 buttons[5].setText("Osteoporosis");
+			 buttons[4].setText("Osteoporosis");
+			 buttons[5].setText("URI");
 			 buttons[6].setText("Allergy");
 			 buttons[7].setText("Injections");
 			 buttons[8].setText("GDS RC");
