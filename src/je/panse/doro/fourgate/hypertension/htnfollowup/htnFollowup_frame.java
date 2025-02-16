@@ -1,4 +1,5 @@
-package je.panse.doro.fourgate.hypertension.htnMedication;
+package je.panse.doro.fourgate.hypertension.htnfollowup;
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -16,7 +17,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
-public class HTN_MedicationFrame extends JPanel {
+public class htnFollowup_frame extends JPanel {
 
     private JTable sideEffectsTable;
     private DefaultTableModel tableModel;
@@ -26,74 +27,45 @@ public class HTN_MedicationFrame extends JPanel {
 
     // Enum to represent different medication types
     public enum MedicationType {
-        DIURETICS("Diuretics",
-                new Object[][]{
-                        {false, "Increased Urination"},
-                        {false, "Dehydration"},
-                        {false, "Electrolyte Imbalances (Low Potassium, Sodium, Magnesium)"},
-                        {false, "Dizziness or Lightheadedness"},
-                        {false, "Fatigue"},
-                        {false, "Muscle Cramps"},
-                        {false, "Gout"}
-                }),
-        BETA_BLOCKERS("Beta-Blockers",
-                new Object[][]{
-                        {false, "Fatigue"},
-                        {false, "Slow Heart Rate"},
-                        {false, "Cold Extremities"},
-                        {false, "Dizziness or Lightheadedness"},
-                        {false, "Nausea"},
-                        {false, "Diarrhea or Constipation"},
-                        {false, "Depression"},
-                        {false, "Insomnia"},
-                        {false, "Erectile Dysfunction"}
-                }),
-        CALCIUM_CHANNEL_BLOCKERS("Calcium Channel Blockers",
-                new Object[][]{
-                        {false, "Headache"},
-                        {false, "Dizziness or Lightheadedness"},
-                        {false, "Fatigue"},
-                        {false, "Swelling in the Ankles and Feet"},
-                        {false, "Constipation"},
-                        {false, "Palpitations"}
-                }),
-        ARBS("ARBs",
-                new Object[][]{
-                        {false, "Dizziness or Lightheadedness"},
-                        {false, "Fatigue"},
-                        {false, "Headache"},
-                        {false, "Nausea"},
-                        {false, "Diarrhea"},
-                        {false, "Angioedema (Swelling of Face, Lips, Tongue, or Throat)"}
-                }),
-        ALPHA_BLOCKERS("Alpha-Blockers",
-                new Object[][]{
-                        {false, "Dizziness or Lightheadedness, especially when standing up"},
-                        {false, "Headache"},
-                        {false, "Fatigue"},
-                        {false, "Palpitations"},
-                        {false, "Nasal Congestion"}
-                }),
-        ACE_INHIBITORS("ACE Inhibitors",
-                new Object[][]{
-                        {false, "Dry Cough"},
-                        {false, "Dizziness or Lightheadedness"},
-                        {false, "Fatigue"},
-                        {false, "Headache"},
-                        {false, "Nausea"},
-                        {false, "Loss of Taste"},
-                        {false, "Rash"},
-                        {false, "Angioedema (Swelling of Face, Lips, Tongue, Throat)"}
-                }),
-        ALPHA2_RECEPTOR_AGONISTS("Alpha-2 Receptor Agonists",
-                new Object[][]{
-                        {false, "Drowsiness"},
-                        {false, "Dry Mouth"},
-                        {false, "Dizziness or Lightheadedness"},
-                        {false, "Fatigue"},
-                        {false, "Constipation"},
-                        {false, "Erectile Dysfunction"}
-                }),
+    	 SYMPTOMS("Symptoms", new Object[][]{
+             {false, "Headaches (Persistent or severe, especially in the morning)"},
+             {false, "Dizziness or Lightheadedness (Especially when standing up quickly)"},
+             {false, "Vision Changes (Blurred vision, double vision, temporary loss of vision)"},
+             {false, "Chest Pain (Discomfort or tightness, especially during exertion)"},
+             {false, "Shortness of Breath (Difficulty breathing, even with mild activity)"},
+             {false, "Nosebleeds (Frequent or prolonged)"},
+             {false, "Fatigue (Unusual tiredness or weakness)"},
+             {false, "Swelling (Legs, ankles, or feet)"}
+     }),
+
+     SUBJECTIVE_COMPLAINTS("Subjective Complaints", new Object[][]{
+             {false, "Overall Feeling and Health Changes (Patient-reported experiences)"},
+             {false, "Medication Adherence (Difficulties taking medications, side effects, forgetfulness)"},
+             {false, "Lifestyle Changes (Challenges or successes in diet, exercise, stress management)"}
+     }),
+
+     PHYSICAL_EXAM("Physical Exam", new Object[][]{
+             {false, "Blood Pressure Measurement"},
+             {false, "Heart and Lung Sounds"},
+             {false, "Neurological Exam (Reflexes, coordination, sensation)"},
+             {false, "Fundoscopic Exam (Retina of the eye)"},
+             {false, "Edema Assessment (Swelling in legs, ankles, feet)"}
+     }),
+
+     LABORATORY_RESULTS("Laboratory Results", new Object[][]{
+             {false, "Basic Metabolic Panel (Kidney function, electrolytes, blood sugar)"},
+             {false, "Lipid Profile (Cholesterol and triglycerides)"},
+             {false, "Urinalysis"},
+             {false, "Electrocardiogram (ECG)"},
+             {false, "Echocardiogram (If needed)"}
+     }),
+
+     ADDITIONAL_CONSIDERATIONS("Additional Considerations", new Object[][]{
+             {false, "Follow-up Frequency"},
+             {false, "Medication Adjustments"},
+             {false, "Lifestyle Counseling"},
+             {false, "Referrals to Specialists"}
+     }),
         VASODILATORS("Vasodilators",
                 new Object[][]{
                         {false, "Headache"},
@@ -120,7 +92,7 @@ public class HTN_MedicationFrame extends JPanel {
         }
     }
 
-    public HTN_MedicationFrame(MedicationType medicationType, JTextArea notesTextArea) {
+    public htnFollowup_frame(MedicationType medicationType, JTextArea notesTextArea) {
         this.medicationType = medicationType;
         this.notesTextArea = notesTextArea;
         setPreferredSize(new Dimension(500, 250));
