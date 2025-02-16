@@ -1,6 +1,6 @@
 package je.panse.doro.entry;
 
-import java.io.File;						
+import java.io.File;							
 import java.util.Arrays;
 
 public class EntryDir {
@@ -17,7 +17,6 @@ public class EntryDir {
         // Construct base path depending on environment
         String basePath = "prod".equals(env) ? currentDir 
                                              : currentDir + File.separator + "src";
-//        String basePath = "prod".equals(env) ? currentDir 
 //                                           : currentDir + File.separator;
         
         // Build paths for home and backup directories
