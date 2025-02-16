@@ -1,78 +1,44 @@
 package je.panse.doro.soap.pmh;
 
-import javax.swing.*;	
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
 import je.panse.doro.GDSEMR_frame;
-import javax.swing.event.TableModelListener;
+
 import javax.swing.event.TableModelEvent;
 import java.awt.*;
-import java.time.LocalDate;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.stream.IntStream;
 
 public class EMRPMHAllergy extends JFrame {
-    private static JTable table;
-    private static DefaultTableModel tableModel;
+    private static JTable table, eastTable;
+    private static DefaultTableModel tableModel, eastTableModel;
     private static JTextArea textArea;
     private static EMRPMHAllergy instance;
 
     public EMRPMHAllergy() {
-        initializeFrame();
-        createNorthPanel();
-        createTable();
-        createButtonPanel();
+        setTitle("Allergy Data Input");
+        setSize(850, 715);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+        add(createNorthPanel(), BorderLayout.NORTH);
+        add(createCenterTable(), BorderLayout.CENTER);
+        add(createEastPanel(), BorderLayout.EAST);
+        add(createButtonPanel(), BorderLayout.SOUTH);
         setVisible(true);
     }
 
-    private void initializeFrame() {
-        setTitle("Allergy Data Input");
-        setSize(800, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-    }
-
-    private void createNorthPanel() {
-        textArea = new JTextArea(5, 20);
+    private JScrollPane createNorthPanel() {
+        textArea = new JTextArea(10, 20);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        add(scrollPane, BorderLayout.NORTH);
+        return new JScrollPane(textArea);
     }
 
-    private void createTable() {
+    private JScrollPane createCenterTable() {
         String[] columnNames = {"Category", "Selected", "Symptom"};
-        Object[][] data = createTableData();
-
-        tableModel = new DefaultTableModel(data, columnNames) {
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnIndex == 1 ? Boolean.class : String.class;
-            }
-
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return column == 1;
-            }
-        };
-
-        tableModel.addTableModelListener(new TableModelListener() {
-            @Override
-            public void tableChanged(TableModelEvent e) {
-                if (e.getType() == TableModelEvent.UPDATE && e.getColumn() == 1) {
-                    int row = e.getFirstRow();
-                    boolean isSelected = (boolean) tableModel.getValueAt(row, 1);
-                    updateTextArea(row, isSelected);
-                }
-            }
-        });
-
-        table = new JTable(tableModel);
-        configureTable();
-
-        JScrollPane scrollPane = new JScrollPane(table);
-        add(scrollPane, BorderLayout.CENTER);
-    }
-
-    private Object[][] createTableData() {
-        return new Object[][] {
+        Object[][] data = {
             {"Skin reactions", false, "Rash"},
             {"Skin reactions", false, "Hives (raised, itchy spots)"},
             {"Skin reactions", false, "Itching"},
@@ -94,102 +60,132 @@ public class EMRPMHAllergy extends JFrame {
             {"Anaphylaxis", false, "Weak, fast pulse"},
             {"Anaphylaxis", false, "Loss of consciousness"}
         };
-    }
 
-    private void configureTable() {
-        table.setRowHeight(21);
-        table.getColumnModel().getColumn(0).setPreferredWidth(150);
-        table.getColumnModel().getColumn(1).setPreferredWidth(20);
-        table.getColumnModel().getColumn(2).setPreferredWidth(300);
-    }
-
-    private void updateTextArea(int row, boolean isSelected) {
-        SwingUtilities.invokeLater(() -> {
-            String symptom = (String) table.getValueAt(row, 2);
-            String category = (String) table.getValueAt(row, 0);
-            String lineToAdd = category + ": " + symptom + "  [+] \n";
-
-            if (isSelected) {
-                textArea.append(lineToAdd);
-            } else {
-                String content = textArea.getText();
-                textArea.setText(content.replace(lineToAdd, ""));
+        tableModel = new DefaultTableModel(data, columnNames) {
+            public Class<?> getColumnClass(int col) {
+                return col == 1 ? Boolean.class : String.class;
             }
-            
-            textArea.revalidate();
-            textArea.repaint();
+
+            public boolean isCellEditable(int row, int col) {
+                return col == 1;
+            }
+        };
+
+        tableModel.addTableModelListener(e -> {
+            if (e.getType() == TableModelEvent.UPDATE && e.getColumn() == 1) {
+                int row = e.getFirstRow();
+                updateTextArea(row, (boolean) tableModel.getValueAt(row, 1));
+            }
+        });
+
+        table = new JTable(tableModel);
+        table.setRowHeight(21);
+        return new JScrollPane(table);
+    }
+
+    private JPanel createEastPanel() {
+        String[] columnNames = {"Allergy Cause"};
+String[] otherSymptoms = {
+                "Pain relievers: NSAIDs ",
+                "sulfa drugs (sulfamethoxazole, trimethoprim-sulfamethoxazole).",
+                "Anesthesia: anesthetic medications such as propofol, ",
+                "Dust Mite",
+                
+                "Antibiotics : penicillin and its derivatives ",
+                "Antibiotics : Cephalosporins",
+                
+                "Food : 우유 (uyu): Milk",
+                "Food : 계란 (gyeran): Eggs",
+                "Food : 땅콩 (ttangkong): Peanuts",
+                "Food : 견과류 (gyeongwaryu): Tree nuts (e.g., 호두 - walnuts, 아몬드 - almonds, 캐슈넛 - cashews)",
+                "Food : 콩 (kong): Soybeans",
+                "Food : 밀 (mil): Wheat",
+                "Food : 생선 (saengseon): Fish (e.g., 고등어 - mackerel, 연어 - salmon, 참치 - tuna)",
+                "Food : 갑각류 (gabgagryu): Shellfish (e.g., 새우 - shrimp, 게 - crab, 가리비 - scallops)",
+                "Food : 복숭아 (boksuong-a): Peach (and sometimes other stone fruits like apricots and plums due to cross-reactivity)",
+                "Food : 메밀 (memil): Buckwheat"
+        };
+
+        eastTableModel = new DefaultTableModel(new Object[][]{}, columnNames);
+        for (String symptom : otherSymptoms) {
+            eastTableModel.addRow(new Object[]{symptom});
+        }
+
+        eastTable = new JTable(eastTableModel);
+        eastTable.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int row = eastTable.getSelectedRow();
+                if (row != -1) {
+                    textArea.append("*** Allergy Cause: " + eastTableModel.getValueAt(row, 0) + "\n");
+                }
+            }
+        });
+
+        JPanel eastPanel = new JPanel(new BorderLayout());
+        eastPanel.add(new JLabel("Allergy Causes:", JLabel.CENTER), BorderLayout.NORTH);
+        eastPanel.add(new JScrollPane(eastTable), BorderLayout.CENTER);
+        return eastPanel;
+    }
+
+    private JPanel createButtonPanel() {
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        String[] buttonLabels = {"All denied", "Anaphylaxis denied", "Clear", "Save", "Quit"};
+
+        for (String label : buttonLabels) {
+            JButton button = new JButton(label);
+            button.addActionListener(e -> handleButtonAction(label));
+            buttonPanel.add(button);
+        }
+
+        return buttonPanel;
+    }
+
+    private void handleButtonAction(String action) {
+        switch (action) {
+            case "All denied" -> setSymptoms(false, false);
+            case "Anaphylaxis denied" -> setSymptoms(true, false);
+            case "Clear" -> textArea.setText("");
+            case "Save" -> saveSymptoms();
+            case "Quit" -> dispose();
+        }
+    }
+
+    private void setSymptoms(boolean anaphylaxisOnly, boolean value) {
+        StringBuilder result = new StringBuilder("\n [" + (anaphylaxisOnly ? "Anaphylaxis" : "Allergy") + " Symptoms Denied]\n");
+        IntStream.range(0, table.getRowCount()).forEach(i -> {
+            String category = (String) table.getValueAt(i, 0);
+            if (anaphylaxisOnly == category.equals("Anaphylaxis") || !anaphylaxisOnly) {
+                table.setValueAt(value, i, 1);
+                result.append("    - ").append(table.getValueAt(i, 2)).append("\n");
+            }
+        });
+        textArea.append(result.toString());
+    }
+
+    private void updateTextArea(int row, boolean selected) {
+        SwingUtilities.invokeLater(() -> {
+            String symptom = "    * " + table.getValueAt(row, 0) + ": " + table.getValueAt(row, 2) + "\n";
+            if (selected) {
+                textArea.append(symptom);
+            } else {
+                textArea.setText(textArea.getText().replace(symptom, ""));
+            }
         });
     }
 
-    private void createButtonPanel() {
-        JPanel buttonPanel = new JPanel(new FlowLayout());
-        JButton allDeniedButton = new JButton("All denied");
-        JButton anaphylaxisDeniedButton = new JButton("Anaphylaxis denied");
-        JButton saveButton = new JButton("Save");
-        JButton quitButton = new JButton("Quit");
+    private void saveSymptoms() {
+        StringBuilder selected = new StringBuilder("Selected Symptoms:\n");
+        IntStream.range(0, table.getRowCount()).filter(i -> (boolean) table.getValueAt(i, 1)).forEach(i ->
+                selected.append("- ").append(table.getValueAt(i, 2)).append("\n"));
+        selected.append("\nAdditional Notes:\n").append(textArea.getText());
+        GDSEMR_frame.setTextAreaText(9, (textArea.getText())); // Assuming this method exists
 
-        allDeniedButton.addActionListener(e -> setAllSymptoms(false));
-        anaphylaxisDeniedButton.addActionListener(e -> setAnaphylaxisSymptoms(false));
-        saveButton.addActionListener(e -> saveSelectedSymptoms());
-        quitButton.addActionListener(e -> dispose());
-
-        buttonPanel.add(allDeniedButton);
-        buttonPanel.add(anaphylaxisDeniedButton);
-        buttonPanel.add(saveButton);
-        buttonPanel.add(quitButton);
-
-        add(buttonPanel, BorderLayout.SOUTH);
+//        JOptionPane.showMessageDialog(this, selected.toString(), "Saved Symptoms", JOptionPane.INFORMATION_MESSAGE);
     }
+
     public static EMRPMHAllergy getInstance() {
-        if (instance == null) {
-            instance = new EMRPMHAllergy();
-        }
+        if (instance == null) instance = new EMRPMHAllergy();
         return instance;
-    }
-    public static void setAllSymptoms(boolean value) {
-        if (instance == null) {
-            return;
-        }
-        
-        for (int i = 0; i < table.getRowCount(); i++) {
-            table.setValueAt(value, i, 1);
-        }
-        
-        textArea.setText("");
-        
-        String currentDate = LocalDate.now().toString();
-        
-        String noAllergiesText = String.format("▣ Allergy\n" +
-                                               "During the medical check-up, the patient had no known allergies\n" +
-                                               "to food, injections, and medications as of: %s", currentDate);
-        
-        textArea.setText(noAllergiesText);
-        
-        GDSEMR_frame.setTextAreaText(7, "\n###  Allergic Reactions  ###\n" + noAllergiesText);
-    }
-
-    private void setAnaphylaxisSymptoms(boolean value) {
-        for (int i = 0; i < table.getRowCount(); i++) {
-            if (table.getValueAt(i, 0).equals("Anaphylaxis")) {
-                table.setValueAt(value, i, 1);
-            }
-        }
-    }
-
-    private void saveSelectedSymptoms() {
-        StringBuilder selectedSymptoms = new StringBuilder("Selected Symptoms:\n");
-        for (int i = 0; i < table.getRowCount(); i++) {
-            if ((boolean) table.getValueAt(i, 1)) {
-                selectedSymptoms.append(table.getValueAt(i, 2)).append("\n");
-            }
-        }
-        String textAreaContent = textArea.getText();
-        if (!textAreaContent.isEmpty()) {
-            selectedSymptoms.append("\nAdditional Notes:\n").append(textAreaContent);
-            
-            GDSEMR_frame.setTextAreaText(7, "\n###  Allergic Reactions  ###\n" + textAreaContent);
-        }
-        JOptionPane.showMessageDialog(this, selectedSymptoms.toString());
     }
 
     public static void main(String[] args) {
