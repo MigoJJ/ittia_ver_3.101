@@ -1,23 +1,42 @@
 package je.panse.doro.fourgate.thyroid.pregnancy;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Toolkit;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+
 import je.panse.doro.GDSEMR_frame;
 
 public class EMR_thyroid_Pregnancyentry {
     private static final String[] BUTTONS = {
-        "New Patient for Pregnancy with Thyroid disease",
-        "F/U Pregnancy with Hyperthyroidism",
-        "F/U Pregnancy with Hypothyroidism",
-        "F/U Pregnancy with Non thyroidal illness",
-        "F/U Pregnancy with TSH elevation",
-        "F/U Pregnancy with TSH low",
-        "Quit"
+    		"New Patient for Pregnancy with Thyroid disease",
+    		"F/U Pregnancy with Normal Thyroid Function (TAb+)",
+    		"Infertility and Thyroid Function Evaluation",
+    		
+    		"F/U Pregnancy with Hyperthyroidism",
+    		"F/U Pregnancy with TSH low (Hyperthyroidism/GTT)",
+    		
+    		"F/U Pregnancy with Hypothyroidism",
+    		"F/U Pregnancy with TSH elevation (Subclinical Hypothyroidism)",
+    		
+    		"Postpartum Thyroiditis",
+    		"Quit"
     };
     
-    private static final int FRAME_WIDTH = 300;
+    private static final int FRAME_WIDTH = 410;
     private static final int FRAME_HEIGHT = 400;
     private static final int AUTO_CLOSE_DELAY = 300000; // 5 minutes
     
@@ -87,11 +106,35 @@ public class EMR_thyroid_Pregnancyentry {
         }
 
         if (buttonText.startsWith("New Patient")) {
-            EMR_Preg_CC.main(null);
+            EMR_Preg_CC.main(null); // Assuming EMR_Preg_CC is another class
             return;
         }
 
+        String filePath = "/home/dce040b/git/ittia_ver_3.074007/src/je/panse/doro/support/EMR_support_Folder/Thyroid/";
+
+        try {
+            switch (buttonText) {
+
+                case "FU Pregnancy with Normal Thyroid Function (TAb+)":
+                case "Infertility and Thyroid Function Evaluation":
+                case "FU Pregnancy with Hyperthyroidism":
+                case "FU Pregnancy with TSH low GTT":
+                case "FU Pregnancy with Hypothyroidism":
+                case "FU Pregnancy with TSH elevation (Subclinical Hypothyroidism)":
+                case "Postpartum Thyroiditis":
+
+                    Desktop.getDesktop().open(new java.io.File(filePath + buttonText + ".odt"));
+                    break;
+
+                default:
+                    updateEMRFrameText(buttonText);
+            }
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(frame, "Error opening file: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
         updateEMRFrameText(buttonText);
+
     }
 
     private static void updateEMRFrameText(String condition) {
