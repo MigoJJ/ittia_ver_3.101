@@ -12,6 +12,7 @@ import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
 import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
+import je.panse.doro.soap.plan.ittiaGDS_FUplan;
 
 public class GDSEMR_FunctionKey {
 
@@ -37,10 +38,11 @@ public class GDSEMR_FunctionKey {
         	EMR_DEXA.main(null);
         	EMR_Os_buttons.main(null);
         } else if (keyCode == KeyEvent.VK_F8) {
-        	Mainpage_controller.main("f8");	
-        	        	
+            Mainpage_controller.main(new String[]{"f8"}); // Pass "f8" as an argument array
+               	        	
         } else if (keyCode == KeyEvent.VK_F9) {
             je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  1  ] month later [ :cd ] \n...");
+            ittiaGDS_FUplan.main(null);;
         } else if (keyCode == KeyEvent.VK_F10) {
             je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  2  ] months later[ :cd ] \n...");
         } else if (keyCode == KeyEvent.VK_F11) {

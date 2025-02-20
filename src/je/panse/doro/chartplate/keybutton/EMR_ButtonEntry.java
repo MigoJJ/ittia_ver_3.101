@@ -62,7 +62,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     for (int i = 1; i <= 7; i++) textAreas[i].setText(titles[i] + "\t");
                     break;
                 case "Clear":
-                	   Mainpage_controller.main("f8");
+                    Mainpage_controller.main(new String[]{"f8"}); // Pass "f8" as an argument array
                     break;
                 case "Exit": System.exit(0); break;
                 case "Abbreviation": MainScreen.main(null); break;

@@ -1,21 +1,34 @@
 package je.panse.doro.chartplate.mainpage.controller;
 
+import javax.swing.*;
 import je.panse.doro.GDSEMR_frame;
 
-// Assuming GDSEMR_frame is a JFrame subclass defined elsewhere
 public class Mainpage_controller extends GDSEMR_frame {
+    private static final String FOLLOW_UP = "Follow up interval: [ 3 ] months";
+    private static final String PRESCRIPTION = "Prescription : [ → ] advised the patient to continue with current medication";
+    private static final int PLAN_SECTION_INDEX = 8;
 
-    // Method triggered by F8 key press
-    private static void F8short() {
-        for (int i = 0; i < textAreas.length; i++) {
-            textAreas[i].setText(titles[i] + "\t");
+    public Mainpage_controller() {
+        super(); // Calls GDSEMR_frame constructor
+    }
+
+    public static void saveTextArea(int index, String content) {
+        setTextAreaText(index, content); // Delegates to GDSEMR_frame's static method
+    }
+
+    public static void clearAllTextAreas() {
+        if (textAreas != null) {
+            for (JTextArea textArea : textAreas) {
+                if (textArea != null) {
+                    textArea.setText(""); // Clear each text area
+                }
+            }
         }
     }
 
-    // Main method to run the application
-    public static void main(String fshort) {
-    	
-    	F8short();
-   
+    public static void main(String[] args) {
+        if (args != null && args.length > 0 && "f8".equals(args[0])) {
+            SwingUtilities.invokeLater(Mainpage_controller::clearAllTextAreas);
+        }
     }
 }
