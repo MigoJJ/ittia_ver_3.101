@@ -12,6 +12,7 @@ import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.chartplate.mainpage.EMR_Write_To_Chartplate;
+import je.panse.doro.chartplate.mainpage.controller.Mainpage_controller;
 import je.panse.doro.entry.EntryDir;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
@@ -61,7 +62,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     for (int i = 1; i <= 7; i++) textAreas[i].setText(titles[i] + "\t");
                     break;
                 case "Clear":
-                    for (int i = 0; i < textAreas.length; i++) textAreas[i].setText(titles[i] + "\t");
+                	   Mainpage_controller.main("f8");
                     break;
                 case "Exit": System.exit(0); break;
                 case "Abbreviation": MainScreen.main(null); break;

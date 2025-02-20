@@ -2,6 +2,7 @@ package je.panse.doro.chartplate.keybutton;
 
 import java.awt.event.KeyEvent;
 
+import je.panse.doro.chartplate.mainpage.controller.Mainpage_controller;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypertensionEdit;
@@ -35,14 +36,17 @@ public class GDSEMR_FunctionKey {
         } else if (keyCode == KeyEvent.VK_F5) {
         	EMR_DEXA.main(null);
         	EMR_Os_buttons.main(null);
+        } else if (keyCode == KeyEvent.VK_F8) {
+        	Mainpage_controller.main("f8");	
+        	        	
         } else if (keyCode == KeyEvent.VK_F9) {
-            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up without medications [ :cd ] \n...");
+            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  1  ] month later [ :cd ] \n...");
         } else if (keyCode == KeyEvent.VK_F10) {
-            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...continuous current prescription [ :cd ] \n...");
+            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  2  ] months later[ :cd ] \n...");
         } else if (keyCode == KeyEvent.VK_F11) {
-            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...increased dose of current medications [ :cd ] \n...");    
+            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  3  ] months later [ :cd ] \n...");    
         } else if (keyCode == KeyEvent.VK_F12) {
-            je.panse.doro.GDSEMR_frame.setTextAreaText(8 , "\n...change current medications [ :cd ]\n...");    
+            je.panse.doro.GDSEMR_frame.setTextAreaText(8 , "\n...followup without meds [ :cd ]\n...");    
         } else {
             // Set the text in the specified text area based on the passed index and message
             je.panse.doro.GDSEMR_frame.setTextAreaText(keyCode, functionKeyMessage);
