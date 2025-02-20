@@ -41,7 +41,9 @@ public class GDSEMR_FunctionKey {
             Mainpage_controller.main(new String[]{"f8"}); // Pass "f8" as an argument array
                	        	
         } else if (keyCode == KeyEvent.VK_F9) {
-            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  1  ] month later [ :cd ] \n...");
+        	Mainpage_controller.clearPlanSection(); // F9 clears only textAreas[8]
+            Mainpage_controller.main(new String[]{"f9"}); // Pass "f8" as an argument array
+//            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  1  ] month later [ :cd ] \n...");
             ittiaGDS_FUplan.main(null);;
         } else if (keyCode == KeyEvent.VK_F10) {
             je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  2  ] months later[ :cd ] \n...");
