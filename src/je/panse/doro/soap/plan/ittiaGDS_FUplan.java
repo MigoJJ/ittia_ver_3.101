@@ -1,6 +1,6 @@
 package je.panse.doro.soap.plan;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout;	
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -137,10 +137,14 @@ public class ittiaGDS_FUplan extends JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Nothing to save!", "Save", JOptionPane.WARNING_MESSAGE);
         }
+        dispose();
     }
 
     private void setupAutoClose() {
-        Timer timer = new Timer(15000, e -> dispose());
+        Timer timer = new Timer(10000, e -> {
+            saveAction();  // Execute save operation before closing
+            dispose();     // Close the frame
+        });
         timer.setRepeats(false);
         timer.start();
     }
