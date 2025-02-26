@@ -110,10 +110,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         	EMR_Os_buttons.main(null);
         });
         buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
-        buttonActions.put("Allergy", () -> {
-            EMRPMHAllergy allergyFrame = EMRPMHAllergy.getInstance();
-
-        });
+        buttonActions.put("Allergy", () -> EMRPMHAllergy.main(new String[0]));
         buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
         buttonActions.put("Medication", () -> emr_select_medication.main(new String[0]));
         

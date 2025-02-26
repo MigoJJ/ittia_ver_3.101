@@ -2,6 +2,7 @@ package je.panse.doro.chartplate.mainpage.controller;
 
 import javax.swing.*;
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.soap.plan.ittiaGDS_FUplan;
 
 /**
  * Controller class for managing the main page of the chart plate application.
@@ -40,6 +41,7 @@ public class Mainpage_controller extends GDSEMR_frame {
                 }
             }
         }
+        for (int i = 0; i < textAreas.length; i++) textAreas[i].setText(titles[i] + "\t");
     }
 
     /**
@@ -55,6 +57,7 @@ public class Mainpage_controller extends GDSEMR_frame {
             textAreas[PLAN_SECTION_INDEX].setText(" P>\n" + 
                 "...follow - up [  " + monthno + "  ] month later[ :cd ] \n");
         }
+        ittiaGDS_FUplan.main(null);
     }
 
     /**

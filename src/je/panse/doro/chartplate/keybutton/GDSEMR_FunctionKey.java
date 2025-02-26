@@ -43,7 +43,6 @@ public class GDSEMR_FunctionKey {
         } else if (keyCode == KeyEvent.VK_F9) {
             Mainpage_controller.main(new String[]{"f9"}); 
 //            je.panse.doro.GDSEMR_frame.setTextAreaText(8, "\n...follow - up [  1  ] month later [ :cd ] \n...");
-            ittiaGDS_FUplan.main(null);;
         } else if (keyCode == KeyEvent.VK_F10) {
             Mainpage_controller.main(new String[]{"f10"});
         } else if (keyCode == KeyEvent.VK_F11) {
