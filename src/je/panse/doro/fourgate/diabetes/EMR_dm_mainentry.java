@@ -69,8 +69,8 @@ public class EMR_dm_mainentry {
 
                     // Create a gradient from top to bottom
                     GradientPaint gradient = new GradientPaint(
-                            0, 0, Color.decode("#B9D8DE"),
-                            0, height, Color.decode("#6FB9C7"));
+                            0, 0, Color.decode("#edf87d"),
+                            0, height, Color.decode("#aab623"));
 
                     g2d.setPaint(gradient);
                     g2d.fillRect(0, 0, width, height);

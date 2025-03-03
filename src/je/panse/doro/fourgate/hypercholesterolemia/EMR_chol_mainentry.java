@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.hypercholesterolemia;
 
-import java.awt.Color;			
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -14,8 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
-import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
-import je.panse.doro.fourgate.diabetes.dmPeripheral.PNPdm;
 import je.panse.doro.soap.subjective.EMR_symptom_list;
 import je.panse.doro.soap.subjective.EMR_symptom_retStr;
 
@@ -69,8 +67,8 @@ public class EMR_chol_mainentry {
 
                     // Create a gradient from top to bottom
                     GradientPaint gradient = new GradientPaint(
-                            0, 0, Color.decode("#B9D8DE"),
-                            0, height, Color.decode("#6FB9C7"));
+                            0, 0, Color.decode("#c7fdb1"),
+                            0, height, Color.decode("#7ca26d"));
 
                     g2d.setPaint(gradient);
                     g2d.fillRect(0, 0, width, height);
