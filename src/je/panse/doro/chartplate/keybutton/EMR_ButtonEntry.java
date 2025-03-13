@@ -31,6 +31,7 @@ import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
+import je.panse.doro.support.sqlite3_manager.code.CodeMainScreen;
 
 public class EMR_ButtonEntry extends GDSEMR_frame {
     
@@ -68,10 +69,15 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Exit": System.exit(0); break;
                 case "Abbreviation": MainScreen.main(null); break;
                 case "Code":
-                    String path = EntryDir.homeDir + "/support/EMR_support_Folder/Etc/";
-                    File_open.main(path + "Disease_Code.odt");
-                    File_open.main(path + "Code.odt");
+                    CodeMainScreen.main(null);
                     break;
+
+//                case "Code":
+//                    String path = EntryDir.homeDir + "/support/EMR_support_Folder/Etc/";
+//                    File_open.main(path + "Disease_Code.odt");
+//                    File_open.main(path + "Code.odt");
+//                    break;
+                
                 case "ittia_support": EMR_ittia_support.main(null); break;
                 case "ittia_EMR_AI": je.panse.doro.chartplate.keybutton.ai.Mprompt.main(null); break;
             }
