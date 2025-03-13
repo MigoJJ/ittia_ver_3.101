@@ -14,8 +14,8 @@ public class AddCodeDatabase {
 
             // Add Disease Categories
             addThyroidDisorders(pstmt);
-            addInfectiousDiseases(pstmt);
-            addCirculatoryDiseases(pstmt);
+            addSkinDisorders(pstmt);
+            addMusculoskeletalDisorders(pstmt);
 
             System.out.println("Data added successfully.");
         } catch (SQLException e) {
@@ -24,123 +24,118 @@ public class AddCodeDatabase {
     }
 
     private static void addThyroidDisorders(PreparedStatement pstmt) throws SQLException {
-        String category = "Thyroid Disorders";
-        String[][] thyroidDisorders = {
-            {"E00", "Congenital iodine-deficiency syndrome"},
-            {"E00.0", "Neurological form"},
-            {"E00.1", "Myxedematous form"},
-            {"E00.2", "Mixed form"},
-            {"E00.9", "Unspecified congenital iodine-deficiency syndrome"},
-            {"E01", "Iodine-deficiency-related thyroid disorders and goiter"},
-            {"E01.0", "Iodine-deficiency-related diffuse goiter"},
-            {"E01.1", "Iodine-deficiency-related multinodular goiter"},
-            {"E01.2", "Iodine-deficiency-related goiter, unspecified"},
-            {"E02", "Subclinical iodine-deficiency hypothyroidism"},
-            {"E03.0", "Congenital hypothyroidism with diffuse goiter"},
-            {"E03.1", "Congenital hypothyroidism without goiter"},
-            {"E03.2", "Hypothyroidism due to medicaments and other exogenous substances"},
-            {"E03.3", "Postinfectious hypothyroidism"},
-            {"E03.4", "Atrophy of thyroid (Primary hypothyroidism)"},
-            {"E03.5", "Myxedema coma"},
-            {"E03.8", "Other specified hypothyroidism"},
-            {"E03.9", "Hypothyroidism, unspecified"}
+        String category = "Digestive System Disorders";
+        String[][] digestiveDisorders = {
+            {"K00", "Developmental disorders of teeth"},
+            {"K01", "Embedded and impacted teeth"},
+            {"K02", "Dental caries"},
+            {"K03", "Other diseases of hard tissues of teeth"},
+            {"K04", "Diseases of pulp and periapical tissues"},
+            {"K05", "Gingivitis and periodontal diseases"},
+            {"K06", "Other disorders of gingiva and edentulous alveolar ridge"},
+            {"K07", "Dentofacial anomalies (malocclusion)"},
+            {"K08", "Other disorders of teeth and supporting structures"},
+            {"K09", "Cysts of jaw"},
+            {"K10", "Inflammatory conditions of jaws"},
+            {"K11", "Diseases of salivary glands"},
+            {"K12", "Stomatitis and related lesions"},
+            {"K13", "Other diseases of the oral mucosa"},
+            {"K14", "Diseases of the tongue"},
+            {"K20", "Esophagitis"},
+            {"K21", "Gastroesophageal reflux disease (GERD)"},
+            {"K22", "Other diseases of the esophagus"},
+            {"K25", "Gastric ulcer"},
+            {"K26", "Duodenal ulcer"},
+            {"K27", "Peptic ulcer, unspecified"},
+            {"K29", "Gastritis and duodenitis"},
+            {"K30", "Functional dyspepsia"},
+            {"K35", "Acute appendicitis"},
+            {"K50", "Crohn’s disease (regional enteritis)"},
+            {"K51", "Ulcerative colitis"},
+            {"K56", "Intestinal obstruction"},
+            {"K57", "Diverticular disease of intestine"},
+            {"K58", "Irritable bowel syndrome (IBS)"},
+            {"K64", "Hemorrhoids"},
+            {"K70", "Alcoholic liver disease"},
+            {"K72", "Hepatic failure"},
+            {"K74", "Fibrosis and cirrhosis of liver"},
+            {"K80", "Cholelithiasis (gallstones)"},
+            {"K81", "Cholecystitis"},
+            {"K85", "Acute pancreatitis"},
+            {"K90", "Malabsorption syndromes"},
+            {"K92", "Other diseases of the digestive system"}
         };
 
-        for (String[] row : thyroidDisorders) {
+        for (String[] row : digestiveDisorders) {
             addRow(pstmt, category, row[0], row[1], "ICD-10");
         }
     }
 
-    private static void addInfectiousDiseases(PreparedStatement pstmt) throws SQLException {
-        String category = "Infectious Diseases";
-        String[][] infectiousDiseases = {
-            {"A00", "Cholera"},
-            {"A01", "Typhoid and paratyphoid fevers"},
-            {"A02", "Other salmonella infections"},
-            {"A03", "Shigellosis"},
-            {"A04", "Other bacterial intestinal infections (E. coli, Clostridium difficile)"},
-            {"A05", "Bacterial foodborne intoxications"},
-            {"A06", "Amebiasis"},
-            {"A07", "Other protozoal intestinal diseases (giardiasis, cryptosporidiosis)"},
-            {"A08", "Viral intestinal infections (rotavirus, norovirus)"},
-            {"A09", "Infectious gastroenteritis and colitis, unspecified"},
-            {"B15", "Viral hepatitis A"},
-            {"B16", "Viral hepatitis B"},
-            {"B17", "Viral hepatitis C"},
-            {"B18", "Chronic viral hepatitis"},
-            {"B19", "Unspecified viral hepatitis"},
-            {"B20", "HIV/AIDS"},
-            {"B25", "Cytomegalovirus infections"},
-            {"B34", "Other viral infections"}
+    private static void addSkinDisorders(PreparedStatement pstmt) throws SQLException {
+        String category = "Skin and Subcutaneous Tissue Disorders";
+        String[][] skinDisorders = {
+            {"L00", "Staphylococcal scalded skin syndrome"},
+            {"L01", "Impetigo"},
+            {"L02", "Cutaneous abscess, furuncle, and carbuncle"},
+            {"L08", "Other localized infections of the skin and subcutaneous tissue"},
+            {"L10", "Pemphigus"},
+            {"L20", "Atopic dermatitis"},
+            {"L21", "Seborrheic dermatitis"},
+            {"L30", "Other types of dermatitis and eczema"},
+            {"L40", "Psoriasis"},
+            {"L50", "Urticaria (hives)"},
+            {"L55", "Sunburn"},
+            {"L60", "Nail disorders"},
+            {"L63", "Alopecia areata"},
+            {"L64", "Androgenic alopecia"},
+            {"L80", "Vitiligo"},
+            {"L81", "Pigmentation disorders"},
+            {"L90", "Other skin disorders"}
         };
 
-        for (String[] row : infectiousDiseases) {
+        for (String[] row : skinDisorders) {
             addRow(pstmt, category, row[0], row[1], "ICD-10");
         }
     }
 
-    private static void addCirculatoryDiseases(PreparedStatement pstmt) throws SQLException {
-        String category = "Circulatory System Diseases";
-        String[][] circulatoryDiseases = {
-            {"I00", "Rheumatic fever without heart involvement"},
-            {"I01", "Rheumatic fever with heart involvement"},
-            {"I02", "Rheumatic chorea (Sydenham’s chorea)"},
-            {"I05", "Rheumatic mitral valve diseases"},
-            {"I06", "Rheumatic aortic valve diseases"},
-            {"I07", "Rheumatic tricuspid valve diseases"},
-            {"I08", "Multiple valve involvement"},
-            {"I10", "Essential (primary) hypertension"},
-            {"I11", "Hypertensive heart disease"},
-            {"I12", "Hypertensive kidney disease"},
-            {"I13", "Hypertensive heart and kidney disease"},
-            {"I15", "Secondary hypertension (due to endocrine, renal, vascular causes)"},
-            {"I20", "Angina pectoris"},
-            {"I21", "Acute myocardial infarction (heart attack)"},
-            {"I22", "Subsequent myocardial infarction"},
-            {"I23", "Complications of acute myocardial infarction"},
-            {"I24", "Other acute ischemic heart diseases"},
-            {"I25", "Chronic ischemic heart disease"},
-            {"I26", "Pulmonary embolism"},
-            {"I27", "Other pulmonary heart diseases"},
-            {"I28", "Other disorders of pulmonary circulation"},
-            {"I30", "Acute pericarditis"},
-            {"I31", "Other diseases of the pericardium"},
-            {"I32", "Pericarditis in other diseases classified elsewhere"},
-            {"I33", "Acute and subacute endocarditis"},
-            {"I40", "Acute myocarditis"},
-            {"I42", "Cardiomyopathy (e.g., dilated, hypertrophic, restrictive)"},
-            {"I44", "Atrioventricular and left bundle-branch block"},
-            {"I45", "Other conduction disorders"},
-            {"I46", "Cardiac arrest"},
-            {"I47", "Paroxysmal tachycardia"},
-            {"I48", "Atrial fibrillation and flutter"},
-            {"I49", "Other cardiac arrhythmias"},
-            {"I50", "Heart failure (congestive, systolic, diastolic)"},
-            {"I60", "Subarachnoid hemorrhage"},
-            {"I61", "Intracerebral hemorrhage"},
-            {"I62", "Other nontraumatic intracranial hemorrhages"},
-            {"I63", "Cerebral infarction (ischemic stroke)"},
-            {"I64", "Stroke, not specified as hemorrhagic or ischemic"},
-            {"I70", "Atherosclerosis"},
-            {"I71", "Aortic aneurysm and dissection"},
-            {"I72", "Other aneurysms"},
-            {"I73", "Other peripheral vascular diseases"},
-            {"I74", "Arterial embolism and thrombosis"},
-            {"I78", "Diseases of capillaries"},
-            {"I79", "Disorders of arteries, arterioles, and capillaries"},
-            {"I80", "Phlebitis and thrombophlebitis"},
-            {"I81", "Portal vein thrombosis"},
-            {"I82", "Other venous embolism and thrombosis"},
-            {"I83", "Varicose veins of lower extremities"},
-            {"I85", "Esophageal varices"},
-            {"I87", "Other disorders of veins"},
-            {"I89", "Other noninfective disorders of lymphatic vessels and lymph nodes"},
-            {"I95", "Hypotension"},
-            {"I96", "Gangrene, not elsewhere classified"},
-            {"I99", "Other and unspecified circulatory disorders"}
+    private static void addMusculoskeletalDisorders(PreparedStatement pstmt) throws SQLException {
+        String category = "Musculoskeletal System Disorders";
+        String[][] musculoskeletalDisorders = {
+            {"M00", "Infectious arthritis"},
+            {"M05", "Rheumatoid arthritis"},
+            {"M15", "Osteoarthritis"},
+            {"M20", "Other joint disorders"},
+            {"M30", "Vasculitis and lupus"},
+            {"M40", "Spinal curvatures (e.g., scoliosis)"},
+            {"M45", "Spondylopathies"},
+            {"M50", "Back pain disorders"},
+            {"M60", "Myopathies"},
+            {"M65", "Fibromyalgia and other soft tissue disorders"}
         };
 
-        for (String[] row : circulatoryDiseases) {
+        for (String[] row : musculoskeletalDisorders) {
+            addRow(pstmt, category, row[0], row[1], "ICD-10");
+        }
+    }
+
+    private static void addGenitourinaryDisorders(PreparedStatement pstmt) throws SQLException {
+        String category = "Genitourinary System Disorders";
+        String[][] genitourinaryDisorders = {
+            {"N00", "Acute nephritic syndrome"},
+            {"N10", "Acute pyelonephritis"},
+            {"N18", "Chronic kidney disease (CKD)"},
+            {"N20", "Kidney and ureteral stones"},
+            {"N30", "Cystitis"},
+            {"N39", "Urinary tract infections (UTIs)"},
+            {"N40", "Benign prostatic hyperplasia"},
+            {"N50", "Other male genital disorders"},
+            {"N60", "Benign mammary dysplasia"},
+            {"N70", "Salpingitis and oophoritis"},
+            {"N80", "Endometriosis"},
+            {"N95", "Menopausal and other perimenopausal disorders"}
+        };
+
+        for (String[] row : genitourinaryDisorders) {
             addRow(pstmt, category, row[0], row[1], "ICD-10");
         }
     }
