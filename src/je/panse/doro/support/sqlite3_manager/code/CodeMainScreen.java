@@ -69,22 +69,40 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
     private void setupButtons() {
         southPanel = new JPanel();
+        
+        // Add standard buttons
         String[] buttonLabels = {"Add", "Delete", "Edit", "Find", "Exit"};
         for (String label : buttonLabels) {
             southPanel.add(createButton(label));
         }
 
+        // Add column-specific search buttons
+//        JButton findBCodeButton = createButton("Find B-code");
+//        JButton findNameButton = createButton("Find Name");
+//        JButton findReferenceButton = createButton("Find Reference");
+
+//        southPanel.add(findBCodeButton);
+//        southPanel.add(findNameButton);
+//        southPanel.add(findReferenceButton);
+
+        // Search Field (Triggers "Find" button when Enter is pressed)
         searchField = new JTextField(20);
         searchField.setPreferredSize(new Dimension(200, 30));
         searchField.setHorizontalAlignment(JTextField.CENTER);
         searchField.setFont(new Font("Arial", Font.BOLD, 14));
-        searchField.addActionListener(this);
+        
+        searchField.addActionListener(e -> { 
+            // When Enter is pressed, execute "Find" button action
+            findRecords(searchField.getText());
+            searchField.setText(""); // Clear the field after search
+        });
 
         southPanel.add(new JLabel("Search:"));
         southPanel.add(searchField);
 
         add(southPanel, BorderLayout.SOUTH);
     }
+
 
     private JButton createButton(String text) {
         JButton button = new JButton(text);
@@ -128,9 +146,26 @@ public class CodeMainScreen extends JFrame implements ActionListener {
     }
 
     private void findRecords(String searchText) {
-        model.findAndDisplayRecords(searchText, tableModel);
+        model.findAndDisplayRecords(searchText, "ALL", tableModel);
     }
+
    
+    private void deleteRecord() {
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow >= 0) {
+            int modelRow = table.convertRowIndexToModel(selectedRow);
+            model.deleteRecord((String) tableModel.getValueAt(modelRow, 1));
+            loadData();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+        }
+    }
+
+    private void editRecord() {
+        JOptionPane.showMessageDialog(this, "Edit functionality is under development.");
+    }
+    
+    // FIXED showAddDialog() inside CodeMainScreen
     private void showAddDialog() {
         JTextField categoryField = new JTextField(20);
         JTextField bcodeField = new JTextField(10);
@@ -153,21 +188,6 @@ public class CodeMainScreen extends JFrame implements ActionListener {
         }
     }
 
-    private void deleteRecord() {
-        int selectedRow = table.getSelectedRow();
-        if (selectedRow >= 0) {
-            int modelRow = table.convertRowIndexToModel(selectedRow);
-            model.deleteRecord((String) tableModel.getValueAt(modelRow, 1));
-            loadData();
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-        }
-    }
-
-    private void editRecord() {
-        JOptionPane.showMessageDialog(this, "Edit functionality is under development.");
-    }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(CodeMainScreen::new);
     }
@@ -183,7 +203,56 @@ class DatabaseModel {
         executeSQL(sql);
     }
 
-    public void findAndDisplayRecords(String searchText, DefaultTableModel tableModel) {
+    public void findAndDisplayRecords(String searchText, String column, DefaultTableModel tableModel) {
+            String sql = "SELECT Category, B_code, name, reference FROM codedis WHERE ";
+
+            switch (column) {
+                case "B_code":
+                    sql += "B_code LIKE ?";
+                    break;
+                case "name":
+                    sql += "name LIKE ?";
+                    break;
+                case "reference":
+                    sql += "reference LIKE ?";
+                    break;
+                default: // "ALL" searches all columns
+                    sql += "Category LIKE ? OR B_code LIKE ? OR name LIKE ? OR reference LIKE ?";
+            }
+
+            try (Connection conn = DriverManager.getConnection(DB_URL);
+                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+                String searchPattern = "%" + searchText + "%";
+
+                if (column.equals("ALL")) {
+                    pstmt.setString(1, searchPattern);
+                    pstmt.setString(2, searchPattern);
+                    pstmt.setString(3, searchPattern);
+                    pstmt.setString(4, searchPattern);
+                } else {
+                    pstmt.setString(1, searchPattern);
+                }
+
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    tableModel.setRowCount(0); // Clear table before adding new results
+                    while (rs.next()) {
+                        tableModel.addRow(new Object[]{
+                            rs.getString("Category"),
+                            rs.getString("B_code"),
+                            rs.getString("name"),
+                            rs.getString("reference")
+                        });
+                    }
+                }
+            } catch (SQLException e) {
+                System.err.println("Error finding records: " + e.getMessage());
+            }
+        }
+
+       
+
+	public void findAndDisplayRecords(String searchText, DefaultTableModel tableModel) {
         String sql = "SELECT Category, B_code, name, reference FROM codedis " +
                      "WHERE Category LIKE ? OR B_code LIKE ? OR name LIKE ? OR reference LIKE ?";
         
