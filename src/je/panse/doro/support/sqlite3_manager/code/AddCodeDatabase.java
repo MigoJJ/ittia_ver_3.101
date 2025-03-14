@@ -12,10 +12,11 @@ public class AddCodeDatabase {
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement("INSERT INTO codedis (Category, B_code, name, reference) VALUES (?, ?, ?, ?)")) {
 
-            // Add Disease Categories
-            addThyroidDisorders(pstmt);
-            addSkinDisorders(pstmt);
-            addMusculoskeletalDisorders(pstmt);
+            // Add Rheumatism, Gout, Osteoporosis, and Breast Disorder Categories
+            addRheumatoidArthritis(pstmt);
+            addGoutDisorders(pstmt);
+            addOsteoporosisDisorders(pstmt);
+            addBreastDisorders(pstmt);
 
             System.out.println("Data added successfully.");
         } catch (SQLException e) {
@@ -23,119 +24,111 @@ public class AddCodeDatabase {
         }
     }
 
-    private static void addThyroidDisorders(PreparedStatement pstmt) throws SQLException {
-        String category = "Digestive System Disorders";
-        String[][] digestiveDisorders = {
-            {"K00", "Developmental disorders of teeth"},
-            {"K01", "Embedded and impacted teeth"},
-            {"K02", "Dental caries"},
-            {"K03", "Other diseases of hard tissues of teeth"},
-            {"K04", "Diseases of pulp and periapical tissues"},
-            {"K05", "Gingivitis and periodontal diseases"},
-            {"K06", "Other disorders of gingiva and edentulous alveolar ridge"},
-            {"K07", "Dentofacial anomalies (malocclusion)"},
-            {"K08", "Other disorders of teeth and supporting structures"},
-            {"K09", "Cysts of jaw"},
-            {"K10", "Inflammatory conditions of jaws"},
-            {"K11", "Diseases of salivary glands"},
-            {"K12", "Stomatitis and related lesions"},
-            {"K13", "Other diseases of the oral mucosa"},
-            {"K14", "Diseases of the tongue"},
-            {"K20", "Esophagitis"},
-            {"K21", "Gastroesophageal reflux disease (GERD)"},
-            {"K22", "Other diseases of the esophagus"},
-            {"K25", "Gastric ulcer"},
-            {"K26", "Duodenal ulcer"},
-            {"K27", "Peptic ulcer, unspecified"},
-            {"K29", "Gastritis and duodenitis"},
-            {"K30", "Functional dyspepsia"},
-            {"K35", "Acute appendicitis"},
-            {"K50", "Crohn’s disease (regional enteritis)"},
-            {"K51", "Ulcerative colitis"},
-            {"K56", "Intestinal obstruction"},
-            {"K57", "Diverticular disease of intestine"},
-            {"K58", "Irritable bowel syndrome (IBS)"},
-            {"K64", "Hemorrhoids"},
-            {"K70", "Alcoholic liver disease"},
-            {"K72", "Hepatic failure"},
-            {"K74", "Fibrosis and cirrhosis of liver"},
-            {"K80", "Cholelithiasis (gallstones)"},
-            {"K81", "Cholecystitis"},
-            {"K85", "Acute pancreatitis"},
-            {"K90", "Malabsorption syndromes"},
-            {"K92", "Other diseases of the digestive system"}
-        };
-
-        for (String[] row : digestiveDisorders) {
-            addRow(pstmt, category, row[0], row[1], "ICD-10");
-        }
-    }
-
-    private static void addSkinDisorders(PreparedStatement pstmt) throws SQLException {
-        String category = "Skin and Subcutaneous Tissue Disorders";
-        String[][] skinDisorders = {
-            {"L00", "Staphylococcal scalded skin syndrome"},
-            {"L01", "Impetigo"},
-            {"L02", "Cutaneous abscess, furuncle, and carbuncle"},
-            {"L08", "Other localized infections of the skin and subcutaneous tissue"},
-            {"L10", "Pemphigus"},
-            {"L20", "Atopic dermatitis"},
-            {"L21", "Seborrheic dermatitis"},
-            {"L30", "Other types of dermatitis and eczema"},
-            {"L40", "Psoriasis"},
-            {"L50", "Urticaria (hives)"},
-            {"L55", "Sunburn"},
-            {"L60", "Nail disorders"},
-            {"L63", "Alopecia areata"},
-            {"L64", "Androgenic alopecia"},
-            {"L80", "Vitiligo"},
-            {"L81", "Pigmentation disorders"},
-            {"L90", "Other skin disorders"}
-        };
-
-        for (String[] row : skinDisorders) {
-            addRow(pstmt, category, row[0], row[1], "ICD-10");
-        }
-    }
-
-    private static void addMusculoskeletalDisorders(PreparedStatement pstmt) throws SQLException {
+    private static void addRheumatoidArthritis(PreparedStatement pstmt) throws SQLException {
         String category = "Musculoskeletal System Disorders";
-        String[][] musculoskeletalDisorders = {
-            {"M00", "Infectious arthritis"},
-            {"M05", "Rheumatoid arthritis"},
-            {"M15", "Osteoarthritis"},
-            {"M20", "Other joint disorders"},
-            {"M30", "Vasculitis and lupus"},
-            {"M40", "Spinal curvatures (e.g., scoliosis)"},
-            {"M45", "Spondylopathies"},
-            {"M50", "Back pain disorders"},
-            {"M60", "Myopathies"},
-            {"M65", "Fibromyalgia and other soft tissue disorders"}
+        String[][] rheumatoidArthritis = {
+            {"M05", "Rheumatoid arthritis with rheumatoid factor"},
+            {"M06", "Other rheumatoid arthritis"},
+            {"M06.9", "Rheumatoid arthritis, unspecified"},
+            {"M15.0", "Primary generalized osteoarthritis"},
+            {"M16.9", "Osteoarthritis of the hip, unspecified"},
+            {"M19.90", "Unspecified osteoarthritis, unspecified site"}
         };
 
-        for (String[] row : musculoskeletalDisorders) {
+        for (String[] row : rheumatoidArthritis) {
             addRow(pstmt, category, row[0], row[1], "ICD-10");
         }
     }
 
-    private static void addGenitourinaryDisorders(PreparedStatement pstmt) throws SQLException {
-        String category = "Genitourinary System Disorders";
-        String[][] genitourinaryDisorders = {
-            {"N00", "Acute nephritic syndrome"},
-            {"N10", "Acute pyelonephritis"},
-            {"N18", "Chronic kidney disease (CKD)"},
-            {"N20", "Kidney and ureteral stones"},
-            {"N30", "Cystitis"},
-            {"N39", "Urinary tract infections (UTIs)"},
-            {"N40", "Benign prostatic hyperplasia"},
-            {"N50", "Other male genital disorders"},
-            {"N60", "Benign mammary dysplasia"},
-            {"N70", "Salpingitis and oophoritis"},
-            {"N80", "Endometriosis"},
-            {"N95", "Menopausal and other perimenopausal disorders"}
+    private static void addGoutDisorders(PreparedStatement pstmt) throws SQLException {
+        String category = "Musculoskeletal System Disorders";
+        String[][] goutDisorders = {
+            {"M10.0", "Gout, unspecified site"},
+            {"M10.1-M10.9", "Gout, specific sites (e.g., toe, ankle, knee)"},
+            {"M1A00X0", "Idiopathic chronic gout, unspecified site, without tophus"},
+            {"M1A00X1", "Idiopathic chronic gout, unspecified site, with tophus"}
         };
 
-        for (String[] row : genitourinaryDisorders) {
+        for (String[] row : goutDisorders) {
+            addRow(pstmt, category, row[0], row[1], "ICD-10");
+        }
+    }
+
+    private static void addOsteoporosisDisorders(PreparedStatement pstmt) throws SQLException {
+        String category = "Musculoskeletal System Disorders";
+        String[][] osteoporosisDisorders = {
+            {"M80.0", "Age-related osteoporosis with current pathological fracture"},
+            {"M80.00", "Age-related osteoporosis with current pathological fracture, unspecified site"},
+            {"M80.01", "Age-related osteoporosis with current pathological fracture, shoulder"},
+            {"M80.02", "Age-related osteoporosis with current pathological fracture, upper arm"},
+            {"M80.05", "Age-related osteoporosis with current pathological fracture, femur"},
+            {"M80.08", "Age-related osteoporosis with current pathological fracture, vertebra"},
+            {"M80.8", "Other osteoporosis with current pathological fracture (e.g., drug-induced, idiopathic, disuse, postmenopausal, post-oophorectomy, post-traumatic)"},
+            {"M81.0", "Age-related osteoporosis without current pathological fracture"},
+            {"M81.8", "Other osteoporosis without current pathological fracture (e.g., drug-induced, idiopathic, disuse, postmenopausal, post-oophorectomy, post-traumatic)"},
+            {"M82.0", "Osteoporosis in peripheral vascular disease"},
+            {"M82.1", "Osteoporosis in peripheral nerve disease"},
+            {"M82.8", "Osteoporosis in other diseases classified elsewhere"}
+        };
+
+        for (String[] row : osteoporosisDisorders) {
+            addRow(pstmt, category, row[0], row[1], "ICD-10");
+        }
+    }
+
+    private static void addBreastDisorders(PreparedStatement pstmt) throws SQLException {
+        String category = "Genitourinary System Disorders"; // Breast disorders are often classified here in ICD-10
+        String[][] breastDisorders = {
+            {"N60.0", "Solitary cyst of breast"},
+            {"N60.01", "Solitary cyst of right breast"},
+            {"N60.02", "Solitary cyst of left breast"},
+            {"N60.09", "Solitary cyst of unspecified breast"},
+            {"N60.1", "Diffuse cystic mastopathy"},
+            {"N60.11", "Diffuse cystic mastopathy of right breast"},
+            {"N60.12", "Diffuse cystic mastopathy of left breast"},
+            {"N60.19", "Diffuse cystic mastopathy of unspecified breast"},
+            {"N60.2", "Fibroadenosis"},
+            {"N60.21", "Fibroadenosis of right breast"},
+            {"N60.22", "Fibroadenosis of left breast"},
+            {"N60.29", "Fibroadenosis of unspecified breast"},
+            {"N60.3", "Fibrosclerosis"},
+            {"N60.31", "Fibrosclerosis of right breast"},
+            {"N60.32", "Fibrosclerosis of left breast"},
+            {"N60.39", "Fibrosclerosis of unspecified breast"},
+            {"N60.4", "Mammary duct ectasia"},
+            {"N60.41", "Mammary duct ectasia of right breast"},
+            {"N60.42", "Mammary duct ectasia of left breast"},
+            {"N60.49", "Mammary duct ectasia of unspecified breast"},
+            {"N60.8", "Other specified benign mammary dysplasias"},
+            {"N60.81", "Other benign mammary dysplasias of right breast"},
+            {"N60.82", "Other benign mammary dysplasias of left breast"},
+            {"N60.89", "Other benign mammary dysplasias of unspecified breast"},
+            {"N60.9", "Benign mammary dysplasia, unspecified"},
+            {"N60.91", "Unspecified benign mammary dysplasia of right breast"},
+            {"N60.92", "Unspecified benign mammary dysplasia of left breast"},
+            {"N60.99", "Unspecified benign mammary dysplasia of unspecified breast"},
+            {"N61", "Inflammatory disorders of breast"},
+            {"N62", "Hypertrophy of breast"},
+            {"N63", "Unspecified lump in breast"},
+            {"N64.0", "Fissure and fistula of nipple"},
+            {"N64.1", "Fat necrosis of breast"},
+            {"N64.2", "Atrophy of breast"},
+            {"N64.4", "Mastodynia"},
+            {"N64.5", "Other signs and symptoms in breast"},
+            {"N64.51", "Induration of breast"},
+            {"N64.52", "Nipple discharge"},
+            {"N64.53", "Retraction of nipple"},
+            {"N64.59", "Other signs and symptoms in breast"},
+            {"N64.8", "Other specified disorders of breast"},
+            {"N64.81", "Ptosis of breast"},
+            {"N64.82", "Hypoplasia of breast"},
+            {"N64.89", "Other specified disorders of breast"},
+            {"N64.9", "Disorder of breast, unspecified"},
+            {"N65.0", "Deformity of reconstructed breast"},
+            {"N65.1", "Disproportion of reconstructed breast"}
+        };
+
+        for (String[] row : breastDisorders) {
             addRow(pstmt, category, row[0], row[1], "ICD-10");
         }
     }
@@ -147,6 +140,7 @@ public class AddCodeDatabase {
         pstmt.setString(4, reference);
         pstmt.executeUpdate();
     }
+
     public static void removeDuplicates() {
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement()) {

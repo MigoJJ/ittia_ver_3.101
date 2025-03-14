@@ -45,6 +45,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
 			 buttons[5].setText("Exit");
 			 buttons[6].setText("Abbreviation");
 			 buttons[7].setText("Code");
+			 buttons[8].setText("Lab code");
 			 buttons[9].setText("ittia_support");
 			 buttons[10].setText("ittia_EMR_AI");
 			 // Add the button panel to the north of the frame
