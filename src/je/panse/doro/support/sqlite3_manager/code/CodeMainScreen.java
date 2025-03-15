@@ -1,13 +1,34 @@
 package je.panse.doro.support.sqlite3_manager.code;
 
-import java.awt.*;	
-import java.awt.event.*;
-import java.sql.*;
-import java.util.List;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.*;
-import javax.swing.table.*;
-import je.panse.doro.entry.EntryDir;
+import java.util.List;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
+import je.panse.doro.GDSEMR_frame;
 
 public class CodeMainScreen extends JFrame implements ActionListener {
 
@@ -15,13 +36,12 @@ public class CodeMainScreen extends JFrame implements ActionListener {
     private JTable table;
     private JTextField searchField;
     private JPanel southPanel;
-    private DatabaseModel model; 
+    private DatabaseModel model;
 
     public CodeMainScreen() {
-        model = new DatabaseModel();  
-        model.createDatabaseTable();
-        model.createIndexOnBCode(); 
-
+    	model = new DatabaseModel();
+    	model.createDatabaseTable();
+    	model.createIndexOnBCode();
         setupFrame();
         setupTable();
         setupButtons();
@@ -31,7 +51,7 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
     private void setupFrame() {
         setTitle("Code/Disease Database");
-        setSize(1200, 800);
+        setSize(800, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
@@ -46,7 +66,7 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(tableModel);
         table.setRowSorter(sorter);
-       
+
         List<RowSorter.SortKey> sortKeys = new ArrayList<>();
         sortKeys.add(new RowSorter.SortKey(1, SortOrder.ASCENDING));
         sorter.setSortKeys(sortKeys);
@@ -59,6 +79,24 @@ public class CodeMainScreen extends JFrame implements ActionListener {
         table.getColumnModel().getColumn(2).setPreferredWidth(400);
         table.getColumnModel().getColumn(3).setPreferredWidth(400);
         setColumnAlignment();
+
+        // Add ListSelectionListener for row clicks
+        table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting() && table.getSelectedRow() >= 0) {
+                    int selectedRow = table.getSelectedRow();
+                    int modelRow = table.convertRowIndexToModel(selectedRow);
+                    String bCode = (String) tableModel.getValueAt(modelRow, 1); // B-code
+                    String name = (String) tableModel.getValueAt(modelRow, 2);  // Name
+                    String output = "\n # "+ bCode +"\t:  "  + name;
+                    // Temporary output to console for testing
+                    System.out.println(output);
+                    // Uncomment the line below once GDSEMR_frame is available
+                     GDSEMR_frame.setTextAreaText(7, output);
+                }
+            }
+        });
     }
 
     private void setColumnAlignment() {
@@ -69,32 +107,20 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
     private void setupButtons() {
         southPanel = new JPanel();
-        
-        // Add standard buttons
+
         String[] buttonLabels = {"Add", "Delete", "Edit", "Find", "Exit"};
         for (String label : buttonLabels) {
             southPanel.add(createButton(label));
         }
 
-        // Add column-specific search buttons
-//        JButton findBCodeButton = createButton("Find B-code");
-//        JButton findNameButton = createButton("Find Name");
-//        JButton findReferenceButton = createButton("Find Reference");
-
-//        southPanel.add(findBCodeButton);
-//        southPanel.add(findNameButton);
-//        southPanel.add(findReferenceButton);
-
-        // Search Field (Triggers "Find" button when Enter is pressed)
         searchField = new JTextField(20);
         searchField.setPreferredSize(new Dimension(200, 30));
         searchField.setHorizontalAlignment(JTextField.CENTER);
         searchField.setFont(new Font("Arial", Font.BOLD, 14));
-        
-        searchField.addActionListener(e -> { 
-            // When Enter is pressed, execute "Find" button action
+
+        searchField.addActionListener(e -> {
             findRecords(searchField.getText());
-            searchField.setText(""); // Clear the field after search
+            searchField.setText("");
         });
 
         southPanel.add(new JLabel("Search:"));
@@ -102,7 +128,6 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
         add(southPanel, BorderLayout.SOUTH);
     }
-
 
     private JButton createButton(String text) {
         JButton button = new JButton(text);
@@ -149,7 +174,6 @@ public class CodeMainScreen extends JFrame implements ActionListener {
         model.findAndDisplayRecords(searchText, "ALL", tableModel);
     }
 
-   
     private void deleteRecord() {
         int selectedRow = table.getSelectedRow();
         if (selectedRow >= 0) {
@@ -164,8 +188,7 @@ public class CodeMainScreen extends JFrame implements ActionListener {
     private void editRecord() {
         JOptionPane.showMessageDialog(this, "Edit functionality is under development.");
     }
-    
-    // FIXED showAddDialog() inside CodeMainScreen
+
     private void showAddDialog() {
         JTextField categoryField = new JTextField(20);
         JTextField bcodeField = new JTextField(10);
@@ -190,145 +213,5 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(CodeMainScreen::new);
-    }
-}
-
-// ============================ DatabaseModel Class ============================
-
-class DatabaseModel {
-    static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/code/CodeFullDis.db";
-
-    public void createDatabaseTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS codedis (Category TEXT, B_code TEXT PRIMARY KEY, name TEXT, reference TEXT)";
-        executeSQL(sql);
-    }
-
-    public void findAndDisplayRecords(String searchText, String column, DefaultTableModel tableModel) {
-            String sql = "SELECT Category, B_code, name, reference FROM codedis WHERE ";
-
-            switch (column) {
-                case "B_code":
-                    sql += "B_code LIKE ?";
-                    break;
-                case "name":
-                    sql += "name LIKE ?";
-                    break;
-                case "reference":
-                    sql += "reference LIKE ?";
-                    break;
-                default: // "ALL" searches all columns
-                    sql += "Category LIKE ? OR B_code LIKE ? OR name LIKE ? OR reference LIKE ?";
-            }
-
-            try (Connection conn = DriverManager.getConnection(DB_URL);
-                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-                String searchPattern = "%" + searchText + "%";
-
-                if (column.equals("ALL")) {
-                    pstmt.setString(1, searchPattern);
-                    pstmt.setString(2, searchPattern);
-                    pstmt.setString(3, searchPattern);
-                    pstmt.setString(4, searchPattern);
-                } else {
-                    pstmt.setString(1, searchPattern);
-                }
-
-                try (ResultSet rs = pstmt.executeQuery()) {
-                    tableModel.setRowCount(0); // Clear table before adding new results
-                    while (rs.next()) {
-                        tableModel.addRow(new Object[]{
-                            rs.getString("Category"),
-                            rs.getString("B_code"),
-                            rs.getString("name"),
-                            rs.getString("reference")
-                        });
-                    }
-                }
-            } catch (SQLException e) {
-                System.err.println("Error finding records: " + e.getMessage());
-            }
-        }
-
-       
-
-	public void findAndDisplayRecords(String searchText, DefaultTableModel tableModel) {
-        String sql = "SELECT Category, B_code, name, reference FROM codedis " +
-                     "WHERE Category LIKE ? OR B_code LIKE ? OR name LIKE ? OR reference LIKE ?";
-        
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            
-            String searchPattern = "%" + searchText + "%";
-            pstmt.setString(1, searchPattern);
-            pstmt.setString(2, searchPattern);
-            pstmt.setString(3, searchPattern);
-            pstmt.setString(4, searchPattern);
-            
-            try (ResultSet rs = pstmt.executeQuery()) {
-                tableModel.setRowCount(0); // Clear table before adding new results
-                while (rs.next()) {
-                    tableModel.addRow(new Object[]{
-                        rs.getString("Category"), 
-                        rs.getString("B_code"), 
-                        rs.getString("name"), 
-                        rs.getString("reference")
-                    });
-                }
-            }
-        } catch (SQLException e) {
-            System.err.println("Error finding records: " + e.getMessage());
-        }
-    }
-
-	public void createIndexOnBCode() {
-        String sql = "CREATE INDEX IF NOT EXISTS idx_bcode ON codedis (B_code)";
-        executeSQL(sql);
-    }
-
-    private void executeSQL(String sql) {
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
-        } catch (SQLException e) {
-            System.err.println("Database error: " + e.getMessage());
-        }
-    }
-
-    public void insertRecord(String category, String bcode, String name, String reference) {
-        String sql = "INSERT INTO codedis (Category, B_code, name, reference) VALUES (?, ?, ?, ?)";
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, category);
-            pstmt.setString(2, bcode);
-            pstmt.setString(3, name);
-            pstmt.setString(4, reference);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Error inserting record: " + e.getMessage());
-        }
-    }
-
-    public void deleteRecord(String bcode) {
-        String sql = "DELETE FROM codedis WHERE B_code=?";
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, bcode);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println("Error deleting record: " + e.getMessage());
-        }
-    }
-
-    public ResultSet getRecordsSortedByBCode() {
-        String sql = "SELECT Category, B_code, name, reference FROM codedis ORDER BY B_code ASC";
-        try {
-            Connection conn = DriverManager.getConnection(DB_URL);
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-            return pstmt.executeQuery();
-        } catch (SQLException e) {
-            System.err.println("Error fetching records: " + e.getMessage());
-            return null;
-        }
     }
 }
