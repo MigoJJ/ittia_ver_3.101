@@ -1,6 +1,6 @@
 package je.panse.doro.support.sqlite3_manager.code;
 
-import java.awt.*;
+import java.awt.*;	
 import java.awt.event.*;
 import java.sql.*;
 import java.util.List;
