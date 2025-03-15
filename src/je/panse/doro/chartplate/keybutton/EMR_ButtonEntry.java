@@ -7,13 +7,10 @@ import javax.swing.JOptionPane;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.filecontrol.FileGeditToCilpboard;
-import je.panse.doro.chartplate.filecontrol.File_open;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_InputFrame;
 import je.panse.doro.chartplate.mainpage.EMR_Write_To_Chartplate;
-import je.panse.doro.chartplate.mainpage.controller.Mainpage_controller;
-import je.panse.doro.entry.EntryDir;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_diabetesEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypercholesterolemiaEdit;
 import je.panse.doro.fourgate.A_editmain.EMR_FU_hypertensionEdit;
@@ -32,6 +29,7 @@ import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
 import je.panse.doro.support.sqlite3_manager.code.CodeMainScreen;
+import je.panse.doro.support.sqlite3_manager.labcode.LabCodeMainScreen;
 
 public class EMR_ButtonEntry extends GDSEMR_frame {
     
@@ -71,7 +69,9 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Code":
                     CodeMainScreen.main(null);
                     break;
-
+                case "Lab code":
+                    LabCodeMainScreen.main(null);
+                    break;
 //                case "Code":
 //                    String path = EntryDir.homeDir + "/support/EMR_support_Folder/Etc/";
 //                    File_open.main(path + "Disease_Code.odt");
