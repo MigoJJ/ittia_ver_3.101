@@ -1,9 +1,12 @@
 
-  CC>    Diabetes Mellitus  F/U
-  A>
-#  DM  F/U   2025.03.15
-  P>
-    Follow up interval: [ 3 ] months
-    Prescription : [ → ] advised the patient to continue with current medication
-  Comment>
-Maintain a healthy weight to improve blood sugar control.
+  A>	
+   # A04	:  Other bacterial intestinal infections (E. coli, Clostridium difficile)
+   # A08	:  Viral intestinal infections (rotavirus, norovirus)
+   # A21	:  Tularemia
+   # A22	:  Anthrax
+   # A23	:  Brucellosis
+   # C00	:  Malignant neoplasm of lip
+   # C20	:  Malignant neoplasm of rectum
+   # C21	:  Malignant neoplasm of anus and anal canal
+   # 14912	:  HIV Ag / Ab ( Human Immunodeficiency Virus )
+   # K21	:  Gastroesophageal reflux disease (GERD)
