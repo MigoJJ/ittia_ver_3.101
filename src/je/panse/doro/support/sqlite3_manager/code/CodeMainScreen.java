@@ -186,7 +186,49 @@ public class CodeMainScreen extends JFrame implements ActionListener {
     }
 
     private void editRecord() {
-        JOptionPane.showMessageDialog(this, "Edit functionality is under development.");
+        int selectedRow = table.getSelectedRow();
+        if (selectedRow >= 0) {
+            int modelRow = table.convertRowIndexToModel(selectedRow);
+
+            // Get current values from the selected row
+            String currentCategory = (String) tableModel.getValueAt(modelRow, 0);
+            String currentBCode = (String) tableModel.getValueAt(modelRow, 1);
+            String currentName = (String) tableModel.getValueAt(modelRow, 2);
+            String currentReference = (String) tableModel.getValueAt(modelRow, 3);
+
+            // Create input fields pre-filled with current values
+            JTextField categoryField = new JTextField(currentCategory, 20);
+            JTextField bcodeField = new JTextField(currentBCode, 10);
+            JTextField nameField = new JTextField(currentName, 30);
+            JTextField referenceField = new JTextField(currentReference, 30);
+
+            // Create dialog panel
+            JPanel panel = new JPanel(new GridLayout(0, 2));
+            panel.add(new JLabel("Category:"));
+            panel.add(categoryField);
+            panel.add(new JLabel("B-code:"));
+            panel.add(bcodeField);
+            panel.add(new JLabel("Name:"));
+            panel.add(nameField);
+            panel.add(new JLabel("Reference:"));
+            panel.add(referenceField);
+
+            // Show dialog and handle user input
+            int result = JOptionPane.showConfirmDialog(this, panel, "Edit Entry", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+            if (result == JOptionPane.OK_OPTION) {
+                // Update the database with new values
+                model.updateRecord(
+                    currentBCode, // Use current B_code as the key
+                    categoryField.getText(),
+                    bcodeField.getText(),
+                    nameField.getText(),
+                    referenceField.getText()
+                );
+                loadData(); // Refresh the table
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row to edit.", "No Selection", JOptionPane.WARNING_MESSAGE);
+        }
     }
 
     private void showAddDialog() {

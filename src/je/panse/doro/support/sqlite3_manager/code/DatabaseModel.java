@@ -50,6 +50,23 @@ class DatabaseModel {
             System.err.println("Error deleting record: " + e.getMessage());
         }
     }
+    public void updateRecord(String oldBCode, String category, String newBCode, String name, String reference) {
+        String sql = "UPDATE codedis SET Category = ?, B_code = ?, name = ?, reference = ? WHERE B_code = ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, category);
+            pstmt.setString(2, newBCode);
+            pstmt.setString(3, name);
+            pstmt.setString(4, reference);
+            pstmt.setString(5, oldBCode); // Use the original B_code to identify the record
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected == 0) {
+                System.err.println("No record found with B_code: " + oldBCode);
+            }
+        } catch (SQLException e) {
+            System.err.println("Error updating record: " + e.getMessage());
+        }
+    }
 
     public ResultSet getRecordsSortedByBCode() {
         String sql = "SELECT Category, B_code, name, reference FROM codedis ORDER BY B_code ASC";
