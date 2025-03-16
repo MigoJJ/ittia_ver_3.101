@@ -76,8 +76,8 @@ public class CodeMainScreen extends JFrame implements ActionListener {
 
         table.getColumnModel().getColumn(0).setPreferredWidth(200);
         table.getColumnModel().getColumn(1).setPreferredWidth(200);
-        table.getColumnModel().getColumn(2).setPreferredWidth(400);
-        table.getColumnModel().getColumn(3).setPreferredWidth(400);
+        table.getColumnModel().getColumn(2).setPreferredWidth(600);
+        table.getColumnModel().getColumn(3).setPreferredWidth(200);
         setColumnAlignment();
 
         // Add ListSelectionListener for row clicks

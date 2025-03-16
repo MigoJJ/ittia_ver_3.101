@@ -16,6 +16,11 @@ public class EMRPMHAllergy extends JFrame {
     private static DefaultTableModel tableModel, eastTableModel;
     private static JTextArea textArea;
     private static EMRPMHAllergy instance;
+    private static String default_comment = """
+    	    ▣ Allergy\n
+    	    During the medical check-up, the patient had no known allergies\n
+    	    to food, injections and medications as of :cd \n
+    	    """;
 
     public EMRPMHAllergy() {
         setTitle("Allergy Data Input");
@@ -134,7 +139,7 @@ String[] otherSymptoms = {
 
     private JPanel createButtonPanel() {
         JPanel buttonPanel = new JPanel(new FlowLayout());
-        String[] buttonLabels = {"All denied", "Anaphylaxis denied", "Clear", "Save", "Quit"};
+        String[] buttonLabels = {"Default","All denied", "Anaphylaxis denied", "Clear", "Save", "Quit"};
 
         for (String label : buttonLabels) {
             JButton button = new JButton(label);
@@ -147,6 +152,7 @@ String[] otherSymptoms = {
 
     private void handleButtonAction(String action) {
         switch (action) {
+        	 case "Default" -> textArea.setText(default_comment);
             case "All denied" -> setSymptoms(false, false);
             case "Anaphylaxis denied" -> setSymptoms(true, false);
             case "Clear" -> textArea.setText("");
