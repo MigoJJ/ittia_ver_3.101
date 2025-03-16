@@ -86,7 +86,7 @@ public class LabCodeMainScreen extends JFrame implements ActionListener {
         table.getColumnModel().getColumn(1).setPreferredWidth(100); // B_code
         table.getColumnModel().getColumn(2).setPreferredWidth(500); // Items
         table.getColumnModel().getColumn(3).setPreferredWidth(50); // Unit
-        table.getColumnModel().getColumn(4).setPreferredWidth(200); // Comment
+        table.getColumnModel().getColumn(4).setPreferredWidth(300); // Comment
         setColumnAlignment();
     
     

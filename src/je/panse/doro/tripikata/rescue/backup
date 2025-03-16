@@ -1,4 +1,10 @@
 
   A>	
-   # A17	:  Tuberculosis of the nervous system
-   # A20	:  Plague (Yersinia pestis)
+   # A18	:  Tuberculosis of other organs (bones, kidneys, intestines)
+   # A22	:  Anthrax
+   # A25	:  Rat-bite fevers
+  Comment>	
+   # C5806	:  ABO genotyping
+   # D0002010Z외	:  CBC 8종
+   # D0100014Z	:  ESR
+   # D0111000Z	:  CRP 정성

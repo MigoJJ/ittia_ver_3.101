@@ -90,20 +90,25 @@ String[] otherSymptoms = {
                 "sulfa drugs (sulfamethoxazole, trimethoprim-sulfamethoxazole).",
                 "Anesthesia: anesthetic medications such as propofol, ",
                 "Dust Mite",
-                
+                ".......",
                 "Antibiotics : penicillin and its derivatives ",
                 "Antibiotics : Cephalosporins",
-                
-                "Food : 우유 (uyu): Milk",
-                "Food : 계란 (gyeran): Eggs",
-                "Food : 땅콩 (ttangkong): Peanuts",
-                "Food : 견과류 (gyeongwaryu): Tree nuts (e.g., 호두 - walnuts, 아몬드 - almonds, 캐슈넛 - cashews)",
-                "Food : 콩 (kong): Soybeans",
-                "Food : 밀 (mil): Wheat",
-                "Food : 생선 (saengseon): Fish (e.g., 고등어 - mackerel, 연어 - salmon, 참치 - tuna)",
-                "Food : 갑각류 (gabgagryu): Shellfish (e.g., 새우 - shrimp, 게 - crab, 가리비 - scallops)",
-                "Food : 복숭아 (boksuong-a): Peach (and sometimes other stone fruits like apricots and plums due to cross-reactivity)",
-                "Food : 메밀 (memil): Buckwheat"
+                "Medications : Alendronate",
+                "Medications : Statin",
+                "Medications : Metformin",
+                "Medications : SGLT-2",
+                "injections : Tramadol HCl inj. Huons",
+                ".......",
+                "Food : 우유 : Milk",
+                "Food : 계란 : Eggs",
+                "Food : 땅콩 : Peanuts",
+                "Food : 견과류 : Tree nuts (e.g., 호두 - walnuts, 아몬드 - almonds, 캐슈넛 - cashews)",
+                "Food : 콩 : Soybeans",
+                "Food : 밀 : Wheat",
+                "Food : 생선 : Fish (e.g., 고등어 - mackerel, 연어 - salmon, 참치 - tuna)",
+                "Food : 갑각류 : Shellfish (e.g., 새우 - shrimp, 게 - crab, 가리비 - scallops)",
+                "Food : 복숭아 : Peach (and sometimes other stone fruits like apricots and plums due to cross-reactivity)",
+                "Food : 메밀 : Buckwheat"
         };
 
         eastTableModel = new DefaultTableModel(new Object[][]{}, columnNames);
