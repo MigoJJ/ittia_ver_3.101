@@ -1,13 +1,34 @@
 package je.panse.doro.support.sqlite3_manager.labcode;
 
-import java.awt.*;	
-import java.awt.event.*;
-import java.sql.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.*;
-import javax.swing.table.*;
-import je.panse.doro.entry.EntryDir;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
+import javax.swing.SwingUtilities;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
+import je.panse.doro.GDSEMR_frame;
 
 /**
  * A Swing-based GUI for managing laboratory codes in a SQLite database.
@@ -40,7 +61,8 @@ public class LabCodeMainScreen extends JFrame implements ActionListener {
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-        setLocationRelativeTo(null);
+//        setLocationRelativeTo(null);
+        setLocation(0, 0); // Coordinates (0, 0) for top-left
     }
 
     private void setupTable() {
@@ -60,13 +82,31 @@ public class LabCodeMainScreen extends JFrame implements ActionListener {
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
 
-        table.getColumnModel().getColumn(0).setPreferredWidth(200); // Category
-        table.getColumnModel().getColumn(1).setPreferredWidth(150); // B_code
-        table.getColumnModel().getColumn(2).setPreferredWidth(200); // Items
-        table.getColumnModel().getColumn(3).setPreferredWidth(150); // Unit
-        table.getColumnModel().getColumn(4).setPreferredWidth(300); // Comment
+        table.getColumnModel().getColumn(0).setPreferredWidth(100); // Category
+        table.getColumnModel().getColumn(1).setPreferredWidth(100); // B_code
+        table.getColumnModel().getColumn(2).setPreferredWidth(500); // Items
+        table.getColumnModel().getColumn(3).setPreferredWidth(50); // Unit
+        table.getColumnModel().getColumn(4).setPreferredWidth(200); // Comment
         setColumnAlignment();
-    }
+    
+    
+    table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+        @Override
+        public void valueChanged(ListSelectionEvent e) {
+            if (!e.getValueIsAdjusting() && table.getSelectedRow() >= 0) {
+                int selectedRow = table.getSelectedRow();
+                int modelRow = table.convertRowIndexToModel(selectedRow);
+                String bCode = (String) tableModel.getValueAt(modelRow, 1); // B_code (index 1)
+                String items = (String) tableModel.getValueAt(modelRow, 2); // Items (index 2)
+                String output = "\n # " + bCode + "\t:  " + items;
+                // Temporary output to console for testing
+                System.out.println(output);
+                // Send to GDSEMR_frame when available
+                GDSEMR_frame.setTextAreaText(9, output);
+            }
+        }
+    });
+}
 
     private void setColumnAlignment() {
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
