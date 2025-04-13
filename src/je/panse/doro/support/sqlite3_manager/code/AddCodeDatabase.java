@@ -18,7 +18,7 @@ public class AddCodeDatabase {
              PreparedStatement pstmt = conn.prepareStatement("INSERT INTO codedis (Category, B_code, name, reference) VALUES (?, ?, ?, ?)")) {
 
             // Existing categories
-            addArrhythmia(pstmt);
+        	addLipidAndDiabetesICD10(pstmt);
 
             System.out.println("Data added successfully.");
         } catch (SQLException e) {
@@ -26,36 +26,44 @@ public class AddCodeDatabase {
         }
     }
 
-    private static void addArrhythmia(PreparedStatement pstmt) throws SQLException {
-        String category = "Cardiac Arrhythmia";
-        String[][] addArrhythmia = {
-        		{"I48.0", "arrhythmia : Paroxysmal atrial fibrillation"},
-                {"I48.1", "arrhythmia : Persistent atrial fibrillation"},
-                {"I48.2", "arrhythmia : Chronic atrial fibrillation"},
-                {"I48.3", "arrhythmia : Permanent atrial fibrillation"},
-                {"I48.4", "arrhythmia : Typical atrial flutter"},
-                {"I48.9", "arrhythmia : Unspecified atrial fibrillation"},
-                {"I49.0", "arrhythmia : Ventricular fibrillation and flutter"},
-                {"I49.1", "arrhythmia : Atrial premature depolarization"},
-                {"I49.2", "arrhythmia : Junctional premature depolarization"},
-                {"I49.3", "arrhythmia : Ventricular premature depolarization"},
-                {"I49.4", "arrhythmia : Other and unspecified premature depolarization"},
-                {"I49.5", "arrhythmia : Sick sinus syndrome"},
-                {"I49.8", "arrhythmia : Other specified cardiac arrhythmias"},
-                {"I49.9", "arrhythmia : Cardiac arrhythmia, unspecified"},
-                {"I47.0", "arrhythmia : Re-entry ventricular arrhythmia"},
-                {"I47.1", "arrhythmia : Supraventricular tachycardia"},
-                {"I47.2", "arrhythmia : Ventricular tachycardia"},
-                {"I47.9", "arrhythmia : Paroxysmal tachycardia, unspecified"},
-                {"R00.0", "arrhythmia : Tachycardia, unspecified"},
-                {"R00.1", "arrhythmia : Bradycardia, unspecified"},
-                {"R00.2", "arrhythmia : Palpitations"}
+    private static void addLipidAndDiabetesICD10(PreparedStatement pstmt) throws SQLException {
+        String category = "Lipid & Diabetes";
+        String[][] addLipidAndDiabetes = {
+            // Lipid metabolism disorders (E78)
+            {"E78.0", "Pure hypercholesterolemia", category},
+            {"E78.1", "Pure hyperglyceridemia", category},
+            {"E78.2", "Mixed hyperlipidemia", category},
+            {"E78.3", "Hyperchylomicronemia", category},
+            {"E78.4", "Other hyperlipidemia", category},
+            {"E78.5", "Hyperlipidemia, unspecified", category},
+            {"E78.6", "Lipoprotein deficiency", category},
+            {"E78.7", "Disorders of bile acid and cholesterol synthesis", category},
+            {"E78.8", "Other disorders of lipoprotein metabolism", category},
+            {"E78.9", "Disorder of lipoprotein metabolism, unspecified", category},
+
+            // Diabetes with hyperglycemia or lipid abnormality (E08–E13)
+            {"E08.65", "Diabetes mellitus due to underlying condition with hyperglycemia", category},
+            {"E09.65", "Drug- or chemical-induced diabetes with hyperglycemia", category},
+            {"E10.65", "Type 1 diabetes mellitus with hyperglycemia", category},
+            {"E11.65", "Type 2 diabetes mellitus with hyperglycemia", category},
+            {"E13.65", "Other specified diabetes mellitus with hyperglycemia", category},
+            {"E11.69", "Type 2 diabetes mellitus with other specified complication", category},
+            {"E11.9",  "Type 2 diabetes mellitus without complications", category},
+            {"E10.9",  "Type 1 diabetes mellitus without complications", category},
+
+            // Related findings and family history
+            {"R79.89", "Other specified abnormal findings of blood chemistry", category},
+            {"Z83.42", "Family history of familial hypercholesterolemia", category},
+            {"Z83.3",  "Family history of diabetes mellitus", category},
+            {"Z79.84", "Long-term (current) use of oral hypoglycemic drugs", category},
+            {"Z79.4",  "Long-term (current) insulin use", category}
         };
 
-        for (String[] row : addArrhythmia) {
+        for (String[] row : addLipidAndDiabetes) {
             addRow(pstmt, category, row[0], row[1], "ICD-10");
         }
     }
+
 
 
 
