@@ -1,10 +1,5 @@
 
   A>	
-   # A18	:  Tuberculosis of other organs (bones, kidneys, intestines)
-   # A22	:  Anthrax
-   # A25	:  Rat-bite fevers
+   # E21	:  Hyperparathyroidism
   Comment>	
-   # C5806	:  ABO genotyping
-   # D0002010Z외	:  CBC 8종
-   # D0100014Z	:  ESR
-   # D0111000Z	:  CRP 정성
+   # D2510054Z	:  LDH
