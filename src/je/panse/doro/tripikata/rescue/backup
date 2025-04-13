@@ -1,5 +1,8 @@
 
   A>	
-   # E21	:  Hyperparathyroidism
-  Comment>	
-   # D2510054Z	:  LDH
+   # E78.2	:  Mixed hyperlipidemia
+   # E78.5	:  Hyperlipidemia, unspecified
+   # E78.7	:  Disorders of bile acid and cholesterol synthesis
+   # R79.89	:  Other specified abnormal findings of blood chemistry (e.g., borderline LDL/HDL)
+   # E78.3	:  Hyperchylomicronemia
+   # E78.0	:  Pure hypercholesterolemia
