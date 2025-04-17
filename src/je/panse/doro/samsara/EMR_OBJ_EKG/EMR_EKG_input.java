@@ -1,16 +1,16 @@
 package je.panse.doro.samsara.EMR_OBJ_EKG;
 
-import javax.swing.*;
+import javax.swing.*;	
 import java.awt.*;
 import java.awt.event.*;
 
 public class EMR_EKG_input extends JFrame {
-    private JTextField prtAxisField, qtqtcField, sv1rv5Field;
     private JCheckBox[] leadCheckboxes;
+    private JTextArea summaryArea;
 
     public EMR_EKG_input() {
         setTitle("EMR EKG Analysis");
-        setSize(1200, 800);
+        setSize(900, 1000);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -45,19 +45,18 @@ public class EMR_EKG_input extends JFrame {
         scrollPane.setPreferredSize(new Dimension(150, 0));
         eastPanel.add(scrollPane, BorderLayout.CENTER);
 
-        // West Panel with input fields
-        JPanel westPanel = new JPanel(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.anchor = GridBagConstraints.WEST;
-        gbc.insets = new Insets(5, 5, 5, 5);
-        
-        addLabelFieldPair(westPanel, gbc, "P-R-T Axis:", prtAxisField = new JTextField(10));
-        addLabelFieldPair(westPanel, gbc, "QT / QTc:", qtqtcField = new JTextField(10));
-        addLabelFieldPair(westPanel, gbc, "SV1 / RV5 / R+S:", sv1rv5Field = new JTextField(10));
+        // West Panel with Summary and Conclusion TextArea
+        JPanel westPanel = new JPanel(new BorderLayout());
+        westPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JLabel summaryLabel = new JLabel("Summary and Conclusion:");
+        summaryArea = new JTextArea(10, 20);
+        summaryArea.setLineWrap(true);
+        summaryArea.setWrapStyleWord(true);
+        JScrollPane summaryScroll = new JScrollPane(summaryArea);
+        westPanel.add(summaryLabel, BorderLayout.NORTH);
+        westPanel.add(summaryScroll, BorderLayout.CENTER);
 
-     // Central Panel
+        // Central Panel
         JPanel centralPanel = new JPanel(new BorderLayout());
         centralPanel.setBorder(BorderFactory.createTitledBorder("EKG Interpretation Input"));
         centralPanel.add(new EMR_EKG_inputformatPanel(), BorderLayout.CENTER);
@@ -74,18 +73,8 @@ public class EMR_EKG_input extends JFrame {
         saveButton.addActionListener(e -> saveData());
     }
 
-    private void addLabelFieldPair(JPanel panel, GridBagConstraints gbc, String label, JTextField field) {
-        panel.add(new JLabel(label), gbc);
-        gbc.gridx++;
-        panel.add(field, gbc);
-        gbc.gridx = 0;
-        gbc.gridy++;
-    }
-
     private void clearFields() {
-        prtAxisField.setText("");
-        qtqtcField.setText("");
-        sv1rv5Field.setText("");
+        summaryArea.setText("");
         for(JCheckBox cb : leadCheckboxes) {
             cb.setSelected(false);
         }
@@ -99,10 +88,8 @@ public class EMR_EKG_input extends JFrame {
                 sb.append("• ").append(cb.getText()).append("\n");
             }
         }
-        sb.append("\nParameters:\n")
-          .append("P-R-T Axis: ").append(prtAxisField.getText()).append("\n")
-          .append("QT/QTc: ").append(qtqtcField.getText()).append("\n")
-          .append("SV1/RV5/R+S: ").append(sv1rv5Field.getText());
+        sb.append("\nSummary and Conclusion:\n")
+          .append(summaryArea.getText());
         
         JOptionPane.showMessageDialog(this, sb.toString());
     }

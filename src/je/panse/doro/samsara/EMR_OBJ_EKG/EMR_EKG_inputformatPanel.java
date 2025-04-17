@@ -1,6 +1,6 @@
 package je.panse.doro.samsara.EMR_OBJ_EKG;
 
-import javax.swing.*;
+import javax.swing.*;	
 import java.awt.*;
 
 public class EMR_EKG_inputformatPanel extends JPanel {
@@ -28,44 +28,37 @@ public class EMR_EKG_inputformatPanel extends JPanel {
         // Section: Rhythm
         addSection(formPanel, gbc, "1. Rhythm", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Regular", "Irregular"}, row++);
+        addCheckGroup(formPanel, gbc, new String[]{"Atrial firillation", "Atrail Flutter", "ectopy"}, row++);
         addField(formPanel, gbc, "R-R intervals:", row++);
-        addField(formPanel, gbc, "Irregular pattern noted (e.g., AFib, flutter, ectopy):", row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: Heart Rate
         addSection(formPanel, gbc, "2. Heart Rate (HR)", row++);
         addCheckGroup(formPanel, gbc, new String[]{"1500 Method", "6-second Rule", "Count R-R with ruler"}, row++);
         addField(formPanel, gbc, "Rate (bpm):", row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: P Waves
         addSection(formPanel, gbc, "3. P Waves", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Present before each QRS", "Morphology consistent", "Absent or abnormal"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: PR Interval
         addSection(formPanel, gbc, "4. PR Interval", row++);
         addField(formPanel, gbc, "Measured PR Interval (sec):", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Normal (0.12–0.20 sec)", "Prolonged → Suspect AV Block", "Shortened → Suspect pre-excitation"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: QRS Duration
         addSection(formPanel, gbc, "5. QRS Duration", row++);
         addField(formPanel, gbc, "Measured QRS (sec):", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Normal (< 0.12 sec)", "Prolonged → Consider BBB or ventricular rhythm"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: Ectopic or Early Beats
         addSection(formPanel, gbc, "6. Ectopic or Early Beats", row++);
         addCheckGroup(formPanel, gbc, new String[]{"PACs", "PJCs", "PVCs"}, row++);
         addCheckGroup(formPanel, gbc, new String[]{"Bigeminy", "Trigeminy", "Couplets"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: R Wave Progression
         addSection(formPanel, gbc, "7. R Wave Progression (V1–V6)", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Normal", "Poor R wave progression"}, row++);
         addField(formPanel, gbc, "Transition zone (e.g., V3):", row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: ST Segment
         addSection(formPanel, gbc, "8. ST Segment", row++);
@@ -73,34 +66,32 @@ public class EMR_EKG_inputformatPanel extends JPanel {
         addField(formPanel, gbc, "Elevated (leads):", row++);
         addField(formPanel, gbc, "Depressed (leads):", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Concave", "Convex", "Horizontal"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: Q Waves
         addSection(formPanel, gbc, "9. Q Waves", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Normal", "Pathological"}, row++);
         addField(formPanel, gbc, "Leads Affected:", row++);
-        addArea(formPanel, gbc, "Comments:", row++);
+        // Section: Q Waves
+        addSection(formPanel, gbc, "10. QT/QTc Interaval", row++);
+        addField(formPanel, gbc, "mSec:", row++);
 
         // Section: T Waves
-        addSection(formPanel, gbc, "10. T Waves", row++);
+        addSection(formPanel, gbc, "11. T Waves", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Upright in most leads", "Inverted", "Peaked", "Biphasic"}, row++);
         addField(formPanel, gbc, "Leads Affected:", row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: U Waves
-        addSection(formPanel, gbc, "11. U Waves", row++);
+        addSection(formPanel, gbc, "12. U Waves", row++);
         addCheckGroup(formPanel, gbc, new String[]{"Not visible", "Present", "Prominent in V2–V3"}, row++);
         addCheckGroup(formPanel, gbc, new String[]{"Consider: Hypokalemia", "Bradycardia"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: Signs of Ischemia or Infarction
-        addSection(formPanel, gbc, "12. Signs of Ischemia or Infarction", row++);
+        addSection(formPanel, gbc, "13. Signs of Ischemia or Infarction", row++);
         addCheckGroup(formPanel, gbc, new String[]{"ST Depression (Ischemia)", "ST Elevation (Infarction)", "Q Waves (Old infarct)"}, row++);
         addCheckGroup(formPanel, gbc, new String[]{"Anterior", "Inferior", "Lateral", "Posterior"}, row++);
-        addArea(formPanel, gbc, "Comments:", row++);
 
         // Section: Final Interpretation / Summary
-        addSection(formPanel, gbc, "13. Final Interpretation / Summary", row++);
+        addSection(formPanel, gbc, "14. Final Interpretation / Summary", row++);
         addField(formPanel, gbc, "Rhythm:", row++);
         addField(formPanel, gbc, "Rate (bpm):", row++);
         addField(formPanel, gbc, "Axis:", row++);
@@ -138,18 +129,6 @@ public class EMR_EKG_inputformatPanel extends JPanel {
         JTextField field = new JTextField(25);
         field.setHorizontalAlignment(JTextField.LEFT);
         panel.add(field, gbc);
-    }
-
-    private void addArea(JPanel panel, GridBagConstraints gbc, String label, int row) {
-        gbc.gridx = 0;
-        gbc.gridy = row;
-        panel.add(new JLabel(label), gbc);
-        gbc.gridx = 1;
-        JTextArea area = new JTextArea(2, 25);
-        area.setLineWrap(true);
-        area.setWrapStyleWord(true);
-        JScrollPane areaScroll = new JScrollPane(area);
-        panel.add(areaScroll, gbc);
     }
 
     private void addCheckGroup(JPanel panel, GridBagConstraints gbc, String[] labels, int row) {
