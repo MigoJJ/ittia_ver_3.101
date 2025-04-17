@@ -1,9 +1,7 @@
 package je.panse.doro.samsara.EMR_OBJ_EKG;
 
 import javax.swing.*;
-
 import je.panse.doro.entry.EntryDir;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -19,7 +17,7 @@ public class EMR_EKG_input extends JFrame {
 
     public EMR_EKG_input() {
         setTitle("EMR EKG Analysis");
-        setSize(1100, 850);
+        setSize(1300, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -37,9 +35,21 @@ public class EMR_EKG_input extends JFrame {
         // East Panel with vertical checkboxes
         JPanel eastPanel = new JPanel(new BorderLayout());
         String[] leads = {
-            "I", "II", "III", "aVR", "aVL", "aVF",
-            "V1", "V2", "V3", "V4", "V5", "V6",
-            "II III aVF", "V4-V6", "aVR V1"
+            "Normal ECG","Sinus Bradycardia","Sinus Tachycardia","Atrial Fibrillation",
+            "Premature Ventricular Contraction (PVC)",
+            "Premature Atrial Contraction (PAC)",
+            "Left Ventricular Hypertrophy (LVH) ECG pattern",
+            "Non-specific ST-T changes",
+            "Right Bundle Branch Block (RBBB)","Left Bundle Branch Block (LBBB)",
+            "Prolonged QT","ST Elevation","ST Depression","Ventricular Tachycardia (VT)",
+            "Wolff-Parkinson-White (WPW) syndrome","Supraventricular Tachycardia (SVT: PSVT, etc.)",
+            "Anterior Wall Ischemia / STEMI",
+            "Atypical T wave changes",
+            "LAE","RAE","LVH","RVH","PTFV1",
+            "Junctional rhythm",
+            "Supraventricular tachycardia (SVT)",
+            "Poor R Wave Progression ",
+            "Atrial Flutter"
         };
         
         JPanel checkboxPanel = new JPanel();
@@ -54,7 +64,7 @@ public class EMR_EKG_input extends JFrame {
         }
         
         JScrollPane scrollPane = new JScrollPane(checkboxPanel);
-        scrollPane.setPreferredSize(new Dimension(150, 0));
+        scrollPane.setPreferredSize(new Dimension(330, 0)); // Set to 30% of 1100 (~330 pixels)
         eastPanel.add(scrollPane, BorderLayout.CENTER);
 
         // West Panel with Summary and Conclusion TextArea
@@ -80,22 +90,22 @@ public class EMR_EKG_input extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(0, 0, 0, 0);
 
-        // West panel: 40% width (increased by 15% from ~25%)
+        // West panel: 30% width
         gbc.gridx = 0;
         gbc.gridy = 0;
-        gbc.weightx = 0.20; // 40% of the width
+        gbc.weightx = 0.220; // 30/(30+40) ≈ 0.4286 for 30% of total width
         gbc.weighty = 1.0;
         mainContentPanel.add(westPanel, gbc);
 
-        // Central panel: 60% width (decreased by 15% from ~75%)
+        // Central panel: 40% width
         gbc.gridx = 1;
-        gbc.weightx = 0.6; // 60% of the width
+        gbc.weightx = 0.6; // 40/(30+40) ≈ 0.5714 for 40% of total width
         mainContentPanel.add(centralPanel, gbc);
 
         // Add components to frame
         add(southPanel, BorderLayout.SOUTH);
         add(eastPanel, BorderLayout.EAST);
-        add(mainContentPanel, BorderLayout.CENTER); // Use mainContentPanel instead of westPanel and centralPanel directly
+        add(mainContentPanel, BorderLayout.CENTER);
 
         // Button actions
         clearButton.addActionListener(e -> clearFields());
@@ -171,7 +181,6 @@ public class EMR_EKG_input extends JFrame {
             System.err.println("Error: " + e.getMessage());
         }
     }
-
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
