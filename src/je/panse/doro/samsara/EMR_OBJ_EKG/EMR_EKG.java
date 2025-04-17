@@ -1,4 +1,4 @@
-package je.panse.doro.samsara.EMR_OBJ_XrayGFS;
+package je.panse.doro.samsara.EMR_OBJ_EKG;
 import javax.swing.BoxLayout;	
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
