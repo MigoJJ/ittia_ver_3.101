@@ -1,16 +1,25 @@
 package je.panse.doro.samsara.EMR_OBJ_EKG;
 
-import javax.swing.*;	
+import javax.swing.*;
+
+import je.panse.doro.entry.EntryDir;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class EMR_EKG_input extends JFrame {
     private JCheckBox[] leadCheckboxes;
     private JTextArea summaryArea;
+    private EMR_EKG_inputformatPanel inputFormatPanel;
 
     public EMR_EKG_input() {
         setTitle("EMR EKG Analysis");
-        setSize(900, 1000);
+        setSize(1100, 850);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -19,9 +28,11 @@ public class EMR_EKG_input extends JFrame {
         JButton clearButton = new JButton("Clear All");
         JButton saveButton = new JButton("Save");
         JButton quitButton = new JButton("Quit");
+        JButton refButton = new JButton("EKG reference");
         southPanel.add(clearButton);
         southPanel.add(saveButton);
         southPanel.add(quitButton);
+        southPanel.add(refButton);
 
         // East Panel with vertical checkboxes
         JPanel eastPanel = new JPanel(new BorderLayout());
@@ -38,6 +49,7 @@ public class EMR_EKG_input extends JFrame {
         for(int i = 0; i < leads.length; i++) {
             leadCheckboxes[i] = new JCheckBox(leads[i]);
             leadCheckboxes[i].setHorizontalAlignment(SwingConstants.LEFT);
+            leadCheckboxes[i].addItemListener(e -> updateSummary());
             checkboxPanel.add(leadCheckboxes[i]);
         }
         
@@ -59,40 +71,107 @@ public class EMR_EKG_input extends JFrame {
         // Central Panel
         JPanel centralPanel = new JPanel(new BorderLayout());
         centralPanel.setBorder(BorderFactory.createTitledBorder("EKG Interpretation Input"));
-        centralPanel.add(new EMR_EKG_inputformatPanel(), BorderLayout.CENTER);
+        inputFormatPanel = new EMR_EKG_inputformatPanel(this); // Pass this as parentFrame
+        centralPanel.add(inputFormatPanel, BorderLayout.CENTER);
+
+        // Container for West and Central panels with GridBagLayout
+        JPanel mainContentPanel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.insets = new Insets(0, 0, 0, 0);
+
+        // West panel: 40% width (increased by 15% from ~25%)
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 0.20; // 40% of the width
+        gbc.weighty = 1.0;
+        mainContentPanel.add(westPanel, gbc);
+
+        // Central panel: 60% width (decreased by 15% from ~75%)
+        gbc.gridx = 1;
+        gbc.weightx = 0.6; // 60% of the width
+        mainContentPanel.add(centralPanel, gbc);
 
         // Add components to frame
         add(southPanel, BorderLayout.SOUTH);
         add(eastPanel, BorderLayout.EAST);
-        add(westPanel, BorderLayout.WEST);
-        add(centralPanel, BorderLayout.CENTER);
+        add(mainContentPanel, BorderLayout.CENTER); // Use mainContentPanel instead of westPanel and centralPanel directly
 
         // Button actions
         clearButton.addActionListener(e -> clearFields());
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> dispose());
         saveButton.addActionListener(e -> saveData());
+        refButton.addActionListener(e -> refFile());
+    }
+
+    public void updateSummary() {
+        StringBuilder sb = new StringBuilder();
+        
+        // Append selected lead checkboxes from East panel
+        for (JCheckBox cb : leadCheckboxes) {
+            if (cb.isSelected()) {
+                sb.append("# ").append(cb.getText()).append("\n");
+            }
+        }
+
+        // Append section titles and their inputs from inputFormatPanel
+        Map<String, List<String>> sectionSummary = inputFormatPanel.getSummary();
+        for (String section : sectionSummary.keySet()) {
+            sb.append("# ").append(section).append("\n");
+            for (String item : sectionSummary.get(section)) {
+                sb.append("     ").append(item).append("\n");
+            }
+        }
+
+        // Debug: Log the summary content
+        System.out.println("Updating summary: \n" + sb.toString());
+        summaryArea.setText(sb.toString());
     }
 
     private void clearFields() {
         summaryArea.setText("");
-        for(JCheckBox cb : leadCheckboxes) {
+        for (JCheckBox cb : leadCheckboxes) {
             cb.setSelected(false);
         }
+        inputFormatPanel.clearFields();
+        // Debug: Log clear action
+        System.out.println("Cleared all fields and summary");
     }
 
     private void saveData() {
         // Implement actual save logic here
-        StringBuilder sb = new StringBuilder("Selected Leads:\n");
-        for(JCheckBox cb : leadCheckboxes) {
-            if(cb.isSelected()) {
+        StringBuilder sb = new StringBuilder("Selected Leads and Parameters:\n");
+        for (JCheckBox cb : leadCheckboxes) {
+            if (cb.isSelected()) {
                 sb.append("• ").append(cb.getText()).append("\n");
             }
         }
         sb.append("\nSummary and Conclusion:\n")
           .append(summaryArea.getText());
         
+        // Debug: Log save action
+        System.out.println("Saving data: \n" + sb.toString());
         JOptionPane.showMessageDialog(this, sb.toString());
     }
+    
+    private void refFile() {
+        try {
+            if (!Desktop.isDesktopSupported()) {
+                throw new IOException("Desktop API unsupported");
+            }
+            File file = new File(EntryDir.homeDir + "/samsara/EMR_OBJ_EKG/EKG reference.odt");
+            System.out.println("Attempting to open: " + file.getAbsolutePath());
+            if (!file.exists()) {
+                throw new IOException("File not found: " + file.getAbsolutePath());
+            }
+            Desktop.getDesktop().open(file);
+            System.out.println("Opened: " + file.getAbsolutePath());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(this, "Cannot open reference: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            System.err.println("Error: " + e.getMessage());
+        }
+    }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
