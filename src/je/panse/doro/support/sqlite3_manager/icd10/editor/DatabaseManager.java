@@ -1,6 +1,6 @@
 package je.panse.doro.support.sqlite3_manager.icd10.editor;
 
-import java.sql.Connection;
+import java.sql.Connection;	
 import java.sql.ResultSet;
 
 public class DatabaseManager {
