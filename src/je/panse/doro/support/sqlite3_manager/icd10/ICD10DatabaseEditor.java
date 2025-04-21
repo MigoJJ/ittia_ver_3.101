@@ -86,7 +86,7 @@ public class ICD10DatabaseEditor extends JFrame {
             buttonPanel.add(Box.createVerticalStrut(5));
         }
 
-     // Center Panel: Table with Adjustable Column Widths
+        // Center Panel: Table with Adjustable Column Widths
         tableModel = new DefaultTableModel();
         dataTable = new JTable(tableModel);
         JScrollPane tableScrollPane = new JScrollPane(dataTable);
@@ -112,8 +112,7 @@ public class ICD10DatabaseEditor extends JFrame {
                 columnModel.getColumn(4).setPreferredWidth(2 * baseUnit);   // Comment (2 parts)
             }
         });
-        
-        
+
         // South Panel: Status Area
         statusArea = new JTextArea();
         statusArea.setEditable(false);
@@ -139,74 +138,73 @@ public class ICD10DatabaseEditor extends JFrame {
         return label;
     }
 
- // Custom JButton with Rounded Gradient Background
-        private JButton createRoundedGradientButton(String text, Color color1, Color color2, java.awt.event.ActionListener actionListener) {
-            JButton button = new JButton(text);
-            button.setOpaque(false);
-            button.setContentAreaFilled(false);
-            button.setBorder(new EmptyBorder(5, 15, 5, 15)); // Padding for text
+    // Custom JButton with Rounded Gradient Background
+    private JButton createRoundedGradientButton(String text, Color color1, Color color2, java.awt.event.ActionListener actionListener) {
+        JButton button = new JButton(text);
+        button.setOpaque(false);
+        button.setContentAreaFilled(false);
+        button.setBorder(new EmptyBorder(5, 15, 5, 15)); // Padding for text
 
-            JPanel roundedPanel = new JPanel() {
-                private final int arcWidth = 30; // Increased for more rounded corners
-                private final int arcHeight = 30;
-                private final int margin = 8; // Slightly larger margin for better spacing
+        JPanel roundedPanel = new JPanel() {
+            private final int arcWidth = 30; // Increased for more rounded corners
+            private final int arcHeight = 30;
+            private final int margin = 8; // Slightly larger margin for better spacing
 
-                @Override
-                protected void paintComponent(Graphics g) {
-                    Graphics2D g2d = (Graphics2D) g.create();
-                    g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            @Override
+            protected void paintComponent(Graphics g) {
+                Graphics2D g2d = (Graphics2D) g.create();
+                g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-                    int width = getWidth();
-                    int height = getHeight();
-                    RoundRectangle2D roundedRect = new RoundRectangle2D.Double(
-                        margin, margin, 
-                        width - 1 - 2 * margin, 
-                        height - 1 - 2 * margin, 
-                        arcWidth, arcHeight
-                    );
+                int width = getWidth();
+                int height = getHeight();
+                RoundRectangle2D roundedRect = new RoundRectangle2D.Double(
+                    margin, margin, 
+                    width - 1 - 2 * margin, 
+                    height - 1 - 2 * margin, 
+                    arcWidth, arcHeight
+                );
 
-                    // Paint the gradient (top-left to bottom-right for better effect)
-                    GradientPaint gp = new GradientPaint(
-                        margin, margin, color1.brighter(), // Brighter start color
-                        width - margin, height - margin, color2.darker() // Darker end color
-                    );
-                    g2d.setPaint(gp);
-                    g2d.fill(roundedRect);
+                // Paint the gradient (top-left to bottom-right for better effect)
+                GradientPaint gp = new GradientPaint(
+                    margin, margin, color1.brighter(), // Brighter start color
+                    width - margin, height - margin, color2.darker() // Darker end color
+                );
+                g2d.setPaint(gp);
+                g2d.fill(roundedRect);
 
-                    // Paint a thicker, more visible border
-                    g2d.setColor(color1.darker().darker());
-                    g2d.setStroke(new BasicStroke(2.0f)); // Thicker border
-                    g2d.draw(roundedRect);
+                // Paint a thicker, more visible border
+                g2d.setColor(color1.darker().darker());
+                g2d.setStroke(new BasicStroke(2.0f)); // Thicker border
+                g2d.draw(roundedRect);
 
-                    g2d.dispose();
-                    super.paintComponent(g);
-                }
+                g2d.dispose();
+                super.paintComponent(g);
+            }
 
-                @Override
-                public Dimension getPreferredSize() {
-                    Dimension buttonSize = button.getPreferredSize();
-                    return new Dimension(buttonSize.width + 2 * margin, buttonSize.height + 2 * margin);
-                }
+            @Override
+            public Dimension getPreferredSize() {
+                Dimension buttonSize = button.getPreferredSize();
+                return new Dimension(buttonSize.width + 2 * margin, buttonSize.height + 2 * margin);
+            }
 
-                @Override
-                public Dimension getMinimumSize() {
-                    return getPreferredSize();
-                }
+            @Override
+            public Dimension getMinimumSize() {
+                return getPreferredSize();
+            }
 
-                @Override
-                public Dimension getMaximumSize() {
-                    return getPreferredSize();
-                }
-            };
-            roundedPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-            roundedPanel.setBorder(new EmptyBorder(8, 0, 8, 0)); // Increased vertical spacing
-            roundedPanel.add(button);
+            @Override
+            public Dimension getMaximumSize() {
+                return getPreferredSize();
+            }
+        };
+        roundedPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        roundedPanel.setBorder(new EmptyBorder(8, 0, 8, 0)); // Increased vertical spacing
+        roundedPanel.add(button);
 
-            button.addActionListener(actionListener);
+        button.addActionListener(actionListener);
 
-            return button;
-        }
-    
+        return button;
+    }
 
     private void connectDatabase() {
         try {
@@ -246,7 +244,6 @@ public class ICD10DatabaseEditor extends JFrame {
             for (int i = 1; i < columnCount; i++) { // Corrected loop condition
                 tableModel.addColumn(metaData.getColumnName(i + 1)); // Adjusted column index
             }
-
             while (rs.next()) {
                 Object[] row = new Object[columnCount];
                 row[0] = rs.getInt("id"); // Get ID
@@ -434,8 +431,7 @@ public class ICD10DatabaseEditor extends JFrame {
 
     @Override
     protected void finalize() throws Throwable {
-    	closeDatabase();
+        closeDatabase();
         super.finalize();
     }
 }
-    
