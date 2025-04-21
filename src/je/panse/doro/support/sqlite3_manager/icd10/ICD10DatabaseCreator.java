@@ -1,6 +1,9 @@
 package je.panse.doro.support.sqlite3_manager.icd10;
 
 import javax.swing.*;
+
+import je.panse.doro.entry.EntryDir;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
@@ -28,8 +31,8 @@ public class ICD10DatabaseCreator extends JFrame {
     }
 
     private void createDatabase(ActionEvent event) {
-        String dbPath = "/home/migowj/git/ittia_ver_3.076/src/je/panse/doro/support/sqlite3_manager/icd10/icd10_data.db";
-        String inputPath = "/home/migowj/git/ittia_ver_3.076/src/je/panse/doro/support/sqlite3_manager/icd_10/ICD10TextFile/ICD10_part_1.txt";
+        String dbPath = EntryDir.homeDir + "/support/sqlite3_manager/icd10/icd10_data.db";
+        String inputPath = EntryDir.homeDir + "/support/sqlite3_manager/icd_10/ICD10TextFile/ICD10_part_1.txt";
 
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:" + dbPath)) {
             statusArea.append("Database connected: " + dbPath + "\n");

@@ -2,6 +2,9 @@ package je.panse.doro.support.sqlite3_manager.icd10;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import je.panse.doro.entry.EntryDir;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.sql.*;
@@ -12,7 +15,7 @@ public class ICD10DatabaseReader extends JFrame {
     private JTable dataTable;
     private DefaultTableModel tableModel;
 
-    private final String dbPath = "/home/migowj/git/ittia_ver_3.076/src/je/panse/doro/support/sqlite3_manager/icd10/icd10_data.db";
+    private final String dbPath = EntryDir.homeDir + "/support/sqlite3_manager/icd10/icd10_data.db";
 
     public ICD10DatabaseReader() {
         setTitle("ICD10 SQLite DB Reader");
