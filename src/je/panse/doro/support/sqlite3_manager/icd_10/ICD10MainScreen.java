@@ -19,7 +19,9 @@ public class ICD10MainScreen extends JFrame implements ActionListener {
     private ICD10DatabaseModel model;
 
     public ICD10MainScreen() {
-        model = new ICD10DatabaseModel(EntryDir.homeDir + "/support/sqlite3_manager/icd_10/icd10.db");
+//        model = new ICD10DatabaseModel(EntryDir.homeDir + "/support/sqlite3_manager/icd10/icd10_data.db");
+        model = new ICD10DatabaseModel("/home/migowj/git/ittia_ver_3.076/src/je/panse/doro/support/sqlite3_manager/icd10/icd10_data.db");
+//        /home/migowj/git/ittia_ver_3.076/src/je/panse/doro/support/sqlite3_manager/icd10/icd10_data.db
         setupFrame();
         setupTable();
         setupButtons();
@@ -87,9 +89,7 @@ public class ICD10MainScreen extends JFrame implements ActionListener {
         searchField.setToolTipText("Enter search term and press Enter");
         searchField.setFont(new Font("Arial", Font.PLAIN, 14));
 
-        searchField.addActionListener(e -> {
-            findRecords(searchField.getText());
-        });
+        searchField.addActionListener(e -> findRecords(searchField.getText()));
 
         southPanel.add(new JLabel("Search Diagnosis/Code:"));
         southPanel.add(searchField);
@@ -112,7 +112,7 @@ public class ICD10MainScreen extends JFrame implements ActionListener {
                     rs.getString("Category"),
                     rs.getString("Code"),
                     rs.getString("Title"),
-                    rs.getString("Comments")
+                    rs.getString("Comment")
                 });
             }
         } catch (SQLException e) {
@@ -131,17 +131,13 @@ public class ICD10MainScreen extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == searchField) {
-            findRecords(searchField.getText());
-        } else {
-            String command = e.getActionCommand();
-            switch (command) {
-                case "Add" -> showAddDialog();
-                case "Delete" -> deleteRecord();
-                case "Edit" -> editRecord();
-                case "Refresh" -> refreshData();
-                case "Exit" -> dispose();
-            }
+        String command = e.getActionCommand();
+        switch (command) {
+            case "Add" -> showAddDialog();
+            case "Delete" -> deleteRecord();
+            case "Edit" -> editRecord();
+            case "Refresh" -> refreshData();
+            case "Exit" -> dispose();
         }
     }
 
@@ -157,13 +153,13 @@ public class ICD10MainScreen extends JFrame implements ActionListener {
         int selectedRow = table.getSelectedRow();
         if (selectedRow >= 0) {
             int modelRow = table.convertRowIndexToModel(selectedRow);
-            String bCodeToDelete = (String) tableModel.getValueAt(modelRow, 1);
-            if (bCodeToDelete != null) {
+            String codeToDelete = (String) tableModel.getValueAt(modelRow, 1);
+            if (codeToDelete != null) {
                 int confirm = JOptionPane.showConfirmDialog(this,
-                        "Delete B-code: " + bCodeToDelete + "?", "Confirm Deletion",
+                        "Delete Code: " + codeToDelete + "?", "Confirm Deletion",
                         JOptionPane.YES_NO_OPTION);
                 if (confirm == JOptionPane.YES_OPTION) {
-                    model.deleteRecord(bCodeToDelete);
+                    model.deleteRecord(codeToDelete);
                     loadData();
                 }
             }
@@ -175,51 +171,51 @@ public class ICD10MainScreen extends JFrame implements ActionListener {
         if (selectedRow >= 0) {
             int modelRow = table.convertRowIndexToModel(selectedRow);
             String category = (String) tableModel.getValueAt(modelRow, 0);
-            String bcode = (String) tableModel.getValueAt(modelRow, 1);
-            String diagnosis = (String) tableModel.getValueAt(modelRow, 2);
-            String reference = (String) tableModel.getValueAt(modelRow, 3);
+            String code = (String) tableModel.getValueAt(modelRow, 1);
+            String title = (String) tableModel.getValueAt(modelRow, 2);
+            String comment = (String) tableModel.getValueAt(modelRow, 3);
 
-            JTextField catField = new JTextField(category, 20);
-            JTextField bcField = new JTextField(bcode, 10);
-            JTextField diagField = new JTextField(diagnosis, 30);
-            JTextField refField = new JTextField(reference, 30);
+            JTextField catField = new JTextField(category);
+            JTextField codeField = new JTextField(code);
+            JTextField titleField = new JTextField(title);
+            JTextField commentField = new JTextField(comment);
 
             JPanel panel = new JPanel(new GridLayout(0, 2));
             panel.add(new JLabel("Category:")); panel.add(catField);
-            panel.add(new JLabel("Code:")); panel.add(bcField);
-            panel.add(new JLabel("Title:")); panel.add(diagField);
-            panel.add(new JLabel("Comments:")); panel.add(refField);
+            panel.add(new JLabel("Code:")); panel.add(codeField);
+            panel.add(new JLabel("Title:")); panel.add(titleField);
+            panel.add(new JLabel("Comment:")); panel.add(commentField);
 
             int result = JOptionPane.showConfirmDialog(this, panel, "Edit Entry", JOptionPane.OK_CANCEL_OPTION);
 
             if (result == JOptionPane.OK_OPTION) {
-                model.updateRecord(bcode, catField.getText(), bcField.getText(), diagField.getText(), refField.getText());
+                model.updateRecord(code, catField.getText(), codeField.getText(), titleField.getText(), commentField.getText());
                 loadData();
             }
         }
     }
 
     private void showAddDialog() {
-        JTextField catField = new JTextField("General", 20);
-        JTextField bcField = new JTextField(10);
-        JTextField diagField = new JTextField(30);
-        JTextField refField = new JTextField("ICD-10", 30);
+        JTextField catField = new JTextField("General");
+        JTextField codeField = new JTextField();
+        JTextField titleField = new JTextField();
+        JTextField commentField = new JTextField("ICD-10");
 
         JPanel panel = new JPanel(new GridLayout(0, 2));
         panel.add(new JLabel("Category:")); panel.add(catField);
-        panel.add(new JLabel("Code:")); panel.add(bcField);
-        panel.add(new JLabel("Title:")); panel.add(diagField);
-        panel.add(new JLabel("Comments:")); panel.add(refField);
+        panel.add(new JLabel("Code:")); panel.add(codeField);
+        panel.add(new JLabel("Title:")); panel.add(titleField);
+        panel.add(new JLabel("Comment:")); panel.add(commentField);
 
         int result = JOptionPane.showConfirmDialog(this, panel, "Add Entry", JOptionPane.OK_CANCEL_OPTION);
 
         if (result == JOptionPane.OK_OPTION) {
-            model.insertRecord(catField.getText(), bcField.getText(), diagField.getText(), refField.getText());
+            model.insertRecord(catField.getText(), codeField.getText(), titleField.getText(), commentField.getText());
             loadData();
         }
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new ICD10MainScreen());
+        SwingUtilities.invokeLater(ICD10MainScreen::new);
     }
 }
