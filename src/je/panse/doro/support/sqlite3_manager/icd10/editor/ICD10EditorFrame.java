@@ -7,6 +7,7 @@ import javax.swing.event.ListSelectionListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class ICD10EditorFrame extends JFrame {
 
@@ -46,6 +47,14 @@ public class ICD10EditorFrame extends JFrame {
         dataTable.setAutoCreateRowSorter(true); // Enable basic sorting by clicking headers
         tableScrollPane = new JScrollPane(dataTable);
         tableScrollPane.setPreferredSize(new Dimension(750, 400)); // Give table reasonable default size
+
+        // Set narrow width for the ID column
+        if (dataTable.getColumnModel().getColumnCount() > 0) {
+            dataTable.getColumnModel().getColumn(0).setPreferredWidth(10);
+            dataTable.getColumnModel().getColumn(0).setMaxWidth(90);
+            dataTable.getColumnModel().getColumn(0).setMinWidth(30);
+        }
+
     }
 
     private void layoutComponents() {
@@ -66,6 +75,8 @@ public class ICD10EditorFrame extends JFrame {
         buttonPanel.addUpdateListener(e -> updateRecord());
         buttonPanel.addDeleteListener(e -> deleteRecord());
         buttonPanel.addClearListener(e -> clearInputFields());
+        buttonPanel.addFindListener(e -> findRecord());
+
 
         // Table Selection Action
         dataTable.getSelectionModel().addListSelectionListener(e -> {
@@ -76,16 +87,21 @@ public class ICD10EditorFrame extends JFrame {
     }
 
     private void loadData() {
-        // Load data in a background thread if it might take time (optional for simple SQLite)
-        // SwingWorker is a good option here for responsiveness on large datasets.
-        // For simplicity, we'll do it directly here.
         tableModel = dbManager.loadData();
         dataTable.setModel(tableModel);
-         // After loading, no row is selected, so disable edit/delete buttons
+
+        // Set narrow width for the ID column after setting the new model
+        if (dataTable.getColumnModel().getColumnCount() > 0) {
+            dataTable.getColumnModel().getColumn(0).setPreferredWidth(40);
+            dataTable.getColumnModel().getColumn(0).setMaxWidth(60);
+            dataTable.getColumnModel().getColumn(0).setMinWidth(30);
+        }
+
         buttonPanel.setEditDeleteEnabled(false);
         clearInputFields(); // Also clear fields after loading
         System.out.println("Data loaded into table.");
     }
+
 
     private void addRecord() {
         String code = inputPanel.getCode();
@@ -172,6 +188,43 @@ public class ICD10EditorFrame extends JFrame {
          dataTable.clearSelection(); // Deselect any selected row in the table
          buttonPanel.setEditDeleteEnabled(false); // Disable edit/delete after clearing
     }
+    private void findRecord() {
+        String keyword = JOptionPane.showInputDialog(this, "Enter ICD code or description to search:", "Find ICD Record", JOptionPane.QUESTION_MESSAGE);
+
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return; // Cancelled or empty input
+        }
+
+        keyword = keyword.trim().toLowerCase();
+
+        // Re-load full data from DB first
+        DefaultTableModel fullModel = dbManager.loadData();
+        Vector<Vector> filteredData = new Vector<>();
+        Vector columnNames = fullModel.getDataVector().isEmpty() ? new Vector<>() : (Vector) fullModel.getDataVector().get(0);
+
+        for (int i = 0; i < fullModel.getRowCount(); i++) {
+            Object code = fullModel.getValueAt(i, 1); // Column 1: code
+            Object desc = fullModel.getValueAt(i, 2); // Column 2: description
+
+            if ((code != null && code.toString().toLowerCase().contains(keyword)) ||
+                (desc != null && desc.toString().toLowerCase().contains(keyword))) {
+                Vector<Object> row = new Vector<>();
+                row.add(fullModel.getValueAt(i, 0)); // id
+                row.add(code);
+                row.add(desc);
+                filteredData.add(row);
+            }
+        }
+
+        if (filteredData.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No matching ICD records found.", "Not Found", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            tableModel.setDataVector(filteredData, new Vector<>(java.util.List.of("id", "code", "description")));
+            dataTable.setModel(tableModel);
+        }
+    }
+
+
 
     private void handleTableSelection() {
         int selectedRow = dataTable.getSelectedRow();
