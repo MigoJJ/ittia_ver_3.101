@@ -9,7 +9,7 @@ import je.panse.doro.entry.EntryDir; // Make sure this import is correct for you
 
 public class ICD10DatabaseChecker {
 
-    private static final String DB_PATH = EntryDir.homeDir + "/support/sqlite3_manager/icd10/icd10_data.db";
+    private static final String DB_PATH = EntryDir.homeDir + "/support/sqlite3_manager/icd10/editor/components/icd10_data.db";
 
     public static void main(String[] args) {
         checkDatabase();
