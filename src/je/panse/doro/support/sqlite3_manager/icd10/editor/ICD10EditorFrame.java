@@ -71,6 +71,15 @@ public class ICD10EditorFrame extends JFrame {
         tableModel = dbManager.loadData();
         dataTable.setModel(tableModel);
 
+        // Set column widths here
+        if (dataTable.getColumnCount() > 0) {
+            dataTable.getColumnModel().getColumn(0).setPreferredWidth(20);   // ID column
+            dataTable.getColumnModel().getColumn(1).setPreferredWidth(100);  // Category column
+            dataTable.getColumnModel().getColumn(2).setPreferredWidth(40);   // Code column
+            dataTable.getColumnModel().getColumn(3).setPreferredWidth(250);  // ICD Disease column
+            dataTable.getColumnModel().getColumn(4).setPreferredWidth(200);  // Description column
+        }
+
         buttonPanel.setEditDeleteEnabled(false);
         clearInputFields();
         System.out.println("Data loaded into table.");
