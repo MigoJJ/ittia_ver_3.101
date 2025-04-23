@@ -2,6 +2,7 @@ package je.panse.doro.soap.assessment.icd10;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -26,7 +27,7 @@ public class ICD10EditorFrame extends JFrame {
         // Set up the JFrame
         setTitle("ICD10 Editor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(900, 600);
+        setSize(900, 650);
         setLocationRelativeTo(null);
 
         // North Panel: Four editable JTextFields and search field
@@ -64,13 +65,13 @@ public class ICD10EditorFrame extends JFrame {
         gbc.gridy = 3;
         northPanel.add(new JLabel("Complete Code Division:"), gbc);
         gbc.gridx = 1;
-        divisionField = new JTextField(5);
+        divisionField = new JTextField(15);
         northPanel.add(divisionField, gbc);
 
         // Search Field
         gbc.gridx = 2;
         gbc.gridy = 0;
-        gbc.gridheight = 4;
+        gbc.gridheight = 2;
         gbc.fill = GridBagConstraints.VERTICAL;
         northPanel.add(new JLabel("Search:"), gbc);
         gbc.gridx = 3;
@@ -84,6 +85,14 @@ public class ICD10EditorFrame extends JFrame {
         tableModel = new DefaultTableModel(columns, 0);
         table = new JTable(tableModel);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        // Set column widths
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(20); // Disease Code
+        columnModel.getColumn(1).setPreferredWidth(200); // Korean Name
+        columnModel.getColumn(2).setPreferredWidth(250); // English Name
+        columnModel.getColumn(3).setPreferredWidth(80);  // Complete Code Division
+
         table.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
