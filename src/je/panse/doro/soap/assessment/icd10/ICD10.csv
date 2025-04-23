@@ -1,0 +1,26 @@
+﻿상병기호,한글명,영문명,완전코드구분
+A00,콜레라,Cholera,N
+A000,비브리오 콜레라 01 콜레라형균에 의한 콜레라,"Cholera due to Vibrio cholerae 01, biovar cholerae",
+A000,고전적 콜레라,Classical cholera,
+A001,비브리오 콜레라 01 엘토르형균에 의한 콜레라,"Cholera due to Vibrio cholerae 01, biovar eltor",
+A001,엘토르 콜레라,Cholera eltor,
+A009,상세불명의 콜레라,"Cholera, unspecified",
+A01,장티푸스 및 파라티푸스,Typhoid and paratyphoid fevers,N
+A010,장티푸스,Typhoid fever,
+A010,장티푸스균에 의한 감염,Infection due to Salmonella typhi,
+A011,파라티푸스 A,Paratyphoid fever A,
+A012,파라티푸스 B,Paratyphoid fever B,
+A013,파라티푸스 C,Paratyphoid fever C,
+A014,상세불명의 파라티푸스,"Paratyphoid fever, unspecified",
+A014,파라티푸스균에 의한 감염 NOS,Infection due to Salmonella paratyphi NOS,
+A02,기타 살모넬라감염,Other salmonella infections,N
+A02,살모넬라 티피와 살모넬라 파라티피 이외의 살모넬라종에 의하여 생긴 감염 또는 식중독,Infection or foodborne intoxication due to any Salmonella species other than S. Typhi and S. Paratyphi,N
+A020,살모넬라장염,Salmonella enteritis,
+A020,살모넬라증,Salmonellosis,
+A021,살모넬라패혈증,Salmonella sepsis,
+A022,국소적 살모넬라감염,Localized salmonella infections,
+A022,살모넬라 골수염(M90.2*),Salmonella osteomyelitis(M90.2*),
+A022,살모넬라 관절염(M01.3*),Salmonella arthritis(M01.3*),
+A022,살모넬라 수막염(G01*),Salmonella meningitis(G01*),
+A022,살모넬라 신세뇨관-간질병(N16.0*),Salmonella renal tubulo-interstitial disease(N16.0*),
+A022,살모넬라 폐렴(J17.0*),Salmonella pneumonia(J17.0*),
