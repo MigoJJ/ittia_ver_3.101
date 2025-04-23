@@ -2,8 +2,10 @@ package je.panse.doro.soap.assessment.icd_10;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.logging.Logger;
 
 public class ICDDiagnosisManager extends JFrame {
+    private static final Logger LOGGER = Logger.getLogger(ICDDiagnosisManager.class.getName());
     private TableManager tableManager;
     private InputPanel inputPanel;
     private ButtonPanel buttonPanel;
@@ -18,7 +20,7 @@ public class ICDDiagnosisManager extends JFrame {
         // Initialize components
         dbManager = new DatabaseManager();
         inputPanel = new InputPanel();
-        tableManager = new TableManager(inputPanel); // Pass inputPanel to TableManager
+        tableManager = new TableManager(inputPanel);
         buttonPanel = new ButtonPanel();
 
         // Add components to frame
@@ -35,10 +37,20 @@ public class ICDDiagnosisManager extends JFrame {
 
     private void setupButtonActions() {
         buttonPanel.getClearButton().addActionListener(e -> inputPanel.clearFields());
-        buttonPanel.getFindButton().addActionListener(e -> tableManager.searchData(dbManager, inputPanel.getSearchText()));
+        buttonPanel.getFindButton().addActionListener(e -> {
+            String searchText = inputPanel.getSearchText().trim();
+            if (searchText.isEmpty()) {
+                LOGGER.info("Find button clicked with empty search text");
+                JOptionPane.showMessageDialog(this, "Please enter a search term");
+                return;
+            }
+            LOGGER.info("Find button clicked with search text: " + searchText);
+            tableManager.searchData(dbManager, searchText);
+        });
         buttonPanel.getEditButton().addActionListener(e -> inputPanel.populateFields(tableManager.getSelectedRowData()));
         buttonPanel.getAddButton().addActionListener(e -> {
-            dbManager.addNewRecord(inputPanel.getInputData());
+            String[] data = inputPanel.getInputData();
+            dbManager.addNewRecord(data);
             tableManager.loadTableData(dbManager);
             inputPanel.clearFields();
         });
@@ -47,7 +59,8 @@ public class ICDDiagnosisManager extends JFrame {
             tableManager.loadTableData(dbManager);
         });
         buttonPanel.getSaveButton().addActionListener(e -> {
-            dbManager.saveChanges(tableManager.getSelectedCode(), inputPanel.getInputData());
+            String[] data = inputPanel.getInputData();
+            dbManager.saveChanges(tableManager.getSelectedCode(), data);
             tableManager.loadTableData(dbManager);
             inputPanel.clearFields();
         });
@@ -58,5 +71,13 @@ public class ICDDiagnosisManager extends JFrame {
         SwingUtilities.invokeLater(() -> {
             new ICDDiagnosisManager().setVisible(true);
         });
+    }
+
+    protected TableManager getTableManager() {
+        return tableManager;
+    }
+
+    protected DatabaseManager getDatabaseManager() {
+        return dbManager;
     }
 }
