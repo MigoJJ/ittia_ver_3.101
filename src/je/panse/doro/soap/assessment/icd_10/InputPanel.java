@@ -119,22 +119,22 @@ public class InputPanel {
 
         // Validate ICD-10 code format (e.g., A00-Z99, with optional decimal)
         // Accepts codes like A12, E11.9, Z99.123, Z998 (normalized to Z99.8)
-        if (!code.matches("[A-Z][0-9]{2}(\\.[0-9]{0,3})?")) {
-            // Try normalizing codes like Z998 to Z99.8
-            if (code.matches("[A-Z][0-9]{3,5}")) {
+        if (!code.matches("[A-Z][0-9]{2}(\\.[0-9]{1,3})?")) {
+            // Try normalizing codes like Z998 to Z99.8 or longer codes
+            if (code.matches("[A-Z][0-9]{3,6}")) {
                 String normalized = code.substring(0, 3) + (code.length() > 3 ? "." + code.substring(3) : "");
                 if (normalized.matches("[A-Z][0-9]{2}(\\.[0-9]{1,3})?")) {
                     code = normalized;
                 } else {
                     LOGGER.warning("Validation failed: Invalid ICD-10 code format: " + code);
                     JOptionPane.showMessageDialog(panel, 
-                        "Invalid ICD-10 code format. Use formats like A12, E11.9, or Z99.123.");
+                        "Invalid ICD-10 code format. Use formats like A12, E11.9, Z99.123, or Z998.");
                     return false;
                 }
             } else {
                 LOGGER.warning("Validation failed: Invalid ICD-10 code format: " + code);
                 JOptionPane.showMessageDialog(panel, 
-                    "Invalid ICD-10 code format. Use formats like A12, E11.9, or Z99.123.");
+                    "Invalid ICD-10 code format. Use formats like A12, E11.9, Z99.123, or Z998.");
                 return false;
             }
         }

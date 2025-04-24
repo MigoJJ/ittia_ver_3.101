@@ -14,7 +14,7 @@ public class ICDDiagnosisManager extends JFrame {
     public ICDDiagnosisManager() {
         dbManager = new DatabaseManager();
         setTitle("ICD-10 Diagnosis Manager");
-        setSize(1000, 700);
+        setSize(900, 750);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
@@ -29,7 +29,12 @@ public class ICDDiagnosisManager extends JFrame {
         add(buttonPanel.getPanel(), BorderLayout.SOUTH);
 
         // Load initial data
-        tableManager.loadTableData(dbManager);
+        try {
+            tableManager.loadTableData(dbManager);
+        } catch (Exception ex) {
+            LOGGER.severe("Failed to load initial data: " + ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Failed to load data: " + ex.getMessage());
+        }
 
         // Set up button actions
         buttonPanel.getClearButton().addActionListener(e -> {
@@ -97,8 +102,27 @@ public class ICDDiagnosisManager extends JFrame {
             LOGGER.info("Quit button clicked");
             System.exit(0);
         });
+        buttonPanel.getAppendIttiaButton().addActionListener(e -> {
+            LOGGER.info("Append Ittia button clicked");
+            try {
+                appendIttiaData();
+            } catch (Exception ex) {
+                LOGGER.severe("Error executing Append Ittia: " + ex.getMessage());
+                JOptionPane.showMessageDialog(this, "Error executing Append Ittia: " + ex.getMessage());
+            }
+        });
 
         setVisible(true);
+    }
+
+    private void appendIttiaData() {
+        // Placeholder: Log input data from InputPanel
+        String[] data = inputPanel.getInputData();
+        String logMessage = String.format("Appending Ittia data - ID: %s, Code: %s, Category: %s, Description: %s, Details: %s",
+                data[0], data[1], data[2], data[3], data[4]);
+        LOGGER.info(logMessage);
+        JOptionPane.showMessageDialog(this, "Append Ittia executed: " + logMessage);
+        // TODO: Replace with specific method functionality
     }
 
     public DatabaseManager getDatabaseManager() {

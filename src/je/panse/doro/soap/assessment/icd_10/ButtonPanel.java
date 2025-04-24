@@ -5,10 +5,10 @@ import java.awt.*;
 
 public class ButtonPanel {
     private JPanel panel;
-    private JButton clearButton, findButton, addButton, deleteButton, saveButton, quitButton;
+    private JButton clearButton, findButton, addButton, deleteButton, saveButton, quitButton, appendIttiaButton;
 
     public ButtonPanel() {
-        panel = new JPanel(new GridLayout(1, 6, 5, 5)); // 1 row, 6 columns (was 7), 5px gaps
+        panel = new JPanel(new GridLayout(1, 7, 5, 5)); // 7 buttons
         panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         clearButton = new JButton("Clear");
@@ -17,6 +17,7 @@ public class ButtonPanel {
         deleteButton = new JButton("Delete");
         saveButton = new JButton("Save");
         quitButton = new JButton("Quit");
+        appendIttiaButton = new JButton("Append Ittia");
 
         // Add tooltips
         clearButton.setToolTipText("Clear all input fields");
@@ -25,6 +26,7 @@ public class ButtonPanel {
         deleteButton.setToolTipText("Delete the selected record");
         saveButton.setToolTipText("Save changes to the selected record");
         quitButton.setToolTipText("Exit the application");
+        appendIttiaButton.setToolTipText("Append data to Ittia (custom action)");
 
         // Add mnemonic keys
         clearButton.setMnemonic('C');
@@ -33,6 +35,7 @@ public class ButtonPanel {
         deleteButton.setMnemonic('D');
         saveButton.setMnemonic('S');
         quitButton.setMnemonic('Q');
+        appendIttiaButton.setMnemonic('I');
 
         panel.add(clearButton);
         panel.add(findButton);
@@ -40,6 +43,7 @@ public class ButtonPanel {
         panel.add(deleteButton);
         panel.add(saveButton);
         panel.add(quitButton);
+        panel.add(appendIttiaButton);
 
         // Initially disable Save and Delete buttons
         saveButton.setEnabled(false);
@@ -72,6 +76,10 @@ public class ButtonPanel {
 
     public JButton getQuitButton() {
         return quitButton;
+    }
+
+    public JButton getAppendIttiaButton() {
+        return appendIttiaButton;
     }
 
     public void setButtonState(boolean rowSelected) {

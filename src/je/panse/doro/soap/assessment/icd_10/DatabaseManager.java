@@ -13,6 +13,24 @@ public class DatabaseManager {
     private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/soap/assessment/icd_10/diagnosis.db";
     private String[] columnNames = {"id", "code", "category", "description", "details"};
 
+    public DatabaseManager() {
+        // Initialize database and create table if not exists
+        try (Connection conn = DriverManager.getConnection(DB_URL)) {
+            Statement stmt = conn.createStatement();
+            String sql = "CREATE TABLE IF NOT EXISTS diagnosis (" +
+                         "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                         "code TEXT NOT NULL, " +
+                         "category TEXT NOT NULL, " +
+                         "description TEXT NOT NULL, " +
+                         "details TEXT)";
+            stmt.execute(sql);
+            LOGGER.info("Database initialized at: " + DB_URL);
+        } catch (SQLException ex) {
+            LOGGER.severe("Failed to initialize database: " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Failed to initialize database: " + ex.getMessage());
+        }
+    }
+
     public Vector<Vector<String>> loadTableData(Vector<String> columns) {
         LOGGER.info("Loading table data from database: " + DB_URL);
         Vector<Vector<String>> data = new Vector<>();

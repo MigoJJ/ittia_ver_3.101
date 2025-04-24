@@ -22,8 +22,10 @@ public class TableManager {
         scrollPane = new JScrollPane(table);
         table.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
+                int selectedRow = table.getSelectedRow();
+                LOGGER.info("Row selected: " + selectedRow);
                 inputPanel.populateFields(getSelectedRowData());
-                buttonPanel.setButtonState(getSelectedRow() >= 0);
+                buttonPanel.setButtonState(selectedRow >= 0);
             }
         });
     }
@@ -52,10 +54,10 @@ public class TableManager {
     private void setColumnWidths() {
         TableColumnModel columnModel = table.getColumnModel();
         if (model.getColumnCount() >= 5) {
-            columnModel.getColumn(0).setPreferredWidth(30);  // ID
-            columnModel.getColumn(1).setPreferredWidth(30);  // Code
-            columnModel.getColumn(2).setPreferredWidth(30); // Category
-            columnModel.getColumn(3).setPreferredWidth(300); // Description
+            columnModel.getColumn(0).setPreferredWidth(20);  // ID
+            columnModel.getColumn(1).setPreferredWidth(20);  // Code
+            columnModel.getColumn(2).setPreferredWidth(20); // Category
+            columnModel.getColumn(3).setPreferredWidth(200); // Description
             columnModel.getColumn(4).setPreferredWidth(350); // Details
         } else {
             LOGGER.warning("Table has fewer than 5 columns, skipping column width setting");
@@ -66,8 +68,10 @@ public class TableManager {
         int selectedRow = table.getSelectedRow();
         if (selectedRow >= 0 && model.getColumnCount() > 1) {
             Object value = model.getValueAt(selectedRow, 1);
+            LOGGER.info("Selected row: " + selectedRow + ", Code: " + value);
             return value != null ? value.toString() : null;
         }
+        LOGGER.warning("No row selected or invalid column count");
         return null;
     }
 
@@ -81,6 +85,7 @@ public class TableManager {
             }
             return data;
         }
+        LOGGER.warning("No row selected or insufficient columns");
         return null;
     }
 
