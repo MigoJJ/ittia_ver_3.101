@@ -48,6 +48,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
 			 buttons[8].setText("Lab code");
 			 buttons[9].setText("ittia_support");
 			 buttons[10].setText("ittia_EMR_AI");
+//			 buttons[11].setText("ICD-11");
 			 // Add the button panel to the north of the frame
 			 setLayout(new FlowLayout(FlowLayout.LEFT));
 			 setBackground(Color.GRAY);
@@ -63,6 +64,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
 			 buttons[8].setText("GDS RC");
 			 buttons[9].setText("공단검진");
 			 buttons[10].setText("F/U Edit");
+//			 buttons[11].setText("ICD-11");
 			 // Add the button panel to the south of the frame
 			 setLayout(new FlowLayout(FlowLayout.RIGHT));
 			 setBackground(Color.LIGHT_GRAY);

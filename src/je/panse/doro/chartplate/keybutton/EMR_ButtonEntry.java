@@ -26,6 +26,7 @@ import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.soap.assessment.icd_10.ICDDiagnosisManager;
+import je.panse.doro.soap.assessment.icd_11.ICD11Manager;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
@@ -69,7 +70,8 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Abbreviation": MainScreen.main(null); break;
                 case "Code":
 //                    CodeMainScreen.main(null);
-                    ICDDiagnosisManager.main(null);
+//                    ICDDiagnosisManager.main(null);
+                	ICD11Manager.main(null);
                     break;
                 case "Lab code":
                     LabCodeMainScreen.main(null);
