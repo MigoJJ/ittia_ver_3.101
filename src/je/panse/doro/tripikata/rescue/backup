@@ -1,8 +1,13 @@
 
-  A>	
-   # E78.2	:  Mixed hyperlipidemia
-   # E78.5	:  Hyperlipidemia, unspecified
-   # E78.7	:  Disorders of bile acid and cholesterol synthesis
-   # R79.89	:  Other specified abnormal findings of blood chemistry (e.g., borderline LDL/HDL)
-   # E78.3	:  Hyperchylomicronemia
-   # E78.0	:  Pure hypercholesterolemia
+  O>	
+< EKG >2025.04
+   # Sinus Tachycardia
+# Non-specific ST-T changes
+# 1. Rhythm
+     Regular
+# 2. Heart Rate (HR)
+     1500 Method
+# 3. P Waves
+     Present before each QRS
+# 4. PR Interval
+     Shortened → Suspect pre-excitation
