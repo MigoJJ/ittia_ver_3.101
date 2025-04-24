@@ -6,78 +6,110 @@ import java.util.logging.Logger;
 
 public class ICDDiagnosisManager extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(ICDDiagnosisManager.class.getName());
+    private DatabaseManager dbManager;
     private TableManager tableManager;
     private InputPanel inputPanel;
     private ButtonPanel buttonPanel;
-    private DatabaseManager dbManager;
 
     public ICDDiagnosisManager() {
+        dbManager = new DatabaseManager();
         setTitle("ICD-10 Diagnosis Manager");
         setSize(1000, 700);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLayout(new BorderLayout(10, 10));
 
         // Initialize components
-        dbManager = new DatabaseManager();
         inputPanel = new InputPanel();
-        tableManager = new TableManager(inputPanel);
         buttonPanel = new ButtonPanel();
+        tableManager = new TableManager(inputPanel, buttonPanel);
 
         // Add components to frame
-        add(tableManager.getScrollPane(), BorderLayout.CENTER);
         add(inputPanel.getPanel(), BorderLayout.NORTH);
+        add(tableManager.getScrollPane(), BorderLayout.CENTER);
         add(buttonPanel.getPanel(), BorderLayout.SOUTH);
 
-        // Initialize table data
+        // Load initial data
         tableManager.loadTableData(dbManager);
 
-        // Connect button actions
-        setupButtonActions();
-    }
-
-    private void setupButtonActions() {
-        buttonPanel.getClearButton().addActionListener(e -> inputPanel.clearFields());
-        buttonPanel.getFindButton().addActionListener(e -> {
-            String searchText = inputPanel.getSearchText().trim();
-            if (searchText.isEmpty()) {
-                LOGGER.info("Find button clicked with empty search text");
-                JOptionPane.showMessageDialog(this, "Please enter a search term");
-                return;
-            }
-            LOGGER.info("Find button clicked with search text: " + searchText);
-            tableManager.searchData(dbManager, searchText);
-        });
-        buttonPanel.getEditButton().addActionListener(e -> inputPanel.populateFields(tableManager.getSelectedRowData()));
-        buttonPanel.getAddButton().addActionListener(e -> {
-            String[] data = inputPanel.getInputData();
-            dbManager.addNewRecord(data);
-            tableManager.loadTableData(dbManager);
+        // Set up button actions
+        buttonPanel.getClearButton().addActionListener(e -> {
+            LOGGER.info("Clear button clicked");
             inputPanel.clearFields();
+        });
+        buttonPanel.getFindButton().addActionListener(e -> {
+            LOGGER.info("Find button clicked");
+            String searchText = inputPanel.getSearchText().trim();
+            if (!searchText.isEmpty()) {
+                tableManager.searchData(dbManager, searchText);
+            } else {
+                tableManager.loadTableData(dbManager);
+            }
+        });
+        buttonPanel.getAddButton().addActionListener(e -> {
+            LOGGER.info("Add button clicked");
+            if (inputPanel.validateInput()) {
+                try {
+                    dbManager.addNewRecord(inputPanel.getInputData());
+                    tableManager.loadTableData(dbManager);
+                    inputPanel.clearFields();
+                } catch (Exception ex) {
+                    LOGGER.severe("Error adding record: " + ex.getMessage());
+                    JOptionPane.showMessageDialog(this, "Error adding record: " + ex.getMessage());
+                }
+            }
         });
         buttonPanel.getDeleteButton().addActionListener(e -> {
-            dbManager.deleteSelectedRow(tableManager.getSelectedCode());
-            tableManager.loadTableData(dbManager);
+            LOGGER.info("Delete button clicked");
+            String code = tableManager.getSelectedCode();
+            if (code == null) {
+                JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+                return;
+            }
+            try {
+                dbManager.deleteSelectedRow(code);
+                tableManager.loadTableData(dbManager);
+                inputPanel.clearFields();
+            } catch (Exception ex) {
+                LOGGER.severe("Error deleting record: " + ex.getMessage());
+                JOptionPane.showMessageDialog(this, "Error deleting record: " + ex.getMessage());
+            }
         });
         buttonPanel.getSaveButton().addActionListener(e -> {
-            String[] data = inputPanel.getInputData();
-            dbManager.saveChanges(tableManager.getSelectedCode(), data);
-            tableManager.loadTableData(dbManager);
-            inputPanel.clearFields();
+            LOGGER.info("Save button clicked");
+            String code = tableManager.getSelectedCode();
+            if (code == null) {
+                JOptionPane.showMessageDialog(this, "Please select a row to edit.");
+                return;
+            }
+            if (!inputPanel.validateInput()) {
+                return; // validateInput() shows error message
+            }
+            try {
+                dbManager.saveChanges(code, inputPanel.getInputData());
+                tableManager.loadTableData(dbManager);
+                inputPanel.clearFields();
+            } catch (Exception ex) {
+                LOGGER.severe("Error saving changes: " + ex.getMessage());
+                JOptionPane.showMessageDialog(this, "Error saving changes: " + ex.getMessage());
+            }
         });
-        buttonPanel.getQuitButton().addActionListener(e -> System.exit(0));
+        buttonPanel.getQuitButton().addActionListener(e -> {
+            LOGGER.info("Quit button clicked");
+            System.exit(0);
+        });
+
+        setVisible(true);
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new ICDDiagnosisManager().setVisible(true);
-        });
+    public DatabaseManager getDatabaseManager() {
+        return dbManager;
     }
 
-    protected TableManager getTableManager() {
+    public TableManager getTableManager() {
         return tableManager;
     }
 
-    protected DatabaseManager getDatabaseManager() {
-        return dbManager;
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(ICDDiagnosisManager::new);
     }
 }

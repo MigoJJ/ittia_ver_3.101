@@ -41,7 +41,7 @@ public class InputPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         inputFields = new JTextField[5];
-        String[] labels = {"ID","Code:", "Code with Separator:", "Short:", "Long Description:"};
+        String[] labels = {"ID:", "Code:", "Category:", "Description:", "Details:"};
         for (int i = 0; i < 5; i++) {
             JLabel label = new JLabel(labels[i]);
             label.setFont(new Font("SansSerif", Font.BOLD, 14));
@@ -54,6 +54,9 @@ public class InputPanel {
             inputFields[i] = new JTextField();
             inputFields[i].setPreferredSize(new Dimension(150, 25));
             inputFields[i].setFont(new Font("SansSerif", Font.PLAIN, 14));
+            if (i == 0) { // Make ID field read-only
+                inputFields[i].setEditable(false);
+            }
             gbc.gridx = 1;
             gbc.weightx = 1.0;
             gbc.anchor = GridBagConstraints.WEST;
@@ -87,9 +90,58 @@ public class InputPanel {
     public String[] getInputData() {
         String[] data = new String[5];
         for (int i = 0; i < 5; i++) {
-            data[i] = inputFields[i].getText();
+            data[i] = inputFields[i].getText().trim();
         }
         return data;
+    }
+
+    public boolean validateInput() {
+        String code = inputFields[1].getText().trim();
+        String category = inputFields[2].getText().trim();
+        String description = inputFields[3].getText().trim();
+
+        // Log input values for debugging
+        LOGGER.info("Validating input - Code: " + code + ", Category: " + category + ", Description: " + description);
+
+        // Check required fields
+        if (code.isEmpty() || category.isEmpty() || description.isEmpty()) {
+            StringBuilder errorMsg = new StringBuilder("Please fill in all required fields:");
+            if (code.isEmpty()) errorMsg.append(" Code");
+            if (category.isEmpty()) errorMsg.append(" Category");
+            if (description.isEmpty()) errorMsg.append(" Description");
+            LOGGER.warning("Validation failed: " + errorMsg.toString());
+            JOptionPane.showMessageDialog(panel, errorMsg.toString());
+            return false;
+        }
+
+        // Normalize code: convert to uppercase, replace hyphen with dot
+        code = code.toUpperCase().replace('-', '.');
+
+        // Validate ICD-10 code format (e.g., A00-Z99, with optional decimal)
+        // Accepts codes like A12, E11.9, Z99.123, Z998 (normalized to Z99.8)
+        if (!code.matches("[A-Z][0-9]{2}(\\.[0-9]{0,3})?")) {
+            // Try normalizing codes like Z998 to Z99.8
+            if (code.matches("[A-Z][0-9]{3,5}")) {
+                String normalized = code.substring(0, 3) + (code.length() > 3 ? "." + code.substring(3) : "");
+                if (normalized.matches("[A-Z][0-9]{2}(\\.[0-9]{1,3})?")) {
+                    code = normalized;
+                } else {
+                    LOGGER.warning("Validation failed: Invalid ICD-10 code format: " + code);
+                    JOptionPane.showMessageDialog(panel, 
+                        "Invalid ICD-10 code format. Use formats like A12, E11.9, or Z99.123.");
+                    return false;
+                }
+            } else {
+                LOGGER.warning("Validation failed: Invalid ICD-10 code format: " + code);
+                JOptionPane.showMessageDialog(panel, 
+                    "Invalid ICD-10 code format. Use formats like A12, E11.9, or Z99.123.");
+                return false;
+            }
+        }
+
+        // Update code field with normalized value
+        inputFields[1].setText(code);
+        return true;
     }
 
     public void clearFields() {
@@ -102,7 +154,7 @@ public class InputPanel {
     public void populateFields(String[] data) {
         if (data != null && data.length == 5) {
             for (int i = 0; i < 5; i++) {
-                inputFields[i].setText(data[i]);
+                inputFields[i].setText(data[i] != null ? data[i] : "");
             }
         } else {
             JOptionPane.showMessageDialog(null, "Please select a row to edit");

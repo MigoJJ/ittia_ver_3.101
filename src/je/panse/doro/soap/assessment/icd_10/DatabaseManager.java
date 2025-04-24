@@ -1,18 +1,20 @@
 package je.panse.doro.soap.assessment.icd_10;
 
 import javax.swing.*;
+
+import je.panse.doro.entry.EntryDir;
+
 import java.sql.*;
 import java.util.Vector;
 import java.util.logging.Logger;
-import je.panse.doro.entry.EntryDir;
 
 public class DatabaseManager {
     private static final Logger LOGGER = Logger.getLogger(DatabaseManager.class.getName());
     private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/soap/assessment/icd_10/diagnosis.db";
-    private String[] columnNames = {"id", "code", "category", "description", "details"}; // Adjust based on actual schema
+    private String[] columnNames = {"id", "code", "category", "description", "details"};
 
     public Vector<Vector<String>> loadTableData(Vector<String> columns) {
-        LOGGER.info("Loading table data from database");
+        LOGGER.info("Loading table data from database: " + DB_URL);
         Vector<Vector<String>> data = new Vector<>();
         try (Connection conn = DriverManager.getConnection(DB_URL);
              Statement stmt = conn.createStatement();
@@ -24,7 +26,7 @@ public class DatabaseManager {
             for (int i = 1; i <= columnCount; i++) {
                 columns.add(metaData.getColumnName(i));
             }
-            columnNames = columns.toArray(new String[0]); // Update columnNames dynamically
+            columnNames = columns.toArray(new String[0]);
             LOGGER.info("Column names: " + String.join(", ", columnNames));
 
             while (rs.next()) {
@@ -80,11 +82,11 @@ public class DatabaseManager {
         return data;
     }
 
-    public void addNewRecord(String[] data) {
+    public void addNewRecord(String[] data) throws SQLException {
+        LOGGER.info("Adding new record: " + String.join(", ", data));
         if (data.length != columnNames.length) {
             LOGGER.severe("Data length (" + data.length + ") does not match column count (" + columnNames.length + ")");
-            JOptionPane.showMessageDialog(null, "Invalid data length for adding record");
-            return;
+            throw new SQLException("Invalid data length for adding record");
         }
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement(
@@ -95,52 +97,56 @@ public class DatabaseManager {
             }
             pstmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Record added successfully!");
-        } catch (SQLException ex) {
-            LOGGER.severe("Error adding record: " + ex.getMessage());
-            JOptionPane.showMessageDialog(null, "Error adding record: " + ex.getMessage());
         }
     }
 
-    public void deleteSelectedRow(String code) {
+    public void deleteSelectedRow(String code) throws SQLException {
+        LOGGER.info("Deleting record with code: " + code);
         if (code == null) {
-            JOptionPane.showMessageDialog(null, "Please select a row to delete");
-            return;
+            throw new SQLException("No row selected for deletion");
         }
         try (Connection conn = DriverManager.getConnection(DB_URL);
              PreparedStatement pstmt = conn.prepareStatement("DELETE FROM diagnosis WHERE code = ?")) {
             pstmt.setString(1, code);
-            pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Record deleted successfully!");
-        } catch (SQLException ex) {
-            LOGGER.severe("Error deleting record: " + ex.getMessage());
-            JOptionPane.showMessageDialog(null, "Error deleting record: " + ex.getMessage());
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(null, "Record deleted successfully!");
+            } else {
+                LOGGER.warning("No record found with code: " + code);
+                JOptionPane.showMessageDialog(null, "No record found to delete.");
+            }
         }
     }
 
-    public void saveChanges(String originalCode, String[] data) {
+    public void saveChanges(String originalCode, String[] data) throws SQLException {
+        LOGGER.info("Saving changes for code: " + originalCode);
         if (data.length != columnNames.length) {
             LOGGER.severe("Data length (" + data.length + ") does not match column count (" + columnNames.length + ")");
-            JOptionPane.showMessageDialog(null, "Invalid data length for saving changes");
-            return;
+            throw new SQLException("Invalid data length for saving changes");
         }
         if (originalCode == null) {
-            JOptionPane.showMessageDialog(null, "Please select a row to save changes");
-            return;
+            LOGGER.warning("No row selected for saving changes");
+            throw new SQLException("No row selected for saving changes");
         }
-        try (Connection conn = DriverManager.getConnection(DB_URL);
-             PreparedStatement pstmt = conn.prepareStatement(
-                     "UPDATE diagnosis SET " +
-                     String.join(", ", new String[columnNames.length]).replaceAll("[^,]+", "?") +
-                     " WHERE code = ?")) {
+        try (Connection conn = DriverManager.getConnection(DB_URL)) {
+            String[] assignments = new String[columnNames.length];
             for (int i = 0; i < columnNames.length; i++) {
-                pstmt.setString(i + 1, data[i]);
+                assignments[i] = columnNames[i] + " = ?";
+            }
+            String sql = "UPDATE diagnosis SET " + String.join(", ", assignments) + " WHERE code = ?";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            for (int i = 0; i < columnNames.length; i++) {
+                pstmt.setString(i + 1, data[i] != null ? data[i] : "");
             }
             pstmt.setString(columnNames.length + 1, originalCode);
-            pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Changes saved successfully!");
-        } catch (SQLException ex) {
-            LOGGER.severe("Error saving changes: " + ex.getMessage());
-            JOptionPane.showMessageDialog(null, "Error saving changes: " + ex.getMessage());
+            int rowsAffected = pstmt.executeUpdate();
+            if (rowsAffected > 0) {
+                LOGGER.info("Record updated successfully for code: " + originalCode);
+                JOptionPane.showMessageDialog(null, "Changes saved successfully!");
+            } else {
+                LOGGER.warning("No record found with code: " + originalCode);
+                JOptionPane.showMessageDialog(null, "No record found to update.");
+            }
         }
     }
 }
