@@ -1,6 +1,9 @@
 package je.panse.doro.samsara.EMR_OBJ_EKG;
 
 import javax.swing.*;
+
+import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
 import je.panse.doro.entry.EntryDir;
 import java.awt.*;
 import java.awt.event.*;
@@ -161,7 +164,8 @@ public class EMR_EKG_input extends JFrame {
         
         // Debug: Log save action
         System.out.println("Saving data: \n" + sb.toString());
-        JOptionPane.showMessageDialog(this, sb.toString());
+//        JOptionPane.showMessageDialog(this, sb.toString());
+        GDSEMR_frame.setTextAreaText(5, String.format("\n< EKG >" + Date_current.main("m")+ "\n" + summaryArea.getText()));
     }
     
     private void refFile() {

@@ -1,6 +1,10 @@
 package je.panse.doro.soap.assessment.icd_10;
 
 import javax.swing.*;
+
+import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.chartplate.filecontrol.datetime.Date_current;
+
 import java.awt.*;
 import java.util.logging.Logger;
 
@@ -100,7 +104,7 @@ public class ICDDiagnosisManager extends JFrame {
         });
         buttonPanel.getQuitButton().addActionListener(e -> {
             LOGGER.info("Quit button clicked");
-            System.exit(0);
+            dispose();
         });
         buttonPanel.getAppendIttiaButton().addActionListener(e -> {
             LOGGER.info("Append Ittia button clicked");
@@ -118,10 +122,11 @@ public class ICDDiagnosisManager extends JFrame {
     private void appendIttiaData() {
         // Placeholder: Log input data from InputPanel
         String[] data = inputPanel.getInputData();
-        String logMessage = String.format("Appending Ittia data - ID: %s, Code: %s, Category: %s, Description: %s, Details: %s",
-                data[0], data[1], data[2], data[3], data[4]);
+        String logMessage = String.format(" # %s : %s",
+                data[2], data[4]);
         LOGGER.info(logMessage);
-        JOptionPane.showMessageDialog(this, "Append Ittia executed: " + logMessage);
+//        JOptionPane.showMessageDialog(this, "Append Ittia executed: " + logMessage);
+        GDSEMR_frame.setTextAreaText(7, String.format("\n" + logMessage.trim(), Date_current.main("m")));
         // TODO: Replace with specific method functionality
     }
 

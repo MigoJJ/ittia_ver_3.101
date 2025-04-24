@@ -25,6 +25,7 @@ import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
+import je.panse.doro.soap.assessment.icd_10.ICDDiagnosisManager;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
@@ -67,7 +68,8 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Exit": System.exit(0); break;
                 case "Abbreviation": MainScreen.main(null); break;
                 case "Code":
-                    CodeMainScreen.main(null);
+//                    CodeMainScreen.main(null);
+                    ICDDiagnosisManager.main(null);
                     break;
                 case "Lab code":
                     LabCodeMainScreen.main(null);

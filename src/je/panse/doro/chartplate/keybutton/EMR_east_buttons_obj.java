@@ -17,7 +17,7 @@ import je.panse.doro.fourgate.diabetes.dmAutonomic.ANPdm;
 import je.panse.doro.fourgate.n_medications.emr_select_medication;
 import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
 import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
-import je.panse.doro.samsara.EMR_OBJ_EKG.EMR_EKG;
+import je.panse.doro.samsara.EMR_OBJ_EKG.EMR_EKG_input;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_ChestPA;
 import je.panse.doro.samsara.EMR_OBJ_XrayGFS.EMR_endo_CFS;
@@ -104,7 +104,8 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         buttonActions.put("GFS", () -> EMR_endo_GFS.main(new String[0]));
         buttonActions.put("CFS", () -> EMR_endo_CFS.main(new String[0]));
         buttonActions.put("ChestPA", () -> EMR_ChestPA.main(new String[0]));
-        buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
+//        buttonActions.put("EKG", () -> EMR_EKG.main(new String[0]));
+        buttonActions.put("EKG", () -> EMR_EKG_input.main(new String[0]));
         buttonActions.put("DEXA", () -> {
         	EMR_DEXA.main(new String[0]);
         	EMR_Os_buttons.main(null);
