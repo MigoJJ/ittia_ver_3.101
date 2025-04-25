@@ -3,11 +3,15 @@ package je.panse.doro.soap.assessment.kcd5;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableCellRenderer; // Import added
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import je.panse.doro.entry.EntryDir;
+// Import the class containing the static method (adjust package if necessary)
+import je.panse.doro.GDSEMR_frame; // ***** ADD THIS IMPORT *****
 import java.awt.*;
+import java.awt.event.MouseAdapter; // ***** ADD THIS IMPORT *****
+import java.awt.event.MouseEvent;   // ***** ADD THIS IMPORT *****
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -27,7 +31,6 @@ public class Kcd5Viewer extends JFrame {
     private TableRowSorter<DefaultTableModel> sorter;
     private static final String CSV_FILE_PATH = EntryDir.homeDir + "/soap/assessment/kcd5/KCD5.csv";
     private static final Font KOREAN_FONT = new Font("NanumGothic", Font.PLAIN, 14);
-    // Define the color for Etitle
     private static final String ETITLE_COLOR_HEX = "#00008B"; // Deep Blue hex code
 
     public Kcd5Viewer() {
@@ -36,37 +39,86 @@ public class Kcd5Viewer extends JFrame {
         loadData(CSV_FILE_PATH);
         setupFiltering();
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Make the viewer dispose on close instead of exiting the whole application
+        // This is often better if it's a secondary window.
+        // setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // ***** CHANGED THIS LINE *****
         setSize(800, 600);
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // Center on screen
     }
 
     private void initComponents() {
         tableModel = new DefaultTableModel(new String[]{"Code"}, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false;
+                return false; // Cells are not editable
             }
         };
         table = new JTable(tableModel);
-        // table.setFont(KOREAN_FONT); // Font is now set in the renderer
         sorter = new TableRowSorter<>(tableModel);
         table.setRowSorter(sorter);
         table.setFillsViewportHeight(true);
-        table.setRowHeight(20); // Adjust row height if needed due to formatting
+        table.setRowHeight(20);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Allow only single row selection
+
+        // ***** START: ADD MOUSE LISTENER FOR TABLE CLICK *****
+        table.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Respond to single clicks (can change to e.getClickCount() == 2 for double-click)
+                if (e.getClickCount() == 1) {
+                    int viewRow = table.rowAtPoint(e.getPoint()); // Get row index in the view
+                    if (viewRow >= 0) { // Check if the click was on a valid row
+                        // Convert view row index to model row index (important for sorting/filtering)
+                        int modelRow = table.convertRowIndexToModel(viewRow);
+                        Object rowData = tableModel.getValueAt(modelRow, 0); // Get data from the model
+
+                        if (rowData instanceof String) {
+                            String combinedData = (String) rowData;
+                            try {
+                                // Extract the Code, Ktitle, and Etitle
+                                String[] parts = combinedData.split(",", 3); // split into 3 parts
+                                if (parts.length >= 3) {
+                                    String code = parts[0].trim();
+                                    String ktitle = parts[1].trim();
+                                    String etitle = parts[2].trim();
+
+                                    if (!code.isEmpty()) {
+                                        // Format the string more clearly
+                                        String textToAppend = String.format("\n # %s - %s\n    (%s)", code, ktitle, etitle);
+
+                                        // Call the static method from GDSEMR_frame class
+                                        GDSEMR_frame.setTextAreaText(7, textToAppend);
+                                    } else {
+                                        System.err.println("Extracted code is empty. Row data: [" + combinedData + "]");
+                                    }
+                                } else {
+                                    System.err.println("Could not extract enough parts (code, ktitle, etitle). Row data: [" + combinedData + "]");
+                                }
+                            } catch (Exception ex) {
+                                System.err.println("Error processing table click or appending text: " + ex.getMessage());
+                                ex.printStackTrace();
+                                showError("Action Error", "Could not process the selection or update the text area.\nError: " + ex.getMessage());
+                            }
+                        }
+
+                    }
+                }
+            }
+        });
+        // ***** END: ADD MOUSE LISTENER FOR TABLE CLICK *****
 
         // Set the custom renderer for the column
         table.getColumnModel().getColumn(0).setCellRenderer(new KcdCellRenderer());
         table.getColumnModel().getColumn(0).setPreferredWidth(600);
 
-
         JScrollPane scrollPane = new JScrollPane(table);
 
         filterTextField = new JTextField(30);
-        filterTextField.setFont(KOREAN_FONT); // Keep font for input field
+        filterTextField.setFont(KOREAN_FONT);
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel filterLabel = new JLabel("Filter:");
-        filterLabel.setFont(KOREAN_FONT); // Keep font for label
+        filterLabel.setFont(KOREAN_FONT);
         topPanel.add(filterLabel);
         topPanel.add(filterTextField);
 
@@ -75,6 +127,7 @@ public class Kcd5Viewer extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
     }
 
+    // --- loadData, processDataRow, validateHeader, validateDataRow remain the same ---
     private void loadData(String filePath) {
         Path path = Paths.get(filePath);
         if (!Files.exists(path)) {
@@ -150,7 +203,6 @@ public class Kcd5Viewer extends JFrame {
                 }
                 processDataRow(line, lineNumber);
             }
-            reader.close();
         } catch (IOException e) {
             showError("Error Reading File", "Could not read KCD5 data: " + e.getMessage());
             e.printStackTrace();
@@ -201,11 +253,6 @@ public class Kcd5Viewer extends JFrame {
         // Be slightly flexible with header names, ignore case
         String[] headerParts = header.split(",", -1); // Split, keeping trailing empty strings
         return headerParts.length >= 1 && headerParts[0].trim().equalsIgnoreCase("Code");
-        // Original more strict validation:
-        // return headerParts.length >= 3 &&
-        //        headerParts[0].trim().equalsIgnoreCase("Code") &&
-        //        headerParts[1].trim().equalsIgnoreCase("Ktitle") &&
-        //        headerParts[2].trim().equalsIgnoreCase("Etitle");
     }
 
     private boolean validateDataRow(String[] data) {
@@ -213,6 +260,7 @@ public class Kcd5Viewer extends JFrame {
         return data != null && data.length >= 1 && data[0] != null && !data[0].trim().isEmpty();
     }
 
+    // --- setupFiltering, filterTable remain the same ---
     private void setupFiltering() {
         filterTextField.getDocument().addDocumentListener(new DocumentListener() {
             @Override public void insertUpdate(DocumentEvent e) { filterTable(); }
@@ -221,7 +269,7 @@ public class Kcd5Viewer extends JFrame {
         });
     }
 
-    private void filterTable() {
+     private void filterTable() {
         String text = filterTextField.getText().trim();
          // The RowFilter operates on the *model data* (plain text stored),
          // not the formatted HTML shown by the renderer.
@@ -241,54 +289,41 @@ public class Kcd5Viewer extends JFrame {
                 if (!word.isEmpty()) {
                     // (?i) : Makes the search case-insensitive.
                     // Pattern.quote(word) : Treats the user's input word as a literal sequence of characters.
-                    //                         Special regex characters in the input won't cause errors.
                     // RowFilter.regexFilter(...) : Creates a filter that checks if the specified regex pattern
                     //                              (the literal word) exists *ANYWHERE* within the cell's data.
-                    //                              This inherently allows partial matches (substring matching).
-                    //                              Example: regexFilter("(?i)"+Pattern.quote("dia")) will match "diabetes".
-                    filters.add(RowFilter.regexFilter("(?i)" + Pattern.quote(word)));
+                     filters.add(RowFilter.regexFilter("(?i)" + Pattern.quote(word)));
                 }
             }
 
             if (!filters.isEmpty()) {
                  // RowFilter.andFilter(filters) : Combines all the individual word filters.
                  //                              A row will only be shown if it matches *ALL* the word filters.
-                 //                              The order in which the words appear in the cell data doesn't matter,
-                 //                              as long as *all* the searched words are present somewhere.
-                 //                              Example: Searching "mellitus diabetes" creates filters for "mellitus" and "diabetes".
-                 //                                       A row containing "Non-insulin-dependent diabetes mellitus" will match
-                 //                                       because both "diabetes" and "mellitus" are present.
-                sorter.setRowFilter(RowFilter.andFilter(filters));
+                 sorter.setRowFilter(RowFilter.andFilter(filters));
             } else {
                  // If the input contained only spaces, clear the filter
                 sorter.setRowFilter(null);
             }
         } catch (PatternSyntaxException e) {
-            // Should not happen with Pattern.quote, but good practice to keep the catch block
             System.err.println("Invalid regex pattern: " + e.getMessage());
             sorter.setRowFilter(null); // Don't apply filter if regex is somehow invalid
         }
     }
 
 
+    // --- showError, KcdCellRenderer remain the same ---
     private void showError(String title, String message) {
         JOptionPane.showMessageDialog(this, message, title, JOptionPane.ERROR_MESSAGE);
     }
 
-    // --- Custom Cell Renderer ---
     private static class KcdCellRenderer extends DefaultTableCellRenderer {
         @Override
         public Component getTableCellRendererComponent(JTable table, Object value,
                                                      boolean isSelected, boolean hasFocus,
                                                      int row, int column) {
-            // Let the default renderer set up background, selection etc.
             Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
             if (value instanceof String) {
                 String combinedText = (String) value;
-                 // Attempt to parse the combined string back into parts
-                 // This assumes the format "Code, Ktitle, Etitle" stored in the model
-                 // Find the first and last comma to isolate the parts
                 int firstComma = combinedText.indexOf(',');
                 int lastComma = combinedText.lastIndexOf(',');
 
@@ -297,51 +332,34 @@ public class Kcd5Viewer extends JFrame {
                 String eTitlePart = "";
 
                 if (firstComma != -1 && lastComma != -1 && firstComma != lastComma) {
-                    // Found two distinct commas, likely Code, Ktitle, Etitle
-                    codePart = combinedText.substring(0, firstComma).trim();
+                     codePart = combinedText.substring(0, firstComma).trim();
                     kTitlePart = combinedText.substring(firstComma + 1, lastComma).trim();
                     eTitlePart = combinedText.substring(lastComma + 1).trim();
                 } else if (firstComma != -1) {
-                     // Found only one comma, assume Code, Title (either K or E?)
-                     // Let's assume it might be Code, Ktitle and Etitle is missing
                     codePart = combinedText.substring(0, firstComma).trim();
                     kTitlePart = combinedText.substring(firstComma + 1).trim();
-                    // eTitlePart remains ""
                  } else {
-                    // No comma found, assume it's just the code
                     codePart = combinedText.trim();
-                    // kTitlePart and eTitlePart remain ""
-                }
+                 }
 
-
-                // Build the HTML string for display
-                StringBuilder htmlBuilder = new StringBuilder("<html><body style='font-family: NanumGothic; font-size: 10pt;'>"); // Use body for better style control
-                htmlBuilder.append(escapeHtml(codePart)); // Use plain text for code
+                StringBuilder htmlBuilder = new StringBuilder("<html><body style='font-family: NanumGothic; font-size: 10pt;'>");
+                htmlBuilder.append(escapeHtml(codePart));
                 htmlBuilder.append(", ");
-                htmlBuilder.append(escapeHtml(kTitlePart)); // Use plain text for Ktitle
+                htmlBuilder.append(escapeHtml(kTitlePart));
                 htmlBuilder.append(", ");
-                // Apply formatting to Etitle
                 htmlBuilder.append("<b><i><font color=\"").append(ETITLE_COLOR_HEX).append("\">");
-                htmlBuilder.append(escapeHtml(eTitlePart)); // Apply styles to Etitle
+                htmlBuilder.append(escapeHtml(eTitlePart));
                 htmlBuilder.append("</font></i></b>");
-
                 htmlBuilder.append("</body></html>");
 
-                // Set the text of the renderer (which is a JLabel)
                 setText(htmlBuilder.toString());
-
             } else {
-                // Handle non-string values if any (optional)
                 setText(value != null ? value.toString() : "");
             }
-             // Ensure the base font is set if not using HTML or for overall component
-             // The HTML style should override this for the content where specified.
             setFont(KOREAN_FONT);
-
-            return c; // Return the configured renderer component
+            return c;
         }
 
-         // Basic HTML escaping to prevent issues if titles contain <, >, &
         private String escapeHtml(String text) {
              if (text == null) return "";
              return text.replace("&", "&amp;")
@@ -349,9 +367,9 @@ public class Kcd5Viewer extends JFrame {
                         .replace(">", "&gt;");
         }
     }
-    // --- End Custom Cell Renderer ---
 
-    public static void main(String[] args) {
+    // --- main method remains the same ---
+     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Kcd5Viewer viewer = new Kcd5Viewer();
             viewer.setVisible(true);

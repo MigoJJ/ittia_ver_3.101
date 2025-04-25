@@ -82,7 +82,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
 //                    break;
                 
                 case "ittia_support": EMR_ittia_support.main(null); break;
-                case "ittia_EMR_AI": je.panse.doro.chartplate.keybutton.ai.Mprompt.main(null); break;
+                case "KCD5": je.panse.doro.soap.assessment.kcd5.Kcd5Viewer.main(null);; break;
             }
         } else if ("south".equals(location)) {
             switch (btn) {
