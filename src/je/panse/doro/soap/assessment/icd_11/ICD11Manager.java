@@ -174,8 +174,26 @@ public class ICD11Manager extends JFrame implements ActionListener {
 
 
     private void initComponents() {
-        // Define Styles
         Color lightYellow = new Color(255, 255, 224); // Light yellow background
+
+        JButton[] buttons = {
+            addButton, editButton, deleteButton, searchButton, clearButton,
+            saveButton, quitButton, loadAllButton, appendIttiaButton
+        };
+
+        for (JButton button : buttons) {
+            if (button != null) {
+                Font currentFont = button.getFont();
+                button.setFont(new Font(currentFont.getName(), Font.BOLD, currentFont.getSize()));
+
+                // Set light yellow background correctly
+                button.setBackground(lightYellow);
+                button.setOpaque(true); // Must be true to paint background
+                button.setContentAreaFilled(true); // Must be true to fill button area
+            }
+        }
+    
+
 
         // Text Fields
         idField = new JTextField(5);
@@ -210,15 +228,7 @@ public class ICD11Manager extends JFrame implements ActionListener {
         appendIttiaButton = new JButton("Append Ittia");
 
         // Apply Bold Font to all buttons
-        JButton[] buttons = {addButton, editButton, deleteButton, searchButton, clearButton,
-                             saveButton, quitButton, loadAllButton, appendIttiaButton};
-        for (JButton button : buttons) {
-            if (button != null) { // Check just in case one wasn't initialized
-                 Font currentFont = button.getFont();
-                 // Create a new Font object with BOLD style, keeping original name and size
-                 button.setFont(new Font(currentFont.getName(), Font.BOLD, currentFont.getSize()));
-            }
-        }
+
 
         // Table
         tableModel = new DefaultTableModel(new String[]{"ID", "Mark", "Code", "ICD11 Name", "Note"}, 0) {
