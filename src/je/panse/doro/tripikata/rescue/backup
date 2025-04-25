@@ -1,30 +1,4 @@
 
   A>	
- # A01.3 - 파라티푸스 C
-    (Paratyphoid fever C,)
- # A00-B99 - 특정 감염성 및 기생충성 질환
-    (I. Certain infectious and parasitic diseases (A00-B99),)
- # A02 - 살모넬라 장티푸스와 살모넬라 파라티푸스 이외의 살모넬라종에 의하여 생긴 감염 또는 식중독
-    (Other salmonella infection or foodborne intoxication due to any salmonella species other than S. typhi and S. paratyphi,)
- # A01.2 - 파라티푸스 B
-    (Paratyphoid fever B,)
- # A00.1 - 엘토르형균에 의한 콜레라
-    (Cholera eltor,)
- # A00.0 - 비브리오 콜레리 01 전형균에 의한 콜레라
-    ("Cholera due to Vibrio cholerae 01, biovar cholerae",)
- # A01.1 - 파라티푸스 A
-    (Paratyphoid fever A,)
- # K57 - "(작은
-    (큰)창자의 게실염",Diverticulitis of intestine (small)(large),)
- # E28.2 - 다낭성 난소 증후군
-    (Polycystic ovarian syndrome,)
- # N70 - 자궁관-난소의 염증성 질환
-    (Tubo-ovarian inflammatory disease,)
- # C56 - 난소의 악성신생물
-    (Malignant neoplasm of ovary,)
- # C79.6 - 난소의 속발성 악성신생물
-    (Secondary malignant neoplasm of ovary,)
- # M81.08 - "폐경기후 골다공증
-    (기타 부위","Postmenopausal osteoporosis, other (head, neck, ribs, skull, trunk, vertebral column)",)
- # M80.08 - "병적 골절을 동반한 폐경기후 골다공증
-    (기타 부위","Postmenopausal osteoporosis with pathological fracture, other (head, neck, ribs, skull, trunk, vertebral column)",)
+ # Q61.0 - "콩팥(신장)의 선천 단일 낭종
+   ( Cyst of kidney (congenital) (single),)
