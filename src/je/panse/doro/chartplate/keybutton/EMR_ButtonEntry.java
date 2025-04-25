@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate.keybutton;
 
-import java.awt.Toolkit;
+import java.awt.Toolkit;	
 import java.awt.datatransfer.StringSelection;
 
 import javax.swing.JOptionPane;
@@ -25,7 +25,6 @@ import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
 import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
-import je.panse.doro.soap.assessment.icd_10.ICDDiagnosisManager;
 import je.panse.doro.soap.assessment.icd_11.ICD11Manager;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
