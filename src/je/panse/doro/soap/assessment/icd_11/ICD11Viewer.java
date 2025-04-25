@@ -2,13 +2,16 @@ package je.panse.doro.soap.assessment.icd_11;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import je.panse.doro.entry.EntryDir;
+
 import java.awt.*;
 import java.sql.*;
 import java.util.logging.Logger;
 
 public class ICD11Viewer extends JFrame {
     private static final Logger LOGGER = Logger.getLogger(ICD11Viewer.class.getName());
-    private static final String DB_URL = "jdbc:sqlite:/home/migowj/git/ittia_ver_3.100/src/je/panse/doro/soap/assessment/icd_11/icd11.db";
+    private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/soap/assessment/icd_11/icd11.db";
     private JTable table;
     private DefaultTableModel tableModel;
     private JTextField searchField;
