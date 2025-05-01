@@ -1,12 +1,14 @@
 
-  A>	
- # A02.0 - 살모넬라 창자염
-    (Salmonella enteritis,)
- # A00.9 - 상세불명의 콜레라
-    ("Cholera,unspecified",)
- # A04.5 - 캄필로박터 창자염
-    (Campylobacter enteritis,)
- # A04.7 - 가막성 대장염(큰창자염)
-    (Pseudomembranous colitis,)
- # A06 - 이질 아메바에 의한 감염
-    (Infection due to Entamoeba histolytica,)
+    A>	Code: A02.8
+ # 기타 명시된 살모넬라감염
+     : Other specified salmonella infections
+  Code: A15.1
+ # 배양만으로 확인된 폐결핵
+     : Tuberculosis of lung, confirmed by culture only
+  Code: E11.3
+ # 눈합병증을 동반한 2형 당뇨병
+     : Type 2 diabetes mellitus, with ophthalmic complications
+  Code: E11.50
+ # 당뇨병성 말초혈관병증을 동반한, 괴저를 동반하지 않는 2형 당뇨병(I79.2*)
+     : Type 2 diabetes mellitus, with diabetic peripheral angiopathy,
+        without gangrene(I79.2*)
