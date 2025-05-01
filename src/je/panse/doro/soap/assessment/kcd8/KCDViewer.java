@@ -2,7 +2,10 @@ package je.panse.doro.soap.assessment.kcd8;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class KCDViewer extends JFrame {
@@ -14,7 +17,7 @@ public class KCDViewer extends JFrame {
     public KCDViewer() {
         dbManager = new DatabaseManager();
         setTitle("KCD-8DB Viewer");
-        setSize(1200, 600); // Increased width to accommodate TextArea
+        setSize(1200, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -48,13 +51,17 @@ public class KCDViewer extends JFrame {
         JScrollPane textAreaScrollPane = new JScrollPane(selectedDataArea);
         textAreaScrollPane.setBorder(BorderFactory.createTitledBorder("Selected Data"));
 
-        // South: Future-use buttons
-        JPanel southPanel = new JPanel(new GridLayout(1, 7, 5, 5));
-        for (int i = 1; i <= 7; i++) {
-            JButton button = new JButton("Button " + i);
-            button.setEnabled(false); // Disabled until functionality is added
-            southPanel.add(button);
-        }
+        // South: Modified Button Panel
+        JPanel southPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        JButton clearButton = new JButton("Clear");
+        JButton saveButton = new JButton("Save");
+        JButton quitButton = new JButton("Quit");
+        JButton othersButton = new JButton("Others");
+
+        southPanel.add(clearButton);
+        southPanel.add(saveButton);
+        southPanel.add(quitButton);
+        southPanel.add(othersButton);
 
         // Layout
         setLayout(new BorderLayout());
@@ -66,7 +73,7 @@ public class KCDViewer extends JFrame {
         // Event Listeners
         searchButton.addActionListener(e -> searchData());
         loadAllButton.addActionListener(e -> loadData());
-        searchField.addActionListener(e -> searchData()); // Search on Enter key
+        searchField.addActionListener(e -> searchData());
 
         // Table row selection listener
         table.getSelectionModel().addListSelectionListener(e -> {
@@ -76,16 +83,64 @@ public class KCDViewer extends JFrame {
                     String code = table.getValueAt(selectedRow, 1).toString();
                     String koreanName = table.getValueAt(selectedRow, 2).toString();
                     String englishName = table.getValueAt(selectedRow, 3).toString();
-                    String entry = String.format("Code: %s\n   # : %s\n   # : %s\n\n", code, koreanName, englishName);
+                    String entry = String.format("Code: %s\n # %s\n   : %s\n\n", code, koreanName, englishName);
                     selectedDataArea.append(entry);
                 }
+            }
+        });
+
+        // Button Listeners
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                selectedDataArea.setText(""); // Clear the TextArea
+            }
+        });
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String textToSave = selectedDataArea.getText();
+                if (textToSave.isEmpty()) {
+                    JOptionPane.showMessageDialog(KCDViewer.this, 
+                        "No text to save.", 
+                        "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
+                try {
+                    GDSEMR_frame.setTextAreaText(7, textToSave);
+                    JOptionPane.showMessageDialog(KCDViewer.this, 
+                        "Text saved to GDSEMR_frame (TextArea 7).", 
+                        "Info", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(KCDViewer.this, 
+                        "Error saving text: " + ex.getMessage(), 
+                        "Error", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        quitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose(); // Close the JFrame
+            }
+        });
+
+        othersButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(KCDViewer.this, 
+                    "'Others' functionality not implemented yet.", 
+                    "Info", JOptionPane.INFORMATION_MESSAGE);
             }
         });
     }
 
     private void loadData() {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Clear existing rows
+        model.setRowCount(0);
         ResultSet rs = dbManager.getAllData();
         try {
             if (rs != null) {
@@ -99,7 +154,8 @@ public class KCDViewer extends JFrame {
                 }
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error loading data: " + e.getMessage(), "Database Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error loading data: " + e.getMessage(), 
+                "Database Error", JOptionPane.ERROR_MESSAGE);
         } finally {
             if (rs != null) {
                 try {
@@ -114,7 +170,7 @@ public class KCDViewer extends JFrame {
     private void searchData() {
         String query = searchField.getText().trim();
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0); // Clear existing rows
+        model.setRowCount(0);
 
         String sql = "SELECT * FROM kcd8db WHERE CAST(id AS TEXT) LIKE ? OR code LIKE ? OR korean_name LIKE ? OR english_name LIKE ?";
         try (Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/migowj/git/ittia_ver_3.100/src/je/panse/doro/soap/assessment/kcd8/kcd8db.db");
@@ -134,7 +190,8 @@ public class KCDViewer extends JFrame {
                 });
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this, "Error searching data: " + e.getMessage(), "Search Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error searching data: " + e.getMessage(), 
+                "Search Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

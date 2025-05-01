@@ -47,7 +47,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
 			 buttons[7].setText("Code");
 			 buttons[8].setText("Lab code");
 			 buttons[9].setText("ittia_support");
-			 buttons[10].setText("KCD5");
+			 buttons[10].setText("KCD8");
 //			 buttons[11].setText("ICD-11");
 			 // Add the button panel to the north of the frame
 			 setLayout(new FlowLayout(FlowLayout.LEFT));

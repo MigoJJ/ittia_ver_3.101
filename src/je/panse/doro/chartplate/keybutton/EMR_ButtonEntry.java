@@ -26,6 +26,7 @@ import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.soap.assessment.icd_11.ICD11Manager;
+import je.panse.doro.soap.assessment.kcd8.KCDViewer;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
@@ -82,7 +83,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
 //                    break;
                 
                 case "ittia_support": EMR_ittia_support.main(null); break;
-                case "KCD5": je.panse.doro.soap.assessment.kcd5.Kcd5Viewer.main(null);; break;
+                case "KCD8": KCDViewer.main(null);; break;
             }
         } else if ("south".equals(location)) {
             switch (btn) {
