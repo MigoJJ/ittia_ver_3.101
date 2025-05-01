@@ -1,6 +1,6 @@
 package je.panse.doro.soap.assessment.kcd5;
 
-import javax.swing.*;
+import javax.swing.*;	
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
