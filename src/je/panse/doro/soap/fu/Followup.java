@@ -68,7 +68,7 @@ public class Followup {
     private static void addButtonsToFrame(JFrame frame) {
         ActionListener buttonClickListener = e -> {
             String clickedButtonText = ((JButton) e.getSource()).getText();
-            updateInjectionDetails(frame, clickedButtonText);
+            updateDetails(frame, clickedButtonText);
         };
 
         for (String label : BUTTON_LABELS) {
@@ -91,7 +91,7 @@ public class Followup {
     /**
      * Updates the EMR text area with the selected vaccine and date.
      */
-    private static void updateInjectionDetails(JFrame frame, String clickedButtonText) {
+    private static void updateDetails(JFrame frame, String clickedButtonText) {
         if ("Quit".equals(clickedButtonText)) {
             frame.dispose();
             return;
