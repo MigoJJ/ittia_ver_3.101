@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import je.panse.doro.samsara.EMR_PE.PE_Abdominal_pain_diagnosis;
+import je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen;
 
 public class EMR_symptom_main {
 
@@ -70,6 +71,7 @@ public class EMR_symptom_main {
                         if (name.equals("Abdominal pain")) {
                         	   processSymptomList(actionCommand);
                             PE_Abdominal_pain_diagnosis.main(null);
+                            PhysicalExaminationAbdomen.main(null);
                         } else {                    
                         }
                         break;

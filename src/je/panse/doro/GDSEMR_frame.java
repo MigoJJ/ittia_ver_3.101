@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.*;
 
-import je.panse.doro.chartplate.keybutton.EMR_east_buttons_obj;
+import je.panse.doro.chartplate.keybutton.EMR_top_buttons_obj;
 import je.panse.doro.chartplate.keybutton.GDSEMR_ButtonNorthSouth;
 import je.panse.doro.chartplate.keybutton.GDSEMR_FunctionKey;
 import je.panse.doro.chartplate.mainpage.EMR_BlendColors;
@@ -14,6 +14,7 @@ import je.panse.doro.chartplate.mainpage.GDSEMR_fourgate;
 import je.panse.doro.fourgate.n_vaccinations.InjectionApp;
 import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.*;
+import je.panse.doro.soap.fu.IttiaEMR_fu;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
 public class GDSEMR_frame {
@@ -188,12 +189,13 @@ public class GDSEMR_frame {
         });
 
         // Additional feature executions
-        EMR_east_buttons_obj.main(null);
+        EMR_top_buttons_obj.main(null);
         Vitalsign.main(args);
         EMR_HbA1c.main(null);
         EMR_symptom_main.main(null);
         EMR_BMI_calculator.main(null);
         EMR_TFT.main(null);
         InjectionApp.main(null);
+        IttiaEMR_fu.main(null);
     }
 }

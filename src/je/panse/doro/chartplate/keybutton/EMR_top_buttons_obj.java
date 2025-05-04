@@ -34,13 +34,14 @@ import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFTout;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_eGFR;
 import je.panse.doro.samsara.EMR_PE.PhysicalExaminationAbdomen;
+import je.panse.doro.soap.fu.IttiaEMR_fu;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 
-public class EMR_east_buttons_obj extends JFrame implements ActionListener {
+public class EMR_top_buttons_obj extends JFrame implements ActionListener {
 
     private ArrayList<JButton> buttons = new ArrayList<>();
 
-    public EMR_east_buttons_obj(String position, String title) {
+    public EMR_top_buttons_obj(String position, String title) {
         setUndecorated(true);
         setSize(new Dimension(1850, 30));
         setLayout(new GridLayout(0, 20));
@@ -51,7 +52,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         String[] buttonNames = {"BMI", "BP", "HbA1c", "TFT", "TFTout",
                 "LDL", "LFT", "CBC", "eGFR", "Lp(a)",
                 "Etc.", "ChestPA", "EKG", "GFS", "CFS",
-                "DEXA","Abdomen","Allergy","DM ANP","Medication",
+                "DEXA","Allergy","DM ANP","Followup","Medication",
         };
 
         for (String buttonName : buttonNames) {
@@ -72,7 +73,7 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
     }
 
     public static void main(String text) {
-        new EMR_east_buttons_obj("east", "EMR Object Buttons");
+        new EMR_top_buttons_obj("east", "EMR Object Buttons");
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -110,9 +111,11 @@ public class EMR_east_buttons_obj extends JFrame implements ActionListener {
         	EMR_DEXA.main(new String[0]);
         	EMR_Os_buttons.main(null);
         });
-        buttonActions.put("Abdomen", () -> PhysicalExaminationAbdomen.main(new String[0]));
+                
         buttonActions.put("Allergy", () -> EMRPMHAllergy.main(new String[0]));
         buttonActions.put("DM ANP", () -> ANPdm.main(new String[0]));
+        buttonActions.put("Followup", () -> IttiaEMR_fu.main(new String[0]));
+       
         buttonActions.put("Medication", () -> emr_select_medication.main(new String[0]));
         
         return buttonActions;

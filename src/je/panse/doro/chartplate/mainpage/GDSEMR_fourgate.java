@@ -3,7 +3,7 @@ package je.panse.doro.chartplate.mainpage;
 import java.io.IOException;		
 
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.chartplate.keybutton.EMR_east_buttons_obj;
+import je.panse.doro.chartplate.keybutton.EMR_top_buttons_obj;
 import je.panse.doro.soap.assessment.AssessmentSupport;
 import je.panse.doro.soap.cc.CCSupport;
 import je.panse.doro.soap.pe.EMR_PE_general;
@@ -30,7 +30,7 @@ public class GDSEMR_fourgate extends GDSEMR_frame {
 		} else if (text.contains("S>")) {
 			EMR_symptom_main.main(null);
 		} else if (text.contains("O>")) {
-			EMR_east_buttons_obj.main(text);
+			EMR_top_buttons_obj.main(text);
 		} else if (text.contains("A>")) {
 			AssessmentSupport.main(null);
 		} else if (text.contains("P>")) {
