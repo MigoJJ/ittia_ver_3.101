@@ -1,6 +1,20 @@
 
+  A>	
+  #  ...Coservative symptomatic treatment  [2025-05-05]
+  #  ...Continie current medications or supplements  [2025-05-05]
+  #  ...D/C all kinds of dietary[food, health, nutritional] supplements  [2025-05-05]
+  #  ...The patient Refused dose-adjustment  [2025-05-05]
+  #  ...Ophthalmologist consultation[+]  [2025-05-05]
+  #  HISTORY  [2025-05-05]
+  #  ...Check for Family medical history  [2025-05-05]
+  #  ...to refer patients to receive additional health care services.  [2025-05-05]
   P>	
-...Laboratory test [ 2025.05.05]
- ...D6620  COVID-19 test
- ...D3420005  GH test
- ...C3796  Ionized-calcium test
+... C3480	LH test[ 2025.05.05]
+ ...
+... C3500	FSH test[ 2025.05.05]
+... D1640	Progesterone test[ 2025.05.05]
+... N94.6	Dysmenorrhea 월경통[ 2025.05.05]
+... O224	Gestational diabetes 임신성 당뇨병[ 2025.05.05]
+... E041	Benign thyroid nodule[ 2025.05.05]
+... FZ811	Libre 연속혈당측정기[ 2025.05.05]
+... B1810	HBV infection[ 2025.05.05]

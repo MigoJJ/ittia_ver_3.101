@@ -1,14 +1,30 @@
 package je.panse.doro.soap.fu;
 
-import javax.swing.*;	
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GradientPaint;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.GridLayout;
+import java.awt.Insets;
+import java.awt.RenderingHints;
+import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.fourgate.n_laboratorytest.n_laboratoytest;
-import je.panse.doro.fourgate.n_laboratorytest.etc.n_laboratorytestother;
+import je.panse.doro.fourgate.n_laboratorytest.frequent.JavalabtestsDBManagerGUI;
 import je.panse.doro.fourgate.n_medications.emr_select_medication;
 
 /**
@@ -103,7 +119,7 @@ public class Followup {
             return;
         }
         else if ("LAB other".equals(clickedButtonText)) {
-        	n_laboratorytestother.main(null);
+        	JavalabtestsDBManagerGUI.main(null);
             return;
         }
         else if ("Quit".equals(clickedButtonText)) {
