@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.fourgate.n_laboratorytest.n_laboratoytest;
-import je.panse.doro.fourgate.n_laboratorytest.n_laboratorytestother;
+import je.panse.doro.fourgate.n_laboratorytest.etc.n_laboratorytestother;
 import je.panse.doro.fourgate.n_medications.emr_select_medication;
 
 /**
