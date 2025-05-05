@@ -7,7 +7,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import je.panse.doro.GDSEMR_frame;
-import je.panse.doro.fourgate.n_laboratorytest.n_Laboratoytest;
+import je.panse.doro.fourgate.n_laboratorytest.n_laboratoytest;
 import je.panse.doro.fourgate.n_laboratorytest.n_laboratorytestother;
 import je.panse.doro.fourgate.n_medications.emr_select_medication;
 
@@ -99,7 +99,7 @@ public class Followup {
             return;
         }
         else if ("LAB".equals(clickedButtonText)) {
-        	n_Laboratoytest.main(null);
+        	n_laboratoytest.main(null);
             return;
         }
         else if ("LAB other".equals(clickedButtonText)) {

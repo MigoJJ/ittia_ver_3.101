@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate.keybutton;
 
-import java.awt.Toolkit;
+import java.awt.Toolkit;	
 import java.awt.datatransfer.StringSelection;
 
 import javax.swing.JOptionPane;
