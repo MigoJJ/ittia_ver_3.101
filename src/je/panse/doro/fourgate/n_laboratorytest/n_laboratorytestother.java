@@ -35,9 +35,9 @@ public class n_laboratorytestother extends JFrame {
             {"Hormones", "Cx232", "Free-testosterone test"},
             {"Hormones", "D3710050", "Free-testosterone test"},
             {"Hormones", "D3502143", "Free-Cortisol test"},
-            {"Infectious Diseases", "C4872", "Anti HCV AB test"},
-            {"Infectious Diseases", "C4854006", "HBV DNA test"},
-            {"Infectious Diseases", "+hp4", "H. Pylori 4-regimen test"},
+            {"Liver Function", "C4872", "Anti HCV AB test"},
+            {"Liver Function", "C4854006", "HBV DNA test"},
+            {"Liver Function", "+hp4", "H. Pylori 4-regimen test"},
             {"Infectious Diseases", "052400041", "Prolia"},
             {"Infectious Diseases", "C6095006", "Influenza test"},
             {"Infectious Diseases", "D6620", "COVID-19 test"},
@@ -110,11 +110,13 @@ public class n_laboratorytestother extends JFrame {
     private JPanel createCategoryPanel(String category, List<String[]> tests) {
         JPanel categoryPanel = new JPanel(new BorderLayout());
         categoryPanel.setBorder(BorderFactory.createTitledBorder(category));
+        categoryPanel.setPreferredSize(new Dimension(FRAME_WIDTH / 2 - 20, 150)); // Adjust height here
 
         String[] columns = {"Test Code", "Test Name"};
         String[][] rows = tests.toArray(new String[0][]);
         JTable table = new JTable(rows, columns);
         configureTable(table);
+        table.setPreferredScrollableViewportSize(new Dimension(FRAME_WIDTH / 2 - 40, 100)); // Control table height
 
         categoryPanel.add(new JScrollPane(table), BorderLayout.CENTER);
         return categoryPanel;
