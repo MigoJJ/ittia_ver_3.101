@@ -129,7 +129,7 @@ public class Followup {
 
         String currentDate = DATE_FORMAT.format(new Date());
         try {
-            GDSEMR_frame.setTextAreaText(7, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
+            GDSEMR_frame.setTextAreaText(9, "\n  #  " + clickedButtonText + "  [" + currentDate + "]");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(frame, "Error updating text areas: " + e.getMessage(),
                 "Error", JOptionPane.ERROR_MESSAGE);
