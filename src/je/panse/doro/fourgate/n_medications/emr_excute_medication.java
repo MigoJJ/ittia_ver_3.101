@@ -1,6 +1,6 @@
 package je.panse.doro.fourgate.n_medications;
 
-import je.panse.doro.fourgate.diabetes.EMR_dm_meds;
+import je.panse.doro.fourgate.diabetes.EMR_dm_meds;	
 import je.panse.doro.fourgate.hypercholesterolemia.EMR_chol_meds;
 import je.panse.doro.fourgate.hypertension.htnMedication.EMR_htn_meds;
 import je.panse.doro.fourgate.osteoporosis.EMR_Osteoporosis_meds;

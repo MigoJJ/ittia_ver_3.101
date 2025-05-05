@@ -7,6 +7,9 @@ import java.awt.geom.RoundRectangle2D;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import je.panse.doro.GDSEMR_frame;
+import je.panse.doro.fourgate.n_laboratorytest.n_Laboratoytest;
+import je.panse.doro.fourgate.n_laboratorytest.n_laboratorytestother;
+import je.panse.doro.fourgate.n_medications.emr_select_medication;
 
 /**
  * Manages follow-up injections with a GUI for selecting vaccines.
@@ -16,25 +19,24 @@ public class Followup {
     private static final int FRAME_HEIGHT = 800;
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
     private static final String[] BUTTON_LABELS = {
-        "Sanofi's VaxigripTetra® Vaccine(4가) [유독]",
-        "Kovax Influ 4ga PF® vaccine [nip]",
-        "Tdap (Tetanus, Diphtheria, Pertussis)",
-        "Td (Tetanus, Diphtheria)",
-        "Shingles Vaccine (Shingrix) #1/2",
-        "Shingles Vaccine (Shingrix) #2/2",
-        "HAV vaccination #1/2",
-        "HAV vaccination #2/2",
-        "HBV vaccination #1/3",
-        "HBV vaccination #2/3",
-        "HBV vaccination #2/3",
-        "HBV vaccination #3/3",
-        "HBV vaccination #3/3",
-        "Prevena 13 (pneumococcal vaccine (PCV13))",
-        "HBV vaccination #3/3",
-        "HBV vaccination #3/3",
-        "Prevena 13 (pneumococcal vaccine (PCV13))",
-
-        "Side Effect",
+    	"MEDICATION",
+    	"...Next Lab F/U with NPO",
+		"...Coservative symptomatic treatment",
+		"...F/U without medications",
+		"...Continie current medications or supplements",
+		"...D/C all kinds of dietary[food, health, nutritional] supplements",
+		"...The patient Refused dose-adjustment", 
+		"...Ophthalmologist consultation[+]", 
+		"...Plan to review of other clinic RC result",
+		"HISTORY",
+		"...History of surgeries or hospitalizations",
+		"...Check for Family medical history",
+		"...to refer patients to receive additional health care services.",
+		"LAB",
+		"LAB other",
+		"...Gastroenterology consult in GDS clinic",
+		"...Pulmonolgy consult in GDS clinic",
+		"...Cardiology consult in Other clinic",
         "Quit"
     };
 
@@ -92,7 +94,19 @@ public class Followup {
      * Updates the EMR text area with the selected vaccine and date.
      */
     private static void updateDetails(JFrame frame, String clickedButtonText) {
-        if ("Quit".equals(clickedButtonText)) {
+        if ("MEDICATION".equals(clickedButtonText)) {
+        	  emr_select_medication.main(null);
+            return;
+        }
+        else if ("LAB".equals(clickedButtonText)) {
+        	n_Laboratoytest.main(null);
+            return;
+        }
+        else if ("LAB other".equals(clickedButtonText)) {
+        	n_laboratorytestother.main(null);
+            return;
+        }
+        else if ("Quit".equals(clickedButtonText)) {
             frame.dispose();
             return;
         }

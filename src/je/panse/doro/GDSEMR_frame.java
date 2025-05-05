@@ -38,7 +38,7 @@ import je.panse.doro.soap.subjective.EMR_symptom_main;
  * Main application window for the GDS EMR interface.
  */
 public class GDSEMR_frame {
-    private static final int FRAME_WIDTH = 1280;
+    private static final int FRAME_WIDTH = 1275;
     private static final int FRAME_HEIGHT = 1020;
     public static JFrame frame;
     public static JTextArea[] textAreas;
@@ -62,7 +62,7 @@ public class GDSEMR_frame {
      */
     public void createAndShowGUI() {
         frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        frame.setLocation(360, 60);
+        frame.setLocation(348, 60);
         frame.setUndecorated(true);
         frame.add(createCenterPanel(), BorderLayout.CENTER);
         frame.add(createWestPanel(), BorderLayout.WEST);
