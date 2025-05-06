@@ -1,16 +1,54 @@
 
+  A>	
+  Code: A02.8
+ # 기타 명시된 살모넬라감염
+     : Other specified salmonella infections
+  Code: A00
+ # 콜레라
+     : Cholera
+  Code: A04.0
+ # 장병원성 대장균감염
+     : Enteropathogenic Escherichia coli infection
+  Code: A02.1
+ # 살모넬라패혈증
+     : Salmonella sepsis
+  Code: A02.9
+ # 상세불명의 살모넬라감염
+     : Salmonella infection, unspecified
+  Code: A03.8
+ # 기타 시겔라증
+     : Other shigellosis
+  Code: A04.1
+ # 장독소생산 대장균감염
+     : Enterotoxigenic Escherichia coli infection
+  Code: A01.2
+ # 파라티푸스 B
+     : Paratyphoid fever B
+  Code: A02.8
+     : Other specified salmonella infections
+  Code: A00
+     : Cholera
+  Code: A04.0
+     : Enteropathogenic Escherichia coli infection
+  Code: A02.1
+     : Salmonella sepsis
+  Code: A02.9
+     : Salmonella infection, unspecified
+  Code: A03.8
+     : Other shigellosis
+  Code: A04.1
+     : Enterotoxigenic Escherichia coli infection
+  Code: A01.2
+     : Paratyphoid fever B
+  Code: A05.4
+ # 바실루스 세레우스에 의한 식중독
+     : Foodborne Bacillus cereus intoxication
+  Code: A07.9
+ # 상세불명의 원충성 장질환
+     : Protozoal intestinal disease, unspecified
+  Code: A15
+ # 세균학적 및 조직학적으로 확인된 호흡기결핵
+     : Respiratory tuberculosis, bacteriologically and histologically confirmed
   P>	
-... D3710050	Free-testosterone test[ 2025.05.06]
- ...
-... Cx232	Free-testosterone test[ 2025.05.06]
-... C4854006, B1810	HBV DNA test[ 2025.05.06]
-... C4854006, B1810	HBV DNA test ,  HBV infection[+][ 2025.05.06]
-... C4854006	HBV DNA test[ 2025.05.06]
-... 052400041	Prolia[ 2025.05.06]
-... C3260	E2 test[ 2025.05.06]
-... C3500	FSH test[ 2025.05.06]
-... C3480	LH test[ 2025.05.06]
-... C7351	Prolactin test[ 2025.05.06]
-... D1640	Progesterone test[ 2025.05.06]
-  Comment>	
-   # D3050010Z	:  C-peptide
+  ***: follow-up [ 6 ] months later
+  ***:  [ → ] advised the patient to continue with current medication

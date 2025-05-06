@@ -88,7 +88,7 @@ public class Kcd5Viewer extends JFrame {
                                         String textToAppend = String.format("\n # %s - %s\n    (%s)", code, ktitle, etitle);
 
                                         // Call the static method from GDSEMR_frame class
-                                        GDSEMR_frame.setTextAreaText(7, textToAppend);
+                                        GDSEMR_frame.setTextAreaText(7, "\n"+ textToAppend);
                                     } else {
                                         System.err.println("Extracted code is empty. Row data: [" + combinedData + "]");
                                     }
