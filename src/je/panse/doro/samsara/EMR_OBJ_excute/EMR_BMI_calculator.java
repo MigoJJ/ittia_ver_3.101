@@ -11,18 +11,18 @@ public class EMR_BMI_calculator extends JFrame {
     private final JTextField[] inputs = new JTextField[FIELDS.length];
 
     public EMR_BMI_calculator() {
+        setUndecorated(true); // Remove title bar and border
         setupFrame();
         createUI();
         setVisible(true);
     }
 
     private void setupFrame() {
-        setTitle("BMI Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 240);
+        setSize(300, 160);
         setLocation(
-            Toolkit.getDefaultToolkit().getScreenSize().width - 300, 
-            60
+            Toolkit.getDefaultToolkit().getScreenSize().width - 300,
+            120 // Moved from 60 to 160 pixels from top
         );
     }
 
@@ -32,29 +32,24 @@ public class EMR_BMI_calculator extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
 
-        // Create input fields
         for (int i = 0; i < FIELDS.length; i++) {
             addInputRow(panel, gbc, i);
         }
 
-        // Add save button
         addSaveButton(panel, gbc);
         add(panel);
     }
 
     private void addInputRow(JPanel panel, GridBagConstraints gbc, int row) {
-        // Add label
         gbc.gridx = 0;
         gbc.gridy = row;
         panel.add(new JLabel(FIELDS[row]), gbc);
 
-        // Add text field
         JTextField field = createTextField();
         inputs[row] = field;
         gbc.gridx = 1;
         panel.add(field, gbc);
 
-        // Add key listener for Enter
         field.addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
             public void keyPressed(java.awt.event.KeyEvent e) {
@@ -93,13 +88,13 @@ public class EMR_BMI_calculator extends JFrame {
         try {
             double height = Double.parseDouble(inputs[0].getText());
             double weight = Double.parseDouble(inputs[1].getText());
-            double bmi = weight / Math.pow(height/100, 2);
+            double bmi = weight / Math.pow(height / 100, 2);
 
             String bmiCategory = getBMICategory(bmi);
             String waistMeasurement = processWaistMeasurement();
-            
+
             updateEMRFrame(bmi, height, weight, bmiCategory, waistMeasurement);
-            
+
             dispose();
             EMR_BMI_calculator.main(null);
         } catch (NumberFormatException e) {
@@ -125,11 +120,11 @@ public class EMR_BMI_calculator extends JFrame {
         return "BMI Category";
     }
 
-    private void updateEMRFrame(double bmi, double height, double weight, 
-                              String category, String waist) {
+    private void updateEMRFrame(double bmi, double height, double weight,
+                                String category, String waist) {
         String bmiText = String.format("%s : BMI: [ %.2f ]kg/m^2", category, bmi);
         String details = String.format("\n< BMI >\n%s\nHeight : %.1f cm   Weight : %.1f kg%s",
-            bmiText, height, weight, 
+            bmiText, height, weight,
             waist.isEmpty() ? "" : "   Waist: " + waist + " cm");
 
         GDSEMR_frame.setTextAreaText(5, details);
