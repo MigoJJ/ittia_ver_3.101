@@ -31,6 +31,7 @@ import je.panse.doro.samsara.EMR_OBJ_Vitalsign.Vitalsign;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_BMI_calculator;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_HbA1c;
 import je.panse.doro.samsara.EMR_OBJ_excute.EMR_TFT;
+import je.panse.doro.soap.fu.FUplan;
 import je.panse.doro.soap.fu.Followup;
 import je.panse.doro.soap.subjective.EMR_symptom_main;
 
@@ -212,6 +213,7 @@ public class GDSEMR_frame {
                 InjectionApp.main(null);
                 emrFrame.createAndShowGUI();
                 Followup.main(null);
+                FUplan.main(null);
             } catch (Exception e) {
                 e.printStackTrace();
             }

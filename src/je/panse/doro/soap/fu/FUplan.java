@@ -1,11 +1,11 @@
 package je.panse.doro.soap.fu;
 
 import javax.swing.*;
+import je.panse.doro.GDSEMR_frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class FUplan extends JFrame {
-
     private JTextField fuField;
     private JTextField medsCodeField;
 
@@ -38,8 +38,9 @@ public class FUplan extends JFrame {
             String medsMessage = returnchangefield2(meds);
 
             System.out.printf("Saved: FU = %s, Meds Code = %s%n", fu, meds);
-            System.out.println("Interpreted FU: " + fu);
-            System.out.println("Meds Action: " + medsMessage);
+            System.out.println("***: " + fu);
+            System.out.println("***: " + medsMessage);
+            GDSEMR_frame.setTextAreaText(8, "\n***: " + fu + "\n***: " + medsMessage);
 
             // Clear text fields
             fuField.setText("");
