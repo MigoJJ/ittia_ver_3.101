@@ -1,21 +1,18 @@
 
-  CC>	   Weight changes
-   Diarrhea
-   Headache
-   Skin Eruption and Vesicles	 (onset 6-day ago  2025.05.06)
   P>	
-  ***: follow-up [ 2 ] weeks later
-  ***:  Observation & Follow-up without medication
-  ***: follow-up [ 1 ] weeks later
-  ***:  [ → ] advised the patient to continue with current medication
-... D126	Colonic polyp 대장 용종[ 2025.05.06]
+... N94.6	Dysmenorrhea 월경통[ 2025.05.06]
  ...
 ... O224	Gestational diabetes 임신성 당뇨병[ 2025.05.06]
-... N94.6	Dysmenorrhea 월경통[ 2025.05.06]
-... C3500	FSH test[ 2025.05.06]
-  Comment>	
-  #  ...The patient Refused dose-adjustment  [2025-05-06]
-  #  ...to refer patients to receive additional health care services.  [2025-05-06]
-   # 	:  Proinsulin
-   # CZ112000Z	:  CDT
-   # CZ191	:  Iodine(24hr urine)
+... D126	Colonic polyp 대장 용종[ 2025.05.06]
+... B1810	HBV infection[ 2025.05.06]
+... C3430	C-peptide test[ 2025.05.06]
+... 3410	Insulin test[ 2025.05.06]
+... 052400041	Prolia[ 2025.05.06]
+... E041	Benign thyroid nodule[ 2025.05.06]
+... FZ811	Libre 연속혈당측정기[ 2025.05.06]
+... C3480	LH test[ 2025.05.06]
+... D1640	Progesterone test[ 2025.05.06]
+... 14912	HIV Ag/Ab (combo) test[ 2025.05.06]
+... +hp4	H. Pylori 4-regimen test[ 2025.05.06]
+... +hp4	H. Pylori 4-regimen[ 2025.05.06]
+... D2330	Cystatin-C[ 2025.05.06]
