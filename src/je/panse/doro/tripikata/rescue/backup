@@ -1,10 +1,11 @@
 
-  CC>   Hypercholesterolemia F/U
-  PI>
-    Chest pain (angina) or heart attack: [denied]
-  P>
-...Follow-up in the clinic in [ 3.0 ]-month
-...now [ well ] treated with current medication
-    continue with current dosages of meds
-  Comment>
-Limit sugary drinks, processed foods, and unhealthy fats.
+  P>	
+... FZ811	Libre 연속혈당측정기[ 2025.05.05]
+ ...
+... B1810	HBV infection[ 2025.05.05]
+... C3260	E2 test[ 2025.05.05]
+... D1820003	Direct bilirubin test[ 2025.05.05]
+... C4854006	HBV DNA test[ 2025.05.05]
+... C4872	Anti HCV AB test[ 2025.05.05]
+... C3430	C-peptide test[ 2025.05.05]
+... C4854006, B1810	HBV DNA test [ B1810 ][ 2025.05.05]
