@@ -91,7 +91,6 @@ public class JavalabtestsDBManagerGUI extends JFrame {
 
         return panel;
     }
-
     private JPanel createSearchPanel() {
         JPanel panel = new JPanel(new BorderLayout(5, 5));
         panel.setBorder(BorderFactory.createTitledBorder("Search"));
@@ -173,7 +172,6 @@ public class JavalabtestsDBManagerGUI extends JFrame {
                     "Database Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
     private void addRecord() {
         String category = categoryField.getText().trim();
         String code = codeField.getText().trim();
@@ -236,7 +234,6 @@ public class JavalabtestsDBManagerGUI extends JFrame {
             clearFields();
         }
     }
-
     private void searchRecords() {
         String searchText = searchField.getText().trim();
         String column = (String) searchColumnCombo.getSelectedItem();
@@ -267,3 +264,6 @@ public class JavalabtestsDBManagerGUI extends JFrame {
         });
     }
 }
+
+
+
