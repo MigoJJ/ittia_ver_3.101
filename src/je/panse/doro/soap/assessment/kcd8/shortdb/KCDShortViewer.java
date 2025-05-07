@@ -27,6 +27,7 @@ import javax.swing.table.DefaultTableModel;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.entry.EntryDir;
+import je.panse.doro.soap.assessment.kcd8.KCDViewer;
 
 public class KCDShortViewer extends JFrame {
     private JTable table;
@@ -77,7 +78,7 @@ public class KCDShortViewer extends JFrame {
         JButton clearButton = new JButton("Clear");
         JButton saveButton = new JButton("Save");
         JButton quitButton = new JButton("Quit");
-        JButton othersButton = new JButton("Others");
+        JButton othersButton = new JButton("KCD8 full");
 
         southPanel.add(clearButton);
         southPanel.add(saveButton);
@@ -152,9 +153,10 @@ public class KCDShortViewer extends JFrame {
         othersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(KCDShortViewer.this,
-                    "'Others' functionality not implemented yet.",
-                    "Info", JOptionPane.INFORMATION_MESSAGE);
+//                JOptionPane.showMessageDialog(KCDShortViewer.this,
+//                    "'Others' functionality not implemented yet.",
+//                    "Info", JOptionPane.INFORMATION_MESSAGE);
+            	KCDViewer.main(null);
             }
         });
     }
