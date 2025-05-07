@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate.keybutton;
 
-import java.awt.Toolkit;		
+import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 
 import javax.swing.JOptionPane;
@@ -27,7 +27,7 @@ import je.panse.doro.fourgate.routinecheck.RoutineCheck;
 import je.panse.doro.fourgate.thyroid.entry.EMR_thyroid_mainentry;
 import je.panse.doro.fourgate.thyroid.pregnancy.EMR_thyroid_Pregnancyentry;
 import je.panse.doro.soap.assessment.icd_11.ICD11Manager;
-import je.panse.doro.soap.assessment.kcd8.KCDViewer;
+import je.panse.doro.soap.assessment.kcd8.shortdb.KCDShortViewer;
 import je.panse.doro.soap.pmh.EMRPMHAllergy;
 import je.panse.doro.support.EMR_ittia_support;
 import je.panse.doro.support.sqlite3_manager.abbreviation.MainScreen;
@@ -94,7 +94,7 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                     EMR_ittia_support.main(null);
                     break;
                 case "KCD8":
-                    KCDViewer.main(null);
+                	KCDShortViewer.main(null);
                     break;
             }
         } else if ("south".equals(location)) {
