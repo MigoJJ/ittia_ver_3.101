@@ -20,6 +20,7 @@ import je.panse.doro.fourgate.A_editmain.EMR_FU_uriEdit;
 import je.panse.doro.fourgate.diabetes.EMR_dm_mainentry;
 import je.panse.doro.fourgate.hypercholesterolemia.EMR_chol_mainentry;
 import je.panse.doro.fourgate.hypertension.EMR_htn_mainentry;
+import je.panse.doro.fourgate.n_laboratorytest.frequent.JavalabtestsDBManagerGUI;
 import je.panse.doro.fourgate.n_vaccinations.InjectionApp;
 import je.panse.doro.fourgate.osteoporosis.EMR_DEXA;
 import je.panse.doro.fourgate.osteoporosis.buttons.EMR_Os_buttons;
@@ -84,18 +85,22 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Abbreviation":
                     MainScreen.main(null);
                     break;
-                case "Code":
+                case "ICD-11":
                     ICD11Manager.main(null);
-                    break;
-                case "Lab code":
-                    LabCodeMainScreen.main(null);
-                    break;
-                case "ittia_support":
-                    EMR_ittia_support.main(null);
                     break;
                 case "KCD8":
                 	KCDShortViewer.main(null);
                     break;
+                case "Lab code":
+                    LabCodeMainScreen.main(null);
+                    break;
+                case "Lab sum":
+                		JavalabtestsDBManagerGUI.main(null);
+                    break;
+                case "ittia_support":
+                    EMR_ittia_support.main(null);
+                    break;
+
             }
         } else if ("south".equals(location)) {
             switch (btn) {
