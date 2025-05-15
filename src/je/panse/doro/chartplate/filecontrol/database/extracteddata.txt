@@ -1,5 +1,6 @@
 replacements.put(":SxTx ", "Symptomatic treatment and supportive care");
 replacements.put(":aa ", "Astrix 100 mg 1 tab po qd");
+replacements.put(":aaaa ", "EKG  CUS");
 replacements.put(":af", "Atrial Fibrillation with RVR");
 replacements.put(":af ", "Atrial Fibrillation");
 replacements.put(":afl ", "Atrial Flutter");
@@ -50,6 +51,7 @@ replacements.put(":drm ", "DM with Retinopathy : Macular edema");
 replacements.put(":drn ", "DM with Retinopathy : Non-proliferative diabetic retinopathy");
 replacements.put(":drp ", "DM with Retinopathy : Proliferative diabetic retinopathy");
 replacements.put(":dys ", "Dysuria and frequency");
+replacements.put(":eee", "EKG   CUS   Lab +++++");
 replacements.put(":epi ", "Epigastric pain");
 replacements.put(":fc ", "Hypercholesterolemia F/U");
 replacements.put(":fctg ", "HyperTriGlyceridemia F/U");
