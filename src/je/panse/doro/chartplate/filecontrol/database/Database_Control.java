@@ -21,7 +21,8 @@ public class Database_Control extends JFrame {
         EntryDir.homeDir + "/chartplate/filecontrol/database/icd11.db",
         EntryDir.homeDir + "/chartplate/filecontrol/database/kcd8db.db",
         EntryDir.homeDir + "/chartplate/filecontrol/database/AbbFullDis.db",
-        EntryDir.homeDir + "/chartplate/filecontrol/database/LabCodeFullDis.db"
+        EntryDir.homeDir + "/chartplate/filecontrol/database/LabCodeFullDis.db",
+        EntryDir.homeDir + "/chartplate/filecontrol/database/extracteddata.txt"
     };
 
     public Database_Control() {
