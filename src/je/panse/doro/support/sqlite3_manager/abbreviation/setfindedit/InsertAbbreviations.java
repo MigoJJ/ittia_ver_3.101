@@ -11,7 +11,7 @@ import je.panse.doro.entry.EntryDir;
 public class InsertAbbreviations {
     
     // Define the database URL
-    private static final String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db"; // Replace with your actual path
+    private static final String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/chartplate/filecontrol/database/AbbFullDis.db"; // Replace with your actual path
     
     // The list of abbreviations to insert
     private static final String[][] abbreviations = {

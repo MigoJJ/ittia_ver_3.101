@@ -5,7 +5,7 @@ import je.panse.doro.entry.EntryDir;
 
 public class AbbreviationFinder {
 //    private String dbURL = "jdbc:sqlite:/home/migowj/git/ittia_ver_4.01/src/je/panse/doro/support/sqlite3/abbreviation/AbbFullDis.db";
-    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
+    private static String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/chartplate/filecontrol/database/AbbFullDis.db";
 
     public String findFullTextByAbbreviation(String abbreviation) {
         String fullText = null;

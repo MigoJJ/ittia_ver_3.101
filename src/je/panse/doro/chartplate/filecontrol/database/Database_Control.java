@@ -1,6 +1,6 @@
 package je.panse.doro.chartplate.filecontrol.database;
 
-import javax.swing.*;
+import javax.swing.*;	
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -17,17 +17,17 @@ public class Database_Control extends JFrame {
 
     private static final String DEST_DIR = EntryDir.homeDir + "/chartplate/filecontrol/database"; // Destination for Rescue
     private static final String[] DB_FILES = {
-        EntryDir.homeDir + "/fourgate/n_laboratorytest/frequent/javalabtests.db",
-        EntryDir.homeDir + "/soap/assessment/icd_11/icd11.db",
-        EntryDir.homeDir + "/soap/assessment/kcd8/kcd8db.db",
-        EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db",
-        EntryDir.homeDir + "/support/sqlite3_manager/labcode/LabCodeFullDis.db"
+        EntryDir.homeDir + "/chartplate/filecontrol/database/javalabtests.db",
+        EntryDir.homeDir + "/chartplate/filecontrol/database/icd11.db",
+        EntryDir.homeDir + "/chartplate/filecontrol/database/kcd8db.db",
+        EntryDir.homeDir + "/chartplate/filecontrol/database/AbbFullDis.db",
+        EntryDir.homeDir + "/chartplate/filecontrol/database/LabCodeFullDis.db"
     };
 
     public Database_Control() {
         // Set up the JFrame
         setTitle("Database File Control");
-        setSize(400, 200);
+        setSize(300, 100);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(new FlowLayout());

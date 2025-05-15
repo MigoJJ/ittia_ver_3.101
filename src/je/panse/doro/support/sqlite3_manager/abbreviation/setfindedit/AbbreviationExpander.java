@@ -1,6 +1,6 @@
 package je.panse.doro.support.sqlite3_manager.abbreviation.setfindedit;
 
-import java.sql.Connection;		
+import java.sql.Connection;			
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,7 +41,7 @@ public class AbbreviationExpander {
 
 	  public static void main(String args) throws SQLException {
 	    String text = args;
-	    String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3abbreviation/AbbFullDis.db";
+	    String dbURL = "jdbc:sqlite:" + EntryDir.homeDir + "/chartplate/filecontrol/database/AbbFullDis.db";
 	    String expandedText = replaceAbbreviations(text, dbURL);
 	    System.out.println(expandedText); // Output: The meeting is To Be Determined. We expect an estimated time of arrival by noon.
 
