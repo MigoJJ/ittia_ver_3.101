@@ -32,7 +32,7 @@ public class DatabaseExtractStrings {
     }
 
     private void saveToFile(String[][] data, String filename) throws IOException {
-        String filePath = EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/" + filename;
+        String filePath = EntryDir.homeDir + "/chartplate/filecontrol/database/" + filename;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
             for (String[] entry : data) {
                 writer.write("replacements.put(\"" + entry[0] + "\", \"" + entry[1] + "\");\n");
