@@ -9,7 +9,7 @@ import je.panse.doro.entry.EntryDir;
  */
 public class AddLabCodeDatabase {
 
-    private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/labcode/LabCodeFullDis.db";
+    private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/chartplate/filecontrol/database/LabCodeFullDis.db";
 
     /**
      * Appends simplified laboratory data to the 'labcodes' table and removes duplicates.

@@ -5,7 +5,7 @@ import je.panse.doro.entry.EntryDir;
 import javax.swing.table.DefaultTableModel;
 
 class LabDatabaseModel {
-    static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/labcode/LabCodeFullDis.db";
+    static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/chartplate/filecontrol/database/LabCodeFullDis.db";
 
     public void createDatabaseTable() {
         String sql = "CREATE TABLE IF NOT EXISTS labcodes (" +

@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import je.panse.doro.GDSEMR_frame;
 import je.panse.doro.chartplate.filecontrol.FileGeditToCilpboard;
+import je.panse.doro.chartplate.filecontrol.database.Database_Control;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_CopyBackup;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_B_FileListFrame;
 import je.panse.doro.chartplate.keybutton.EMR_Backup_Excute.EMR_InputFrame;
@@ -97,6 +98,9 @@ public class EMR_ButtonEntry extends GDSEMR_frame {
                 case "Lab sum":
                 		JavalabtestsDBManagerGUI.main(null);
                     break;
+                case "db":
+                		Database_Control.main(null);
+                break;
                 case "ittia_support":
                     EMR_ittia_support.main(null);
                     break;

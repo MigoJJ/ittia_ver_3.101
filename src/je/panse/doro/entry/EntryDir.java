@@ -56,7 +56,7 @@ public class EntryDir {
      * 
      * @param directoryPath The path of the directory to create
      */
-    private static void createDirectoryIfNotExists(String directoryPath) {
+    public static void createDirectoryIfNotExists(String directoryPath) {
         File dir = new File(directoryPath);
         if (!dir.exists()) {
             boolean wasSuccessful = dir.mkdirs();

@@ -15,7 +15,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
         super();
 
         // Create the buttons
-        for (int i = 0; i < 12; i++) { // Updated to 12 buttons
+        for (int i = 0; i < 13; i++) { // Updated to 12 buttons
             buttons[i] = new JButton(locations + (i + 1));
 
             // Add ActionListener to button
@@ -49,7 +49,7 @@ public class GDSEMR_ButtonNorthSouth extends JPanel {
             buttons[9].setText("Lab code");
             buttons[10].setText("Lab sum");
             buttons[11].setText("ittia_support"); // New button 1
-//            buttons[12].setText("New North 2"); // New button 2
+            buttons[12].setText("db"); // New button 2
             // Add the button panel to the north of the frame
             setLayout(new FlowLayout(FlowLayout.LEFT));
             setBackground(Color.GRAY);

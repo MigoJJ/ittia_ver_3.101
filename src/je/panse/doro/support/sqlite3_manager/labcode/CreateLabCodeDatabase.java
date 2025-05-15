@@ -8,7 +8,7 @@ import je.panse.doro.entry.EntryDir;
  */
 public class CreateLabCodeDatabase {
 
-    private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/support/sqlite3_manager/labcode/LabCodeFullDis.db";
+    private static final String DB_URL = "jdbc:sqlite:" + EntryDir.homeDir + "/chartplate/filecontrol/database/LabCodeFullDis.db";
 
     /**
      * Creates the 'labcodes' table in the database if it doesn't already exist.

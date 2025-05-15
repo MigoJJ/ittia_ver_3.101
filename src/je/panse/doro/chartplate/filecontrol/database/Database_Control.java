@@ -8,15 +8,17 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import je.panse.doro.entry.EntryDir;
 
 public class Database_Control extends JFrame {
-    private static final String TARGET_DIR = "/home/dce040b/git/MigoJJ-ittia_ver_3.101/src/je/panse/doro/chartplate/filecontrol/database";
+    private static final String TARGET_DIR = "/home/dce040b/문서/ITTIA_EMR_db"; // Backup directory (external)
+    private static final String DEST_DIR = EntryDir.homeDir + "/chartplate/filecontrol/database"; // Destination for Rescue
     private static final String[] DB_FILES = {
-        "/home/dce040b/git/MigoJJ-ittia_ver_3.101/src/je/panse/doro/fourgate/n_laboratorytest/frequent/javalabtests.db",
-        "/home/dce040b/git/MigoJJ-ittia_ver_3.101/src/je/panse/doro/soap/assessment/icd_11/icd11.db",
-        "/home/dce040b/git/MigoJJ-ittia_ver_3.101/src/je/panse/doro/soap/assessment/kcd8/kcd8db.db",
-        "/home/dce040b/git/MigoJJ-ittia_ver_3.101/src/je/panse/doro/support/sqlite3_manager/abbreviation/AbbFullDis.db",
-        "/home/dce040b/git/MigoJJ-ittia_ver_3.101/src/je/panse/doro/support/sqlite3_manager/labcode/LabCodeFullDis.db"
+        EntryDir.homeDir + "/fourgate/n_laboratorytest/frequent/javalabtests.db",
+        EntryDir.homeDir + "/soap/assessment/icd_11/icd11.db",
+        EntryDir.homeDir + "/soap/assessment/kcd8/kcd8db.db",
+        EntryDir.homeDir + "/support/sqlite3_manager/abbreviation/AbbFullDis.db",
+        EntryDir.homeDir + "/support/sqlite3_manager/labcode/LabCodeFullDis.db"
     };
 
     public Database_Control() {
@@ -44,6 +46,9 @@ public class Database_Control extends JFrame {
 
         // Set background
         getContentPane().setBackground(Color.LIGHT_GRAY);
+
+        // Ensure destination directory exists
+        EntryDir.createDirectoryIfNotExists(DEST_DIR);
     }
 
     private void handleSave(ActionEvent e) {
@@ -55,7 +60,7 @@ public class Database_Control extends JFrame {
             // Copy each database file to the target directory
             for (String dbFile : DB_FILES) {
                 Path source = Paths.get(dbFile);
-                Path target = Paths.get(TARGET_DIR, source.getFileName().toString());
+                Path target = Paths.get(TARGET_DIR, Paths.get(dbFile).getFileName().toString());
                 if (Files.exists(source)) {
                     Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
                 } else {
@@ -71,13 +76,15 @@ public class Database_Control extends JFrame {
 
     private void handleRescue(ActionEvent e) {
         try {
-            // Copy each database file from the target directory back to its original location
+            // Ensure destination directory exists
+            Path destDir = Paths.get(DEST_DIR);
+            Files.createDirectories(destDir);
+
+            // Copy each database file from TARGET_DIR to DEST_DIR
             for (String dbFile : DB_FILES) {
                 Path source = Paths.get(TARGET_DIR, Paths.get(dbFile).getFileName().toString());
-                Path target = Paths.get(dbFile);
+                Path target = Paths.get(DEST_DIR, Paths.get(dbFile).getFileName().toString());
                 if (Files.exists(source)) {
-                    // Ensure the parent directory exists
-                    Files.createDirectories(target.getParent());
                     Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING);
                 } else {
                     throw new IOException("Backup file not found: " + source);
