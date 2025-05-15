@@ -11,7 +11,10 @@ import java.nio.file.StandardCopyOption;
 import je.panse.doro.entry.EntryDir;
 
 public class Database_Control extends JFrame {
-    private static final String TARGET_DIR = "/home/dce040b/문서/ITTIA_EMR_db"; // Backup directory (external)
+//    private static final String TARGET_DIR = "/home/dce040b/문서/ITTIA_EMR_db"; // Backup directory (external)
+//    private static final String TARGET_DIR = "/home/migowj/문서/ITTIA_EMR_db"; // Backup directory (external)
+    private static final String TARGET_DIR = EntryDir.currentDir + "/문서/ITTIA_EMR_db"; // Backup directory (external)
+
     private static final String DEST_DIR = EntryDir.homeDir + "/chartplate/filecontrol/database"; // Destination for Rescue
     private static final String[] DB_FILES = {
         EntryDir.homeDir + "/fourgate/n_laboratorytest/frequent/javalabtests.db",
@@ -37,7 +40,7 @@ public class Database_Control extends JFrame {
         // Add action listeners
         saveButton.addActionListener(this::handleSave);
         rescueButton.addActionListener(this::handleRescue);
-        quitButton.addActionListener(e -> System.exit(0));
+        quitButton.addActionListener(e -> dispose());
 
         // Add buttons to the panel
         add(saveButton);
