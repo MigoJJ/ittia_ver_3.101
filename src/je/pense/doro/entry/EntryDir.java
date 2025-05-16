@@ -12,7 +12,7 @@ public class EntryDir {
     static {
         // Determine environment (default to 'dev' if not set)
         String env = System.getProperty("app.env", "dev");
-        String[] pathParts = {"je", "panse", "doro"};
+        String[] pathParts = {"je", "pense", "doro"};
 
         // Construct base path depending on environment
         String basePath = "prod".equals(env) ? currentDir 
